@@ -1,0 +1,42 @@
+[
+  {
+    "id": "cisa-kev",
+    "name": "CISA KEV",
+    "kind": "kev",
+    "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+    "host": "www.cisa.gov",
+    "fixture": "kev.json",
+    "category": "Active exploitation",
+    "article_hosts": [
+      "www.cisa.gov"
+    ],
+    "policy": "Official machine-readable public catalog; preserve attribution."
+  },
+  {
+    "id": "cert-cc",
+    "name": "CERT/CC",
+    "kind": "rss",
+    "url": "https://www.kb.cert.org/vuls/atomfeed/",
+    "host": "www.kb.cert.org",
+    "fixture": "cert.xml",
+    "category": "Vulnerabilities",
+    "article_hosts": [
+      "www.kb.cert.org"
+    ],
+    "policy": "Link-only indexing; no article bodies or source excerpts."
+  },
+  {
+    "id": "sans-isc",
+    "name": "SANS Internet Storm Center",
+    "kind": "rss",
+    "url": "https://isc.sans.edu/rssfeed.xml",
+    "host": "isc.sans.edu",
+    "fixture": "sans.xml",
+    "category": "Research",
+    "article_hosts": [
+      "isc.sans.edu",
+      "isc.sans.org"
+    ],
+    "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
+  }
+]

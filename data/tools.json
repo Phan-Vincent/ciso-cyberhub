@@ -1,0 +1,1172 @@
+[
+  {
+    "id": "wireshark",
+    "name": "Wireshark",
+    "description": "Packet inspection and protocol analysis.",
+    "category": "Network analysis",
+    "secondary_categories": [],
+    "repository": "https://github.com/wireshark/wireshark",
+    "website": null,
+    "license": "GPL-2.0-or-later",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/wireshark/wireshark#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Packet inspection and protocol analysis."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [
+      "packet-analysis"
+    ],
+    "tutorials": [
+      "wireshark"
+    ],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/wireshark/wireshark"
+    ]
+  },
+  {
+    "id": "zeek",
+    "name": "Zeek",
+    "description": "Produces structured network telemetry for investigation.",
+    "category": "Network monitoring",
+    "secondary_categories": [],
+    "repository": "https://github.com/zeek/zeek",
+    "website": null,
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
+    "os": [],
+    "installation": "https://github.com/zeek/zeek#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Produces structured network telemetry for investigation."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [
+      "zeek"
+    ],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description"
+    ],
+    "sources": [
+      "https://github.com/zeek/zeek"
+    ]
+  },
+  {
+    "id": "suricata",
+    "name": "Suricata",
+    "description": "Network intrusion detection, prevention and security monitoring.",
+    "category": "Intrusion detection",
+    "secondary_categories": [],
+    "repository": "https://github.com/OISF/suricata",
+    "website": null,
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
+    "os": [],
+    "installation": "https://github.com/OISF/suricata#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Network intrusion detection, prevention and security monitoring."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description"
+    ],
+    "sources": [
+      "https://github.com/OISF/suricata"
+    ]
+  },
+  {
+    "id": "wazuh",
+    "name": "Wazuh",
+    "description": "Endpoint monitoring and security analytics with component-specific licenses.",
+    "category": "Endpoint detection",
+    "secondary_categories": [],
+    "repository": "https://github.com/wazuh/wazuh",
+    "website": null,
+    "license": null,
+    "license_status": "mixed",
+    "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
+    "os": [],
+    "installation": "https://github.com/wazuh/wazuh#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Endpoint monitoring and security analytics with component-specific licenses."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description"
+    ],
+    "sources": [
+      "https://github.com/wazuh/wazuh"
+    ]
+  },
+  {
+    "id": "nmap",
+    "name": "Nmap",
+    "description": "Discovers hosts and services in authorized environments.",
+    "category": "Network scanning",
+    "secondary_categories": [],
+    "repository": "https://github.com/nmap/nmap",
+    "website": null,
+    "license": null,
+    "license_status": "custom",
+    "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
+    "os": [
+      "Linux",
+      "Windows",
+      "macOS"
+    ],
+    "installation": "https://github.com/nmap/nmap#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Discovers hosts and services in authorized environments."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [
+      "nmap"
+    ],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "os"
+    ],
+    "sources": [
+      "https://github.com/nmap/nmap"
+    ]
+  },
+  {
+    "id": "volatility-3",
+    "name": "Volatility 3",
+    "description": "Extracts forensic artifacts from memory images under the custom VSL.",
+    "category": "Digital forensics",
+    "secondary_categories": [],
+    "repository": "https://github.com/volatilityfoundation/volatility3",
+    "website": null,
+    "license": null,
+    "license_status": "custom",
+    "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
+    "os": [],
+    "installation": "https://github.com/volatilityfoundation/volatility3#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Extracts forensic artifacts from memory images under the custom VSL."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [
+      "incident-response"
+    ],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description"
+    ],
+    "sources": [
+      "https://github.com/volatilityfoundation/volatility3"
+    ]
+  },
+  {
+    "id": "ghidra",
+    "name": "Ghidra",
+    "description": "Inspects and decompiles compiled software.",
+    "category": "Reverse engineering",
+    "secondary_categories": [],
+    "repository": "https://github.com/NationalSecurityAgency/ghidra",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/NationalSecurityAgency/ghidra#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Inspects and decompiles compiled software."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/NationalSecurityAgency/ghidra"
+    ]
+  },
+  {
+    "id": "yara",
+    "name": "YARA",
+    "description": "Matches patterns in files; the original project is in maintenance mode.",
+    "category": "Detection engineering",
+    "secondary_categories": [],
+    "repository": "https://github.com/VirusTotal/yara",
+    "website": null,
+    "license": "BSD-3-Clause",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/VirusTotal/yara#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Matches patterns in files; the original project is in maintenance mode."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [
+      "detection-engineering"
+    ],
+    "tutorials": [
+      "yara"
+    ],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "maintenance-mode",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/VirusTotal/yara"
+    ]
+  },
+  {
+    "id": "sigma",
+    "name": "Sigma",
+    "description": "A repository of portable detection rules; rules have their own license.",
+    "category": "Detection engineering",
+    "secondary_categories": [],
+    "repository": "https://github.com/SigmaHQ/sigma",
+    "website": null,
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
+    "os": [],
+    "installation": "https://github.com/SigmaHQ/sigma#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "A repository of portable detection rules; rules have their own license."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [
+      "detection-engineering"
+    ],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description"
+    ],
+    "sources": [
+      "https://github.com/SigmaHQ/sigma"
+    ]
+  },
+  {
+    "id": "trivy",
+    "name": "Trivy",
+    "description": "Inspects containers, filesystems and infrastructure configuration.",
+    "category": "Vulnerability management",
+    "secondary_categories": [],
+    "repository": "https://github.com/aquasecurity/trivy",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/aquasecurity/trivy#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Inspects containers, filesystems and infrastructure configuration."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [
+      "trivy"
+    ],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/aquasecurity/trivy"
+    ]
+  },
+  {
+    "id": "gitleaks",
+    "name": "Gitleaks",
+    "description": "Detects likely secrets in source trees and Git history.",
+    "category": "Application security",
+    "secondary_categories": [],
+    "repository": "https://github.com/gitleaks/gitleaks",
+    "website": null,
+    "license": "MIT",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/gitleaks/gitleaks#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Detects likely secrets in source trees and Git history."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [
+      "gitleaks"
+    ],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/gitleaks/gitleaks"
+    ]
+  },
+  {
+    "id": "syft",
+    "name": "Syft",
+    "description": "Generates software bills of materials for images and filesystems.",
+    "category": "Software supply chain",
+    "secondary_categories": [],
+    "repository": "https://github.com/anchore/syft",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/anchore/syft#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Generates software bills of materials for images and filesystems."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [
+      "syft"
+    ],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/anchore/syft"
+    ]
+  },
+  {
+    "id": "grype",
+    "name": "Grype",
+    "description": "Matches package inventories against vulnerability data.",
+    "category": "Vulnerability management",
+    "secondary_categories": [],
+    "repository": "https://github.com/anchore/grype",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/anchore/grype#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Matches package inventories against vulnerability data."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [
+      "grype"
+    ],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/anchore/grype"
+    ]
+  },
+  {
+    "id": "zap",
+    "name": "ZAP",
+    "description": "Intercepts and inspects web application traffic for authorized testing.",
+    "category": "Web security",
+    "secondary_categories": [],
+    "repository": "https://github.com/zaproxy/zaproxy",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/zaproxy/zaproxy#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Intercepts and inspects web application traffic for authorized testing."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [
+      "zap"
+    ],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/zaproxy/zaproxy"
+    ]
+  },
+  {
+    "id": "lynis",
+    "name": "Lynis",
+    "description": "Audits Unix-like systems for configuration weaknesses.",
+    "category": "System hardening",
+    "secondary_categories": [],
+    "repository": "https://github.com/CISOfy/lynis",
+    "website": null,
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
+    "os": [
+      "Linux",
+      "macOS",
+      "Unix"
+    ],
+    "installation": "https://github.com/CISOfy/lynis#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Audits Unix-like systems for configuration weaknesses."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [
+      "linux-hardening"
+    ],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "os"
+    ],
+    "sources": [
+      "https://github.com/CISOfy/lynis"
+    ]
+  },
+  {
+    "id": "osquery",
+    "name": "osquery",
+    "description": "Queries operating-system information using SQL.",
+    "category": "Endpoint detection",
+    "secondary_categories": [],
+    "repository": "https://github.com/osquery/osquery",
+    "website": null,
+    "license": null,
+    "license_status": "mixed",
+    "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
+    "os": [],
+    "installation": "https://github.com/osquery/osquery#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Queries operating-system information using SQL."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [
+      "windows-events"
+    ],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description"
+    ],
+    "sources": [
+      "https://github.com/osquery/osquery"
+    ]
+  },
+  {
+    "id": "falco",
+    "name": "Falco",
+    "description": "Detects security-relevant runtime behavior.",
+    "category": "Container security",
+    "secondary_categories": [],
+    "repository": "https://github.com/falcosecurity/falco",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/falcosecurity/falco#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Detects security-relevant runtime behavior."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/falcosecurity/falco"
+    ]
+  },
+  {
+    "id": "openssl",
+    "name": "OpenSSL",
+    "description": "Provides TLS and cryptographic libraries and command-line tools.",
+    "category": "Cryptography and PKI",
+    "secondary_categories": [],
+    "repository": "https://github.com/openssl/openssl",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/openssl/openssl#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Provides TLS and cryptographic libraries and command-line tools."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [
+      "openssl"
+    ],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/openssl/openssl"
+    ]
+  },
+  {
+    "id": "mitmproxy",
+    "name": "mitmproxy",
+    "description": "An interactive HTTP and TLS inspection proxy.",
+    "category": "Web security",
+    "secondary_categories": [],
+    "repository": "https://github.com/mitmproxy/mitmproxy",
+    "website": null,
+    "license": "MIT",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/mitmproxy/mitmproxy#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "An interactive HTTP and TLS inspection proxy."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/mitmproxy/mitmproxy"
+    ]
+  },
+  {
+    "id": "openssf-scorecard",
+    "name": "OpenSSF Scorecard",
+    "description": "Reports repository security-practice signals.",
+    "category": "Software supply chain",
+    "secondary_categories": [],
+    "repository": "https://github.com/ossf/scorecard",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/ossf/scorecard#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Reports repository security-practice signals."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/ossf/scorecard"
+    ]
+  },
+  {
+    "id": "checkov",
+    "name": "Checkov",
+    "description": "Checks infrastructure-as-code and software composition.",
+    "category": "Cloud security",
+    "secondary_categories": [],
+    "repository": "https://github.com/bridgecrewio/checkov",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/bridgecrewio/checkov#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Checks infrastructure-as-code and software composition."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/bridgecrewio/checkov"
+    ]
+  },
+  {
+    "id": "kubescape",
+    "name": "Kubescape",
+    "description": "Examines Kubernetes posture and configuration.",
+    "category": "Container security",
+    "secondary_categories": [],
+    "repository": "https://github.com/kubescape/kubescape",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/kubescape/kubescape#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Examines Kubernetes posture and configuration."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/kubescape/kubescape"
+    ]
+  },
+  {
+    "id": "tetragon",
+    "name": "Tetragon",
+    "description": "Uses eBPF for runtime observation and enforcement.",
+    "category": "Endpoint detection",
+    "secondary_categories": [],
+    "repository": "https://github.com/cilium/tetragon",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/cilium/tetragon#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Uses eBPF for runtime observation and enforcement."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/cilium/tetragon"
+    ]
+  },
+  {
+    "id": "tracee",
+    "name": "Tracee",
+    "description": "Uses eBPF for Linux runtime security and forensics.",
+    "category": "Incident response",
+    "secondary_categories": [],
+    "repository": "https://github.com/aquasecurity/tracee",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [
+      "Linux"
+    ],
+    "installation": "https://github.com/aquasecurity/tracee#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Uses eBPF for Linux runtime security and forensics."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license",
+      "os"
+    ],
+    "sources": [
+      "https://github.com/aquasecurity/tracee"
+    ]
+  },
+  {
+    "id": "prowler",
+    "name": "Prowler",
+    "description": "Audits cloud security posture through its open-source offering.",
+    "category": "Cloud security",
+    "secondary_categories": [],
+    "repository": "https://github.com/prowler-cloud/prowler",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/prowler-cloud/prowler#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Audits cloud security posture through its open-source offering."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/prowler-cloud/prowler"
+    ]
+  },
+  {
+    "id": "semgrep-ce",
+    "name": "Semgrep CE",
+    "description": "Pattern-based static analysis; distinguish the community engine from paid services.",
+    "category": "Application security",
+    "secondary_categories": [],
+    "repository": "https://github.com/semgrep/semgrep",
+    "website": null,
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
+    "os": [],
+    "installation": "https://github.com/semgrep/semgrep#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Pattern-based static analysis; distinguish the community engine from paid services."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description"
+    ],
+    "sources": [
+      "https://github.com/semgrep/semgrep"
+    ]
+  },
+  {
+    "id": "owasp-nettacker",
+    "name": "OWASP Nettacker",
+    "description": "Automates discovery and vulnerability checks in authorized scopes.",
+    "category": "Penetration testing",
+    "secondary_categories": [],
+    "repository": "https://github.com/OWASP/Nettacker",
+    "website": null,
+    "license": "Apache-2.0",
+    "license_status": "open-source",
+    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "os": [],
+    "installation": "https://github.com/OWASP/Nettacker#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Automates discovery and vulnerability checks in authorized scopes."
+    ],
+    "classification": [
+      "offensive",
+      "research"
+    ],
+    "certifications": [
+      "security-plus"
+    ],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": "2026-10-21",
+    "retrieved_at": "2026-10-21T18:45:00Z",
+    "verification_status": "source-checked",
+    "verified_fields": [
+      "name",
+      "repository",
+      "description",
+      "license"
+    ],
+    "sources": [
+      "https://github.com/OWASP/Nettacker"
+    ]
+  }
+]

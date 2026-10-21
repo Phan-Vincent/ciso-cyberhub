@@ -1,0 +1,6 @@
+2024-01-01T12:00:00Z auth record=1 user=student-lab result=failure source=192.0.2.10
+2024-01-01T12:00:01Z auth record=2 user=student-lab result=failure source=192.0.2.10
+2024-01-01T12:00:02Z auth record=3 user=student-lab result=failure source=192.0.2.10
+2024-01-01T12:00:03Z auth record=4 user=student-lab result=success source=192.0.2.10
+2024-01-01T12:00:04Z process record=5 user=student-lab image=notepad.exe
+2024-01-01T12:02:00Z operator record=6 note=planned-login-training-confirmed

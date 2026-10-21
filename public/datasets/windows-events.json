@@ -1,0 +1,42 @@
+[
+  {
+    "RecordId": 1,
+    "TimeCreated": "2024-01-01T12:00:00Z",
+    "EventID": 4625,
+    "User": "student-lab",
+    "SourceIP": "192.0.2.10",
+    "Detail": "Failed interactive logon"
+  },
+  {
+    "RecordId": 2,
+    "TimeCreated": "2024-01-01T12:00:01Z",
+    "EventID": 4625,
+    "User": "student-lab",
+    "SourceIP": "192.0.2.10",
+    "Detail": "Failed interactive logon"
+  },
+  {
+    "RecordId": 3,
+    "TimeCreated": "2024-01-01T12:00:02Z",
+    "EventID": 4625,
+    "User": "student-lab",
+    "SourceIP": "192.0.2.10",
+    "Detail": "Failed interactive logon"
+  },
+  {
+    "RecordId": 4,
+    "TimeCreated": "2024-01-01T12:00:03Z",
+    "EventID": 4624,
+    "User": "student-lab",
+    "SourceIP": "192.0.2.10",
+    "Detail": "Successful interactive logon"
+  },
+  {
+    "RecordId": 5,
+    "TimeCreated": "2024-01-01T12:00:04Z",
+    "EventID": 4688,
+    "User": "student-lab",
+    "SourceIP": "192.0.2.10",
+    "Detail": "Training process: notepad.exe"
+  }
+]

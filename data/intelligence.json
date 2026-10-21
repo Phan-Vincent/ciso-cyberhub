@@ -1,0 +1,22 @@
+{
+  "mode": "source-reported",
+  "news": [],
+  "sources": {
+    "cert-cc": {
+      "error": "HTTP 403",
+      "last_attempt": "2026-10-21T18:59:22Z",
+      "url": "https://www.kb.cert.org/vuls/atomfeed/"
+    },
+    "cisa-kev": {
+      "error": "HTTP 403",
+      "last_attempt": "2026-10-21T18:59:22Z",
+      "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+    },
+    "sans-isc": {
+      "error": "HTTP 403",
+      "last_attempt": "2026-10-21T18:59:22Z",
+      "url": "https://isc.sans.edu/rssfeed.xml"
+    }
+  },
+  "vulnerabilities": []
+}

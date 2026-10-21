@@ -1,0 +1,16 @@
+title: CyberHub Training Failed Logon
+id: 322cecf3-9403-4831-b7b8-fef7b0b405dc
+status: experimental
+description: Educational single-event example, not a brute-force correlation rule.
+author: CyberHub contributors
+date: 2026-10-21
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4625
+  condition: selection
+falsepositives:
+  - Normal user typing errors
+level: informational

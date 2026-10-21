@@ -1,0 +1,233 @@
+[
+  {
+    "name": "Network+",
+    "track": "Foundational",
+    "provider_url": "https://www.comptia.org/",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "ISC2 CC",
+    "track": "Foundational",
+    "provider_url": "https://www.isc2.org/certifications/cc",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "CCNA",
+    "track": "Foundational",
+    "provider_url": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/enterprise/ccna/index.html",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "CySA+",
+    "track": "SOC and blue team",
+    "provider_url": "https://www.comptia.org/",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "Cisco CyberOps track",
+    "track": "SOC and blue team",
+    "provider_url": "https://www.cisco.com/site/us/en/learn/training-certifications/index.html",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "SC-200",
+    "track": "SOC and blue team",
+    "provider_url": "https://learn.microsoft.com/credentials/certifications/exams/sc-200/",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "Blue Team Level 1",
+    "track": "SOC and blue team",
+    "provider_url": "https://www.securityblue.team/",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "PenTest+",
+    "track": "Offensive security",
+    "provider_url": "https://www.comptia.org/",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "eJPT",
+    "track": "Offensive security",
+    "provider_url": "https://security.ine.com/",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "PNPT",
+    "track": "Offensive security",
+    "provider_url": "https://certifications.tcm-sec.com/pnpt/",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "OSCP",
+    "track": "Offensive security",
+    "provider_url": "https://www.offsec.com/courses/pen-200/",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "SC-900",
+    "track": "Cloud",
+    "provider_url": "https://learn.microsoft.com/credentials/certifications/exams/sc-900/",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "Azure security track",
+    "track": "Cloud",
+    "provider_url": "https://learn.microsoft.com/credentials/",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "AWS Security Specialty",
+    "track": "Cloud",
+    "provider_url": "https://aws.amazon.com/certification/",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "CISSP",
+    "track": "Governance and leadership",
+    "provider_url": "https://www.isc2.org/certifications/cissp",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "CISM",
+    "track": "Governance and leadership",
+    "provider_url": "https://www.isaca.org/credentialing/cism",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "CISA",
+    "track": "Governance and leadership",
+    "provider_url": "https://www.isaca.org/credentialing/cisa",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "CRISC",
+    "track": "Governance and leadership",
+    "provider_url": "https://www.isaca.org/credentialing/crisc",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "SecurityX",
+    "track": "Advanced",
+    "provider_url": "https://www.comptia.org/",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "CSSLP",
+    "track": "Application security",
+    "provider_url": "https://www.isc2.org/certifications/csslp",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  },
+  {
+    "name": "GIAC tracks",
+    "track": "Advanced",
+    "provider_url": "https://www.giac.org/certifications/",
+    "version": null,
+    "eligibility": null,
+    "last_verified": null,
+    "status": "planning; provider verification pending",
+    "free_study_start": "Begin with networking, identity, logging and risk lessons in the Security+ pathway; use the labs to demonstrate concepts.",
+    "exam_cost_note": "Independent study is free. Provider exams and some external training are paid; verify terms directly."
+  }
+]

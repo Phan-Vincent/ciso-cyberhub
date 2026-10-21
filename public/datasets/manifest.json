@@ -1,0 +1,16 @@
+{
+  "license": "CC-BY-4.0",
+  "creator": "CyberHub contributors",
+  "synthetic": true,
+  "description": "Original synthetic training artifacts. No real users, traffic, credentials or malware. Windows files are normalized examples, not native EVTX.",
+  "sha256": {
+    "dns-training.pcap": "c658b8141c191616608e0b5fc4b72f9a519d5b0fb3fa2c9d6913d41591368bf2",
+    "incident.log": "53184489a0fec6ad434d11a8bb96dbd92a712ea82e264fa10cb8cda603b6f1c4",
+    "negative.txt": "94200ec5628078fa1904450ec927e1d74f7cb341d07ddb7475e93a2edeba640f",
+    "positive.txt": "fbd2ef4b8fd6b13bca37a990e2c0d57efe05342cc51182c1c7bd047dfea6e16c",
+    "training-sigma.yml": "d5fdbac2531410067c7d20d8471127833046877d051c5702b617fb0d4330e298",
+    "training.yar": "e3ba5b957a8d3e14c9a15e3fbbdb064902daa3eb3520de13761d0b9e89dc6632",
+    "windows-events.csv": "907afadc4f78ee155848d978197cac8be35a6942bea154eb9b3c15c1411dacbb",
+    "windows-events.json": "6daa43a5600d5de1985a3ca24b3d3c3bf6ea73421805157874420bb810a65849"
+  }
+}

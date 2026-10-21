@@ -1,0 +1,6 @@
+RecordId,TimeCreated,EventID,User,SourceIP,Detail
+1,2024-01-01T12:00:00Z,4625,student-lab,192.0.2.10,Failed interactive logon
+2,2024-01-01T12:00:01Z,4625,student-lab,192.0.2.10,Failed interactive logon
+3,2024-01-01T12:00:02Z,4625,student-lab,192.0.2.10,Failed interactive logon
+4,2024-01-01T12:00:03Z,4624,student-lab,192.0.2.10,Successful interactive logon
+5,2024-01-01T12:00:04Z,4688,student-lab,192.0.2.10,Training process: notepad.exe

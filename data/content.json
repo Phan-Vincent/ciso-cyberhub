@@ -1,0 +1,737 @@
+[
+  {
+    "id": "choosing-security-controls",
+    "section": "academy",
+    "title": "Choosing security controls",
+    "description": "A control has both an implementation category and a purpose.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "1.1"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "trust-identity-and-security-goals",
+    "section": "academy",
+    "title": "Trust, identity and security goals",
+    "description": "Confidentiality limits disclosure, integrity protects against unauthorized modification, and availability supports timely use.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "1.2"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "making-reversible-changes",
+    "section": "academy",
+    "title": "Making reversible changes",
+    "description": "Change management makes security work predictable.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "1.3"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "cryptography-and-key-trust",
+    "section": "academy",
+    "title": "Cryptography and key trust",
+    "description": "Encryption protects confidentiality using keys.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "1.4"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "threat-actors-and-uncertainty",
+    "section": "academy",
+    "title": "Threat actors and uncertainty",
+    "description": "Analyze capability, access, incentives and constraints before assigning an actor label.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "2.1"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "entry-points-and-attack-surfaces",
+    "section": "academy",
+    "title": "Entry points and attack surfaces",
+    "description": "An attack surface is the set of exposed opportunities; a vector is a route used to reach a target.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "2.2"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "understanding-vulnerabilities",
+    "section": "academy",
+    "title": "Understanding vulnerabilities",
+    "description": "A vulnerability is a weakness that can be used to violate a security property.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "2.3"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "interpreting-suspicious-activity",
+    "section": "academy",
+    "title": "Interpreting suspicious activity",
+    "description": "Indicators are clues, not conclusions.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "2.4"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "mitigations-that-reduce-exposure",
+    "section": "academy",
+    "title": "Mitigations that reduce exposure",
+    "description": "Match mitigations to the failure mechanism.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "2.5"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "architecture-and-shared-responsibility",
+    "section": "academy",
+    "title": "Architecture and shared responsibility",
+    "description": "Architecture changes where controls must operate.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "3.1"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "designing-trustworthy-network-boundaries",
+    "section": "academy",
+    "title": "Designing trustworthy network boundaries",
+    "description": "Place controls where the relevant traffic actually passes.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "3.2"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "protecting-data-through-its-lifecycle",
+    "section": "academy",
+    "title": "Protecting data through its lifecycle",
+    "description": "Classify data according to its sensitivity and required handling, then follow it through creation, use, sharing, retention and disposal.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "3.3"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "recovery-that-can-be-demonstrated",
+    "section": "academy",
+    "title": "Recovery that can be demonstrated",
+    "description": "Availability mechanisms and backups address different failures.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "3.4"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "establishing-secure-baselines",
+    "section": "academy",
+    "title": "Establishing secure baselines",
+    "description": "A baseline is a documented expected configuration with a process for deviations.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "4.1"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "accounting-for-assets-and-disposal",
+    "section": "academy",
+    "title": "Accounting for assets and disposal",
+    "description": "Inventory connects a technical object to an owner, purpose, sensitivity and lifecycle state.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "4.2"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "prioritizing-vulnerability-work",
+    "section": "academy",
+    "title": "Prioritizing vulnerability work",
+    "description": "A scanner finding starts a validation process.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "4.3"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "monitoring-with-reliable-evidence",
+    "section": "academy",
+    "title": "Monitoring with reliable evidence",
+    "description": "Monitoring needs collection, transport, storage, analysis and a response owner.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "4.4"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "applying-security-capabilities",
+    "section": "academy",
+    "title": "Applying security capabilities",
+    "description": "A security capability is effective when its configuration matches the objective and the actual traffic or data path.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "4.5"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "managing-identities-across-their-lifecycle",
+    "section": "academy",
+    "title": "Managing identities across their lifecycle",
+    "description": "Identity management includes provisioning, changes, periodic review and timely removal.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "4.6"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "automation-with-boundaries",
+    "section": "academy",
+    "title": "Automation with boundaries",
+    "description": "Automation makes consistent actions faster, including mistakes.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "4.7"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "responding-to-incidents-deliberately",
+    "section": "academy",
+    "title": "Responding to incidents deliberately",
+    "description": "Preparation establishes roles, communication paths, collection procedures and authority.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "4.8"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "investigating-with-multiple-data-sources",
+    "section": "academy",
+    "title": "Investigating with multiple data sources",
+    "description": "An investigation correlates observations from endpoint, network, identity and application sources.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "4.9"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "turning-governance-into-decisions",
+    "section": "academy",
+    "title": "Turning governance into decisions",
+    "description": "Governance assigns decision rights, accountability and acceptable risk.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "5.1"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "making-risk-assumptions-visible",
+    "section": "academy",
+    "title": "Making risk assumptions visible",
+    "description": "Risk assessment considers uncertain events and their consequences.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "5.2"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "evaluating-third-party-dependencies",
+    "section": "academy",
+    "title": "Evaluating third-party dependencies",
+    "description": "Third-party assessment covers more than a questionnaire.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "5.3"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "compliance-and-accountable-handling",
+    "section": "academy",
+    "title": "Compliance and accountable handling",
+    "description": "Compliance connects obligations to controls and evidence.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "5.4"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "assessments-with-explicit-scope",
+    "section": "academy",
+    "title": "Assessments with explicit scope",
+    "description": "An audit evaluates evidence against criteria.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "5.5"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "building-useful-security-awareness",
+    "section": "academy",
+    "title": "Building useful security awareness",
+    "description": "Awareness programs should help people recognize risky situations and act effectively.",
+    "minutes": 15,
+    "difficulty": "beginner",
+    "objectives": [
+      "5.6"
+    ],
+    "tools": [],
+    "status": "introductory"
+  },
+  {
+    "id": "wireshark",
+    "section": "tutorials",
+    "title": "Read a small capture with Wireshark",
+    "description": "Packet analysis explains what was observed on a network link.",
+    "minutes": 30,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "wireshark"
+    ],
+    "status": "instructional draft; tool execution pending"
+  },
+  {
+    "id": "nmap",
+    "section": "tutorials",
+    "title": "Compare one local port before and after a service starts",
+    "description": "A port scan reports observations about reachability and service exposure.",
+    "minutes": 30,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "nmap"
+    ],
+    "status": "instructional draft; tool execution pending"
+  },
+  {
+    "id": "yara",
+    "section": "tutorials",
+    "title": "Write and test a harmless YARA rule",
+    "description": "YARA identifies byte or text patterns.",
+    "minutes": 30,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "yara"
+    ],
+    "status": "instructional draft; tool execution pending"
+  },
+  {
+    "id": "gitleaks",
+    "section": "tutorials",
+    "title": "Check a local directory for exposed credentials",
+    "description": "Secret scanning finds patterns that may represent sensitive credentials.",
+    "minutes": 30,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "gitleaks"
+    ],
+    "status": "instructional draft; tool execution pending"
+  },
+  {
+    "id": "syft",
+    "section": "tutorials",
+    "title": "Inventory the packages you can actually observe",
+    "description": "A software bill of materials is an inventory, not a vulnerability assessment.",
+    "minutes": 30,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "syft"
+    ],
+    "status": "instructional draft; tool execution pending"
+  },
+  {
+    "id": "grype",
+    "section": "tutorials",
+    "title": "Review vulnerability matches from an SBOM",
+    "description": "Grype matches package information to vulnerability data.",
+    "minutes": 30,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "grype"
+    ],
+    "status": "instructional draft; tool execution pending"
+  },
+  {
+    "id": "trivy",
+    "section": "tutorials",
+    "title": "Inspect a local project without uploading it",
+    "description": "Trivy supports multiple scan targets and scanners.",
+    "minutes": 30,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "trivy"
+    ],
+    "status": "instructional draft; tool execution pending"
+  },
+  {
+    "id": "openssl",
+    "section": "tutorials",
+    "title": "Compare hashes and inspect a training certificate",
+    "description": "OpenSSL exposes cryptographic primitives through command-line tools.",
+    "minutes": 30,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "openssl"
+    ],
+    "status": "instructional draft; tool execution pending"
+  },
+  {
+    "id": "zeek",
+    "section": "tutorials",
+    "title": "Turn a synthetic PCAP into structured DNS observations",
+    "description": "Zeek turns observed traffic into structured logs that support analysis.",
+    "minutes": 30,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "zeek"
+    ],
+    "status": "instructional draft; tool execution pending"
+  },
+  {
+    "id": "zap",
+    "section": "tutorials",
+    "title": "Inspect your own local HTTP traffic with ZAP",
+    "description": "ZAP can observe browser traffic through a proxy.",
+    "minutes": 30,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "zap"
+    ],
+    "status": "instructional draft; tool execution pending"
+  },
+  {
+    "id": "packet-analysis",
+    "section": "labs",
+    "title": "Investigate a synthetic DNS capture",
+    "description": "Identify endpoints, distinguish queries from responses, correlate transactions, and explain the limits of packet evidence.",
+    "minutes": 35,
+    "difficulty": "beginner",
+    "tools": [
+      "wireshark",
+      "zeek"
+    ],
+    "objectives": [
+      "4.9",
+      "4.4"
+    ],
+    "status": "original synthetic exercise; external-tool execution pending"
+  },
+  {
+    "id": "linux-hardening",
+    "section": "labs",
+    "title": "Audit and verify a Linux baseline",
+    "description": "Inventory exposed services, make a reversible permission change, and verify that a control behaves as intended.",
+    "minutes": 45,
+    "difficulty": "beginner",
+    "tools": [
+      "lynis",
+      "nmap"
+    ],
+    "objectives": [
+      "4.1",
+      "2.5"
+    ],
+    "status": "original synthetic exercise; external-tool execution pending"
+  },
+  {
+    "id": "windows-events",
+    "section": "labs",
+    "title": "Reconstruct a Windows logon sequence",
+    "description": "Correlate failed and successful logons, preserve timestamps and distinguish an alert pattern from a confirmed incident.",
+    "minutes": 35,
+    "difficulty": "beginner",
+    "tools": [
+      "osquery"
+    ],
+    "objectives": [
+      "4.9",
+      "2.4"
+    ],
+    "status": "original synthetic exercise; external-tool execution pending"
+  },
+  {
+    "id": "incident-response",
+    "section": "labs",
+    "title": "Preserve evidence and write an incident assessment",
+    "description": "Preserve a small evidence set, create a reproducible timeline and recommend a proportionate response.",
+    "minutes": 45,
+    "difficulty": "beginner",
+    "tools": [
+      "volatility-3",
+      "gitleaks",
+      "openssl"
+    ],
+    "objectives": [
+      "4.8",
+      "4.9"
+    ],
+    "status": "original synthetic exercise; external-tool execution pending"
+  },
+  {
+    "id": "detection-engineering",
+    "section": "labs",
+    "title": "Test a detection with positive and negative cases",
+    "description": "Build a deterministic pattern rule, demonstrate positive and negative behavior, and describe false-positive limits.",
+    "minutes": 40,
+    "difficulty": "beginner",
+    "tools": [
+      "yara",
+      "sigma"
+    ],
+    "objectives": [
+      "4.4",
+      "4.7"
+    ],
+    "status": "original synthetic exercise; external-tool execution pending"
+  },
+  {
+    "id": "beginner",
+    "section": "careers",
+    "title": "Start without prior IT experience",
+    "description": "Build a small foundation before choosing a specialization.",
+    "minutes": 10,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "wireshark"
+    ],
+    "status": "editorial learning roadmap"
+  },
+  {
+    "id": "soc-analyst",
+    "section": "careers",
+    "title": "SOC Analyst",
+    "description": "Turn alerts into evidence-backed decisions.",
+    "minutes": 10,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "sigma"
+    ],
+    "status": "editorial learning roadmap"
+  },
+  {
+    "id": "security-engineer",
+    "section": "careers",
+    "title": "Security Engineer",
+    "description": "Build controls that can be deployed and verified.",
+    "minutes": 10,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "lynis"
+    ],
+    "status": "editorial learning roadmap"
+  },
+  {
+    "id": "penetration-tester",
+    "section": "careers",
+    "title": "Penetration Tester",
+    "description": "Evaluate weaknesses within a clearly authorized scope.",
+    "minutes": 10,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "zap"
+    ],
+    "status": "editorial learning roadmap"
+  },
+  {
+    "id": "incident-responder",
+    "section": "careers",
+    "title": "Incident Responder",
+    "description": "Coordinate evidence, containment and recovery.",
+    "minutes": 10,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "volatility-3"
+    ],
+    "status": "editorial learning roadmap"
+  },
+  {
+    "id": "threat-intelligence-analyst",
+    "section": "careers",
+    "title": "Threat Intelligence Analyst",
+    "description": "Turn source reporting into useful, bounded assessments.",
+    "minutes": 10,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "zeek"
+    ],
+    "status": "editorial learning roadmap"
+  },
+  {
+    "id": "malware-analyst",
+    "section": "careers",
+    "title": "Malware Analyst",
+    "description": "Explain program behavior without making the lab unsafe.",
+    "minutes": 10,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "ghidra"
+    ],
+    "status": "editorial learning roadmap"
+  },
+  {
+    "id": "cloud-security-engineer",
+    "section": "careers",
+    "title": "Cloud Security Engineer",
+    "description": "Apply identity and configuration controls to cloud systems.",
+    "minutes": 10,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "checkov"
+    ],
+    "status": "editorial learning roadmap"
+  },
+  {
+    "id": "application-security-engineer",
+    "section": "careers",
+    "title": "Application Security Engineer",
+    "description": "Help developers prevent and fix security defects.",
+    "minutes": 10,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "semgrep-ce"
+    ],
+    "status": "editorial learning roadmap"
+  },
+  {
+    "id": "digital-forensics-analyst",
+    "section": "careers",
+    "title": "Digital Forensics Analyst",
+    "description": "Preserve artifacts and make findings reproducible.",
+    "minutes": 10,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "volatility-3"
+    ],
+    "status": "editorial learning roadmap"
+  },
+  {
+    "id": "grc-analyst",
+    "section": "careers",
+    "title": "GRC Analyst",
+    "description": "Connect obligations, risk decisions and operating evidence.",
+    "minutes": 10,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "openssf-scorecard"
+    ],
+    "status": "editorial learning roadmap"
+  },
+  {
+    "id": "security-architect",
+    "section": "careers",
+    "title": "Security Architect",
+    "description": "Design security across systems and organizational constraints.",
+    "minutes": 10,
+    "difficulty": "beginner",
+    "objectives": [],
+    "tools": [
+      "prowler"
+    ],
+    "status": "editorial learning roadmap"
+  }
+]

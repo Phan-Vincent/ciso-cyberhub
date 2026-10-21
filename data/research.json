@@ -1,0 +1,18 @@
+{
+  "checked_on": "2026-10-21",
+  "method": "Official repository pages through web retrieval. Direct npm, GitHub API, CISA and FIRST network requests returned HTTP 403 in build environment.",
+  "sources": [
+    "https://starlight.astro.build/manual-setup/",
+    "https://docs.astro.build/en/guides/deploy/github/",
+    "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+    "https://api.first.org/epss/",
+    "https://api.first.org/",
+    "https://nvd.nist.gov/developers/vulnerabilities",
+    "https://www.ciso-csusb.org/"
+  ],
+  "limitations": [
+    "No verified current release versions or API repository activity; values remain null.",
+    "Repository license badges are scoped to core code, not bundled dependencies.",
+    "Curriculum uses a retrieved SY0-701 objectives document; current exam availability and provider-page reconciliation remain pending."
+  ]
+}
