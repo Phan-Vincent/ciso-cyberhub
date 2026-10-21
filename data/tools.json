@@ -6,13 +6,13 @@
     "category": "Network analysis",
     "secondary_categories": [],
     "repository": "https://github.com/wireshark/wireshark",
-    "website": null,
-    "license": "GPL-2.0-or-later",
-    "license_status": "open-source",
-    "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
+    "website": "https://www.wireshark.org/",
+    "license": null,
+    "license_status": "mixed",
+    "license_notes": "Upstream states GNU GPLv2 distribution, with most components GPL version 2 or later and some differently licensed utilities. This record does not collapse that scope into one SPDX expression.",
     "os": [],
     "installation": "https://github.com/wireshark/wireshark#readme",
-    "difficulty": "intermediate",
+    "difficulty": "beginner",
     "use_cases": [
       "Packet inspection and protocol analysis."
     ],
@@ -39,7 +39,7 @@
       "name",
       "repository",
       "description",
-      "license"
+      "website"
     ],
     "sources": [
       "https://github.com/wireshark/wireshark"
@@ -52,7 +52,7 @@
     "category": "Network monitoring",
     "secondary_categories": [],
     "repository": "https://github.com/zeek/zeek",
-    "website": null,
+    "website": "https://zeek.org/",
     "license": null,
     "license_status": "pending-review",
     "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
@@ -82,7 +82,8 @@
     "verified_fields": [
       "name",
       "repository",
-      "description"
+      "description",
+      "website"
     ],
     "sources": [
       "https://github.com/zeek/zeek"
@@ -95,7 +96,7 @@
     "category": "Intrusion detection",
     "secondary_categories": [],
     "repository": "https://github.com/OISF/suricata",
-    "website": null,
+    "website": "https://suricata.io/",
     "license": null,
     "license_status": "pending-review",
     "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
@@ -123,7 +124,8 @@
     "verified_fields": [
       "name",
       "repository",
-      "description"
+      "description",
+      "website"
     ],
     "sources": [
       "https://github.com/OISF/suricata"
@@ -136,7 +138,7 @@
     "category": "Endpoint detection",
     "secondary_categories": [],
     "repository": "https://github.com/wazuh/wazuh",
-    "website": null,
+    "website": "https://wazuh.com/",
     "license": null,
     "license_status": "mixed",
     "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
@@ -164,7 +166,8 @@
     "verified_fields": [
       "name",
       "repository",
-      "description"
+      "description",
+      "website"
     ],
     "sources": [
       "https://github.com/wazuh/wazuh"
@@ -177,7 +180,7 @@
     "category": "Network scanning",
     "secondary_categories": [],
     "repository": "https://github.com/nmap/nmap",
-    "website": null,
+    "website": "https://nmap.org/",
     "license": null,
     "license_status": "custom",
     "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
@@ -187,7 +190,7 @@
       "macOS"
     ],
     "installation": "https://github.com/nmap/nmap#readme",
-    "difficulty": "intermediate",
+    "difficulty": "beginner",
     "use_cases": [
       "Discovers hosts and services in authorized environments."
     ],
@@ -212,7 +215,8 @@
       "name",
       "repository",
       "description",
-      "os"
+      "os",
+      "website"
     ],
     "sources": [
       "https://github.com/nmap/nmap"
@@ -231,7 +235,7 @@
     "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
     "os": [],
     "installation": "https://github.com/volatilityfoundation/volatility3#readme",
-    "difficulty": "intermediate",
+    "difficulty": "advanced",
     "use_cases": [
       "Extracts forensic artifacts from memory images under the custom VSL."
     ],
@@ -274,7 +278,7 @@
     "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
     "os": [],
     "installation": "https://github.com/NationalSecurityAgency/ghidra#readme",
-    "difficulty": "intermediate",
+    "difficulty": "advanced",
     "use_cases": [
       "Inspects and decompiles compiled software."
     ],
@@ -316,7 +320,7 @@
     "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
     "os": [],
     "installation": "https://github.com/VirusTotal/yara#readme",
-    "difficulty": "intermediate",
+    "difficulty": "beginner",
     "use_cases": [
       "Matches patterns in files; the original project is in maintenance mode."
     ],
@@ -449,7 +453,7 @@
     "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
     "os": [],
     "installation": "https://github.com/gitleaks/gitleaks#readme",
-    "difficulty": "intermediate",
+    "difficulty": "beginner",
     "use_cases": [
       "Detects likely secrets in source trees and Git history."
     ],
@@ -575,7 +579,7 @@
     "category": "Web security",
     "secondary_categories": [],
     "repository": "https://github.com/zaproxy/zaproxy",
-    "website": null,
+    "website": "https://www.zaproxy.org/",
     "license": "Apache-2.0",
     "license_status": "open-source",
     "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
@@ -606,7 +610,8 @@
       "name",
       "repository",
       "description",
-      "license"
+      "license",
+      "website"
     ],
     "sources": [
       "https://github.com/zaproxy/zaproxy"
@@ -667,7 +672,7 @@
     "category": "Endpoint detection",
     "secondary_categories": [],
     "repository": "https://github.com/osquery/osquery",
-    "website": null,
+    "website": "https://osquery.io/",
     "license": null,
     "license_status": "mixed",
     "license_notes": "Exact SPDX expression not established in this review; consult the repository license. Custom and mixed licenses are not classified as OSI-approved.",
@@ -697,7 +702,8 @@
     "verified_fields": [
       "name",
       "repository",
-      "description"
+      "description",
+      "website"
     ],
     "sources": [
       "https://github.com/osquery/osquery"
@@ -710,7 +716,7 @@
     "category": "Container security",
     "secondary_categories": [],
     "repository": "https://github.com/falcosecurity/falco",
-    "website": null,
+    "website": "https://falco.org/",
     "license": "Apache-2.0",
     "license_status": "open-source",
     "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
@@ -739,7 +745,8 @@
       "name",
       "repository",
       "description",
-      "license"
+      "license",
+      "website"
     ],
     "sources": [
       "https://github.com/falcosecurity/falco"
@@ -752,7 +759,7 @@
     "category": "Cryptography and PKI",
     "secondary_categories": [],
     "repository": "https://github.com/openssl/openssl",
-    "website": null,
+    "website": "https://www.openssl.org/",
     "license": "Apache-2.0",
     "license_status": "open-source",
     "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
@@ -783,7 +790,8 @@
       "name",
       "repository",
       "description",
-      "license"
+      "license",
+      "website"
     ],
     "sources": [
       "https://github.com/openssl/openssl"
@@ -796,7 +804,7 @@
     "category": "Web security",
     "secondary_categories": [],
     "repository": "https://github.com/mitmproxy/mitmproxy",
-    "website": null,
+    "website": "https://mitmproxy.org/",
     "license": "MIT",
     "license_status": "open-source",
     "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
@@ -825,7 +833,8 @@
       "name",
       "repository",
       "description",
-      "license"
+      "license",
+      "website"
     ],
     "sources": [
       "https://github.com/mitmproxy/mitmproxy"
@@ -964,13 +973,13 @@
     "category": "Endpoint detection",
     "secondary_categories": [],
     "repository": "https://github.com/cilium/tetragon",
-    "website": null,
+    "website": "https://tetragon.io/",
     "license": "Apache-2.0",
     "license_status": "open-source",
     "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
     "os": [],
     "installation": "https://github.com/cilium/tetragon#readme",
-    "difficulty": "intermediate",
+    "difficulty": "advanced",
     "use_cases": [
       "Uses eBPF for runtime observation and enforcement."
     ],
@@ -993,7 +1002,8 @@
       "name",
       "repository",
       "description",
-      "license"
+      "license",
+      "website"
     ],
     "sources": [
       "https://github.com/cilium/tetragon"
@@ -1014,7 +1024,7 @@
       "Linux"
     ],
     "installation": "https://github.com/aquasecurity/tracee#readme",
-    "difficulty": "intermediate",
+    "difficulty": "advanced",
     "use_cases": [
       "Uses eBPF for Linux runtime security and forensics."
     ],
@@ -1057,7 +1067,7 @@
     "license_notes": "Core repository only; inspect per-file and bundled dependency licenses before redistribution.",
     "os": [],
     "installation": "https://github.com/prowler-cloud/prowler#readme",
-    "difficulty": "intermediate",
+    "difficulty": "advanced",
     "use_cases": [
       "Audits cloud security posture through its open-source offering."
     ],

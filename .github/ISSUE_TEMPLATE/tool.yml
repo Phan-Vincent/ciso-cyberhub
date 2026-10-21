@@ -1,0 +1,28 @@
+name: Tool research submission
+description: Propose a source-backed tool record for review
+title: '[Tool] '
+body:
+  - type: input
+    id: repository
+    attributes:
+      label: Official repository URL
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and license scope
+      description: Include official documentation, exact license file, edition, verified fields and check date. Leave unknowns explicit.
+    validations:
+      required: true
+  - type: textarea
+    id: learning
+    attributes:
+      label: Student use case and safe learning scope
+  - type: checkboxes
+    id: integrity
+    attributes:
+      label: Integrity
+      options:
+        - label: I am not treating popularity as a safety endorsement or a free tier as an open-source license.
+          required: true

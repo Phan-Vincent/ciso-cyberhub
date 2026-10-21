@@ -44,13 +44,15 @@ $('#reset-progress')?.addEventListener('click',()=>{if(confirm('Clear all CyberH
 $('#export-progress')?.addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(progress,null,2)],{type:'application/json'}));const a=link('Download',url);a.download='cyberhub-progress.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 $('#import-progress')?.addEventListener('change',async e=>{const input=e.target as HTMLInputElement;const file=input.files?.[0];if(!file)return;if(file.size>200000){say('Progress file is too large.');return;}const raw=await file.text();let valid=false;try{valid=JSON.parse(raw).version===1;}catch{}if(!valid){say('Not a recognized progress file.');return;}progress=parseProgress(raw);save();location.reload();});
 const search=$('#global-search') as HTMLInputElement|null;
-if(search){let records:any[]=[];data('search').then(r=>{records=r;}).catch(e=>say(e.message));
- search.addEventListener('input',()=>{const box=$('#search-results')!;box.replaceChildren();const q=search.value.trim();if(q.length<2)return;const found=records.filter(r=>`${r.title} ${r.text}`.toLowerCase().includes(q.toLowerCase())).slice(0,30);for(const r of found){const item=element('li','');item.append(link(r.title,base+r.path),element('small',r.section));box.append(item);}say(`${found.length} search results`);});}
+if(search){let records:any[]=[];
+ const draw=()=>{const box=$('#search-results')!;box.replaceChildren();const q=search.value.trim();if(q.length<2){say('Type at least two characters.');return;}const found=records.filter(r=>`${r.title} ${r.text}`.toLowerCase().includes(q.toLowerCase())).slice(0,30);for(const r of found){const item=element('li','');item.append(link(r.title,base+r.path),element('small',r.section));box.append(item);}say(`${found.length} search results`);};
+ search.addEventListener('input',draw);data('search').then(r=>{records=r;draw();}).catch(e=>say(e.message));}
+
 async function academy(){
  if(!$('#quiz')&&!$('#flashcards')&&!$('#weak-domains'))return;
  const course=await data('academy');
  const weak=$('#weak-domains');
- if(weak){const last=progress.attempts.at(-1);if(last){for(const [d,s]of Object.entries(last.domains)){const row=element('p',`Domain ${d}: ${s.correct}/${s.total} on your last practice. `);row.append(link('Review lessons',base+`/academy/#domain-${d}`));weak.append(row);}}else weak.textContent='Take a practice quiz to see domain feedback. This is a study signal, not an exam-readiness prediction.';}
+ if(weak){const last=progress.attempts.at(-1);if(last){for(const [i,[d,s]]of Object.entries(last.domains).sort((a,b)=>a[1].correct/a[1].total-b[1].correct/b[1].total).entries()){const row=element('p',`${i===0?'Lowest observed domain · ':''}Domain ${d}: ${s.correct}/${s.total} on your last practice. `);row.append(link('Review lessons',base+`/academy/#domain-${d}`));weak.append(row);}}else weak.textContent='Take a practice quiz to see domain feedback. This is a study signal, not an exam-readiness prediction.';}
  if($('#flashcards')){let i=0;let flipped=false;const cards=course.flashcards;const draw=()=>{const c=cards[i];$('#card-text')!.textContent=flipped?c.back:c.front;$('#card-count')!.textContent=`${i+1} / ${cards.length} · Objective ${c.objective}`;$('#flip')!.textContent=flipped?'Show question':'Show answer';};$('#flip')!.addEventListener('click',()=>{flipped=!flipped;draw();});$('#next-card')!.addEventListener('click',()=>{i=(i+1)%cards.length;flipped=false;draw();});$('#previous-card')!.addEventListener('click',()=>{i=(i-1+cards.length)%cards.length;flipped=false;draw();});draw();}
  if(!$('#quiz'))return;
  const host=$('#quiz-questions')!;const start=$('#start-quiz') as HTMLButtonElement;const submit=$('#submit-quiz') as HTMLButtonElement;
@@ -70,3 +72,5 @@ academy().catch(e=>say(e.message));
 // Freshness is evaluated at view time, even when deployment or schedules have stopped.
 for(const el of document.querySelectorAll<HTMLElement>('[data-freshness]')){const value=el.dataset.freshness;const age=value?(Date.now()-Date.parse(value))/86400000:NaN;el.textContent=Number.isFinite(age)?(age>2?`Stale · ${Math.floor(age)} days since success`:'Updated within 48 hours'):'No successful retrieval';if(!Number.isFinite(age)||age>2)el.classList.add('warning');}
 if(!storageOK)say('Browser storage is unavailable. Learning remains usable; progress cannot persist.');
+
+for(const el of document.querySelectorAll<HTMLElement>('[data-verification]')){const age=(Date.now()-Date.parse(el.dataset.verification||''))/86400000;if(Number.isFinite(age)&&age>90){el.textContent=`Source check is ${Math.floor(age)} days old. Re-verification is due.`;el.classList.add('warning');}}

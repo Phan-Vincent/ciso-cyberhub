@@ -1,0 +1,27 @@
+name: Certification lesson or correction
+description: Propose original content mapped to a verified provider document
+title: '[Curriculum] '
+body:
+  - type: input
+    id: objective
+    attributes:
+      label: Provider, exam edition and objective identifier
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Official source and verification date
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Learning outcome, original explanation and verification activity
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Content integrity
+      options:
+        - label: This contains no recalled proprietary exam questions, dumps or unauthorized copied material.
+          required: true

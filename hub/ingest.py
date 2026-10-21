@@ -74,6 +74,10 @@ def parse_kev(raw, retrieved):
         raise ValueError('Empty or invalid KEV catalog')
     out = []
     for v in raw['vulnerabilities']:
+        if not isinstance(v,dict): raise ValueError('KEV entry must be an object')
+        for field in ('vendorProject','product','vulnerabilityName','requiredAction','dateAdded','dueDate'):
+            if not isinstance(v.get(field),str) or not v[field].strip(): raise ValueError('Missing KEV '+field)
+        for field in ('dateAdded','dueDate'): datetime.strptime(v[field],'%Y-%m-%d')
         if not CVE.fullmatch(v.get('cveID','')): raise ValueError('Invalid KEV CVE')
         out.append({'id': v['cveID'], 'vendor': plain(v.get('vendorProject')), 'product': plain(v.get('product')),
                     'title': plain(v.get('vulnerabilityName')), 'date_added': v.get('dateAdded'),
@@ -131,7 +135,6 @@ def refresh(root=ROOT, fixture_dir=None, dry_run=False):
         return client.get(source['url'])
     statuses = dict(state.get('sources', {}))
     failures = []
-    kev_ok = False
     for source in sources:
         sid = source['id']
         previous = statuses.get(sid, {})
@@ -146,7 +149,7 @@ def refresh(root=ROOT, fixture_dir=None, dry_run=False):
                     if v['id'] in previous_v:
                         for field in ('epss','epss_date','cvss','nvd_verified_at','references'):
                             v[field] = previous_v[v['id']].get(field)
-                state['vulnerabilities'] = fresh; kev_ok = True
+                state['vulnerabilities'] = fresh
             statuses[sid] = {'last_attempt':stamp,'last_success':stamp,'error':None,'url':source['url']}
         except (FetchError,ValueError,ET.ParseError,OSError,KeyError,TypeError) as e:
             statuses[sid] = {**previous,'last_attempt':stamp,'error':str(e)[:180],'url':source['url']}

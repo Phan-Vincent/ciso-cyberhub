@@ -1,0 +1,20 @@
+name: Reproducible defect
+description: Report a functional or content issue without private information
+body:
+  - type: input
+    id: revision
+    attributes:
+      label: Revision and affected page
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps, expected result and observed result
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Browser, operating system, base path and relevant error
+      description: Remove credentials and personal information. Use private reporting for sensitive security issues.

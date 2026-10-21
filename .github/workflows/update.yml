@@ -1,0 +1,56 @@
+name: Propose source updates
+on:
+  schedule:
+    - cron: '17 2,10,18 * * *'
+    - cron: '37 6 * * 1'
+    - cron: '47 7 1 * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: source-review
+  cancel-in-progress: false
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Restore pending data without executing branch code
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/restore_proposals.py
+      - name: Refresh news and vulnerability sources
+        run: python -m hub.ingest
+      - name: Weekly repository discovery and link checks
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '37 6 * * 1'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python -m hub.catalog
+          python -m hub.maintenance links
+      - name: Monthly curriculum review reminder
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '47 7 1 * *'
+        run: python -m hub.maintenance certifications
+      - name: Validate proposals and production build
+        run: |
+          npm run check
+          npm test
+          npm run build
+          python scripts/check_site.py
+      - name: Open or update data review pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/propose.py

@@ -1,6 +1,5 @@
 import { stripTypeScriptTypes } from 'node:module';
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
-import { Script } from 'node:vm';
 mkdirSync('dist/assets', { recursive: true });
 for (const file of readdirSync('web').filter(f => f.endsWith('.ts'))) {
   const code = stripTypeScriptTypes(readFileSync(`web/${file}`, 'utf8'), { mode: 'strip' });
