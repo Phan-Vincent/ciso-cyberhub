@@ -200,7 +200,7 @@ code, kbd, pre { font-family: var(--mono); font-stretch: 87.5%; font-size: .86em
 .main-nav a:hover, .main-nav a[aria-current] { color: var(--ink); }
 .main-nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 1px; background: var(--signal); transform: scaleX(0); transform-origin: right; transition: transform var(--mid) var(--ease); }
 .main-nav a:hover::after, .main-nav a[aria-current]::after { transform: scaleX(1); transform-origin: left; }
-.header-actions { display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+.header-actions { grid-column: 3; justify-self: end; display: flex; align-items: center; gap: 12px; white-space: nowrap; }
 .search-pill { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 12px; border: 1px solid var(--rule-strong); color: var(--ink-muted); text-decoration: none; }
 .search-pill:hover { color: var(--ink); border-color: var(--ink); }
 .search-pill kbd { border: 1px solid var(--rule); padding: 0 5px; font-size: 10px; }
@@ -818,3 +818,106 @@ input[type=checkbox], input[type=radio] { width: auto; min-height: 0; accent-col
 .article-layout > * { min-width: 0; }
 .aside { overflow-wrap: anywhere; }
 .aside::after { display: none; }
+
+/* Hero intro sits directly under the logotype */
+.hero-main { position: relative; z-index: 3; align-self: center; display: grid; gap: 26px; }
+.hero-main .hero-type { align-self: auto; }
+.hero-intro { display: grid; gap: 18px; max-width: 560px; }
+.hero-intro .hero-lead { margin: 0; font-size: clamp(1.1rem, .95rem + .6vw, 1.45rem); line-height: 1.35; max-width: 36ch; color: var(--ink); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.scroll-cue { color: var(--ink-muted); text-decoration: none; font-family: var(--mono); font-size: var(--t-label); letter-spacing: .08em; text-transform: uppercase; }
+.scroll-cue:hover { color: var(--ink); }
+/* Club site link, top of every page */
+.club-link { display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 12px; border: 1px solid var(--signal); color: var(--ink); text-decoration: none; white-space: nowrap; }
+.club-link:hover { background: var(--ciso); border-color: var(--ciso); color: #fff; }
+.club-link .short { display: none; }
+.mod-more { margin: var(--s4) 0 0; }
+.resource-list { margin-bottom: var(--s5); }
+.resource-list .ttl { font-size: clamp(2.4rem, 1rem + 4.6vw, 6rem); }
+@media (max-width: 1180px) { .club-link .lbl { display: none; } .club-link .short { display: inline; } }
+@media (max-width: 640px) {
+  .hero-main { align-self: start; gap: 18px; }
+  .hero-intro .hero-lead { font-size: 1.05rem; }
+  .hero-actions .button { min-height: 44px; padding: 0 14px; }
+  .club-link { height: 40px; padding: 0 10px; }
+}
+/* Phones: the menu carries the club link (08), so the header keeps only theme + menu and stays inside the gutter */
+@media (max-width: 479px) { .header-actions .club-link { display: none; } }
+@media (max-width: 640px) {
+  .seal { opacity: .7; }
+  .hero-intro { position: relative; z-index: 4; background: rgba(5,5,5,.82); box-shadow: 0 0 0 14px rgba(5,5,5,.82); }
+}
+
+/* ============ RADIUS SYSTEM ============
+   Soft, not bubbly: three steps. Rows, rules and full-bleed scenes stay straight.
+   --r-sm  8px  badges, inline code, kbd, inputs
+   --r-md 12px  buttons, chips, header controls, small panels
+   --r-lg 20px  cards, panels, grids, media
+   --r-xl 28px  the large object frames (device, diptych) */
+:root { --r-xs: 6px; --r-sm: 8px; --r-md: 12px; --r-lg: 20px; --r-xl: 28px; }
+
+button, .button, .search-pill, .club-link, .icon-btn, .menu-btn, .chip, .file-label, #menu-close { border-radius: var(--r-md); }
+.badge, .handoff .tags span { border-radius: var(--r-xs); }
+:not(pre) > code, kbd, .search-pill kbd { border-radius: var(--r-xs); }
+input, select { border-radius: 10px; }
+.status:not(:empty) { border-radius: var(--r-md); }
+
+/* Panels and cards */
+.notice, .aside, .telemetry-panel, .quiz-actions, .search-panel, .filters, .flashcard, #quiz-result, .node-card, .qcard, .empty { border-radius: var(--r-lg); }
+.notice { border-left-width: 1px; box-shadow: inset 3px 0 0 var(--signal); }
+#quiz fieldset { border-radius: var(--r-lg); }
+#quiz fieldset label, .rationale, .qcard ol button { border-radius: var(--r-md); }
+.rationale { border-left: 0; box-shadow: inset 3px 0 0 var(--signal); }
+.prose pre { border-radius: var(--r-md); }
+.metadata { border-radius: 0; }
+
+/* Tile grids: rounded outer frame, hairlines inside (grouped-list style) */
+.grid, .tiles { border: 1px solid var(--rule); border-radius: var(--r-lg); overflow: hidden; }
+.grid > .card, .tiles > .tile { margin: 0 -1px -1px 0; }
+.lab-index { border-top: 0; }
+.lab-index a { border: 1px solid var(--rule); border-radius: var(--r-lg); margin-right: 0; padding: 20px; }
+.lab-index { gap: 12px; }
+.lab-index a:hover { border-color: var(--signal); background: rgba(255,255,255,.03); }
+.spec { border-radius: 0; }
+
+/* Object frames */
+.diptych { border-radius: var(--r-xl); overflow: hidden; }
+.dip-panels { gap: 1px; }
+.device-shell { border-radius: var(--r-xl) var(--r-xl) var(--r-lg) var(--r-lg); }
+.device-screen { border-radius: 14px; }
+.device-base { border-radius: 0 0 var(--r-md) var(--r-md); }
+.bench { border-radius: 14px; }
+.mod-media { border-radius: var(--r-lg); overflow: hidden; }
+.mod-media::after { inset: 0; border-radius: var(--r-lg); }
+.domains tbody tr td:first-child { border-top-left-radius: var(--r-sm); border-bottom-left-radius: var(--r-sm); }
+.domains tbody tr td:last-child { border-top-right-radius: var(--r-sm); border-bottom-right-radius: var(--r-sm); }
+.track, .track i { border-radius: 999px; }
+.lvl i { border-radius: 999px; }
+.loader-line, .progress i { border-radius: 999px; }
+
+/* Corner ticks belong to square frames; drop them on rounded ones */
+.qcard.tick::before, .qcard.tick::after, .bench.tick::before, .bench.tick::after { display: none; }
+
+/* Rounded focus rings follow the shape */
+:focus-visible { border-radius: var(--r-sm); }
+.card:has(h2 a):hover::after, .tile:hover::after { border-radius: 0; }
+
+@media (max-width: 640px) {
+  .diptych { border-radius: var(--r-lg); }
+  .device-shell { border-radius: var(--r-lg) var(--r-lg) var(--r-md) var(--r-md); }
+  .lab-index a { padding: 16px; }
+}
+
+/* FIELD BAND: real photography, unified with a monochrome grade so mixed stock reads as one shoot */
+.field-grid{display:grid;gap:12px;grid-template-columns:repeat(6,1fr);grid-auto-rows:clamp(150px,18vw,260px)}
+.shot{position:relative;margin:0;overflow:hidden;border-radius:var(--r-lg);background:var(--graphite,#17191e);grid-column:span 2}
+.shot-1{grid-column:span 4;grid-row:span 2}
+.shot-4,.shot-5{grid-column:span 3}
+.shot img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.12) brightness(.82);transform:scale(1.02);transition:filter .6s cubic-bezier(.2,.7,0,1),transform .9s cubic-bezier(.2,.7,0,1)}
+.shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(5,5,5,.78));pointer-events:none}
+.shot:hover img{filter:grayscale(.15) contrast(1.05) brightness(.95);transform:scale(1.05)}
+.shot figcaption{position:absolute;left:16px;right:16px;bottom:14px;z-index:1;display:flex;justify-content:space-between;gap:12px;color:#edeff2}
+.shot figcaption span:first-child{color:#3b93ff}
+.field-credit{margin-top:18px;color:var(--ink-muted,#8d929c)}
+@media (max-width:760px){.field-grid{grid-template-columns:1fr 1fr;grid-auto-rows:auto}.shot,.shot-4,.shot-5{grid-column:span 1;aspect-ratio:1}.shot-1{grid-column:span 2;grid-row:auto;aspect-ratio:16/10}.shot figcaption span:last-child{display:none}}
+@media (prefers-reduced-motion:reduce){.shot img{transition:none}}

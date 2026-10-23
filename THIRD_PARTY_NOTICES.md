@@ -13,3 +13,15 @@ GitHub Actions are official actions pinned to upstream release commits checked o
 Fonts: Archivo (The Archivo Project Authors) and Martian Mono (The Martian Mono Project Authors) are self-hosted under the SIL Open Font License 1.1. License texts ship beside the files in public/assets/fonts/. They are served from this site because the Content Security Policy allows fonts from 'self' only.
 
 Brand assets: the CyberHub Core logo family in public/assets/brand/ comes from the CISO CyberHub design system. The CISO seal (public/assets/brand/ciso-seal.png) belongs to the Cyber Intelligence & Security Organization at CSUSB and appears once per page, as the footer's "Powered by" sign-off. See docs/BRAND.md.
+
+## Photography (field band)
+
+Photos listed in `data/photos.json` come from Unsplash under the Unsplash License (free for commercial and non-commercial use, no permission needed; attribution appreciated). Each entry links to its source page. Fetch them with `python scripts/fetch_photos.py`. Before committing a photo, confirm on its page that it is a free Unsplash License photo and not Unsplash+. All five below were checked as free Unsplash License photos on 2026-10-22 and are committed at 1600 px wide.
+
+| File | Photographer | Source |
+| --- | --- | --- |
+| server-aisle.jpg | Taylor Vick | https://unsplash.com/photos/M5tzZtFCOfs |
+| robot-arm.jpg | Homa Appliances | https://unsplash.com/photos/sz1CHL7Pky0 |
+| circuit-board.jpg | Ludovico Ceroseis | https://unsplash.com/photos/8hcIIZ8SoyU |
+| patch-panel.jpg | Albert Stoynov | https://unsplash.com/photos/dyUp7WPu5q4 |
+| old-monitor.jpg | Nick Russill | https://unsplash.com/photos/QKQEnPLiCK8 |
