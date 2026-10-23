@@ -46,6 +46,10 @@ python3 -m hub.maintenance certifications
 
 These commands only change local data when not in dry-run mode. No script merges or deploys changes. Network endpoints were denied in the authoring environment, so the delivered live dashboard correctly shows no retrieved records and the actual failures. Integration fixtures are used only by tests. Do not publish them as live reporting.
 
+## Design
+
+The interface follows the CISO CyberHub design system: void, paper and CISO-blue scenes, Archivo and Martian Mono, and the CyberHub Core logo. The homepage's 3D Core, learning map and machine renders are drawn on canvas by `web/app.ts` and fall back to static content without JavaScript or under reduced motion. See [brand](docs/BRAND.md).
+
 ## Repository map
 
 | Path | Purpose |
@@ -57,7 +61,7 @@ These commands only change local data when not in dry-run mode. No script merges
 | `public/datasets/` | Original synthetic lab artifacts and SHA-256 manifest |
 | `scripts/` | Output checks, controlled PR creation and release checks |
 | `tests/` | Unit/integration tests and optional browser smoke test |
-| `docs/` | Architecture, coverage, deployment, maintenance and limitations |
+| `docs/` | Architecture, coverage, deployment, maintenance, brand and limitations |
 | `.github/` | Pinned workflows and contribution templates |
 
 The software is MIT licensed; original prose and synthetic datasets are CC BY 4.0. Third-party material retains its own terms. No exam dumps or full source articles are included.
