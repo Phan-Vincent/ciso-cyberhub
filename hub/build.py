@@ -83,9 +83,9 @@ class Site:
         if not path.startswith('/') or '..' in path:raise ValueError('Invalid output path')
         file=self.out/path.lstrip('/')/'index.html';file.parent.mkdir(parents=True,exist_ok=True)
         b=self.base;home=path=='/'
-        nav_items=[('01','Tools','/tools/','Tools'),('02','Academy','/academy/','Academy'),('03','Labs','/labs/','Labs'),('04','Intelligence','/intelligence/','Intelligence'),('05','Careers','/careers/','Careers')]
+        nav_items=[('01','Resources','/resources/','Resources'),('02','Tools','/tools/','Tools'),('03','Academy','/academy/','Academy'),('04','Labs','/labs/','Labs'),('05','Intelligence','/intelligence/','Intelligence'),('06','Careers','/careers/','Careers')]
         nav=''.join(f'<a href="{E(b+p)}"'+(' aria-current="page"' if section==sec else '')+f'><span>{n}</span>{label}</a>' for n,label,p,sec in nav_items)
-        menu_nav=''.join(f'<a href="{E(b+p)}"><span class="label">{n}</span>{label}</a>' for n,label,p,sec in nav_items)+f'<a href="{E(b)}/search/"><span class="label">06</span>Search</a>'
+        menu_nav=''.join(f'<a href="{E(b+p)}"><span class="label">{n}</span>{label}</a>' for n,label,p,sec in nav_items)+f'<a href="{E(b)}/search/"><span class="label">07</span>Search</a><a href="{E(self.config["club_url"])}"><span class="label">08</span>CISO club ↗</a>'
         canonical=f'<link rel="canonical" href="{E(self.site_url+b+path)}">' if self.site_url else '<meta name="robots" content="noindex">'
         brand=(f'<a class="brand" href="{E(b)}/" aria-label="CyberHub home">'
                f'<span class="brand-core">{self.img("cyberhub-core-on-dark.svg","","dark",32,32)}{self.img("cyberhub-core-on-light.svg","","light",32,32)}</span>'
@@ -93,7 +93,7 @@ class Site:
         theme_btn='<button id="theme" class="icon-btn" type="button" aria-label="Switch between light and dark theme"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="6.5"/><path class="fill" d="M10 3.5a6.5 6.5 0 0 0 0 13z"/></svg></button>'
         header=(f'<div class="progress" aria-hidden="true"><i id="progress"></i></div>'
                 f'<header class="site-header wrap{" tone-void" if home else ""}" id="site-header">{brand}<nav class="main-nav label" aria-label="Main navigation">{nav}</nav>'
-                f'<div class="header-actions"><a class="search-pill label" href="{E(b)}/search/"><span class="lbl">Search</span><kbd>⌘K</kbd></a>{theme_btn}'
+                f'<div class="header-actions"><a class="club-link label" href="{E(self.config["club_url"])}" aria-label="CISO club website (opens ciso-csusb.org)"><span class="lbl">CISO club site</span><span class="short">CISO</span> ↗</a><a class="search-pill label" href="{E(b)}/search/"><span class="lbl">Search</span><kbd>⌘K</kbd></a>{theme_btn}'
                 '<button class="menu-btn label" id="menu-open" type="button" aria-expanded="false" aria-controls="menu">Menu</button></div></header>'
                 f'<div class="menu wrap tone-void" id="menu" role="dialog" aria-modal="true" aria-label="Site menu"><div class="menu-top">'
                 f'<a class="brand" href="{E(b)}/"><span class="brand-core">{self.img("cyberhub-core-on-dark.svg","","dark",32,32)}</span><span class="brand-word">Cyber<i>Hub</i></span></a>'
@@ -141,13 +141,15 @@ class Site:
         R=lambda label,d='':f'<span class="rv-l{" "+d if d else ""}"><span>{label}</span></span>'
         # 01 hero + 02 aperture
         body=('<section class="scene stage tone-void" id="top" data-tone="void" data-sec="01" aria-labelledby="hero-title"><div class="stage-pin"><div class="hero wrap">'
-              '<h1 class="hero-type" id="hero-title" aria-label="CyberHub: open security learning, powered by CISO"><span class="type-solid" aria-hidden="true">'
+              '<div class="hero-main"><h1 class="hero-type" id="hero-title" aria-label="CyberHub: open security learning, powered by CISO"><span class="type-solid" aria-hidden="true">'
               '<span class="ln ln-1" data-w=".74"><span>Cyber</span></span><span class="ln ln-2" data-w=".5"><span>Hub</span></span></span></h1>'
+              '<div class="hero-intro"><p class="hero-lead">Open security learning from CISO at CSUSB. Real tools, real evidence, clear reasoning. Free, with no account.</p>'
+              f'<div class="hero-actions">{self.a("Explore the resources →","/resources/","button primary")}{self.a("Start the academy","/academy/","button")}</div></div></div>'
               f'<div class="seal" id="seal" aria-hidden="true"><div class="seal-tilt" id="seal-tilt">{self.img("cyberhub-core-on-dark.svg")}<canvas id="core-canvas"></canvas></div></div>'
               '<span class="reg reg-tl" aria-hidden="true"></span><span class="reg reg-tr" aria-hidden="true"></span><span class="reg reg-bl" aria-hidden="true"></span><span class="reg reg-br" aria-hidden="true"></span>'
-              '<div class="hero-meta label"><div><p class="hero-lead">Open security learning. Real tools, real evidence, clear reasoning. Free, with no account.</p>Open learning platform / <b>Powered by CISO</b></div>'
+              '<div class="hero-meta label"><div>Open learning platform / <b>Powered by CISO</b></div>'
               '<div>Core / N01–N08 &nbsp; Yaw <span class="coords" id="core-yaw">000.0°</span> &nbsp; Pitch <span class="coords" id="core-pitch">21.8°</span><br>Pointer <span id="coords">x 0.500 y 0.500</span></div>'
-              f'<div>{self.a("Start the academy ↗","/academy/","button primary")}</div></div></div>'
+              f'<div>{self.a("Scroll, or jump to every resource ↓","/resources/","scroll-cue")}</div></div></div>'
               '<div class="aperture-ring" id="ap-ring" aria-hidden="true"></div>'
               '<div class="aperture tone-paper" id="aperture"><div class="mission wrap" id="mission">'
               '<div class="mission-head label"><span>02 / What CyberHub is</span><span>Access / open</span><span>Account / none required</span></div>'
@@ -196,7 +198,7 @@ class Site:
         for idx,title,num,unit,meta,desc,art,path in mods:
             body+=(f'<li class="mod"><figure class="mod-media" aria-hidden="true"><canvas data-art="{art}"></canvas></figure><a href="{E(b+path)}" data-cursor="Open">'
                    f'<span class="idx label">{idx} / Module</span><h3 class="ttl">{E(title)}</h3><span class="meta label"><strong>{num:,}</strong><span>{E(unit)}</span><span>{E(meta)}</span></span><p class="mod-desc">{E(desc)}</p></a></li>')
-        body+='</ol></section>'
+        body+=f'</ol><p class="mod-more">{self.a("See every resource in one place →","/resources/","button primary")}</p></section>'
         # 05 labs
         body+=('<section class="scene tone-void sec-pad wrap" id="labs" data-tone="void" data-sec="05" aria-labelledby="lab-title"><div class="sec-head rv">'
                f'<span class="label"><span class="on">05</span> / Labs</span><h2 id="lab-title">{R("Evidence you")}{R("can touch","d1")}</h2></div><div class="lab">'
@@ -238,10 +240,35 @@ class Site:
         body+=(f'</ul><button class="tiles-more" id="tiles-more" type="button">Show all tools</button><p class="tools-note label">Licenses and repository facts are checked against upstream sources. Checked is not the same as endorsed. {self.a("Open the full explorer","/tools/")}</p></section>')
         # 08 start + handoff
         body+=('<section class="scene tone-blue sec-pad wrap start" id="start" data-tone="blue" data-sec="08" aria-labelledby="start-title"><span class="label"><span class="on">08</span> / Start</span>'
-               f'<h2 class="sr-only" id="start-title">Start learning</h2><a class="start-big" href="{E(b)}/academy/" data-cursor="Start"><span>Start learning <span class="arr" aria-hidden="true">↗</span></span><span class="fill" aria-hidden="true">Start learning <span class="arr">↗</span></span></a>'
+               f'<h2 class="sr-only" id="start-title">Start learning</h2><a class="start-big" href="{E(b)}/resources/" data-cursor="Start"><span>Start learning <span class="arr" aria-hidden="true">↗</span></span><span class="fill" aria-hidden="true">Start learning <span class="arr">↗</span></span></a>'
                '<div class="handoff"><span class="label">Want a team?</span><p>CyberHub is built by members of CISO, the Cyber Intelligence &amp; Security Organization at CSUSB. The club runs project tracks and competes nationally.</p>'
                f'<div class="tags label"><span>CCDC</span><span>NCL</span><span>CPTC</span><span>NCAE</span></div><a class="button" href="{E(self.config["club_url"])}" data-cursor="Visit">Visit the club <span class="arr" aria-hidden="true">↗</span></a></div></section>')
         self.page('/','Open security learning',body,'Free cybersecurity learning, tools and practical labs for students, powered by CISO at CSUSB.')
+    def resources_page(self):
+        b=self.base;course=self.academy;labs=[d for d in self.docs if d['section']=='labs']
+        n=lambda sec:len([d for d in self.docs if d['section']==sec])
+        main=[('01','Tool explorer',len(self.tools),'tools',f'{n("tutorials")} tutorials','Open-source security tools with checked license and source details.','tools','/tools/'),
+              ('02','Security+ academy',len(course['objectives']),'lessons',course['exam_version'],'Short lessons mapped to the exam objectives, grouped by domain.','bars','/academy/'),
+              ('03','Labs',len(labs),'labs','Hash-verified evidence','Guided investigations on safe packet captures, logs and detection rules.','trace','/labs/'),
+              ('04','Intelligence desk',len(self.intel['news']),'headlines',f'{len(self.intel["vulnerabilities"]):,} KEV records','Attributed headlines and exploited-vulnerability signals, with source health shown.','topology','/intelligence/'),
+              ('05','Career roadmaps',n('careers'),'roadmaps','SOC to architect','Role guides that connect skills to projects you can show.','path','/careers/')]
+        body=self.heading('Every resource, in one place.','Pick where to start. Everything here is free, needs no account, and keeps your progress in your browser.','Resources / Index')
+        body+='<ol class="modules resource-list">'
+        for idx,title,num,unit,meta,desc,art,path in main:
+            body+=(f'<li class="mod"><figure class="mod-media" aria-hidden="true"><canvas data-art="{art}"></canvas></figure><a href="{E(b+path)}" data-cursor="Open">'
+                   f'<span class="idx label">{idx} / Resource</span><h2 class="ttl">{E(title)}</h2><span class="meta label"><strong>{num:,}</strong><span>{E(unit)}</span><span>{E(meta)}</span></span><p class="mod-desc">{E(desc)}</p></a></li>')
+        body+='</ol><div class="section-heading"><h2>Also in CyberHub</h2><span class="badge subtle">Study tools and references</span></div><div class="grid">'
+        for title,desc,path,tag,meta in [('Tool tutorials','Step-by-step walkthroughs you can verify, one bounded workflow at a time.','/tutorials/','Tools',f'{n("tutorials")} tutorials'),
+                                         ('Practice questions',f'Original questions with explanations. Timed or untimed.','/academy/practice/','Academy',f'{len(course["questions"])} questions'),
+                                         ('Flashcards','One concept at a time. Explain the answer before you turn the card.','/academy/flashcards/','Academy',f'{len(course["flashcards"])} cards'),
+                                         ('Certification planning','Other credentials to research, with provider links and honest status notes.','/academy/certifications/','Academy','Planning records'),
+                                         ('Vulnerability explorer','CISA KEV entries with CVSS and EPSS context, newest first.','/vulnerabilities/','Intelligence','KEV catalog'),
+                                         ('Daily digest','Source headlines grouped by publication date.','/archive/','Intelligence','Archive'),
+                                         ('Search','Find any tool, lesson, lab or roadmap. Everything is indexed on your device.','/search/','Hub','⌘K'),
+                                         ('Contribute','Help maintain CyberHub: research tools, write lessons, review content.','/contribute/','Project','Open to members')]:
+            body+=self.card(title,desc,path,tag,meta)
+        body+=f'</div><p class="notice">Looking for a team, projects or competitions? Those live on the CISO club site. <a href="{E(self.config["club_url"])}">Visit ciso-csusb.org ↗</a></p>'
+        self.page('/resources/','Resources',body,'Every CyberHub resource in one place: tools, Security+ lessons, labs, intelligence and career roadmaps.','Resources')
     def tool_pages(self):
         body=self.heading('Tool Explorer','Find a tool for the problem in front of you. Licensing and verification stay visible.','Explore / Security tooling')
         body+='<p class="notice">Source-checked means the listed fields were checked against upstream pages. It is not a security endorsement. Empty fields are unknown; custom licenses are not classified as OSI-approved. Difficulty and learning links are editorial recommendations.</p>'
@@ -353,7 +380,7 @@ class Site:
         shutil.copyfile(ROOT/'web/site.css',self.out/'assets/site.css')
         shutil.copyfile(ROOT/'public/assets/brand/cyberhub-favicon.svg',self.out/'assets/favicon.svg')
         subprocess.run(['node','scripts/transpile.mjs'],cwd=ROOT,check=True)
-        self.home();self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
+        self.home();self.resources_page();self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
         for name,data in [('academy',self.academy),('search',self.search)]:
             (self.out/'assets'/f'{name}.json').write_text(json.dumps(data,ensure_ascii=False))
         self.page('/404/','Page not found',self.heading('This page is not here.','Use search or the main navigation to find a learning resource.')+self.a('Return home','/','button primary'))

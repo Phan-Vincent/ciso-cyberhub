@@ -190,7 +190,7 @@ const heroH1=$('#hero-title'),seal=$('#seal'),sealTilt=$('#seal-tilt');
 const maskSeal=()=>{if(!heroH1||!seal)return;const h=heroH1.getBoundingClientRect(),r=seal.getBoundingClientRect(),k=1+stageP*.5;heroH1.style.setProperty('--sx',`${r.left+r.width/2-h.left}px`);heroH1.style.setProperty('--sy',`${r.top+r.height/2-h.top}px`);heroH1.style.setProperty('--sr',`${r.width/2*k*.97}px`);};
 if(heroH1){
  const solid=heroH1.querySelector('.type-solid')!;const wire=solid.cloneNode(true) as HTMLElement;wire.className='type-wire';heroH1.append(wire);heroH1.classList.add('masked');
- const fit=()=>{const w=heroH1.clientWidth;const s=heroH1.querySelectorAll<HTMLElement>('.type-solid .ln'),wl=heroH1.querySelectorAll<HTMLElement>('.type-wire .ln');s.forEach((ln,i)=>{ln.style.fontSize='100px';const m=(ln.firstElementChild as HTMLElement).getBoundingClientRect().width;const frac=innerWidth<640?1:parseFloat(ln.dataset.w||'1');const fs=Math.min(100*w*frac/m,innerHeight*(innerWidth<640?.2:.36));ln.style.fontSize=`${fs}px`;wl[i].style.fontSize=`${fs}px`;});maskSeal();};
+ const fit=()=>{const w=heroH1.clientWidth;const s=heroH1.querySelectorAll<HTMLElement>('.type-solid .ln'),wl=heroH1.querySelectorAll<HTMLElement>('.type-wire .ln');s.forEach((ln,i)=>{ln.style.fontSize='100px';const m=(ln.firstElementChild as HTMLElement).getBoundingClientRect().width;const frac=innerWidth<640?1:parseFloat(ln.dataset.w||'1');const fs=Math.min(100*w*frac/m,innerHeight*(innerWidth<640?.16:.27));ln.style.fontSize=`${fs}px`;wl[i].style.fontSize=`${fs}px`;});maskSeal();};
  fit();document.fonts?.ready.then(fit);addEventListener('resize',fit);
 }
 
