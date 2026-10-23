@@ -62,6 +62,8 @@ This file is for a teammate, or a teammate's Claude session, picking up the Cybe
   - **The CISO seal appears once per page**, only as the footer "Powered by" sign-off.
   - The user said explicitly: do not put the logo everywhere.
 - **Corners: rounded "like Apple, but not too round".** Scale: `--r-xs 6px`, `--r-sm 8`, `--r-md 12` (buttons, inputs), `--r-lg 20` (panels, cards, photos), `--r-xl 28` (diptych, device frame). Grids sit inside one rounded frame rather than every cell being rounded.
+- **Light and dark mode:** inner pages switch between Paper and Void. On the homepage, `web/theme.ts` inverts the scene tones in light mode: void and carbon become paper, paper becomes void, and blue stays blue. The Core and learning-map canvases pick their ink colour from their scene, the lab device stays a dark screen in both modes, and the footer stays dark.
+- **Hover never covers titles:** module previews sit in the right-hand meta column (the meta fades out on hover), and the cursor over links is a hollow ring with no label.
 - **Motion** eases with `cubic-bezier(.2,.7,0,1)`, never bounces, runs only for visible sections, and switches off under `prefers-reduced-motion`.
 - **Avoid:**
   - hacker clichés: hoodies, green matrix rain, glowing padlocks

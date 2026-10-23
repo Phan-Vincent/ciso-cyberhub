@@ -921,3 +921,31 @@ input, select { border-radius: 10px; }
 .field-credit{margin-top:18px;color:var(--ink-muted,#8d929c)}
 @media (max-width:760px){.field-grid{grid-template-columns:1fr 1fr;grid-auto-rows:auto}.shot,.shot-4,.shot-5{grid-column:span 1;aspect-ratio:1}.shot-1{grid-column:span 2;grid-row:auto;aspect-ratio:16/10}.shot figcaption span:last-child{display:none}}
 @media (prefers-reduced-motion:reduce){.shot img{transition:none}}
+
+/* THEME: homepage scenes invert in light mode (web/theme.ts). Pieces that hard-coded dark values now follow the scene. */
+.seal .light { display: none; }
+.tone-paper .seal .dark { display: none; }
+.tone-paper .seal .light { display: block; }
+.tone-paper .hero::before { background: repeating-linear-gradient(to right, rgba(5,5,5,.06) 0 1px, transparent 1px calc((100% + var(--col-gap)) / 12)); }
+.node-card { background: color-mix(in srgb, var(--ground) 92%, transparent); }
+.tone-paper .marquee .o { -webkit-text-stroke-color: var(--ink); }
+.tone-void .mod::before { background: var(--graphite); }
+.tone-void .qcard { background: var(--graphite); }
+/* the lab device is a dark screen in both themes */
+.device { --ink: #fff; --ink-muted: #8d929c; --rule: rgba(255,255,255,.13); --rule-strong: rgba(255,255,255,.3); --signal: var(--ciso-hi-dark); color: #fff; }
+.tone-paper .lab-index a:hover { background: rgba(5,5,5,.04); }
+@media (max-width: 760px) { .tone-paper .hero-intro { background: color-mix(in srgb, var(--ground) 86%, transparent); box-shadow: 0 0 0 14px color-mix(in srgb, var(--ground) 86%, transparent); } }
+
+/* HOVER: popups never cover titles. Module previews take the meta column (meta fades), titles stay put. */
+@media (hover: hover) and (min-width: 861px) {
+  .mod-media { right: 0; top: 12px; bottom: 12px; height: auto; aspect-ratio: auto; translate: none; width: calc(25% - var(--col-gap)); max-width: 360px; z-index: 0; border-radius: var(--r-md); overflow: hidden; }
+  .mod-media::after { inset: 0; border-radius: inherit; }
+  .mod > a { z-index: 1; }
+  .mod .meta { transition: opacity var(--fast); }
+  .mod:hover .meta, .mod:focus-within .meta { opacity: 0; }
+  .mod:hover .ttl, .mod:focus-within .ttl { font-stretch: 72%; transform: translateX(12px); }
+}
+/* Cursor over links: a hollow ring only, so nothing is painted over the text being read */
+.cursor.act .ring { width: 56px; height: 56px; margin: -28px 0 0 -28px; background: transparent; border-color: var(--ciso-hi-dark); }
+.cursor.act .ring span { opacity: 0; }
+.cursor.on-blue.act .ring { background: transparent; border-color: #fff; }

@@ -145,7 +145,7 @@ class Site:
               '<span class="ln ln-1" data-w=".74"><span>Cyber</span></span><span class="ln ln-2" data-w=".5"><span>Hub</span></span></span></h1>'
               '<div class="hero-intro"><p class="hero-lead">Open security learning from CISO at CSUSB. Real tools, real evidence, clear reasoning. Free, with no account.</p>'
               f'<div class="hero-actions">{self.a("Explore the resources →","/resources/","button primary")}{self.a("Start the academy","/academy/","button")}</div></div></div>'
-              f'<div class="seal" id="seal" aria-hidden="true"><div class="seal-tilt" id="seal-tilt">{self.img("cyberhub-core-on-dark.svg")}<canvas id="core-canvas"></canvas></div></div>'
+              f'<div class="seal" id="seal" aria-hidden="true"><div class="seal-tilt" id="seal-tilt">{self.img("cyberhub-core-on-dark.svg","","dark")}{self.img("cyberhub-core-on-light.svg","","light")}<canvas id="core-canvas"></canvas></div></div>'
               '<span class="reg reg-tl" aria-hidden="true"></span><span class="reg reg-tr" aria-hidden="true"></span><span class="reg reg-bl" aria-hidden="true"></span><span class="reg reg-br" aria-hidden="true"></span>'
               '<div class="hero-meta label"><div>Open learning platform / <b>Powered by CISO</b></div>'
               '<div>Core / N01–N08 &nbsp; Yaw <span class="coords" id="core-yaw">000.0°</span> &nbsp; Pitch <span class="coords" id="core-pitch">21.8°</span><br>Pointer <span id="coords">x 0.500 y 0.500</span></div>'
