@@ -199,6 +199,15 @@ class Site:
             body+=(f'<li class="mod"><figure class="mod-media" aria-hidden="true"><canvas data-art="{art}"></canvas></figure><a href="{E(b+path)}" data-cursor="Open">'
                    f'<span class="idx label">{idx} / Module</span><h3 class="ttl">{E(title)}</h3><span class="meta label"><strong>{num:,}</strong><span>{E(unit)}</span><span>{E(meta)}</span></span><p class="mod-desc">{E(desc)}</p></a></li>')
         body+=f'</ol><p class="mod-more">{self.a("See every resource in one place →","/resources/","button primary")}</p></section>'
+        # field band: real photos, rendered only for files present in public/assets/photos/
+        photos=[p for p in read_json(ROOT/'data/photos.json') if p.get('slot')=='field' and (ROOT/'public/assets/photos'/p['file']).is_file()]
+        if photos:
+            body+=('<section class="scene tone-carbon sec-pad wrap field" data-tone="carbon" aria-labelledby="field-title"><div class="sec-head rv">'
+                   f'<span class="label"><span class="on">Field</span> / In the room</span><h2 id="field-title">{R("What you")}{R("will defend","d1")}</h2></div><div class="field-grid">')
+            for i,p in enumerate(photos[:5]):
+                body+=(f'<figure class="shot shot-{i+1} rv"><img src="{E(b)}/assets/photos/{E(p["file"])}" alt="{E(p["alt"])}" loading="lazy" decoding="async">'
+                       f'<figcaption class="label"><span>{i+1:02d} / {E(p["caption"])}</span><span>{E(p["note"])}</span></figcaption></figure>')
+            body+='</div><p class="field-credit label">Photography: Unsplash contributors, Unsplash License. Credits in THIRD_PARTY_NOTICES.md.</p></section>'
         # 05 labs
         body+=('<section class="scene tone-void sec-pad wrap" id="labs" data-tone="void" data-sec="05" aria-labelledby="lab-title"><div class="sec-head rv">'
                f'<span class="label"><span class="on">05</span> / Labs</span><h2 id="lab-title">{R("Evidence you")}{R("can touch","d1")}</h2></div><div class="lab">'

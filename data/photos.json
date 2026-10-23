@@ -1,0 +1,7 @@
+[
+  {"slot":"field","file":"server-aisle.jpg","id":"8CTEFI7fIPM","page":"https://unsplash.com/photos/a-server-room-with-rows-of-servers-in-it-8CTEFI7fIPM","alt":"An aisle between rows of server racks","caption":"Infrastructure","note":"Where the logs come from"},
+  {"slot":"field","file":"robot-arm.jpg","id":"sz1CHL7Pky0","page":"https://unsplash.com/photos/blue-industrial-robot-arm-in-factory-sz1CHL7Pky0","alt":"A blue industrial robot arm on a factory floor","caption":"Operational technology","note":"Systems that move things"},
+  {"slot":"field","file":"circuit-board.jpg","id":"8hcIIZ8SoyU","page":"https://unsplash.com/photos/a-close-up-of-a-circuit-board-with-many-electronic-components-8hcIIZ8SoyU","alt":"Close-up of a circuit board covered in components","caption":"Hardware","note":"Trust starts at the chip"},
+  {"slot":"field","file":"patch-panel.jpg","id":"dyUp7WPu5q4","page":"https://unsplash.com/photos/a-close-up-of-a-network-with-wires-connected-to-it-dyUp7WPu5q4","alt":"Network cables plugged into a switch","caption":"Networks","note":"Every packet crossed a wire"},
+  {"slot":"field","file":"old-monitor.jpg","id":"QKQEnPLiCK8","page":"https://unsplash.com/photos/an-old-computer-monitor-left-out-in-the-open-QKQEnPLiCK8","alt":"An old computer monitor","caption":"Legacy systems","note":"Still running, still exposed"}
+]
