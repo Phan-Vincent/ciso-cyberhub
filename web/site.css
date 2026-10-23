@@ -847,9 +847,9 @@ input[type=checkbox], input[type=radio] { width: auto; min-height: 0; accent-col
 .dip-dark { background: radial-gradient(120% 90% at 50% 30%, #1b1d22 0%, #0b0c0f 55%, #050505 100%); }
 .dip-light { background: radial-gradient(110% 90% at 50% 20%, #f4f5f7 0%, #d9dce2 55%, #b9bec7 100%); }
 .dip canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-.dip figcaption { position: absolute; left: 16px; right: 16px; bottom: 12px; display: flex; justify-content: space-between; gap: 12px; }
-.dip-dark figcaption { color: #8d929c; }
-.dip-light figcaption { color: #565b64; }
+.dip .dip-cap { position: absolute; left: 16px; right: 16px; bottom: 12px; display: flex; justify-content: space-between; gap: 12px; }
+.dip-dark .dip-cap { color: #8d929c; }
+.dip-light .dip-cap { color: #565b64; }
 .dip::before, .dip::after { content: ""; position: absolute; width: 8px; height: 8px; border-radius: 50%; border: 1px solid currentColor; top: 12px; z-index: 1; opacity: .5; }
 .dip-dark::before, .dip-dark::after { color: #8d929c; }
 .dip-light::before, .dip-light::after { color: #565b64; }
@@ -996,3 +996,50 @@ input, select { border-radius: 10px; }
 .field-credit{margin-top:18px;color:var(--ink-muted,#8d929c)}
 @media (max-width:760px){.field-grid{grid-template-columns:1fr 1fr;grid-auto-rows:auto}.shot,.shot-4,.shot-5{grid-column:span 1;aspect-ratio:1}.shot-1{grid-column:span 2;grid-row:auto;aspect-ratio:16/10}.shot figcaption span:last-child{display:none}}
 @media (prefers-reduced-motion:reduce){.shot img{transition:none}}
+
+/* Five ways: the two machine panels are links; hover lifts and lights them, no extra text */
+.dip { display: block; text-decoration: none; cursor: pointer; isolation: isolate; }
+.dip canvas { transition: transform var(--mid) var(--ease), filter var(--mid) var(--ease); }
+.dip > .dip-cap { z-index: 2; transition: color var(--fast); }
+.dip .dip-ring { display: none; }
+.dip { box-shadow: inset 0 0 0 0 var(--ciso-hi-dark); transition: box-shadow var(--mid) var(--ease); }
+.dip:hover, .dip:focus-visible { box-shadow: inset 0 0 0 3px var(--ciso-hi-dark); outline: none; }
+.dip:hover canvas, .dip:focus-visible canvas { transform: scale(1.04); filter: brightness(1.12) contrast(1.05); }
+.dip-dark:hover .dip-cap, .dip-dark:focus-visible .dip-cap { color: #fff; }
+.dip-light:hover .dip-cap, .dip-light:focus-visible .dip-cap { color: #050505; }
+.dip-panels:hover .dip:not(:hover) canvas { filter: brightness(.82) saturate(.8); }
+@media (prefers-reduced-motion: reduce) { .dip canvas { transition: none; } .dip:hover canvas { transform: none; } }
+
+/* What you will defend: a short note pops up on hover or keyboard focus */
+.shot { cursor: default; outline: none; }
+.shot:focus-visible { box-shadow: 0 0 0 3px var(--ciso-hi-dark); }
+.shot-pop { position: absolute; z-index: 3; left: 14px; right: 14px; top: 14px; max-width: 340px; margin: 0; padding: 14px 16px; border-radius: var(--r-md);
+  background: rgba(5,5,5,.86); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid rgba(59,147,255,.55);
+  color: #edeff2; font-size: .92rem; line-height: 1.45; opacity: 0; transform: translateY(-6px); pointer-events: none;
+  transition: opacity var(--fast), transform var(--mid) var(--ease); }
+.shot-pop .label { display: block; margin-bottom: 6px; color: #3b93ff; }
+.shot:hover .shot-pop, .shot:focus-visible .shot-pop { opacity: 1; transform: none; }
+.shot:hover img, .shot:focus-visible img { filter: grayscale(.15) contrast(1.05) brightness(.95); transform: scale(1.05); }
+@media (hover: none) { .shot-pop { display: none; } }
+
+/* Latest report: headline text plus generated artwork */
+.intel-feature-panel.has-art { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 48px); align-items: center; }
+.intel-art { margin: 0; }
+.intel-art svg { display: block; width: 100%; height: auto; border-radius: var(--r-lg); }
+.intel-art figcaption { margin-top: 10px; color: #565b64; }
+@media (max-width: 860px) { .intel-feature-panel.has-art { grid-template-columns: 1fr; } }
+
+/* Footer: the CISO lockup mirrors the CyberHub lockup, centred in its frame */
+.brand-frame.powered { justify-content: center; gap: clamp(14px, 1.8vw, 24px); }
+.brand-frame.powered > img { width: clamp(64px, 7vw, 96px); height: auto; }
+.ciso-word { display: grid; gap: 2px; justify-items: start; }
+.brand-frame.powered .ciso-word strong { font-family: var(--display); font-weight: 830; font-stretch: 62%; text-transform: uppercase; letter-spacing: -.01em; line-height: .86; font-size: clamp(3rem, 2rem + 3.4vw, 5.4rem); color: #fff; }
+.ciso-word .label { color: var(--ink-muted); }
+.ciso-word .label:first-child { color: var(--ink-muted); }
+.brand-frame.powered:hover .ciso-word strong { color: var(--signal); }
+.brand-frame.powered .ciso-word strong { font-size: clamp(2.3rem, 1.5rem + 2.5vw, 4rem); }
+/* Cursor over links: a hollow ring with no label, so nothing is painted over titles */
+.cursor.act .ring { width: 56px; height: 56px; margin: -28px 0 0 -28px; background: transparent; border-color: var(--ciso-hi-dark); }
+.cursor.act .ring span { opacity: 0; }
+.cursor.on-blue.act .ring { background: transparent; border-color: #fff; }
+@media (max-width: 760px) { .ciso-word .label:last-child { display: none; } }
