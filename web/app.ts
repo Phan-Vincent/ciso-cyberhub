@@ -1,4 +1,4 @@
-import {emptyProgress,parseProgress,scoreQuiz,matches,type Question} from './core.js';
+import {emptyProgress,parseProgress,scoreQuiz,matches,countAcademyLessons,compareRecords,type Question} from './core.js';
 const base=document.body.dataset.base || '';
 const $=(s:string)=>document.querySelector(s) as HTMLElement | null;
 const key='cyberhub:'+base+':progress:v1';
@@ -10,7 +10,18 @@ function save(){try{localStorage.setItem(key,JSON.stringify(progress));}catch{st
 async function data(name:string){const r=await fetch(`${base}/assets/${name}.json`);if(!r.ok)throw new Error('Data could not load. Reload or try again later.');return r.json();}
 const theme=$('#theme');
 try{const value=localStorage.getItem('cyberhub:theme');if(value==='dark'||value==='light')document.documentElement.dataset.theme=value;}catch{}
-theme?.addEventListener('click',()=>{const dark=document.documentElement.dataset.theme ? document.documentElement.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; const value=dark?'light':'dark';document.documentElement.dataset.theme=value;try{localStorage.setItem('cyberhub:theme',value);}catch{}});
+theme?.addEventListener('click',()=>{const dark=document.documentElement.dataset.theme ? document.documentElement.dataset.theme==='dark' : !matchMedia('(prefers-color-scheme: light)').matches; const value=dark?'light':'dark';document.documentElement.dataset.theme=value;try{localStorage.setItem('cyberhub:theme',value);}catch{}});
+
+// Command shortcut (Cmd/Ctrl+K) to open or focus search
+document.addEventListener('keydown',e=>{
+ if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){
+  e.preventDefault();
+  const input=($('#global-search')||document.querySelector<HTMLInputElement>('input[name="q"]'));
+  if(input)input.focus();
+  else location.href=`${base}/search/`;
+ }
+});
+
 function element(tag:string,text:string,cls=''){const el=document.createElement(tag);el.textContent=text;if(cls)el.className=cls;return el;}
 function link(label:string,path:string){const a=document.createElement('a');a.textContent=label;a.href=path;return a;}
 function setupFilters(){
@@ -23,7 +34,7 @@ function setupFilters(){
   const values=Object.fromEntries(new FormData(form!)) as Record<string,string>;let count=0;
   const text=values.q||'';delete values.q;
   const sort=values.sort||'name';delete values.sort;
-  parsed.sort((a,b)=>{const av=String(a.record[sort]||''),bv=String(b.record[sort]||'');return sort==='published_at'||sort==='last_verified'?bv.localeCompare(av):av.localeCompare(bv);});
+  parsed.sort((a,b)=>compareRecords(a.record,b.record,sort));
   for(const {card,record} of parsed){card.hidden=!matches(record,text,values);if(!card.hidden)count++;list!.append(card);}
   const result=$('#result-count');if(result)result.textContent=`${count} results`;
   const empty=$('#empty');if(empty)empty.hidden=count!==0;
@@ -38,8 +49,23 @@ const lesson=$('[data-lesson]');
 if(lesson){const id=lesson.dataset.lesson!;const button=$('#complete') as HTMLButtonElement;
  const update=()=>{button.textContent=progress.lessons.includes(id)?'Marked complete · Undo':'Mark lesson complete';button.setAttribute('aria-pressed',String(progress.lessons.includes(id)));};
  button.addEventListener('click',()=>{progress.lessons=progress.lessons.includes(id)?progress.lessons.filter(x=>x!==id):[...progress.lessons,id];save();update();});update();}
-const progressBox=$('#progress-summary');
-if(progressBox){progressBox.textContent=`${progress.lessons.length} lessons marked complete · ${progress.attempts.length} practice attempts on this browser`;}
+
+function renderProgressSummaries(objectives?: {lesson: string}[]){
+ const total=objectives?.length||28;
+ const done=Math.min(total,countAcademyLessons(progress.lessons,objectives));
+ const progressBox=$('#progress-summary');
+ if(progressBox){progressBox.textContent=`${done} of ${total} Academy lessons marked complete · ${progress.attempts.length} practice attempts on this browser`;}
+ const homeProgress=$('#home-progress-summary');
+ if(homeProgress){
+  const last=progress.attempts.at(-1);
+  const lastScore=last?` · Last quiz: ${last.score}/${last.total}`:'';
+  homeProgress.textContent=`${done} of ${total} lessons completed · ${progress.attempts.length} quiz attempts${lastScore}`;
+  const badge=$('#home-progress-badge');
+  if(badge&&done>0)badge.textContent=`${Math.min(100,Math.round((done/total)*100))}% pathway complete`;
+ }
+}
+renderProgressSummaries();
+
 $('#reset-progress')?.addEventListener('click',()=>{if(confirm('Clear all CyberHub learning progress for this site on this browser?')){progress=emptyProgress();save();location.reload();}});
 $('#export-progress')?.addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(progress,null,2)],{type:'application/json'}));const a=link('Download',url);a.download='cyberhub-progress.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 $('#import-progress')?.addEventListener('change',async e=>{const input=e.target as HTMLInputElement;const file=input.files?.[0];if(!file)return;if(file.size>200000){say('Progress file is too large.');return;}const raw=await file.text();let valid=false;try{valid=JSON.parse(raw).version===1;}catch{}if(!valid){say('Not a recognized progress file.');return;}progress=parseProgress(raw);save();location.reload();});
@@ -49,8 +75,21 @@ if(search){let records:any[]=[];
  search.addEventListener('input',draw);data('search').then(r=>{records=r;draw();}).catch(e=>say(e.message));}
 
 async function academy(){
- if(!$('#quiz')&&!$('#flashcards')&&!$('#weak-domains'))return;
+ const hasDomainBars=document.querySelectorAll('[data-domain-bar]').length>0;
+ if(!$('#quiz')&&!$('#flashcards')&&!$('#weak-domains')&&!$('#progress-summary')&&!$('#home-progress-summary')&&!hasDomainBars)return;
  const course=await data('academy');
+ renderProgressSummaries(course.objectives);
+ if(hasDomainBars){
+  for(const bar of document.querySelectorAll<HTMLElement>('[data-domain-bar]')){
+   const d=bar.dataset.domainBar||'';
+   const objs=course.objectives.filter((o:any)=>String(o.id).startsWith(d+'.'));
+   const done=countAcademyLessons(progress.lessons,objs);
+   const label=document.querySelector<HTMLElement>(`[data-domain-progress="${d}"]`);
+   if(label)label.textContent=`${done}/${objs.length}`;
+   const step=objs.length?Math.round((done/objs.length)*10):0;
+   bar.dataset.step=String(step);
+  }
+ }
  const weak=$('#weak-domains');
  if(weak){const last=progress.attempts.at(-1);if(last){for(const [i,[d,s]]of Object.entries(last.domains).sort((a,b)=>a[1].correct/a[1].total-b[1].correct/b[1].total).entries()){const row=element('p',`${i===0?'Lowest observed domain · ':''}Domain ${d}: ${s.correct}/${s.total} on your last practice. `);row.append(link('Review lessons',base+`/academy/#domain-${d}`));weak.append(row);}}else weak.textContent='Take a practice quiz to see domain feedback. This is a study signal, not an exam-readiness prediction.';}
  if($('#flashcards')){let i=0;let flipped=false;const cards=course.flashcards;const draw=()=>{const c=cards[i];$('#card-text')!.textContent=flipped?c.back:c.front;$('#card-count')!.textContent=`${i+1} / ${cards.length} · Objective ${c.objective}`;$('#flip')!.textContent=flipped?'Show question':'Show answer';};$('#flip')!.addEventListener('click',()=>{flipped=!flipped;draw();});$('#next-card')!.addEventListener('click',()=>{i=(i+1)%cards.length;flipped=false;draw();});$('#previous-card')!.addEventListener('click',()=>{i=(i-1+cards.length)%cards.length;flipped=false;draw();});draw();}
@@ -69,8 +108,35 @@ async function academy(){
  });submit.addEventListener('click',finish);
 }
 academy().catch(e=>say(e.message));
-// Freshness is evaluated at view time, even when deployment or schedules have stopped.
-for(const el of document.querySelectorAll<HTMLElement>('[data-freshness]')){const value=el.dataset.freshness;const age=value?(Date.now()-Date.parse(value))/86400000:NaN;el.textContent=Number.isFinite(age)?(age>2?`Stale · ${Math.floor(age)} days since success`:'Updated within 48 hours'):'No successful retrieval';if(!Number.isFinite(age)||age>2)el.classList.add('warning');}
+// Freshness and active errors are evaluated at view time, even when deployment or schedules have stopped.
+for(const el of document.querySelectorAll<HTMLElement>('[data-freshness]')){
+ const value=el.dataset.freshness||'';
+ const err=(el.dataset.error||'').trim();
+ const age=value?(Date.now()-Date.parse(value))/86400000:NaN;
+ const hasAge=Number.isFinite(age);
+ const stale=!hasAge||age>2;
+ const healthy=!err&&!stale;
+ if(err&&hasAge){
+  el.textContent=stale?`Error: ${err} (stale · ${Math.floor(age)}d since success)`:`Error: ${err} (last ok ${value.slice(0,10)})`;
+ }else if(err){
+  el.textContent=`Error: ${err} (no successful retrieval)`;
+ }else if(hasAge){
+  el.textContent=stale?`Stale · ${Math.floor(age)} days since success`:`Updated within 48 hours (${value.slice(0,10)})`;
+ }else{
+  el.textContent='No successful retrieval';
+ }
+ el.classList.toggle('warning',!healthy);
+ const container=el.closest('[data-feed-card], [data-feed-item]');
+ const dot=container?.querySelector('.status-dot');
+ if(dot){dot.classList.toggle('online',healthy);dot.classList.toggle('warn',!healthy);}
+}
+const healthCounter=$('#live-feed-health');
+if(healthCounter){
+ const cards=Array.from(document.querySelectorAll<HTMLElement>('[data-feed-card] [data-freshness]'));
+ const ok=cards.filter(el=>!el.classList.contains('warning')).length;
+ const total=Number(healthCounter.dataset.total||cards.length);
+ healthCounter.textContent=`${ok}/${total}`;
+}
 if(!storageOK)say('Browser storage is unavailable. Learning remains usable; progress cannot persist.');
 
 for(const el of document.querySelectorAll<HTMLElement>('[data-verification]')){const age=(Date.now()-Date.parse(el.dataset.verification||''))/86400000;if(Number.isFinite(age)&&age>90){el.textContent=`Source check is ${Math.floor(age)} days old. Re-verification is due.`;el.classList.add('warning');}}

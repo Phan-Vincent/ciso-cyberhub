@@ -13,6 +13,7 @@ from hub.ingest import parse_feed, merge_news, parse_kev, apply_epss, apply_nvd,
 from hub.validate import validate
 from hub.markdown import render
 from hub.catalog import proposal
+from scripts.restore_proposals import decode_proposal_item, restore
 
 STAMP='2024-01-02T00:00:00Z'
 FIX=ROOT/'tests/fixtures'
@@ -60,17 +61,50 @@ class PipelineTests(unittest.TestCase):
     def test_empty_kev_cannot_erase_old_data(self):
         with self.assertRaises(ValueError):parse_kev({'vulnerabilities':[]},STAMP)
     def test_epss_separate_signal(self):
-        x=parse_kev(read_json(FIX/'kev.json'),STAMP);apply_epss(x,read_json(FIX/'epss.json'));self.assertEqual(x[0]['epss'],.25);self.assertTrue(x[0]['kev'])
+        x=parse_kev(read_json(FIX/'kev.json'),STAMP);matched=apply_epss(x,read_json(FIX/'epss.json'));self.assertEqual(matched,1);self.assertEqual(x[0]['epss'],.25);self.assertTrue(x[0]['kev'])
     def test_epss_invalid_range_atomic(self):
         x=parse_kev(read_json(FIX/'kev.json'),STAMP);bad=read_json(FIX/'epss.json');bad['data'][0]['epss']='NaN'
         with self.assertRaises(ValueError):apply_epss(x,bad)
         self.assertIsNone(x[0]['epss'])
     def test_nvd_primary_metric_and_reference_sanitization(self):
         x=parse_kev(read_json(FIX/'kev.json'),STAMP)[0]
-        apply_nvd(x,{'vulnerabilities':[{'cve':{'id':x['id'],'metrics':{'cvssMetricV31':[{'type':'Primary','source':'test','cvssData':{'baseScore':7.5,'version':'3.1'}}]},'references':[{'url':'javascript:alert(1)'},{'url':'https://example.org/advisory'}]}}]},STAMP)
-        self.assertEqual(x['cvss']['score'],7.5);self.assertEqual(x['references'],['https://example.org/advisory'])
+        matched=apply_nvd(x,{'vulnerabilities':[{'cve':{'id':x['id'],'metrics':{'cvssMetricV31':[{'type':'Primary','source':'test','cvssData':{'baseScore':7.5,'version':'3.1'}}]},'references':[{'url':'javascript:alert(1)'},{'url':'https://example.org/advisory'}]}}]},STAMP)
+        self.assertTrue(matched);self.assertEqual(x['cvss']['score'],7.5);self.assertEqual(x['references'],['https://example.org/advisory'])
     def test_nvd_wrong_id_not_applied(self):
-        x=parse_kev(read_json(FIX/'kev.json'),STAMP)[0];apply_nvd(x,{'vulnerabilities':[{'cve':{'id':'CVE-2099-99999'}}]},STAMP);self.assertIsNone(x['cvss'])
+        x=parse_kev(read_json(FIX/'kev.json'),STAMP)[0];matched=apply_nvd(x,{'vulnerabilities':[{'cve':{'id':'CVE-2099-99999'}}]},STAMP);self.assertFalse(matched);self.assertIsNone(x['cvss'])
+    def test_malformed_enrichment_envelopes_raise_value_error(self):
+        x=parse_kev(read_json(FIX/'kev.json'),STAMP)[0]
+        for bad in (None, [], 'null', {'data': None}, {'data': [None]}):
+            with self.subTest(bad=bad),self.assertRaises(ValueError):apply_epss([x], bad)
+        for bad in (None, [], 'null', {'vulnerabilities': None}, {'vulnerabilities': [None]}):
+            with self.subTest(bad=bad),self.assertRaises(ValueError):apply_nvd(x, bad, STAMP)
+    def test_empty_or_null_enrichment_does_not_advance_last_success(self):
+        with tempfile.TemporaryDirectory()as tmp:
+            root=Path(tmp);shutil.copytree(ROOT/'data',root/'data');shutil.copytree(ROOT/'content',root/'content')
+            write_json(root/'data/intelligence.json',{'mode':'source-reported','news':[],'sources':{'epss':{'last_success':'2024-01-01T00:00:00Z'},'nvd':{'last_success':'2024-01-01T00:00:00Z'}},'vulnerabilities':parse_kev(read_json(FIX/'kev.json'),STAMP)})
+            def fake_get(url):
+                if 'cisa.gov' in url: return (FIX/'kev.json').read_text()
+                if 'cert.org' in url: return (FIX/'cert.xml').read_text()
+                if 'sans.edu' in url: return (FIX/'sans.xml').read_text()
+                if 'api.first.org' in url: return '{"data":[]}'
+                if 'services.nvd.nist.gov' in url: return 'null'
+                raise FetchError('unexpected url')
+            with patch('hub.ingest.now',return_value=STAMP),patch('hub.ingest.Client.get',side_effect=fake_get),patch.object(Client,'sleep',lambda *a:None,create=True):
+                res=refresh(root)
+            self.assertIn('epss',res['failures']);self.assertIn('nvd',res['failures'])
+            after=read_json(root/'data/intelligence.json')
+            self.assertEqual(after['sources']['epss']['last_success'],'2024-01-01T00:00:00Z')
+            self.assertEqual(after['sources']['nvd']['last_success'],'2024-01-01T00:00:00Z')
+            self.assertTrue(after['sources']['epss']['error'])
+            self.assertTrue(after['sources']['nvd']['error'])
+    def test_large_file_proposal_restoration_uses_bounded_raw_retrieval(self):
+        large_payload={'mode':'source-reported','news':[],'sources':{},'vulnerabilities':[{'id':f'CVE-2026-{10000+i}'}for i in range(500)]}
+        raw_bytes=json.dumps(large_payload).encode('utf-8')
+        item={'type':'file','size':1_358_645,'encoding':'none','content':''}
+        restored=decode_proposal_item(item,'repos/org/repo/contents/data/intelligence.json?ref=abc',fetch_raw=lambda ep,limit:raw_bytes)
+        self.assertEqual(restored,large_payload)
+        with self.assertRaises(ValueError):
+            decode_proposal_item({'type':'file','size':9_000_000,'encoding':'none','content':''},'ep',fetch_raw=lambda ep,limit:b'{}')
     def test_http_host_allowlist(self):
         client=Client({'example.org'},opener=lambda *a,**kw:Response())
         with self.assertRaises(FetchError):client.get('https://localhost/x')
@@ -120,6 +154,7 @@ class PipelineTests(unittest.TestCase):
     def test_fixture_refresh_and_partial_failure_preserves_last_success(self):
         with tempfile.TemporaryDirectory()as tmp:
             root=Path(tmp);shutil.copytree(ROOT/'data',root/'data');shutil.copytree(ROOT/'content',root/'content')
+            write_json(root/'data/intelligence.json',{'mode':'source-reported','news':[],'sources':{},'vulnerabilities':[]})
             with patch('hub.ingest.now',return_value=STAMP):result=refresh(root,fixture_dir=FIX)
             self.assertEqual(result['failures'],[]);state=read_json(root/'data/intelligence.json');self.assertEqual(len(state['news']),2);self.assertEqual(len(state['vulnerabilities']),1);validate(root)
             old=copy.deepcopy(state)

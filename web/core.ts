@@ -16,6 +16,24 @@ export function scoreQuiz(questions: Question[], answers: Record<string, number>
     if(answers[q.id]===q.answer){score++;domains[d].correct++;}}
   return {score,total:questions.length,domains};
 }
+export function countAcademyLessons(lessons: string[], objectives?: {lesson: string}[]) {
+  const unique = [...new Set(lessons)];
+  if (objectives && objectives.length > 0) {
+    const mapped = new Set(objectives.map(o => `academy/${o.lesson}`));
+    return unique.filter(id => mapped.has(id)).length;
+  }
+  return unique.filter(id => id.startsWith('academy/')).length;
+}
+export function compareRecords(a: Record<string, any>, b: Record<string, any>, sort = 'name') {
+  const av = String(a[sort] || '');
+  const bv = String(b[sort] || '');
+  const desc = sort === 'published_at' || sort === 'last_verified' || sort === 'date_added';
+  const primary = desc ? bv.localeCompare(av) : av.localeCompare(bv);
+  if (primary !== 0) return primary;
+  const aid = String(a.id || a.name || a.title || '');
+  const bid = String(b.id || b.name || b.title || '');
+  return desc ? bid.localeCompare(aid) : aid.localeCompare(bid);
+}
 export function matches(record: Record<string,any>, query:string, filters:Record<string,string>) {
   const haystack=[record.name,record.description,record.title,record.id,record.category,record.vendor,record.product,...(record.secondary_categories||[])].filter(Boolean).join(' ').toLowerCase();
   return query.toLowerCase().trim().split(/\s+/).every(term=>haystack.includes(term)) && Object.entries(filters).every(([key,value])=>!value || (Array.isArray(record[key]) ? record[key].includes(value) : record[key]===value));

@@ -90,20 +90,27 @@ def parse_kev(raw, retrieved):
     return sorted(out, key=lambda v: (v['date_added'] or '',v['id']), reverse=True)
 
 def apply_epss(items, payload):
-    if not isinstance(payload.get('data'), list): raise ValueError('Invalid EPSS envelope')
+    """Apply scores atomically; returns how many items matched."""
+    if not isinstance(payload, dict) or not isinstance(payload.get('data'), list): raise ValueError('Invalid EPSS envelope')
     scores = {}
     for v in payload['data']:
+        if not isinstance(v, dict): raise ValueError('Invalid EPSS entry')
         score = float(v['epss'])
         if not 0 <= score <= 1 or not CVE.fullmatch(v['cve']): raise ValueError('Invalid EPSS score')
         datetime.strptime(v['date'], '%Y-%m-%d')
         scores[v['cve']] = (score, v['date'])
+    matched = 0
     for item in items:
-        if item['id'] in scores: item['epss'], item['epss_date'] = scores[item['id']]
+        if item['id'] in scores: item['epss'], item['epss_date'] = scores[item['id']]; matched += 1
+    return matched
 
 def apply_nvd(item, payload, retrieved):
-    candidates = payload.get('vulnerabilities', [])
-    match = next((v['cve'] for v in candidates if v.get('cve',{}).get('id') == item['id']), None)
-    if not match: return
+    """Apply the matching NVD record; returns False when the payload has none."""
+    if not isinstance(payload, dict) or not isinstance(payload.get('vulnerabilities'), list): raise ValueError('Invalid NVD envelope')
+    candidates = payload['vulnerabilities']
+    if not all(isinstance(v, dict) for v in candidates): raise ValueError('Invalid NVD entry')
+    match = next((v['cve'] for v in candidates if isinstance(v.get('cve'), dict) and v['cve'].get('id') == item['id']), None)
+    if not match: return False
     metrics = match.get('metrics', {})
     for version in ('cvssMetricV40','cvssMetricV31','cvssMetricV30','cvssMetricV2'):
         vals = metrics.get(version, [])
@@ -119,6 +126,7 @@ def apply_nvd(item, payload, retrieved):
         try: refs.append(canonical_url(r['url']))
         except (ValueError,KeyError): continue
     item['references'] = sorted(set(refs)); item['nvd_verified_at'] = retrieved
+    return True
 
 def refresh(root=ROOT, fixture_dir=None, dry_run=False):
     root = __import__('pathlib').Path(root)
@@ -160,7 +168,7 @@ def refresh(root=ROOT, fixture_dir=None, dry_run=False):
         try:
             body = (__import__('pathlib').Path(fixture_dir)/'epss.json').read_text() if fixture_dir else client.get(
                 'https://api.first.org/data/v1/epss?' + urlencode({'cve':','.join(v['id'] for v in recent),'limit':100}))
-            apply_epss(recent,json.loads(body))
+            if not apply_epss(recent,json.loads(body)): raise ValueError('No EPSS scores matched')
             statuses['epss'] = {'last_attempt':stamp,'last_success':stamp,'error':None}
         except (FetchError,ValueError,KeyError,TypeError,OSError) as e:
             statuses['epss'] = {**statuses.get('epss',{}),'last_attempt':stamp,'error':str(e)[:180]}; failures.append('epss')
@@ -170,7 +178,7 @@ def refresh(root=ROOT, fixture_dir=None, dry_run=False):
             for v in sorted(state['vulnerabilities'],key=lambda x:x.get('nvd_verified_at') or '')[:3]:
                 try:
                     body = client.get('https://services.nvd.nist.gov/rest/json/cves/2.0?cveId='+v['id'])
-                    apply_nvd(v,json.loads(body),stamp)
+                    if not apply_nvd(v,json.loads(body),stamp): nvd_errors.append(v['id']+': no matching NVD record')
                     client.sleep(6)
                 except (FetchError,ValueError,KeyError,TypeError) as e: nvd_errors.append(str(e)[:100])
             statuses['nvd'] = {**statuses.get('nvd',{}),'last_attempt':stamp,'error':'; '.join(nvd_errors) or None}

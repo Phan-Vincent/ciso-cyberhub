@@ -9,12 +9,27 @@ import subprocess
 from pathlib import Path
 
 ALLOWED=['data/intelligence.json','data/review-queue.json','data/catalog-state.json','data/maintenance.json']
+MAX_PROPOSAL_BYTES=8_000_000
 
 def command(args,**kwargs):return subprocess.run(args,check=True,text=True,capture_output=True,**kwargs).stdout.strip()
-def api(path,method='GET',data=None):
-    args=['gh','api','--method',method,path]
+def api(path,method='GET',data=None,headers=None):
+    args=['gh','api','--method',method]
+    for k,v in (headers or {}).items():args+=['-H',f'{k}: {v}']
+    args.append(path)
     if data is not None:args+=['--input','-']
     return json.loads(command(args,input=json.dumps(data)if data is not None else None))
+
+def raw_api(path,limit=MAX_PROPOSAL_BYTES):
+    proc=subprocess.Popen(['gh','api','-H','Accept: application/vnd.github.raw+json',path],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    try:
+        body=proc.stdout.read(limit+1) if proc.stdout else b''
+        stderr=proc.stderr.read() if proc.stderr else b''
+    finally:
+        if proc.poll() is None:proc.kill()
+        proc.wait()
+    if proc.returncode!=0:raise RuntimeError(stderr.decode('utf-8','replace').strip() or f'gh api failed for {path}')
+    if len(body)>limit:raise ValueError('Proposal file exceeds size bound')
+    return body
 
 def main():
     repo=os.environ['GITHUB_REPOSITORY']

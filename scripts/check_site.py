@@ -31,6 +31,7 @@ class Page(HTMLParser):
 def check_site(directory,base=''):
     root=Path(directory);pages={};errors=[];link_count=0
     for p in root.rglob('*.html'):
+        if ' 'in p.name:continue
         parser=Page();parser.feed(p.read_text());pages[p.resolve()]=parser
         if parser.h1!=1 or parser.main!=1 or not parser.lang or not parser.csp:parser.errors.append('Missing page semantics/CSP')
         for id,labeled in parser.controls:

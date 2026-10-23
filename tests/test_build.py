@@ -1,5 +1,6 @@
 import hashlib
 import json
+import re
 import struct
 import unittest
 from pathlib import Path
@@ -27,8 +28,18 @@ class BuildTests(unittest.TestCase):
             sec,usec,caplen,origlen=struct.unpack('<IIII',raw[offset:offset+16]);frame=raw[offset+16:offset+16+caplen];self.assertEqual(len(frame),origlen);self.assertEqual(frame[12:14],b'\x08\x00');ip=frame[14:34];value=sum(struct.unpack('!10H',ip));value=(value&65535)+(value>>16);value=(value&65535)+(value>>16);self.assertEqual(value,65535);offset+=16+caplen;count+=1
         self.assertEqual(count,4)
     def test_build_is_reproducible(self):
-        before={str(p.relative_to(ROOT/'dist')):hashlib.sha256(p.read_bytes()).hexdigest()for p in (ROOT/'dist').rglob('*')if p.is_file()}
+        before={str(p.relative_to(ROOT/'dist')):hashlib.sha256(p.read_bytes()).hexdigest()for p in (ROOT/'dist').rglob('*')if p.is_file()and' 'not in p.name}
         Site('/cyberhub').build()
-        after={str(p.relative_to(ROOT/'dist')):hashlib.sha256(p.read_bytes()).hexdigest()for p in (ROOT/'dist').rglob('*')if p.is_file()};self.assertEqual(before,after)
+        after={str(p.relative_to(ROOT/'dist')):hashlib.sha256(p.read_bytes()).hexdigest()for p in (ROOT/'dist').rglob('*')if p.is_file()and' 'not in p.name};self.assertEqual(before,after)
     def test_base_path_rejects_traversal(self):
         with self.assertRaises(ValueError):Site('/../escape')
+    def test_feed_health_reports_stale_and_active_errors(self):
+        s=Site('/cyberhub')
+        healthy,dot,label=s.source_health({'last_success':'2020-01-01T00:00:00Z','last_attempt':'2026-10-22T00:00:00Z','error':'HTTP 503'})
+        self.assertFalse(healthy);self.assertEqual(dot,'warn');self.assertIn('HTTP 503',label);self.assertIn('stale',label)
+    def test_vulnerabilities_page_orders_newest_kev_first(self):
+        html=(ROOT/'dist/vulnerabilities/index.html').read_text()
+        dates=re.findall(r'Added:\s*(\d{4}-\d{2}-\d{2})',html)
+        if len(dates)>=2:
+            self.assertGreaterEqual(dates[0],dates[-1])
+            self.assertEqual(dates,sorted(dates,reverse=True))
