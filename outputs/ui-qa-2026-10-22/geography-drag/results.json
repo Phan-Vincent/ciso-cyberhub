@@ -1,0 +1,23 @@
+{
+  "checks": [
+    "Both screenshot annotation groups removed",
+    "Mouse dragging rotates globe and preserves its orientation on release",
+    "Pointer capture releases after a drag ends outside the canvas",
+    "Equal footer frame dimensions and corner sizes: 1440px",
+    "Equal footer frame dimensions and corner sizes: 1024px",
+    "Equal footer frame dimensions and corner sizes: 768px",
+    "Equal footer frame dimensions and corner sizes: 390px",
+    "Prominent latest-intel headline retains source link: 1440px",
+    "Prominent latest-intel headline retains source link: 390px",
+    "Touch dragging rotates globe without scrolling the page or leaving capture active",
+    "Touch scrolling works outside the globe",
+    "Mouse-follow motion retained with animation time frozen",
+    "Globe renders after switching to light mode"
+  ],
+  "errors": [],
+  "screenshots": [
+    "hero.png",
+    "footer.png",
+    "intel.png"
+  ]
+}

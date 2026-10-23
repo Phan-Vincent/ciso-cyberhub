@@ -30,3 +30,17 @@ test('compareRecords sorts date_added newest first',()=>{
   records.sort((a,b)=>compareRecords(a,b,'date_added'));
   assert.deepEqual(records.map(r=>r.date_added),['2026-10-20','2024-05-10','2021-11-03']);
 });
+
+test('all 28 flashcards are complete, unique and mapped to an objective',()=>{
+  assert.equal(course.flashcards.length,28);
+  const objectives=new Set(course.objectives.map(o=>o.id));
+  const fronts=new Set();
+  for(const card of course.flashcards){
+    assert.equal(typeof card.front,'string');assert.ok(card.front.trim().length>8,card.objective);
+    assert.equal(typeof card.back,'string');assert.ok(card.back.trim().length>8,card.objective);
+    assert.ok(objectives.has(card.objective),`unknown objective ${card.objective}`);
+    assert.equal(fronts.has(card.front),false,`duplicate front: ${card.front}`);
+    fronts.add(card.front);
+  }
+  assert.deepEqual([...fronts].length,28);
+});

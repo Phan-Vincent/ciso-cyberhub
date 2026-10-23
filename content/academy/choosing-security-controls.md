@@ -16,7 +16,7 @@ Write a short answer before checking the flashcard or quiz. Include the evidence
 
 How does a detective control differ from a preventive control?
 
-**Expected reasoning:** Detection reveals activity; prevention blocks or reduces it before completion. The report discovers an event after it occurs. It does not itself prevent the change.
+**Expected reasoning:** Detection reveals activity after or during it; prevention stops or limits it before harm. The report discovers an event after it occurs. It does not itself prevent the change.
 
 ## Continue your study
 

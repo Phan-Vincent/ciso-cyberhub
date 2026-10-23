@@ -1,0 +1,17 @@
+{
+  "checks": [
+    "Floating badge absent: no-preference",
+    {
+      "test": "Mouse changes yaw and pitch with automatic animation clock frozen",
+      "yawImageChanged": true,
+      "pitchImageChanged": true
+    },
+    "Footer lockups remain vertically aligned",
+    "Phone has no horizontal overflow and retains globe: no-preference",
+    "Floating badge absent: reduce",
+    "Reduced motion stays static after mouse movement",
+    "Phone has no horizontal overflow and retains globe: reduce",
+    "Original four blue corners restored to CYBERHUB SVG"
+  ],
+  "errors": []
+}

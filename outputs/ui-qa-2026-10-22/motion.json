@@ -1,0 +1,8 @@
+{
+  "reduce": "static",
+  "footerHeader": {
+    "class": "site-header wrap scrolled tone-footer",
+    "ink": "rgb(255, 255, 255)"
+  },
+  "no-preference": "animated"
+}

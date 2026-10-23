@@ -1,6 +1,6 @@
 # CyberHub redesign: handoff
 
-This file is for a teammate, or a teammate's Claude session, picking up the CyberHub design work. To a Claude session, say: "Read docs/HANDOFF.md in Phan-Vincent/ciso-cyberhub and continue the design work on the flagship-redesign branch." Last updated 22 Oct 2026 (photos, mobile header fix, review).
+This file is for a teammate, or a teammate's Claude session, picking up the CyberHub design work. To a Claude session, say: "Read docs/HANDOFF.md in Phan-Vincent/ciso-cyberhub and continue the design work in the current local working tree on top of `28e12a9`; do not switch to the older `flagship-redesign` branch, whose work is already merged." Last updated 22 Oct 2026 (independent local QA recorded; attack-map globe, phone hero globe, footer brackets; final font fix verified).
 
 ## 1. Scope: what this project is and is not
 
@@ -34,11 +34,11 @@ This file is for a teammate, or a teammate's Claude session, picking up the Cybe
 - **Homepage content comes from `data/`:** tools, academy, labs, sources, the latest headline and photos. Never hard-code counts.
 - **Before pushing, run:**
   - `npm run check`
-  - `npm test` (50 Python + 12 Node tests)
+  - `npm test` (54 Python + 13 Node tests)
   - `python3 scripts/security_check.py`
   - `python3 -m hub.build`
   - `python3 scripts/check_site.py` (expect 0 errors)
-- **Optionally:** `tests/browser-smoke.mjs` with Playwright.
+- **Optionally:** `tests/browser-smoke.mjs` with Playwright. Set `PLAYWRIGHT_EXECUTABLE` to a Chromium binary if Playwright's own download is unavailable; `PLAYWRIGHT_MODULE` can point at an existing Playwright install.
 
 ## 4. Design decisions (agreed with the user; keep them unless they change their mind)
 
@@ -92,6 +92,38 @@ All checks pass. The site builds 105 pages, and the link check is clean. Visual 
 - `public/assets/brand/`
 - `public/assets/fonts/`
 
+### Local state, 22 Oct 2026 (uncommitted work on `main`)
+
+- **Local base `28e12a9`** — the historical merge of Claude PR #2 from `flagship-redesign`. The working tree is dirty. **Those local changes are not committed, pushed or deployed.**
+- **Canvas attack map is now an orthographic globe**, not a rectangular world map: hand-traced LAND outlines sampled into unit vectors, depth-clipped land/graticule, curved elevated MAP_ARCS with animated packets, country labels, instrument ring and ticks, slow rotation (static under reduced motion).
+- **Phone hero shows the globe** under the copy in its own grid row (<=640 px); it no longer hides the seal. The footer "Powered by" sign-off uses four blue corner brackets instead of a full rounded border, and the footer lockup is vertically centred.
+- **`tests/browser-smoke.mjs`** accepts `PLAYWRIGHT_EXECUTABLE`, waits for fetched content instead of reading immediately, and checks the phone globe slot and footer bracket treatment.
+
+Independently verified by the supervisor on 22 Oct 2026, after the code worker had safely stopped:
+
+| Command | Result |
+| --- | --- |
+| `npm run check` | Pass |
+| `npm test` | Pass: 54 Python + 13 Node = **67 tests** |
+| `python3 scripts/security_check.py` | Pass |
+| `git diff --check` | Pass |
+| Root build (`python3 -m hub.build`) | Pass: **105 routes, 106 HTML files** |
+| Project-site build (`/cyberhub`) | Pass: **105 routes, 106 HTML files** |
+| `python3 scripts/check_site.py` | Pass for both builds: **8,530 links, 0 errors** each |
+| `tests/browser-smoke.mjs` at `http://127.0.0.1:4323` (root) and `http://127.0.0.1:4324/cyberhub` | Pass at both origins |
+| Acceptance checks at 1440, 1024, 768 and 390 px | **71/71 pass**, zero page errors; all 28 flashcard fronts/backs and all 5 modules in both themes |
+| Motion | Globe **animated** normally; **static** under reduced motion |
+| Footer/header contrast | White, readable |
+| Build output | Root `dist` restored as the final state |
+
+Evidence: [`../outputs/ui-qa-2026-10-22/verification.json`](../outputs/ui-qa-2026-10-22/verification.json) (all 71 check outcomes; screenshot paths normalized to this repo), `motion.json`, and the reviewed screenshots in the same folder.
+
+**Work record, 22 Oct 2026.** A first Flash worker was partial and hit its step limit; a Pro attempt timed out and was safely stopped; after user authorization a fresh Flash worker completed the implementation; the supervisor then ran independent verification. No cost or effort figures are recorded here; the Reasonix ledger and task IDs supply the audit history.
+
+The earlier statement that "visual sign-off and any deployment remain outstanding" is **superseded** for local QA: the independent acceptance run and screenshot review above passed. This is **not** full WCAG accessibility certification, screen-reader testing or an expert curriculum review, and nothing was published.
+
+**Final font fix, 22 Oct 2026.** A final targeted Flash patch removed the JavaScript font measurement and uses a CSS responsive font size instead. The supervisor then independently reran the root browser smoke on that final code — it now covers font stability once fonts are ready, plus the theme toggle and reload — and rechecked the existing 67 unit and 71 acceptance checks and motion; all passed. No further expert review is claimed.
+
 ## 6. Photos
 
 The field band is live with five free photos in `public/assets/photos/` (1600 px wide, 173–312 KB each). Each was checked on its Unsplash page as a free **Unsplash License** photo on 22 Oct 2026. The originally listed server-aisle photo (`8CTEFI7fIPM`) turned out to be **Unsplash+** (paid) and a 3D render, so it was replaced by Taylor Vick's data-centre photo (`M5tzZtFCOfs`).
@@ -107,14 +139,39 @@ The field band is live with five free photos in `public/assets/photos/` (1600 px
 ## 7. Open items
 
 1. ~~Fetch and commit the photos~~ Done (section 6).
-2. Review and merge the follow-up PR from `flagship-redesign`. PR #1 is already merged. CI runs on the PR. `main` is not deployed yet: the live site still shows the pre-redesign build until someone runs **Deploy approved release**.
+2. ~~Review and merge the follow-up PR from `flagship-redesign`~~ Historical: PR #2 was merged as `28e12a9`, and that redesign was deployed earlier. The **current local QA changes on top of it are not committed, pushed or deployed**.
 3. ~~Header link: CISO club or CISA?~~ Decided 22 Oct 2026: the header link stays on the CISO **club** site, https://www.ciso-csusb.org/ (`site.json` → `club_url`). Do not add a cisa.gov link.
-4. Update the design-system artifact to the new radius scale (the brand book still says square corners in places).
-5. Confirm that the Drive folder's "anyone with the link" sharing is intended.
+4. Update the design-system artifact to the new radius scale (the brand book still says square corners in places). **Blocked:** the Claude artifact URL returns "Page not found" (HTTP 404).
+5. Confirm that the Drive folder's "anyone with the link" sharing is intended. **Blocked:** the relevant Google Drive account is signed out.
 6. Optional: deploy a preview through the repo's Pages workflow after maintainer approval.
+7. External handoff is blocked: the Claude design-artifact URL returns "Page not found", and the relevant Google Drive account is signed out with no connected-folder matches. No sharing settings were changed; resolve access before relying on those artifacts.
 
 ## 8. Working with the user
 
 - They prefer that changes go straight into the GitHub repo, on the PR branch, not into zips or clones.
 - They give short direction notes. Apply each note fully, verify visually at desktop and mobile widths, and push.
 - They care about the site not looking AI-generated or like a hacker cliché, and about strong contrast between sections.
+
+## 9. Follow-up, 22 Oct 2026 (badge, globe pointer, footer brackets)
+
+- Removed the floating "Simulated / not live telemetry" badge (markup, styles and stale phone-note comment). The seal's `aria-label` and the canvas artwork labels still identify the map as simulated.
+- The hero globe now eases its yaw and pitch toward the pointer on fine, hovering pointers (`lerp` 0.06; about 1.1 rad total yaw and 0.7 rad total pitch), while keeping the slow autospin and the 17° base tilt. Land, coastlines, nodes and arcs use the dynamic camera pitch. Reduced motion stays static; touch pointers keep autospin without needing hover.
+- Restored the original blue corner path in `cyberhub-lockup-on-dark.svg`; the asset is now byte-identical to `HEAD` (only the path had been removed).
+- `tests/test_build.py` now asserts the badge text is absent while the accessible simulation label remains, and that the footer lockup keeps the blue corner path.
+- Checks actually run here with the Node 24 runtime: `npm run check`, `npm test` (55 Python + 13 Node tests), `npm run build`, and `git diff --check`. Browser/mouse verification was left to the supervisor and is not claimed here.
+
+## 10. Geography, dragging and sign-off follow-up, 22 Oct 2026
+
+- Removed both canvas annotation groups shown in the user's screenshots. The accessible simulation description remains.
+- Replaced hand-traced land with vendored Natural Earth 1:110m country polygons, including national boundaries, multipolygons and holes. The globe fetches its geometry from the same site. The importer rounds to four decimal places and preserves original precision when rounding would collapse a small island.
+- Added mouse/touch dragging with pointer capture, persistent orientation and grab feedback. Existing mouse-follow motion remains; reduced motion suppresses automatic motion while allowing intentional dragging.
+- Latest intelligence is now a large, high-contrast report panel with the original data-backed headline, source link and publication date.
+- Both footer lockups use equal responsive frames and identical 22px corner lengths / 1.5px strokes. Shared CSS replaces embedded SVG corners so scaling cannot change their size. Frames align on desktop and stack on phones.
+- Reasonix objective: `cyberhub-20261022-geography-drag-intel-footer`. Flash implemented the UI and importer but its rounded tiny island failed validation. One Pro recovery corrected precision handling; it stopped at its step limit before regeneration/checks. Both executions reported errors and were confirmed stopped. The supervisor regenerated the asset using the worker's importer, corrected attribution and a desktop viewport setup in the browser test, then independently verified the final result. No further worker retry was launched.
+- Independent checks passed: `npm run check`; 57 Python + 13 Node tests; security and diff checks; root and `/cyberhub` builds with 105 routes / 106 HTML files / 8,530 links / zero link errors; browser smoke at both URL paths. Additional checks cover native mouse/touch dragging, capture release, retained mouse-follow, light mode, headline/link prominence and equal frames/corners at 1440, 1024, 768 and 390px. No browser page errors were observed.
+- Every vendored coordinate was independently compared against the downloaded source using the documented transformation: 177 countries, 289 rings, 10,603 coordinates; one ring retains source precision. Reviewed hero, report and footer screenshots are in `outputs/ui-qa-2026-10-22/geography-drag/`, alongside verification records.
+- Root preview remains at `http://127.0.0.1:4323/`; the temporary prefix preview was stopped after verification. All changes remain local, uncommitted, unpushed and undeployed. This section supersedes the older hand-traced-map and embedded-bracket implementation notes above.
+
+## 11. Release authorization, 22 Oct 2026
+
+The user explicitly approved committing, pushing and deploying this verified snapshot. Publication uses the existing `Deploy approved release` GitHub Pages workflow from `main`, with `SITE_URL=https://phan-vincent.github.io` and `BASE_PATH=/ciso-cyberhub`. The production-configured local build passes: 105 routes, 106 HTML files, 8,636 links checked and zero link errors. Earlier "uncommitted / unpushed / undeployed" statements describe the pre-release verification snapshots; the release commit and GitHub Actions runs record publication status.

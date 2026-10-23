@@ -1,0 +1,51 @@
+{
+  "task_id": "cyberhub-20261022-geography-drag-intel-footer",
+  "acceptance": "verified",
+  "workers": [
+    {
+      "worker": "Reasonix DeepSeek Flash",
+      "execution": "error_during_execution",
+      "result": "UI and importer implemented; tiny-island validation failed"
+    },
+    {
+      "worker": "Reasonix DeepSeek Pro",
+      "execution": "error_during_execution",
+      "result": "Importer precision corrected; stopped before regeneration and validation"
+    }
+  ],
+  "supervisor_integration": [
+    "Generated asset with worker importer",
+    "Corrected source attribution",
+    "Set desktop viewport before desktop browser assertions"
+  ],
+  "checks": {
+    "python_tests": 57,
+    "node_tests": 13,
+    "check": "pass",
+    "security": "pass",
+    "diff_check": "pass",
+    "root_build": {
+      "routes": 105,
+      "html": 106,
+      "links": 8530,
+      "errors": 0
+    },
+    "prefix_build": {
+      "base": "/cyberhub",
+      "routes": 105,
+      "html": 106,
+      "links": 8530,
+      "errors": 0
+    },
+    "browser_smoke_root": "pass",
+    "browser_smoke_prefix": "pass",
+    "independent_browser": "results.json",
+    "source_comparison": "geography-verification.json"
+  },
+  "state": {
+    "root_preview": "http://127.0.0.1:4323/",
+    "committed": false,
+    "pushed": false,
+    "deployed": false
+  }
+}

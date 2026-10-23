@@ -8,6 +8,19 @@ CERT/CC and SANS RSS/Atom adapters perform link-only indexing. CISA KEV, NVD and
 
 Original synthetic data: public/datasets/manifest.json lists provenance and SHA-256 values. It contains no actual university traffic, personal information, credentials or malware. The normalizer's fixtures use an obviously synthetic future CVE identifier and are never presented as current intelligence.
 
+## Geography
+
+The home globe renders real country geometry, not a hand-drawn approximation. `public/assets/geo/ne_110m_countries.json` is a compact local derivative of Natural Earth 1:110m Admin 0 Countries, vendored so the page makes no runtime map request.
+
+- Dataset: Natural Earth 1:110m Admin 0 Countries
+- Source: https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_110m_admin_0_countries.geojson
+- Download: https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson
+- Retrieved: 2026-10-22
+- Source SHA-256: `6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f` (838,726 bytes)
+- Terms: https://www.naturalearthdata.com/about/terms-of-use/ — public domain
+- Attribution: Made with Natural Earth. Free vector and raster map data @ naturalearthdata.com.
+- Transformation: coordinates rounded to 0.0001 degrees and consecutive duplicates removed; rings that would collapse retain their original precision. Polygon holes and multipolygons are retained. `scripts/fetch_geography.py` reproduces the asset and validates the FeatureCollection, geometry types, country count and ring validity.
+
 GitHub Actions are official actions pinned to upstream release commits checked on 2026-10-21. Their own licenses apply when GitHub executes them. Runtime Python and Node retain their own licenses. This repository declares no npm or Python package dependencies.
 
 Fonts: Archivo (The Archivo Project Authors) and Martian Mono (The Martian Mono Project Authors) are self-hosted under the SIL Open Font License 1.1. License texts ship beside the files in public/assets/fonts/. They are served from this site because the Content Security Policy allows fonts from 'self' only.

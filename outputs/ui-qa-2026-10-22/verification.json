@@ -1,0 +1,295 @@
+{
+  "checks": [
+    {
+      "name": "hero/globe separation 1440",
+      "passed": true
+    },
+    {
+      "name": "visible globe 1440",
+      "passed": true
+    },
+    {
+      "name": "HUB under CYBER 1440",
+      "passed": true
+    },
+    {
+      "name": "home overflow 1440",
+      "passed": true
+    },
+    {
+      "name": "homepage theme visibly changes 1440",
+      "passed": true
+    },
+    {
+      "name": "module 1 preview separation 1440 light",
+      "passed": true
+    },
+    {
+      "name": "module 2 preview separation 1440 light",
+      "passed": true
+    },
+    {
+      "name": "module 3 preview separation 1440 light",
+      "passed": true
+    },
+    {
+      "name": "module 4 preview separation 1440 light",
+      "passed": true
+    },
+    {
+      "name": "module 5 preview separation 1440 light",
+      "passed": true
+    },
+    {
+      "name": "module 1 preview separation 1440 dark",
+      "passed": true
+    },
+    {
+      "name": "module 2 preview separation 1440 dark",
+      "passed": true
+    },
+    {
+      "name": "module 3 preview separation 1440 dark",
+      "passed": true
+    },
+    {
+      "name": "module 4 preview separation 1440 dark",
+      "passed": true
+    },
+    {
+      "name": "module 5 preview separation 1440 dark",
+      "passed": true
+    },
+    {
+      "name": "footer fits 1440",
+      "passed": true
+    },
+    {
+      "name": "footer lockups vertically aligned",
+      "passed": true
+    },
+    {
+      "name": "powered has no full border 1440",
+      "passed": true
+    },
+    {
+      "name": "hero/globe separation 1024",
+      "passed": true
+    },
+    {
+      "name": "visible globe 1024",
+      "passed": true
+    },
+    {
+      "name": "HUB under CYBER 1024",
+      "passed": true
+    },
+    {
+      "name": "home overflow 1024",
+      "passed": true
+    },
+    {
+      "name": "homepage theme visibly changes 1024",
+      "passed": true
+    },
+    {
+      "name": "module 1 preview separation 1024 light",
+      "passed": true
+    },
+    {
+      "name": "module 2 preview separation 1024 light",
+      "passed": true
+    },
+    {
+      "name": "module 3 preview separation 1024 light",
+      "passed": true
+    },
+    {
+      "name": "module 4 preview separation 1024 light",
+      "passed": true
+    },
+    {
+      "name": "module 5 preview separation 1024 light",
+      "passed": true
+    },
+    {
+      "name": "module 1 preview separation 1024 dark",
+      "passed": true
+    },
+    {
+      "name": "module 2 preview separation 1024 dark",
+      "passed": true
+    },
+    {
+      "name": "module 3 preview separation 1024 dark",
+      "passed": true
+    },
+    {
+      "name": "module 4 preview separation 1024 dark",
+      "passed": true
+    },
+    {
+      "name": "module 5 preview separation 1024 dark",
+      "passed": true
+    },
+    {
+      "name": "footer fits 1024",
+      "passed": true
+    },
+    {
+      "name": "powered has no full border 1024",
+      "passed": true
+    },
+    {
+      "name": "hero/globe separation 768",
+      "passed": true
+    },
+    {
+      "name": "visible globe 768",
+      "passed": true
+    },
+    {
+      "name": "HUB under CYBER 768",
+      "passed": true
+    },
+    {
+      "name": "home overflow 768",
+      "passed": true
+    },
+    {
+      "name": "homepage theme visibly changes 768",
+      "passed": true
+    },
+    {
+      "name": "module 1 preview separation 768 light",
+      "passed": true
+    },
+    {
+      "name": "module 2 preview separation 768 light",
+      "passed": true
+    },
+    {
+      "name": "module 3 preview separation 768 light",
+      "passed": true
+    },
+    {
+      "name": "module 4 preview separation 768 light",
+      "passed": true
+    },
+    {
+      "name": "module 5 preview separation 768 light",
+      "passed": true
+    },
+    {
+      "name": "module 1 preview separation 768 dark",
+      "passed": true
+    },
+    {
+      "name": "module 2 preview separation 768 dark",
+      "passed": true
+    },
+    {
+      "name": "module 3 preview separation 768 dark",
+      "passed": true
+    },
+    {
+      "name": "module 4 preview separation 768 dark",
+      "passed": true
+    },
+    {
+      "name": "module 5 preview separation 768 dark",
+      "passed": true
+    },
+    {
+      "name": "footer fits 768",
+      "passed": true
+    },
+    {
+      "name": "powered has no full border 768",
+      "passed": true
+    },
+    {
+      "name": "hero/globe separation 390",
+      "passed": true
+    },
+    {
+      "name": "visible globe 390",
+      "passed": true
+    },
+    {
+      "name": "HUB under CYBER 390",
+      "passed": true
+    },
+    {
+      "name": "home overflow 390",
+      "passed": true
+    },
+    {
+      "name": "homepage theme visibly changes 390",
+      "passed": true
+    },
+    {
+      "name": "module 1 preview separation 390 light",
+      "passed": true
+    },
+    {
+      "name": "module 2 preview separation 390 light",
+      "passed": true
+    },
+    {
+      "name": "module 3 preview separation 390 light",
+      "passed": true
+    },
+    {
+      "name": "module 4 preview separation 390 light",
+      "passed": true
+    },
+    {
+      "name": "module 5 preview separation 390 light",
+      "passed": true
+    },
+    {
+      "name": "module 1 preview separation 390 dark",
+      "passed": true
+    },
+    {
+      "name": "module 2 preview separation 390 dark",
+      "passed": true
+    },
+    {
+      "name": "module 3 preview separation 390 dark",
+      "passed": true
+    },
+    {
+      "name": "module 4 preview separation 390 dark",
+      "passed": true
+    },
+    {
+      "name": "module 5 preview separation 390 dark",
+      "passed": true
+    },
+    {
+      "name": "footer fits 390",
+      "passed": true
+    },
+    {
+      "name": "powered has no full border 390",
+      "passed": true
+    },
+    {
+      "name": "all 28 flashcard fronts/backs, click, reset and wrap",
+      "passed": true
+    },
+    {
+      "name": "no page errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "outputs/ui-qa-2026-10-22/hero-1440-dark.png",
+    "outputs/ui-qa-2026-10-22/hero-light.png",
+    "outputs/ui-qa-2026-10-22/footer.png",
+    "outputs/ui-qa-2026-10-22/hero-390-dark.png"
+  ]
+}

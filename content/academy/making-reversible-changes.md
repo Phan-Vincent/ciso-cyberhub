@@ -16,7 +16,7 @@ Write a short answer before checking the flashcard or quiz. Include the evidence
 
 What separates a rollback plan from a backup?
 
-**Expected reasoning:** The plan specifies how and when to recover, including dependencies and access. A recovery path must remain usable when the changed access method fails.
+**Expected reasoning:** A backup is a recoverable copy of data; a rollback plan sets out how and when to restore service and data, including dependencies and access. A recovery path must remain usable when the changed access method fails.
 
 ## Continue your study
 
