@@ -845,3 +845,63 @@ input[type=checkbox], input[type=radio] { width: auto; min-height: 0; accent-col
   .seal { opacity: .7; }
   .hero-intro { position: relative; z-index: 4; background: rgba(5,5,5,.82); box-shadow: 0 0 0 14px rgba(5,5,5,.82); }
 }
+
+/* ============ RADIUS SYSTEM ============
+   Soft, not bubbly: three steps. Rows, rules and full-bleed scenes stay straight.
+   --r-sm  8px  badges, inline code, kbd, inputs
+   --r-md 12px  buttons, chips, header controls, small panels
+   --r-lg 20px  cards, panels, grids, media
+   --r-xl 28px  the large object frames (device, diptych) */
+:root { --r-xs: 6px; --r-sm: 8px; --r-md: 12px; --r-lg: 20px; --r-xl: 28px; }
+
+button, .button, .search-pill, .club-link, .icon-btn, .menu-btn, .chip, .file-label, #menu-close { border-radius: var(--r-md); }
+.badge, .handoff .tags span { border-radius: var(--r-xs); }
+:not(pre) > code, kbd, .search-pill kbd { border-radius: var(--r-xs); }
+input, select { border-radius: 10px; }
+.status:not(:empty) { border-radius: var(--r-md); }
+
+/* Panels and cards */
+.notice, .aside, .telemetry-panel, .quiz-actions, .search-panel, .filters, .flashcard, #quiz-result, .node-card, .qcard, .empty { border-radius: var(--r-lg); }
+.notice { border-left-width: 1px; box-shadow: inset 3px 0 0 var(--signal); }
+#quiz fieldset { border-radius: var(--r-lg); }
+#quiz fieldset label, .rationale, .qcard ol button { border-radius: var(--r-md); }
+.rationale { border-left: 0; box-shadow: inset 3px 0 0 var(--signal); }
+.prose pre { border-radius: var(--r-md); }
+.metadata { border-radius: 0; }
+
+/* Tile grids: rounded outer frame, hairlines inside (grouped-list style) */
+.grid, .tiles { border: 1px solid var(--rule); border-radius: var(--r-lg); overflow: hidden; }
+.grid > .card, .tiles > .tile { margin: 0 -1px -1px 0; }
+.lab-index { border-top: 0; }
+.lab-index a { border: 1px solid var(--rule); border-radius: var(--r-lg); margin-right: 0; padding: 20px; }
+.lab-index { gap: 12px; }
+.lab-index a:hover { border-color: var(--signal); background: rgba(255,255,255,.03); }
+.spec { border-radius: 0; }
+
+/* Object frames */
+.diptych { border-radius: var(--r-xl); overflow: hidden; }
+.dip-panels { gap: 1px; }
+.device-shell { border-radius: var(--r-xl) var(--r-xl) var(--r-lg) var(--r-lg); }
+.device-screen { border-radius: 14px; }
+.device-base { border-radius: 0 0 var(--r-md) var(--r-md); }
+.bench { border-radius: 14px; }
+.mod-media { border-radius: var(--r-lg); overflow: hidden; }
+.mod-media::after { inset: 0; border-radius: var(--r-lg); }
+.domains tbody tr td:first-child { border-top-left-radius: var(--r-sm); border-bottom-left-radius: var(--r-sm); }
+.domains tbody tr td:last-child { border-top-right-radius: var(--r-sm); border-bottom-right-radius: var(--r-sm); }
+.track, .track i { border-radius: 999px; }
+.lvl i { border-radius: 999px; }
+.loader-line, .progress i { border-radius: 999px; }
+
+/* Corner ticks belong to square frames; drop them on rounded ones */
+.qcard.tick::before, .qcard.tick::after, .bench.tick::before, .bench.tick::after { display: none; }
+
+/* Rounded focus rings follow the shape */
+:focus-visible { border-radius: var(--r-sm); }
+.card:has(h2 a):hover::after, .tile:hover::after { border-radius: 0; }
+
+@media (max-width: 640px) {
+  .diptych { border-radius: var(--r-lg); }
+  .device-shell { border-radius: var(--r-lg) var(--r-lg) var(--r-md) var(--r-md); }
+  .lab-index a { padding: 16px; }
+}

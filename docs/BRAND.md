@@ -20,7 +20,7 @@ All files are in `public/assets/brand/` and are served at `/assets/brand/`.
 
 - The wordmark is set in Archivo at 62% width, weight 830, in capitals. CYBER is solid, HUB is a blue outline. Never fill HUB, never outline CYBER.
 - The CISO seal never replaces the Core and never sits beside it at the same size.
-- Square corners. Only dots, rings, the cursor and the Core are round.
+- Soft corners on a three-step scale (`web/site.css`, RADIUS SYSTEM): 6–10px for badges, code and inputs; 12px for buttons, chips and header controls; 20px for cards, panels and tile-grid frames; 28px for the large object frames (lab device, machine-render band). Full-bleed scenes, list rows and rules stay straight. Never pill-shaped except progress tracks and dots.
 - Colour carries meaning: blue is the signal (live, selected, important). Amber marks stale or failing sources.
 - Motion eases with `cubic-bezier(.2,.7,0,1)` and turns off under `prefers-reduced-motion`.
 
