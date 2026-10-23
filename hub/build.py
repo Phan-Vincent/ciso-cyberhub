@@ -9,6 +9,7 @@ import subprocess
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
+from .intel_art import intel_art
 from .common import ROOT, read_json, safe_url, timestamp
 from .markdown import render
 from .validate import validate
@@ -102,7 +103,7 @@ class Site:
         footer=(f'<footer class="footer tone-void" data-tone="footer"><div class="foot-core" aria-hidden="true">{self.img("cyberhub-core-on-dark.svg")}</div>'
                 '<p class="foot-say wrap" aria-hidden="true"><span>Build.</span><span>Break.</span><span>Defend.</span><span>Learn.</span></p>'
                 f'<div class="foot-lockup wrap"><div class="brand-frame">{self.img("cyberhub-lockup-on-dark.svg","CyberHub, powered by CISO","",622,160)}</div>'
-                f'<a class="brand-frame powered" href="{E(self.config["club_url"])}"><img src="{E(b+self.BRAND)}ciso-seal.png" alt="CISO seal" width="64" height="64"><span><span class="label">Powered by</span><strong>Cyber Intelligence &amp; Security Organization</strong></span></a></div>'
+                f'<a class="brand-frame powered" href="{E(self.config["club_url"])}" aria-label="Powered by CISO, the Cyber Intelligence and Security Organization (opens the club site)"><img src="{E(b+self.BRAND)}ciso-seal.png" alt="" width="96" height="96"><span class="ciso-word" aria-hidden="true"><span class="label">Powered by</span><strong>CISO</strong><span class="label">Cyber Intelligence &amp; Security Org.</span></span></a></div>'
                 '<div class="netline" aria-hidden="true"><i></i></div><div class="foot-grid wrap">'
                 f'<div><h2>CyberHub</h2><span>Open security learning</span><span>Free, no account, nothing to install</span></div>'
                 f'<div><h2>Learn</h2>{self.a("Tool explorer","/tools/")}{self.a("Security+ academy","/academy/")}{self.a("Labs","/labs/")}{self.a("Career roadmaps","/careers/")}</div>'
@@ -153,7 +154,7 @@ class Site:
               '<div class="aperture-ring" id="ap-ring" aria-hidden="true"></div>'
               '<div class="aperture tone-paper" id="aperture"><div class="mission wrap" id="mission">'
               '<div class="mission-head label"><span>02 / What CyberHub is</span><span>Access / open</span><span>Account / none required</span></div>'
-              '<p class="mission-statement">Learn security the way it is practised. <span class="soft">With real tools, safe evidence and reasoning you can check.</span></p><div class="spec">')
+              '<p class="mission-statement">Learn security the way it is practiced. <span class="soft">With real tools, safe evidence and reasoning you can check.</span></p><div class="spec">')
         for n,label in [(count,'Open-source tools'),(lessons,'Security+ lessons'),(len(labs_list),'Guided labs'),(careers,'Career roadmaps')]:
             body+=f'<div><strong data-count="{n}">{n:02d}</strong><span class="label">{E(label)}</span></div>'
         body+='</div></div></div></div></section>'
@@ -180,15 +181,15 @@ class Site:
         if latest:
             published=(latest.get('published_at') or '')[:10]
             date_html=f'<time datetime="{E(published)}">{E(published)}</time>' if published else '<span>Publication date not reported</span>'
-            feature=(f'<div class="intel-feature wrap"><article class="intel-feature-panel"><p class="intel-feature-kicker label"><span class="intel-dot" aria-hidden="true"></span>Intel desk / latest report</p>'
+            feature=(f'<div class="intel-feature wrap"><article class="intel-feature-panel has-art"><div class="intel-feature-text"><p class="intel-feature-kicker label"><span class="intel-dot" aria-hidden="true"></span>Intel desk / latest report</p>'
                      f'<h2 class="intel-feature-headline"><a href="{E(latest["url"])}">{E(latest["title"])}<span class="arr" aria-hidden="true">↗</span></a></h2>'
-                     f'<p class="intel-feature-meta label"><span>{E(latest["source"])}</span>{date_html}</p></article></div>')
+                     f'<p class="intel-feature-meta label"><span>{E(latest["source"])}</span>{date_html}</p></div>{intel_art(latest)}</article></div>')
         else:
             feature=(f'<div class="intel-feature wrap"><article class="intel-feature-panel"><p class="intel-feature-kicker label"><span class="intel-dot" aria-hidden="true"></span>Intel desk / latest report</p>'
                      f'<h2 class="intel-feature-headline">{self.a("No headlines retrieved yet — see source health.","/intelligence/")}</h2>'
                      f'<p class="intel-feature-meta label"><span>{healthy}/{len(sources_cfg)} feeds healthy</span><span>Attributed source reporting only</span></p></article></div>')
         body+=('<section class="scene interlude tone-blue" data-tone="blue" data-sec="03" aria-label="Latest intelligence">'
-               '<div class="marquee m1" id="m1" aria-hidden="true"><span>Learn</span><span class="o">Practise</span><span>Verify</span><span class="o">Defend</span><span>Learn</span><span class="o">Practise</span></div>'
+               '<div class="marquee m1" id="m1" aria-hidden="true"><span>Learn</span><span class="o">Practice</span><span>Verify</span><span class="o">Defend</span><span>Learn</span><span class="o">Practice</span></div>'
                '<div class="marquee m2" id="m2" aria-hidden="true"><span class="o">Observe</span><span>Reason</span><span class="o">Report</span><span>Observe</span><span class="o">Reason</span></div>'
                f'{feature}</section>')
         # 04 modules
@@ -199,9 +200,9 @@ class Site:
               ('05','Careers',careers,'roadmaps','SOC to architect','Role guides that connect skills to projects you can show.','path','/careers/')]
         body+=('<section class="scene tone-paper sec-pad wrap" id="modules" data-tone="paper" data-sec="04" aria-labelledby="mod-title"><div class="sec-head rv">'
                f'<span class="label"><span class="on">04</span> / Modules</span><h2 id="mod-title">{R("Five ways")}{R("into the field","d1")}</h2></div>'
-               '<div class="diptych" aria-hidden="true"><div class="dip-bar label"><span>Selected modules</span><span class="dip-arrows">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div>'
-               '<div class="dip-panels"><figure class="dip dip-dark"><canvas data-machine="rig"></canvas><figcaption class="label"><span>Core / top view</span><span>N01–N08</span></figcaption></figure>'
-               '<figure class="dip dip-light"><canvas data-machine="xray"></canvas><figcaption class="label"><span>Core / exploded</span><span>Layers 01–05</span></figcaption></figure></div></div>'
+               '<div class="diptych"><div class="dip-bar label" aria-hidden="true"><span>Selected modules</span><span class="dip-arrows">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div>'
+               f'<div class="dip-panels"><a class="dip dip-dark" href="{E(b)}/tools/" aria-label="Open the tool explorer"><canvas data-machine="rig" aria-hidden="true"></canvas><span class="dip-cap label" aria-hidden="true"><span>Core / top view</span><span>N01–N08</span></span></a>'
+               f'<a class="dip dip-light" href="{E(b)}/resources/" aria-label="See every resource"><canvas data-machine="xray" aria-hidden="true"></canvas><span class="dip-cap label" aria-hidden="true"><span>Core / exploded</span><span>Layers 01–05</span></span></a></div></div>'
                '<ol class="modules">')
         for idx,title,num,unit,meta,desc,art,path in mods:
             body+=(f'<li class="mod"><figure class="mod-media" aria-hidden="true"><canvas data-art="{art}"></canvas></figure><a href="{E(b+path)}" data-cursor="Open">'
@@ -213,7 +214,7 @@ class Site:
             body+=('<section class="scene tone-carbon sec-pad wrap field" data-tone="carbon" aria-labelledby="field-title"><div class="sec-head rv">'
                    f'<span class="label"><span class="on">Field</span> / In the room</span><h2 id="field-title">{R("What you")}{R("will defend","d1")}</h2></div><div class="field-grid">')
             for i,p in enumerate(photos[:5]):
-                body+=(f'<figure class="shot shot-{i+1} rv"><img src="{E(b)}/assets/photos/{E(p["file"])}" alt="{E(p["alt"])}" loading="lazy" decoding="async">'
+                body+=(f'<figure class="shot shot-{i+1} rv" tabindex="0" aria-describedby="shot-pop-{i+1}"><p class="shot-pop" id="shot-pop-{i+1}"><span class="label">{E(p["caption"])}</span>{E(p.get("desc",""))}</p><img src="{E(b)}/assets/photos/{E(p["file"])}" alt="{E(p["alt"])}" loading="lazy" decoding="async">'
                        f'<figcaption class="label"><span>{i+1:02d} / {E(p["caption"])}</span><span>{E(p["note"])}</span></figcaption></figure>')
             credits=', '.join(f'<a href="{E(p["page"])}">{E(p["by"])}</a>' for p in photos[:5])
             body+=f'</div><p class="field-credit label">Photography: {credits} / Unsplash License</p></section>'
