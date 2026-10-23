@@ -16,12 +16,12 @@ Brand assets: the CyberHub Core logo family in public/assets/brand/ comes from t
 
 ## Photography (field band)
 
-Photos listed in `data/photos.json` come from Unsplash under the Unsplash License (free for commercial and non-commercial use, no permission needed; attribution appreciated). Each entry links to its source page. Fetch them with `python scripts/fetch_photos.py`. Before committing a photo, confirm on its page that it is a free Unsplash License photo and not Unsplash+.
+Photos listed in `data/photos.json` come from Unsplash under the Unsplash License (free for commercial and non-commercial use, no permission needed; attribution appreciated). Each entry links to its source page. Fetch them with `python scripts/fetch_photos.py`. Before committing a photo, confirm on its page that it is a free Unsplash License photo and not Unsplash+. All five below were checked as free Unsplash License photos on 2026-10-22 and are committed at 1600 px wide.
 
-| File | Source |
-| --- | --- |
-| server-aisle.jpg | https://unsplash.com/photos/8CTEFI7fIPM |
-| robot-arm.jpg | https://unsplash.com/photos/sz1CHL7Pky0 |
-| circuit-board.jpg | https://unsplash.com/photos/8hcIIZ8SoyU |
-| patch-panel.jpg | https://unsplash.com/photos/dyUp7WPu5q4 |
-| old-monitor.jpg | https://unsplash.com/photos/QKQEnPLiCK8 |
+| File | Photographer | Source |
+| --- | --- | --- |
+| server-aisle.jpg | Taylor Vick | https://unsplash.com/photos/M5tzZtFCOfs |
+| robot-arm.jpg | Homa Appliances | https://unsplash.com/photos/sz1CHL7Pky0 |
+| circuit-board.jpg | Ludovico Ceroseis | https://unsplash.com/photos/8hcIIZ8SoyU |
+| patch-panel.jpg | Albert Stoynov | https://unsplash.com/photos/dyUp7WPu5q4 |
+| old-monitor.jpg | Nick Russill | https://unsplash.com/photos/QKQEnPLiCK8 |

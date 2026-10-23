@@ -4,6 +4,8 @@ Run from the repo root on a normal internet connection:  python scripts/fetch_ph
 Photos are self-hosted because the site's Content Security Policy only allows images from 'self'.
 Before committing a photo, open its "page" link and confirm it is under the Unsplash License
 (free to use) and not "Unsplash+" (paid). Remove any entry that is not free.
+Each entry's "src" is the photo's images.unsplash.com address (the page's og:image without its
+query string). The unsplash.com/photos/<id>/download endpoint answers scripts with 401, so it is not used.
 """
 import json, pathlib, sys, urllib.request
 
@@ -17,12 +19,14 @@ def main() -> int:
         dest = OUT / p['file']
         if dest.exists():
             print('have', dest.name); continue
-        url = f"https://unsplash.com/photos/{p['id']}/download?force=true&w=1600"
+        url = p['src'] + '?w=1600&q=72&fm=jpg&fit=max'
         try:
+            if not p['src'].startswith('https://images.unsplash.com/photo-'):
+                raise ValueError('src must be a free images.unsplash.com/photo-… address (plus.unsplash.com is Unsplash+)')
             req = urllib.request.Request(url, headers={'User-Agent': 'CyberHub photo fetch'})
             with urllib.request.urlopen(req, timeout=60) as r:
                 if not r.headers.get('content-type', '').startswith('image/'):
-                    raise ValueError('not an image (may be Unsplash+, check the page)')
+                    raise ValueError('not an image, check the page')
                 dest.write_bytes(r.read())
             print('saved', dest.name, f'{dest.stat().st_size // 1024} KB')
         except Exception as exc:  # report and continue

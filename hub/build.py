@@ -93,7 +93,7 @@ class Site:
         theme_btn='<button id="theme" class="icon-btn" type="button" aria-label="Switch between light and dark theme"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="6.5"/><path class="fill" d="M10 3.5a6.5 6.5 0 0 0 0 13z"/></svg></button>'
         header=(f'<div class="progress" aria-hidden="true"><i id="progress"></i></div>'
                 f'<header class="site-header wrap{" tone-void" if home else ""}" id="site-header">{brand}<nav class="main-nav label" aria-label="Main navigation">{nav}</nav>'
-                f'<div class="header-actions"><a class="club-link label" href="{E(self.config["club_url"])}" aria-label="CISO club website (opens ciso-csusb.org)"><span class="lbl">CISO club site</span><span class="short">CISO</span> ↗</a><a class="search-pill label" href="{E(b)}/search/"><span class="lbl">Search</span><kbd>⌘K</kbd></a>{theme_btn}'
+                f'<div class="header-actions"><a class="club-link label" href="{E(self.config["club_url"])}" aria-label="CISO club site, ciso-csusb.org"><span class="lbl">CISO club site</span><span class="short">CISO</span> ↗</a><a class="search-pill label" href="{E(b)}/search/"><span class="lbl">Search</span><kbd>⌘K</kbd></a>{theme_btn}'
                 '<button class="menu-btn label" id="menu-open" type="button" aria-expanded="false" aria-controls="menu">Menu</button></div></header>'
                 f'<div class="menu wrap tone-void" id="menu" role="dialog" aria-modal="true" aria-label="Site menu"><div class="menu-top">'
                 f'<a class="brand" href="{E(b)}/"><span class="brand-core">{self.img("cyberhub-core-on-dark.svg","","dark",32,32)}</span><span class="brand-word">Cyber<i>Hub</i></span></a>'
@@ -207,7 +207,8 @@ class Site:
             for i,p in enumerate(photos[:5]):
                 body+=(f'<figure class="shot shot-{i+1} rv"><img src="{E(b)}/assets/photos/{E(p["file"])}" alt="{E(p["alt"])}" loading="lazy" decoding="async">'
                        f'<figcaption class="label"><span>{i+1:02d} / {E(p["caption"])}</span><span>{E(p["note"])}</span></figcaption></figure>')
-            body+='</div><p class="field-credit label">Photography: Unsplash contributors, Unsplash License. Credits in THIRD_PARTY_NOTICES.md.</p></section>'
+            credits=', '.join(f'<a href="{E(p["page"])}">{E(p["by"])}</a>' for p in photos[:5])
+            body+=f'</div><p class="field-credit label">Photography: {credits} / Unsplash License</p></section>'
         # 05 labs
         body+=('<section class="scene tone-void sec-pad wrap" id="labs" data-tone="void" data-sec="05" aria-labelledby="lab-title"><div class="sec-head rv">'
                f'<span class="label"><span class="on">05</span> / Labs</span><h2 id="lab-title">{R("Evidence you")}{R("can touch","d1")}</h2></div><div class="lab">'

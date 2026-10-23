@@ -200,7 +200,7 @@ code, kbd, pre { font-family: var(--mono); font-stretch: 87.5%; font-size: .86em
 .main-nav a:hover, .main-nav a[aria-current] { color: var(--ink); }
 .main-nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 1px; background: var(--signal); transform: scaleX(0); transform-origin: right; transition: transform var(--mid) var(--ease); }
 .main-nav a:hover::after, .main-nav a[aria-current]::after { transform: scaleX(1); transform-origin: left; }
-.header-actions { display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+.header-actions { grid-column: 3; justify-self: end; display: flex; align-items: center; gap: 12px; white-space: nowrap; }
 .search-pill { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 12px; border: 1px solid var(--rule-strong); color: var(--ink-muted); text-decoration: none; }
 .search-pill:hover { color: var(--ink); border-color: var(--ink); }
 .search-pill kbd { border: 1px solid var(--rule); padding: 0 5px; font-size: 10px; }
@@ -841,6 +841,8 @@ input[type=checkbox], input[type=radio] { width: auto; min-height: 0; accent-col
   .hero-actions .button { min-height: 44px; padding: 0 14px; }
   .club-link { height: 40px; padding: 0 10px; }
 }
+/* Phones: the menu carries the club link (08), so the header keeps only theme + menu and stays inside the gutter */
+@media (max-width: 479px) { .header-actions .club-link { display: none; } }
 @media (max-width: 640px) {
   .seal { opacity: .7; }
   .hero-intro { position: relative; z-index: 4; background: rgba(5,5,5,.82); box-shadow: 0 0 0 14px rgba(5,5,5,.82); }

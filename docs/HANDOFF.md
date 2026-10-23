@@ -1,6 +1,6 @@
 # CyberHub redesign: handoff
 
-This file is for a teammate, or a teammate's Claude session, picking up the CyberHub design work. To a Claude session, say: "Read docs/HANDOFF.md in Phan-Vincent/ciso-cyberhub and continue the design work on the flagship-redesign branch." Last updated 22 Oct 2026.
+This file is for a teammate, or a teammate's Claude session, picking up the CyberHub design work. To a Claude session, say: "Read docs/HANDOFF.md in Phan-Vincent/ciso-cyberhub and continue the design work on the flagship-redesign branch." Last updated 22 Oct 2026 (photos, mobile header fix, review).
 
 ## 1. Scope: what this project is and is not
 
@@ -15,7 +15,7 @@ This file is for a teammate, or a teammate's Claude session, picking up the Cybe
 | What | Where |
 | --- | --- |
 | Repo | https://github.com/Phan-Vincent/ciso-cyberhub |
-| Redesign work | Branch `flagship-redesign`, **PR #1** https://github.com/Phan-Vincent/ciso-cyberhub/pull/1 (not merged) |
+| Redesign work | Branch `flagship-redesign`. **PR #1** https://github.com/Phan-Vincent/ciso-cyberhub/pull/1 merged only the first commit (`9d5ceec`); everything after it is in the follow-up PR from the same branch |
 | Design system: tokens, logo family, brand book | Claude artifact "CISO CyberHub" https://claude.ai/artifact/Goeju2FRfnJJoJ53DQS7tB |
 | Standalone prototype (one HTML page; it predates the Resources page and the rounding) | https://claude.ai/artifact/9XythmrDAJ3EcoqwzYD3am |
 | Logo rules | `docs/BRAND.md` |
@@ -79,7 +79,8 @@ This file is for a teammate, or a teammate's Claude session, picking up the Cybe
 | `9d5ceec` | Flagship redesign, brand system, fonts, new homepage scenes and behaviours |
 | `6681284` | `/resources/` page, summary under the hero logotype, "CISO club site" header link |
 | `22190d0` | Three-step radius scale (softened corners) |
-| latest | Field photo band, `data/photos.json`, `scripts/fetch_photos.py`, this handoff |
+| `117e51f` | Field photo band, `data/photos.json`, `scripts/fetch_photos.py`, this handoff |
+| latest | Five verified free photos committed, header actions pinned right (no phone overflow), named photo credits |
 
 All checks pass. The site builds 105 pages, and the link check is clean. Visual QA was done at 1440, 1024 and 390 px, in light and dark themes and with reduced motion.
 
@@ -91,19 +92,13 @@ All checks pass. The site builds 105 pages, and the link check is clean. Visual 
 - `public/assets/brand/`
 - `public/assets/fonts/`
 
-## 6. Photos: one step left for a human
+## 6. Photos
 
-The user asked for real, free-to-use photos in the Awwwards style. The Claude workspace that did this work could not download images because its network blocks image hosts. So:
+The field band is live with five free photos in `public/assets/photos/` (1600 px wide, 173–312 KB each). Each was checked on its Unsplash page as a free **Unsplash License** photo on 22 Oct 2026. The originally listed server-aisle photo (`8CTEFI7fIPM`) turned out to be **Unsplash+** (paid) and a 3D render, so it was replaced by Taylor Vick's data-centre photo (`M5tzZtFCOfs`).
 
-1. **What exists:**
-   - The field band is built and styled.
-   - `data/photos.json` lists five Unsplash photos: server aisle, robot arm, circuit board, network cables, old monitor.
-   - The band renders only for photos that actually exist in `public/assets/photos/`, so the site looks complete without them.
-2. **To finish:**
-   - On a normal connection, run `python scripts/fetch_photos.py`.
-   - Open each photo's Unsplash page and confirm it is the free **Unsplash License**, not Unsplash+. Swap any that aren't.
-   - Commit the JPGs. Keep each under about 400 KB; resize to 1600 px wide if needed.
-3. **To swap or add a photo:** edit `data/photos.json` (slot `field`; fields `file`, `id`, `page`, `alt`, `caption`, `note`) and add the matching credit row in `THIRD_PARTY_NOTICES.md`.
+1. **How fetching works:** `python scripts/fetch_photos.py` downloads each entry's `src` (its `images.unsplash.com/photo-…` address) at 1600 px. The `unsplash.com/photos/<id>/download` endpoint answers scripts with HTTP 401, so it is not used. A `src` on `plus.unsplash.com` is refused, because that host serves Unsplash+.
+2. **To swap or add a photo:** open the photo's page and confirm the title says "Free Photo on Unsplash". Copy the page's `og:image` without its query string into `src`. Fill `file`, `id`, `page`, `by` (photographer), `alt`, `caption` and `note` in `data/photos.json` (slot `field`), run the script, and add the credit row in `THIRD_PARTY_NOTICES.md`. The band credits each photographer by name, linked to the photo page.
+3. **The band renders only for photos that exist** in `public/assets/photos/`, so a missing file just drops its tile.
 4. **Good next slots for photography:**
    - Replace or pair the canvas machine renders in the modules diptych.
    - Add a photo header on `/resources/`.
@@ -111,8 +106,8 @@ The user asked for real, free-to-use photos in the Awwwards style. The Claude wo
 
 ## 7. Open items
 
-1. Fetch and commit the photos (section 6).
-2. Review and merge PR #1. CI runs on the PR.
+1. ~~Fetch and commit the photos~~ Done (section 6).
+2. Review and merge the follow-up PR from `flagship-redesign`. PR #1 is already merged. CI runs on the PR. `main` is not deployed yet: the live site still shows the pre-redesign build until someone runs **Deploy approved release**.
 3. The header link points to the CISO **club** site (`site.json` → `club_url`). The user wrote "CISA website"; we read that as CISO. If they meant the US agency, either point it to https://www.cisa.gov/ or add a second link.
 4. Update the design-system artifact to the new radius scale (the brand book still says square corners in places).
 5. Confirm that the Drive folder's "anyone with the link" sharing is intended.
