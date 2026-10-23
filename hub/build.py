@@ -10,6 +10,10 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 from .intel_art import intel_art
+import hashlib as _hashlib
+from pathlib import Path as _Path
+# Cache-busting version: changes whenever any front-end source changes, so browsers never pair new HTML with an old stylesheet or script.
+ASSET_V=_hashlib.sha256(b''.join(p.read_bytes() for p in sorted((_Path(__file__).resolve().parents[1]/'web').iterdir()) if p.is_file())).hexdigest()[:10]
 from .common import ROOT, read_json, safe_url, timestamp
 from .markdown import render
 from .validate import validate
@@ -117,7 +121,7 @@ class Site:
              f'<meta name="theme-color" content="#050505"><title>{E(title)} · {E(self.config["name"])}</title>{canonical}'
              f'<link rel="icon" href="{b}/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{b}{self.BRAND}cyberhub-app-icon.svg">'
              f'<link rel="preload" href="{b}/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>'
-             f'<link rel="stylesheet" href="{b}/assets/site.css"><script src="{b}/assets/theme.js"></script><script type="module" src="{b}/assets/app.js"></script></head>'
+             f'<link rel="stylesheet" href="{b}/assets/site.css?v={ASSET_V}"><script src="{b}/assets/theme.js?v={ASSET_V}"></script><script type="module" src="{b}/assets/app.js?v={ASSET_V}"></script></head>'
              f'<body class="{"home" if home else "inner"}" data-base="{E(b)}"><a class="skip" href="#main">Skip to content</a>{loader}{header}'
              f'<main id="main" class="shell">{body}<div id="status" class="status" role="status" aria-live="polite"></div></main>{footer}'
              '<div class="cursor" id="cursor" aria-hidden="true"><div class="ring"><span id="cursor-label">View</span></div><div class="dot"></div></div></body></html>')

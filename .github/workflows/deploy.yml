@@ -1,5 +1,9 @@
 name: Deploy approved release
+# Publishes automatically whenever main changes (merged pull requests, including
+# the source-update PRs), and can still be run by hand from the Actions tab.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
