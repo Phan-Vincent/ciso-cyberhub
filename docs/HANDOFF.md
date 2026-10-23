@@ -108,7 +108,7 @@ The field band is live with five free photos in `public/assets/photos/` (1600 px
 
 1. ~~Fetch and commit the photos~~ Done (section 6).
 2. Review and merge the follow-up PR from `flagship-redesign`. PR #1 is already merged. CI runs on the PR. `main` is not deployed yet: the live site still shows the pre-redesign build until someone runs **Deploy approved release**.
-3. The header link points to the CISO **club** site (`site.json` → `club_url`). The user wrote "CISA website"; we read that as CISO. If they meant the US agency, either point it to https://www.cisa.gov/ or add a second link.
+3. ~~Header link: CISO club or CISA?~~ Decided 22 Oct 2026: the header link stays on the CISO **club** site, https://www.ciso-csusb.org/ (`site.json` → `club_url`). Do not add a cisa.gov link.
 4. Update the design-system artifact to the new radius scale (the brand book still says square corners in places).
 5. Confirm that the Drive folder's "anyone with the link" sharing is intended.
 6. Optional: deploy a preview through the repo's Pages workflow after maintainer approval.
