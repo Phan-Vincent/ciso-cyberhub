@@ -175,3 +175,14 @@ The field band is live with five free photos in `public/assets/photos/` (1600 px
 ## 11. Release authorization, 22 Oct 2026
 
 The user explicitly approved committing, pushing and deploying this verified snapshot. Publication uses the existing `Deploy approved release` GitHub Pages workflow from `main`, with `SITE_URL=https://phan-vincent.github.io` and `BASE_PATH=/ciso-cyberhub`. The production-configured local build passes: 105 routes, 106 HTML files, 8,636 links checked and zero link errors. Earlier "uncommitted / unpushed / undeployed" statements describe the pre-release verification snapshots; the release commit and GitHub Actions runs record publication status.
+
+## Growth features (24 Oct 2026)
+
+- **Link previews:** every page has Open Graph and Twitter tags. The cards are 1200×630 PNGs in `public/assets/og/`, one per section. To change the text, edit `scripts/og/cards.json` and run `node scripts/og/render_cards.mjs` (a developer tool that needs Playwright; the site build stays dependency-free). Production builds use `SITE_URL` for absolute image URLs.
+- **RSS:** `/feed.xml` lists the latest attributed headlines and is linked from every page head.
+- **CyberHub Daily (`/daily/`):** "name the weakness". Each day picks one CISA KEV record whose title names a clear weakness, mapped to 8 families in `hub/daily.py`. The pick is a deterministic hash of the day number, so everyone gets the same puzzle. Puzzle #1 was 23 Oct 2026. Players get 4 tries; each miss sharpens the clue figure, then adds a hint, then narrows to three options. The reveal explains the weakness, how defenders catch it and which CyberHub lessons cover it. There is a share grid (⬛🟦), plus stats, streaks and badges kept in localStorage.
+- **Readiness check (`/academy/readiness/`):** 15 questions, three per domain, drawn from `academy.json`. Shows a score band, per-domain bars, up to 5 lessons to review and share text.
+- **Role match (`/careers/match/`):** 6 questions with weights in `hub/play.py`. The result links to the career roadmap.
+- **Entry points:** homepage "Play it, share it" band; a Daily button on the latest-report card; a menu item; a Play column in the footer; cards on the Resources page.
+- **Code:** server markup in `hub/play.py`, client logic in `web/play.ts` (loaded only on these pages, no innerHTML), tests in `tests/test_play.py`.
+- **Still to do for reach:** the repo owner must enable "Allow GitHub Actions to create and approve pull requests" (Settings → Actions → General) so the data bot can deliver new headlines and KEV records. A custom domain would also help.
