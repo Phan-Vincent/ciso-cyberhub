@@ -1,0 +1,477 @@
+{
+  "decks": {
+    "net": "Networking (Network+ topics)",
+    "aplus": "IT support (A+ topics)"
+  },
+  "cards": [
+    {
+      "id": "net-0",
+      "deck": "net",
+      "topic": "OSI model",
+      "front": "Name the 7 OSI layers from bottom to top.",
+      "back": "Physical, Data Link, Network, Transport, Session, Presentation, Application. (\"Please Do Not Throw Sausage Pizza Away.\")"
+    },
+    {
+      "id": "net-1",
+      "deck": "net",
+      "topic": "OSI model",
+      "front": "Which OSI layer do routers and IP addresses work at?",
+      "back": "Layer 3, Network."
+    },
+    {
+      "id": "net-2",
+      "deck": "net",
+      "topic": "OSI model",
+      "front": "Which OSI layer do switches and MAC addresses work at?",
+      "back": "Layer 2, Data Link."
+    },
+    {
+      "id": "net-3",
+      "deck": "net",
+      "topic": "OSI model",
+      "front": "TCP and UDP belong to which OSI layer?",
+      "back": "Layer 4, Transport."
+    },
+    {
+      "id": "net-4",
+      "deck": "net",
+      "topic": "Ports",
+      "front": "DNS port?",
+      "back": "53 (UDP for most queries, TCP for zone transfers and large responses)."
+    },
+    {
+      "id": "net-5",
+      "deck": "net",
+      "topic": "Ports",
+      "front": "DHCP ports?",
+      "back": "UDP 67 (server) and 68 (client)."
+    },
+    {
+      "id": "net-6",
+      "deck": "net",
+      "topic": "Ports",
+      "front": "SMTP, POP3 and IMAP ports?",
+      "back": "SMTP 25 (587 for submission). POP3 110, or 995 over TLS. IMAP 143, or 993 over TLS."
+    },
+    {
+      "id": "net-7",
+      "deck": "net",
+      "topic": "Ports",
+      "front": "RDP port?",
+      "back": "TCP 3389."
+    },
+    {
+      "id": "net-8",
+      "deck": "net",
+      "topic": "Ports",
+      "front": "SNMP ports?",
+      "back": "UDP 161 (queries) and 162 (traps)."
+    },
+    {
+      "id": "net-9",
+      "deck": "net",
+      "topic": "Ports",
+      "front": "LDAP and LDAPS ports?",
+      "back": "LDAP 389, LDAPS 636."
+    },
+    {
+      "id": "net-10",
+      "deck": "net",
+      "topic": "Ports",
+      "front": "SMB port?",
+      "back": "TCP 445."
+    },
+    {
+      "id": "net-11",
+      "deck": "net",
+      "topic": "Ports",
+      "front": "NTP port?",
+      "back": "UDP 123."
+    },
+    {
+      "id": "net-12",
+      "deck": "net",
+      "topic": "Ports",
+      "front": "Syslog port?",
+      "back": "UDP 514 (TCP 514 or 6514 with TLS in some setups)."
+    },
+    {
+      "id": "net-13",
+      "deck": "net",
+      "topic": "Ports",
+      "front": "FTP, SFTP and TFTP ports?",
+      "back": "FTP 20/21. SFTP runs over SSH on 22. TFTP UDP 69."
+    },
+    {
+      "id": "net-14",
+      "deck": "net",
+      "topic": "IP addressing",
+      "front": "The three private IPv4 ranges?",
+      "back": "10.0.0.0/8, 172.16.0.0/12 and 192.168.0.0/16 (RFC 1918)."
+    },
+    {
+      "id": "net-15",
+      "deck": "net",
+      "topic": "IP addressing",
+      "front": "What does a 169.254.x.x address mean?",
+      "back": "APIPA: the device could not get an address from DHCP and assigned itself a link-local address."
+    },
+    {
+      "id": "net-16",
+      "deck": "net",
+      "topic": "IP addressing",
+      "front": "IPv4 loopback and IPv6 loopback?",
+      "back": "127.0.0.1 (the whole 127.0.0.0/8) and ::1."
+    },
+    {
+      "id": "net-17",
+      "deck": "net",
+      "topic": "IP addressing",
+      "front": "IPv6 link-local prefix?",
+      "back": "fe80::/10."
+    },
+    {
+      "id": "net-18",
+      "deck": "net",
+      "topic": "IP addressing",
+      "front": "How many usable hosts in a /26?",
+      "back": "62 (64 addresses minus network and broadcast)."
+    },
+    {
+      "id": "net-19",
+      "deck": "net",
+      "topic": "IP addressing",
+      "front": "What is NAT / PAT?",
+      "back": "Network Address Translation maps private addresses to public ones. PAT (overload) lets many devices share one public IP using different ports."
+    },
+    {
+      "id": "net-20",
+      "deck": "net",
+      "topic": "Services",
+      "front": "Describe the DHCP process.",
+      "back": "DORA: Discover, Offer, Request, Acknowledge."
+    },
+    {
+      "id": "net-21",
+      "deck": "net",
+      "topic": "Services",
+      "front": "What DNS record maps an IP back to a name?",
+      "back": "PTR (reverse lookup)."
+    },
+    {
+      "id": "net-22",
+      "deck": "net",
+      "topic": "Services",
+      "front": "What do A, AAAA and CNAME records do?",
+      "back": "A maps a name to IPv4, AAAA to IPv6, CNAME aliases one name to another."
+    },
+    {
+      "id": "net-23",
+      "deck": "net",
+      "topic": "Switching",
+      "front": "What standard tags VLANs on a trunk?",
+      "back": "IEEE 802.1Q."
+    },
+    {
+      "id": "net-24",
+      "deck": "net",
+      "topic": "Switching",
+      "front": "What does Spanning Tree Protocol prevent?",
+      "back": "Switching loops (and the broadcast storms they cause) by blocking redundant paths."
+    },
+    {
+      "id": "net-25",
+      "deck": "net",
+      "topic": "Switching",
+      "front": "What is link aggregation (LACP)?",
+      "back": "Combining several physical links into one logical link for bandwidth and redundancy (IEEE 802.3ad / 802.1AX)."
+    },
+    {
+      "id": "net-26",
+      "deck": "net",
+      "topic": "Switching",
+      "front": "PoE standards and power at the switch port?",
+      "back": "802.3af up to 15.4 W, 802.3at (PoE+) up to 30 W, 802.3bt up to 60 W (Type 3) or 90 W (Type 4)."
+    },
+    {
+      "id": "net-27",
+      "deck": "net",
+      "topic": "Routing",
+      "front": "OSPF is what type of routing protocol?",
+      "back": "Link-state (interior gateway protocol)."
+    },
+    {
+      "id": "net-28",
+      "deck": "net",
+      "topic": "Routing",
+      "front": "Which routing protocol runs the internet between organisations?",
+      "back": "BGP, a path-vector exterior gateway protocol."
+    },
+    {
+      "id": "net-29",
+      "deck": "net",
+      "topic": "Routing",
+      "front": "RIP's maximum hop count?",
+      "back": "15 (16 means unreachable). RIP is distance-vector."
+    },
+    {
+      "id": "net-30",
+      "deck": "net",
+      "topic": "Wireless",
+      "front": "Which Wi-Fi generation is 802.11ax, and what does 6E add?",
+      "back": "Wi-Fi 6. Wi-Fi 6E adds the 6 GHz band."
+    },
+    {
+      "id": "net-31",
+      "deck": "net",
+      "topic": "Wireless",
+      "front": "What does WPA3-Personal use instead of a pre-shared key handshake?",
+      "back": "SAE (Simultaneous Authentication of Equals), which resists offline password guessing."
+    },
+    {
+      "id": "net-32",
+      "deck": "net",
+      "topic": "Wireless",
+      "front": "Non-overlapping 2.4 GHz channels in the US?",
+      "back": "1, 6 and 11."
+    },
+    {
+      "id": "net-33",
+      "deck": "net",
+      "topic": "Cabling",
+      "front": "Max length of twisted-pair Ethernet run?",
+      "back": "100 metres."
+    },
+    {
+      "id": "net-34",
+      "deck": "net",
+      "topic": "Cabling",
+      "front": "Single-mode vs multimode fibre?",
+      "back": "Single-mode: thin core, laser, long distances. Multimode: wider core, shorter distances, cheaper optics."
+    },
+    {
+      "id": "net-35",
+      "deck": "net",
+      "topic": "Cabling",
+      "front": "Which tool finds which wall jack a cable goes to?",
+      "back": "A toner and probe."
+    },
+    {
+      "id": "net-36",
+      "deck": "net",
+      "topic": "Troubleshooting",
+      "front": "CompTIA troubleshooting method, in order?",
+      "back": "Identify the problem, establish a theory, test the theory, establish a plan, implement or escalate, verify full functionality, document findings."
+    },
+    {
+      "id": "net-37",
+      "deck": "net",
+      "topic": "Troubleshooting",
+      "front": "Which command shows the path packets take on Windows?",
+      "back": "tracert (traceroute on Linux/macOS)."
+    },
+    {
+      "id": "net-38",
+      "deck": "net",
+      "topic": "Troubleshooting",
+      "front": "Which command shows a host's IP-to-MAC (ARP) table?",
+      "back": "arp -a."
+    },
+    {
+      "id": "net-39",
+      "deck": "net",
+      "topic": "Security",
+      "front": "What is 802.1X?",
+      "back": "Port-based network access control: devices must authenticate (often via RADIUS) before getting network access."
+    },
+    {
+      "id": "aplus-40",
+      "deck": "aplus",
+      "topic": "Hardware",
+      "front": "DDR4 vs DDR5: can they swap slots?",
+      "back": "No. They are keyed differently and are not compatible."
+    },
+    {
+      "id": "aplus-41",
+      "deck": "aplus",
+      "topic": "Hardware",
+      "front": "What is NVMe?",
+      "back": "A protocol for SSDs over PCIe, much faster than SATA. Common in the M.2 form factor."
+    },
+    {
+      "id": "aplus-42",
+      "deck": "aplus",
+      "topic": "Hardware",
+      "front": "RAID 0, 1, 5 and 10?",
+      "back": "0: striping, no redundancy. 1: mirroring. 5: striping with parity, survives one disk failure (min 3 disks). 10: mirrored stripes (min 4 disks)."
+    },
+    {
+      "id": "aplus-43",
+      "deck": "aplus",
+      "topic": "Hardware",
+      "front": "What does POST do?",
+      "back": "Power-On Self-Test checks core hardware before the operating system loads."
+    },
+    {
+      "id": "aplus-44",
+      "deck": "aplus",
+      "topic": "Hardware",
+      "front": "What is a TPM used for?",
+      "back": "A chip that stores keys securely; used by BitLocker, Secure Boot measurements and Windows 11 requirements."
+    },
+    {
+      "id": "aplus-45",
+      "deck": "aplus",
+      "topic": "Hardware",
+      "front": "Prevent ESD damage when working inside a PC?",
+      "back": "Use an anti-static wrist strap and mat, and handle components by the edges."
+    },
+    {
+      "id": "aplus-46",
+      "deck": "aplus",
+      "topic": "Printers",
+      "front": "The steps of the laser printing process?",
+      "back": "Processing, charging, exposing, developing, transferring, fusing, cleaning."
+    },
+    {
+      "id": "aplus-47",
+      "deck": "aplus",
+      "topic": "Printers",
+      "front": "Which printer type uses heat on special paper and has no ink?",
+      "back": "Thermal (common for receipts and labels)."
+    },
+    {
+      "id": "aplus-48",
+      "deck": "aplus",
+      "topic": "Windows",
+      "front": "Command that checks and repairs Windows system files?",
+      "back": "sfc /scannow."
+    },
+    {
+      "id": "aplus-49",
+      "deck": "aplus",
+      "topic": "Windows",
+      "front": "Command to check a disk for errors?",
+      "back": "chkdsk (chkdsk /f to fix)."
+    },
+    {
+      "id": "aplus-50",
+      "deck": "aplus",
+      "topic": "Windows",
+      "front": "Command that refreshes Group Policy?",
+      "back": "gpupdate /force (gpresult shows what applied)."
+    },
+    {
+      "id": "aplus-51",
+      "deck": "aplus",
+      "topic": "Windows",
+      "front": "Copy large folders reliably with retries from the command line?",
+      "back": "robocopy."
+    },
+    {
+      "id": "aplus-52",
+      "deck": "aplus",
+      "topic": "Windows",
+      "front": "Where do you look for application crashes and logon failures?",
+      "back": "Event Viewer (eventvwr.msc)."
+    },
+    {
+      "id": "aplus-53",
+      "deck": "aplus",
+      "topic": "Windows",
+      "front": "Which tool changes startup items and boot options (classic)?",
+      "back": "msconfig (startup apps now live in Task Manager)."
+    },
+    {
+      "id": "aplus-54",
+      "deck": "aplus",
+      "topic": "Windows",
+      "front": "NTFS vs FAT32 vs exFAT?",
+      "back": "NTFS: Windows default, permissions, encryption, large files. FAT32: universal but 4 GB file limit. exFAT: removable drives, large files, no NTFS permissions."
+    },
+    {
+      "id": "aplus-55",
+      "deck": "aplus",
+      "topic": "Windows",
+      "front": "Workgroup vs domain?",
+      "back": "Workgroup: each PC manages its own accounts. Domain: accounts and policy are managed centrally by Active Directory."
+    },
+    {
+      "id": "aplus-56",
+      "deck": "aplus",
+      "topic": "Operating systems",
+      "front": "macOS backup tool and disk encryption?",
+      "back": "Time Machine for backups, FileVault for full-disk encryption."
+    },
+    {
+      "id": "aplus-57",
+      "deck": "aplus",
+      "topic": "Operating systems",
+      "front": "Linux command to install packages on Debian/Ubuntu?",
+      "back": "sudo apt install <package> (after sudo apt update)."
+    },
+    {
+      "id": "aplus-58",
+      "deck": "aplus",
+      "topic": "Cloud and virtualization",
+      "front": "Type 1 vs Type 2 hypervisor?",
+      "back": "Type 1 runs directly on hardware (bare metal, e.g. ESXi, Hyper-V). Type 2 runs on top of an OS (e.g. VirtualBox)."
+    },
+    {
+      "id": "aplus-59",
+      "deck": "aplus",
+      "topic": "Cloud and virtualization",
+      "front": "IaaS vs PaaS vs SaaS?",
+      "back": "IaaS: rent servers and networks. PaaS: rent a platform to run your code. SaaS: use finished software, like email."
+    },
+    {
+      "id": "aplus-60",
+      "deck": "aplus",
+      "topic": "Security",
+      "front": "The CompTIA malware removal steps?",
+      "back": "Investigate and verify symptoms; quarantine the system; disable System Restore (Windows); remediate (update tools, scan, remove); schedule scans and updates; re-enable System Restore and create a restore point; educate the user."
+    },
+    {
+      "id": "aplus-61",
+      "deck": "aplus",
+      "topic": "Security",
+      "front": "First things to change on a new SOHO router?",
+      "back": "Default admin password, firmware updates, WPA3 (or WPA2-AES), disable WPS and remote admin, change the default network name."
+    },
+    {
+      "id": "aplus-62",
+      "deck": "aplus",
+      "topic": "Security",
+      "front": "What is MDM?",
+      "back": "Mobile device management: central control of phones and tablets (policies, apps, remote wipe)."
+    },
+    {
+      "id": "aplus-63",
+      "deck": "aplus",
+      "topic": "Operational procedures",
+      "front": "The 3-2-1 backup rule?",
+      "back": "Three copies of data, on two kinds of media, with one copy offsite (or offline)."
+    },
+    {
+      "id": "aplus-64",
+      "deck": "aplus",
+      "topic": "Operational procedures",
+      "front": "Why use change management?",
+      "back": "To plan, approve, test and document changes so they do not cause unexpected outages, with a rollback plan."
+    },
+    {
+      "id": "aplus-65",
+      "deck": "aplus",
+      "topic": "Operational procedures",
+      "front": "What should a good help desk ticket include?",
+      "back": "User and contact info, device, clear problem description, steps tried, priority, and resolution notes."
+    },
+    {
+      "id": "aplus-66",
+      "deck": "aplus",
+      "topic": "Operational procedures",
+      "front": "What is the safest way to dispose of an old hard drive with sensitive data?",
+      "back": "Physical destruction or certified wiping/shredding with a certificate of destruction."
+    }
+  ]
+}

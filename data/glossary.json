@@ -1,0 +1,572 @@
+[
+  {
+    "term": "Access control",
+    "def": "Rules that decide who can use which systems and data, and what they can do with them.",
+    "link": "/academy/"
+  },
+  {
+    "term": "Active Directory",
+    "def": "Microsoft's directory service that manages users, computers and permissions in most company networks. A top target for attackers.",
+    "link": "/defend/infrastructure/"
+  },
+  {
+    "term": "Advanced persistent threat (APT)",
+    "def": "A well-resourced group, often state-backed, that breaks in and stays hidden for a long time to spy or steal.",
+    "link": "/history/"
+  },
+  {
+    "term": "Adware",
+    "def": "Software that shows unwanted ads, sometimes bundled with free downloads.",
+    "link": ""
+  },
+  {
+    "term": "AI red teaming",
+    "def": "Testing an AI system with permission by trying to make it misbehave, leak data or ignore its rules.",
+    "link": "/ai/red-team/"
+  },
+  {
+    "term": "Antivirus",
+    "def": "Software that detects and removes known malware. Modern tools add behaviour monitoring (see EDR).",
+    "link": ""
+  },
+  {
+    "term": "API",
+    "def": "Application Programming Interface: a defined way for programs to talk to each other. APIs need authentication and input checks like any web page.",
+    "link": ""
+  },
+  {
+    "term": "Asset inventory",
+    "def": "A list of every device, account and piece of software an organisation has. You cannot protect what you do not know about.",
+    "link": "/defend/legacy-systems/"
+  },
+  {
+    "term": "Attack surface",
+    "def": "All the places an attacker could try to get in: internet-facing services, accounts, devices, people and suppliers.",
+    "link": ""
+  },
+  {
+    "term": "Authentication",
+    "def": "Proving who you are, for example with a password, a passkey or a fingerprint.",
+    "link": ""
+  },
+  {
+    "term": "Authorization",
+    "def": "Deciding what an authenticated person is allowed to do.",
+    "link": ""
+  },
+  {
+    "term": "Backdoor",
+    "def": "A hidden way into a system that bypasses normal security, left by an attacker or, rarely, a developer.",
+    "link": "/history/"
+  },
+  {
+    "term": "Backup",
+    "def": "A copy of data kept so it can be restored after loss or ransomware. Keep at least one copy offline or immutable.",
+    "link": ""
+  },
+  {
+    "term": "Blue team",
+    "def": "Defenders who protect, monitor and respond. Opposite of the red team.",
+    "link": "/labs/soc/"
+  },
+  {
+    "term": "Botnet",
+    "def": "Many infected devices controlled together by an attacker, often used for spam or DDoS attacks.",
+    "link": "/defend/networks/"
+  },
+  {
+    "term": "Brute force",
+    "def": "Guessing a password or key by trying many possibilities, often automatically.",
+    "link": "/labs/soc/"
+  },
+  {
+    "term": "Bug bounty",
+    "def": "A programme where organisations pay researchers who responsibly report vulnerabilities.",
+    "link": ""
+  },
+  {
+    "term": "Capture the flag (CTF)",
+    "def": "A security competition where you solve challenges to find hidden \"flags\".",
+    "link": "/careers/competitions/"
+  },
+  {
+    "term": "CIA triad",
+    "def": "Confidentiality, integrity and availability: the three goals of security.",
+    "link": "/start/"
+  },
+  {
+    "term": "Cloud security",
+    "def": "Protecting data, identities and workloads hosted by cloud providers such as AWS, Azure and Google Cloud.",
+    "link": "/defend/infrastructure/"
+  },
+  {
+    "term": "Command and control (C2)",
+    "def": "The channel malware uses to receive instructions from an attacker.",
+    "link": "/labs/soc/"
+  },
+  {
+    "term": "Compliance",
+    "def": "Meeting the security rules required by laws, contracts or standards, such as HIPAA, PCI DSS or FERPA.",
+    "link": ""
+  },
+  {
+    "term": "Containment",
+    "def": "Stopping an incident from spreading, for example by isolating a device or disabling an account.",
+    "link": "/labs/incident-response/"
+  },
+  {
+    "term": "Credential stuffing",
+    "def": "Trying usernames and passwords leaked from one site on other sites, betting that people reuse passwords.",
+    "link": ""
+  },
+  {
+    "term": "Cross-site scripting (XSS)",
+    "def": "A web flaw that lets an attacker run their script in other users' browsers on a trusted site.",
+    "link": ""
+  },
+  {
+    "term": "Cryptography",
+    "def": "The science of protecting information with maths: encryption, hashing and digital signatures.",
+    "link": ""
+  },
+  {
+    "term": "CVE",
+    "def": "Common Vulnerabilities and Exposures: the public ID for a known vulnerability, like CVE-2021-44228.",
+    "link": "/vulnerabilities/"
+  },
+  {
+    "term": "CVSS",
+    "def": "Common Vulnerability Scoring System: a 0–10 score for how severe a vulnerability is.",
+    "link": "/vulnerabilities/"
+  },
+  {
+    "term": "Dark web",
+    "def": "Parts of the internet reachable only through special software such as Tor, where stolen data is often traded.",
+    "link": ""
+  },
+  {
+    "term": "Data breach",
+    "def": "An incident where information is accessed or taken by someone not allowed to have it.",
+    "link": ""
+  },
+  {
+    "term": "DDoS",
+    "def": "Distributed denial of service: flooding a service with traffic from many devices so real users cannot reach it.",
+    "link": "/defend/networks/"
+  },
+  {
+    "term": "Defense in depth",
+    "def": "Layering several protections so one failure does not lead to a breach.",
+    "link": "/start/"
+  },
+  {
+    "term": "Detection engineering",
+    "def": "Writing, testing and tuning the rules that turn logs into security alerts.",
+    "link": "/labs/detection-engineering/"
+  },
+  {
+    "term": "Digital forensics",
+    "def": "Collecting and analysing digital evidence in a way that holds up to scrutiny.",
+    "link": "/careers/roles/"
+  },
+  {
+    "term": "DKIM",
+    "def": "DomainKeys Identified Mail: a signature that proves an email came from the domain it claims and was not altered.",
+    "link": "/labs/phishing/"
+  },
+  {
+    "term": "DMARC",
+    "def": "An email policy that checks SPF and DKIM line up with the visible From domain, and says what to do if they do not.",
+    "link": "/labs/phishing/"
+  },
+  {
+    "term": "DNS",
+    "def": "Domain Name System: turns names like example.com into IP addresses.",
+    "link": "/linux/network/dns/"
+  },
+  {
+    "term": "EDR",
+    "def": "Endpoint Detection and Response: tools on laptops and servers that record behaviour, detect threats and can isolate devices.",
+    "link": "/labs/soc/"
+  },
+  {
+    "term": "Encryption",
+    "def": "Scrambling data so only someone with the right key can read it.",
+    "link": ""
+  },
+  {
+    "term": "Endpoint",
+    "def": "Any device people use or that connects to a network: laptops, phones, servers.",
+    "link": ""
+  },
+  {
+    "term": "Exfiltration",
+    "def": "Stealing data by moving it out of an organisation.",
+    "link": "/labs/soc/"
+  },
+  {
+    "term": "Exploit",
+    "def": "Code or a technique that takes advantage of a vulnerability.",
+    "link": "/vulnerabilities/"
+  },
+  {
+    "term": "False positive",
+    "def": "An alert that fired on harmless activity.",
+    "link": "/labs/soc/"
+  },
+  {
+    "term": "Firewall",
+    "def": "A control that allows or blocks network traffic based on rules.",
+    "link": "/defend/networks/"
+  },
+  {
+    "term": "Firmware",
+    "def": "Low-level software built into hardware, such as a computer's UEFI.",
+    "link": "/defend/hardware/"
+  },
+  {
+    "term": "GRC",
+    "def": "Governance, risk and compliance: the policy and risk side of security.",
+    "link": "/careers/roles/"
+  },
+  {
+    "term": "Hashing",
+    "def": "Turning data into a fixed-length fingerprint that cannot be reversed. Used to check integrity and store passwords.",
+    "link": ""
+  },
+  {
+    "term": "Honeypot",
+    "def": "A decoy system set up to attract and study attackers.",
+    "link": ""
+  },
+  {
+    "term": "IAM",
+    "def": "Identity and Access Management: the systems and rules for accounts and permissions.",
+    "link": ""
+  },
+  {
+    "term": "ICS / SCADA",
+    "def": "Industrial control systems that run physical processes like water treatment and power.",
+    "link": "/defend/operational-technology/"
+  },
+  {
+    "term": "Incident response",
+    "def": "The organised way to handle a security incident: prepare, detect, contain, eradicate, recover, learn.",
+    "link": "/labs/incident-response/"
+  },
+  {
+    "term": "Indicator of compromise (IOC)",
+    "def": "Evidence that a system may be compromised, such as a malicious IP address, domain or file hash.",
+    "link": ""
+  },
+  {
+    "term": "Insider threat",
+    "def": "Risk from people inside an organisation, through malice or mistakes.",
+    "link": ""
+  },
+  {
+    "term": "IP address",
+    "def": "A number that identifies a device interface on a network.",
+    "link": "/linux/network/"
+  },
+  {
+    "term": "Jailbreak (AI)",
+    "def": "A prompt designed to get an AI model past its safety rules.",
+    "link": "/ai/red-team/"
+  },
+  {
+    "term": "KEV",
+    "def": "CISA's Known Exploited Vulnerabilities catalog: vulnerabilities attackers are actually using. Patch these first.",
+    "link": "/vulnerabilities/"
+  },
+  {
+    "term": "Keylogger",
+    "def": "Malware that records what you type.",
+    "link": ""
+  },
+  {
+    "term": "Lateral movement",
+    "def": "How attackers move from the first compromised machine to others in a network.",
+    "link": ""
+  },
+  {
+    "term": "Least privilege",
+    "def": "Giving people and programs only the access they need, nothing more.",
+    "link": ""
+  },
+  {
+    "term": "Linux",
+    "def": "A family of open-source operating systems that runs most servers, cloud systems and security tools.",
+    "link": "/linux/"
+  },
+  {
+    "term": "Log",
+    "def": "A record of events, such as logins or errors, written by a system. The raw material of detection.",
+    "link": "/labs/windows-events/"
+  },
+  {
+    "term": "Malware",
+    "def": "Malicious software: viruses, worms, trojans, ransomware, spyware and more.",
+    "link": ""
+  },
+  {
+    "term": "Man-in-the-middle (MITM)",
+    "def": "An attacker secretly relaying or changing communication between two parties.",
+    "link": "/defend/networks/"
+  },
+  {
+    "term": "MFA",
+    "def": "Multi-factor authentication: needing two or more kinds of proof to log in, such as a password and a code.",
+    "link": "/start/"
+  },
+  {
+    "term": "MITRE ATT&CK",
+    "def": "A public knowledge base of real attacker tactics and techniques.",
+    "link": "/labs/detection-engineering/"
+  },
+  {
+    "term": "NICE Framework",
+    "def": "The US framework that describes cybersecurity work roles, tasks and skills.",
+    "link": "/careers/roles/"
+  },
+  {
+    "term": "NIST CSF",
+    "def": "The NIST Cybersecurity Framework: Govern, Identify, Protect, Detect, Respond, Recover.",
+    "link": "/defend/infrastructure/"
+  },
+  {
+    "term": "OSINT",
+    "def": "Open-source intelligence: information gathered from public sources.",
+    "link": ""
+  },
+  {
+    "term": "OWASP Top 10",
+    "def": "A widely used list of the most critical web application security risks.",
+    "link": ""
+  },
+  {
+    "term": "Passkey",
+    "def": "A passwordless login based on public-key cryptography, resistant to phishing.",
+    "link": "/start/"
+  },
+  {
+    "term": "Password manager",
+    "def": "An app that creates and stores a unique strong password for every account.",
+    "link": "/tools/keepassxc/"
+  },
+  {
+    "term": "Patch",
+    "def": "An update that fixes bugs, including security vulnerabilities.",
+    "link": ""
+  },
+  {
+    "term": "Payload",
+    "def": "The part of an attack that does the damage, such as the malware delivered by an exploit.",
+    "link": ""
+  },
+  {
+    "term": "Penetration testing",
+    "def": "Authorised simulated attacks to find weaknesses before criminals do.",
+    "link": "/careers/roles/"
+  },
+  {
+    "term": "Phishing",
+    "def": "Fake messages that trick people into clicking, sharing credentials or paying.",
+    "link": "/labs/phishing/"
+  },
+  {
+    "term": "Port",
+    "def": "A numbered endpoint for network services on a device, such as 443 for HTTPS.",
+    "link": "/linux/network/ports/"
+  },
+  {
+    "term": "Privilege escalation",
+    "def": "Gaining more permissions than you were given, for example from user to admin.",
+    "link": ""
+  },
+  {
+    "term": "Prompt injection",
+    "def": "Inputs that make an AI model ignore its instructions, directly or hidden in content it reads.",
+    "link": "/ai/red-team/"
+  },
+  {
+    "term": "Purple team",
+    "def": "Red and blue teams working together to improve detection.",
+    "link": ""
+  },
+  {
+    "term": "Ransomware",
+    "def": "Malware that encrypts files and demands payment, often after stealing data.",
+    "link": ""
+  },
+  {
+    "term": "Reconnaissance",
+    "def": "The first phase of an attack: learning about the target.",
+    "link": ""
+  },
+  {
+    "term": "Red team",
+    "def": "Authorised attackers who test an organisation's defences.",
+    "link": ""
+  },
+  {
+    "term": "Risk",
+    "def": "The chance something bad happens multiplied by how bad it would be.",
+    "link": ""
+  },
+  {
+    "term": "Rootkit",
+    "def": "Malware that hides deep in the system to avoid detection.",
+    "link": "/defend/hardware/"
+  },
+  {
+    "term": "Router",
+    "def": "A device that forwards traffic between networks.",
+    "link": "/linux/network/reachability/"
+  },
+  {
+    "term": "Sandbox",
+    "def": "An isolated environment for running untrusted code safely.",
+    "link": ""
+  },
+  {
+    "term": "Secure Boot",
+    "def": "A firmware feature that only starts software signed by trusted keys.",
+    "link": "/defend/hardware/"
+  },
+  {
+    "term": "Security+",
+    "def": "CompTIA's widely recognised entry-level security certification.",
+    "link": "/academy/"
+  },
+  {
+    "term": "Segmentation",
+    "def": "Splitting a network into zones so a breach in one cannot easily reach the others.",
+    "link": "/defend/networks/"
+  },
+  {
+    "term": "SIEM",
+    "def": "Security Information and Event Management: collects logs from everywhere so analysts can search and alert on them.",
+    "link": "/labs/soc/"
+  },
+  {
+    "term": "Sigma",
+    "def": "An open format for writing detection rules that can be converted for many SIEMs.",
+    "link": "/tools/sigma/"
+  },
+  {
+    "term": "SOC",
+    "def": "Security Operations Center: the team that monitors and responds to threats.",
+    "link": "/labs/soc/"
+  },
+  {
+    "term": "Social engineering",
+    "def": "Manipulating people instead of computers to gain access or information.",
+    "link": "/labs/phishing/"
+  },
+  {
+    "term": "SPF",
+    "def": "Sender Policy Framework: lists which mail servers may send email for a domain.",
+    "link": "/labs/phishing/"
+  },
+  {
+    "term": "Spyware",
+    "def": "Malware that secretly watches what you do.",
+    "link": "/history/"
+  },
+  {
+    "term": "SQL injection",
+    "def": "A flaw where input changes a database query. Prevented with parameterised queries.",
+    "link": ""
+  },
+  {
+    "term": "Subnet",
+    "def": "A range of IP addresses that forms one network, written like 192.168.1.0/24.",
+    "link": "/linux/network/subnetting/"
+  },
+  {
+    "term": "Supply chain attack",
+    "def": "Breaking into a target through a trusted supplier, update or software dependency.",
+    "link": "/history/"
+  },
+  {
+    "term": "TCP / UDP",
+    "def": "The two main transport protocols. TCP is reliable and connection-based; UDP is fast and connectionless.",
+    "link": ""
+  },
+  {
+    "term": "Threat actor",
+    "def": "The person or group behind an attack.",
+    "link": ""
+  },
+  {
+    "term": "Threat hunting",
+    "def": "Proactively searching for attackers who have slipped past existing alerts.",
+    "link": ""
+  },
+  {
+    "term": "Threat intelligence",
+    "def": "Information about attackers and their methods that helps defenders prepare.",
+    "link": "/intelligence/"
+  },
+  {
+    "term": "TLS",
+    "def": "Transport Layer Security: the encryption behind HTTPS.",
+    "link": ""
+  },
+  {
+    "term": "Tor",
+    "def": "Software that routes traffic through several relays to hide where it came from.",
+    "link": ""
+  },
+  {
+    "term": "Trojan",
+    "def": "Malware disguised as something useful.",
+    "link": ""
+  },
+  {
+    "term": "Two-factor authentication (2FA)",
+    "def": "MFA with exactly two factors.",
+    "link": "/start/"
+  },
+  {
+    "term": "UEFI",
+    "def": "The modern firmware that starts a computer before the operating system.",
+    "link": "/defend/hardware/"
+  },
+  {
+    "term": "VPN",
+    "def": "Virtual private network: an encrypted tunnel between a device and a network.",
+    "link": ""
+  },
+  {
+    "term": "Vulnerability",
+    "def": "A weakness that could be exploited.",
+    "link": "/vulnerabilities/"
+  },
+  {
+    "term": "Vulnerability scanner",
+    "def": "A tool that checks systems for known weaknesses.",
+    "link": "/tools/"
+  },
+  {
+    "term": "WAF",
+    "def": "Web application firewall: filters malicious web traffic in front of an application.",
+    "link": ""
+  },
+  {
+    "term": "Worm",
+    "def": "Malware that spreads by itself from machine to machine.",
+    "link": "/history/"
+  },
+  {
+    "term": "Zero day",
+    "def": "A vulnerability the vendor does not know about or has not fixed yet.",
+    "link": ""
+  },
+  {
+    "term": "Zero trust",
+    "def": "A model where no user or device is trusted by default, even inside the network; every request is verified.",
+    "link": "/defend/networks/"
+  }
+]
