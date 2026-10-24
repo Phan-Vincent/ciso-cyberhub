@@ -207,3 +207,9 @@ The user explicitly approved committing, pushing and deploying this verified sna
 - **AI workflow guide (`/ai/workflow/`):** skills (Agent Skills format), saving tokens, the context saver, keeping AI on track, and organisation/scope guidelines. Sources checked 2026-10-24.
 - **Learning map:** nodes are draggable, and the info card is draggable (also by arrow keys on its grip) and collapsible, with a Reset layout button. The default layout no longer puts the card over the map.
 - **Roadmap:** `docs/ROADMAP.md`.
+
+## What you will defend (24 Oct 2026)
+
+- The five homepage field photos are links to `/defend/<slug>/` (`hub/defend.py`); `/defend/` is the overview, also listed under Learn. Each page: what is inside, how it is attacked, real incidents (linked to `/history/` where an event exists), how defenders protect it, frameworks, practice links, careers and sources.
+- Adding a field photo requires a matching entry in `DOMAINS` (`tests/test_defend.py` enforces this).
+- Field captions now wrap onto two lines instead of colliding on narrow tiles.

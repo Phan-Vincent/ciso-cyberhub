@@ -1535,3 +1535,49 @@ input, select { border-radius: 10px; }
 @media (max-width: 860px) { .node-card { transform: none; } .nc-grip { display: none; } .net-hint { position: static; margin-bottom: 8px; } }
 @media (min-width: 861px) { .net-hint { top: auto; bottom: 0; } }
 .guide-body section { min-width: 0; } .tree { max-width: 100%; white-space: pre; }
+
+/* What you will defend: clickable photos, captions that never collide, and /defend/ pages */
+.shot { cursor: pointer; }
+.shot-a { position: absolute; inset: 0; z-index: 2; border-radius: inherit; outline: none; }
+.shot:focus-within { box-shadow: 0 0 0 3px var(--ciso-hi-dark); }
+.shot:focus-within .shot-pop { opacity: 1; transform: none; }
+.shot:focus-within img { filter: grayscale(.15) contrast(1.05) brightness(.95); transform: scale(1.05); }
+.shot figcaption { flex-wrap: wrap; row-gap: 4px; align-items: flex-end; }
+.shot figcaption span { max-width: 100%; }
+.shot figcaption span:last-child { margin-left: auto; text-align: right; }
+.shot-pop::after { content: "Click to learn more →"; display: block; margin-top: 8px; color: #3b93ff; font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; }
+
+.df-hero { margin: 0 0 clamp(24px, 4vw, 48px); position: relative; border-radius: var(--r-lg); overflow: hidden; background: #17191e; }
+.df-hero img { display: block; width: 100%; height: clamp(200px, 32vw, 420px); object-fit: cover; filter: grayscale(.6) contrast(1.08) brightness(.85); }
+.df-hero figcaption { position: absolute; right: 12px; bottom: 10px; padding: 3px 8px; border-radius: 6px; background: rgba(5,5,5,.65); color: rgba(255,255,255,.85); }
+.df-hero figcaption a { color: inherit; }
+.df-list { display: grid; gap: 0; margin: 0; border-top: 1px solid var(--rule); }
+.df-list > div { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 8px 24px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.df-list dt { font-weight: 700; }
+.df-list dd { margin: 0; color: var(--ink-2, inherit); }
+@media (max-width: 640px) { .df-list > div { grid-template-columns: 1fr; } }
+.df-incidents { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.df-incidents li { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 16px; padding: 16px; border: 1px solid var(--rule); border-radius: var(--r-md); background: var(--surface); }
+.df-incidents h3 { margin: 0 0 4px; font-size: 1.05rem; }
+.df-incidents p { margin: 0; }
+.df-year { color: var(--signal); padding-top: 3px; }
+@media (max-width: 640px) { .df-incidents li { grid-template-columns: 1fr; gap: 6px; } .df-year { padding-top: 0; } }
+.df-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.df-links .button { max-width: 100%; white-space: normal; }
+.df-pager { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--rule); }
+.df-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+.df-grid .df-card { grid-column: span 2; }
+.df-grid .df-card:nth-child(n+4) { grid-column: span 3; }
+@media (max-width: 900px) { .df-grid { grid-template-columns: 1fr 1fr; } .df-grid .df-card, .df-grid .df-card:nth-child(n+4) { grid-column: span 1; } .df-grid .df-card:last-child { grid-column: span 2; } }
+@media (max-width: 560px) { .df-grid { grid-template-columns: 1fr; } .df-grid .df-card:last-child { grid-column: auto; } }
+.df-card { position: relative; display: grid; align-content: end; gap: 6px; min-height: 340px; padding: 22px; border-radius: var(--r-lg); overflow: hidden; color: #edeff2; text-decoration: none; background: #17191e; isolation: isolate; }
+.df-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; filter: grayscale(1) contrast(1.1) brightness(.7); transition: filter .5s var(--ease), transform .8s var(--ease); }
+.df-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(5,5,5,.05) 10%, rgba(5,5,5,.7) 45%, rgba(5,5,5,.94)); }
+.df-go { color: #edeff2; margin-top: 6px; }
+.df-card:hover .df-go, .df-card:focus-visible .df-go { color: #3b93ff; }
+.df-card .label { color: #3b93ff; }
+.df-card strong { font-family: var(--display); font-stretch: 75%; font-size: 1.6rem; line-height: 1.05; text-transform: uppercase; }
+.df-sum { color: rgba(237,239,242,.85); font-size: .95rem; }
+.df-card:hover img, .df-card:focus-visible img { filter: grayscale(.15) brightness(.85); transform: scale(1.04); }
+.df-card:focus-visible { outline: 3px solid var(--ciso-hi-dark); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .df-card img { transition: none; } }
