@@ -1,0 +1,79 @@
+{
+  "bug": {
+    "author": "Courtesy of the Naval Surface Warfare Center, Dahlgren, VA., 1988.",
+    "description": "The First \"Computer Bug\" Moth found trapped between points at Relay # 70, Panel F, of the Mark II Aiken Relay Calculator while it was being tested at Harvard Un",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:First_Computer_Bug,_1947.jpg",
+    "title": "File:H96566k.jpg"
+  },
+  "chappe": {
+    "author": "Unknown author",
+    "description": "Télégraphe Chappe.",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:T%C3%A9l%C3%A9graphe_Chappe_1.jpg",
+    "title": "File:Télégraphe Chappe 1.jpg"
+  },
+  "colossus": {
+    "author": "Unknown author Unknown author",
+    "description": "A Colossus Mark 2 codebreaking computer being operated by Dorothy Du Boisson (left) and Elsie Booker (right), 1943",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Colossus.jpg",
+    "title": "File:Colossus.jpg"
+  },
+  "creeper": {
+    "author": "ARPANET",
+    "description": "ARPANET logical map circa 1977",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Arpanet_logical_map,_march_1977.png",
+    "title": "File:Arpanet logical map, march 1977.png"
+  },
+  "cuckoo": {
+    "author": "heipei",
+    "description": "2017 work trip to San Diego Meeting the incredible Clifford Stoll in person at CrowdStrike Fal.Con, probably the highlight of my career.",
+    "license": "CC BY-SA 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:San_Diego,_California,_USA_-_53946478090_(Clifford_Stoll_crop).jpg",
+    "title": "File:San Diego, California, USA - 53946478090 (Clifford Stoll crop).jpg"
+  },
+  "defcon": {
+    "author": "Samsonswiki",
+    "description": "DEF CON 18",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Defcon.jpg",
+    "title": "File:Defcon.jpg"
+  },
+  "eniac": {
+    "author": "Unknown author Unknown author",
+    "description": "ENIAC (Electronic Numerical Integrator And Computer) in Philadelphia , Pennsylvania . Glen Beck (background) and Betty Snyder (foreground) program the ENIAC in ",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Glen_Beck_and_Betty_Snyder_program_the_ENIAC_in_building_328_at_the_Ballistic_Research_Laboratory.jpg",
+    "title": "File:Eniac.jpg"
+  },
+  "enigma": {
+    "author": "Alessandro Nassiri",
+    "description": "النموذج العسكري من آلة إنجما I، وُضعِ بالاستعمال بدءًا من 1930م.",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Enigma_(crittografia)_-_Museo_scienza_e_tecnologia_Milano.jpg",
+    "title": "File:Enigma (crittografia) - Museo scienza e tecnologia Milano.jpg"
+  },
+  "heartbleed": {
+    "author": "Leena Kurjenniska / Codenomicon 2014",
+    "description": "The logo of the heartbleed bug",
+    "license": "CC0",
+    "page": "https://commons.wikimedia.org/wiki/File:Heartbleed.svg",
+    "title": "File:Heartbleed.svg"
+  },
+  "phreaks": {
+    "author": "Unknown author",
+    "description": "",
+    "license": "CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Bluebox.jpg",
+    "title": "File:Bluebox.jpg"
+  },
+  "stuxnet": {
+    "author": "Ulli1105",
+    "description": "Siemens Simatic S7-300",
+    "license": "CC BY-SA 2.5",
+    "page": "https://commons.wikimedia.org/wiki/File:S7300.JPG",
+    "title": "File:S7300.JPG"
+  }
+}
