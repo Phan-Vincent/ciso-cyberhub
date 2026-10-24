@@ -199,3 +199,11 @@ The user explicitly approved committing, pushing and deploying this verified sna
 - **AI leaderboard (`/ai/models/`):** a dated snapshot of llm-stats.com and the Ollama most-pulled list in `data/ai_leaderboard.json`; refresh it by hand. The trending section updates weekly.
 - **Local AI guide (`/ai/local/`):** Ollama install for Windows, macOS, Linux and Docker (tabs default to the visitor's OS), hardware sizing, model picks, commands, API, safety and troubleshooting. Install commands come from the Ollama README.
 - **History (`/history/`):** 22 events across 6 eras in `hub/history.py`. Images are fetched by `.github/workflows/assets.yml`, which runs `scripts/fetch_history_images.py` against the Wikimedia Commons API. It accepts only public-domain, CC0, CC BY or CC BY-SA files, records author and license in `data/history_images.json`, and falls back to a typographic plate.
+
+## Organisation, resume tailor and AI workflow (24 Oct 2026)
+
+- **Structure:** `Site.SECTIONS` in `hub/build.py` defines Learn / Tools / AI / Intel / Careers. It drives the header dropdowns, the grouped phone menu, the footer, `/resources/` (directory), `/learn/` and the homepage section rows. The redundant homepage tools grid was removed.
+- **Resume tailor (`/careers/resume/`):** `web/resume.ts` + `hub/resume.py`. Runs in the browser: reads .docx with a built-in unzip, matches skills, checks the resume, flags weak bullets and builds a no-fabrication prompt. The optional local tailoring calls the user's Ollama; this page alone allows `connect-src` to localhost:11434. Every internship listing links to it with `?job=<id>`. Tests: `tests/resume.test.mjs`.
+- **AI workflow guide (`/ai/workflow/`):** skills (Agent Skills format), saving tokens, the context saver, keeping AI on track, and organisation/scope guidelines. Sources checked 2026-10-24.
+- **Learning map:** nodes are draggable, and the info card is draggable (also by arrow keys on its grip) and collapsible, with a Reset layout button. The default layout no longer puts the card over the map.
+- **Roadmap:** `docs/ROADMAP.md`.

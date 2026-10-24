@@ -239,6 +239,7 @@ def ai_hub(site) -> str:
     for title, desc, path, tag, meta in [
         ('Secure AI coding cheat sheet', 'The vibe-coding loop, prompts that work, rules to paste into AGENTS.md, red flags and the checks to run before you ship.', '/ai/vibe-coding/', 'Cheat sheet', '9 sections'),
         ('Meta-prompting guide', 'Have a model write and improve your prompts, then prove them with a small test set. Copy-ready templates.', '/ai/meta-prompting/', 'Guide', '9 sections'),
+        ('Working with AI: skills, tokens and context', 'Build reusable skills, cut token costs, keep a context saver, keep AI on track and teach it your organisation and scope.', '/ai/workflow/', 'Guide', '8 sections'),
         ('Run AI on your own computer', 'Install Ollama on Windows, macOS, Linux or Docker, pick a model that fits your hardware, and keep it private.', '/ai/local/', 'Setup guide', 'Every OS'),
         ('AI leaderboard', 'Frontier model rankings, trending open-weight models and what people run locally, each with its date and source.', '/ai/models/', 'Leaderboard', 'Weekly + snapshot')]:
         body += site.card(title, desc, path, tag, meta)
@@ -285,7 +286,7 @@ def internships_page(site) -> str:
         where = f'{E(i["city"])}' + (f' · {i["miles"]} mi' if i['miles'] is not None else '')
         records.append(f'<article class="job" data-record=\'{E(json.dumps(rec))}\'><div class="job-main"><p class="label job-co">{E(i["company"])}</p>'
                        f'<h2 class="job-title"><a href="{E(i["url"])}" rel="noopener">{E(i["title"])}<span class="arr" aria-hidden="true">↗</span></a></h2>'
-                       f'<p class="job-tags">{tags}</p></div><div class="job-side label"><span>{where}</span><span>Posted {E(i["posted"])}</span><span>{E(i["category"])}</span></div></article>')
+                       f'<p class="job-tags">{tags}</p></div><div class="job-side label"><a class="job-tailor" href="{E(site.base)}/careers/resume/?job={E(i["id"])}">Tailor my resume →</a><span>{where}</span><span>Posted {E(i["posted"])}</span><span>{E(i["category"])}</span></div></article>')
     body += site.filters([('zone', 'Distance', list(zone_label.values())), ('area', 'Area', ['Security & IT', 'Other tech']), ('fresh', 'Posted', ['New this week', 'Earlier'])],
                          (('rank', 'Best match'), ('published_at', 'Newest'), ('distance', 'Closest'), ('name', 'Company A–Z')))
     body += '<div id="results" class="jobs">' + ''.join(records) + '</div><p id="empty" class="empty" hidden>No internships match. Clear a filter or widen the distance.</p>'
