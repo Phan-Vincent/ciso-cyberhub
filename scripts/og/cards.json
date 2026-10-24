@@ -1,0 +1,11 @@
+[
+ {"id":"home","kicker":"Open security learning","title":["Cyber","Hub"],"sub":"Real tools, labs and Security+ lessons from CISO at CSUSB. Free, no account.","tag":"01 / Home"},
+ {"id":"daily","kicker":"One puzzle a day","title":["CyberHub","Daily"],"sub":"A real security headline. Guess the attack in four tries. Share your grid.","tag":"Daily"},
+ {"id":"readiness","kicker":"Security+ SY0-701","title":["Readiness","Check"],"sub":"Fifteen exam-style questions. A score by domain in about five minutes.","tag":"Academy / Check"},
+ {"id":"role","kicker":"Career match","title":["Which role","are you?"],"sub":"Six questions. One security career, with the roadmap to get there.","tag":"Careers / Match"},
+ {"id":"tools","kicker":"Tool explorer","title":["Real tools,","source-checked"],"sub":"Open-source security tools with licenses, platforms and tutorials checked.","tag":"02 / Tools"},
+ {"id":"academy","kicker":"Security+ academy","title":["5 domains.","28 lessons."],"sub":"Short lessons mapped to the SY0-701 objectives, with practice and flashcards.","tag":"03 / Academy"},
+ {"id":"labs","kicker":"Hands-on labs","title":["Evidence you","can touch"],"sub":"Guided investigations on safe packet captures, logs and detection rules.","tag":"04 / Labs"},
+ {"id":"intelligence","kicker":"Intel desk","title":["Today's","threat signal"],"sub":"Attributed headlines and exploited-vulnerability records, with source health.","tag":"05 / Intelligence"},
+ {"id":"careers","kicker":"Career roadmaps","title":["SOC to","architect"],"sub":"Role guides that connect skills to projects you can show.","tag":"06 / Careers"}
+]

@@ -59,6 +59,12 @@ def main():
             api(f'repos/{repo}/git/refs','POST',{'ref':'refs/heads/'+branch,'sha':commit['sha']})
     prs=api(f'repos/{repo}/pulls?state=open&head={repo.split("/")[0]}:{branch}')
     if not prs:
-        api(f'repos/{repo}/pulls','POST',{'head':branch,'base':default,'title':'Review source and maintenance updates','body':'Automated, bounded source retrieval. Review changed data, failures, licenses and source attribution. No tool or curriculum is automatically approved. The bot does not merge or deploy. Run CI after approving the workflow if GitHub suppresses bot-triggered events.'})
+        try:
+            api(f'repos/{repo}/pulls','POST',{'head':branch,'base':default,'title':'Review source and maintenance updates','body':'Automated, bounded source retrieval. Review changed data, failures, licenses and source attribution. No tool or curriculum is automatically approved. The bot does not merge or deploy. Run CI after approving the workflow if GitHub suppresses bot-triggered events.'})
+        except subprocess.CalledProcessError as exc:
+            # GitHub refuses this unless Settings > Actions > General allows Actions to create pull requests.
+            # The branch is still updated, so a maintainer can open the PR by hand; do not fail the run.
+            print(f'::warning::Could not open the review pull request ({(exc.stderr or "").strip()[:200]}). Branch {branch} is updated; open the PR manually or allow Actions to create pull requests.')
+            return
     print('Review branch updated; no merge or deployment performed.')
 if __name__=='__main__':main()

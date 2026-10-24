@@ -10,6 +10,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 from .intel_art import intel_art
+from .play import build_play
 import hashlib as _hashlib
 from pathlib import Path as _Path
 # Cache-busting version: changes whenever any front-end source changes, so browsers never pair new HTML with an old stylesheet or script.
@@ -84,13 +85,13 @@ class Site:
         size=(f' width="{w}"' if w else '')+(f' height="{h}"' if h else '')
         c=f' class="{cls}"' if cls else ''
         return f'<img{c} src="{E(self.base+self.BRAND+name)}" alt="{E(alt)}"{size}>'
-    def page(self,path,title,body,description='',section=''):
+    def page(self,path,title,body,description='',section='',module=''):
         if not path.startswith('/') or '..' in path:raise ValueError('Invalid output path')
         file=self.out/path.lstrip('/')/'index.html';file.parent.mkdir(parents=True,exist_ok=True)
         b=self.base;home=path=='/'
         nav_items=[('01','Resources','/resources/','Resources'),('02','Tools','/tools/','Tools'),('03','Academy','/academy/','Academy'),('04','Labs','/labs/','Labs'),('05','Intelligence','/intelligence/','Intelligence'),('06','Careers','/careers/','Careers')]
         nav=''.join(f'<a href="{E(b+p)}"'+(' aria-current="page"' if section==sec else '')+f'><span>{n}</span>{label}</a>' for n,label,p,sec in nav_items)
-        menu_nav=''.join(f'<a href="{E(b+p)}"><span class="label">{n}</span>{label}</a>' for n,label,p,sec in nav_items)+f'<a href="{E(b)}/search/"><span class="label">07</span>Search</a><a href="{E(self.config["club_url"])}"><span class="label">08</span>CISO club ↗</a>'
+        menu_nav=''.join(f'<a href="{E(b+p)}"><span class="label">{n}</span>{label}</a>' for n,label,p,sec in nav_items)+f'<a href="{E(b)}/daily/"><span class="label">07</span>Daily puzzle</a><a href="{E(b)}/search/"><span class="label">08</span>Search</a><a href="{E(self.config["club_url"])}"><span class="label">09</span>CISO club ↗</a>'
         canonical=f'<link rel="canonical" href="{E(self.site_url+b+path)}">' if self.site_url else '<meta name="robots" content="noindex">'
         brand=(f'<a class="brand" href="{E(b)}/" aria-label="CyberHub home">'
                f'<span class="brand-core">{self.img("cyberhub-core-on-dark.svg","","dark",32,32)}{self.img("cyberhub-core-on-light.svg","","light",32,32)}</span>'
@@ -111,22 +112,49 @@ class Site:
                 '<div class="netline" aria-hidden="true"><i></i></div><div class="foot-grid wrap">'
                 f'<div><h2>CyberHub</h2><span>Open security learning</span><span>Free, no account, nothing to install</span></div>'
                 f'<div><h2>Learn</h2>{self.a("Tool explorer","/tools/")}{self.a("Security+ academy","/academy/")}{self.a("Labs","/labs/")}{self.a("Career roadmaps","/careers/")}</div>'
+                f'<div><h2>Play</h2>{self.a("CyberHub Daily","/daily/")}{self.a("Security+ readiness check","/academy/readiness/")}{self.a("Which role are you?","/careers/match/")}</div>'
                 f'<div><h2>Follow</h2>{self.a("Intelligence desk","/intelligence/")}{self.a("Vulnerability explorer","/vulnerabilities/")}{self.a("Daily digest","/archive/")}</div>'
                 f'<div><h2>Project</h2>{self.a("Contribute","/contribute/")}{self.a("Privacy and accessibility","/about/")}<a href="{E(self.config["club_url"])}">CISO club website ↗</a></div></div>'
                 f'<div class="foot-base wrap label"><span>CyberHub release 0.1.0 · CISO at CSUSB</span><span>{E(self.config["affiliation"])}</span><span>Software MIT · lessons CC BY 4.0</span></div></footer>')
         loader=(f'<div class="loader" id="loader" aria-hidden="true"><div class="loader-inner"><div class="loader-row">{self.img("cyberhub-core-animated.svg","","",72,72)}<span class="loader-count" id="load-count">00</span></div>'
                 '<div class="loader-line"><i id="load-line"></i></div><div class="loader-row label"><span>Loading modules</span><span>Powered by CISO</span></div></div></div>') if home else ''
         doc=(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="{E(description or title)}"><meta name="referrer" content="strict-origin-when-cross-origin">'
+             f'{self.social(path,title,description)}'
              f'<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'self\'; style-src \'self\'; img-src \'self\' data:; font-src \'self\'; connect-src \'self\'; base-uri \'none\'; form-action \'none\'; object-src \'none\'">'
              f'<meta name="theme-color" content="#050505"><title>{E(title)} · {E(self.config["name"])}</title>{canonical}'
              f'<link rel="icon" href="{b}/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{b}{self.BRAND}cyberhub-app-icon.svg">'
              f'<link rel="preload" href="{b}/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>'
-             f'<link rel="stylesheet" href="{b}/assets/site.css?v={ASSET_V}"><script src="{b}/assets/theme.js?v={ASSET_V}"></script><script type="module" src="{b}/assets/app.js?v={ASSET_V}"></script></head>'
+             f'<link rel="stylesheet" href="{b}/assets/site.css?v={ASSET_V}"><script src="{b}/assets/theme.js?v={ASSET_V}"></script><script type="module" src="{b}/assets/app.js?v={ASSET_V}"></script>'+(f'<script type="module" src="{b}/assets/{module}.js?v={ASSET_V}"></script>' if module else '')+'</head>'
              f'<body class="{"home" if home else "inner"}" data-base="{E(b)}"><a class="skip" href="#main">Skip to content</a>{loader}{header}'
              f'<main id="main" class="shell">{body}<div id="status" class="status" role="status" aria-live="polite"></div></main>{footer}'
              '<div class="cursor" id="cursor" aria-hidden="true"><div class="ring"><span id="cursor-label">View</span></div><div class="dot"></div></div></body></html>')
         file.write_text(doc,encoding='utf-8');self.paths.append(path)
         self.search.append({'title':title,'section':section or 'Hub','path':path,'text':re.sub('<[^>]+>',' ',body)[:14000]})
+    OG_CARDS=[('/daily/','daily'),('/academy/readiness/','readiness'),('/careers/match/','role'),('/tools/','tools'),('/tutorials/','tools'),('/academy/','academy'),('/labs/','labs'),('/intelligence/','intelligence'),('/vulnerabilities/','intelligence'),('/archive/','intelligence'),('/careers/','careers')]
+    def social(self,path,title,description):
+        """Link-preview tags so shared links show a CyberHub card on Discord, LinkedIn, iMessage and others."""
+        card=next((c for prefix,c in self.OG_CARDS if path.startswith(prefix)),'home')
+        origin=self.site_url+self.base
+        img=f'{origin}/assets/og/{card}.png';desc=description or title
+        full=f'{title} · {self.config["name"]}' if path!='/' else f'{self.config["name"]}: open security learning'
+        url=f'<meta property="og:url" content="{E(origin+path)}">' if self.site_url else ''
+        return (f'<meta property="og:type" content="website"><meta property="og:site_name" content="{E(self.config["name"])}"><meta property="og:title" content="{E(full)}">'
+                f'<meta property="og:description" content="{E(desc)}">{url}<meta property="og:image" content="{E(img)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
+                f'<meta property="og:image:alt" content="{E(full)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{E(full)}"><meta name="twitter:description" content="{E(desc)}"><meta name="twitter:image" content="{E(img)}">'
+                f'<link rel="alternate" type="application/rss+xml" title="CyberHub intel desk" href="{E(self.base)}/feed.xml">')
+    def feed(self):
+        """RSS 2.0 feed of the latest attributed headlines (links go to the original source)."""
+        from email.utils import format_datetime
+        news=sorted(self.intel['news'],key=lambda n:(n.get('published_at') or '',n.get('id') or ''),reverse=True)[:40]
+        origin=(self.site_url or 'https://example.invalid')+self.base
+        def rfc(v):
+            try:return format_datetime(timestamp(v))
+            except Exception:return ''
+        items=''.join(f'<item><title>{E(n["title"])}</title><link>{E(n["url"])}</link><guid isPermaLink="false">{E(n.get("id") or n["url"])}</guid>'
+                      +(f'<pubDate>{rfc(n["published_at"])}</pubDate>' if n.get('published_at') and rfc(n['published_at']) else '')
+                      +f'<source url="{E(origin+"/feed.xml")}">{E(n.get("source",""))}</source></item>' for n in news)
+        (self.out/'feed.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>CyberHub intel desk</title>'
+            f'<link>{E(origin)}/intelligence/</link><description>Attributed security headlines collected by CyberHub, powered by CISO at CSUSB.</description><language>en-us</language>{items}</channel></rss>',encoding='utf-8')
     def heading(self,title,desc,eyebrow=''):
         crumb=f'<p class="crumb">{E(eyebrow)}</p>' if eyebrow else ''
         return f'<header class="page-head">{crumb}<h1>{E(title)}</h1><p class="lead">{E(desc)}</p></header>'
@@ -187,7 +215,7 @@ class Site:
             date_html=f'<time datetime="{E(published)}">{E(published)}</time>' if published else '<span>Publication date not reported</span>'
             feature=(f'<div class="intel-feature wrap"><article class="intel-feature-panel has-art"><div class="intel-feature-text"><p class="intel-feature-kicker label"><span class="intel-dot" aria-hidden="true"></span>Intel desk / latest report</p>'
                      f'<h2 class="intel-feature-headline"><a href="{E(latest["url"])}">{E(latest["title"])}<span class="arr" aria-hidden="true">↗</span></a></h2>'
-                     f'<p class="intel-feature-meta label"><span>{E(latest["source"])}</span>{date_html}</p></div>{intel_art(latest)}</article></div>')
+                     f'<p class="intel-feature-meta label"><span>{E(latest["source"])}</span>{date_html}</p><p class="intel-feature-play">{self.a("Play today’s CyberHub Daily →","/daily/","button primary")}</p></div>{intel_art(latest)}</article></div>')
         else:
             feature=(f'<div class="intel-feature wrap"><article class="intel-feature-panel"><p class="intel-feature-kicker label"><span class="intel-dot" aria-hidden="true"></span>Intel desk / latest report</p>'
                      f'<h2 class="intel-feature-headline">{self.a("No headlines retrieved yet — see source health.","/intelligence/")}</h2>'
@@ -261,6 +289,13 @@ class Site:
             body+=(f'<li class="tile" data-lvl="{E(t["difficulty"])}"><a href="{E(b)}/tools/{E(t["id"])}/"><span class="t-top label"><span>{i+1:02d}</span><span>{E(t["license"] or t["license_status"].replace("-"," "))}</span></span>'
                    f'<span><h3>{E(t["name"])}</h3><span class="t-cat label">{E(t["category"])}</span></span><span class="lvl"><i class="on"></i><i class="{"on" if l>1 else ""}"></i><i class="{"on" if l>2 else ""}"></i><span class="sr-only">{E(t["difficulty"])}</span></span></a></li>')
         body+=(f'</ul><button class="tiles-more" id="tiles-more" type="button">Show all tools</button><p class="tools-note label">Licenses and repository facts are checked against upstream sources. Checked is not the same as endorsed. {self.a("Open the full explorer","/tools/")}</p></section>')
+        # play: shareable daily, readiness and match
+        body+=('<section class="scene tone-paper sec-pad wrap play-band" id="play" data-tone="paper" aria-labelledby="play-title"><div class="sec-head rv">'
+               f'<span class="label"><span class="on">Play</span> / Daily</span><h2 id="play-title">{R("Play it,")}{R("share it","d1")}</h2></div><div class="play-tiles">'
+               f'<a class="play-tile play-daily rv" href="{E(b)}/daily/"><span class="label">New every day</span><strong>CyberHub Daily</strong><span class="pt-d">A real, actively exploited vulnerability. Name the weakness in four tries, then share your grid.</span><span class="pt-grid" aria-hidden="true"><i class="m"></i><i class="m"></i><i class="h"></i><i></i></span><span class="pt-go label">Play today →</span></a>'
+               f'<a class="play-tile rv" href="{E(b)}/academy/readiness/"><span class="label">5 minutes</span><strong>Security+ readiness</strong><span class="pt-d">Fifteen exam-style questions. A score by domain and what to study next.</span><span class="pt-go label">Check my score →</span></a>'
+               f'<a class="play-tile rv" href="{E(b)}/careers/match/"><span class="label">6 questions</span><strong>Which role are you?</strong><span class="pt-d">Find the security career that fits how you think, with its roadmap.</span><span class="pt-go label">Find my match →</span></a>'
+               '</div></section>')
         # 08 start + handoff
         body+=('<section class="scene tone-blue sec-pad wrap start" id="start" data-tone="blue" data-sec="08" aria-labelledby="start-title"><span class="label"><span class="on">08</span> / Start</span>'
                f'<h2 class="sr-only" id="start-title">Start learning</h2><a class="start-big" href="{E(b)}/resources/" data-cursor="Start"><span>Start learning <span class="arr" aria-hidden="true">↗</span></span><span class="fill" aria-hidden="true">Start learning <span class="arr">↗</span></span></a>'
@@ -281,7 +316,7 @@ class Site:
             body+=(f'<li class="mod"><figure class="mod-media" aria-hidden="true"><canvas data-art="{art}"></canvas></figure><a href="{E(b+path)}" data-cursor="Open">'
                    f'<span class="idx label">{idx} / Resource</span><h2 class="ttl">{E(title)}</h2><span class="meta label"><strong>{num:,}</strong><span>{E(unit)}</span><span>{E(meta)}</span></span><p class="mod-desc">{E(desc)}</p></a></li>')
         body+='</ol><div class="section-heading"><h2>Also in CyberHub</h2><span class="badge subtle">Study tools and references</span></div><div class="grid">'
-        for title,desc,path,tag,meta in [('Tool tutorials','Step-by-step walkthroughs you can verify, one bounded workflow at a time.','/tutorials/','Tools',f'{n("tutorials")} tutorials'),
+        for title,desc,path,tag,meta in [('CyberHub Daily','Name the weakness behind a real, actively exploited vulnerability. New puzzle every day.','/daily/','Play','Daily puzzle'),('Readiness check','Fifteen Security+ questions with a score by domain and what to study next.','/academy/readiness/','Academy','5 minutes'),('Which role are you?','Six questions that match you to a security career and its roadmap.','/careers/match/','Careers','6 questions'),('Tool tutorials','Step-by-step walkthroughs you can verify, one bounded workflow at a time.','/tutorials/','Tools',f'{n("tutorials")} tutorials'),
                                          ('Practice questions',f'Original questions with explanations. Timed or untimed.','/academy/practice/','Academy',f'{len(course["questions"])} questions'),
                                          ('Flashcards','One concept at a time. Explain the answer before you turn the card.','/academy/flashcards/','Academy',f'{len(course["flashcards"])} cards'),
                                          ('Certification planning','Other credentials to research, with provider links and honest status notes.','/academy/certifications/','Academy','Planning records'),
@@ -403,7 +438,7 @@ class Site:
         shutil.copyfile(ROOT/'web/site.css',self.out/'assets/site.css')
         shutil.copyfile(ROOT/'public/assets/brand/cyberhub-favicon.svg',self.out/'assets/favicon.svg')
         subprocess.run(['node','scripts/transpile.mjs'],cwd=ROOT,check=True)
-        self.home();self.resources_page();self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
+        self.home();self.resources_page();self.feed();build_play(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
         for name,data in [('academy',self.academy),('search',self.search)]:
             (self.out/'assets'/f'{name}.json').write_text(json.dumps(data,ensure_ascii=False))
         self.page('/404/','Page not found',self.heading('This page is not here.','Use search or the main navigation to find a learning resource.')+self.a('Return home','/','button primary'))
