@@ -21,6 +21,8 @@ from .defend import build_defend, slug_for
 from .netlab import build_netlab
 from .competitions import build_competitions
 from .badges import build_badges
+from .duel import build_duel
+from .account import build_account, supabase
 import hashlib as _hashlib
 from pathlib import Path as _Path
 # Cache-busting version: changes whenever any front-end source changes, so browsers never pair new HTML with an old stylesheet or script.
@@ -101,7 +103,7 @@ class Site:
         ('learn','Learn','/learn/','Courses, labs and practice for every level.',[
             ('Security+ Academy','/academy/','28 lessons mapped to SY0-701'),('Linux Lab','/linux/','36 hands-on levels in a practice shell'),('Networking Lab','/linux/network/','17 levels: IP, DNS, ports, subnetting'),
             ('Guided labs','/labs/','Investigations on safe evidence'),('Flashcards','/academy/flashcards/','83 cards across every objective'),
-            ('Readiness check','/academy/readiness/','15 questions, a score by domain'),('CyberHub Daily','/daily/','One real-world puzzle a day'),
+            ('Readiness check','/academy/readiness/','15 questions, a score by domain'),('Cyber Duel','/duel/','Head-to-head quiz: friends, bots, links'),('CyberHub Daily','/daily/','One real-world puzzle a day'),
             ('What you will defend','/defend/','Five systems, explained in depth'),('Cyber history','/history/','1834 to today, with archival photos'),('Your progress','/progress/','Badges and a printable completion card')]),
         ('tools','Tools','/tools/','Open-source tools, checked and explained.',[
             ('Tool explorer','/tools/','Source-checked security tools'),('Trending on GitHub','/tools/trending/','Top 10 rising projects, weekly'),
@@ -126,6 +128,7 @@ class Site:
     def page(self,path,title,body,description='',section='',module=''):
         if not path.startswith('/') or '..' in path:raise ValueError('Invalid output path')
         file=self.out/path.lstrip('/')/'index.html';file.parent.mkdir(parents=True,exist_ok=True)
+        sb_url,sb_key=supabase(self)
         b=self.base;home=path=='/'
         cur=self.section_of(path)
         nav=''
@@ -142,7 +145,7 @@ class Site:
         theme_btn='<button id="theme" class="icon-btn" type="button" aria-label="Dark theme" aria-pressed="false" title="Switch between light and dark theme"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="6.5"/><path class="fill" d="M10 3.5a6.5 6.5 0 0 0 0 13z"/></svg></button>'
         header=(f'<div class="progress" aria-hidden="true"><i id="progress"></i></div>'
                 f'<header class="site-header wrap{" tone-void" if home else ""}" id="site-header">{brand}<nav class="main-nav label" aria-label="Main navigation">{nav}</nav>'
-                f'<div class="header-actions"><a class="club-link label" href="{E(self.config["club_url"])}" aria-label="CISO club site, ciso-csusb.org"><span class="lbl">CISO club site</span><span class="short">CISO</span> ↗</a><a class="search-pill label" href="{E(b)}/search/"><span class="lbl">Search</span><kbd>⌘K</kbd></a>{theme_btn}'
+                f'<div class="header-actions"><a class="club-link label" href="{E(self.config["club_url"])}" aria-label="CISO club site, ciso-csusb.org"><span class="lbl">CISO club site</span><span class="short">CISO</span> ↗</a><a class="search-pill label" href="{E(b)}/search/"><span class="lbl">Search</span><kbd>⌘K</kbd></a><a class="icon-btn acct-btn" id="acct-btn" href="{E(b)}/account/" aria-label="Your progress and account" title="Your progress and account"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="7" r="3.2"/><path d="M3.8 16.5c.9-3 3.4-4.6 6.2-4.6s5.3 1.6 6.2 4.6"/></svg></a>{theme_btn}'
                 '<button class="menu-btn label" id="menu-open" type="button" aria-expanded="false" aria-controls="menu">Menu</button></div></header>'
                 f'<div class="menu wrap tone-void" id="menu" role="dialog" aria-modal="true" aria-label="Site menu"><div class="menu-top">'
                 f'<a class="brand" href="{E(b)}/"><span class="brand-core">{self.img("cyberhub-core-on-dark.svg","","dark",32,32)}</span><span class="brand-word">Cyber<i>Hub</i></span></a>'
@@ -155,18 +158,18 @@ class Site:
                 '<div class="netline" aria-hidden="true"><i></i></div><div class="foot-grid wrap">'
                 f'<div><h2>CyberHub</h2><span>Open security learning</span><span>Free, no account, nothing to install</span>{self.a("All resources","/resources/")}{self.a("Search","/search/")}</div>'
                 +''.join(f'<div><h2>{E(label)}</h2>'+''.join(self.a(t,p) for t,p,d in kids)+'</div>' for key,label,landing,desc,kids in self.SECTIONS)+
-                f'<div><h2>Project</h2>{self.a("Contribute","/contribute/")}{self.a("Privacy and accessibility","/about/")}<a href="{E(self.config["club_url"])}">CISO club website ↗</a></div></div>'
+                f'<div><h2>Project</h2>{self.a("Your account","/account/")}{self.a("Contribute","/contribute/")}{self.a("Privacy and accessibility","/about/")}'+(f'<a href="mailto:{E(self.config["contact_email"])}">{E(self.config["contact_email"])}</a>' if self.config.get("contact_email") else '')+f'<a href="{E(self.config["club_url"])}">CISO club website ↗</a></div></div>'
                 f'<div class="foot-base wrap label"><span>CyberHub release 0.1.0 · CISO at CSUSB</span><span>{E(self.config["affiliation"])}</span><span>Software MIT · lessons CC BY 4.0</span></div></footer>')
         loader=(f'<div class="loader" id="loader" aria-hidden="true"><div class="loader-inner"><div class="loader-row">{self.img("cyberhub-core-animated.svg","","",72,72)}<span class="loader-count" id="load-count">00</span></div>'
                 '<div class="loader-line"><i id="load-line"></i></div><div class="loader-row label"><span>Loading modules</span><span>Powered by CISO</span></div></div></div>') if home else ''
         doc=(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="{E(description or title)}"><meta name="referrer" content="strict-origin-when-cross-origin">'
              f'{self.social(path,title,description)}'
-             f'<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'self\'; style-src \'self\'; img-src \'self\' data:; font-src \'self\'; connect-src \'self\'{(" "+CSP_CONNECT) if module=="resume" else ""}; base-uri \'none\'; form-action \'none\'; object-src \'none\'">'
+             f'<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'self\'; style-src \'self\'; img-src \'self\' data:; font-src \'self\'; connect-src \'self\'{(" "+CSP_CONNECT) if module=="resume" else ""}{(" "+sb_url) if sb_url else ""}; base-uri \'none\'; form-action \'none\'; object-src \'none\'">'
              f'<meta name="theme-color" content="#050505"><title>{E(title)} · {E(self.config["name"])}</title>{canonical}'
              f'<link rel="icon" href="{b}/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{b}{self.BRAND}cyberhub-app-icon.svg">'
              f'<link rel="preload" href="{b}/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>'
-             f'<link rel="stylesheet" href="{b}/assets/site.css?v={ASSET_V}"><script src="{b}/assets/theme.js?v={ASSET_V}"></script><script type="module" src="{b}/assets/app.js?v={ASSET_V}"></script>'+(f'<script type="module" src="{b}/assets/{module}.js?v={ASSET_V}"></script>' if module else '')+'</head>'
-             f'<body class="{"home" if home else "inner"}" data-base="{E(b)}"><a class="skip" href="#main">Skip to content</a>{loader}{header}'
+             f'<link rel="stylesheet" href="{b}/assets/site.css?v={ASSET_V}"><script src="{b}/assets/theme.js?v={ASSET_V}"></script><script type="module" src="{b}/assets/app.js?v={ASSET_V}"></script>'+(f'<script type="module" src="{b}/assets/{module}.js?v={ASSET_V}"></script>' if module else '')+(f'<script type="module" src="{b}/assets/account.js?v={ASSET_V}"></script>' if sb_url and module!='account' else '')+'</head>'
+             f'<body class="{"home" if home else "inner"}" data-base="{E(b)}"{(f' data-sb-url="{E(sb_url)}" data-sb-key="{E(sb_key)}"') if sb_url else ""}><a class="skip" href="#main">Skip to content</a>{loader}{header}'
              f'<main id="main" class="shell">{body}<div id="status" class="status" role="status" aria-live="polite"></div></main>{footer}'
              '<div class="cursor" id="cursor" aria-hidden="true"><div class="ring"><span id="cursor-label">View</span></div><div class="dot"></div></div></body></html>')
         file.write_text(doc,encoding='utf-8');self.paths.append(path)
@@ -458,7 +461,7 @@ class Site:
         for title,desc in [('Platform engineering','Improve accessibility, tests and build tooling. Treat every imported field as untrusted data.'),('Tool research','Check official repositories and license files. Propose field-specific evidence; never infer safety from stars.'),('Curriculum','Write original explanations and questions. Map objective IDs, explain distractors and obtain an independent reviewer.'),('Intelligence','Review feed policies, source failures and attribution. Separate reported claims from confirmed findings.'),('Content review','Check factual accuracy, safe scope, readability and reproducible verification.'),('Cohort handoff','Keep two maintainers, record decisions, rotate access and run a clean deployment rehearsal each term.')]:body+=f'<article class="card"><h2>{title}</h2><p>{desc}</p></article>'
         body+='</div><h2>How to contribute</h2><p>Use the CONTRIBUTING guide and templates in the source package. Submit a reviewable pull request with sources and test results. Automated discovery remains in a private-to-the-repository review file until a maintainer verifies it.</p><h2>Content licenses</h2><p>Original software: MIT. Original lessons and synthetic datasets: CC BY 4.0. Third-party projects, feeds and trademarks retain their own licenses and ownership. Source links do not grant redistribution rights.</p>'
         self.page('/contribute/','Contribute',body)
-        self.page('/about/','Privacy and accessibility',self.heading('Study without an account.','The site keeps its infrastructure and data collection deliberately small.')+'<article class="prose card"><h2>Privacy</h2><p>No analytics, advertising scripts or authentication are included. Learning progress and theme preference use browser-local storage. Export or clear progress from the Academy page. The hosting provider may record ordinary HTTP access logs; external source links follow those sites’ policies.</p><h2>Accessibility</h2><p>Core content is server-rendered and readable without JavaScript. Keyboard navigation, skip links, labeled controls, visible focus and light/dark themes are included. Quizzes support untimed practice. Automated checks are limited; screen-reader and user testing remain necessary before broad release.</p><h2>Independence</h2><p>Certification names identify study topics. This project is not affiliated with certification providers and does not reproduce exam questions. University endorsement has not been established. The existing club website remains the source for club information.</p></article>')
+        self.page('/about/','Privacy and accessibility',self.heading('Study without an account.','The site keeps its infrastructure and data collection deliberately small.')+'<article class="prose card"><h2>Privacy</h2><p>No analytics or advertising scripts are included. Learning progress and theme preference use browser-local storage, so everything works without an account. Accounts are optional and for people 13 or older: if you sign in, only your email address and your CyberHub progress are stored with our database provider (Supabase) so progress can sync between devices. Resumes and anything you type into the resume tool are never uploaded. You can download, import or delete your progress, and delete your account, on the Account page. The hosting provider may record ordinary HTTP access logs; external source links follow those sites’ policies.</p><h2>Accessibility</h2><p>Core content is server-rendered and readable without JavaScript. Keyboard navigation, skip links, labeled controls, visible focus and light/dark themes are included. Quizzes support untimed practice. Automated checks are limited; screen-reader and user testing remain necessary before broad release.</p><h2>Independence</h2><p>Certification names identify study topics. This project is not affiliated with certification providers and does not reproduce exam questions. University endorsement has not been established. The existing club website remains the source for club information.</p></article>')
     def build(self):
         validate()
         if self.out.exists():shutil.rmtree(self.out,ignore_errors=True)
@@ -466,7 +469,7 @@ class Site:
         shutil.copyfile(ROOT/'web/site.css',self.out/'assets/site.css')
         shutil.copyfile(ROOT/'public/assets/brand/cyberhub-favicon.svg',self.out/'assets/favicon.svg')
         subprocess.run(['node','scripts/transpile.mjs'],cwd=ROOT,check=True)
-        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
+        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
         for name,data in [('academy',self.academy),('search',self.search)]:
             (self.out/'assets'/f'{name}.json').write_text(json.dumps(data,ensure_ascii=False))
         self.page('/404/','Page not found',self.heading('This page is not here.','Use search or the main navigation to find a learning resource.')+self.a('Return home','/','button primary'))

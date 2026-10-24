@@ -1,5 +1,5 @@
 """Inspect every generated page: local links/fragments, HTML safety, basic semantics."""
-import argparse
+import re,argparse
 import json
 from html.parser import HTMLParser
 from pathlib import Path
@@ -41,6 +41,7 @@ def check_site(directory,base=''):
         for url in page.links:
             link_count+=1;parsed=urlsplit(url)
             if parsed.scheme or parsed.netloc:
+                if parsed.scheme=='mailto' and re.fullmatch(r'mailto:[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}',url):continue
                 if parsed.scheme!='https':errors.append(f'Unsafe external link {url}')
                 continue
             if parsed.path:

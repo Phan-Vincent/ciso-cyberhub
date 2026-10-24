@@ -15,7 +15,7 @@ export function shiftVerdict(score: number, max: number): string {
 }
 
 /* ------------------------------------------------------------ badges */
-export type Counts = { linux: number; net: number; read: number; shifts: number; perfect: number; academy: number; readiness: number; streak: number; role: boolean };
+export type Counts = { linux: number; net: number; read: number; shifts: number; perfect: number; academy: number; readiness: number; streak: number; role: boolean; duels: number };
 export const BADGES: { id: string; test: (c: Counts) => boolean; prog: (c: Counts) => string }[] = [
   { id: 'first-flag', test: c => c.linux >= 1, prog: c => `${Math.min(c.linux, 1)}/1 Linux level` },
   { id: 'shell-analyst', test: c => c.linux >= 10, prog: c => `${Math.min(c.linux, 10)}/10 Linux levels` },
@@ -30,6 +30,7 @@ export const BADGES: { id: string; test: (c: Counts) => boolean; prog: (c: Count
   { id: 'exam-ready', test: c => c.readiness >= 80, prog: c => `Best readiness score ${c.readiness}% of 80%` },
   { id: 'streak', test: c => c.streak >= 5, prog: c => `Best Daily streak ${Math.min(c.streak, 5)}/5` },
   { id: 'role-found', test: c => c.role, prog: c => c.role ? 'Done' : 'Take the role quiz' },
+  { id: 'duelist', test: c => c.duels >= 1, prog: c => `${Math.min(c.duels, 1)}/1 duel won` },
 ];
 const arr = (k: string): string[] => { const v = load<unknown>(k, []); return Array.isArray(v) ? v.filter(x => typeof x === 'string') as string[] : []; };
 function counts(base: string): Counts {
@@ -37,7 +38,7 @@ function counts(base: string): Counts {
   const lessons = Array.isArray(academy.lessons) ? new Set((academy.lessons as unknown[]).filter(x => typeof x === 'string' && (x as string).startsWith('academy/'))).size : 0;
   const stats = load<{ best?: number }>('cyberhub:daily:stats', {});
   return { linux: arr('cyberhub:linux').length, net: arr('cyberhub:netlab').length, read: j.read.length, shifts: Object.keys(j.shifts).length, perfect: j.perfect.length,
-    academy: Math.min(28, lessons), readiness: Number(load<number | null>('cyberhub:readiness:best', 0)) || 0, streak: Number(stats.best) || 0, role: load<unknown>('cyberhub:match', null) != null };
+    academy: Math.min(28, lessons), readiness: Number(load<number | null>('cyberhub:readiness:best', 0)) || 0, streak: Number(stats.best) || 0, role: load<unknown>('cyberhub:match', null) != null, duels: Number(load<{ wins?: number }>('cyberhub:duel', {}).wins) || 0 };
 }
 
 /* ------------------------------------------------------------ UI */
@@ -101,5 +102,25 @@ if (typeof document !== 'undefined') {
       if (btn.dataset.confirm !== '1') { btn.dataset.confirm = '1'; btn.textContent = 'Click again to erase shift and guide progress'; return; }
       try { localStorage.removeItem(JKEY); } catch { /* ignore */ } location.reload();
     });
+  }
+}
+
+/* ------------------------------------------------------------ Start here: quick checks and checklist */
+if (typeof document !== 'undefined') {
+  document.querySelectorAll<HTMLElement>('.mini-q').forEach(box => {
+    box.querySelectorAll<HTMLButtonElement>('.mini-opt').forEach(b => b.addEventListener('click', () => {
+      if (box.classList.contains('answered')) return; box.classList.add('answered'); b.dataset.picked = '1';
+      box.querySelectorAll<HTMLButtonElement>('.mini-opt').forEach(o => { o.disabled = true; });
+      const why = box.querySelector<HTMLElement>('.mini-why')!; why.hidden = false;
+      why.prepend(Object.assign(document.createElement('b'), { textContent: b.dataset.ok === '1' ? 'Correct. ' : 'Not quite. ' }));
+    }));
+  });
+  const list = document.querySelector<HTMLElement>('#st-check');
+  if (list) {
+    const k = 'cyberhub:start'; const done = new Set<string>(load<string[]>(k, []).filter(x => typeof x === 'string'));
+    const boxes = Array.from(list.querySelectorAll<HTMLInputElement>('[data-check]'));
+    const count = () => { const n = boxes.filter(b => b.checked).length; document.querySelector('#st-count')!.textContent = n === boxes.length ? `All ${n} done. You are safer than most people online.` : `${n} of ${boxes.length} done`; };
+    boxes.forEach(b => { b.checked = done.has(b.dataset.check!); b.addEventListener('change', () => { if (b.checked) done.add(b.dataset.check!); else done.delete(b.dataset.check!); store(k, [...done]); count(); }); });
+    count();
   }
 }

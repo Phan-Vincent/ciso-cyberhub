@@ -21,6 +21,7 @@ BADGES = [
     ('exam-ready', 'Exam ready', 'Score 80% or more on the readiness check.', '/academy/readiness/'),
     ('streak', 'On a streak', 'Solve CyberHub Daily five days in a row.', '/daily/'),
     ('role-found', 'Found my role', 'Take the "Which role are you?" quiz.', '/careers/match/'),
+    ('duelist', 'Duelist', 'Win a Cyber Duel.', '/duel/'),
 ]
 
 
