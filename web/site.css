@@ -1748,3 +1748,28 @@ input, select { border-radius: 10px; }
 .ac-danger summary { cursor: pointer; color: var(--ink-muted); }
 #ac-delete { border-color: #d64545; color: #d64545; margin-top: 8px; }
 .ac-msg { min-height: 1.4em; color: var(--signal); }
+
+/* Start here */
+.st-paths { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 12px; margin-bottom: clamp(32px, 5vw, 56px); }
+.st-path { padding: 22px; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--surface); display: grid; gap: 8px; align-content: start; }
+.st-path .label { color: var(--signal); }
+.st-path h2 { margin: 0; font-size: 1.5rem; }
+.st-path p { margin: 0 0 6px; }
+.st-lesson h2 .label { display: block; color: var(--signal); margin-bottom: 4px; }
+.mini-q { margin: 18px 0; padding: 18px; border: 1px solid var(--rule); border-radius: var(--r-md); background: var(--surface); }
+.mini-q .label { color: var(--signal); margin: 0; }
+.mini-ask { font-weight: 700; margin: 6px 0 10px; }
+.mini-opts { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.mini-q .mini-opt { width: 100%; height: auto; text-align: left; justify-content: flex-start; white-space: normal; padding: 10px 14px; border: 1px solid var(--rule); border-radius: var(--r-md); background: transparent; color: inherit; font-family: var(--body); font-size: 1rem; font-weight: 500; text-transform: none; letter-spacing: normal; }
+.mini-q .mini-opt:hover:not(:disabled) { border-color: var(--signal); background: transparent; color: inherit; }
+.mini-q .mini-opt:disabled { opacity: 1; color: inherit; cursor: default; }
+.mini-q.answered .mini-opt[data-ok="1"] { border-color: #1f9d55; box-shadow: inset 4px 0 0 #1f9d55; }
+.mini-q.answered .mini-opt[data-picked][data-ok="0"] { border-color: #d64545; box-shadow: inset 4px 0 0 #d64545; }
+.mini-why { margin: 10px 0 0; }
+.st-check { list-style: none; padding: 0; display: grid; gap: 8px; }
+.st-check label { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; padding: 14px; border: 1px solid var(--rule); border-radius: var(--r-md); cursor: pointer; }
+.st-check input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--signal); }
+.st-check b { display: block; }
+.st-check span { color: var(--ink-muted); }
+.st-check b { color: var(--ink, inherit); }
+.st-next { font-weight: 600; }

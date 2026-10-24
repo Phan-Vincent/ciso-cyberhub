@@ -104,3 +104,23 @@ if (typeof document !== 'undefined') {
     });
   }
 }
+
+/* ------------------------------------------------------------ Start here: quick checks and checklist */
+if (typeof document !== 'undefined') {
+  document.querySelectorAll<HTMLElement>('.mini-q').forEach(box => {
+    box.querySelectorAll<HTMLButtonElement>('.mini-opt').forEach(b => b.addEventListener('click', () => {
+      if (box.classList.contains('answered')) return; box.classList.add('answered'); b.dataset.picked = '1';
+      box.querySelectorAll<HTMLButtonElement>('.mini-opt').forEach(o => { o.disabled = true; });
+      const why = box.querySelector<HTMLElement>('.mini-why')!; why.hidden = false;
+      why.prepend(Object.assign(document.createElement('b'), { textContent: b.dataset.ok === '1' ? 'Correct. ' : 'Not quite. ' }));
+    }));
+  });
+  const list = document.querySelector<HTMLElement>('#st-check');
+  if (list) {
+    const k = 'cyberhub:start'; const done = new Set<string>(load<string[]>(k, []).filter(x => typeof x === 'string'));
+    const boxes = Array.from(list.querySelectorAll<HTMLInputElement>('[data-check]'));
+    const count = () => { const n = boxes.filter(b => b.checked).length; document.querySelector('#st-count')!.textContent = n === boxes.length ? `All ${n} done. You are safer than most people online.` : `${n} of ${boxes.length} done`; };
+    boxes.forEach(b => { b.checked = done.has(b.dataset.check!); b.addEventListener('change', () => { if (b.checked) done.add(b.dataset.check!); else done.delete(b.dataset.check!); store(k, [...done]); count(); }); });
+    count();
+  }
+}
