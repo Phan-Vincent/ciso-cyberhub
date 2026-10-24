@@ -221,3 +221,13 @@ The user explicitly approved committing, pushing and deploying this verified sna
 - **Networking Lab (`/linux/network/`):** 17 levels in `hub/netlab.py`; simulated network and commands (`ip`, `ping`, `traceroute`, `dig`, `nslookup`, `host`, `ss`, `netstat`, `nc`, `curl`) in `web/linux.ts` (`NET_LEVELS`, `netExec`). Same page builders as the Linux Lab (now parameterised). Progress key `cyberhub:netlab`. `tests/linux.test.mjs` solves every level with real commands.
 - **Cover letters:** the resume tailor has a "Tailored resume / Cover letter" switch; `coverPrompt` in `web/resume.ts` keeps the no-fabrication rules and marks unknowns as [PLACEHOLDER].
 - **Badges (`/progress/`):** `hub/badges.py` + `web/journey.ts` read existing progress keys (Linux, Networking, Academy, readiness, Daily, role quiz, guides, shifts). The printable card is cloned into `#print-root` on `beforeprint`. Badge ids must match in both files (tested).
+
+## Duel, accounts, beginner path, labs, AI pages (24 Oct 2026)
+
+- **Cyber Duel (`/duel/`):** `web/duel.ts`, `hub/duel.py`, questions in `data/duel.json` (+ Academy questions). Seeded rounds so challenge links replay exactly.
+- **Accounts (`/account/`):** local-first; Supabase sync turns on when `site.json` has `supabase_url` + publishable `supabase_key`. Setup: `docs/ACCOUNTS.md`, schema `supabase/schema.sql`. Email: `docs/EMAIL.md`.
+- **Start here (`/start/`):** `hub/start.py`; quick checks and checklist in `web/journey.ts`.
+- **Labs:** SOC Simulator (`web/soc.ts`) and Phishing lab (`web/phish.ts`), pages in `hub/practice.py`; listed on `/labs/`.
+- **AI:** Red Team Lab (`web/redteam.ts`), Prompt testing and AI and cyber jobs in `hub/ailab.py`. Daily pulse (`hub/pulse.py` → `data/pulse.json`) runs in the data workflow and is published with the other data files.
+- **Work roles (`/careers/roles/`):** `hub/roles.py`. **Tools:** 25 new tools are `pending-review` (badge shown) until the weekly catalog check confirms repository and license.
+- **News:** five more RSS/Atom sources in `data/sources.json`, each with a test fixture.

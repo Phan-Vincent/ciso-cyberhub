@@ -1,0 +1,14 @@
+{
+  "errors": [
+    "cves_7d: offline (first local reading)",
+    "ai_papers_7d: offline (first local reading)",
+    "hn: offline (first local reading)"
+  ],
+  "series": [
+    {
+      "date": "2026-10-24",
+      "kev_30d": 35
+    }
+  ],
+  "updated": "2026-10-24T19:18:48Z"
+}

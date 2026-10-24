@@ -1178,5 +1178,874 @@
     "sources": [
       "https://github.com/OWASP/Nettacker"
     ]
+  },
+  {
+    "id": "cyberchef",
+    "name": "CyberChef",
+    "description": "The \"cyber Swiss Army knife\": decode, encode, decrypt and analyse data in the browser with drag-and-drop recipes.",
+    "category": "Data analysis",
+    "secondary_categories": [],
+    "repository": "https://github.com/gchq/CyberChef",
+    "website": "https://gchq.github.io/CyberChef/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/gchq/CyberChef#readme",
+    "difficulty": "beginner",
+    "use_cases": [
+      "The \"cyber Swiss Army knife\": decode, encode, decrypt and analyse data in the browser with drag-and-drop recipes."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/gchq/CyberChef"
+    ]
+  },
+  {
+    "id": "velociraptor",
+    "name": "Velociraptor",
+    "description": "Endpoint visibility and digital forensics: query thousands of machines for evidence during an incident.",
+    "category": "Incident response",
+    "secondary_categories": [],
+    "repository": "https://github.com/Velocidex/velociraptor",
+    "website": "https://docs.velociraptor.app/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/Velocidex/velociraptor#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Endpoint visibility and digital forensics: query thousands of machines for evidence during an incident."
+    ],
+    "classification": [
+      "defensive"
+    ],
+    "certifications": [],
+    "labs": [
+      "incident-response"
+    ],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/Velocidex/velociraptor"
+    ]
+  },
+  {
+    "id": "misp",
+    "name": "MISP",
+    "description": "Threat intelligence sharing platform for indicators, events and correlations between organisations.",
+    "category": "Threat intelligence",
+    "secondary_categories": [],
+    "repository": "https://github.com/MISP/MISP",
+    "website": "https://www.misp-project.org/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/MISP/MISP#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Threat intelligence sharing platform for indicators, events and correlations between organisations."
+    ],
+    "classification": [
+      "defensive"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/MISP/MISP"
+    ]
+  },
+  {
+    "id": "opencti",
+    "name": "OpenCTI",
+    "description": "Cyber threat intelligence platform that organises actors, malware and indicators using the STIX standard.",
+    "category": "Threat intelligence",
+    "secondary_categories": [],
+    "repository": "https://github.com/OpenCTI-Platform/opencti",
+    "website": "https://filigran.io/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/OpenCTI-Platform/opencti#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Cyber threat intelligence platform that organises actors, malware and indicators using the STIX standard."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/OpenCTI-Platform/opencti"
+    ]
+  },
+  {
+    "id": "security-onion",
+    "name": "Security Onion",
+    "description": "Free Linux distribution for threat hunting, network security monitoring and log management in one install.",
+    "category": "Security monitoring",
+    "secondary_categories": [],
+    "repository": "https://github.com/Security-Onion-Solutions/securityonion",
+    "website": "https://securityonion.net/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/Security-Onion-Solutions/securityonion#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Free Linux distribution for threat hunting, network security monitoring and log management in one install."
+    ],
+    "classification": [
+      "defensive"
+    ],
+    "certifications": [],
+    "labs": [
+      "detection-engineering"
+    ],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/Security-Onion-Solutions/securityonion"
+    ]
+  },
+  {
+    "id": "arkime",
+    "name": "Arkime",
+    "description": "Large-scale full packet capture, indexing and search for network investigations.",
+    "category": "Network analysis",
+    "secondary_categories": [],
+    "repository": "https://github.com/arkime/arkime",
+    "website": "https://arkime.com/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/arkime/arkime#readme",
+    "difficulty": "advanced",
+    "use_cases": [
+      "Large-scale full packet capture, indexing and search for network investigations."
+    ],
+    "classification": [
+      "defensive"
+    ],
+    "certifications": [],
+    "labs": [
+      "packet-analysis"
+    ],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/arkime/arkime"
+    ]
+  },
+  {
+    "id": "snort3",
+    "name": "Snort 3",
+    "description": "Network intrusion detection and prevention engine with a large community rule ecosystem.",
+    "category": "Network detection",
+    "secondary_categories": [],
+    "repository": "https://github.com/snort3/snort3",
+    "website": "https://www.snort.org/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/snort3/snort3#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Network intrusion detection and prevention engine with a large community rule ecosystem."
+    ],
+    "classification": [
+      "defensive"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/snort3/snort3"
+    ]
+  },
+  {
+    "id": "autopsy",
+    "name": "Autopsy",
+    "description": "Graphical digital forensics platform for analysing disk images and phones.",
+    "category": "Digital forensics",
+    "secondary_categories": [],
+    "repository": "https://github.com/sleuthkit/autopsy",
+    "website": "https://www.autopsy.com/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/sleuthkit/autopsy#readme",
+    "difficulty": "beginner",
+    "use_cases": [
+      "Graphical digital forensics platform for analysing disk images and phones."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/sleuthkit/autopsy"
+    ]
+  },
+  {
+    "id": "sleuthkit",
+    "name": "The Sleuth Kit",
+    "description": "Command-line library and tools for file-system forensics, used underneath Autopsy.",
+    "category": "Digital forensics",
+    "secondary_categories": [],
+    "repository": "https://github.com/sleuthkit/sleuthkit",
+    "website": "https://www.sleuthkit.org/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/sleuthkit/sleuthkit#readme",
+    "difficulty": "advanced",
+    "use_cases": [
+      "Command-line library and tools for file-system forensics, used underneath Autopsy."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/sleuthkit/sleuthkit"
+    ]
+  },
+  {
+    "id": "keepassxc",
+    "name": "KeePassXC",
+    "description": "Offline, cross-platform password manager: the first security tool everyone should install.",
+    "category": "Personal security",
+    "secondary_categories": [],
+    "repository": "https://github.com/keepassxreboot/keepassxc",
+    "website": "https://keepassxc.org/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/keepassxreboot/keepassxc#readme",
+    "difficulty": "beginner",
+    "use_cases": [
+      "Offline, cross-platform password manager: the first security tool everyone should install."
+    ],
+    "classification": [
+      "defensive"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/keepassxreboot/keepassxc"
+    ]
+  },
+  {
+    "id": "clamav",
+    "name": "ClamAV",
+    "description": "Open-source antivirus engine for scanning files and mail for malware.",
+    "category": "Malware detection",
+    "secondary_categories": [],
+    "repository": "https://github.com/Cisco-Talos/clamav",
+    "website": "https://www.clamav.net/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/Cisco-Talos/clamav#readme",
+    "difficulty": "beginner",
+    "use_cases": [
+      "Open-source antivirus engine for scanning files and mail for malware."
+    ],
+    "classification": [
+      "defensive"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/Cisco-Talos/clamav"
+    ]
+  },
+  {
+    "id": "nuclei",
+    "name": "Nuclei",
+    "description": "Template-based vulnerability scanner for checking your own systems against known issues.",
+    "category": "Vulnerability scanning",
+    "secondary_categories": [],
+    "repository": "https://github.com/projectdiscovery/nuclei",
+    "website": "https://docs.projectdiscovery.io/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/projectdiscovery/nuclei#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Template-based vulnerability scanner for checking your own systems against known issues."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/projectdiscovery/nuclei"
+    ]
+  },
+  {
+    "id": "openvas",
+    "name": "OpenVAS",
+    "description": "Full-featured network vulnerability scanner from the Greenbone community edition.",
+    "category": "Vulnerability scanning",
+    "secondary_categories": [],
+    "repository": "https://github.com/greenbone/openvas-scanner",
+    "website": "https://www.openvas.org/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/greenbone/openvas-scanner#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Full-featured network vulnerability scanner from the Greenbone community edition."
+    ],
+    "classification": [
+      "defensive"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/greenbone/openvas-scanner"
+    ]
+  },
+  {
+    "id": "trufflehog",
+    "name": "TruffleHog",
+    "description": "Finds and verifies leaked secrets such as API keys in Git history, files and cloud storage.",
+    "category": "Secrets detection",
+    "secondary_categories": [],
+    "repository": "https://github.com/trufflesecurity/trufflehog",
+    "website": "https://trufflesecurity.com/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/trufflesecurity/trufflehog#readme",
+    "difficulty": "beginner",
+    "use_cases": [
+      "Finds and verifies leaked secrets such as API keys in Git history, files and cloud storage."
+    ],
+    "classification": [
+      "defensive"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/trufflesecurity/trufflehog"
+    ]
+  },
+  {
+    "id": "hayabusa",
+    "name": "Hayabusa",
+    "description": "Fast Windows event log analyser that turns logs into timelines and Sigma-based detections.",
+    "category": "Log analysis",
+    "secondary_categories": [],
+    "repository": "https://github.com/Yamato-Security/hayabusa",
+    "website": null,
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/Yamato-Security/hayabusa#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Fast Windows event log analyser that turns logs into timelines and Sigma-based detections."
+    ],
+    "classification": [
+      "defensive"
+    ],
+    "certifications": [],
+    "labs": [
+      "windows-events"
+    ],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/Yamato-Security/hayabusa"
+    ]
+  },
+  {
+    "id": "chainsaw",
+    "name": "Chainsaw",
+    "description": "Rapidly searches and hunts through Windows event logs using Sigma rules.",
+    "category": "Log analysis",
+    "secondary_categories": [],
+    "repository": "https://github.com/WithSecureLabs/chainsaw",
+    "website": null,
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/WithSecureLabs/chainsaw#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Rapidly searches and hunts through Windows event logs using Sigma rules."
+    ],
+    "classification": [
+      "defensive"
+    ],
+    "certifications": [],
+    "labs": [
+      "windows-events"
+    ],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/WithSecureLabs/chainsaw"
+    ]
+  },
+  {
+    "id": "capev2",
+    "name": "CAPEv2",
+    "description": "Malware sandbox that runs suspicious files in isolation and reports their behaviour.",
+    "category": "Malware analysis",
+    "secondary_categories": [],
+    "repository": "https://github.com/kevoreilly/CAPEv2",
+    "website": null,
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/kevoreilly/CAPEv2#readme",
+    "difficulty": "advanced",
+    "use_cases": [
+      "Malware sandbox that runs suspicious files in isolation and reports their behaviour."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/kevoreilly/CAPEv2"
+    ]
+  },
+  {
+    "id": "radare2",
+    "name": "radare2",
+    "description": "Reverse-engineering framework for disassembling and debugging binaries.",
+    "category": "Reverse engineering",
+    "secondary_categories": [],
+    "repository": "https://github.com/radareorg/radare2",
+    "website": "https://www.radare.org/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/radareorg/radare2#readme",
+    "difficulty": "advanced",
+    "use_cases": [
+      "Reverse-engineering framework for disassembling and debugging binaries."
+    ],
+    "classification": [
+      "research"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/radareorg/radare2"
+    ]
+  },
+  {
+    "id": "cutter",
+    "name": "Cutter",
+    "description": "Graphical reverse-engineering platform built on Rizin.",
+    "category": "Reverse engineering",
+    "secondary_categories": [],
+    "repository": "https://github.com/rizinorg/cutter",
+    "website": "https://cutter.re/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/rizinorg/cutter#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Graphical reverse-engineering platform built on Rizin."
+    ],
+    "classification": [
+      "research"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/rizinorg/cutter"
+    ]
+  },
+  {
+    "id": "promptfoo",
+    "name": "promptfoo",
+    "description": "Test prompts and LLM apps with test cases, side-by-side comparisons and red-team scans.",
+    "category": "AI security",
+    "secondary_categories": [],
+    "repository": "https://github.com/promptfoo/promptfoo",
+    "website": "https://www.promptfoo.dev/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/promptfoo/promptfoo#readme",
+    "difficulty": "beginner",
+    "use_cases": [
+      "Test prompts and LLM apps with test cases, side-by-side comparisons and red-team scans."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/promptfoo/promptfoo"
+    ]
+  },
+  {
+    "id": "garak",
+    "name": "garak",
+    "description": "LLM vulnerability scanner that probes models for prompt injection, leakage and jailbreaks.",
+    "category": "AI security",
+    "secondary_categories": [],
+    "repository": "https://github.com/NVIDIA/garak",
+    "website": null,
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/NVIDIA/garak#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "LLM vulnerability scanner that probes models for prompt injection, leakage and jailbreaks."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/NVIDIA/garak"
+    ]
+  },
+  {
+    "id": "pyrit",
+    "name": "PyRIT",
+    "description": "Python Risk Identification Toolkit for automating red-teaming of generative AI systems.",
+    "category": "AI security",
+    "secondary_categories": [],
+    "repository": "https://github.com/Azure/PyRIT",
+    "website": null,
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/Azure/PyRIT#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Python Risk Identification Toolkit for automating red-teaming of generative AI systems."
+    ],
+    "classification": [
+      "defensive",
+      "research"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/Azure/PyRIT"
+    ]
+  },
+  {
+    "id": "inspect-ai",
+    "name": "Inspect",
+    "description": "Framework from the UK AI Security Institute for writing and running AI model evaluations.",
+    "category": "AI security",
+    "secondary_categories": [],
+    "repository": "https://github.com/UKGovernmentBEIS/inspect_ai",
+    "website": null,
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/UKGovernmentBEIS/inspect_ai#readme",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Framework from the UK AI Security Institute for writing and running AI model evaluations."
+    ],
+    "classification": [
+      "research"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/UKGovernmentBEIS/inspect_ai"
+    ]
+  },
+  {
+    "id": "crowdsec",
+    "name": "CrowdSec",
+    "description": "Collaborative intrusion prevention: detects attacks in logs and shares blocklists across users.",
+    "category": "Network detection",
+    "secondary_categories": [],
+    "repository": "https://github.com/crowdsecurity/crowdsec",
+    "website": "https://www.crowdsec.net/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/crowdsecurity/crowdsec#readme",
+    "difficulty": "beginner",
+    "use_cases": [
+      "Collaborative intrusion prevention: detects attacks in logs and shares blocklists across users."
+    ],
+    "classification": [
+      "defensive"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/crowdsecurity/crowdsec"
+    ]
+  },
+  {
+    "id": "pi-hole",
+    "name": "Pi-hole",
+    "description": "Network-wide DNS sinkhole that blocks ads and known-bad domains for a whole home or lab network.",
+    "category": "Network defense",
+    "secondary_categories": [],
+    "repository": "https://github.com/pi-hole/pi-hole",
+    "website": "https://pi-hole.net/",
+    "license": null,
+    "license_status": "pending-review",
+    "license_notes": "License to be confirmed from the upstream repository during review.",
+    "os": [],
+    "installation": "https://github.com/pi-hole/pi-hole#readme",
+    "difficulty": "beginner",
+    "use_cases": [
+      "Network-wide DNS sinkhole that blocks ads and known-bad domains for a whole home or lab network."
+    ],
+    "classification": [
+      "defensive"
+    ],
+    "certifications": [],
+    "labs": [],
+    "tutorials": [],
+    "latest_release": null,
+    "activity": null,
+    "maintenance": "unknown",
+    "last_verified": null,
+    "retrieved_at": null,
+    "verification_status": "pending-review",
+    "verified_fields": [],
+    "sources": [
+      "https://github.com/pi-hole/pi-hole"
+    ]
   }
 ]

@@ -23,6 +23,10 @@ from .competitions import build_competitions
 from .badges import build_badges
 from .duel import build_duel
 from .account import build_account, supabase
+from .practice import build_practice, interactive_cards
+from .start import build_start
+from .ailab import build_ailab
+from .roles import build_roles
 import hashlib as _hashlib
 from pathlib import Path as _Path
 # Cache-busting version: changes whenever any front-end source changes, so browsers never pair new HTML with an old stylesheet or script.
@@ -102,21 +106,21 @@ class Site:
     SECTIONS=[
         ('learn','Learn','/learn/','Courses, labs and practice for every level.',[
             ('Security+ Academy','/academy/','28 lessons mapped to SY0-701'),('Linux Lab','/linux/','36 hands-on levels in a practice shell'),('Networking Lab','/linux/network/','17 levels: IP, DNS, ports, subnetting'),
-            ('Guided labs','/labs/','Investigations on safe evidence'),('Flashcards','/academy/flashcards/','83 cards across every objective'),
+            ('Start here','/start/','Cyber 101 for total beginners'),('Guided labs','/labs/','Investigations on safe evidence'),('SOC Simulator','/labs/soc/','Triage a shift of alerts'),('Phishing lab','/labs/phishing/','Investigate a suspicious inbox'),('Flashcards','/academy/flashcards/','83 cards across every objective'),
             ('Readiness check','/academy/readiness/','15 questions, a score by domain'),('Cyber Duel','/duel/','Head-to-head quiz: friends, bots, links'),('CyberHub Daily','/daily/','One real-world puzzle a day'),
             ('What you will defend','/defend/','Five systems, explained in depth'),('Cyber history','/history/','1834 to today, with archival photos'),('Your progress','/progress/','Badges and a printable completion card')]),
         ('tools','Tools','/tools/','Open-source tools, checked and explained.',[
             ('Tool explorer','/tools/','Source-checked security tools'),('Trending on GitHub','/tools/trending/','Top 10 rising projects, weekly'),
             ('Tutorials','/tutorials/','Step-by-step workflows')]),
         ('ai','AI','/ai/','Build with AI, safely.',[
-            ('Secure AI coding','/ai/vibe-coding/','The vibe-coding cheat sheet'),('Skills, tokens and context','/ai/workflow/','Skills, context savers, org guidelines'),('Meta-prompting','/ai/meta-prompting/','Make AI write better prompts'),
+            ('AI Red Team Lab','/ai/red-team/','Make an AI leak its secret'),('Prompt testing','/ai/prompt-testing/','Test AI like software'),('AI and cyber jobs','/ai/jobs/','Live data and the job outlook'),('Secure AI coding','/ai/vibe-coding/','The vibe-coding cheat sheet'),('Skills, tokens and context','/ai/workflow/','Skills, context savers, org guidelines'),('Meta-prompting','/ai/meta-prompting/','Make AI write better prompts'),
             ('Run AI locally','/ai/local/','Ollama on any computer'),('AI leaderboard','/ai/models/','Frontier and open-weight rankings')]),
         ('intel','Intel','/intelligence/','What attackers are doing right now.',[
             ('Intelligence desk','/intelligence/','Attributed headlines and sources'),('Vulnerabilities','/vulnerabilities/','Known-exploited CVEs'),
             ('Daily digest','/archive/','Every day, archived')]),
         ('careers','Careers','/careers/','From first internship to security architect.',[
             ('Career roadmaps','/careers/','12 roles, skills and projects'),('Internship scanner','/careers/internships/','Near CSUSB and remote, weekly'),
-            ('Resume tailor','/careers/resume/','Match your resume to a posting'),('Competitions','/careers/competitions/','NCL, CCDC, CPTC, picoCTF and more'),('Which role are you?','/careers/match/','A six-question career match')]),
+            ('Resume tailor','/careers/resume/','Match your resume to a posting'),('Competitions','/careers/competitions/','NCL, CCDC, CPTC, picoCTF and more'),('Work roles','/careers/roles/','15 roles, mapped to labs and tools'),('Which role are you?','/careers/match/','A six-question career match')]),
     ]
     def section_of(self,path):
         best=('',0)
@@ -363,7 +367,7 @@ class Site:
         for t in self.tools:
             tut_badge='<span class="badge subtle">Tutorial</span>' if t['tutorials'] else ''
             lab_badge='<span class="badge subtle">Lab</span>' if t['labs'] else ''
-            body+=f'<article class="card" data-record="{E(json.dumps(t))}"><div class="card-top">{self.badge(t["category"],"green")}<div class="badge-group">{tut_badge}{lab_badge}</div></div><h2>{self.a(t["name"],"/tools/"+t["id"]+"/")}</h2><p>{E(t["description"])}</p><div class="card-footer">{self.badge(t["license"] or t["license_status"])}<small class="meta-mono">{E(t["difficulty"])} · {E(t["verification_status"])}</small></div></article>'
+            body+=f'<article class="card" data-record="{E(json.dumps(t))}"><div class="card-top">{self.badge(t["category"],"green")}<div class="badge-group">{tut_badge}{lab_badge}{self.badge("New · review pending") if t["verification_status"]=="pending-review" else ""}</div></div><h2>{self.a(t["name"],"/tools/"+t["id"]+"/")}</h2><p>{E(t["description"])}</p><div class="card-footer">{self.badge(t["license"] or t["license_status"])}<small class="meta-mono">{E(t["difficulty"])} · {E(t["verification_status"])}</small></div></article>'
             detail=self.heading(t['name'],t['description'],f'Tools / {t["category"]}')
             detail+=f'<div class="actions"><a class="button primary" href="{E(t["repository"])}">Source repository ↗</a><a class="button" href="{E(t["installation"])}">Upstream setup guidance ↗</a></div><h2>Know the scope</h2><p>{E(t["license_notes"])}</p><dl class="metadata">'
             for label,value in [('Primary category',t['category']),('License',t['license']),('License classification',t['license_status']),('Platform',', '.join(t['os']) or 'Not verified'),('Difficulty (editorial)',t['difficulty']),('Maintenance',t['maintenance']),('Latest release',t['latest_release']),('Activity',t['activity']),('Checked fields',', '.join(t['verified_fields'])),('Last source check',t['last_verified'])]:detail+=f'<dt>{E(label)}</dt><dd>{E(value)}</dd>'
@@ -407,6 +411,7 @@ class Site:
             body=self.heading(title,description,section.title())
             if section=='labs':body+=f'<a class="lx-feature" href="{E(self.base)}/linux/"><span class="label">New / Linux Lab</span><strong>Learn Linux by doing it</strong><span>36 hands-on levels in a practice shell in your browser: navigation, pipes, permissions, sudo, processes. Fresh flags every time.</span><span class="label lx-go">Start the Linux Lab →</span></a>'
             if section=='careers':body+=f'<div class="grid two">{self.card("Internship scanner","Internships near CSUSB and remote, refreshed weekly, with security and IT roles flagged.","/careers/internships/","Weekly","Near CSUSB")}{self.card("Resume tailor","Match your resume to a posting, privately, then tailor it with AI without inventing anything.","/careers/resume/","Tool","Private")}{self.card("Which role are you?","Six questions that match you to a security career and its roadmap.","/careers/match/","Quiz","6 questions")}</div>'
+            if section=='labs':body+=interactive_cards(self)
             body+='<div class="grid">'
             for d in self.docs:
                 if d['section']==section:body+=self.card(d['title'],d['description'],f'/{section}/{d["id"]}/',d['difficulty'],f'{d["minutes"]} min')
@@ -469,7 +474,7 @@ class Site:
         shutil.copyfile(ROOT/'web/site.css',self.out/'assets/site.css')
         shutil.copyfile(ROOT/'public/assets/brand/cyberhub-favicon.svg',self.out/'assets/favicon.svg')
         subprocess.run(['node','scripts/transpile.mjs'],cwd=ROOT,check=True)
-        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
+        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);build_practice(self);build_start(self);build_ailab(self);build_roles(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
         for name,data in [('academy',self.academy),('search',self.search)]:
             (self.out/'assets'/f'{name}.json').write_text(json.dumps(data,ensure_ascii=False))
         self.page('/404/','Page not found',self.heading('This page is not here.','Use search or the main navigation to find a learning resource.')+self.a('Return home','/','button primary'))
