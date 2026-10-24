@@ -1,14 +1,17 @@
 {
   "errors": [
-    "cves_7d: offline (first local reading)",
-    "ai_papers_7d: offline (first local reading)",
-    "hn: offline (first local reading)"
+    "ai_papers_7d: HTTP 500"
   ],
   "series": [
     {
+      "cves_7d": 4660,
       "date": "2026-10-24",
+      "hn_llm": 38,
+      "hn_month": "October 2026",
+      "hn_security": 42,
+      "hn_total": 396,
       "kev_30d": 35
     }
   ],
-  "updated": "2026-10-24T19:18:48Z"
+  "updated": "2026-10-24T20:54:03Z"
 }
