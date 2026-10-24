@@ -84,7 +84,7 @@ EVENTS = [
 IMAGE_REQUIRE = {
     'chappe': r'chappe|telegra', 'enigma': r'enigma', 'colossus': r'colossus', 'bug': r'bug|mark ii|logbook|moth', 'eniac': r'eniac',
     'phreaks': r'phreak|blue ?box.*(phone|tele|tone|wozniak)|(phone|tele|tone|wozniak).*blue ?box', 'creeper': r'arpanet', 'cuckoo': r'stoll',
-    'morris': r'morris worm|morris_worm', 'defcon': r'def ?con', 'stuxnet': r's7|simatic|plc', 'heartbleed': r'heartbleed', 'apt1': r'apt1|mandiant',
+    'morris': r'morris worm|morris_worm', 'defcon': r'def ?con', 'stuxnet': r's7|simatic|plc', 'heartbleed': r'heartbleed', 'apt1': r'mandiant|61398',
 }
 
 PEOPLE = [
