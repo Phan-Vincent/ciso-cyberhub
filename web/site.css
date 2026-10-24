@@ -1734,3 +1734,17 @@ input, select { border-radius: 10px; }
 @media (prefers-reduced-motion: reduce) { .dp.wrong, .dp.pulse { animation: none; } }
 .duel [hidden], .duel-host [hidden] { display: none !important; }
 .duel .dp-choice { justify-content: flex-start; }
+
+/* Account */
+.acct-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+.acct-btn.signed-in { box-shadow: inset 0 0 0 2px var(--signal); }
+.account { display: grid; gap: 14px; max-width: 760px; }
+.account [hidden] { display: none !important; }
+.ac-card { padding: clamp(18px, 3vw, 28px); border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--surface); }
+.ac-card h2 { margin-top: 0; }
+.ac-form { display: grid; gap: 10px; max-width: 460px; }
+.ac-age { display: flex; gap: 8px; align-items: center; }
+.ac-danger { margin-top: 16px; }
+.ac-danger summary { cursor: pointer; color: var(--ink-muted); }
+#ac-delete { border-color: #d64545; color: #d64545; margin-top: 8px; }
+.ac-msg { min-height: 1.4em; color: var(--signal); }

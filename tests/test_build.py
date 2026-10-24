@@ -108,3 +108,25 @@ class BuildTests(unittest.TestCase):
         self.assertIn('<h2>Understand the concept</h2>',lesson)
         career=(ROOT/'dist/careers/soc-analyst/index.html').read_text()
         self.assertIn('<ol>',career)
+
+
+class AccountConfigTests(unittest.TestCase):
+    def test_supabase_config_is_validated_and_wired(self):
+        import tempfile
+        from hub.account import supabase
+        class S: config = {}
+        s = S(); self.assertEqual(supabase(s), ('', ''))
+        s.config = {'supabase_url': 'https://evil.example.com', 'supabase_key': 'x' * 40}
+        with self.assertRaises(ValueError): supabase(s)
+        s.config = {'supabase_url': 'https://abcdefghijklmnopqrst.supabase.co', 'supabase_key': 'sb_secret_' + 'x' * 30}
+        with self.assertRaises(ValueError): supabase(s)
+        s.config = {'supabase_url': 'https://abcdefghijklmnopqrst.supabase.co/', 'supabase_key': 'sb_publishable_' + 'x' * 30}
+        self.assertEqual(supabase(s)[0], 'https://abcdefghijklmnopqrst.supabase.co')
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Site(''); site.out = Path(tmp)
+            site.config = {**site.config, 'supabase_url': 'https://abcdefghijklmnopqrst.supabase.co', 'supabase_key': 'sb_publishable_' + 'x' * 30}
+            site.page('/x/', 'X', '<p>x</p>')
+            html = (Path(tmp) / 'x/index.html').read_text()
+            self.assertIn("connect-src 'self' https://abcdefghijklmnopqrst.supabase.co;", html)
+            self.assertIn('data-sb-url="https://abcdefghijklmnopqrst.supabase.co"', html)
+            self.assertIn('assets/account.js', html)
