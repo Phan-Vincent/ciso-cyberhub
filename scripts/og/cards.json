@@ -108,5 +108,25 @@
   ],
   "sub": "A cheat sheet for coding with AI and a meta-prompting guide, sourced and reviewed.",
   "tag": "AI / Guides"
+ },
+ {
+  "id": "linux",
+  "kicker": "36 hands-on levels",
+  "title": [
+   "Linux",
+   "Lab"
+  ],
+  "sub": "Learn the command line on a practice server in your browser. Find the flags, catch the attacker.",
+  "tag": "Labs / Linux"
+ },
+ {
+  "id": "history",
+  "kicker": "1834 – today",
+  "title": [
+   "Every attack",
+   "has a history"
+  ],
+  "sub": "From a bribed telegraph to AI agents: the hacks that shaped cybersecurity and what defenders learned.",
+  "tag": "History"
  }
 ]
