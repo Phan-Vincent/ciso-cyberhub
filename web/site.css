@@ -119,7 +119,7 @@
   color-scheme: light;
   --ground: var(--paper); --surface: #ffffff; --raised: var(--paper-2);
   --ink: #050505; --ink-muted: #565b64; --rule: rgba(5,5,5,.14); --rule-strong: rgba(5,5,5,.35);
-  --signal: var(--ciso);
+  --signal: #005ca4;
   background: var(--ground); color: var(--ink);
 }
 :root[data-theme=light] .home .tone-paper {
@@ -133,7 +133,7 @@
   color-scheme: light;
   --ground: var(--paper-2); --surface: var(--paper); --raised: #ffffff;
   --ink: #050505; --ink-muted: #565b64; --rule: rgba(5,5,5,.14); --rule-strong: rgba(5,5,5,.35);
-  --signal: var(--ciso);
+  --signal: #005ca4;
   background: var(--ground); color: var(--ink);
 }
 :root[data-theme=light] .home .tone-paper .warning { color: #f2b65a !important; }
@@ -1043,3 +1043,7 @@ input, select { border-radius: 10px; }
 .cursor.act .ring span { opacity: 0; }
 .cursor.on-blue.act .ring { background: transparent; border-color: #fff; }
 @media (max-width: 760px) { .ciso-word .label:last-child { display: none; } }
+
+/* Accessibility: CISO blue as text on light grey surfaces was 4.44:1; this shade passes WCAG AA (4.5:1+) on paper and paper-2 */
+:root[data-theme=light], .tone-paper { --signal: #005ca4; }
+@media (prefers-color-scheme: light) { :root:not([data-theme=dark]) { --signal: #005ca4; } }
