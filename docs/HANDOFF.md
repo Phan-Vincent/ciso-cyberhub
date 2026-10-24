@@ -213,3 +213,11 @@ The user explicitly approved committing, pushing and deploying this verified sna
 - The five homepage field photos are links to `/defend/<slug>/` (`hub/defend.py`); `/defend/` is the overview, also listed under Learn. Each page: what is inside, how it is attacked, real incidents (linked to `/history/` where an event exists), how defenders protect it, frameworks, practice links, careers and sources.
 - Adding a field photo requires a matching entry in `DOMAINS` (`tests/test_defend.py` enforces this).
 - Field captions now wrap onto two lines instead of colliding on narrow tiles.
+
+## Shifts, competitions, Networking Lab, cover letters, badges (24 Oct 2026)
+
+- **A day defending it:** `hub/shifts.py` holds a 4-step scenario per `/defend/` guide (exactly one best answer per step, each choice explained); `web/journey.ts` runs it and saves scores to `localStorage['cyberhub:defend']`.
+- **Competitions (`/careers/competitions/`):** `hub/competitions.py`. `EVENTS` are dated and marked done/now/upcoming at build time (the nightly rebuild keeps it current); `WINDOWS` are yearly patterns. Update the dates each season from the organisers' sites and bump `CHECKED`.
+- **Networking Lab (`/linux/network/`):** 17 levels in `hub/netlab.py`; simulated network and commands (`ip`, `ping`, `traceroute`, `dig`, `nslookup`, `host`, `ss`, `netstat`, `nc`, `curl`) in `web/linux.ts` (`NET_LEVELS`, `netExec`). Same page builders as the Linux Lab (now parameterised). Progress key `cyberhub:netlab`. `tests/linux.test.mjs` solves every level with real commands.
+- **Cover letters:** the resume tailor has a "Tailored resume / Cover letter" switch; `coverPrompt` in `web/resume.ts` keeps the no-fabrication rules and marks unknowns as [PLACEHOLDER].
+- **Badges (`/progress/`):** `hub/badges.py` + `web/journey.ts` read existing progress keys (Linux, Networking, Academy, readiness, Daily, role quiz, guides, shifts). The printable card is cloned into `#print-root` on `beforeprint`. Badge ids must match in both files (tested).

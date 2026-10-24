@@ -10,6 +10,7 @@ from html import escape as E
 
 from .common import ROOT, read_json
 from .guides import _sources, _toc
+from .shifts import shift_html
 
 # slug, photo caption (matches data/photos.json), title, one-line promise, lead
 DOMAINS = [
@@ -262,10 +263,10 @@ def domain_page(site, i: int, photos: dict) -> str:
     a = site.a
     n = len(DOMAINS)
     toc = [('what', 'What is inside'), ('attacks', 'How it is attacked'), ('incidents', 'Real incidents'), ('defend', 'How defenders protect it'),
-           ('practice', 'Practise it here'), ('careers', 'Careers')]
+           ('day', 'A day defending it'), ('practice', 'Practise it here'), ('careers', 'Careers')]
     body = site.heading(d['caption'], d['lead'], f'Defend / {i + 1:02d} of {n:02d} / {d["title"].split(": ")[1].capitalize()}')
     body += _hero(site, d, photos.get(d['caption']))
-    body += '<div class="guide">' + _toc(toc) + '<article class="guide-body">'
+    body += f'<div class="guide" data-defend-page="{E(d["slug"])}">' + _toc(toc) + '<article class="guide-body">'
     body += ('<section id="what"><h2><span class="label">01</span>What is inside</h2><dl class="df-list">'
              + ''.join(f'<div><dt>{E(t)}</dt><dd>{E(x)}</dd></div>' for t, x in d['what']) + '</dl></section>')
     body += ('<section id="attacks"><h2><span class="label">02</span>How it is attacked</h2><div class="flags">'
@@ -278,10 +279,11 @@ def domain_page(site, i: int, photos: dict) -> str:
     body += ('<section id="defend"><h2><span class="label">04</span>How defenders protect it</h2><ol class="steps">'
              + ''.join(f'<li><b>{E(t)}.</b> {E(x)}</li>' for t, x in d['defend']) + '</ol>'
              f'<p class="callout"><b>Frameworks to know:</b> {E(d["frameworks"])}</p></section>')
-    body += ('<section id="practice"><h2><span class="label">05</span>Practise it here</h2><p>Free, in your browser, on CyberHub:</p><div class="df-links">'
+    body += (f'<section id="day"><h2><span class="label">05</span>A day defending it</h2><p>Four decisions from a real kind of shift. Pick what you would do; each choice is explained.</p>{shift_html(site, d["slug"])}</section>')
+    body += ('<section id="practice"><h2><span class="label">06</span>Practise it here</h2><p>Free, in your browser, on CyberHub:</p><div class="df-links">'
              + ''.join(a(f'{t} →', u, 'button') for t, u in d['practice']) + '</div></section>')
     local = f'<p class="callout">{E(d["local"])}</p>' if d.get('local') else ''
-    body += ('<section id="careers"><h2><span class="label">06</span>Careers</h2><p>People who defend this every day:</p><div class="job-tags">'
+    body += ('<section id="careers"><h2><span class="label">07</span>Careers</h2><p>People who defend this every day:</p><div class="job-tags">'
              + ''.join(f'<span class="tag">{E(c)}</span>' for c in d['careers']) + f'</div>{local}'
              f'<p>{a("Career roadmaps →", "/careers/", "button primary")} {a("Internships near CSUSB →", "/careers/internships/", "button")}</p></section>')
     body += _sources(d['sources'])
@@ -310,4 +312,4 @@ def build_defend(site) -> None:
     photos = _photos()
     site.page('/defend/', 'What you will defend', overview_page(site, photos), 'Infrastructure, operational technology, hardware, networks and legacy systems: what each is, how it is attacked and how defenders protect it.', 'Learn')
     for i, d in enumerate(DOMAINS):
-        site.page(f'/defend/{d["slug"]}/', d['title'], domain_page(site, i, photos), d['lead'].split('. ')[0] + '.', 'Learn')
+        site.page(f'/defend/{d["slug"]}/', d['title'], domain_page(site, i, photos), d['lead'].split('. ')[0] + '.', 'Learn', module='journey')

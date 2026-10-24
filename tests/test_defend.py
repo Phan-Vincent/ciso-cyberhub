@@ -24,3 +24,32 @@ class DefendTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class ShiftAndBadgeTests(unittest.TestCase):
+    def test_every_guide_has_a_balanced_shift(self):
+        from hub.shifts import SHIFTS
+        self.assertEqual(sorted(SHIFTS), sorted(d['slug'] for d in DOMAINS))
+        for slug, (_role, _setting, steps, debrief, (_t, path)) in SHIFTS.items():
+            with self.subTest(slug):
+                self.assertEqual(len(steps), 4)
+                self.assertTrue(debrief and path.startswith('/'))
+                for _time, _sit, choices in steps:
+                    verdicts = [v for _c, v, _w in choices]
+                    self.assertEqual(len(verdicts), 3)
+                    self.assertEqual(verdicts.count('best'), 1)
+                    self.assertTrue(set(verdicts) <= {'best', 'ok', 'bad'})
+
+    def test_badge_ids_match_the_browser_code(self):
+        import re
+        from hub.badges import BADGES
+        ts = (ROOT / 'web/journey.ts').read_text()
+        self.assertEqual([b[0] for b in BADGES], re.findall(r"\{ id: '([a-z-]+)', test:", ts))
+
+    def test_competition_dates_are_ordered(self):
+        from hub.competitions import EVENTS, COMPS
+        ids = {c['id'] for c in COMPS}
+        self.assertEqual([e[0] for e in EVENTS], sorted(e[0] for e in EVENTS))
+        for start, end, cid, _label in EVENTS:
+            self.assertLessEqual(start, end)
+            self.assertIn(cid, ids)
