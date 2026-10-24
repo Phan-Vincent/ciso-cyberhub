@@ -215,3 +215,14 @@ if (match) {
 qa<HTMLButtonElement>('[data-copy]').forEach(b => b.addEventListener('click', () => {
   const target = q(b.dataset.copy || ''); if (target) copy(target.textContent || '', b);
 }));
+
+/* ------------------------------------------------- OS tabs (local AI guide) */
+const tabs = qa<HTMLButtonElement>('.os-tab');
+if (tabs.length) {
+  const select = (k: string) => { tabs.forEach(t => { const on = t.dataset.os === k; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; }); qa('.os-panel').forEach(p => { p.hidden = p.id !== 'os-' + k; }); };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => select(t.dataset.os!));
+    t.addEventListener('keydown', e => { if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return; const n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length]; n.focus(); select(n.dataset.os!); });
+  });
+  const ua = navigator.userAgent; select(/Windows/i.test(ua) ? 'win' : /Mac OS X|Macintosh/i.test(ua) && !/iPhone|iPad/.test(ua) ? 'mac' : /Linux/i.test(ua) && !/Android/i.test(ua) ? 'linux' : 'win');
+}

@@ -118,5 +118,15 @@
   ],
   "sub": "Learn the command line on a practice server in your browser. Find the flags, catch the attacker.",
   "tag": "Labs / Linux"
+ },
+ {
+  "id": "history",
+  "kicker": "1834 – today",
+  "title": [
+   "Every attack",
+   "has a history"
+  ],
+  "sub": "From a bribed telegraph to AI agents: the hacks that shaped cybersecurity and what defenders learned.",
+  "tag": "History"
  }
 ]

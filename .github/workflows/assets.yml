@@ -1,0 +1,38 @@
+name: Fetch licensed history images
+# Downloads public-domain / Creative Commons photos for /history/ from Wikimedia Commons
+# (license-checked in scripts/fetch_history_images.py) and commits them to the same branch.
+on:
+  pull_request:
+    paths: ['hub/history.py', 'scripts/fetch_history_images.py', '.github/workflows/assets.yml']
+  push:
+    branches: [main]
+    paths: ['hub/history.py', 'scripts/fetch_history_images.py']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: history-assets-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  fetch:
+    # Only for branches in this repository (fork PRs get a read-only token).
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Fetch images (licensed only)
+        run: python scripts/fetch_history_images.py
+      - name: Commit new images
+        run: |
+          git add public/assets/history data/history_images.json
+          if git diff --cached --quiet; then echo "No new images"; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898283+github-actions[bot]@users.noreply.github.com" commit -m "Add licensed history images from Wikimedia Commons (automated)"
+          git push

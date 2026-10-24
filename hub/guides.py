@@ -238,7 +238,9 @@ def ai_hub(site) -> str:
     body += '<div class="grid two">'
     for title, desc, path, tag, meta in [
         ('Secure AI coding cheat sheet', 'The vibe-coding loop, prompts that work, rules to paste into AGENTS.md, red flags and the checks to run before you ship.', '/ai/vibe-coding/', 'Cheat sheet', '9 sections'),
-        ('Meta-prompting guide', 'Have a model write and improve your prompts, then prove them with a small test set. Copy-ready templates.', '/ai/meta-prompting/', 'Guide', '9 sections')]:
+        ('Meta-prompting guide', 'Have a model write and improve your prompts, then prove them with a small test set. Copy-ready templates.', '/ai/meta-prompting/', 'Guide', '9 sections'),
+        ('Run AI on your own computer', 'Install Ollama on Windows, macOS, Linux or Docker, pick a model that fits your hardware, and keep it private.', '/ai/local/', 'Setup guide', 'Every OS'),
+        ('AI leaderboard', 'Frontier model rankings, trending open-weight models and what people run locally, each with its date and source.', '/ai/models/', 'Leaderboard', 'Weekly + snapshot')]:
         body += site.card(title, desc, path, tag, meta)
     body += '</div>'
     body += f'<p class="notice">AI tools change monthly. Each guide shows the date it was last checked against its sources. Spot something out of date? {site.a("Contribute a fix", "/contribute/")}.</p>'

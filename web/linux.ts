@@ -417,5 +417,16 @@ if (app) {
 // Index page: mark completed levels
 const idx = typeof document === 'undefined' ? null : document.querySelector<HTMLElement>('#linux-index');
 if (idx) { try { const d = new Set<string>(JSON.parse(localStorage.getItem('cyberhub:linux') || '[]')); idx.querySelectorAll<HTMLElement>('[data-lv]').forEach(e => e.classList.toggle('done', d.has(e.dataset.lv!))); idx.querySelectorAll<HTMLElement>('[data-mod-count]').forEach(e => { const ids = (e.dataset.modCount || '').split(','); e.textContent = `${ids.filter(i => d.has(i)).length}/${ids.length}`; }); } catch { /* ignore */ } }
+// Rank ladder on the index page
+const rankEl = typeof document === 'undefined' ? null : document.querySelector<HTMLElement>('#lx-rank');
+if (rankEl) {
+  let n = 0; try { n = (JSON.parse(localStorage.getItem('cyberhub:linux') || '[]') as string[]).filter(id => LEVELS.some(l => l.id === id)).length; } catch { /* ignore */ }
+  const ranks = (rankEl.dataset.ranks || '').split(',').map(x => { const [a, b] = x.split(':'); return [Number(a), b] as [number, string]; });
+  let cur = ranks[0], next: [number, string] | undefined; for (const r of ranks) { if (n >= r[0]) cur = r; else { next = r; break; } }
+  rankEl.querySelector('#lx-rank-name')!.textContent = cur[1];
+  rankEl.querySelector<HTMLElement>('#lx-rank-fill')!.style.setProperty('--p', String(Math.min(1, n / LEVELS.length)));
+  rankEl.querySelector('#lx-rank-next')!.textContent = next ? `${n} of ${LEVELS.length} levels · ${next[0] - n} more to reach ${next[1]}` : `All ${LEVELS.length} levels complete. You are root.`;
+  rankEl.querySelectorAll<HTMLElement>('[data-at]').forEach(li => li.classList.toggle('on', n >= Number(li.dataset.at)));
+}
 export const LEVEL_IDS = LEVELS.map(l => l.id);
 export { LEVELS };

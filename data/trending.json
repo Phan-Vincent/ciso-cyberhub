@@ -1,0 +1,193 @@
+{
+  "generated_at": "2026-10-24T07:30:00Z",
+  "models": [
+    {
+      "created": "2026-10-02",
+      "downloads": 5775,
+      "id": "Aleph-Alpha/Kolibri-1",
+      "likes": 759,
+      "org": "Aleph-Alpha",
+      "task": "text-generation",
+      "trending": 726,
+      "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+    },
+    {
+      "created": "2026-09-17",
+      "downloads": 33633,
+      "id": "Venastine-Research/Xing4.0-29B-A4B-GGUF",
+      "likes": 613,
+      "org": "Venastine-Research",
+      "task": "text-generation",
+      "trending": 588,
+      "url": "https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF"
+    },
+    {
+      "created": "2026-09-10",
+      "downloads": 1255513,
+      "id": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "likes": 4210,
+      "org": "deepseek-ai",
+      "task": "image-text-to-text",
+      "trending": 164,
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+    },
+    {
+      "created": "2026-09-16",
+      "downloads": 4271466,
+      "id": "prism-ml/Ternary-Bonsai-2-27B-gguf",
+      "likes": 2510,
+      "org": "prism-ml",
+      "task": "text-generation",
+      "trending": 156,
+      "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"
+    },
+    {
+      "created": "2026-09-24",
+      "downloads": 559452,
+      "id": "ukisai/Swift-1.5-Qwen3.8-27B-GSQ-RCO-GGUF",
+      "likes": 290,
+      "org": "ukisai",
+      "task": "text-generation",
+      "trending": 105,
+      "url": "https://huggingface.co/ukisai/Swift-1.5-Qwen3.8-27B-GSQ-RCO-GGUF"
+    },
+    {
+      "created": "2026-08-25",
+      "downloads": 1507787,
+      "id": "zai-org/GLM-5.3",
+      "likes": 2126,
+      "org": "zai-org",
+      "task": "text-generation",
+      "trending": 99,
+      "url": "https://huggingface.co/zai-org/GLM-5.3"
+    },
+    {
+      "created": "2024-07-18",
+      "downloads": 6252533,
+      "id": "meta-llama/Llama-3.1-8B-Instruct",
+      "likes": 8268,
+      "org": "meta-llama",
+      "task": "text-generation",
+      "trending": 71,
+      "url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"
+    },
+    {
+      "created": "2026-09-29",
+      "downloads": 1577,
+      "id": "bytkim/Qwen3.8-27B-pi",
+      "likes": 57,
+      "org": "bytkim",
+      "task": "text-generation",
+      "trending": 55,
+      "url": "https://huggingface.co/bytkim/Qwen3.8-27B-pi"
+    }
+  ],
+  "repos": [
+    {
+      "created": "2026-07-13",
+      "description": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities.",
+      "gain": null,
+      "language": "TypeScript",
+      "license": "",
+      "name": "openai/codex-security",
+      "stars": 11188,
+      "url": "https://github.com/openai/codex-security"
+    },
+    {
+      "created": "2026-10-08",
+      "description": "ARTEX: AI autonomous penetration testing system (multi-agent LLM, Go + Next.js)",
+      "gain": null,
+      "language": "Go",
+      "license": "",
+      "name": "trhhubsd/ARTEX",
+      "stars": 1829,
+      "url": "https://github.com/trhhubsd/ARTEX"
+    },
+    {
+      "created": "2026-08-18",
+      "description": "Deterministic guardrails that don't break agents",
+      "gain": null,
+      "language": "Rust",
+      "license": "",
+      "name": "archestra-ai/OpenAPPA",
+      "stars": 1601,
+      "url": "https://github.com/archestra-ai/OpenAPPA"
+    },
+    {
+      "created": "2026-10-09",
+      "description": "Curated reverse-engineering tools and learning resources for binaries, apps, firmware, formats, and protocols.",
+      "gain": null,
+      "language": "Python",
+      "license": "",
+      "name": "morluto/awesome-reverse-engineering",
+      "stars": 1169,
+      "url": "https://github.com/morluto/awesome-reverse-engineering"
+    },
+    {
+      "created": "2026-10-02",
+      "description": "Open source code review that runs in your coding agent before you push. Scanners plus a separate AI reviewer.",
+      "gain": null,
+      "language": "TypeScript",
+      "license": "",
+      "name": "openqodex/openqodex",
+      "stars": 802,
+      "url": "https://github.com/openqodex/openqodex"
+    },
+    {
+      "created": "2026-09-22",
+      "description": "Agentic AI security scanner that hunts exploitable vulnerabilities, proves them with executable PoCs, and fixes them test-first.",
+      "gain": null,
+      "language": "Python",
+      "license": "",
+      "name": "nealbridges/VulnHunter",
+      "stars": 777,
+      "url": "https://github.com/nealbridges/VulnHunter"
+    },
+    {
+      "created": "2026-09-12",
+      "description": "Blitz Strike: a universal MCP security-audit toolbelt. Reconnaissance at speed. Analysis in depth. Validation before reporting.",
+      "gain": null,
+      "language": "TypeScript",
+      "license": "",
+      "name": "shinthink/blitzstrike",
+      "stars": 513,
+      "url": "https://github.com/shinthink/blitzstrike"
+    },
+    {
+      "created": "2026-08-07",
+      "description": "Find APIs hidden in front-end code and verify unauthorized-access risk with browser tracing and JavaScript static analysis.",
+      "gain": null,
+      "language": "Python",
+      "license": "",
+      "name": "pis10/TraceSurface",
+      "stars": 498,
+      "url": "https://github.com/pis10/TraceSurface"
+    },
+    {
+      "created": "2026-07-09",
+      "description": "AI security offense and defense platform; audits AI-generated code for hallucinated packages and missing safeguards.",
+      "gain": null,
+      "language": "Python",
+      "license": "",
+      "name": "Unclecheng-li/DeepSec",
+      "stars": 494,
+      "url": "https://github.com/Unclecheng-li/DeepSec"
+    },
+    {
+      "created": "2026-10-02",
+      "description": "Run AI agents in a sandbox that restricts what they can execute, read, write, and reach on the network.",
+      "gain": null,
+      "language": "Rust",
+      "license": "",
+      "name": "strands-agents/box",
+      "stars": 465,
+      "url": "https://github.com/strands-agents/box"
+    }
+  ],
+  "seeded": true,
+  "sources": {
+    "models": "Hugging Face models API, sorted by trending score",
+    "repos": "GitHub search API: security topics, created in the last 120 days, by stars"
+  },
+  "window_days": 120
+}

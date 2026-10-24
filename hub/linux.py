@@ -85,6 +85,10 @@ def index_page(site) -> str:
              '<ul class="lx-points"><li><b>Real commands.</b> A simulated shell with pipes, redirection, wildcards, permissions, sudo, variables and processes.</li>'
              '<li><b>Fresh flags.</b> Every level generates new data and flags, so the only way through is to do it.</li>'
              '<li><b>Security first.</b> Every module is framed as investigation work on a CISO server.</li></ul></div>')
+    ranks = [(0, 'Recruit'), (4, 'Operator'), (10, 'Analyst'), (18, 'Hunter'), (27, 'Responder'), (36, 'Root')]
+    body += ('<div class="lx-rank" id="lx-rank" data-ranks=\'' + ','.join(f'{n}:{t}' for n, t in ranks) + '\'><span class="label">Your rank</span><strong id="lx-rank-name">Recruit</strong>'
+             '<span class="lx-rank-bar" aria-hidden="true"><i id="lx-rank-fill"></i></span><span class="label" id="lx-rank-next">Complete 4 levels to reach Operator</span>'
+             '<ol class="lx-ladder">' + ''.join(f'<li data-at="{n}"><b>{t}</b><span class="label">{n} levels</span></li>' for n, t in ranks) + '</ol></div>')
     body += '<ol class="lx-modules" id="linux-index">'
     for i, (mid, title, desc, levels) in enumerate(MODULES):
         ids = ','.join(lv[0] for lv in levels)
