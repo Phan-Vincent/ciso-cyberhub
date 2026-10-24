@@ -4,6 +4,11 @@ name: Deploy approved release
 on:
   push:
     branches: [main]
+  # Pushes made by the data bot's token do not trigger 'push', so also deploy after it.
+  workflow_run:
+    workflows: [Propose source updates]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -12,7 +17,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
