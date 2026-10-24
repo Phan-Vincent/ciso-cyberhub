@@ -98,3 +98,13 @@ class BuildTests(unittest.TestCase):
         if len(dates)>=2:
             self.assertGreaterEqual(dates[0],dates[-1])
             self.assertEqual(dates,sorted(dates,reverse=True))
+    def test_search_index_has_unescaped_text_and_404_is_noindex(self):
+        index=read_json(ROOT/'dist/assets/search.json')
+        for entry in index:
+            self.assertIsNone(re.search(r'&(?:#\d+|#x[0-9a-fA-F]+|amp|lt|gt|quot|nbsp);',entry['text']))
+        self.assertIn('<meta name="robots" content="noindex">',(ROOT/'dist/404.html').read_text())
+    def test_content_pages_preserve_h2_hierarchy_and_ordered_lists(self):
+        lesson=(ROOT/'dist/academy/choosing-security-controls/index.html').read_text()
+        self.assertIn('<h2>Understand the concept</h2>',lesson)
+        career=(ROOT/'dist/careers/soc-analyst/index.html').read_text()
+        self.assertIn('<ol>',career)

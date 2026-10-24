@@ -40,18 +40,21 @@ function setupFilters(){
  const form=$('#filters') as HTMLFormElement|null; const list=$('#results'); if(!form||!list)return;
  const cards=Array.from(list.querySelectorAll<HTMLElement>('[data-record]'));
  const parsed=cards.map(card=>({card,record:JSON.parse(card.dataset.record||'{}')}));
+ const sortSelect=form.querySelector<HTMLSelectElement>('select[name="sort"]');
+ const defaultSort=sortSelect?.options[0]?.value||'name';
  const query=new URLSearchParams(location.search);
  for(const field of Array.from(form.elements) as HTMLInputElement[]){if(field.name && query.has(field.name))field.value=query.get(field.name)||'';}
  function update(){
   const values=Object.fromEntries(new FormData(form!)) as Record<string,string>;let count=0;
   const text=values.q||'';delete values.q;
-  const sort=values.sort||'name';delete values.sort;
+  const sort=values.sort||defaultSort;delete values.sort;
   parsed.sort((a,b)=>compareRecords(a.record,b.record,sort));
   for(const {card,record} of parsed){card.hidden=!matches(record,text,values);if(!card.hidden)count++;list!.append(card);}
   const result=$('#result-count');if(result)result.textContent=`${count} results`;
   const empty=$('#empty');if(empty)empty.hidden=count!==0;
-  const params=new URLSearchParams();if(text)params.set('q',text);for(const [k,v]of Object.entries(values))if(v)params.set(k,v);if(sort!=='name')params.set('sort',sort);
-  history.replaceState(null,'',location.pathname+(params.size?'?'+params:'')+location.hash);
+  const params=new URLSearchParams();if(text)params.set('q',text);for(const [k,v]of Object.entries(values))if(v)params.set(k,v);if(sort!==defaultSort)params.set('sort',sort);
+  const nextUrl=location.pathname+(params.size?'?'+params:'')+location.hash;
+  if(nextUrl!==location.pathname+location.search+location.hash)history.replaceState(null,'',nextUrl);
  }
  form.addEventListener('input',update);form.addEventListener('submit',e=>e.preventDefault());
  $('#reset-filters')?.addEventListener('click',()=>{form.reset();update();});update();

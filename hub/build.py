@@ -131,7 +131,7 @@ class Site:
                   f'<div class="mega" role="group" aria-label="{E(label)}"><p class="mega-desc">{E(desc)}</p><div class="mega-links">{links}</div></div></div>')
         menu_nav=''.join(f'<section class="menu-group"><h2 class="label"><span>{i+1:02d}</span> {E(label)}</h2>'+''.join(f'<a href="{E(b+p)}">{E(t)}</a>' for t,p,d in kids)+'</section>' for i,(key,label,landing,desc,kids) in enumerate(self.SECTIONS))
         menu_nav+=f'<section class="menu-group"><h2 class="label"><span>06</span> More</h2><a href="{E(b)}/resources/">All resources</a><a href="{E(b)}/search/">Search</a><a href="{E(b)}/contribute/">Contribute</a><a href="{E(self.config["club_url"])}">CISO club ↗</a></section>'
-        canonical=f'<link rel="canonical" href="{E(self.site_url+b+path)}">' if self.site_url else '<meta name="robots" content="noindex">'
+        canonical=f'<link rel="canonical" href="{E(self.site_url+b+path)}">' if self.site_url and path!='/404/' else '<meta name="robots" content="noindex">'
         brand=(f'<a class="brand" href="{E(b)}/" aria-label="CyberHub home">'
                f'<span class="brand-core">{self.img("cyberhub-core-on-dark.svg","","dark",32,32)}{self.img("cyberhub-core-on-light.svg","","light",32,32)}</span>'
                '<span class="brand-word">Cyber<i>Hub</i></span><span class="label">Powered by CISO</span></a>')
@@ -166,7 +166,7 @@ class Site:
              f'<main id="main" class="shell">{body}<div id="status" class="status" role="status" aria-live="polite"></div></main>{footer}'
              '<div class="cursor" id="cursor" aria-hidden="true"><div class="ring"><span id="cursor-label">View</span></div><div class="dot"></div></div></body></html>')
         file.write_text(doc,encoding='utf-8');self.paths.append(path)
-        self.search.append({'title':title,'section':section or 'Hub','path':path,'text':re.sub('<[^>]+>',' ',body)[:14000]})
+        self.search.append({'title':title,'section':section or 'Hub','path':path,'text':' '.join(html.unescape(re.sub('<[^>]+>',' ',body)).split())[:14000]})
     OG_CARDS=[('/daily/','daily'),('/history/','history'),('/tools/trending/','tools'),('/linux/','linux'),('/careers/internships/','internships'),('/ai/','ai'),('/academy/readiness/','readiness'),('/careers/match/','role'),('/tools/','tools'),('/tutorials/','tools'),('/academy/','academy'),('/labs/','labs'),('/intelligence/','intelligence'),('/vulnerabilities/','intelligence'),('/archive/','intelligence'),('/careers/','careers')]
     def social(self,path,title,description):
         """Link-preview tags so shared links show a CyberHub card on Discord, LinkedIn, iMessage and others."""

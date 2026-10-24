@@ -2,11 +2,11 @@
 
 A working static cybersecurity learning hub for a proposed student-maintained CISO community project. This repository complements https://www.ciso-csusb.org/; it does not replace that site or claim university or club authorization.
 
-**Release 0.1.0: working foundation, not the completed production scope.** The local build produces 98 routes. Live source acceptance, browser QA, deeper curriculum review and public deployment are still blocked or incomplete. See [coverage](docs/COVERAGE.md) and [test evidence](docs/TEST_RESULTS.md).
+**Release 0.1.0: working foundation, not the completed production scope.** The local build produces 131 routes. Live source acceptance, deeper curriculum review and club deployment sign-off remain documented in [coverage](docs/COVERAGE.md) and [test evidence](docs/TEST_RESULTS.md).
 
 ## Run locally
 
-Prerequisites: Python 3.12+ and Node.js 24. No `npm install`, API key, account or paid service is required to build and browse the core site.
+Prerequisites: Python 3.12+ and Node.js 24+. No `npm install`, API key, account or paid service is required to build and browse the core site.
 
 ```sh
 npm run check
@@ -44,7 +44,7 @@ python3 -m hub.maintenance links --dry-run
 python3 -m hub.maintenance certifications
 ```
 
-These commands only change local data when not in dry-run mode. No script merges or deploys changes. Network endpoints were denied in the authoring environment, so the delivered live dashboard correctly shows no retrieved records and the actual failures. Integration fixtures are used only by tests. Do not publish them as live reporting.
+These commands only change local data when not in dry-run mode. No script merges or deploys changes. Live source reporting and feed health are stored in `data/intelligence.json`; integration fixtures in `tests/fixtures/` are used only by tests and refused for live deployment.
 
 ## Design
 

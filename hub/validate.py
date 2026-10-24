@@ -73,9 +73,39 @@ def validate(root=ROOT):
         require(v['kev'] is True,'KEV field must be true for this data source')
         safe_url(v['source']); timestamp(v['retrieved_at'])
         if v['epss'] is not None: require(type(v['epss']) in (int,float) and 0<=v['epss']<=1,'Invalid EPSS')
-        if v['cvss'] is not None: require(0<=v['cvss']['score']<=10,'Invalid CVSS')
+        if v['cvss'] is not None: require(isinstance(v['cvss'],dict) and type(v['cvss'].get('score')) in (int,float) and 0<=v['cvss']['score']<=10,'Invalid CVSS')
         for u in v['references']: safe_url(u)
     require(intel['mode'] in ('source-reported','educational-fixtures'),'Invalid intelligence mode')
+    if (root/'data/sources.json').exists():
+        sources=read_json(root/'data/sources.json'); sids=set()
+        require(isinstance(sources,list) and sources,'Invalid sources list')
+        for s in sources:
+            require(SLUG.fullmatch(s.get('id','')) and s['id'] not in sids,'Duplicate/invalid source id'); sids.add(s['id'])
+            require(s.get('kind') in ('rss','kev') and string(s.get('name')) and string(s.get('category')),'Invalid source metadata')
+            safe_url(s.get('url',''))
+            require(isinstance(s.get('article_hosts'),list) and all(string(h,255) for h in s['article_hosts']),'Invalid source hosts')
+    if (root/'data/certifications.json').exists():
+        certs=read_json(root/'data/certifications.json')
+        require(isinstance(certs,list) and certs,'Invalid certifications list')
+        for c in certs:
+            for k in ('name','track','status','free_study_start','exam_cost_note'): require(string(c.get(k)),f'Invalid certification {k}')
+            safe_url(c.get('provider_url',''))
+    if (root/'data/photos.json').exists():
+        photos=read_json(root/'data/photos.json')
+        require(isinstance(photos,list) and photos,'Invalid photos list')
+        for p in photos:
+            for k in ('slot','file','id','by','alt','caption','note'): require(string(p.get(k)),f'Invalid photo {k}')
+            safe_url(p.get('page','')); safe_url(p.get('src',''))
+            require(not p['src'].startswith('https://plus.unsplash.com/'),'Unsplash+ paid photos are not permitted')
+    if (root/'data/review-queue.json').exists():
+        rq=read_json(root/'data/review-queue.json')
+        require(isinstance(rq,dict) and isinstance(rq.get('updates'),list) and isinstance(rq.get('discoveries'),list) and isinstance(rq.get('errors'),list),'Invalid review queue')
+        for d in rq['discoveries']:
+            require(string(d.get('name')) and d.get('status')=='pending-review','Invalid discovery entry')
+            safe_url(d.get('repository',''))
+    if (root/'data/catalog-state.json').exists():
+        cs=read_json(root/'data/catalog-state.json')
+        require(isinstance(cs,dict) and type(cs.get('offset')) is int and cs['offset']>=0,'Invalid catalog state')
     return {'tools':len(tools),'objectives':len(objective_ids),'questions':len(qids),'content_pages':len(docs)}
 
 if __name__=='__main__':
