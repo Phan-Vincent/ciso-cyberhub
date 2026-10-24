@@ -117,11 +117,11 @@ try {
 
  // Flashcards: click, Enter, Space, counts and reset to front on next/previous.
  await page.goto(origin+'/academy/flashcards/');
- await waitText(page,'#card-count',/^1 \/ 28 · Objective /);
+ await waitText(page,'#card-count',/^1 \/ \d+ · Objective /);
  await page.waitForFunction(()=>{const el=document.querySelector('#card-text');return !!el&&(el.textContent||'').trim().length>0;},undefined,{timeout:15000});
  const card=page.locator('#card-text');
  const front=await card.textContent();
- assert.match(await page.locator('#card-count').textContent(),/^1 \/ 28 · Objective /);
+ assert.match(await page.locator('#card-count').textContent(),/^1 \/ \d+ · Objective /);
  assert.equal(await card.getAttribute('aria-pressed'),'false');
  await card.click();
  assert.notEqual(await card.textContent(),front);
@@ -132,11 +132,11 @@ try {
  await card.press('Space');
  assert.notEqual(await card.textContent(),front);
  await page.locator('#next-card').click();
- assert.match(await page.locator('#card-count').textContent(),/^2 \/ 28 · Objective /);
+ assert.match(await page.locator('#card-count').textContent(),/^2 \/ \d+ · Objective /);
  assert.equal(await card.getAttribute('aria-pressed'),'false','next card must show its front');
  assert.notEqual(await card.textContent(),front);
  await page.locator('#previous-card').click();
- assert.match(await page.locator('#card-count').textContent(),/^1 \/ 28 · Objective /);
+ assert.match(await page.locator('#card-count').textContent(),/^1 \/ \d+ · Objective /);
  assert.equal(await card.getAttribute('aria-pressed'),'false','previous card must show its front');
  assert.equal(await card.textContent(),front);
  await page.locator('#flip').click();

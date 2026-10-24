@@ -1,0 +1,226 @@
+{
+  "as_of": "2026-10-24",
+  "frontier": {
+    "source": {
+      "name": "LLM Stats leaderboard",
+      "url": "https://llm-stats.com/",
+      "metric": "LLM Stats composite score"
+    },
+    "rows": [
+      {
+        "model": "Claude Opus 5.5",
+        "org": "Anthropic",
+        "license": "Proprietary",
+        "score": 60.4,
+        "context": "1.0M",
+        "price": "$4.76/M"
+      },
+      {
+        "model": "Claude Sonnet 5.5",
+        "org": "Anthropic",
+        "license": "Proprietary",
+        "score": 58.4,
+        "context": "1.0M",
+        "price": "$2.38/M"
+      },
+      {
+        "model": "GPT-6 Astra",
+        "org": "OpenAI",
+        "license": "Proprietary",
+        "score": 58.2,
+        "context": "1.1M",
+        "price": "$11.90/M"
+      },
+      {
+        "model": "Gemini 4 Argon",
+        "org": "Google",
+        "license": "Proprietary",
+        "score": 55.1,
+        "context": "1.0M",
+        "price": "$2.38/M"
+      },
+      {
+        "model": "Claude Mythos Preview",
+        "org": "Anthropic",
+        "license": "Proprietary",
+        "score": 54.5,
+        "context": "",
+        "price": "",
+        "note": "Limited preview, not publicly available"
+      },
+      {
+        "model": "Claude Opus 5",
+        "org": "Anthropic",
+        "license": "Proprietary",
+        "score": 53.8,
+        "context": "1.0M",
+        "price": "$5.95/M"
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "org": "OpenAI",
+        "license": "Proprietary",
+        "score": 53.6,
+        "context": "1.1M",
+        "price": "$2.38/M"
+      },
+      {
+        "model": "GPT-5.6 Sol",
+        "org": "OpenAI",
+        "license": "Proprietary",
+        "score": 53.3,
+        "context": "1.1M",
+        "price": "$6.19/M"
+      },
+      {
+        "model": "Claude Fable 5.1",
+        "org": "Anthropic",
+        "license": "Proprietary",
+        "score": 53.2,
+        "context": "1.0M",
+        "price": "$11.90/M"
+      },
+      {
+        "model": "Muse Wonder Full",
+        "org": "Meta",
+        "license": "Proprietary",
+        "score": 53.2,
+        "context": "",
+        "price": ""
+      },
+      {
+        "model": "Claude Fable 5",
+        "org": "Anthropic",
+        "license": "Proprietary",
+        "score": 53.1,
+        "context": "1.0M",
+        "price": "$11.90/M"
+      },
+      {
+        "model": "Muse Spark 1.3",
+        "org": "Meta",
+        "license": "Proprietary",
+        "score": 52.2,
+        "context": "1.0M",
+        "price": "$1.39/M"
+      },
+      {
+        "model": "Kimi K3",
+        "org": "Moonshot AI",
+        "license": "Open weights",
+        "score": 51.9,
+        "context": "1.0M",
+        "price": "$3.39/M"
+      },
+      {
+        "model": "DeepSeek-V4.1-Flash",
+        "org": "DeepSeek",
+        "license": "Open weights",
+        "score": 51.2,
+        "context": "1.0M",
+        "price": "$0.34/M"
+      }
+    ],
+    "callouts": [
+      {
+        "label": "Reasoning leader",
+        "value": "GPT-6 Astra",
+        "detail": "96.0% on GPQA"
+      },
+      {
+        "label": "Top open-weight model",
+        "value": "Kimi K3",
+        "detail": "93.5% on GPQA"
+      },
+      {
+        "label": "Fastest output",
+        "value": "Gemini 3.7 Flash",
+        "detail": "410 tokens/s"
+      },
+      {
+        "label": "Largest context",
+        "value": "Grok-4 Fast Reasoning",
+        "detail": "2.0M tokens"
+      }
+    ]
+  },
+  "local": {
+    "source": {
+      "name": "Ollama library, most popular",
+      "url": "https://ollama.com/library?sort=popular",
+      "metric": "all-time pulls"
+    },
+    "rows": [
+      {
+        "model": "llama3.1",
+        "org": "Meta",
+        "sizes": "8b, 70b, 405b",
+        "pulls": "120.5M",
+        "use": "General chat"
+      },
+      {
+        "model": "deepseek-r1",
+        "org": "DeepSeek",
+        "sizes": "1.5b–671b",
+        "pulls": "94.1M",
+        "use": "Reasoning"
+      },
+      {
+        "model": "llama3.2",
+        "org": "Meta",
+        "sizes": "1b, 3b",
+        "pulls": "86.1M",
+        "use": "Small and fast"
+      },
+      {
+        "model": "qwen2.5",
+        "org": "Alibaba",
+        "sizes": "0.5b–72b",
+        "pulls": "43.4M",
+        "use": "Multilingual"
+      },
+      {
+        "model": "gemma3",
+        "org": "Google",
+        "sizes": "270m–27b",
+        "pulls": "41.3M",
+        "use": "Single-GPU all-rounder"
+      },
+      {
+        "model": "qwen3",
+        "org": "Alibaba",
+        "sizes": "0.6b–235b",
+        "pulls": "41.3M",
+        "use": "Dense and MoE"
+      },
+      {
+        "model": "mistral",
+        "org": "Mistral AI",
+        "sizes": "7b",
+        "pulls": "34M",
+        "use": "Classic 7B"
+      },
+      {
+        "model": "gemma4",
+        "org": "Google",
+        "sizes": "e2b, e4b, 12b, 26b, 31b",
+        "pulls": "27.7M",
+        "use": "Reasoning, agents, coding, vision"
+      },
+      {
+        "model": "qwen3.5",
+        "org": "Alibaba",
+        "sizes": "0.8b–122b",
+        "pulls": "23.2M",
+        "use": "Multimodal"
+      },
+      {
+        "model": "qwen2.5-coder",
+        "org": "Alibaba",
+        "sizes": "0.5b–32b",
+        "pulls": "22.8M",
+        "use": "Coding"
+      }
+    ]
+  }
+}
