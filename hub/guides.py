@@ -237,6 +237,9 @@ def ai_hub(site) -> str:
     body = site.heading('AI for builders', 'Use AI to build faster without shipping vulnerabilities. Practical, sourced and reviewed every 90 days.', 'AI / Guides')
     body += '<div class="grid two">'
     for title, desc, path, tag, meta in [
+        ('AI Red Team Lab', 'Get a simulated AI assistant to leak its secret across six levels of real defences, then learn what actually stops prompt injection.', '/ai/red-team/', 'Lab', '6 levels'),
+        ('Prompt testing', 'Test prompts and AI features like software: test sets, scoring, adversarial cases, the OWASP Top 10 for LLMs and open-source tools.', '/ai/prompt-testing/', 'Guide', '7 sections'),
+        ('AI and cyber jobs', 'Live daily signals on vulnerabilities, AI-security research and hiring, plus the official job outlook and AI-era roles.', '/ai/jobs/', 'Data', 'Updated daily'),
         ('Secure AI coding cheat sheet', 'The vibe-coding loop, prompts that work, rules to paste into AGENTS.md, red flags and the checks to run before you ship.', '/ai/vibe-coding/', 'Cheat sheet', '9 sections'),
         ('Meta-prompting guide', 'Have a model write and improve your prompts, then prove them with a small test set. Copy-ready templates.', '/ai/meta-prompting/', 'Guide', '9 sections'),
         ('Working with AI: skills, tokens and context', 'Build reusable skills, cut token costs, keep a context saver, keep AI on track and teach it your organisation and scope.', '/ai/workflow/', 'Guide', '8 sections'),
