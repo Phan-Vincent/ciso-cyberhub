@@ -21,6 +21,8 @@ from .common import ROOT, now, read_json, safe_url, write_json
 OUT = ROOT / 'data/trending.json'
 TOPICS = ['security', 'cybersecurity', 'pentesting', 'devsecops', 'threat-intelligence', 'malware-analysis', 'reverse-engineering']
 BLOCK = re.compile(r'jailbreak|uncensor|abliterat|unfilter|nsfw|crack(ed)?\b|keygen|stealer|rat\b|botnet|ddos|carding|phishing[- ]?kit|meme|airdrop|token[- ]?sniper|casino|humanizer|dealign|bypass[- ]?(av|edr|antivirus)|破甲|越狱', re.I)
+# Viral projects worth showing even when they fall outside the topic/date window. Refreshed live weekly.
+SPOTLIGHT = [('morluto/rea', 'Viral this month: an MCP server that gives AI coding agents 170+ reverse-engineering tools for binaries, Electron apps, websites and Android APKs.')]
 UA = {'User-Agent': 'CISOCyberHub/0.1 (+trending feed)', 'Accept': 'application/json'}
 
 
@@ -80,10 +82,19 @@ def fetch() -> dict:
     previous = {}
     if OUT.exists():
         previous = {r['name']: r['stars'] for r in read_json(OUT).get('repos', [])}
+    spotlight = []
+    for name, why in SPOTLIGHT:
+        try:
+            x = _get(f'https://api.github.com/repos/{name}', gh_headers)
+            spotlight.append({'name': x['full_name'], 'url': x['html_url'], 'why': why, 'stars': int(x.get('stargazers_count') or 0), 'forks': int(x.get('forks_count') or 0),
+                              'language': x.get('language') or '', 'license': ((x.get('license') or {}).get('spdx_id') or ''), 'stars_note': ''})
+        except Exception as exc:  # noqa: BLE001 - keep last week's entry
+            print('spotlight failed', name, exc)
     models = _get('https://huggingface.co/api/models?sort=trendingScore&limit=60&filter=text-generation')
     return {'generated_at': now(), 'window_days': 120,
             'repos': clean_repos(list(repos.values()), previous),
             'models': clean_models(models),
+            'spotlight': spotlight,
             'sources': {'repos': 'GitHub search API: security topics, created in the last 120 days, by stars',
                         'models': 'Hugging Face models API, sorted by trending score'}}
 

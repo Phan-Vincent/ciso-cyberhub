@@ -31,8 +31,8 @@ test('compareRecords sorts date_added newest first',()=>{
   assert.deepEqual(records.map(r=>r.date_added),['2026-10-20','2024-05-10','2021-11-03']);
 });
 
-test('all 28 flashcards are complete, unique and mapped to an objective',()=>{
-  assert.equal(course.flashcards.length,28);
+test('flashcards are complete, unique and cover every objective',()=>{
+  assert.ok(course.flashcards.length>=80,'expected the expanded deck');
   const objectives=new Set(course.objectives.map(o=>o.id));
   const fronts=new Set();
   for(const card of course.flashcards){
@@ -42,5 +42,6 @@ test('all 28 flashcards are complete, unique and mapped to an objective',()=>{
     assert.equal(fronts.has(card.front),false,`duplicate front: ${card.front}`);
     fronts.add(card.front);
   }
-  assert.deepEqual([...fronts].length,28);
+  assert.deepEqual([...fronts].length,course.flashcards.length);
+  for(const o of course.objectives)assert.ok(course.flashcards.filter(c=>c.objective===o.id).length>=2,`objective ${o.id} needs at least 2 cards`);
 });

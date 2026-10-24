@@ -140,6 +140,12 @@ def trending_page(site) -> str:
     body = site.heading('Trending security tools', f'The ten fastest-rising open-source security projects on GitHub, created in the last {tr.get("window_days", 120)} days. Refreshed every week.', 'Tools / Trending')
     body += (f'<p class="guide-meta label"><span class="dot" aria-hidden="true"></span>Last refresh <time datetime="{E(tr["generated_at"][:10])}">{E(tr["generated_at"][:10])}</time> · {E(tr["sources"]["repos"])}</p>'
              '<p class="notice"><b>Trending is not vetted.</b> New projects can be brilliant, abandoned or unsafe. Read the code and license before running anything, use a VM for offensive tools, and only test systems you are authorised to test. Jailbreak kits, spam and re-uploads are filtered out automatically.</p>')
+    for sp in tr.get('spotlight', []):
+        owner, name = sp['name'].split('/', 1)
+        note = f' ({E(sp["stars_note"])})' if sp.get('stars_note') else ''
+        body += (f'<a class="trend-spot" href="{E(sp["url"])}" rel="noopener"><span class="label">Spotlight / {E(owner)}</span><strong>{E(name.upper())}</strong>'
+                 f'<span class="ts-why">{E(sp["why"])}</span><span class="ts-stats"><b>{sp["stars"]:,}</b> stars{note} · {sp["forks"]:,} forks · {E(sp.get("license") or "license unknown")}</span>'
+                 '<span class="ts-warn">Reverse engineering is legal for interoperability and research in many places, but check software licenses and only analyse apps you own or are authorised to test.</span></a>')
     body += '<ol class="trend-list">'
     for i, r in enumerate(tr['repos']):
         owner, name = r['name'].split('/', 1)

@@ -189,5 +189,17 @@
     "models": "Hugging Face models API, sorted by trending score",
     "repos": "GitHub search API: security topics, created in the last 120 days, by stars"
   },
+  "spotlight": [
+    {
+      "forks": 16440,
+      "language": "TypeScript",
+      "license": "MIT",
+      "name": "morluto/rea",
+      "stars": 76998,
+      "stars_note": "as of 11 Oct, when it hit #1 on GitHub trending with about 25,800 stars in a day",
+      "url": "https://github.com/morluto/rea",
+      "why": "Viral this month: an MCP server that gives AI coding agents 170+ reverse-engineering tools for binaries, Electron apps, websites and Android APKs."
+    }
+  ],
   "window_days": 120
 }

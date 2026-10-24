@@ -578,9 +578,29 @@
       "back": "Detection reveals activity after or during it; prevention stops or limits it before harm."
     },
     {
+      "objective": "1.1",
+      "front": "Give an example of a compensating control.",
+      "back": "A control that offsets a missing one, such as extra monitoring and network isolation for a legacy server that cannot be patched."
+    },
+    {
+      "objective": "1.1",
+      "front": "Technical, managerial, operational or physical: which category is a security awareness program?",
+      "back": "Operational. It is carried out by people day to day, while the policy that requires it is managerial."
+    },
+    {
       "objective": "1.2",
       "front": "Which CIA goal is harmed by an unauthorized grade change?",
       "back": "Integrity: the record no longer faithfully represents an authorized result."
+    },
+    {
+      "objective": "1.2",
+      "front": "What does non-repudiation provide?",
+      "back": "Proof that a specific party performed an action, so they cannot credibly deny it; digital signatures are the classic example."
+    },
+    {
+      "objective": "1.2",
+      "front": "Authentication, authorization, accounting: what does each answer?",
+      "back": "Who are you? What may you do? What did you do? AAA."
     },
     {
       "objective": "1.3",
@@ -588,9 +608,29 @@
       "back": "A backup is a recoverable copy of data; a rollback plan sets out how and when to restore service and data, including dependencies and access."
     },
     {
+      "objective": "1.3",
+      "front": "Why does a change request include a backout plan?",
+      "back": "So a failed change can be reversed quickly and predictably, limiting downtime and risk."
+    },
+    {
+      "objective": "1.3",
+      "front": "What is a maintenance window?",
+      "back": "An agreed time when changes can be made with the least business impact, so users and support know what to expect."
+    },
+    {
       "objective": "1.4",
       "front": "Does a matching hash prove a file is safe?",
       "back": "No. It supports equality or integrity relative to a reference, not benign behavior."
+    },
+    {
+      "objective": "1.4",
+      "front": "Symmetric vs asymmetric encryption in one line each.",
+      "back": "Symmetric: one shared key, fast, used for bulk data. Asymmetric: a public/private key pair, slower, used for key exchange and signatures."
+    },
+    {
+      "objective": "1.4",
+      "front": "What does salting a password hash prevent?",
+      "back": "Precomputed rainbow-table attacks and spotting identical passwords, because each hash gets unique random input."
     },
     {
       "objective": "2.1",
@@ -598,9 +638,29 @@
       "back": "A desired outcome does not prove an actor has the access or resources to achieve it."
     },
     {
+      "objective": "2.1",
+      "front": "How do hacktivists differ from organized crime as threat actors?",
+      "back": "Hacktivists are driven by ideology and publicity; organized crime is driven by money and usually stays quiet."
+    },
+    {
+      "objective": "2.1",
+      "front": "What makes nation-state actors distinctive?",
+      "back": "Long-term goals, large resources and patience: advanced persistent threats focused on espionage, disruption or strategic advantage."
+    },
+    {
       "objective": "2.2",
       "front": "How does an attack vector differ from an attack surface?",
       "back": "The vector is a route; the surface is the collection of reachable opportunities."
+    },
+    {
+      "objective": "2.2",
+      "front": "What is a watering-hole attack?",
+      "back": "Compromising a website the target group already visits, so the victims come to the attacker."
+    },
+    {
+      "objective": "2.2",
+      "front": "Why is an unused open port part of the attack surface?",
+      "back": "Every reachable service is code an attacker can probe. Closing what you do not need removes risk for free."
     },
     {
       "objective": "2.3",
@@ -608,9 +668,29 @@
       "back": "Well-formed data can still request an action the caller is not allowed to perform."
     },
     {
+      "objective": "2.3",
+      "front": "What is a race condition (TOCTOU) vulnerability?",
+      "back": "A flaw where the state checked differs from the state used, because something changes between the time of check and the time of use."
+    },
+    {
+      "objective": "2.3",
+      "front": "What is a zero-day?",
+      "back": "A vulnerability that is exploited before the vendor has released a fix, leaving defenders zero days of warning."
+    },
+    {
       "objective": "2.4",
       "front": "What makes an indicator useful?",
       "back": "Reliable context, a known collection method, and a testable link to a hypothesis."
+    },
+    {
+      "objective": "2.4",
+      "front": "Name two indicators of a brute-force login attack.",
+      "back": "Many failed logins in a short time, often from one source against many accounts or one account from many sources."
+    },
+    {
+      "objective": "2.4",
+      "front": "What does impossible travel suggest?",
+      "back": "Logins for one account from distant places too close together in time, which points to stolen credentials."
     },
     {
       "objective": "2.5",
@@ -618,9 +698,29 @@
       "back": "A functioning service does not prove the boundary blocks unauthorized traffic."
     },
     {
+      "objective": "2.5",
+      "front": "Why does application allow-listing beat block-listing?",
+      "back": "It permits only known-good software, so new or unknown malware cannot run, instead of chasing a list of known-bad files."
+    },
+    {
+      "objective": "2.5",
+      "front": "What is the purpose of network segmentation?",
+      "back": "To limit how far an attacker can move and to contain incidents by separating systems into zones with controlled paths."
+    },
+    {
       "objective": "3.1",
       "front": "What important isolation difference separates containers from VMs?",
       "back": "Containers usually share the host kernel; VMs normally run a guest kernel."
+    },
+    {
+      "objective": "3.1",
+      "front": "In the cloud shared responsibility model, who secures the data?",
+      "back": "The customer, in every service model. The provider secures the underlying infrastructure."
+    },
+    {
+      "objective": "3.1",
+      "front": "Why are infrastructure-as-code templates a security win?",
+      "back": "Configurations are versioned, reviewable and repeatable, and they can be scanned for misconfigurations before deployment."
     },
     {
       "objective": "3.2",
@@ -628,9 +728,29 @@
       "back": "The specific safety, availability and security consequences of the failure."
     },
     {
+      "objective": "3.2",
+      "front": "What does a screened subnet (DMZ) do?",
+      "back": "Hosts internet-facing services in a zone separated from the internal network, so a compromised web server does not expose everything."
+    },
+    {
+      "objective": "3.2",
+      "front": "Fail-open vs fail-closed?",
+      "back": "Fail-open keeps traffic flowing when a device fails (availability); fail-closed blocks it (security). Choose per system."
+    },
+    {
       "objective": "3.3",
       "front": "What risk can remain after obvious identifiers are removed?",
       "back": "Reidentification through combinations of quasi-identifiers or linked datasets."
+    },
+    {
+      "objective": "3.3",
+      "front": "Data at rest, in transit, in use: one protection for each.",
+      "back": "At rest: disk or database encryption. In transit: TLS. In use: access controls or secure enclaves."
+    },
+    {
+      "objective": "3.3",
+      "front": "What is tokenization?",
+      "back": "Replacing sensitive data such as a card number with a meaningless token, while the real value is stored in a separate secure vault."
     },
     {
       "objective": "3.4",
@@ -638,9 +758,24 @@
       "back": "It can reproduce deletion, corruption and attacker changes in the replica."
     },
     {
+      "objective": "3.4",
+      "front": "RTO vs RPO?",
+      "back": "Recovery time objective: how long you can be down. Recovery point objective: how much data you can afford to lose."
+    },
+    {
+      "objective": "3.4",
+      "front": "Why test backups by restoring them?",
+      "back": "A backup that has never been restored is an assumption. Restores prove the data and the process actually work."
+    },
+    {
       "objective": "4.1",
       "front": "What is a secure baseline?",
       "back": "An approved expected configuration that can be deployed, verified and maintained."
+    },
+    {
+      "objective": "4.1",
+      "front": "Why disable default accounts and change default passwords?",
+      "back": "Default credentials are published online and are among the first things attackers try."
     },
     {
       "objective": "4.2",
@@ -648,9 +783,29 @@
       "back": "Someone must be accountable for access, maintenance, risk decisions and retirement."
     },
     {
+      "objective": "4.2",
+      "front": "Why does secure disposal matter for old drives?",
+      "back": "Deleted files are recoverable. Drives need wiping, cryptographic erasure or physical destruction, with a certificate for records."
+    },
+    {
+      "objective": "4.2",
+      "front": "What is the purpose of an asset inventory?",
+      "back": "You cannot protect, patch or monitor what you do not know you own."
+    },
+    {
       "objective": "4.3",
       "front": "What closes a vulnerability remediation task?",
       "back": "Verification of the effective fix or an explicitly accepted, time-bounded exception."
+    },
+    {
+      "objective": "4.3",
+      "front": "What does CVSS measure, and what does it not?",
+      "back": "Technical severity of a vulnerability. It does not measure your exposure, the asset's value or whether it is being exploited."
+    },
+    {
+      "objective": "4.3",
+      "front": "Why prioritise vulnerabilities listed in CISA KEV?",
+      "back": "They are confirmed as exploited in the wild, which is stronger evidence of real risk than a severity score alone."
     },
     {
       "objective": "4.4",
@@ -658,9 +813,29 @@
       "back": "It makes event correlation and ordering across systems more reliable."
     },
     {
+      "objective": "4.4",
+      "front": "What does a SIEM do?",
+      "back": "Collects and correlates logs from many sources to detect, alert on and investigate security events."
+    },
+    {
+      "objective": "4.4",
+      "front": "Why synchronise time (NTP) across systems?",
+      "back": "Investigations depend on lining up events from many logs; clock drift breaks the timeline."
+    },
+    {
       "objective": "4.5",
       "front": "Why test an exception separately?",
       "back": "An exception may unintentionally permit far more traffic or data than required."
+    },
+    {
+      "objective": "4.5",
+      "front": "What does DLP do?",
+      "back": "Data loss prevention detects and blocks sensitive data from leaving through email, uploads, USB and other channels."
+    },
+    {
+      "objective": "4.5",
+      "front": "How does DNS filtering protect users?",
+      "back": "It blocks lookups for known malicious or unwanted domains before a connection is made."
     },
     {
       "objective": "4.6",
@@ -668,9 +843,29 @@
       "back": "It limits routine exposure of administrative authority and improves accountability."
     },
     {
+      "objective": "4.6",
+      "front": "What is the principle of least privilege?",
+      "back": "Give each user and service only the access needed for its job, for only as long as needed."
+    },
+    {
+      "objective": "4.6",
+      "front": "Why run regular access reviews?",
+      "back": "To remove access people no longer need (privilege creep) and catch accounts left behind after role changes or departures."
+    },
+    {
       "objective": "4.7",
       "front": "What does idempotent ingestion prevent?",
       "back": "Duplicate or repeated effects when the same source record is processed again."
+    },
+    {
+      "objective": "4.7",
+      "front": "What is a security benefit of automation and orchestration?",
+      "back": "Consistent, fast response such as automatic account lockout or ticket creation, with less human error."
+    },
+    {
+      "objective": "4.7",
+      "front": "What is a risk of automation?",
+      "back": "A mistake or compromised script is repeated at machine speed across every system it touches."
     },
     {
       "objective": "4.8",
@@ -678,9 +873,29 @@
       "back": "To improve controls and response based on evidence, rather than assign unsupported blame."
     },
     {
+      "objective": "4.8",
+      "front": "List the incident response phases in order.",
+      "back": "Preparation, detection, analysis, containment, eradication, recovery, lessons learned."
+    },
+    {
+      "objective": "4.8",
+      "front": "Why preserve evidence before wiping an infected machine?",
+      "back": "Memory and disk evidence explain how the attacker got in, and it may be needed for legal action. Order of volatility matters."
+    },
+    {
       "objective": "4.9",
       "front": "What does evidence provenance record?",
       "back": "Where evidence came from, how it was collected, and how it has been handled."
+    },
+    {
+      "objective": "4.9",
+      "front": "What can NetFlow data tell you that firewall logs might not?",
+      "back": "Who talked to whom, when and how much, giving a traffic overview without capturing full packet contents."
+    },
+    {
+      "objective": "4.9",
+      "front": "Why correlate endpoint and network data?",
+      "back": "Each shows half the story: the endpoint shows which process acted, the network shows where the data went."
     },
     {
       "objective": "5.1",
@@ -688,9 +903,29 @@
       "back": "Someone must interpret, review, maintain and enforce it."
     },
     {
+      "objective": "5.1",
+      "front": "What is the difference between a policy and a procedure?",
+      "back": "A policy states what must happen and why; a procedure gives the step-by-step how."
+    },
+    {
+      "objective": "5.1",
+      "front": "What is the role of a data owner?",
+      "back": "A senior person accountable for a data set's classification and who may access it; custodians handle day-to-day protection."
+    },
+    {
       "objective": "5.2",
       "front": "What is residual risk?",
       "back": "Risk that remains after implemented controls and other treatments."
+    },
+    {
+      "objective": "5.2",
+      "front": "Name the four ways to treat a risk.",
+      "back": "Avoid, transfer, mitigate or accept, with acceptance documented by someone with the authority to do so."
+    },
+    {
+      "objective": "5.2",
+      "front": "How is annualised loss expectancy (ALE) calculated?",
+      "back": "ALE = single loss expectancy x annualised rate of occurrence."
     },
     {
       "objective": "5.3",
@@ -698,9 +933,29 @@
       "back": "It validates an exit path and reveals dependencies before migration becomes urgent."
     },
     {
+      "objective": "5.3",
+      "front": "What is a right-to-audit clause?",
+      "back": "Contract language that lets you assess a vendor's security controls, or receive independent evidence of them."
+    },
+    {
+      "objective": "5.3",
+      "front": "Why ask suppliers for an SBOM?",
+      "back": "A software bill of materials lists the components inside a product, so you can check quickly if a new vulnerability affects you."
+    },
+    {
       "objective": "5.4",
       "front": "Does meeting a checklist guarantee security?",
       "back": "No. Scope, implementation quality and threats outside the checklist still matter."
+    },
+    {
+      "objective": "5.4",
+      "front": "What is data sovereignty?",
+      "back": "Data is subject to the laws of the country where it is stored, which affects where you may host it."
+    },
+    {
+      "objective": "5.4",
+      "front": "Why does a retention policy reduce risk?",
+      "back": "Data you no longer keep cannot be breached; it also meets legal obligations to keep or delete records."
     },
     {
       "objective": "5.5",
@@ -708,9 +963,29 @@
       "back": "Evidence, affected scope, impact, limitations, a fix and a verification method."
     },
     {
+      "objective": "5.5",
+      "front": "Why does a penetration test need written rules of engagement?",
+      "back": "They define scope, timing, methods and contacts, which makes the test legal, safe and useful."
+    },
+    {
+      "objective": "5.5",
+      "front": "Known, partially known and unknown environment tests differ how?",
+      "back": "By how much the testers are told beforehand: full information, some, or none (formerly white, grey and black box)."
+    },
+    {
       "objective": "5.6",
       "front": "Why make reporting low-friction?",
       "back": "Early reports can reduce harm, while confusing or punitive processes discourage them."
+    },
+    {
+      "objective": "5.6",
+      "front": "What makes phishing simulations effective rather than punitive?",
+      "back": "Immediate, specific feedback and easy reporting, measured by report rates, not just click rates."
+    },
+    {
+      "objective": "5.6",
+      "front": "Why should security awareness be role-based?",
+      "back": "Finance staff, developers and executives face different threats, so training should match their real risks."
     }
   ]
 }

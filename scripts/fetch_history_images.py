@@ -19,7 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from hub.history import EVENTS  # noqa: E402
+from hub.history import EVENTS, IMAGE_REQUIRE  # noqa: E402
 
 API = 'https://commons.wikimedia.org/w/api.php'
 UA = {'User-Agent': 'CISOCyberHub/0.1 (https://github.com/Phan-Vincent/ciso-cyberhub; educational history page)'}
@@ -39,7 +39,7 @@ def strip(html):
     return ' '.join(unescape(re.sub(r'<[^>]+>', ' ', html or '')).split())[:160]
 
 
-def info(title):
+def info(title, require=None):
     data = api({'action': 'query', 'prop': 'imageinfo', 'titles': title, 'iiprop': 'url|extmetadata|mime', 'iiurlwidth': 1600})
     page = (data.get('query', {}).get('pages') or [{}])[0]
     ii = (page.get('imageinfo') or [None])[0]
@@ -50,6 +50,9 @@ def info(title):
     if not lic or BLOCKED.search(lic) or not FREE.search(lic):
         return None
     if ii.get('mime') not in ('image/jpeg', 'image/png', 'image/svg+xml'):
+        return None
+    desc = strip(meta.get('ImageDescription', {}).get('value', ''))
+    if require and not re.search(require, f'{title} {desc}', re.I):
         return None
     return {'title': title, 'url': ii.get('thumburl') or ii['url'], 'page': ii.get('descriptionurl'), 'license': lic,
             'author': strip(meta.get('Artist', {}).get('value', '')) or 'Unknown author', 'description': strip(meta.get('ImageDescription', {}).get('value', ''))}
@@ -63,6 +66,12 @@ def search(query):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     manifest = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
+    # Drop images that no longer meet the relevance rule (re-checked on every run).
+    for eid, meta in list(manifest.items()):
+        rule = IMAGE_REQUIRE.get(eid)
+        if rule and not re.search(rule, f"{meta.get('title', '')} {meta.get('description', '')}", re.I):
+            print('removing irrelevant image for', eid, meta.get('title'))
+            manifest.pop(eid); (OUT / f'{eid}.jpg').unlink(missing_ok=True)
     for eid, _era, _year, title, _s, _l, candidates, query, _src in EVENTS:
         dest = OUT / f'{eid}.jpg'
         if dest.exists() and eid in manifest:
@@ -76,7 +85,7 @@ def main():
         chosen = None
         for t in titles:
             try:
-                chosen = info(t)
+                chosen = info(t, IMAGE_REQUIRE.get(eid))
             except Exception as exc:  # noqa: BLE001
                 print('lookup failed', t, exc)
             if chosen:

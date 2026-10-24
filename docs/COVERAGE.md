@@ -6,7 +6,7 @@ This is a functioning **0.1.0 foundation release**, not a claim that the attachm
 | --- | --- | --- | --- |
 | 1. Foundation | Static Python/TypeScript site, design system, navigation, local search, light/dark CSS, schemas | Production output, deterministic rebuild, internal paths and semantic checks | Astro/Starlight migration if desired; real-browser visual/accessibility review |
 | 2. Tool Explorer | 27 field-specific source-checked records, filters, detail pages, 10 tutorials, rotating API proposals and discovery queue | Official repository-page checks; schema and proposal tests | 100–150 fully verified tools; exact license/platform/release/activity details for incomplete fields; execute all tool tutorials |
-| 3. Academy | 28 original SY0-701 main-objective lessons, 28 original questions, 28 flashcards, timed/untimed practice, progress export/import/reset and domain feedback; 21 planning records | Objective references, answer ranges, scoring, saved-data parsing | Current provider exam confirmation; comprehensive subobjective depth; independent expert review; full-length balanced mock exams; additional credential courses |
+| 3. Academy | 28 original SY0-701 main-objective lessons, 28 original questions, 83 flashcards, timed/untimed practice, progress export/import/reset and domain feedback; 21 planning records | Objective references, answer ranges, scoring, saved-data parsing | Current provider exam confirmation; comprehensive subobjective depth; independent expert review; full-length balanced mock exams; additional credential courses |
 | 4. Intelligence | RSS/Atom, KEV, EPSS and NVD adapters, errors/last-success, filters, source links and publication-date archive | Representative fixtures, deduplication, bad inputs, limits/retries, failure retention; actual blocked live run recorded | Successful live-source acceptance; broader feeds; factual summaries/impact explanations; automatic approved-data public deployment; long-term archive sharding |
 | 5. Labs and careers | Five guided labs, original synthetic data, 11 role roadmaps plus beginner path | Fixture hashes and PCAP structure; content links | Execute all tool/platform workflows; native EVTX exercise; broader real-world licensed datasets; optional Docker environments |
 | 6. Hardening/deployment | Pinned CI/update/release workflows, least-privilege roles, review PR scripts, documentation and licenses | Local tests, build, source guardrails, internal links, both base paths | Actual GitHub run, browser E2E, screen-reader and mobile visual QA, full security review, club authorization and deployment |
@@ -25,7 +25,7 @@ The live dashboard has zero source records because the actual network calls retu
 
 - 27 tool detail pages.
 - 28 introductory lessons and mapped main objectives.
-- 28 practice questions and 28 flashcards.
+- 28 practice questions and 83 flashcards.
 - 10 tool tutorials.
 - 5 labs.
 - 12 learning roadmaps, including the beginner path.

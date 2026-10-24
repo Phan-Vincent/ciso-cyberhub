@@ -1424,3 +1424,9 @@ input, select { border-radius: 10px; }
 .lb-callouts > div { border: 1px solid rgba(255,255,255,.14); }
 .lx-ladder li { opacity: 1; color: #8d929c; } .lx-ladder li b { color: #b4b9c2; } .lx-ladder li.on { color: #fff; } .lx-ladder li.on b { color: #fff; } .lx-ladder li.on .label { color: #3b93ff; }
 .lx-rank, .lx-rank strong { color: #fff; }
+.trend-spot { display: grid; gap: 10px; margin-bottom: var(--s3); padding: clamp(22px, 3vw, 34px); border-radius: var(--r-xl); text-decoration: none; color: #fff;
+  background: radial-gradient(120% 140% at 85% 0%, #0068bc 0%, #0b2a63 38%, #050505 75%); border: 1px solid rgba(59,147,255,.4); transition: transform var(--mid) var(--ease), border-color var(--fast); }
+.trend-spot .label { color: #9cc7ff; } .trend-spot strong { font-family: var(--display); font-weight: 830; font-stretch: 62%; font-size: clamp(3.6rem, 2rem + 6vw, 8rem); line-height: .8; letter-spacing: -.01em; }
+.ts-why { font-size: var(--t-lead); max-width: 48ch; color: #e6e8ec; } .ts-stats { font-family: var(--mono); font-size: 12px; color: #c9ccd2; } .ts-stats b { color: #fff; font-size: 1.4rem; font-weight: 400; }
+.ts-warn { font-size: .9rem; color: #9aa0aa; max-width: 70ch; }
+.trend-spot:hover, .trend-spot:focus-visible { transform: translateY(-3px); border-color: #3b93ff; outline: none; }
