@@ -231,3 +231,11 @@ The user explicitly approved committing, pushing and deploying this verified sna
 - **AI:** Red Team Lab (`web/redteam.ts`), Prompt testing and AI and cyber jobs in `hub/ailab.py`. Daily pulse (`hub/pulse.py` → `data/pulse.json`) runs in the data workflow and is published with the other data files.
 - **Work roles (`/careers/roles/`):** `hub/roles.py`. **Tools:** 25 new tools are `pending-review` (badge shown) until the weekly catalog check confirms repository and license.
 - **News:** five more RSS/Atom sources in `data/sources.json`, each with a test fixture.
+
+## Glossary, tournament, PowerShell Lab (24 Oct 2026)
+
+- **Homepage:** hero now leads with Start here and Cyber Duel; a "Try it right now" strip links the interactive labs.
+- **Glossary (`/glossary/`):** `data/glossary.json` (114 terms) + `hub/glossary.py`; search in `web/journey.ts`.
+- **Duel tournament:** bracket helpers `bracket/settle/nextMatch/champion` in `web/duel.ts`; state in `localStorage['cyberhub:tour']`; each match is a Face-off, ties go to most correct answers, then a rematch.
+- **PowerShell Lab (`/linux/powershell/`):** `web/pslab.ts` (simulated cmdlets with object pipelines) + `hub/pslab.py` (15 levels). Tests solve every level.
+- **Badges:** Windows ready, Analyst on duty, Phish spotter, Prompt breaker; account sync covers the new lab keys.

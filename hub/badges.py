@@ -22,6 +22,10 @@ BADGES = [
     ('streak', 'On a streak', 'Solve CyberHub Daily five days in a row.', '/daily/'),
     ('role-found', 'Found my role', 'Take the "Which role are you?" quiz.', '/careers/match/'),
     ('duelist', 'Duelist', 'Win a Cyber Duel.', '/duel/'),
+    ('windows-ready', 'Windows ready', 'Complete 10 PowerShell Lab levels.', '/linux/powershell/'),
+    ('on-duty', 'Analyst on duty', 'Score 90 or more on a SOC Simulator shift.', '/labs/soc/'),
+    ('phish-spotter', 'Phish spotter', 'Investigate all eight emails in the Phishing lab.', '/labs/phishing/'),
+    ('prompt-breaker', 'Prompt breaker', 'Beat the first five AI Red Team levels.', '/ai/red-team/'),
 ]
 
 

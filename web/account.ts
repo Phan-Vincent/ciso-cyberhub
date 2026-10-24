@@ -9,7 +9,7 @@
 export type Snapshot = Record<string, unknown>;
 const ACADEMY = (base: string) => `cyberhub:${base}:progress:v1`;
 // payload key -> localStorage key (academy depends on the base path, so it is mapped)
-export const KEYS = ['linux', 'netlab', 'defend', 'duel', 'daily', 'readiness', 'match', 'academy'] as const;
+export const KEYS = ['linux', 'netlab', 'defend', 'duel', 'daily', 'readiness', 'match', 'academy', 'soc', 'phish', 'redteam', 'start', 'pslab'] as const;
 const storageKey = (k: string, base: string) => k === 'academy' ? ACADEMY(base) : k === 'daily' ? 'cyberhub:daily:stats' : k === 'readiness' ? 'cyberhub:readiness:best' : 'cyberhub:' + k;
 
 const arr = (v: unknown): string[] => Array.isArray(v) ? v.filter(x => typeof x === 'string') as string[] : [];
@@ -31,6 +31,11 @@ export function mergeProgress(a: Snapshot, b: Snapshot): Snapshot {
   if (a.daily !== undefined || b.daily !== undefined) { const x = obj(a.daily), y = obj(b.daily); const pick = num(y.wins) > num(x.wins) ? y : x; out.daily = { ...pick, best: Math.max(num(x.best), num(y.best)) }; }
   if (a.readiness !== undefined || b.readiness !== undefined) out.readiness = Math.max(num(a.readiness), num(b.readiness));
   if (a.match !== undefined || b.match !== undefined) out.match = a.match ?? b.match;
+  if (a.soc !== undefined || b.soc !== undefined) { const x = obj(a.soc), y = obj(b.soc); out.soc = { shifts: Math.max(num(x.shifts), num(y.shifts)), best: Math.max(num(x.best), num(y.best)) }; }
+  if (a.phish !== undefined || b.phish !== undefined) { const m: Record<string, number> = {}; for (const [k, v] of [...Object.entries(obj(a.phish)), ...Object.entries(obj(b.phish))]) if (/^[a-z-]{1,40}$/.test(k)) m[k] = Math.max(m[k] ?? 0, num(v)); out.phish = m; }
+  if (a.redteam !== undefined || b.redteam !== undefined) { const ok = (v: unknown) => Array.isArray(v) ? v.filter(n => Number.isInteger(n) && n >= 0 && n < 20) as number[] : []; out.redteam = [...new Set([...ok(a.redteam), ...ok(b.redteam)])].sort((p, q) => p - q); }
+  if (a.start !== undefined || b.start !== undefined) out.start = union(a.start, b.start);
+  if (a.pslab !== undefined || b.pslab !== undefined) out.pslab = union(a.pslab, b.pslab);
   if (a.academy !== undefined || b.academy !== undefined) {
     const x = obj(a.academy), y = obj(b.academy); const seen = new Set<string>(); const attempts: any[] = [];
     for (const t of [...(Array.isArray(x.attempts) ? x.attempts : []), ...(Array.isArray(y.attempts) ? y.attempts : [])]) { const id = typeof t?.at === 'string' ? t.at : ''; if (id && !seen.has(id)) { seen.add(id); attempts.push(t); } }

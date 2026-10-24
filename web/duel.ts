@@ -48,6 +48,30 @@ export function botRun(rounds: Round[], level: string, seed: number): Run {
   return rounds.map(rd => { const ok = r() < b.acc * (rd.q.level === 3 ? 0.9 : 1); const ms = Math.round(b.min + r() * (b.max - b.min)); const wrong = [0, 1, 2, 3].filter(i => i !== rd.q.answer); return { pick: ok ? rd.q.answer : wrong[Math.floor(r() * 3)], ms }; });
 }
 
+
+export type Match = { a: string | null; b: string | null; w: string | null };
+/** Seed players into a single-elimination bracket; byes advance automatically. */
+export function bracket(names: string[], rand: () => number = Math.random): Match[][] {
+  const ps = [...new Set(names.map(cleanName).filter(Boolean))].slice(0, 16);
+  if (ps.length < 2) return [];
+  for (let i = ps.length - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1)); [ps[i], ps[j]] = [ps[j], ps[i]]; }
+  let size = 2; while (size < ps.length) size *= 2;
+  const slots: (string | null)[] = [...ps, ...Array(size - ps.length).fill(null)];
+  // spread byes: pair player i with slot size-1-i so byes never meet each other
+  const first: Match[] = []; for (let i = 0; i < size / 2; i++) first.push({ a: slots[i], b: slots[size - 1 - i], w: null });
+  const rounds: Match[][] = [first]; let n = size / 4; while (n >= 1) { rounds.push(Array.from({ length: n }, () => ({ a: null, b: null, w: null }))); n /= 2; }
+  return settle(rounds);
+}
+export function settle(rounds: Match[][]): Match[][] {
+  for (let r = 0; r < rounds.length; r++) rounds[r].forEach((m, i) => {
+    if (!m.w && r === 0 && m.a && !m.b) m.w = m.a; if (!m.w && r === 0 && m.b && !m.a) m.w = m.b;
+    if (m.w && r + 1 < rounds.length) { const nx = rounds[r + 1][Math.floor(i / 2)]; if (i % 2 === 0) nx.a = m.w; else nx.b = m.w; }
+  });
+  return rounds;
+}
+export function nextMatch(rounds: Match[][]): [number, number] | null { for (let r = 0; r < rounds.length; r++) for (let i = 0; i < rounds[r].length; i++) { const m = rounds[r][i]; if (!m.w && m.a && m.b) return [r, i]; } return null; }
+export const champion = (rounds: Match[][]) => rounds.length ? rounds[rounds.length - 1][0].w : null;
+
 /* ------------------------------------------------------------ UI */
 const root = typeof document === 'undefined' ? null : document.querySelector<HTMLElement>('#duel');
 if (root) {
@@ -72,6 +96,27 @@ if (root) {
   const setMode = (m: string) => { mode = m; tabs.forEach(t => { const on = t.dataset.mode === m; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; }); root.querySelectorAll<HTMLElement>('[data-for]').forEach(x => { x.hidden = !x.dataset.for!.split(' ').includes(m); }); };
   tabs.forEach((t, i) => { t.addEventListener('click', () => setMode(t.dataset.mode!)); t.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length]; n.focus(); setMode(n.dataset.mode!); } }); });
   setMode('faceoff');
+
+  // ---- tournament (face-off bracket on one screen)
+  let tour: Match[][] = []; let cur: [number, number] | null = null;
+  try { const t = JSON.parse(localStorage.getItem('cyberhub:tour') || '[]'); if (Array.isArray(t)) tour = t; } catch { /* ignore */ }
+  const saveTour = () => { try { localStorage.setItem('cyberhub:tour', JSON.stringify(tour)); } catch { /* ignore */ } };
+  function drawBracket() {
+    const box = $('#duel-bracket'); box.hidden = !tour.length; if (!tour.length) return;
+    const grid = $('#br-grid'); grid.replaceChildren(...tour.map((round, r) => { const col = el('div', '', 'br-round'); col.append(el('p', r === tour.length - 1 ? 'Final' : r === tour.length - 2 ? 'Semifinals' : `Round ${r + 1}`, 'label'));
+      round.forEach(m => { const d = el('div', '', 'br-match'); for (const p of [m.a, m.b]) d.append(el('span', p ?? (r === 0 ? 'bye' : '…'), 'br-p' + (m.w && p === m.w ? ' win' : '') + (!p ? ' empty' : ''))); col.append(d); }); return col; }));
+    const champ = champion(tour); const nx = nextMatch(tour); cur = nx;
+    $('#br-next').textContent = champ ? `🏆 Champion: ${champ}` : nx ? `Next match: ${tour[nx[0]][nx[1]].a} vs ${tour[nx[0]][nx[1]].b}` : '';
+    $<HTMLButtonElement>('#br-play').hidden = !nx;
+  }
+  $('#d-tour').addEventListener('click', () => {
+    const names = $<HTMLTextAreaElement>('#d-names').value.split(/\n|,/).map(x => x.trim()).filter(Boolean);
+    tour = bracket(names); if (!tour.length) { $('#d-status').textContent = 'Enter at least two names, one per line.'; return; }
+    saveTour(); drawBracket(); $('#duel-bracket').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  });
+  $('#br-play').addEventListener('click', () => { if (!cur) return; const m = tour[cur[0]][cur[1]]; $<HTMLInputElement>('#d-p1').value = m.a!; $<HTMLInputElement>('#d-p2').value = m.b!; mode = 'faceoff'; incoming = null; start(); });
+  $('#br-reset').addEventListener('click', () => { tour = []; saveTour(); drawBracket(); });
+  drawBracket();
 
   // ---- arena state
   type Player = { name: string; score: number; run: Run; locked: boolean; ghost?: Run };
@@ -145,6 +190,16 @@ if (root) {
     // stats and badge
     stats.played++; if (players.length > 1 && !tie && sorted[0] === players[0] && mode !== 'faceoff') stats.wins++; if (mode === 'faceoff' && !tie) stats.wins++; stats.best = Math.max(stats.best, players[0].score); store('cyberhub:duel', stats); showStats();
     // challenge links
+    const tourMsg = $('#duel-tour-msg'); tourMsg.hidden = true;
+    if (mode === 'faceoff' && cur && tour.length) {
+      const m = tour[cur[0]][cur[1]];
+      if (players[0].name === m.a && players[1].name === m.b) {
+        const c0 = players[0].run.filter((a, i) => a && a.pick === rounds[i].q.answer).length, c1 = players[1].run.filter((a, i) => a && a.pick === rounds[i].q.answer).length;
+        const win = players[0].score !== players[1].score ? (players[0].score > players[1].score ? m.a : m.b) : c0 !== c1 ? (c0 > c1 ? m.a : m.b) : null;
+        if (win) { m.w = win; settle(tour); saveTour(); tourMsg.textContent = `${win} advances.`; } else tourMsg.textContent = 'Dead heat: play the match again.';
+        tourMsg.hidden = false; drawBracket();
+      }
+    }
     const share = $('#duel-share'); share.hidden = mode === 'faceoff';
     if (mode !== 'faceoff') {
       const c: Challenge = { v: 1, s: seed, c: cat, d: diff, n: players[0].name === 'You' ? '' : players[0].name, r: rounds.length, a: players[0].run.map(a => a || { pick: -1, ms: ROUND_MS }) };
@@ -157,7 +212,7 @@ if (root) {
   // ---- inputs
   $('#d-start').addEventListener('click', () => { incoming = null; start(); });
   $('#duel-next').addEventListener('click', next);
-  $('#duel-again').addEventListener('click', () => { result.hidden = true; setup.hidden = false; history.replaceState(null, '', location.pathname); setup.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); });
+  $('#duel-again').addEventListener('click', () => { result.hidden = true; setup.hidden = false; if (tour.length) { $('#duel-bracket').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); } history.replaceState(null, '', location.pathname); setup.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); });
   $('#duel-quit').addEventListener('click', () => { clearTimeout(timer); cancelAnimationFrame(tick); revealing = true; arena.hidden = true; setup.hidden = false; });
   $('#duel-copy').addEventListener('click', async () => { const b = $('#duel-copy'); try { await navigator.clipboard.writeText($<HTMLInputElement>('#duel-link').value); b.textContent = 'Copied'; } catch { $<HTMLInputElement>('#duel-link').select(); b.textContent = 'Press Ctrl+C'; } setTimeout(() => { b.textContent = 'Copy link'; }, 1600); });
   $('#duel-native').addEventListener('click', async () => { const url = $<HTMLInputElement>('#duel-link').value; try { if (navigator.share) await navigator.share({ title: 'Cyber Duel', text: `I scored ${players[0]?.score ?? 0} on CyberHub Cyber Duel. Beat me:`, url }); else await navigator.clipboard.writeText(url); } catch { /* cancelled */ } });

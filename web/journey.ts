@@ -15,7 +15,7 @@ export function shiftVerdict(score: number, max: number): string {
 }
 
 /* ------------------------------------------------------------ badges */
-export type Counts = { linux: number; net: number; read: number; shifts: number; perfect: number; academy: number; readiness: number; streak: number; role: boolean; duels: number };
+export type Counts = { linux: number; net: number; read: number; shifts: number; perfect: number; academy: number; readiness: number; streak: number; role: boolean; duels: number; soc: number; phish: number; redteam: number; ps: number };
 export const BADGES: { id: string; test: (c: Counts) => boolean; prog: (c: Counts) => string }[] = [
   { id: 'first-flag', test: c => c.linux >= 1, prog: c => `${Math.min(c.linux, 1)}/1 Linux level` },
   { id: 'shell-analyst', test: c => c.linux >= 10, prog: c => `${Math.min(c.linux, 10)}/10 Linux levels` },
@@ -31,6 +31,10 @@ export const BADGES: { id: string; test: (c: Counts) => boolean; prog: (c: Count
   { id: 'streak', test: c => c.streak >= 5, prog: c => `Best Daily streak ${Math.min(c.streak, 5)}/5` },
   { id: 'role-found', test: c => c.role, prog: c => c.role ? 'Done' : 'Take the role quiz' },
   { id: 'duelist', test: c => c.duels >= 1, prog: c => `${Math.min(c.duels, 1)}/1 duel won` },
+  { id: 'windows-ready', test: c => c.ps >= 10, prog: c => `${Math.min(c.ps, 10)}/10 PowerShell levels` },
+  { id: 'on-duty', test: c => c.soc >= 90, prog: c => `Best SOC shift ${c.soc}/120 (need 90)` },
+  { id: 'phish-spotter', test: c => c.phish >= 8, prog: c => `${Math.min(c.phish, 8)}/8 emails investigated` },
+  { id: 'prompt-breaker', test: c => c.redteam >= 5, prog: c => `${Math.min(c.redteam, 5)}/5 AI red team levels` },
 ];
 const arr = (k: string): string[] => { const v = load<unknown>(k, []); return Array.isArray(v) ? v.filter(x => typeof x === 'string') as string[] : []; };
 function counts(base: string): Counts {
@@ -38,7 +42,8 @@ function counts(base: string): Counts {
   const lessons = Array.isArray(academy.lessons) ? new Set((academy.lessons as unknown[]).filter(x => typeof x === 'string' && (x as string).startsWith('academy/'))).size : 0;
   const stats = load<{ best?: number }>('cyberhub:daily:stats', {});
   return { linux: arr('cyberhub:linux').length, net: arr('cyberhub:netlab').length, read: j.read.length, shifts: Object.keys(j.shifts).length, perfect: j.perfect.length,
-    academy: Math.min(28, lessons), readiness: Number(load<number | null>('cyberhub:readiness:best', 0)) || 0, streak: Number(stats.best) || 0, role: load<unknown>('cyberhub:match', null) != null, duels: Number(load<{ wins?: number }>('cyberhub:duel', {}).wins) || 0 };
+    academy: Math.min(28, lessons), readiness: Number(load<number | null>('cyberhub:readiness:best', 0)) || 0, streak: Number(stats.best) || 0, role: load<unknown>('cyberhub:match', null) != null, duels: Number(load<{ wins?: number }>('cyberhub:duel', {}).wins) || 0, soc: Number(load<{ best?: number }>('cyberhub:soc', {}).best) || 0,
+    phish: Object.keys(load<Record<string, number>>('cyberhub:phish', {}) || {}).length, redteam: (load<number[]>('cyberhub:redteam', []) || []).filter(n => typeof n === 'number' && n < 5).length, ps: arr('cyberhub:pslab').length };
 }
 
 /* ------------------------------------------------------------ UI */
@@ -122,5 +127,21 @@ if (typeof document !== 'undefined') {
     const count = () => { const n = boxes.filter(b => b.checked).length; document.querySelector('#st-count')!.textContent = n === boxes.length ? `All ${n} done. You are safer than most people online.` : `${n} of ${boxes.length} done`; };
     boxes.forEach(b => { b.checked = done.has(b.dataset.check!); b.addEventListener('change', () => { if (b.checked) done.add(b.dataset.check!); else done.delete(b.dataset.check!); store(k, [...done]); count(); }); });
     count();
+  }
+}
+
+/* ------------------------------------------------------------ Glossary search */
+if (typeof document !== 'undefined') {
+  const q = document.querySelector<HTMLInputElement>('#gl-q');
+  if (q) {
+    const items = Array.from(document.querySelectorAll<HTMLElement>('.gl-item')); const secs = Array.from(document.querySelectorAll<HTMLElement>('.gl-sec'));
+    const run = () => {
+      const v = q.value.trim().toLowerCase(); let n = 0;
+      items.forEach(i => { const ok = !v || (i.dataset.q || '').includes(v); i.hidden = !ok; if (ok) n++; });
+      secs.forEach(sec => { sec.hidden = !sec.querySelector('.gl-item:not([hidden])'); });
+      document.querySelector('#gl-count')!.textContent = v ? `${n} matching term${n === 1 ? '' : 's'}` : `${items.length} terms`;
+      document.querySelector<HTMLElement>('#gl-none')!.hidden = n > 0;
+    };
+    q.addEventListener('input', run); run();
   }
 }

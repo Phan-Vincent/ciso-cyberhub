@@ -54,3 +54,17 @@ test('bots are deterministic and roughly as accurate as advertised', () => {
   for (let s = 0; s < 40; s++) { const r = D.makeRound(bank, s, 'all', 'mix', 10); rookie += D.botRun(r, 'rookie', s).filter((a, i) => a.pick === r[i].q.answer).length; elite += D.botRun(r, 'elite', s).filter((a, i) => a.pick === r[i].q.answer).length; }
   assert.ok(elite > rookie);
 });
+
+test('tournament brackets seed, give byes and crown one champion', () => {
+  let s = 1; const rand = () => ((s = (s * 16807) % 2147483647) / 2147483647);
+  for (const n of [2, 3, 5, 8, 11, 16]) {
+    const names = Array.from({ length: n }, (_, i) => 'P' + i); const t = D.bracket(names, rand);
+    const size = t[0].length * 2; assert.ok(size >= n && size < 2 * n || n === 2);
+    assert.ok(t[0].every(m => m.a || m.b), 'no bye-vs-bye match');
+    let guard = 0, nx;
+    while ((nx = D.nextMatch(t)) && guard++ < 40) { const m = t[nx[0]][nx[1]]; m.w = m.a; D.settle(t); }
+    assert.ok(names.includes(D.champion(t)), `champion for ${n}`);
+  }
+  assert.deepEqual(D.bracket(['solo']), []);
+  assert.equal(D.bracket(['a', 'b', 'a<script>']).flat().filter(m => (m.a || '').includes('<')).length, 0);
+});

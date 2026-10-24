@@ -27,6 +27,8 @@ from .practice import build_practice, interactive_cards
 from .start import build_start
 from .ailab import build_ailab
 from .roles import build_roles
+from .glossary import build_glossary
+from .pslab import build_pslab
 import hashlib as _hashlib
 from pathlib import Path as _Path
 # Cache-busting version: changes whenever any front-end source changes, so browsers never pair new HTML with an old stylesheet or script.
@@ -105,8 +107,8 @@ class Site:
     # resources directory and the homepage tiles are all generated from this list.
     SECTIONS=[
         ('learn','Learn','/learn/','Courses, labs and practice for every level.',[
-            ('Security+ Academy','/academy/','28 lessons mapped to SY0-701'),('Linux Lab','/linux/','36 hands-on levels in a practice shell'),('Networking Lab','/linux/network/','17 levels: IP, DNS, ports, subnetting'),
-            ('Start here','/start/','Cyber 101 for total beginners'),('Guided labs','/labs/','Investigations on safe evidence'),('SOC Simulator','/labs/soc/','Triage a shift of alerts'),('Phishing lab','/labs/phishing/','Investigate a suspicious inbox'),('Flashcards','/academy/flashcards/','83 cards across every objective'),
+            ('Security+ Academy','/academy/','28 lessons mapped to SY0-701'),('Linux Lab','/linux/','36 hands-on levels in a practice shell'),('Networking Lab','/linux/network/','17 levels: IP, DNS, ports, subnetting'),('PowerShell Lab','/linux/powershell/','15 Windows investigation levels'),
+            ('Start here','/start/','Cyber 101 for total beginners'),('Cyber glossary','/glossary/','114 terms in plain English'),('Guided labs','/labs/','Investigations on safe evidence'),('SOC Simulator','/labs/soc/','Triage a shift of alerts'),('Phishing lab','/labs/phishing/','Investigate a suspicious inbox'),('Flashcards','/academy/flashcards/','83 cards across every objective'),
             ('Readiness check','/academy/readiness/','15 questions, a score by domain'),('Cyber Duel','/duel/','Head-to-head quiz: friends, bots, links'),('CyberHub Daily','/daily/','One real-world puzzle a day'),
             ('What you will defend','/defend/','Five systems, explained in depth'),('Cyber history','/history/','1834 to today, with archival photos'),('Your progress','/progress/','Badges and a printable completion card')]),
         ('tools','Tools','/tools/','Open-source tools, checked and explained.',[
@@ -225,7 +227,7 @@ class Site:
               '<div class="hero-main"><h1 class="hero-type" id="hero-title" aria-label="CyberHub: open security learning, powered by CISO"><span class="type-solid" aria-hidden="true">'
               '<span class="ln ln-1" data-w=".74"><span>Cyber</span></span><span class="ln ln-2" data-w=".5"><span>Hub</span></span></span></h1>'
               '<div class="hero-intro"><p class="hero-lead">Open security learning from CISO at CSUSB. Real tools, real evidence, clear reasoning. Free, with no account.</p>'
-              f'<div class="hero-actions">{self.a("Explore the resources →","/resources/","button primary")}{self.a("Start the academy","/academy/","button")}</div></div></div>'
+              f'<div class="hero-actions">{self.a("New to cyber? Start here →","/start/","button primary")}{self.a("Play Cyber Duel","/duel/","button")}{self.a("All resources","/resources/","button")}</div></div></div>'
               f'<div class="seal" id="seal" role="img" aria-label="Simulated cyberattack map: illustrative arcs between eight countries. Not live telemetry."><div class="seal-tilt" id="seal-tilt">{self.img("cyberhub-core-on-dark.svg")}<canvas id="core-canvas" data-ready="loading" aria-hidden="true"></canvas></div></div>'
               '<span class="reg reg-tl" aria-hidden="true"></span><span class="reg reg-tr" aria-hidden="true"></span><span class="reg reg-bl" aria-hidden="true"></span><span class="reg reg-br" aria-hidden="true"></span>'
               '<div class="hero-meta label"><div>Open learning platform / <b>Powered by CISO</b></div>'
@@ -288,6 +290,13 @@ class Site:
             body+=(f'<li class="mod"><figure class="mod-media" aria-hidden="true"><canvas data-art="{art}"></canvas></figure><a href="{E(b+path)}" data-cursor="Open">'
                    f'<span class="idx label">{idx} / Module</span><h3 class="ttl">{E(title)}</h3><span class="meta label"><strong>{num:,}</strong><span>{E(unit)}</span><span>{E(meta)}</span></span><p class="mod-desc">{E(desc)}</p></a></li>')
         body+=f'</ol><p class="mod-more">{self.a("See every resource in one place →","/resources/","button primary")}</p></section>'
+        # hands-on now: the interactive pieces, one click from the homepage
+        play=[('Cyber Duel','Go head to head: friends, bots or a challenge link.','/duel/','Play'),('SOC Simulator','Work a shift of real-looking alerts.','/labs/soc/','Blue team'),
+              ('AI Red Team Lab','Make a guarded AI leak its secret.','/ai/red-team/','AI security'),('Phishing lab','Investigate a suspicious inbox.','/labs/phishing/','Email security'),
+              ('Networking Lab','17 levels on a simulated network.','/linux/network/','Networking'),('Cyber glossary','Every term, in plain English.','/glossary/','Reference')]
+        body+=('<section class="scene tone-void sec-pad wrap" data-tone="void" aria-labelledby="now-title"><div class="sec-head rv"><span class="label"><span class="on">Now</span> / Hands-on</span>'
+               f'<h2 id="now-title">{R("Try it")}{R("right now","d1")}</h2></div><div class="play-grid">'
+               +''.join(f'<a class="play-tile" href="{E(b+u)}"><span class="label">{E(tag)}</span><strong>{E(t)}</strong><span>{E(d)}</span></a>' for t,d,u,tag in play)+'</div></section>')
         # field band: real photos, rendered only for files present in public/assets/photos/
         photos=[p for p in read_json(ROOT/'data/photos.json') if p.get('slot')=='field' and (ROOT/'public/assets/photos'/p['file']).is_file()]
         if photos:
@@ -474,7 +483,7 @@ class Site:
         shutil.copyfile(ROOT/'web/site.css',self.out/'assets/site.css')
         shutil.copyfile(ROOT/'public/assets/brand/cyberhub-favicon.svg',self.out/'assets/favicon.svg')
         subprocess.run(['node','scripts/transpile.mjs'],cwd=ROOT,check=True)
-        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);build_practice(self);build_start(self);build_ailab(self);build_roles(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
+        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);build_practice(self);build_start(self);build_ailab(self);build_roles(self);build_glossary(self);build_pslab(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
         for name,data in [('academy',self.academy),('search',self.search)]:
             (self.out/'assets'/f'{name}.json').write_text(json.dumps(data,ensure_ascii=False))
         self.page('/404/','Page not found',self.heading('This page is not here.','Use search or the main navigation to find a learning resource.')+self.a('Return home','/','button primary'))

@@ -63,3 +63,8 @@ test('sync pulls, merges, writes locally and pushes to the user\'s own row', asy
   assert.equal(push.opt.headers.Authorization, 'Bearer AT'); assert.match(push.opt.headers.Prefer, /merge-duplicates/);
   const pull = calls.find(c => c.url.includes('select=data')); assert.match(pull.url, /user_id=eq\.u-1/);
 });
+
+test('merge covers lab progress too', () => {
+  const m = A.mergeProgress({ soc: { shifts: 1, best: 80 }, phish: { 'it-reset': 12 }, redteam: [0, 1], start: ['mfa'] }, { soc: { shifts: 3, best: 70 }, phish: { 'it-reset': 20, payroll: 15 }, redteam: [1, 2, 'x'], start: ['pm'] });
+  assert.deepEqual(m.soc, { shifts: 3, best: 80 }); assert.deepEqual(m.phish, { 'it-reset': 20, payroll: 15 }); assert.deepEqual(m.redteam, [0, 1, 2]); assert.deepEqual(m.start, ['mfa', 'pm']);
+});
