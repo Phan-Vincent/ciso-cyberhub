@@ -186,3 +186,8 @@ The user explicitly approved committing, pushing and deploying this verified sna
 - **Entry points:** homepage "Play it, share it" band; a Daily button on the latest-report card; a menu item; a Play column in the footer; cards on the Resources page.
 - **Code:** server markup in `hub/play.py`, client logic in `web/play.ts` (loaded only on these pages, no innerHTML), tests in `tests/test_play.py`.
 - **Still to do for reach:** the repo owner must enable "Allow GitHub Actions to create and approve pull requests" (Settings → Actions → General) so the data bot can deliver new headlines and KEV records. A custom domain would also help.
+
+## Internships and AI guides (24 Oct 2026)
+
+- **Internship scanner (`/careers/internships/`):** `hub/internships.py` reads the community SimplifyJobs Summer 2027 list. It keeps active postings within 110 miles of CSUSB (straight-line, from a fixed SoCal city table) plus remote-US roles, flags security and IT roles and new postings, and dedupes. Runs weekly on the Monday schedule (and on manual runs); `publish_data.py` commits `data/internships.json` to main. The page also lists local sources (CSUSB Handshake, San Bernardino County, federal Pathways) and notes CISA's cancelled 2026 CyberCorps internships.
+- **AI for builders (`/ai/`):** a secure AI coding cheat sheet and a meta-prompting guide in `hub/guides.py`. `REVIEWED` holds the review date; the page shows "review due" after 90 days. Every statistic is sourced (Veracode 2025, Spracklen et al. USENIX 2025, OWASP Agentic Top 10 2026, OpenSSF, Anthropic, OpenAI, NIST SP 800-218A).

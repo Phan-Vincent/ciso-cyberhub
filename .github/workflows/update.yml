@@ -34,6 +34,9 @@ jobs:
         run: python scripts/restore_proposals.py
       - name: Refresh news and vulnerability sources
         run: python -m hub.ingest
+      - name: Weekly internship scan (near CSUSB and remote)
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '37 6 * * 1'
+        run: python -m hub.internships
       - name: Weekly repository discovery and link checks
         if: github.event_name == 'workflow_dispatch' || github.event.schedule == '37 6 * * 1'
         env:

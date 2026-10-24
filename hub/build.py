@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from .intel_art import intel_art
 from .play import build_play
+from .guides import build_guides
 import hashlib as _hashlib
 from pathlib import Path as _Path
 # Cache-busting version: changes whenever any front-end source changes, so browsers never pair new HTML with an old stylesheet or script.
@@ -91,7 +92,7 @@ class Site:
         b=self.base;home=path=='/'
         nav_items=[('01','Resources','/resources/','Resources'),('02','Tools','/tools/','Tools'),('03','Academy','/academy/','Academy'),('04','Labs','/labs/','Labs'),('05','Intelligence','/intelligence/','Intelligence'),('06','Careers','/careers/','Careers')]
         nav=''.join(f'<a href="{E(b+p)}"'+(' aria-current="page"' if section==sec else '')+f'><span>{n}</span>{label}</a>' for n,label,p,sec in nav_items)
-        menu_nav=''.join(f'<a href="{E(b+p)}"><span class="label">{n}</span>{label}</a>' for n,label,p,sec in nav_items)+f'<a href="{E(b)}/daily/"><span class="label">07</span>Daily puzzle</a><a href="{E(b)}/search/"><span class="label">08</span>Search</a><a href="{E(self.config["club_url"])}"><span class="label">09</span>CISO club ↗</a>'
+        menu_nav=''.join(f'<a href="{E(b+p)}"><span class="label">{n}</span>{label}</a>' for n,label,p,sec in nav_items)+f'<a href="{E(b)}/daily/"><span class="label">07</span>Daily puzzle</a><a href="{E(b)}/careers/internships/"><span class="label">08</span>Internships</a><a href="{E(b)}/ai/"><span class="label">09</span>AI for builders</a><a href="{E(b)}/search/"><span class="label">10</span>Search</a><a href="{E(self.config["club_url"])}"><span class="label">11</span>CISO club ↗</a>'
         canonical=f'<link rel="canonical" href="{E(self.site_url+b+path)}">' if self.site_url else '<meta name="robots" content="noindex">'
         brand=(f'<a class="brand" href="{E(b)}/" aria-label="CyberHub home">'
                f'<span class="brand-core">{self.img("cyberhub-core-on-dark.svg","","dark",32,32)}{self.img("cyberhub-core-on-light.svg","","light",32,32)}</span>'
@@ -112,7 +113,7 @@ class Site:
                 '<div class="netline" aria-hidden="true"><i></i></div><div class="foot-grid wrap">'
                 f'<div><h2>CyberHub</h2><span>Open security learning</span><span>Free, no account, nothing to install</span></div>'
                 f'<div><h2>Learn</h2>{self.a("Tool explorer","/tools/")}{self.a("Security+ academy","/academy/")}{self.a("Labs","/labs/")}{self.a("Career roadmaps","/careers/")}</div>'
-                f'<div><h2>Play</h2>{self.a("CyberHub Daily","/daily/")}{self.a("Security+ readiness check","/academy/readiness/")}{self.a("Which role are you?","/careers/match/")}</div>'
+                f'<div><h2>Play</h2>{self.a("CyberHub Daily","/daily/")}{self.a("Security+ readiness check","/academy/readiness/")}{self.a("Which role are you?","/careers/match/")}{self.a("Internship scanner","/careers/internships/")}{self.a("Secure AI coding","/ai/vibe-coding/")}</div>'
                 f'<div><h2>Follow</h2>{self.a("Intelligence desk","/intelligence/")}{self.a("Vulnerability explorer","/vulnerabilities/")}{self.a("Daily digest","/archive/")}</div>'
                 f'<div><h2>Project</h2>{self.a("Contribute","/contribute/")}{self.a("Privacy and accessibility","/about/")}<a href="{E(self.config["club_url"])}">CISO club website ↗</a></div></div>'
                 f'<div class="foot-base wrap label"><span>CyberHub release 0.1.0 · CISO at CSUSB</span><span>{E(self.config["affiliation"])}</span><span>Software MIT · lessons CC BY 4.0</span></div></footer>')
@@ -130,7 +131,7 @@ class Site:
              '<div class="cursor" id="cursor" aria-hidden="true"><div class="ring"><span id="cursor-label">View</span></div><div class="dot"></div></div></body></html>')
         file.write_text(doc,encoding='utf-8');self.paths.append(path)
         self.search.append({'title':title,'section':section or 'Hub','path':path,'text':re.sub('<[^>]+>',' ',body)[:14000]})
-    OG_CARDS=[('/daily/','daily'),('/academy/readiness/','readiness'),('/careers/match/','role'),('/tools/','tools'),('/tutorials/','tools'),('/academy/','academy'),('/labs/','labs'),('/intelligence/','intelligence'),('/vulnerabilities/','intelligence'),('/archive/','intelligence'),('/careers/','careers')]
+    OG_CARDS=[('/daily/','daily'),('/careers/internships/','internships'),('/ai/','ai'),('/academy/readiness/','readiness'),('/careers/match/','role'),('/tools/','tools'),('/tutorials/','tools'),('/academy/','academy'),('/labs/','labs'),('/intelligence/','intelligence'),('/vulnerabilities/','intelligence'),('/archive/','intelligence'),('/careers/','careers')]
     def social(self,path,title,description):
         """Link-preview tags so shared links show a CyberHub card on Discord, LinkedIn, iMessage and others."""
         card=next((c for prefix,c in self.OG_CARDS if path.startswith(prefix)),'home')
@@ -295,7 +296,13 @@ class Site:
                f'<a class="play-tile play-daily rv" href="{E(b)}/daily/"><span class="label">New every day</span><strong>CyberHub Daily</strong><span class="pt-d">A real, actively exploited vulnerability. Name the weakness in four tries, then share your grid.</span><span class="pt-grid" aria-hidden="true"><i class="m"></i><i class="m"></i><i class="h"></i><i></i></span><span class="pt-go label">Play today →</span></a>'
                f'<a class="play-tile rv" href="{E(b)}/academy/readiness/"><span class="label">5 minutes</span><strong>Security+ readiness</strong><span class="pt-d">Fifteen exam-style questions. A score by domain and what to study next.</span><span class="pt-go label">Check my score →</span></a>'
                f'<a class="play-tile rv" href="{E(b)}/careers/match/"><span class="label">6 questions</span><strong>Which role are you?</strong><span class="pt-d">Find the security career that fits how you think, with its roadmap.</span><span class="pt-go label">Find my match →</span></a>'
-               '</div></section>')
+               '</div>')
+        ip=ROOT/'data/internships.json'
+        if ip.exists():
+            jd=read_json(ip);near_n=sum(1 for i in jd['items'] if i['zone']=='near');new_n=sum(1 for i in jd['items'] if i['new'])
+            body+=(f'<a class="intern-strip rv" href="{E(b)}/careers/internships/"><span class="label">Internship scanner / weekly</span>'
+                   f'<strong>{near_n} internships near CSUSB</strong><span class="is-sub">{new_n} new this week · {len(jd["items"])} including SoCal and remote</span><span class="label is-go">See this week →</span></a>')
+        body+='</section>'
         # 08 start + handoff
         body+=('<section class="scene tone-blue sec-pad wrap start" id="start" data-tone="blue" data-sec="08" aria-labelledby="start-title"><span class="label"><span class="on">08</span> / Start</span>'
                f'<h2 class="sr-only" id="start-title">Start learning</h2><a class="start-big" href="{E(b)}/resources/" data-cursor="Start"><span>Start learning <span class="arr" aria-hidden="true">↗</span></span><span class="fill" aria-hidden="true">Start learning <span class="arr">↗</span></span></a>'
@@ -316,7 +323,7 @@ class Site:
             body+=(f'<li class="mod"><figure class="mod-media" aria-hidden="true"><canvas data-art="{art}"></canvas></figure><a href="{E(b+path)}" data-cursor="Open">'
                    f'<span class="idx label">{idx} / Resource</span><h2 class="ttl">{E(title)}</h2><span class="meta label"><strong>{num:,}</strong><span>{E(unit)}</span><span>{E(meta)}</span></span><p class="mod-desc">{E(desc)}</p></a></li>')
         body+='</ol><div class="section-heading"><h2>Also in CyberHub</h2><span class="badge subtle">Study tools and references</span></div><div class="grid">'
-        for title,desc,path,tag,meta in [('CyberHub Daily','Name the weakness behind a real, actively exploited vulnerability. New puzzle every day.','/daily/','Play','Daily puzzle'),('Readiness check','Fifteen Security+ questions with a score by domain and what to study next.','/academy/readiness/','Academy','5 minutes'),('Which role are you?','Six questions that match you to a security career and its roadmap.','/careers/match/','Careers','6 questions'),('Tool tutorials','Step-by-step walkthroughs you can verify, one bounded workflow at a time.','/tutorials/','Tools',f'{n("tutorials")} tutorials'),
+        for title,desc,path,tag,meta in [('Internship scanner','Internships near CSUSB and remote, refreshed weekly, with security and IT roles flagged.','/careers/internships/','Careers','Weekly'),('Secure AI coding cheat sheet','Vibe code without shipping vulnerabilities: the loop, prompts, rules and checks.','/ai/vibe-coding/','AI','Cheat sheet'),('Meta-prompting guide','Have a model write and improve your prompts, then test them.','/ai/meta-prompting/','AI','Guide'),('CyberHub Daily','Name the weakness behind a real, actively exploited vulnerability. New puzzle every day.','/daily/','Play','Daily puzzle'),('Readiness check','Fifteen Security+ questions with a score by domain and what to study next.','/academy/readiness/','Academy','5 minutes'),('Which role are you?','Six questions that match you to a security career and its roadmap.','/careers/match/','Careers','6 questions'),('Tool tutorials','Step-by-step walkthroughs you can verify, one bounded workflow at a time.','/tutorials/','Tools',f'{n("tutorials")} tutorials'),
                                          ('Practice questions',f'Original questions with explanations. Timed or untimed.','/academy/practice/','Academy',f'{len(course["questions"])} questions'),
                                          ('Flashcards','One concept at a time. Explain the answer before you turn the card.','/academy/flashcards/','Academy',f'{len(course["flashcards"])} cards'),
                                          ('Certification planning','Other credentials to research, with provider links and honest status notes.','/academy/certifications/','Academy','Planning records'),
@@ -438,7 +445,7 @@ class Site:
         shutil.copyfile(ROOT/'web/site.css',self.out/'assets/site.css')
         shutil.copyfile(ROOT/'public/assets/brand/cyberhub-favicon.svg',self.out/'assets/favicon.svg')
         subprocess.run(['node','scripts/transpile.mjs'],cwd=ROOT,check=True)
-        self.home();self.resources_page();self.feed();build_play(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
+        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
         for name,data in [('academy',self.academy),('search',self.search)]:
             (self.out/'assets'/f'{name}.json').write_text(json.dumps(data,ensure_ascii=False))
         self.page('/404/','Page not found',self.heading('This page is not here.','Use search or the main navigation to find a learning resource.')+self.a('Return home','/','button primary'))

@@ -2,7 +2,7 @@
 
 Runs only in trusted default-branch automation after the full check suite, tests,
 production build and site check have passed on the refreshed data. It commits only
-data/intelligence.json (attributed headlines and KEV records, no code), through the Git
+data/intelligence.json and data/internships.json (attributed records, no code), through the Git
 Data API, with a non-forced ref update: if main moved during the run, the update is
 refused and the next scheduled run tries again. Catalog and curriculum proposals still
 go through scripts/propose.py for human review.
@@ -17,7 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from propose import api, command  # noqa: E402
 
-PUBLISH = ['data/intelligence.json']
+PUBLISH = ['data/intelligence.json', 'data/internships.json']
 
 
 def main() -> int:
@@ -40,7 +40,7 @@ def main() -> int:
     base = api(f'repos/{repo}/git/commits/{base_sha}')
     tree = api(f'repos/{repo}/git/trees', 'POST', {'base_tree': base['tree']['sha'], 'tree': [
         {'path': p, 'mode': '100644', 'type': 'blob', 'content': Path(p).read_text()} for p in changed]})
-    commit = api(f'repos/{repo}/git/commits', 'POST', {'message': 'Refresh source-reported intelligence (automated)\n\nHeadlines and CISA KEV records only. Checks, tests, build and site check passed in this run.', 'tree': tree['sha'], 'parents': [base_sha]})
+    commit = api(f'repos/{repo}/git/commits', 'POST', {'message': 'Refresh source-reported data (automated)\n\nHeadlines, CISA KEV records and internship listings only. Checks, tests, build and site check passed in this run.', 'tree': tree['sha'], 'parents': [base_sha]})
     api(f'repos/{repo}/git/refs/heads/{default}', 'PATCH', {'sha': commit['sha'], 'force': False})
     # Keep the review proposal step from re-proposing what is now on main.
     subprocess.run(['git', 'checkout', '--', *changed], check=True)

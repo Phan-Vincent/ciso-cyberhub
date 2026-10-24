@@ -210,3 +210,8 @@ if (match) {
   q('#m-again')!.addEventListener('click', () => { Object.keys(score).forEach(k => delete score[k]); at = 0; q('#m-result')!.hidden = true; show(0); });
   show(0);
 }
+
+/* ---------------------------------------------------- Copy buttons (guides) */
+qa<HTMLButtonElement>('[data-copy]').forEach(b => b.addEventListener('click', () => {
+  const target = q(b.dataset.copy || ''); if (target) copy(target.textContent || '', b);
+}));
