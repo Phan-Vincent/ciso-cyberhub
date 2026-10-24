@@ -78,39 +78,41 @@ def level_ids() -> list[str]:
     return [lv[0] for _, _, _, levels in MODULES for lv in levels]
 
 
-def index_page(site) -> str:
-    total = len(level_ids())
-    body = site.heading('Linux Lab', f'Learn the Linux command line by doing it: {total} levels in {len(MODULES)} modules, each a small case on a practice server. Runs in your browser; nothing to install.', 'Labs / Linux')
+def index_page(site, modules=None, path='/linux/', key='cyberhub:linux', ranks=None, intro=None, idx_id='linux-index', notice=None) -> str:
+    modules = modules or MODULES
+    total = sum(len(m[3]) for m in modules)
+    body = intro(total) if intro else site.heading('Linux Lab', f'Learn the Linux command line by doing it: {total} levels in {len(MODULES)} modules, each a small case on a practice server. Runs in your browser; nothing to install.', 'Labs / Linux')
     body += ('<div class="lx-hero"><pre class="lx-teaser" aria-hidden="true">student@hub01:~$ grep "Failed password" /var/log/auth.log | wc -l\n214\nstudent@hub01:~$ submit 214\n✔ Correct.</pre>'
              '<ul class="lx-points"><li><b>Real commands.</b> A simulated shell with pipes, redirection, wildcards, permissions, sudo, variables and processes.</li>'
              '<li><b>Fresh flags.</b> Every level generates new data and flags, so the only way through is to do it.</li>'
-             '<li><b>Security first.</b> Every module is framed as investigation work on a CISO server.</li></ul></div>')
-    ranks = [(0, 'Recruit'), (4, 'Operator'), (10, 'Analyst'), (18, 'Hunter'), (27, 'Responder'), (36, 'Root')]
-    body += ('<div class="lx-rank" id="lx-rank" data-ranks=\'' + ','.join(f'{n}:{t}' for n, t in ranks) + '\'><span class="label">Your rank</span><strong id="lx-rank-name">Recruit</strong>'
+             '<li><b>Security first.</b> Every module is framed as investigation work on a CISO server.</li></ul></div>') if not intro else ''
+    ranks = ranks or [(0, 'Recruit'), (4, 'Operator'), (10, 'Analyst'), (18, 'Hunter'), (27, 'Responder'), (36, 'Root')]
+    body += (f'<div class="lx-rank" id="lx-rank" data-key="{key}" data-ranks=\'' + ','.join(f'{n}:{t}' for n, t in ranks) + '\'><span class="label">Your rank</span><strong id="lx-rank-name">Recruit</strong>'
              '<span class="lx-rank-bar" aria-hidden="true"><i id="lx-rank-fill"></i></span><span class="label" id="lx-rank-next">Complete 4 levels to reach Operator</span>'
              '<ol class="lx-ladder">' + ''.join(f'<li data-at="{n}"><b>{t}</b><span class="label">{n} levels</span></li>' for n, t in ranks) + '</ol></div>')
-    body += '<ol class="lx-modules" id="linux-index">'
-    for i, (mid, title, desc, levels) in enumerate(MODULES):
+    body += f'<ol class="lx-modules" id="{idx_id}" data-key="{key}">'
+    for i, (mid, title, desc, levels) in enumerate(modules):
         ids = ','.join(lv[0] for lv in levels)
         dots = ''.join(f'<i data-lv="{lid}" title="{E(lt)}"></i>' for lid, lt, *_ in levels)
-        body += (f'<li><a class="lx-mod" href="{E(site.base)}/linux/{mid}/"><span class="label">{i + 1:02d} / Module</span><strong>{E(title)}</strong><span class="lx-desc">{E(desc)}</span>'
+        body += (f'<li><a class="lx-mod" href="{E(site.base)}{path}{mid}/"><span class="label">{i + 1:02d} / Module</span><strong>{E(title)}</strong><span class="lx-desc">{E(desc)}</span>'
                  f'<span class="lx-dots" aria-hidden="true">{dots}</span><span class="label lx-count"><span data-mod-count="{ids}">0/{len(levels)}</span> levels</span></a></li>')
-    body += '</ol><p class="notice">Original CyberHub material, inspired by hands-on "dojo" style courses. When you are ready for a real machine, try it in a virtual machine or the CyberHub labs. Progress stays in this browser.</p>'
+    body += '</ol>' + (notice if notice is not None else '<p class="notice">Original CyberHub material, inspired by hands-on "dojo" style courses. When you are ready for a real machine, try it in a virtual machine or the CyberHub labs. Progress stays in this browser.</p>')
     return body
 
 
-def module_page(site, mi: int) -> str:
+def module_page(site, mi: int, modules=None, path='/linux/', key='cyberhub:linux', lab_name='Linux Lab', prompt='student@hub01') -> str:
+    MODULES = modules or globals()['MODULES']
     mid, title, desc, levels = MODULES[mi]
-    body = site.heading(title, desc, f'Linux Lab / Module {mi + 1:02d}')
+    body = site.heading(title, desc, f'{lab_name} / Module {mi + 1:02d}')
     nav = ''.join(f'<button type="button" class="lx-step" data-goto="{lid}"><span class="label">{k + 1:02d}</span>{E(lt)}</button>' for k, (lid, lt, *_) in enumerate(levels))
-    body += f'<div class="lab-shell" id="lab"><nav class="lx-steps" aria-label="Levels">{nav}</nav><div class="lx-grid"><div class="lx-lessons">'
+    body += f'<div class="lab-shell" id="lab" data-key="{key}"><nav class="lx-steps" aria-label="Levels">{nav}</nav><div class="lx-grid"><div class="lx-lessons">'
     for k, (lid, lt, lesson, goal, hints) in enumerate(levels):
         body += (f'<section class="lx-level" data-level="{lid}"{" hidden" if k else ""}><p class="label">Level {k + 1:02d} of {len(levels):02d}</p><h2>{E(lt)}</h2>'
                  + ''.join(f'<p>{_md(p)}</p>' for p in lesson)
                  + f'<p class="goal"><b>Goal:</b> {_md(goal)}</p><p class="level-done label" hidden>★ Complete</p>'
                  + '<details class="lx-hints"><summary>Hints</summary><ol class="hint-list">' + ''.join(f'<li>{_md(h)}</li>' for h in hints) + '</ol></details></section>')
-    nxt = f'{site.base}/linux/{MODULES[mi + 1][0]}/' if mi + 1 < len(MODULES) else f'{site.base}/linux/'
-    body += ('</div><div class="lx-term"><div class="term-bar label"><span>student@hub01</span><span class="term-actions"><button type="button" id="lab-reset">Reset level</button></span></div>'
+    nxt = f'{site.base}{path}{MODULES[mi + 1][0]}/' if mi + 1 < len(MODULES) else f'{site.base}{path}'
+    body += ('</div><div class="lx-term"><div class="term-bar label"><span>' + prompt + '</span><span class="term-actions"><button type="button" id="lab-reset">Reset level</button></span></div>'
              '<div class="term-out" id="term-out" role="log" aria-live="polite" aria-label="Terminal output"></div>'
              '<form class="term-form" id="term-form" autocomplete="off"><label class="term-ps1" id="term-ps1" for="term-in">student@hub01:~$ </label>'
              '<input id="term-in" class="term-in" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" aria-label="Type a command and press Enter"></form></div></div>'

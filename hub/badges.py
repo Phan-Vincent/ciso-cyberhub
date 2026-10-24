@@ -1,0 +1,50 @@
+"""Progress and badges (/progress/): reads what this browser has completed across CyberHub
+(web/journey.ts) and offers a printable completion card. Nothing is uploaded or stored by
+CyberHub; the student types their name only for printing and it is never saved.
+"""
+from __future__ import annotations
+
+from html import escape as E
+
+# id (must match BADGES in web/journey.ts), title, how to earn, link
+BADGES = [
+    ('first-flag', 'First flag', 'Complete your first Linux Lab level.', '/linux/'),
+    ('shell-analyst', 'Shell analyst', 'Complete 10 Linux Lab levels.', '/linux/'),
+    ('root', 'Root', 'Complete all 36 Linux Lab levels.', '/linux/'),
+    ('connected', 'Connected', 'Complete 6 Networking Lab levels.', '/linux/network/'),
+    ('network-engineer', 'Network engineer', 'Complete all 17 Networking Lab levels.', '/linux/network/'),
+    ('field-guide', 'Field guide', 'Read all five "What you will defend" guides.', '/defend/'),
+    ('night-shift', 'Night shift', 'Play the shift on all five guides.', '/defend/'),
+    ('cool-head', 'Cool head', 'Score a perfect shift.', '/defend/'),
+    ('halfway', 'Halfway to Security+', 'Mark 14 Academy lessons complete.', '/academy/'),
+    ('all-lessons', 'Security+ scholar', 'Mark all 28 Academy lessons complete.', '/academy/'),
+    ('exam-ready', 'Exam ready', 'Score 80% or more on the readiness check.', '/academy/readiness/'),
+    ('streak', 'On a streak', 'Solve CyberHub Daily five days in a row.', '/daily/'),
+    ('role-found', 'Found my role', 'Take the "Which role are you?" quiz.', '/careers/match/'),
+]
+
+
+def progress_page(site) -> str:
+    b = site.base
+    body = site.heading('Your progress', 'Badges for what you have done across CyberHub: labs, guides, shifts, the Academy and the Daily. Earn them, then print a completion card to show at CISO meetings and career fairs.', 'Learn / Progress')
+    body += ('<p class="guide-meta label"><span class="dot" aria-hidden="true"></span>Private: progress is read from this browser only. Nothing is uploaded, and there is no account. '
+             'Use the same browser to keep your badges.</p>')
+    body += '<p class="label bd-sum" id="badge-sum" aria-live="polite">Badges need JavaScript to load from this browser.</p><ol class="bd-grid" id="badges">'
+    for i, (bid, title, how, link) in enumerate(BADGES):
+        body += (f'<li class="bd" data-badge="{bid}"><span class="bd-medal" aria-hidden="true">{i + 1:02d}</span><div><strong>{E(title)}</strong><p>{E(how)}</p>'
+                 f'<span class="bd-prog label">Not started</span> <a class="bd-go" href="{E(b + link)}">Go →</a></div></li>')
+    body += '</ol>'
+    body += ('<section class="bd-print"><h2>Completion card</h2><p>Type your name (it is not saved), check the card, then print it or save it as a PDF.</p>'
+             '<div class="rt-actions"><label class="sr-only" for="card-name">Your name</label><input id="card-name" type="text" maxlength="60" placeholder="Your name" autocomplete="name">'
+             '<button type="button" class="primary" id="card-print">Print card</button></div>'
+             '<article class="bd-card" id="bd-card" aria-label="Completion card preview"><header><span class="label">CyberHub · powered by CISO at CSUSB</span><span class="label" id="card-date"></span></header>'
+             '<p class="label">This certifies that</p><h3 id="card-name-out">Your name</h3><p>has earned the following CyberHub badges through hands-on practice:</p>'
+             '<ul class="bd-card-list">' + ''.join(f'<li data-card-badge="{bid}" hidden><b>{E(t)}</b> · {E(h)}</li>' for bid, t, h, _ in BADGES) + '</ul>'
+             '<p class="muted" id="card-none">No badges yet. Start with the Linux Lab.</p>'
+             '<footer class="label">Self-reported from the student\'s browser · not an official CSUSB credential</footer></article>'
+             '<p><button type="button" id="badge-reset">Reset shift and guide progress</button></p></section>')
+    return body
+
+
+def build_badges(site) -> None:
+    site.page('/progress/', 'Your progress', progress_page(site), 'Badges for CyberHub labs, guides, shifts, the Academy and the Daily, plus a printable completion card. Stored only in your browser.', 'Learn', module='journey')

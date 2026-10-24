@@ -17,6 +17,10 @@ from .history import build_history
 from .aipages import build_ai_extras
 from .resume import build_resume, CSP_CONNECT
 from .aiflow import build_aiflow
+from .defend import build_defend, slug_for
+from .netlab import build_netlab
+from .competitions import build_competitions
+from .badges import build_badges
 import hashlib as _hashlib
 from pathlib import Path as _Path
 # Cache-busting version: changes whenever any front-end source changes, so browsers never pair new HTML with an old stylesheet or script.
@@ -95,10 +99,10 @@ class Site:
     # resources directory and the homepage tiles are all generated from this list.
     SECTIONS=[
         ('learn','Learn','/learn/','Courses, labs and practice for every level.',[
-            ('Security+ Academy','/academy/','28 lessons mapped to SY0-701'),('Linux Lab','/linux/','36 hands-on levels in a practice shell'),
+            ('Security+ Academy','/academy/','28 lessons mapped to SY0-701'),('Linux Lab','/linux/','36 hands-on levels in a practice shell'),('Networking Lab','/linux/network/','17 levels: IP, DNS, ports, subnetting'),
             ('Guided labs','/labs/','Investigations on safe evidence'),('Flashcards','/academy/flashcards/','83 cards across every objective'),
             ('Readiness check','/academy/readiness/','15 questions, a score by domain'),('CyberHub Daily','/daily/','One real-world puzzle a day'),
-            ('Cyber history','/history/','1834 to today, with archival photos')]),
+            ('What you will defend','/defend/','Five systems, explained in depth'),('Cyber history','/history/','1834 to today, with archival photos'),('Your progress','/progress/','Badges and a printable completion card')]),
         ('tools','Tools','/tools/','Open-source tools, checked and explained.',[
             ('Tool explorer','/tools/','Source-checked security tools'),('Trending on GitHub','/tools/trending/','Top 10 rising projects, weekly'),
             ('Tutorials','/tutorials/','Step-by-step workflows')]),
@@ -110,7 +114,7 @@ class Site:
             ('Daily digest','/archive/','Every day, archived')]),
         ('careers','Careers','/careers/','From first internship to security architect.',[
             ('Career roadmaps','/careers/','12 roles, skills and projects'),('Internship scanner','/careers/internships/','Near CSUSB and remote, weekly'),
-            ('Resume tailor','/careers/resume/','Match your resume to a posting'),('Which role are you?','/careers/match/','A six-question career match')]),
+            ('Resume tailor','/careers/resume/','Match your resume to a posting'),('Competitions','/careers/competitions/','NCL, CCDC, CPTC, picoCTF and more'),('Which role are you?','/careers/match/','A six-question career match')]),
     ]
     def section_of(self,path):
         best=('',0)
@@ -283,10 +287,10 @@ class Site:
             body+=('<section class="scene tone-carbon sec-pad wrap field" data-tone="carbon" aria-labelledby="field-title"><div class="sec-head rv">'
                    f'<span class="label"><span class="on">Field</span> / In the room</span><h2 id="field-title">{R("What you")}{R("will defend","d1")}</h2></div><div class="field-grid">')
             for i,p in enumerate(photos[:5]):
-                body+=(f'<figure class="shot shot-{i+1} rv" tabindex="0" aria-describedby="shot-pop-{i+1}"><p class="shot-pop" id="shot-pop-{i+1}"><span class="label">{E(p["caption"])}</span>{E(p.get("desc",""))}</p><img src="{E(b)}/assets/photos/{E(p["file"])}" alt="{E(p["alt"])}" loading="lazy" decoding="async">'
+                body+=(f'<figure class="shot shot-{i+1} rv"><a class="shot-a" href="{E(b)}/defend/{slug_for(p["caption"])}/" aria-label="{E(p["caption"])}: {E(p["note"])}. Learn what you will defend" aria-describedby="shot-pop-{i+1}"></a><p class="shot-pop" id="shot-pop-{i+1}"><span class="label">{E(p["caption"])}</span>{E(p.get("desc",""))}</p><img src="{E(b)}/assets/photos/{E(p["file"])}" alt="{E(p["alt"])}" loading="lazy" decoding="async">'
                        f'<figcaption class="label"><span>{i+1:02d} / {E(p["caption"])}</span><span>{E(p["note"])}</span></figcaption></figure>')
             credits=', '.join(f'<a href="{E(p["page"])}">{E(p["by"])}</a>' for p in photos[:5])
-            body+=f'</div><p class="field-credit label">Photography: {credits} / Unsplash License</p></section>'
+            body+=f'</div><p class="field-credit label">{self.a("Explore all five in depth →","/defend/")} · Photography: {credits} / Unsplash License</p></section>'
         # 05 labs
         body+=('<section class="scene tone-void sec-pad wrap" id="labs" data-tone="void" data-sec="05" aria-labelledby="lab-title"><div class="sec-head rv">'
                f'<span class="label"><span class="on">05</span> / Labs</span><h2 id="lab-title">{R("Evidence you")}{R("can touch","d1")}</h2></div><div class="lab">'
@@ -462,7 +466,7 @@ class Site:
         shutil.copyfile(ROOT/'web/site.css',self.out/'assets/site.css')
         shutil.copyfile(ROOT/'public/assets/brand/cyberhub-favicon.svg',self.out/'assets/favicon.svg')
         subprocess.run(['node','scripts/transpile.mjs'],cwd=ROOT,check=True)
-        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
+        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
         for name,data in [('academy',self.academy),('search',self.search)]:
             (self.out/'assets'/f'{name}.json').write_text(json.dumps(data,ensure_ascii=False))
         self.page('/404/','Page not found',self.heading('This page is not here.','Use search or the main navigation to find a learning resource.')+self.a('Return home','/','button primary'))
