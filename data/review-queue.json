@@ -1,767 +1,1208 @@
 {
-  "updates": [],
-  "errors": [],
-  "last_attempt": null,
   "discoveries": [
     {
+      "last_verified": null,
       "name": "Snort",
       "repository": "https://github.com/snort3/snort3",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Metasploit Framework",
       "repository": "https://github.com/rapid7/metasploit-framework",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Nuclei",
       "repository": "https://github.com/projectdiscovery/nuclei",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "sqlmap",
       "repository": "https://github.com/sqlmapproject/sqlmap",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "ffuf",
       "repository": "https://github.com/ffuf/ffuf",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Hashcat",
       "repository": "https://github.com/hashcat/hashcat",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "radare2",
       "repository": "https://github.com/radareorg/radare2",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Autopsy",
       "repository": "https://github.com/sleuthkit/autopsy",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Velociraptor",
       "repository": "https://github.com/Velocidex/velociraptor",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "MISP",
       "repository": "https://github.com/MISP/MISP",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "OpenCTI",
       "repository": "https://github.com/OpenCTI-Platform/opencti",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "IntelOwl",
       "repository": "https://github.com/intelowlproject/IntelOwl",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "OpenSCAP",
       "repository": "https://github.com/OpenSCAP/openscap",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Security Onion",
       "repository": "https://github.com/Security-Onion-Solutions/securityonion",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "YARA-X",
       "repository": "https://github.com/VirusTotal/yara-x",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Suricata Update",
       "repository": "https://github.com/OISF/suricata-update",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Arkime",
       "repository": "https://github.com/arkime/arkime",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Malcolm",
       "repository": "https://github.com/cisagov/Malcolm",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "RITA",
       "repository": "https://github.com/activecm/rita",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "tcpdump",
       "repository": "https://github.com/the-tcpdump-group/tcpdump",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "ntopng",
       "repository": "https://github.com/ntop/ntopng",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "OpenSearch",
       "repository": "https://github.com/opensearch-project/OpenSearch",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Graylog",
       "repository": "https://github.com/Graylog2/graylog2-server",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Hayabusa",
       "repository": "https://github.com/Yamato-Security/hayabusa",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Chainsaw",
       "repository": "https://github.com/WithSecureLabs/chainsaw",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Timesketch",
       "repository": "https://github.com/google/timesketch",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Plaso",
       "repository": "https://github.com/log2timeline/plaso",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "DFIR-IRIS",
       "repository": "https://github.com/dfir-iris/iris-web",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "TheHive",
       "repository": "https://github.com/TheHive-Project/TheHive",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Cortex",
       "repository": "https://github.com/TheHive-Project/Cortex",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Shuffle",
       "repository": "https://github.com/Shuffle/Shuffle",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "n8n",
       "repository": "https://github.com/n8n-io/n8n",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "CAPEv2",
       "repository": "https://github.com/kevoreilly/CAPEv2",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "capa",
       "repository": "https://github.com/mandiant/capa",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "FLOSS",
       "repository": "https://github.com/mandiant/flare-floss",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Detect It Easy",
       "repository": "https://github.com/horsicq/Detect-It-Easy",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Cutter",
       "repository": "https://github.com/rizinorg/cutter",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Rizin",
       "repository": "https://github.com/rizinorg/rizin",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "ImHex",
       "repository": "https://github.com/WerWolv/ImHex",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "binwalk",
       "repository": "https://github.com/ReFirmLabs/binwalk",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "osint framework",
       "repository": "https://github.com/lockfale/OSINT-Framework",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "SpiderFoot",
       "repository": "https://github.com/smicallef/spiderfoot",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Amass",
       "repository": "https://github.com/owasp-amass/amass",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "theHarvester",
       "repository": "https://github.com/laramies/theHarvester",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Maigret",
       "repository": "https://github.com/soxoj/maigret",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "dnstwist",
       "repository": "https://github.com/elceef/dnstwist",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "BloodHound CE",
       "repository": "https://github.com/SpecterOps/BloodHound",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "PingCastle",
       "repository": "https://github.com/netwrix/pingcastle",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Purple Knight",
       "repository": "https://github.com/Semperis/PurpleKnight",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Certipy",
       "repository": "https://github.com/ly4k/Certipy",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Impacket",
       "repository": "https://github.com/fortra/impacket",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "NetExec",
       "repository": "https://github.com/Pennyw0rth/NetExec",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Responder",
       "repository": "https://github.com/lgandx/Responder",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Greenbone",
       "repository": "https://github.com/greenbone/openvas-scanner",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Vuls",
       "repository": "https://github.com/future-architect/vuls",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "OSV Scanner",
       "repository": "https://github.com/google/osv-scanner",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Dependency Check",
       "repository": "https://github.com/dependency-check/DependencyCheck",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Dependency Track",
       "repository": "https://github.com/DependencyTrack/dependency-track",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Renovate",
       "repository": "https://github.com/renovatebot/renovate",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Dependency Review Action",
       "repository": "https://github.com/actions/dependency-review-action",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Cosign",
       "repository": "https://github.com/sigstore/cosign",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Rekor",
       "repository": "https://github.com/sigstore/rekor",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "in-toto",
       "repository": "https://github.com/in-toto/in-toto",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "SLSA Verifier",
       "repository": "https://github.com/slsa-framework/slsa-verifier",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Kube-bench",
       "repository": "https://github.com/aquasecurity/kube-bench",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Kube-hunter",
       "repository": "https://github.com/aquasecurity/kube-hunter",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "KICS",
       "repository": "https://github.com/Checkmarx/kics",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Terrascan",
       "repository": "https://github.com/tenable/terrascan",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Cloud Custodian",
       "repository": "https://github.com/cloud-custodian/cloud-custodian",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "ScoutSuite",
       "repository": "https://github.com/nccgroup/ScoutSuite",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Steampipe",
       "repository": "https://github.com/turbot/steampipe",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "CloudQuery",
       "repository": "https://github.com/cloudquery/cloudquery",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "TruffleHog",
       "repository": "https://github.com/trufflesecurity/trufflehog",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "detect-secrets",
       "repository": "https://github.com/Yelp/detect-secrets",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Bandit",
       "repository": "https://github.com/PyCQA/bandit",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Brakeman",
       "repository": "https://github.com/presidentbeef/brakeman",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "gosec",
       "repository": "https://github.com/securego/gosec",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "CodeQL",
       "repository": "https://github.com/github/codeql",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Garaks",
       "repository": "https://github.com/NVIDIA/garak",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "PyRIT",
       "repository": "https://github.com/Azure/PyRIT",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "LLM Guard",
       "repository": "https://github.com/protectai/llm-guard",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Promptfoo",
       "repository": "https://github.com/promptfoo/promptfoo",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Giskard",
       "repository": "https://github.com/Giskard-AI/giskard",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Adversarial Robustness Toolbox",
       "repository": "https://github.com/Trusted-AI/adversarial-robustness-toolbox",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Aircrack-ng",
       "repository": "https://github.com/aircrack-ng/aircrack-ng",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Kismet",
       "repository": "https://github.com/kismetwireless/kismet",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Bettercap",
       "repository": "https://github.com/bettercap/bettercap",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Step CLI",
       "repository": "https://github.com/smallstep/cli",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "cfssl",
       "repository": "https://github.com/cloudflare/cfssl",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "Age",
       "repository": "https://github.com/FiloSottile/age",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "SOPS",
       "repository": "https://github.com/getsops/sops",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "auditd",
       "repository": "https://github.com/linux-audit/audit-userspace",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "ComplianceAsCode",
       "repository": "https://github.com/ComplianceAsCode/content",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "OpenGRC",
       "repository": "https://github.com/opengrc/opengrc",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
     },
     {
+      "last_verified": null,
       "name": "DefectDojo",
       "repository": "https://github.com/DefectDojo/django-DefectDojo",
-      "status": "pending-review",
-      "source": "User-requested research backlog; repository and license unverified",
       "retrieved_at": null,
-      "last_verified": null
+      "source": "User-requested research backlog; repository and license unverified",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "mthcht/awesome-lists",
+      "repository": "https://github.com/mthcht/awesome-lists",
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "opentrap/opentrap",
+      "repository": "https://github.com/opentrap/opentrap",
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "keyorixhq/keyorix",
+      "repository": "https://github.com/keyorixhq/keyorix",
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "XCisCoX/Mega-Vault-Protector",
+      "repository": "https://github.com/XCisCoX/Mega-Vault-Protector",
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "niceguy25stopme/X-Lizard-Password-Manager",
+      "repository": "https://github.com/niceguy25stopme/X-Lizard-Password-Manager",
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "whoami-pantheon/arcount",
+      "repository": "https://github.com/whoami-pantheon/arcount",
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "Sevlex/sevlex-mcp-gateway",
+      "repository": "https://github.com/Sevlex/sevlex-mcp-gateway",
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "66jiujiu99/dsh-secret-vault",
+      "repository": "https://github.com/66jiujiu99/dsh-secret-vault",
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "meetpanchal-sevlex/sevlex-mcp-gateway",
+      "repository": "https://github.com/meetpanchal-sevlex/sevlex-mcp-gateway",
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "xianyu-sheng/SmartBench",
+      "repository": "https://github.com/xianyu-sheng/SmartBench",
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    }
+  ],
+  "errors": [],
+  "last_attempt": "2026-10-24T10:14:17Z",
+  "updates": [
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "Apache-2.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-20T16:46:50Z",
+        "release": "0.45.1",
+        "renamed": false,
+        "repository": "https://github.com/falcosecurity/falco",
+        "stars_signal": 9516
+      },
+      "id": "falco",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/falcosecurity/falco",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "Apache-2.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-22T13:16:26Z",
+        "release": "Ghidra_12.2_build",
+        "renamed": false,
+        "repository": "https://github.com/NationalSecurityAgency/ghidra",
+        "stars_signal": 93784
+      },
+      "id": "ghidra",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/NationalSecurityAgency/ghidra",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "MIT",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-23T20:45:02Z",
+        "release": "v8.30.1",
+        "renamed": false,
+        "repository": "https://github.com/gitleaks/gitleaks",
+        "stars_signal": 30287
+      },
+      "id": "gitleaks",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/gitleaks/gitleaks",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "Apache-2.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-24T03:14:19Z",
+        "release": "v0.121.0",
+        "renamed": false,
+        "repository": "https://github.com/anchore/grype",
+        "stars_signal": 13095
+      },
+      "id": "grype",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/anchore/grype",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "GPL-3.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-09-16T21:41:02Z",
+        "release": "3.1.7",
+        "renamed": false,
+        "repository": "https://github.com/CISOfy/lynis",
+        "stars_signal": 16542
+      },
+      "id": "lynis",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/CISOfy/lynis",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "MIT",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-23T06:45:35Z",
+        "release": "v12.3.0",
+        "renamed": false,
+        "repository": "https://github.com/mitmproxy/mitmproxy",
+        "stars_signal": 46265
+      },
+      "id": "mitmproxy",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/mitmproxy/mitmproxy",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "NOASSERTION",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-22T15:45:05Z",
+        "release": null,
+        "renamed": false,
+        "repository": "https://github.com/nmap/nmap",
+        "stars_signal": 13862
+      },
+      "id": "nmap",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/nmap/nmap",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "Apache-2.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-24T00:57:05Z",
+        "release": "v5.6.0",
+        "renamed": false,
+        "repository": "https://github.com/ossf/scorecard",
+        "stars_signal": 5784
+      },
+      "id": "openssf-scorecard",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/ossf/scorecard",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "Apache-2.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-24T10:08:12Z",
+        "release": "openssl-4.1.0",
+        "renamed": false,
+        "repository": "https://github.com/openssl/openssl",
+        "stars_signal": 31042
+      },
+      "id": "openssl",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/openssl/openssl",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "NOASSERTION",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-23T04:31:54Z",
+        "release": "5.24.0",
+        "renamed": false,
+        "repository": "https://github.com/osquery/osquery",
+        "stars_signal": 23669
+      },
+      "id": "osquery",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/osquery/osquery",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "NOASSERTION",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-21T03:04:45Z",
+        "release": "r2026-07-01",
+        "renamed": false,
+        "repository": "https://github.com/SigmaHQ/sigma",
+        "stars_signal": 11334
+      },
+      "id": "sigma",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/SigmaHQ/sigma",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "GPL-2.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-23T20:55:55Z",
+        "release": "suricata-8.0.7",
+        "renamed": false,
+        "repository": "https://github.com/OISF/suricata",
+        "stars_signal": 6764
+      },
+      "id": "suricata",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/OISF/suricata",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "Apache-2.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-24T03:15:47Z",
+        "release": "v1.55.0",
+        "renamed": false,
+        "repository": "https://github.com/anchore/syft",
+        "stars_signal": 9737
+      },
+      "id": "syft",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/anchore/syft",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "Apache-2.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-23T10:46:36Z",
+        "release": "v0.76.1",
+        "renamed": false,
+        "repository": "https://github.com/aquasecurity/trivy",
+        "stars_signal": 38683
+      },
+      "id": "trivy",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/aquasecurity/trivy",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "NOASSERTION",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-12T09:18:06Z",
+        "release": "v2.28.2",
+        "renamed": false,
+        "repository": "https://github.com/volatilityfoundation/volatility3",
+        "stars_signal": 4530
+      },
+      "id": "volatility-3",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/volatilityfoundation/volatility3",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "NOASSERTION",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-24T03:35:25Z",
+        "release": "v4.14.9",
+        "renamed": false,
+        "repository": "https://github.com/wazuh/wazuh",
+        "stars_signal": 17393
+      },
+      "id": "wazuh",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/wazuh/wazuh",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "GPL-2.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-24T09:53:57Z",
+        "release": null,
+        "renamed": false,
+        "repository": "https://github.com/wireshark/wireshark",
+        "stars_signal": 10075
+      },
+      "id": "wireshark",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/wireshark/wireshark",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "BSD-3-Clause",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-21T07:47:36Z",
+        "release": "v4.5.8",
+        "renamed": false,
+        "repository": "https://github.com/VirusTotal/yara",
+        "stars_signal": 9964
+      },
+      "id": "yara",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/VirusTotal/yara",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "Apache-2.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-23T10:15:49Z",
+        "release": "v2.17.0",
+        "renamed": false,
+        "repository": "https://github.com/zaproxy/zaproxy",
+        "stars_signal": 16017
+      },
+      "id": "zap",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/zaproxy/zaproxy",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "NOASSERTION",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-23T18:05:29Z",
+        "release": "v9.0.0",
+        "renamed": false,
+        "repository": "https://github.com/zeek/zeek",
+        "stars_signal": 8130
+      },
+      "id": "zeek",
+      "last_verified": null,
+      "retrieved_at": "2026-10-24T10:14:17Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/zeek/zeek",
+      "status": "pending-review"
     }
   ]
 }
