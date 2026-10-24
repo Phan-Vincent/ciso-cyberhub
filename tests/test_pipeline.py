@@ -170,7 +170,7 @@ class PipelineTests(unittest.TestCase):
             root=Path(tmp);shutil.copytree(ROOT/'data',root/'data');shutil.copytree(ROOT/'content',root/'content')
             write_json(root/'data/intelligence.json',{'mode':'source-reported','news':[],'sources':{},'vulnerabilities':[]})
             with patch('hub.ingest.now',return_value=STAMP):result=refresh(root,fixture_dir=FIX)
-            self.assertEqual(result['failures'],[]);state=read_json(root/'data/intelligence.json');self.assertEqual(len(state['news']),2);self.assertEqual(len(state['vulnerabilities']),1);validate(root)
+            self.assertEqual(result['failures'],[]);state=read_json(root/'data/intelligence.json');self.assertEqual(len(state['news']),2+sum(1 for s in read_json(root/'data/sources.json') if s['kind']=='rss')-2);self.assertEqual(len(state['vulnerabilities']),1);validate(root)
             old=copy.deepcopy(state)
             state['mode']='source-reported';write_json(root/'data/intelligence.json',state)
             with patch('hub.ingest.Client.get',side_effect=FetchError('outage')):
