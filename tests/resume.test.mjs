@@ -1,0 +1,41 @@
+// Resume tailor: skill matching, checks and the no-fabrication prompt.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { stripTypeScriptTypes } from 'node:module';
+import { readFileSync, writeFileSync, mkdtempSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
+const f = join(mkdtempSync(join(tmpdir(), 'rt-')), 'resume.mjs');
+writeFileSync(f, stripTypeScriptTypes(readFileSync(new URL('../web/resume.ts', import.meta.url), 'utf8'), { mode: 'strip' }));
+const { analyse, skillsIn, tailorPrompt } = await import(pathToFileURL(f).href);
+
+const resume = `Alex Student  alex@example.com  github.com/alex
+Education: B.S. Computer Science, Cal State San Bernardino
+Skills: Python, Linux, Wireshark, Splunk, Git
+Projects
+- Built a home lab with pfSense and Wazuh, triaging 40+ alerts a week
+- Responsible for updating the club website`;
+const job = 'Security Analyst Intern. Requirements: Python, Linux, SIEM (Splunk), incident response, AWS, communication skills.';
+
+test('skills are detected on word boundaries with aliases', () => {
+  assert.deepEqual(skillsIn('We use Splunk and pfSense on Ubuntu').sort(), ['Firewalls', 'Linux', 'SIEM', 'Splunk'].sort());
+  assert.ok(!skillsIn('javascript').includes('Java'));
+  assert.ok(skillsIn('C++ and C#').includes('C++'));
+});
+
+test('analysis splits matched and missing skills and flags weak bullets', () => {
+  const a = analyse(resume, job);
+  for (const k of ['Python', 'Linux', 'SIEM', 'Splunk']) assert.ok(a.matched.includes(k), k);
+  for (const k of ['Incident response', 'AWS']) assert.ok(a.missing.includes(k), k);
+  assert.equal(a.weak.length, 1);
+  assert.ok(a.score > 0 && a.score <= 100);
+  assert.ok(a.checks.find(c => /email/.test(c.text)).ok);
+});
+
+test('tailoring prompt forbids invented experience and lists gaps', () => {
+  const p = tailorPrompt(resume, job, 'Security Analyst Intern at Acme', analyse(resume, job));
+  assert.match(p, /Never invent experience/);
+  assert.match(p, /Gaps to address honestly/);
+  assert.match(p, /AWS/);
+});
