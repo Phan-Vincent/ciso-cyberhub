@@ -239,3 +239,5 @@ The user explicitly approved committing, pushing and deploying this verified sna
 - **Duel tournament:** bracket helpers `bracket/settle/nextMatch/champion` in `web/duel.ts`; state in `localStorage['cyberhub:tour']`; each match is a Face-off, ties go to most correct answers, then a rematch.
 - **PowerShell Lab (`/linux/powershell/`):** `web/pslab.ts` (simulated cmdlets with object pipelines) + `hub/pslab.py` (15 levels). Tests solve every level.
 - **Badges:** Windows ready, Analyst on duty, Phish spotter, Prompt breaker; account sync covers the new lab keys.
+- **IT track (`/it/`) and IT flashcards (`/it/flashcards/`):** `hub/ittrack.py`, cards in `data/it_cards.json` (Network+ and A+ topics, original wording), spaced repetition in `web/cards.ts`. Duel gained "Networking (Network+)" and "IT support (A+)" categories.
+- **Study planner (`/plan/`):** goals and task lists in `hub/plan.py` (built from real page paths; a test checks every link), packing and .ics export in `web/plan.ts`.

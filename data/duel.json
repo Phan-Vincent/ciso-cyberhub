@@ -11,7 +11,9 @@
 "history": "Cyber history",
 "careers": "Careers",
 "cloud": "Cloud",
-"secplus": "Security+"
+"secplus": "Security+",
+"itnet": "Networking (Network+)",
+"aplus": "IT support (A+)"
 },
 "questions": [
 {
@@ -1749,6 +1751,300 @@
 ],
 "answer": 1,
 "why": "Reporting behavior and timeliness are closer to the intended security outcome than passive content counts."
+},
+{
+"id": "itnet-0",
+"cat": "itnet",
+"level": 1,
+"q": "Which port does DNS use?",
+"choices": [
+"25",
+"53",
+"80",
+"110"
+],
+"answer": 1,
+"why": "DNS uses port 53, mostly UDP."
+},
+{
+"id": "itnet-1",
+"cat": "itnet",
+"level": 1,
+"q": "Which device forwards traffic between different networks?",
+"choices": [
+"Switch",
+"Hub",
+"Router",
+"Access point"
+],
+"answer": 2,
+"why": "Routers work at layer 3 and forward between networks; switches forward within a network."
+},
+{
+"id": "itnet-2",
+"cat": "itnet",
+"level": 2,
+"q": "A PC has address 169.254.10.4. What is most likely wrong?",
+"choices": [
+"DNS is down",
+"It could not reach a DHCP server",
+"The cable is too long",
+"IPv6 is disabled"
+],
+"answer": 1,
+"why": "169.254.x.x is APIPA: the device gave itself an address because DHCP did not answer."
+},
+{
+"id": "itnet-3",
+"cat": "itnet",
+"level": 2,
+"q": "Which of these is a private IPv4 address?",
+"choices": [
+"172.20.4.9",
+"172.32.4.9",
+"8.8.8.8",
+"100.1.1.1"
+],
+"answer": 0,
+"why": "172.16.0.0/12 covers 172.16.0.0 to 172.31.255.255."
+},
+{
+"id": "itnet-4",
+"cat": "itnet",
+"level": 2,
+"q": "What does 802.1Q do?",
+"choices": [
+"Wireless encryption",
+"Tags VLANs on trunk links",
+"Power over Ethernet",
+"Port authentication"
+],
+"answer": 1,
+"why": "802.1Q adds a VLAN tag so one link can carry many VLANs."
+},
+{
+"id": "itnet-5",
+"cat": "itnet",
+"level": 2,
+"q": "Which protocol prevents switching loops?",
+"choices": [
+"STP",
+"OSPF",
+"DHCP",
+"ARP"
+],
+"answer": 0,
+"why": "Spanning Tree Protocol blocks redundant paths to stop loops and broadcast storms."
+},
+{
+"id": "itnet-6",
+"cat": "itnet",
+"level": 2,
+"q": "Maximum length of a Cat6 Ethernet run for standard use?",
+"choices": [
+"10 m",
+"55 m",
+"100 m",
+"500 m"
+],
+"answer": 2,
+"why": "Twisted-pair Ethernet is specified to 100 metres per run."
+},
+{
+"id": "itnet-7",
+"cat": "itnet",
+"level": 3,
+"q": "Which routing protocol is link-state?",
+"choices": [
+"RIP",
+"OSPF",
+"BGP",
+"Static routing"
+],
+"answer": 1,
+"why": "OSPF builds a full map of the network (link-state). RIP is distance-vector; BGP is path-vector."
+},
+{
+"id": "itnet-8",
+"cat": "itnet",
+"level": 3,
+"q": "Which DHCP message comes right after the client's Discover?",
+"choices": [
+"Request",
+"Acknowledge",
+"Offer",
+"Release"
+],
+"answer": 2,
+"why": "DORA: Discover, Offer, Request, Acknowledge."
+},
+{
+"id": "itnet-9",
+"cat": "itnet",
+"level": 3,
+"q": "Which Wi-Fi standard adds the 6 GHz band?",
+"choices": [
+"Wi-Fi 5",
+"Wi-Fi 6",
+"Wi-Fi 6E",
+"802.11n"
+],
+"answer": 2,
+"why": "Wi-Fi 6E extends Wi-Fi 6 (802.11ax) into 6 GHz."
+},
+{
+"id": "itnet-10",
+"cat": "itnet",
+"level": 3,
+"q": "Which port is RDP?",
+"choices": [
+"22",
+"443",
+"3389",
+"5900"
+],
+"answer": 2,
+"why": "Remote Desktop Protocol uses TCP 3389. Never expose it directly to the internet."
+},
+{
+"id": "aplus-11",
+"cat": "aplus",
+"level": 1,
+"q": "Which part stores data even when the computer is off?",
+"choices": [
+"RAM",
+"SSD",
+"CPU cache",
+"GPU"
+],
+"answer": 1,
+"why": "Storage like SSDs and hard drives is non-volatile; RAM is cleared at power-off."
+},
+{
+"id": "aplus-12",
+"cat": "aplus",
+"level": 1,
+"q": "What should you wear to prevent static damage inside a PC?",
+"choices": [
+"Rubber gloves",
+"An anti-static wrist strap",
+"Safety glasses",
+"Nothing"
+],
+"answer": 1,
+"why": "A grounded wrist strap equalises static charge so you do not zap components."
+},
+{
+"id": "aplus-13",
+"cat": "aplus",
+"level": 2,
+"q": "Which Windows command repairs corrupted system files?",
+"choices": [
+"ipconfig",
+"sfc /scannow",
+"gpupdate",
+"ping"
+],
+"answer": 1,
+"why": "System File Checker scans and replaces damaged Windows files."
+},
+{
+"id": "aplus-14",
+"cat": "aplus",
+"level": 2,
+"q": "Which RAID level mirrors two disks?",
+"choices": [
+"RAID 0",
+"RAID 1",
+"RAID 5",
+"RAID 10"
+],
+"answer": 1,
+"why": "RAID 1 writes the same data to both disks."
+},
+{
+"id": "aplus-15",
+"cat": "aplus",
+"level": 2,
+"q": "Which file system has a 4 GB maximum file size?",
+"choices": [
+"NTFS",
+"exFAT",
+"FAT32",
+"ext4"
+],
+"answer": 2,
+"why": "FAT32 cannot store a single file larger than 4 GB."
+},
+{
+"id": "aplus-16",
+"cat": "aplus",
+"level": 2,
+"q": "Where do you check why an app crashed on Windows?",
+"choices": [
+"Event Viewer",
+"Disk Management",
+"Paint",
+"Control Panel > Mouse"
+],
+"answer": 0,
+"why": "Event Viewer records application errors, crashes and security events."
+},
+{
+"id": "aplus-17",
+"cat": "aplus",
+"level": 2,
+"q": "Which cloud model gives you finished software like web email?",
+"choices": [
+"IaaS",
+"PaaS",
+"SaaS",
+"On-premises"
+],
+"answer": 2,
+"why": "Software as a Service: you use the application, the provider runs everything else."
+},
+{
+"id": "aplus-18",
+"cat": "aplus",
+"level": 3,
+"q": "In the laser printing process, which step melts toner onto the paper?",
+"choices": [
+"Charging",
+"Developing",
+"Fusing",
+"Cleaning"
+],
+"answer": 2,
+"why": "The fuser uses heat and pressure to bond toner to the paper."
+},
+{
+"id": "aplus-19",
+"cat": "aplus",
+"level": 3,
+"q": "First step of the CompTIA malware removal process?",
+"choices": [
+"Quarantine the system",
+"Investigate and verify malware symptoms",
+"Disable System Restore",
+"Educate the user"
+],
+"answer": 1,
+"why": "Confirm it is really malware before acting. Then quarantine, disable System Restore, remediate, schedule scans, re-enable restore, educate."
+},
+{
+"id": "aplus-20",
+"cat": "aplus",
+"level": 3,
+"q": "A type 1 hypervisor…",
+"choices": [
+"Runs on top of Windows",
+"Runs directly on the hardware",
+"Is a cloud storage plan",
+"Only runs Linux"
+],
+"answer": 1,
+"why": "Type 1 (bare-metal) hypervisors such as ESXi or Hyper-V run directly on hardware."
 }
 ]
 }

@@ -68,3 +68,8 @@ test('merge covers lab progress too', () => {
   const m = A.mergeProgress({ soc: { shifts: 1, best: 80 }, phish: { 'it-reset': 12 }, redteam: [0, 1], start: ['mfa'] }, { soc: { shifts: 3, best: 70 }, phish: { 'it-reset': 20, payroll: 15 }, redteam: [1, 2, 'x'], start: ['pm'] });
   assert.deepEqual(m.soc, { shifts: 3, best: 80 }); assert.deepEqual(m.phish, { 'it-reset': 20, payroll: 15 }); assert.deepEqual(m.redteam, [0, 1, 2]); assert.deepEqual(m.start, ['mfa', 'pm']);
 });
+
+test('merge covers flashcards and the study plan', () => {
+  const m = A.mergeProgress({ itcards: { 'net-1': 2, 'net-2': 3 }, plan: { goal: 'it', hours: 4, done: ['0'] } }, { itcards: { 'net-1': 3, 'bad key': 9 }, plan: { goal: 'it', hours: 6, done: ['1'] } });
+  assert.deepEqual(m.itcards, { 'net-1': 3, 'net-2': 3 }); assert.equal(m.plan.goal, 'it'); assert.deepEqual(m.plan.done, ['0', '1']);
+});

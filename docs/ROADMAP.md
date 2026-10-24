@@ -26,7 +26,7 @@ Reuse the existing engines so each new discipline costs content, not code:
 | Role match and roadmaps | 12 security roles | Help desk, sysadmin, network, cloud and DevOps roles |
 | Internship scanner | Security and IT flag | Category filters per discipline |
 
-Done: Networking Lab (`/linux/network/`). Next: a Network+ flashcard deck, a Windows/PowerShell Lab, then the IT roles.
+Done: Networking Lab, PowerShell Lab, IT flashcards (Network+/A+ topics), IT duel categories and the IT track page. Next: IT roles in the role quiz.
 
 ## Future: a hub of hubs across CSUSB clubs
 
@@ -34,7 +34,7 @@ Done: Networking Lab (`/linux/network/`). Next: a Network+ flashcard deck, a Win
 - **Shared engines:** labs, puzzles, flashcards, career tools and the internship scanner work for every section.
 - **Governance:** a `CONTRIBUTING` path per club, a faculty-review badge on checked content, and a content-freshness check (the 90-day review dates already used in the AI guides).
 - **Identity:** a custom domain (for example `hub.ciso-csusb.org`), a neutral umbrella name if clubs beyond CISO join, and per-club colour accents inside the same design system.
-- **Reach:** Spanish versions of the most-used pages (CSUSB is a Hispanic-Serving Institution) and a Discord bot that posts the Daily.
+- **Reach:** a Discord bot that posts the Daily, and event kits for duel nights.
 
 ## Principles (do not break)
 

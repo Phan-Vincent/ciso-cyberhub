@@ -9,7 +9,7 @@
 export type Snapshot = Record<string, unknown>;
 const ACADEMY = (base: string) => `cyberhub:${base}:progress:v1`;
 // payload key -> localStorage key (academy depends on the base path, so it is mapped)
-export const KEYS = ['linux', 'netlab', 'defend', 'duel', 'daily', 'readiness', 'match', 'academy', 'soc', 'phish', 'redteam', 'start', 'pslab'] as const;
+export const KEYS = ['linux', 'netlab', 'defend', 'duel', 'daily', 'readiness', 'match', 'academy', 'soc', 'phish', 'redteam', 'start', 'pslab', 'itcards', 'plan'] as const;
 const storageKey = (k: string, base: string) => k === 'academy' ? ACADEMY(base) : k === 'daily' ? 'cyberhub:daily:stats' : k === 'readiness' ? 'cyberhub:readiness:best' : 'cyberhub:' + k;
 
 const arr = (v: unknown): string[] => Array.isArray(v) ? v.filter(x => typeof x === 'string') as string[] : [];
@@ -36,6 +36,8 @@ export function mergeProgress(a: Snapshot, b: Snapshot): Snapshot {
   if (a.redteam !== undefined || b.redteam !== undefined) { const ok = (v: unknown) => Array.isArray(v) ? v.filter(n => Number.isInteger(n) && n >= 0 && n < 20) as number[] : []; out.redteam = [...new Set([...ok(a.redteam), ...ok(b.redteam)])].sort((p, q) => p - q); }
   if (a.start !== undefined || b.start !== undefined) out.start = union(a.start, b.start);
   if (a.pslab !== undefined || b.pslab !== undefined) out.pslab = union(a.pslab, b.pslab);
+  if (a.itcards !== undefined || b.itcards !== undefined) { const m: Record<string, number> = {}; for (const [k, v] of [...Object.entries(obj(a.itcards)), ...Object.entries(obj(b.itcards))]) if (/^[a-z]+-\d{1,4}$/.test(k)) m[k] = Math.min(3, Math.max(m[k] ?? 0, num(v))); out.itcards = m; }
+  if (a.plan !== undefined || b.plan !== undefined) { const x = obj(a.plan), y = obj(b.plan); const pick = x.goal ? x : y; out.plan = x.goal && y.goal && x.goal === y.goal ? { ...pick, done: union(x.done, y.done) } : pick; }
   if (a.academy !== undefined || b.academy !== undefined) {
     const x = obj(a.academy), y = obj(b.academy); const seen = new Set<string>(); const attempts: any[] = [];
     for (const t of [...(Array.isArray(x.attempts) ? x.attempts : []), ...(Array.isArray(y.attempts) ? y.attempts : [])]) { const id = typeof t?.at === 'string' ? t.at : ''; if (id && !seen.has(id)) { seen.add(id); attempts.push(t); } }

@@ -1903,3 +1903,41 @@ input, select { border-radius: 10px; }
 .play-tile { min-height: 0; height: auto; align-content: start; }
 @media (max-width: 900px) { .play-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .play-grid { grid-template-columns: 1fr; } }
+
+/* IT track + flashcards */
+.it-steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 12px; }
+.it-steps a { display: grid; gap: 6px; height: 100%; padding: 20px; border: 1px solid var(--rule); border-radius: var(--r-lg); color: inherit; text-decoration: none; }
+.it-steps a:hover, .it-steps a:focus-visible { border-color: var(--signal); }
+.it-steps .label { color: var(--signal); }
+.it-steps strong { font-size: 1.2rem; }
+.it-steps a span:last-child { color: var(--ink-muted); }
+.itcards [hidden] { display: none !important; }
+.ic-decks { display: flex; flex-wrap: wrap; gap: 6px; }
+.ic-decks [aria-pressed=true] { border-color: var(--signal); box-shadow: inset 0 0 0 1px var(--signal); }
+.ic-progress { display: grid; gap: 6px; margin: 16px 0; max-width: 520px; }
+.ic-bar { height: 6px; border-radius: 3px; background: var(--rule); overflow: hidden; }
+.ic-bar i { display: block; height: 100%; width: calc(var(--p, 0) * 100%); background: var(--signal); }
+.ic-card { max-width: 760px; }
+.ic-card > .label:first-child { color: var(--signal); }
+.itcards .ic-face { display: grid; place-items: center; width: 100%; min-height: 240px; height: auto; padding: 28px; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--surface); color: inherit;
+  font-family: var(--body); font-size: clamp(1.15rem, 1rem + .8vw, 1.6rem); font-weight: 600; line-height: 1.35; text-align: center; text-transform: none; letter-spacing: normal; white-space: normal; cursor: pointer; }
+.itcards .ic-face[aria-pressed=true] { border-color: var(--signal); font-weight: 500; }
+.itcards .ic-face:hover { background: var(--surface); color: inherit; border-color: var(--signal); }
+
+/* Study planner */
+.planner [hidden] { display: none !important; }
+.pl-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px; align-items: end; }
+.pl-form label { display: grid; gap: 6px; }
+.pl-when { display: flex; gap: 6px; }
+.pl-out { margin-top: 24px; }
+.pl-head { display: grid; gap: 6px; max-width: 560px; margin-bottom: 12px; }
+.pl-head h2 { margin: 0; }
+.pl-weeks { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 12px; margin-top: 16px; }
+.pl-week { padding: 18px; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--surface); }
+.pl-week.done { border-color: #1f9d55; }
+.pl-week h3 { margin: 0; }
+.pl-week .label { color: var(--ink-muted); }
+.pl-week ul { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 6px; }
+.pl-week li label { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.pl-week input { accent-color: var(--signal); }
+@media print { .site-header, .footer, .pl-form, .pl-out .rt-actions, .planner > .muted, .heading, .progress { display: none !important; } .pl-week { break-inside: avoid; } }
