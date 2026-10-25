@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T10:14:10Z",
+  "generated_at": "2026-10-25T20:54:44Z",
   "items": [
     {
       "also_remote": false,
@@ -124,24 +124,6 @@
       "terms": [],
       "title": "Analog Mixed Signal Engineer Intern",
       "url": "https://job-boards.greenhouse.io/asteraearlycareer2027/jobs/4739767005",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Irvine",
-      "company": "ITT",
-      "id": "41f0a82d-c8df-476e-bdf4-626934104325",
-      "miles": 45,
-      "new": false,
-      "posted": "2026-09-30",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Data Analytics / AI Intern - Summer 2027",
-      "url": "https://careersenus-itt-inc.icims.com/jobs/17657/job?mobile=true&needsRedirect=false",
       "zone": "near"
     },
     {
@@ -472,11 +454,11 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "Pomona",
+      "category": "AI/ML/Data",
+      "city": "Fullerton",
       "company": "Edison International",
-      "id": "344f9541-1bdc-41ab-8c57-ba63a9e11517",
-      "miles": 26,
+      "id": "eac0d398-9f96-4736-880f-8b8bd6a17886",
+      "miles": 41,
       "new": false,
       "posted": "2026-09-01",
       "security": false,
@@ -484,8 +466,8 @@
       "terms": [
         "Summer 2027"
       ],
-      "title": "Computer Science Intern",
-      "url": "https://apply.edisoncareers.com/job/Alhambra-2027-Summer-Internship-Computer-Science-(AlhambraRosemeadPomona)-CA-91803-0000/1425151100/?ats=successfactors",
+      "title": "Summer Internship - Data Analytics/Science/Applied Math",
+      "url": "https://apply.edisoncareers.com/job/Westminster-2027-Summer-Internship-Data-AnalyticsScienceApplied-Math-Santa-AnaWestminsterIrvineFullerton-CA-92683-5240/1425175800/?ats=successfactors",
       "zone": "near"
     },
     {
@@ -1417,7 +1399,7 @@
       "company": "Impulse Space",
       "id": "6d5015af-faac-4bea-9f05-f7226b20c046",
       "miles": 65,
-      "new": true,
+      "new": false,
       "posted": "2026-10-16",
       "security": false,
       "sponsorship": "Other",
@@ -1471,7 +1453,7 @@
       "company": "CenturyLink",
       "id": "f51bdd40-5f4d-429e-a22b-1e826726e2ad",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-16",
       "security": false,
       "sponsorship": "Other",
@@ -1589,24 +1571,6 @@
       ],
       "title": "Hardware Development Engineer Intern",
       "url": "https://amazon.jobs/en/jobs/10578090/hardware-development-engineer-intern-summer-2027",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "El Segundo",
-      "company": "RTX",
-      "id": "7ffed1dc-9635-4e2b-87f6-9098f3eab4ac",
-      "miles": 65,
-      "new": false,
-      "posted": "2026-10-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Electro-Optics Systems Engineer Intern",
-      "url": "https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-CA-EL-SEGUNDO-E01--2000-E-El-Segundo-Blvd--BLDG-E01/Electro-Optics-Systems-Engineer-Intern--Summer-2027-_01880582",
       "zone": "region"
     },
     {
@@ -1954,6 +1918,22 @@
     },
     {
       "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Leidos",
+      "id": "bf3a1bd0-0f1c-4719-af15-7f67b32b2590",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-06",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Business Systems AI Intern",
+      "url": "https://leidos.wd5.myworkdayjobs.com/External/job/6314-RemoteTeleworker-US/Business-Systems-AI-Intern_R-00193327",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "Product",
       "city": "San Diego",
       "company": "Axos Bank",
@@ -2021,22 +2001,6 @@
       "title": "Software Engineer Intern",
       "url": "https://job-boards.greenhouse.io/arcboatcompany/jobs/5442881008",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Leidos",
-      "id": "9facd644-c8bc-46cb-bd5a-ddf808865147",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-02",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Business Systems AI Intern",
-      "url": "https://leidos.wd5.myworkdayjobs.com/External/job/6314-RemoteTeleworker-US/Business-Systems-AI-Intern_R-00193770",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -2162,25 +2126,6 @@
       ],
       "title": "Software Engineer Intern",
       "url": "https://job-boards.greenhouse.io/amca/jobs/4425120009",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "San Diego",
-      "company": "Peraton",
-      "id": "f3437876-fa5c-490c-a81a-74af68437738",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-09-30",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Spring 2027",
-        "Summer 2027"
-      ],
-      "title": "Software Engineering Co-op",
-      "url": "https://careers-peraton.icims.com/jobs/171547/job?mobile=true&needsRedirect=false",
       "zone": "region"
     },
     {
@@ -2509,24 +2454,6 @@
       "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
-      "company": "Grow Financial Federal Credit Union",
-      "id": "bc661e4d-29a0-4de4-bbeb-52f943d960c8",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Systems Analyst Intern",
-      "url": "https://careers-growfinancial.icims.com/jobs/2754/job?mobile=true&needsRedirect=false",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
       "company": "Upstart",
       "id": "b0499e19-6c89-4fd0-bfe4-a99d188b71f1",
       "miles": null,
@@ -2557,42 +2484,6 @@
       ],
       "title": "Marketing & Operations Analytics Co-op - Strategy & Analytics",
       "url": "https://risepoint.wd503.myworkdayjobs.com/Risepoint/job/US---Remote/Marketing---Ops-Analytics-Co-Op_JR101345",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Grow Financial Federal Credit Union",
-      "id": "86e446f8-134b-40bb-8b93-2b0b77e72d00",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-18",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Spring 2027"
-      ],
-      "title": "Collections Data Analyst Intern",
-      "url": "https://careers-growfinancial.icims.com/jobs/2755/job?mobile=true&needsRedirect=false",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Cotiviti",
-      "id": "1e080067-6ebc-4e83-be3e-6231a1a8ff1d",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-18",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Fall 2026"
-      ],
-      "title": "Generative AI Research Engineer Intern",
-      "url": "https://careers-cotiviti.icims.com/jobs/20183/job?mobile=true&needsRedirect=false",
       "zone": "remote"
     },
     {
@@ -3805,24 +3696,6 @@
     {
       "also_remote": false,
       "category": "AI/ML/Data",
-      "city": "San Diego",
-      "company": "StepStone Group",
-      "id": "cef354bd-2b12-4392-972a-2a70f24ca3c6",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-08-03",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "AI Intern",
-      "url": "https://boards.greenhouse.io/embed/job_app?token=8096268",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Yotta Labs",
       "id": "48c4cfa3-389b-4a66-abd7-a1d6cb9708a5",
@@ -3890,24 +3763,6 @@
       ],
       "title": "Data Scientist Intern",
       "url": "https://ensemblehp.wd5.myworkdayjobs.com/ensemblehealthpartnerscareers/job/Remote---Nationwide/Data-Scientist--AI_R048077",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Cotiviti",
-      "id": "1cf14ab5-bc9d-4842-9fb3-7f423c965a86",
-      "miles": null,
-      "new": false,
-      "posted": "2026-07-09",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2026"
-      ],
-      "title": "AI Engineer Intern",
-      "url": "https://careers-cotiviti.icims.com/jobs/19531/job?mobile=true&needsRedirect=false",
       "zone": "remote"
     },
     {
@@ -3998,22 +3853,6 @@
       "title": "System Architecture Intern",
       "url": "https://www.psiquantum.com/apply?gh_jid=7695577003",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "San Diego",
-      "company": "SDSU Research Foundation",
-      "id": "41e5d607-8e4b-4840-8a89-834022636c99",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-06-16",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Undergraduate Student - Port Contamination Project",
-      "url": "https://careers-sdsurf.icims.com/jobs/20513/job?mobile=true&needsRedirect=false",
-      "zone": "region"
     },
     {
       "also_remote": false,
@@ -4122,24 +3961,6 @@
       "title": "Automation Analyst Intern",
       "url": "https://axos.wd5.myworkdayjobs.com/Axos/job/HQ---San-Diego-CA/Automation-Analyst-Intern_JR4507",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Cotiviti",
-      "id": "1497c112-6957-44c5-8912-4b7a454cc4ff",
-      "miles": null,
-      "new": false,
-      "posted": "2026-04-15",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2026"
-      ],
-      "title": "Generative AI/Agentic AI/Research Intern",
-      "url": "https://careers-cotiviti.icims.com/jobs/18929/job?mobile=true&needsRedirect=false",
-      "zone": "remote"
     },
     {
       "also_remote": false,
