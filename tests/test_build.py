@@ -130,3 +130,11 @@ class AccountConfigTests(unittest.TestCase):
             self.assertIn("connect-src 'self' https://abcdefghijklmnopqrst.supabase.co;", html)
             self.assertIn('data-sb-url="https://abcdefghijklmnopqrst.supabase.co"', html)
             self.assertIn('assets/account.js', html)
+
+class SiteReferenceTests(unittest.TestCase):
+    def test_form_controls_and_id_references(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            Path(tmp,'index.html').write_text('<html lang="en"><meta http-equiv="Content-Security-Policy" content="x"><main><h1>X</h1><textarea></textarea><label for="missing">X</label><button aria-labelledby="gone" aria-controls="absent">X</button></main></html>')
+            with self.assertRaisesRegex(ValueError,'Unlabeled form control') as error:check_site(tmp)
+            for token in ('missing','gone','absent'):self.assertIn(token,str(error.exception))

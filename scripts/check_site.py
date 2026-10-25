@@ -7,7 +7,7 @@ from urllib.parse import urlsplit,unquote
 
 class Page(HTMLParser):
     def __init__(self):
-        super().__init__();self.links=[];self.ids=set();self.errors=[];self.h1=0;self.lang=False;self.main=0;self.labels=[];self.controls=[];self.csp=False;self.scripts=[];self.label_depth=0
+        super().__init__();self.links=[];self.ids=set();self.errors=[];self.h1=0;self.lang=False;self.main=0;self.labels=[];self.controls=[];self.csp=False;self.scripts=[];self.label_depth=0;self.references=[]
     def handle_starttag(self,tag,attrs):
         a=dict(attrs)
         if tag=='html':self.lang=bool(a.get('lang'))
@@ -15,8 +15,11 @@ class Page(HTMLParser):
         if tag=='h1':self.h1+=1
         if tag=='meta'and a.get('http-equiv')=='Content-Security-Policy':self.csp=True
         if tag=='label':self.label_depth+=1;self.labels.append(a.get('for'))
-        if tag in ('input','select')and a.get('type')not in ('hidden','submit'):
+        if tag in ('input','select','textarea')and a.get('type')not in ('hidden','submit'):
             self.controls.append((a.get('id'),bool(a.get('aria-label')or a.get('aria-labelledby')or self.label_depth)))
+        if tag=='label'and a.get('for'):self.references.append(a['for'])
+        for key in ('aria-labelledby','aria-controls'):
+            if a.get(key):self.references.extend(a[key].split())
         if 'id'in a:
             if a['id']in self.ids:self.errors.append('Duplicate id '+a['id'])
             self.ids.add(a['id'])
@@ -34,6 +37,8 @@ def check_site(directory,base=''):
         if ' 'in p.name:continue
         parser=Page();parser.feed(p.read_text());pages[p.resolve()]=parser
         if parser.h1!=1 or parser.main!=1 or not parser.lang or not parser.csp:parser.errors.append('Missing page semantics/CSP')
+        for ref in parser.references:
+            if ref not in parser.ids:parser.errors.append('Missing referenced id '+ref)
         for id,labeled in parser.controls:
             if not labeled and id not in parser.labels:parser.errors.append('Unlabeled form control')
         errors.extend(f'{p.relative_to(root)}: {e}'for e in parser.errors)
