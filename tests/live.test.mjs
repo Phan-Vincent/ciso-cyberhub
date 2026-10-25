@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 const dir = mkdtempSync(join(tmpdir(), 'live-'));
-for (const n of ['duel', 'live']) writeFileSync(join(dir, n + '.js'), stripTypeScriptTypes(readFileSync(new URL(`../web/${n}.ts`, import.meta.url), 'utf8'), { mode: 'strip' }));
+for (const n of ['duel', 'live', 'qr']) writeFileSync(join(dir, n + '.js'), stripTypeScriptTypes(readFileSync(new URL(`../web/${n}.ts`, import.meta.url), 'utf8'), { mode: 'strip' }));
 const L = await import(pathToFileURL(join(dir, 'live.js')).href); const D = await import(pathToFileURL(join(dir, 'duel.js')).href);
 const bank = JSON.parse(readFileSync(new URL('../data/duel.json', import.meta.url), 'utf8'));
 
