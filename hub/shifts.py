@@ -13,7 +13,7 @@ SHIFTS = {
         ('02:07', 'The SIEM alerts: "Impossible travel". j.martinez signed in from Riverside, then six minutes later from an address in another country. The second sign-in passed MFA.', [
             ('Close it. MFA was approved, so it must be her.', 'bad', 'Approval does not prove who approved. Attackers spam push prompts until a tired user taps "Approve" (MFA fatigue), or steal a session token.'),
             ('Open the sign-in logs: device, IP reputation and how the MFA was approved.', 'best', 'Right. Ten minutes of evidence first: it tells you whether this is travel, a VPN or an attacker.'),
-            ('Disable every account in the organisation until morning.', 'bad', 'That stops 20,000 people working and destroys trust in the SOC. Contain what you have evidence for.'),
+            ('Disable every account in the organization until morning.', 'bad', 'That stops 20,000 people working and destroys trust in the SOC. Contain what you have evidence for.'),
         ]),
         ('02:15', 'The logs show 23 push prompts in ten minutes before the approval. The new session has just created an inbox rule that forwards all mail to an outside address.', [
             ('Email j.martinez to ask whether it was her, and wait for a reply.', 'bad', 'The attacker is reading that inbox. You would warn them and wait for an answer that may come from them.'),
@@ -76,7 +76,7 @@ SHIFTS = {
             ('Write it in your own notebook for next time.', 'ok', 'Better than nothing, but the team cannot see your notebook.'),
             ('Done. Move on.', 'bad', 'The next firmware advisory will start from zero again.'),
         ]),
-    ], 'Firmware sits below every other defence. NIST SP 800-193 sums up the goal: protect firmware, detect when it changes, and be able to recover.', ('OpenSSL tutorial (hashes)', '/tutorials/openssl/')),
+    ], 'Firmware sits below every other defense. NIST SP 800-193 sums up the goal: protect firmware, detect when it changes, and be able to recover.', ('OpenSSL tutorial (hashes)', '/tutorials/openssl/')),
 
     'networks': ('Network administrator', 'A school district office with 300 staff.', [
         ('13:55', 'The help desk is flooded: "The internet is down!"', [
@@ -84,7 +84,7 @@ SHIFTS = {
             ('From one affected laptop: check its IP and gateway, ping the gateway, ping a public IP, then look up a name.', 'best', 'Right. Each step tests one layer. Where it fails tells you where the problem is.'),
             ('Open a ticket with the internet provider.', 'ok', 'Possibly needed later, but you do not yet know the problem is theirs.'),
         ]),
-        ('14:05', 'Pinging an IP address works, but names do not resolve. The laptop\'s DNS server is an address you do not recognise, handed out by a second DHCP server on the network.', [
+        ('14:05', 'Pinging an IP address works, but names do not resolve. The laptop\'s DNS server is an address you do not recognize, handed out by a second DHCP server on the network.', [
             ('Find the rogue DHCP server through the switch tables and shut down its switch port.', 'best', 'Right. A rogue DHCP server can send every user\'s DNS to an attacker. Find it and cut it off.'),
             ('Set DNS by hand on every laptop.', 'ok', 'It works around the symptom for the laptops you reach, not the cause.'),
             ('Ignore it. The internet works if you type IP addresses.', 'bad', 'And whoever runs that DNS server can redirect logins to fake sites.'),
@@ -122,7 +122,7 @@ SHIFTS = {
             ('Extend the exception every year.', 'bad', 'That is how a 2009 system ends up running in 2030.'),
             ('Ask IT to remember to check next year.', 'ok', 'Without an owner and budget, it slips.'),
         ]),
-    ], 'In 2017 WannaCry spread through SMBv1 on unpatched Windows machines; in England\'s NHS about 19,000 appointments were cancelled. Isolation and asset tracking are how hospitals live with devices they cannot patch.', ('Vulnerability feed', '/vulnerabilities/')),
+    ], 'In 2017 WannaCry spread through SMBv1 on unpatched Windows machines; in England\'s NHS about 19,000 appointments were canceled. Isolation and asset tracking are how hospitals live with devices they cannot patch.', ('Vulnerability feed', '/vulnerabilities/')),
 }
 
 
@@ -137,5 +137,5 @@ def shift_html(site, slug: str) -> str:
         out += (f'<section class="shift-step" data-step="{i}"{" hidden" if i else ""}><p class="shift-time label">{E(time)} · Step {i + 1} of {len(steps)}</p><p class="shift-sit">{E(situation)}</p>'
                 f'<p class="label">What do you do?</p><ol class="shift-opts">{opts}</ol><button type="button" class="primary shift-next" hidden>{"Next →" if i < len(steps) - 1 else "End of shift →"}</button></section>')
     out += (f'<section class="shift-end" hidden><p class="label">End of shift</p><p class="shift-score" aria-live="polite"></p><p>{E(debrief)}</p>'
-            f'<p>{site.a("Practise it: " + lab_t + " →", lab_u, "button primary")} <button type="button" class="shift-again">Play again</button></p></section></div>')
+            f'<p>{site.a("Practice it: " + lab_t + " →", lab_u, "button primary")} <button type="button" class="shift-again">Play again</button></p></section></div>')
     return out

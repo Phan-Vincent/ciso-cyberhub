@@ -41,7 +41,7 @@ export function capture(): Pkt[] {
   add({ src: '10.0.5.31', dst: '198.51.100.77', proto: 'HTTP', sport: 53344, dport: 80, len: 412, info: 'GET /billing/invoice_2026.exe HTTP/1.1', method: 'GET', uri: '/billing/invoice_2026.exe', host: 'invoice-portal.example.net', ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' });
   add({ src: '198.51.100.77', dst: '10.0.5.31', proto: 'HTTP', sport: 80, dport: 53344, len: 1514, info: 'HTTP/1.1 200 OK (application/x-msdownload)' });
   add({ src: '10.0.5.23', dst: '192.0.2.10', proto: 'TLS', sport: 51500, dport: 443, len: 310, info: 'Application Data' });
-  // DNS tunnelling: long encoded labels to one domain
+  // DNS tunneling: long encoded labels to one domain
   for (const label of ['aGVsbG8gZnJvbSBzZXJ2ZXIx', 'dXNlcm5hbWVzLmNzdi5wYXJ0MQ', 'cGFydDIuYmFja3VwLWtleXM', 'ZW5kLW9mLXRyYW5zZmVy'])
     dnsq('10.0.5.52', `${label}.t1.cdn-sync.example.org`, '0.0.0.0', 'TXT');
   // Internal ARP sweep from a rogue device
@@ -239,7 +239,7 @@ export const REVIEW: Snip[] = [
   { id: 'sqli', title: 'Student lookup', lang: 'Python', cwe: 'CWE-89 SQL injection', bad: 5, fix: 1,
     code: ['@app.get("/students")', 'def find_student():', '    name = request.args.get("name", "")', '    cur = db.cursor()', '    cur.execute(f"SELECT * FROM students WHERE name = \'{name}\'")', '    return jsonify(cur.fetchall())'],
     fixes: ['Escape single quotes with name.replace("\'", "")', 'cur.execute("SELECT * FROM students WHERE name = %s", (name,))', 'Check that name is shorter than 50 characters'],
-    why: 'User input is pasted into the SQL text, so input like \' OR \'1\'=\'1 changes the query. Parameterised queries send data separately from code. Stripping quotes is easy to bypass.' },
+    why: 'User input is pasted into the SQL text, so input like \' OR \'1\'=\'1 changes the query. Parameterized queries send data separately from code. Stripping quotes is easy to bypass.' },
   { id: 'xss', title: 'Greeting page', lang: 'JavaScript', cwe: 'CWE-79 Cross-site scripting', bad: 3, fix: 2,
     code: ['app.get("/hello", (req, res) => {', '  const name = req.query.name || "friend";', '  res.send(`<h1>Hello ${name}</h1>`);', '});'],
     fixes: ['Block requests that contain the word "script"', 'Set a cookie with HttpOnly', 'Escape name for HTML (or render with a template engine that auto-escapes)'],
@@ -247,7 +247,7 @@ export const REVIEW: Snip[] = [
   { id: 'path', title: 'File download', lang: 'Python', cwe: 'CWE-22 Path traversal', bad: 4, fix: 0,
     code: ['@app.get("/download")', 'def download():', '    name = request.args["file"]', '    return send_file(os.path.join("/srv/uploads", name))'],
     fixes: ['Resolve the full path and refuse it unless it is still inside /srv/uploads', 'Make the uploads folder read-only', 'Log the file name before sending'],
-    why: 'file=../../etc/passwd walks out of the folder. Canonicalise the path and check it stays inside the allowed directory (or look files up by ID).' },
+    why: 'file=../../etc/passwd walks out of the folder. Canonicalize the path and check it stays inside the allowed directory (or look files up by ID).' },
   { id: 'cmd', title: 'Network check', lang: 'Python', cwe: 'CWE-78 OS command injection', bad: 3, fix: 2,
     code: ['def ping(host):', '    # host comes from a web form', '    out = subprocess.run(f"ping -c 1 {host}", shell=True, capture_output=True)', '    return out.stdout'],
     fixes: ['Run it with sudo so it always works', 'Remove spaces from host', 'Validate host as an IP or hostname, then subprocess.run(["ping", "-c", "1", host]) without shell=True'],
@@ -296,8 +296,8 @@ export const PCAP_LEVELS: Level[] = [
   { id: 'ftp-user', title: 'Cleartext login', q: 'A backup script logged in to FTP. Which username did it use?', a: 'backup', hints: ['Try the filter ftp', 'Look for a USER request.'], lesson: 'FTP sends usernames and passwords in cleartext: anyone on the path sees them. Look at the PASS line too. Use SFTP or FTPS instead.' },
   { id: 'download', title: 'Suspicious download', q: 'Host 10.0.5.31 downloaded a program over plain HTTP. What is the file name?', a: 'invoice_2026.exe', hints: ['Filter http.request', 'The file name is the last part of the URI.'], lesson: 'An .exe from an invoice-themed site, over unencrypted HTTP, right after an email: a classic phishing payload.' },
   { id: 'domain', title: 'Where did it come from?', q: 'Which domain name served that download?', a: 'invoice-portal.example.net', hints: ['Check the HTTP Host header: http.host contains "invoice"', 'Or find the DNS query 10.0.5.31 made just before.'], lesson: 'DNS and HTTP Host headers tie an IP to a name. Blocking the domain and searching for other hosts that resolved it is the next SOC step.' },
-  { id: 'tunnel', title: 'Data hiding in DNS', q: 'One host sends DNS TXT queries with long, random-looking names, all ending in the same domain. Which domain (the last three labels)?', a: 'cdn-sync.example.org', hints: ['Filter dns && ip.src == 10.0.5.52', 'Ignore the random first label: what do the names end with?'], lesson: 'DNS tunnelling smuggles data out inside query names. Long, high-entropy labels to one rare domain are the giveaway.' },
-  { id: 'arp-sweep', title: 'Rogue device', q: 'An internal device is asking for every address on the subnet. Which IP is it?', a: '10.0.5.99', hints: ['Filter arp', 'Which host sends "Who has" for many different addresses in a row?'], lesson: 'An ARP sweep maps the local network. A device you do not recognise doing it deserves a visit.' },
+  { id: 'tunnel', title: 'Data hiding in DNS', q: 'One host sends DNS TXT queries with long, random-looking names, all ending in the same domain. Which domain (the last three labels)?', a: 'cdn-sync.example.org', hints: ['Filter dns && ip.src == 10.0.5.52', 'Ignore the random first label: what do the names end with?'], lesson: 'DNS tunneling smuggles data out inside query names. Long, high-entropy labels to one rare domain are the giveaway.' },
+  { id: 'arp-sweep', title: 'Rogue device', q: 'An internal device is asking for every address on the subnet. Which IP is it?', a: '10.0.5.99', hints: ['Filter arp', 'Which host sends "Who has" for many different addresses in a row?'], lesson: 'An ARP sweep maps the local network. A device you do not recognize doing it deserves a visit.' },
 ];
 export const HUNT_LEVELS: Level[] = [
   { id: 'fails', title: 'Count the failures', start: 'source=auth action=failed', q: 'How many failed SSH logins are in the logs?', a: '48', hints: ['Run the starting query and read the result count.'], lesson: 'Start every hunt by measuring. One or two failures is normal; dozens is not.' },

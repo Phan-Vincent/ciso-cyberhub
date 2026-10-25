@@ -31,7 +31,7 @@ def live_page(site) -> str:
     body += s('lv-pq', '<p class="label" id="lv-pqn"></p><p class="lv-pqtext" id="lv-pqtext"></p><div class="lv-pbtns" id="lv-pbtns"></div>')
     body += s('lv-locked', '<p class="lv-big-msg">Locked in</p><p>Waiting for everyone else…</p>')
     body += s('lv-pr', '<p class="lv-big-msg" id="lv-pres"></p><p class="lv-count" id="lv-prank"></p>')
-    body += s('lv-pend', '<p class="lv-big-msg">Game over</p><p class="lv-count" id="lv-pfinal"></p>' + f'<p>{site.a("Keep practising →", "/duel/", "button")}</p>')
+    body += s('lv-pend', '<p class="lv-big-msg">Game over</p><p class="lv-count" id="lv-pfinal"></p>' + f'<p>{site.a("Keep practicing →", "/duel/", "button")}</p>')
     body += '</div>'
     body += ('<section class="duel-host"><h2>Running it in class</h2><ol class="steps"><li><b>Host:</b> open this page on the projector laptop, choose Host a room, pick the topic and level, and create the room.</li>'
              '<li><b>Students:</b> open the address shown on screen on their phone (or go to Cyber Duel → Live room → Join), then enter the code and a nickname.</li>'

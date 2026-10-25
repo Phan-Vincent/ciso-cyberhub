@@ -504,7 +504,7 @@
 "Passwords are too short"
 ],
 "answer": 1,
-"why": "If input becomes part of the query, an attacker can change its logic. Parameterised queries prevent it."
+"why": "If input becomes part of the query, an attacker can change its logic. Parameterized queries prevent it."
 },
 {
 "id": "web-35",
@@ -541,12 +541,12 @@
 "q": "What is the best fix for SQL injection?",
 "choices": [
 "Hide the error messages",
-"Parameterised (prepared) queries",
+"Parameterized (prepared) queries",
 "Longer passwords",
 "A bigger server"
 ],
 "answer": 1,
-"why": "Parameterised queries keep data separate from code, so input cannot change the query."
+"why": "Parameterized queries keep data separate from code, so input cannot change the query."
 },
 {
 "id": "web-38",
@@ -798,7 +798,7 @@
 "External DNS Resolver"
 ],
 "answer": 1,
-"why": "EDR records endpoint behaviour, detects threats and can isolate hosts remotely."
+"why": "EDR records endpoint behavior, detects threats and can isolate hosts remotely."
 },
 {
 "id": "blue-56",
@@ -812,7 +812,7 @@
 "A US law"
 ],
 "answer": 1,
-"why": "ATT&CK maps real attacker behaviour, so defenders can measure detection coverage."
+"why": "ATT&CK maps real attacker behavior, so defenders can measure detection coverage."
 },
 {
 "id": "blue-57",
@@ -854,7 +854,7 @@
 "Not telling anyone"
 ],
 "answer": 1,
-"why": "Authorisation and scope separate penetration testing from crime."
+"why": "Authorization and scope separate penetration testing from crime."
 },
 {
 "id": "red-60",
@@ -1017,12 +1017,12 @@
 "q": "Should you paste company secrets or customer data into a public AI chatbot?",
 "choices": [
 "Yes, always",
-"Only if your organisation's policy and the tool's data terms allow it",
+"Only if your organization's policy and the tool's data terms allow it",
 "Yes, if you delete the chat",
 "Only on weekends"
 ],
 "answer": 1,
-"why": "Follow your organisation's AI policy; some tools may keep or train on inputs."
+"why": "Follow your organization's AI policy; some tools may keep or train on inputs."
 },
 {
 "id": "ai-72",
@@ -1059,12 +1059,12 @@
 "q": "What is training-data poisoning?",
 "choices": [
 "Deleting the dataset",
-"Inserting malicious or misleading data so the model learns bad behaviour",
+"Inserting malicious or misleading data so the model learns bad behavior",
 "Overheating GPUs",
 "Encrypting the model"
 ],
 "answer": 1,
-"why": "Poisoned data can plant backdoors or bias. Data provenance and validation are defences."
+"why": "Poisoned data can plant backdoors or bias. Data provenance and validation are defenses."
 },
 {
 "id": "ai-75",
@@ -1246,7 +1246,7 @@
 "Hackathon"
 ],
 "answer": 0,
-"why": "The Collegiate Cyber Defense Competition is blue-team defence with business injects."
+"why": "The Collegiate Cyber Defense Competition is blue-team defense with business injects."
 },
 {
 "id": "careers-88",
@@ -2066,7 +2066,7 @@
 "level": 2,
 "q": "Many DNS TXT queries with long, random-looking subdomains to one rare domain most likely mean…",
 "choices": [
-"DNS tunnelling (data hidden in DNS)",
+"DNS tunneling (data hidden in DNS)",
 "A slow DNS server",
 "A normal software update",
 "An expired certificate"
@@ -2086,7 +2086,7 @@
 "Delete old logs first"
 ],
 "answer": 0,
-"why": "Filter, then count by a field: the core SIEM move. Practise it in the Log Hunt."
+"why": "Filter, then count by a field: the core SIEM move. Practice it in the Log Hunt."
 },
 {
 "id": "web-148",

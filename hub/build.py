@@ -98,7 +98,7 @@ class Site:
         ('Detection engineering','Write rules that catch the bad case and stay quiet on the good one.',['Detection engineering'],'detection-engineering',[0,2,3]),
         ('Endpoint & forensics','Follow what happened on a machine, and preserve the evidence.',['Endpoint detection','Digital forensics','Reverse engineering','Incident response'],'windows-events',[1,0,5]),
         ('Vulnerability management','Know what you run and which weaknesses matter first.',['Vulnerability management','Software supply chain'],None,[4,1,7]),
-        ('Application security','Find secrets, insecure code and risky web behaviour before release.',['Application security','Web security','Penetration testing'],None,[3,5,6]),
+        ('Application security','Find secrets, insecure code and risky web behavior before release.',['Application security','Web security','Penetration testing'],None,[3,5,6]),
         ('Cloud & containers','Misconfiguration and identity on the platforms software now runs on.',['Cloud security','Container security','System hardening'],'linux-hardening',[4,2,7]),
         ('Cryptography','Hashes, certificates and the trust they do and do not give you.',['Cryptography and PKI'],None,[4,7,3]),
         ('Governance & risk','Turn policy, risk and compliance into decisions people can follow.',[],None,[3,6,0]),
@@ -268,7 +268,7 @@ class Site:
         # 04 pick a path
         paths=[('New to cyber','Start with six plain-English lessons, then protect your own accounts.','/start/',[('Start here','/start/'),('Glossary','/glossary/'),('Study planner','/plan/')]),
                ('Learn the skills','Security+ and IT courses, flashcards and a readiness check.','/learn/',[('Security+ Academy','/academy/'),('IT track','/it/'),('Flashcards','/academy/flashcards/')]),
-               ('Practise hands-on','Labs that run in your browser: Linux, networks, Windows, SOC and AI.','/labs/',[('Linux Lab','/linux/'),('SOC Simulator','/labs/soc/'),('AI Red Team','/ai/red-team/')]),
+               ('Practice hands-on','Labs that run in your browser: Linux, networks, Windows, SOC and AI.','/labs/',[('Linux Lab','/linux/'),('SOC Simulator','/labs/soc/'),('AI Red Team','/ai/red-team/')]),
                ('Get hired','Roles, internships near CSUSB, competitions and your resume.','/careers/',[('Internships','/careers/internships/'),('Resume tailor','/careers/resume/'),('Competitions','/careers/competitions/')])]
         body+=('<section class="scene tone-paper sec-pad wrap" id="paths" data-tone="paper" data-sec="04" aria-labelledby="paths-title"><div class="sec-head rv">'
                f'<span class="label"><span class="on">04</span> / Your path</span><h2 id="paths-title">{R("Pick a")}{R("starting point","d1")}</h2></div><div class="path-grid">')

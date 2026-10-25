@@ -14,7 +14,7 @@ MODULES = [
          'Run `whoami`.', ['Type the word whoami and press Enter.']),
         ('echo', 'Say something', ['`echo` prints its arguments. It looks trivial, but you will use it to write files, check variables and build scripts.', 'Arguments are separated by spaces. Quotes keep words together: `echo "two words"`.'],
          'Print exactly: `hello, hub01`', ['echo hello, hub01', 'Quotes are optional here, but they never hurt.']),
-        ('manual', 'Read the manual', ['Nobody memorises every option. Professionals look things up. On this lab box `man <command>` shows a short manual, and `help` lists every command available.'],
+        ('manual', 'Read the manual', ['Nobody memorizes every option. Professionals look things up. On this lab box `man <command>` shows a short manual, and `help` lists every command available.'],
          'Open the manual for `ls`.', ['man followed by the command name.']),
         ('read-the-flag', 'Capture your first flag', ['Flags are secret strings like `CISO{...}` hidden on the box. Finding one proves you did the task. `cat` prints a file to the screen.', 'Files are named by paths. `/flag` is a file called flag at the very top of the filesystem.'],
          'Print `/flag` and submit what you find with `submit <flag>`.', ['cat /flag', 'Copy the whole CISO{...} string, braces included.']),

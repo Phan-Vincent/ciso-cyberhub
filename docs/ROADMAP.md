@@ -33,7 +33,7 @@ Done: Networking Lab, PowerShell Lab, IT flashcards (Network+/A+ topics), IT due
 - **Structure:** one `SECTIONS` entry per discipline or club (Cyber, IT, Software, Data/AI, Cloud, Business tech). Each club owns its section's content through pull requests reviewed by its officers.
 - **Shared engines:** labs, puzzles, flashcards, career tools and the internship scanner work for every section.
 - **Governance:** a `CONTRIBUTING` path per club, a faculty-review badge on checked content, and a content-freshness check (the 90-day review dates already used in the AI guides).
-- **Identity:** a custom domain (for example `hub.ciso-csusb.org`), a neutral umbrella name if clubs beyond CISO join, and per-club colour accents inside the same design system.
+- **Identity:** a custom domain (for example `hub.ciso-csusb.org`), a neutral umbrella name if clubs beyond CISO join, and per-club color accents inside the same design system.
 - **Reach:** a Discord bot that posts the Daily, and event kits for duel nights.
 
 ## Principles (do not break)

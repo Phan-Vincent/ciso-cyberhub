@@ -27,7 +27,7 @@ MAX_BYTES = 40_000_000
 CSUSB = (34.1826, -117.3231)  # Cal State San Bernardino, 5500 University Pkwy
 NEAR_MILES, REGION_MILES = 45, 110
 
-# Approximate city centres (lat, lon). Enough precision for "about N miles" labels.
+# Approximate city centers (lat, lon). Enough precision for "about N miles" labels.
 CITIES = {
     'san bernardino': (34.1083, -117.2898), 'highland': (34.1283, -117.2086), 'redlands': (34.0556, -117.1825), 'loma linda': (34.0483, -117.2612),
     'colton': (34.0739, -117.3137), 'rialto': (34.1064, -117.3703), 'fontana': (34.0922, -117.4350), 'yucaipa': (34.0336, -117.0431),

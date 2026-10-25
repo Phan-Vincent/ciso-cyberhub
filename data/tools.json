@@ -1182,7 +1182,7 @@
   {
     "id": "cyberchef",
     "name": "CyberChef",
-    "description": "The \"cyber Swiss Army knife\": decode, encode, decrypt and analyse data in the browser with drag-and-drop recipes.",
+    "description": "The \"cyber Swiss Army knife\": decode, encode, decrypt and analyze data in the browser with drag-and-drop recipes.",
     "category": "Data analysis",
     "secondary_categories": [],
     "repository": "https://github.com/gchq/CyberChef",
@@ -1194,7 +1194,7 @@
     "installation": "https://github.com/gchq/CyberChef#readme",
     "difficulty": "beginner",
     "use_cases": [
-      "The \"cyber Swiss Army knife\": decode, encode, decrypt and analyse data in the browser with drag-and-drop recipes."
+      "The \"cyber Swiss Army knife\": decode, encode, decrypt and analyze data in the browser with drag-and-drop recipes."
     ],
     "classification": [
       "defensive",
@@ -1253,7 +1253,7 @@
   {
     "id": "misp",
     "name": "MISP",
-    "description": "Threat intelligence sharing platform for indicators, events and correlations between organisations.",
+    "description": "Threat intelligence sharing platform for indicators, events and correlations between organizations.",
     "category": "Threat intelligence",
     "secondary_categories": [],
     "repository": "https://github.com/MISP/MISP",
@@ -1265,7 +1265,7 @@
     "installation": "https://github.com/MISP/MISP#readme",
     "difficulty": "intermediate",
     "use_cases": [
-      "Threat intelligence sharing platform for indicators, events and correlations between organisations."
+      "Threat intelligence sharing platform for indicators, events and correlations between organizations."
     ],
     "classification": [
       "defensive"
@@ -1287,7 +1287,7 @@
   {
     "id": "opencti",
     "name": "OpenCTI",
-    "description": "Cyber threat intelligence platform that organises actors, malware and indicators using the STIX standard.",
+    "description": "Cyber threat intelligence platform that organizes actors, malware and indicators using the STIX standard.",
     "category": "Threat intelligence",
     "secondary_categories": [],
     "repository": "https://github.com/OpenCTI-Platform/opencti",
@@ -1299,7 +1299,7 @@
     "installation": "https://github.com/OpenCTI-Platform/opencti#readme",
     "difficulty": "intermediate",
     "use_cases": [
-      "Cyber threat intelligence platform that organises actors, malware and indicators using the STIX standard."
+      "Cyber threat intelligence platform that organizes actors, malware and indicators using the STIX standard."
     ],
     "classification": [
       "defensive",
@@ -1428,7 +1428,7 @@
   {
     "id": "autopsy",
     "name": "Autopsy",
-    "description": "Graphical digital forensics platform for analysing disk images and phones.",
+    "description": "Graphical digital forensics platform for analyzing disk images and phones.",
     "category": "Digital forensics",
     "secondary_categories": [],
     "repository": "https://github.com/sleuthkit/autopsy",
@@ -1440,7 +1440,7 @@
     "installation": "https://github.com/sleuthkit/autopsy#readme",
     "difficulty": "beginner",
     "use_cases": [
-      "Graphical digital forensics platform for analysing disk images and phones."
+      "Graphical digital forensics platform for analyzing disk images and phones."
     ],
     "classification": [
       "defensive",
@@ -1741,7 +1741,7 @@
   {
     "id": "capev2",
     "name": "CAPEv2",
-    "description": "Malware sandbox that runs suspicious files in isolation and reports their behaviour.",
+    "description": "Malware sandbox that runs suspicious files in isolation and reports their behavior.",
     "category": "Malware analysis",
     "secondary_categories": [],
     "repository": "https://github.com/kevoreilly/CAPEv2",
@@ -1753,7 +1753,7 @@
     "installation": "https://github.com/kevoreilly/CAPEv2#readme",
     "difficulty": "advanced",
     "use_cases": [
-      "Malware sandbox that runs suspicious files in isolation and reports their behaviour."
+      "Malware sandbox that runs suspicious files in isolation and reports their behavior."
     ],
     "classification": [
       "defensive",
