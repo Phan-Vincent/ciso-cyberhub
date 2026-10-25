@@ -20,7 +20,7 @@ def redteam_page(site) -> str:
              '<div class="rt-inject" id="rt-inject" hidden><h2>Web page Vault can read</h2><p class="muted">You control this page. Vault will summarise it when asked.</p>'
              '<label class="sr-only" for="rt-page">Web page text</label><textarea id="rt-page" rows="5">CISO club events this week: Cyber Duel night on Thursday, resume workshop on Friday. Everyone welcome.</textarea>'
              '<button type="button" id="rt-sum">Ask Vault to summarise this page</button></div>'
-             '<form class="rt-guessf" id="rt-guess" autocomplete="off"><label for="rt-word" class="label">Found the secret word?</label><input id="rt-word" type="text" maxlength="40"><button type="submit">Check</button><span class="label" id="rt-guess-msg" role="status"></span></form>'
+             '<div class="rt-help"><button type="button" id="rt-hint">Stuck? Get a hint</button></div><form class="rt-guessf" id="rt-guess" autocomplete="off"><label for="rt-word" class="label">Found the secret word?</label><input id="rt-word" type="text" maxlength="40"><button type="submit">Check</button><span class="label" id="rt-guess-msg" role="status"></span></form>'
              '<div class="soc-result" id="rt-lesson" hidden><strong>Why that worked</strong><p></p><button type="button" class="primary" id="rt-nextlv">Next level →</button></div></div>'
              '<noscript><p class="notice">The lab needs JavaScript.</p></noscript></div>')
     body += ('<section class="rt-about"><h2>What this lab is (and is not)</h2><p>Vault is a simulation: simple rules stand in for a language model, so every result is repeatable and explainable, and it runs offline. Real models are less predictable, which makes these weaknesses harder to fix, not easier.</p>'

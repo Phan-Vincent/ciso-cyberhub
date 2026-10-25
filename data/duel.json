@@ -1098,7 +1098,7 @@
 "id": "history-77",
 "cat": "history",
 "level": 1,
-"q": "The first computer \"bug\" in 1947 was literally…",
+"q": "In 1947, Harvard Mark II operators logged the \"first actual case of bug being found\". What was it?",
 "choices": [
 "A moth",
 "A spider",
@@ -1106,7 +1106,7 @@
 "A worm"
 ],
 "answer": 0,
-"why": "Harvard Mark II operators taped a moth into the logbook: \"First actual case of bug being found.\""
+"why": "A moth stuck in a relay. Engineers already called faults \"bugs\"; the joke was that this one was a real insect. The logbook page is at the Smithsonian."
 },
 {
 "id": "history-78",
@@ -2045,6 +2045,90 @@
 ],
 "answer": 1,
 "why": "Type 1 (bare-metal) hypervisors such as ESXi or Hyper-V run directly on hardware."
+},
+{
+"id": "net-145",
+"cat": "net",
+"level": 2,
+"q": "In a capture, one host sends SYN packets to many ports and most reply with RST. What is happening?",
+"choices": [
+"A port scan",
+"A DNS lookup",
+"A file download",
+"A TLS handshake"
+],
+"answer": 0,
+"why": "Closed ports answer RST and open ones answer SYN-ACK, so a burst of SYNs to many ports is a scan. Try it in the Packet Lab."
+},
+{
+"id": "blue-146",
+"cat": "blue",
+"level": 2,
+"q": "Many DNS TXT queries with long, random-looking subdomains to one rare domain most likely mean…",
+"choices": [
+"DNS tunnelling (data hidden in DNS)",
+"A slow DNS server",
+"A normal software update",
+"An expired certificate"
+],
+"answer": 0,
+"why": "Attackers smuggle data out inside query names. Long, high-entropy labels to one domain are the tell."
+},
+{
+"id": "blue-147",
+"cat": "blue",
+"level": 2,
+"q": "Which search finds the source IPs with the most failed logins?",
+"choices": [
+"Filter to failed logins, then count them grouped by source IP",
+"Sort all logs by time",
+"Search for the word \"success\"",
+"Delete old logs first"
+],
+"answer": 0,
+"why": "Filter, then count by a field: the core SIEM move. Practise it in the Log Hunt."
+},
+{
+"id": "web-148",
+"cat": "web",
+"level": 2,
+"q": "A login page sends users to whatever URL is in ?next=. What is the flaw?",
+"choices": [
+"Open redirect",
+"SQL injection",
+"Clickjacking",
+"Buffer overflow"
+],
+"answer": 0,
+"why": "Phishers link to your real login page and bounce victims to their own site. Only allow relative paths or an allow-list."
+},
+{
+"id": "web-149",
+"cat": "web",
+"level": 3,
+"q": "An API decodes JWTs without verifying the signature. What can an attacker do?",
+"choices": [
+"Forge a token and act as any user",
+"Nothing, JWTs are encrypted",
+"Only read their own data",
+"Slow down the server"
+],
+"answer": 0,
+"why": "A JWT is only trustworthy if its signature is checked with the key and a pinned algorithm."
+},
+{
+"id": "crypto-150",
+"cat": "crypto",
+"level": 2,
+"q": "Encrypting text with XOR and a single repeated byte as the key is…",
+"choices": [
+"Easy to break by trying all 256 keys",
+"As strong as AES",
+"Impossible to reverse",
+"The same as hashing"
+],
+"answer": 0,
+"why": "One-byte XOR has only 256 possible keys. Malware uses it to hide strings, not to protect data."
 }
 ]
 }

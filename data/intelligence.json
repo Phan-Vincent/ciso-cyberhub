@@ -828,11 +828,6 @@
       "last_success": "2026-10-25T14:24:44Z",
       "url": "https://www.kb.cert.org/vuls/atomfeed/"
     },
-    "cisa-advisories": {
-      "error": "HTTP 403",
-      "last_attempt": "2026-10-25T14:24:44Z",
-      "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml"
-    },
     "cisa-kev": {
       "error": null,
       "last_attempt": "2026-10-25T14:24:44Z",

@@ -35,6 +35,11 @@
     "link": ""
   },
   {
+    "term": "ARP",
+    "def": "Address Resolution Protocol: how a device on a local network finds the hardware (MAC) address that belongs to an IP address. Attackers abuse it to sweep or spoof a network.",
+    "link": "/labs/packets/"
+  },
+  {
     "term": "Asset inventory",
     "def": "A list of every device, account and piece of software an organisation has. You cannot protect what you do not know about.",
     "link": "/defend/legacy-systems/"
@@ -63,6 +68,11 @@
     "term": "Backup",
     "def": "A copy of data kept so it can be restored after loss or ransomware. Keep at least one copy offline or immutable.",
     "link": ""
+  },
+  {
+    "term": "Base64",
+    "def": "An encoding that writes any data with 64 safe characters. Anyone can decode it, so it hides nothing.",
+    "link": "/labs/crypto/"
   },
   {
     "term": "Blue team",
@@ -95,6 +105,11 @@
     "link": "/start/"
   },
   {
+    "term": "Cleartext",
+    "def": "Data sent or stored without encryption, readable by anyone who sees it. FTP and Telnet send passwords in cleartext.",
+    "link": "/labs/packets/"
+  },
+  {
     "term": "Cloud security",
     "def": "Protecting data, identities and workloads hosted by cloud providers such as AWS, Azure and Google Cloud.",
     "link": "/defend/infrastructure/"
@@ -103,6 +118,11 @@
     "term": "Command and control (C2)",
     "def": "The channel malware uses to receive instructions from an attacker.",
     "link": "/labs/soc/"
+  },
+  {
+    "term": "Command injection",
+    "def": "A bug where user input ends up inside an operating system command, letting an attacker run their own commands.",
+    "link": "/labs/code-review/"
   },
   {
     "term": "Compliance",
@@ -138,6 +158,11 @@
     "term": "CVSS",
     "def": "Common Vulnerability Scoring System: a 0–10 score for how severe a vulnerability is.",
     "link": "/vulnerabilities/"
+  },
+  {
+    "term": "CWE",
+    "def": "Common Weakness Enumeration: a numbered catalog of software weakness types, like CWE-89 for SQL injection. CVEs are specific bugs; CWEs are the kind of mistake.",
+    "link": "/labs/code-review/"
   },
   {
     "term": "Dark web",
@@ -185,9 +210,19 @@
     "link": "/linux/network/dns/"
   },
   {
+    "term": "DNS tunnelling",
+    "def": "Hiding data or commands inside DNS queries and answers to sneak them past firewalls. Long, random-looking subdomains are a sign.",
+    "link": "/labs/packets/"
+  },
+  {
     "term": "EDR",
     "def": "Endpoint Detection and Response: tools on laptops and servers that record behaviour, detect threats and can isolate devices.",
     "link": "/labs/soc/"
+  },
+  {
+    "term": "Encoding",
+    "def": "Changing how data is written (Base64, hex, URL encoding) so systems can carry it. Unlike encryption, it needs no key to reverse.",
+    "link": "/labs/crypto/"
   },
   {
     "term": "Encryption",
@@ -230,6 +265,11 @@
     "link": "/careers/roles/"
   },
   {
+    "term": "Hard-coded credentials",
+    "def": "Passwords or keys written directly into code or config files. Anyone who sees the repo gets them.",
+    "link": "/labs/code-review/"
+  },
+  {
     "term": "Hashing",
     "def": "Turning data into a fixed-length fingerprint that cannot be reversed. Used to check integrity and store passwords.",
     "link": ""
@@ -250,6 +290,11 @@
     "link": "/defend/operational-technology/"
   },
   {
+    "term": "IDOR",
+    "def": "Insecure direct object reference: changing an ID in a request (like invoice 1001 to 1002) shows someone else's data because the app never checks ownership.",
+    "link": "/labs/code-review/"
+  },
+  {
     "term": "Incident response",
     "def": "The organised way to handle a security incident: prepare, detect, contain, eradicate, recover, learn.",
     "link": "/labs/incident-response/"
@@ -258,6 +303,11 @@
     "term": "Indicator of compromise (IOC)",
     "def": "Evidence that a system may be compromised, such as a malicious IP address, domain or file hash.",
     "link": ""
+  },
+  {
+    "term": "Insecure deserialization",
+    "def": "Rebuilding objects from untrusted data in formats that can run code while loading, which can give an attacker code execution.",
+    "link": "/labs/code-review/"
   },
   {
     "term": "Insider threat",
@@ -273,6 +323,11 @@
     "term": "Jailbreak (AI)",
     "def": "A prompt designed to get an AI model past its safety rules.",
     "link": "/ai/red-team/"
+  },
+  {
+    "term": "JWT",
+    "def": "JSON Web Token: a signed token apps use to say who you are. If the server does not verify the signature, anyone can forge one.",
+    "link": "/labs/code-review/"
   },
   {
     "term": "KEV",
@@ -335,6 +390,11 @@
     "link": "/defend/infrastructure/"
   },
   {
+    "term": "Open redirect",
+    "def": "A link on a trusted site that forwards visitors to any address in a parameter, which phishers use to borrow the site's reputation.",
+    "link": "/labs/code-review/"
+  },
+  {
     "term": "OSINT",
     "def": "Open-source intelligence: information gathered from public sources.",
     "link": ""
@@ -343,6 +403,11 @@
     "term": "OWASP Top 10",
     "def": "A widely used list of the most critical web application security risks.",
     "link": ""
+  },
+  {
+    "term": "Packet capture (PCAP)",
+    "def": "A recording of network traffic, packet by packet, opened in tools like Wireshark to see exactly what crossed the wire.",
+    "link": "/labs/packets/"
   },
   {
     "term": "Passkey",
@@ -355,9 +420,19 @@
     "link": "/tools/keepassxc/"
   },
   {
+    "term": "Password spraying",
+    "def": "Trying one or two common passwords against many accounts, to stay under lockout limits. The opposite of brute-forcing one account.",
+    "link": "/labs/logs/"
+  },
+  {
     "term": "Patch",
     "def": "An update that fixes bugs, including security vulnerabilities.",
     "link": ""
+  },
+  {
+    "term": "Path traversal",
+    "def": "Using ../ in a file name to escape the folder an app meant to serve, reaching files like /etc/passwd.",
+    "link": "/labs/code-review/"
   },
   {
     "term": "Payload",
@@ -370,6 +445,11 @@
     "link": "/careers/roles/"
   },
   {
+    "term": "Persistence",
+    "def": "Anything an attacker sets up to keep access after a reboot or password reset, such as a new account or scheduled task.",
+    "link": "/labs/logs/"
+  },
+  {
     "term": "Phishing",
     "def": "Fake messages that trick people into clicking, sharing credentials or paying.",
     "link": "/labs/phishing/"
@@ -378,6 +458,11 @@
     "term": "Port",
     "def": "A numbered endpoint for network services on a device, such as 443 for HTTPS.",
     "link": "/linux/network/ports/"
+  },
+  {
+    "term": "Port scan",
+    "def": "Probing a host for open ports to see which services it runs. Nmap is the classic tool.",
+    "link": "/labs/packets/"
   },
   {
     "term": "Privilege escalation",
@@ -535,6 +620,11 @@
     "link": "/defend/hardware/"
   },
   {
+    "term": "User-Agent",
+    "def": "A header in each web request that names the client software. Attack tools often reveal themselves in it, though it is easy to fake.",
+    "link": "/labs/logs/"
+  },
+  {
     "term": "VPN",
     "def": "Virtual private network: an encrypted tunnel between a device and a network.",
     "link": ""
@@ -555,9 +645,19 @@
     "link": ""
   },
   {
+    "term": "Wireshark",
+    "def": "The free, open-source tool for capturing and inspecting network packets.",
+    "link": "/tools/wireshark/"
+  },
+  {
     "term": "Worm",
     "def": "Malware that spreads by itself from machine to machine.",
     "link": "/history/"
+  },
+  {
+    "term": "XOR",
+    "def": "A bit operation used in encryption. With a short, reused key it is easy to break, so malware uses it to hide strings, not to protect them.",
+    "link": "/labs/crypto/"
   },
   {
     "term": "Zero day",

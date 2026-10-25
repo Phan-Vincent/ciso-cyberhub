@@ -40,19 +40,6 @@
     "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
   },
   {
-    "id": "cisa-advisories",
-    "name": "CISA Advisories",
-    "kind": "rss",
-    "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
-    "host": "www.cisa.gov",
-    "fixture": "cisa-adv.xml",
-    "category": "Advisories",
-    "article_hosts": [
-      "www.cisa.gov"
-    ],
-    "policy": "Official government advisories; link-only indexing."
-  },
-  {
     "id": "krebs",
     "name": "Krebs on Security",
     "kind": "rss",
@@ -103,5 +90,57 @@
       "www.schneier.com"
     ],
     "policy": "Link-only indexing of published Atom feed; no article bodies or source excerpts."
+  },
+  {
+    "id": "securityweek",
+    "name": "SecurityWeek",
+    "kind": "rss",
+    "url": "https://www.securityweek.com/feed/",
+    "host": "www.securityweek.com",
+    "fixture": "securityweek.xml",
+    "category": "News",
+    "article_hosts": [
+      "www.securityweek.com"
+    ],
+    "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
+  },
+  {
+    "id": "helpnetsecurity",
+    "name": "Help Net Security",
+    "kind": "rss",
+    "url": "https://www.helpnetsecurity.com/feed/",
+    "host": "www.helpnetsecurity.com",
+    "fixture": "helpnet.xml",
+    "category": "News",
+    "article_hosts": [
+      "www.helpnetsecurity.com"
+    ],
+    "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
+  },
+  {
+    "id": "thehackernews",
+    "name": "The Hacker News",
+    "kind": "rss",
+    "url": "https://feeds.feedburner.com/TheHackersNews",
+    "host": "feeds.feedburner.com",
+    "fixture": "thn.xml",
+    "category": "News",
+    "article_hosts": [
+      "thehackernews.com"
+    ],
+    "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
+  },
+  {
+    "id": "darkreading",
+    "name": "Dark Reading",
+    "kind": "rss",
+    "url": "https://www.darkreading.com/rss.xml",
+    "host": "www.darkreading.com",
+    "fixture": "darkreading.xml",
+    "category": "Analysis",
+    "article_hosts": [
+      "www.darkreading.com"
+    ],
+    "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
   }
 ]
