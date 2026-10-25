@@ -1941,3 +1941,5 @@ input, select { border-radius: 10px; }
 .pl-week li label { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
 .pl-week input { accent-color: var(--signal); }
 @media print { .site-header, .footer, .pl-form, .pl-out .rt-actions, .planner > .muted, .heading, .progress { display: none !important; } .pl-week { break-inside: avoid; } }
+.trend-main { min-width: 0; }
+.trend-main p, .trend-main a { overflow-wrap: anywhere; }
