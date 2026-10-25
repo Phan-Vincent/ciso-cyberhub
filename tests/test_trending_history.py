@@ -17,6 +17,11 @@ class TrendingTest(unittest.TestCase):
         self.assertEqual([r['name'] for r in out], ['a/good-scanner'])
         self.assertEqual(out[0]['gain'], 10)
 
+    def test_models_reject_invalid_ids(self):
+        ids=('org/../evil', 'org/model/extra', 'org?x/model', 'org\\model', 'org/..')
+        models=[{'id': mid, 'pipeline_tag': 'text-generation'} for mid in ids]
+        self.assertEqual(clean_models(models), [])
+
     def test_models_filter(self):
         models = [{'id': 'org/Model-7B', 'pipeline_tag': 'text-generation', 'trendingScore': 5},
                   {'id': 'x/Model-Uncensored-GGUF', 'pipeline_tag': 'text-generation'},
