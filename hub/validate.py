@@ -106,6 +106,88 @@ def validate(root=ROOT):
     if (root/'data/catalog-state.json').exists():
         cs=read_json(root/'data/catalog-state.json')
         require(isinstance(cs,dict) and type(cs.get('offset')) is int and cs['offset']>=0,'Invalid catalog state')
+    def fields(item, keys, label):
+        require(isinstance(item,dict) and all(string(item.get(k)) for k in keys), f'Invalid {label}')
+    def rows(name, key):
+        data=read_json(root/'data'/f'{name}.json')
+        require(isinstance(data,dict) and isinstance(data.get(key),list), f'Invalid {name}')
+        return data
+    leaderboard=read_json(root/'data/ai_leaderboard.json')
+    require(isinstance(leaderboard,dict) and isinstance(leaderboard.get('as_of'),str),'Invalid leaderboard')
+    date.fromisoformat(leaderboard['as_of'])
+    for group in ('frontier','local'):
+        g=leaderboard.get(group)
+        require(isinstance(g,dict) and isinstance(g.get('rows'),list) and g['rows'] and isinstance(g.get('source'),dict),'Invalid leaderboard group')
+        fields(g['source'],('name','metric'),'leaderboard source');safe_url(g['source'].get('url'))
+        for row in g['rows']:
+            fields(row,('model','org','license') if group=='frontier' else ('model','org','sizes','pulls','use'),'leaderboard row')
+            if group=='frontier': require(type(row.get('score')) in (int,float),'Invalid leaderboard score')
+        if group=='frontier':
+            require(isinstance(g.get('callouts'),list),'Invalid leaderboard callouts')
+            for c in g['callouts']:fields(c,('label','value','detail'),'leaderboard callout')
+    duel=rows('duel','questions')
+    require(isinstance(duel.get('categories'),dict) and duel['categories'] and duel['questions'],'Invalid duel')
+    for category in duel['categories'].values():require(string(category),'Invalid duel category')
+    for q in duel['questions']:
+        fields(q,('id','cat','q','why'),'duel question')
+        require(q['cat'] in duel['categories'] and type(q.get('level')) is int and isinstance(q.get('choices'),list) and len(q['choices'])==4 and all(string(c) for c in q['choices']) and type(q.get('answer')) is int and 0<=q['answer']<4,'Invalid duel question')
+    glossary=read_json(root/'data/glossary.json')
+    require(isinstance(glossary,list) and glossary,'Invalid glossary')
+    for term in glossary:
+        fields(term,('term','def'),'glossary term')
+        require(isinstance(term.get('link'),str) and (not term['link'] or (term['link'].startswith('/') and '..' not in term['link'].split('/'))),'Invalid glossary link')
+    images=read_json(root/'data/history_images.json')
+    require(isinstance(images,dict) and images,'Invalid history images')
+    for entry in images.values():
+        fields(entry,('title','author','license','description'),'history image')
+        safe_url(entry.get('page'))
+    internships=rows('internships','items')
+    timestamp(internships.get('generated_at'))
+    fields(internships.get('source'),('name',),'internship source');safe_url(internships['source'].get('url'))
+    require(isinstance(internships.get('origin'),dict) and string(internships['origin'].get('name')) and all(type(internships['origin'].get(k)) in (int,float) for k in ('lat','lon')),'Invalid internship origin')
+    for k in ('near_miles','region_miles'):require(type(internships.get(k)) is int and internships[k]>0,'Invalid internship radius')
+    for item in internships['items']:
+        fields(item,('id','company','title','category','city','posted','zone'),'internship')
+        safe_url(item.get('url'));date.fromisoformat(item['posted'])
+        require(item['zone'] in ('near','region','remote') and isinstance(item.get('terms'),list) and all(string(t) for t in item['terms']) and (item.get('miles') is None or type(item['miles']) is int) and all(type(item.get(k)) is bool for k in ('new','also_remote','security')),'Invalid internship fields')
+    cards=rows('it_cards','cards')
+    require(isinstance(cards.get('decks'),dict) and cards['decks'],'Invalid IT decks')
+    for name,title in cards['decks'].items():require(string(name) and string(title),'Invalid IT deck')
+    for card in cards['cards']:
+        fields(card,('id','deck','topic','front','back'),'IT card')
+        require(card['deck'] in cards['decks'],'Invalid IT card deck')
+    maintenance=read_json(root/'data/maintenance.json')
+    require(isinstance(maintenance,dict) and type(maintenance.get('link_offset')) is int and maintenance['link_offset']>=0 and isinstance(maintenance.get('links'),dict),'Invalid maintenance')
+    review=maintenance.get('curriculum_review')
+    require(isinstance(review,dict) and isinstance(review.get('checks'),list) and isinstance(review.get('provider_urls'),list) and string(review.get('status')),'Invalid curriculum review')
+    timestamp(review.get('requested_at'))
+    for u in review['provider_urls']:safe_url(u)
+    for u,state in maintenance['links'].items():
+        safe_url(u);require(isinstance(state,dict) and string(state.get('status')),'Invalid maintenance link')
+        if state.get('checked_at'):timestamp(state['checked_at'])
+    pulse=rows('pulse','series');timestamp(pulse.get('updated'))
+    require(isinstance(pulse.get('errors'),list) and all(string(e) for e in pulse['errors']),'Invalid pulse errors')
+    for row in pulse['series']:
+        require(isinstance(row,dict) and string(row.get('date')),'Invalid pulse row');date.fromisoformat(row['date'])
+        for k,v in row.items():
+            if k not in ('date','hn_month'):require(type(v) is int and v>=0,'Invalid pulse value')
+    research=read_json(root/'data/research.json')
+    require(isinstance(research,dict) and string(research.get('method')) and isinstance(research.get('sources'),list) and isinstance(research.get('limitations'),list),'Invalid research')
+    date.fromisoformat(research.get('checked_on',''))
+    for u in research['sources']:safe_url(u)
+    for note in research['limitations']:require(string(note),'Invalid research limitation')
+    trending=rows('trending','repos');timestamp(trending.get('generated_at'))
+    require(type(trending.get('window_days')) is int and trending['window_days']>0 and isinstance(trending.get('models'),list) and isinstance(trending.get('spotlight'),list) and isinstance(trending.get('sources'),dict),'Invalid trending')
+    for k in ('repos','models'):require(string(trending['sources'].get(k)),'Invalid trending source')
+    for repo in trending['repos']:
+        fields(repo,('name','description'),'trending repo');safe_url(repo.get('url'))
+        require(type(repo.get('stars')) is int and (repo.get('gain') is None or type(repo['gain']) is int),'Invalid trending stars')
+    for model in trending['models']:
+        fields(model,('id','org','task'),'trending model');safe_url(model.get('url'))
+        require(re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+',model['id']) and '..' not in model['id'].split('/') and all(type(model.get(k)) is int for k in ('likes','downloads','trending')),'Invalid trending model')
+    for spot in trending['spotlight']:
+        fields(spot,('name','why'),'trending spotlight');safe_url(spot.get('url'))
+        require(all(type(spot.get(k)) is int for k in ('stars','forks')),'Invalid trending spotlight')
     return {'tools':len(tools),'objectives':len(objective_ids),'questions':len(qids),'content_pages':len(docs)}
 
 if __name__=='__main__':

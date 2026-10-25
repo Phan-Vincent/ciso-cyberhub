@@ -14,6 +14,7 @@ def inline(text, base=''):
     def link(m):
         label,url=m[1],m[2]
         if url.startswith('/') and not url.startswith('//') and '\\' not in url:
+            if any(part in ('.', '..') for part in url.split('?', 1)[0].split('#', 1)[0].split('/')): return label
             url=base+url
         else:
             try: safe_url(url)

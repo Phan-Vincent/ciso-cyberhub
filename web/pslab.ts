@@ -85,8 +85,10 @@ function statements(line: string): string[] { const out: string[] = []; let cur 
 const like = (v: string, pat: string) => new RegExp('^' + pat.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*').replace(/\?/g, '.') + '$', 'i').test(v);
 function whereFn(expr: string): ((r: Row) => boolean) | null {
   const m = /\$_\.(\w+)\s+-(eq|ne|like|notlike|gt|lt|match)\s+['"]?([^'"}]*)['"]?/i.exec(expr); if (!m) return null; const [, f, op] = m; const v = m[3].trim();
+  const re = op.toLowerCase() === 'match' ? (() => { try { return new RegExp(v, 'i'); } catch { return null; } })() : null;
+  if (op.toLowerCase() === 'match' && !re) return null;
   return r => { const x = r[Object.keys(r).find(k => k.toLowerCase() === f.toLowerCase()) || f]; const s = String(x ?? ''); const n = Number(v);
-    switch (op.toLowerCase()) { case 'eq': return s.toLowerCase() === v.toLowerCase(); case 'ne': return s.toLowerCase() !== v.toLowerCase(); case 'like': return like(s, v); case 'notlike': return !like(s, v); case 'gt': return Number(x) > n; case 'lt': return Number(x) < n; default: return new RegExp(v, 'i').test(s); } };
+    switch (op.toLowerCase()) { case 'eq': return s.toLowerCase() === v.toLowerCase(); case 'ne': return s.toLowerCase() !== v.toLowerCase(); case 'like': return like(s, v); case 'notlike': return !like(s, v); case 'gt': return Number(x) > n; case 'lt': return Number(x) < n; default: return re!.test(s); } };
 }
 export class PS {
   w: World = base(); level: PLevel | null = null; hints: string[] = []; hintAt = 0; onWin: () => void = () => { }; onClear: () => void = () => { };
@@ -145,7 +147,7 @@ export class PS {
       case 'get-filehash': { const files = a.named.path ? [a.named.path] : a.pos.length ? a.pos : (input.rows || []).map(r => String(r.FullName)).filter(Boolean); if (!files.length) return err('Get-FileHash: a file path is required');
         const rows: Row[] = []; for (const f of files) { const p = abs(w, f); const n = w.files.get(key(p)); if (!n) return err(`Get-FileHash: Cannot find path '${p}'.`); if (n.dir) continue; rows.push({ Algorithm: 'SHA256', Hash: n.hash || '', Path: p }); } return { rows, cols: ['Algorithm', 'Hash', 'Path'] }; }
       case 'get-nettcpconnection': { let rows = w.conns; if (a.named.state) rows = rows.filter(c => String(c.State).toLowerCase() === a.named.state.toLowerCase()); return { rows, cols: ['LocalAddress', 'LocalPort', 'RemoteAddress', 'RemotePort', 'State', 'OwningProcess'] }; }
-      case 'where-object': { const f = whereFn(seg.slice(seg.indexOf(' ') + 1)); if (!f) return err("Where-Object: use the form { $_.Name -eq 'value' }"); if (input.rows) return { ...input, rows: input.rows.filter(f) }; return { text: (input.text || []).filter(l => f({ Line: l })) }; }
+      case 'where-object': { const f = whereFn(seg.slice(seg.indexOf(' ') + 1)); if (!f) return err("Where-Object: invalid pattern or use the form { $_.Name -eq 'value' }"); if (input.rows) return { ...input, rows: input.rows.filter(f) }; return { text: (input.text || []).filter(l => f({ Line: l })) }; }
       case 'measure-object': { const n = input.rows ? input.rows.length : (input.text || []).length; return { text: ['', 'Count    : ' + n, ''] }; }
       case 'select-object': { const first = Number(a.named.first), last = Number(a.named.last); const props = (a.named.property || a.pos[0] || '').split(',').filter(Boolean);
         if (input.rows) { let rows = input.rows; if (first) rows = rows.slice(0, first); if (last) rows = rows.slice(-last); return { rows, cols: props.length ? props.map(p => Object.keys(rows[0] || {}).find(k => k.toLowerCase() === p.toLowerCase()) || p) : input.cols }; }

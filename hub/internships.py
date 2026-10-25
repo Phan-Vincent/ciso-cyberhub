@@ -63,14 +63,14 @@ def place(location: str):
     """('San Diego, CA') -> (miles from CSUSB, 'San Diego') or None. Remote -> (None, 'Remote')."""
     loc = location.strip()
     low = loc.lower()
-    if 'remote' in low and ('us' in low or 'usa' in low or 'united states' in low or low.strip() in ('remote', 'remote in usa', 'remote in us')):
+    if re.fullmatch(r'remote(?:\s*(?:in|[-,/()])\s*(?:us|usa|united states)\s*\)?)?', low):
         return (None, 'Remote (US)')
-    m = re.match(r'^(.*?),\s*(CA|California)$', loc, re.I)
+    m = re.fullmatch(r'([^,]+),\s*(?:CA|California)', loc, re.I)
     if not m:
         return None
-    city = m.group(1).split(',')[-1].strip().lower()
+    city = m.group(1).strip().lower()
     if city in CITIES:
-        return (round(miles(CSUSB, CITIES[city])), m.group(1).split(',')[-1].strip())
+        return (round(miles(CSUSB, CITIES[city])), m.group(1).strip())
     return None
 
 
@@ -92,7 +92,10 @@ def scan(listings: list[dict], today: datetime | None = None) -> dict:
         if not near and not remote:
             continue
         best = min(near, key=lambda p: p[0]) if near else None
-        posted = datetime.fromtimestamp(int(x.get('date_posted') or 0), timezone.utc)
+        try:
+            posted = datetime.fromtimestamp(int(x.get('date_posted') or 0), timezone.utc)
+        except (ValueError, OverflowError, OSError, TypeError):
+            continue
         title = ' '.join(str(x.get('title') or '').split())[:160]
         company = ' '.join(str(x.get('company_name') or '').split())[:80]
         if not title or not company:

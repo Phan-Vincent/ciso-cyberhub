@@ -60,11 +60,11 @@ def clean_models(items: list[dict], limit: int = 10) -> list[dict]:
     out = []
     for m in items:
         mid = m.get('id') or m.get('modelId') or ''
-        if not mid or BLOCK.search(mid):
+        if not isinstance(mid, str) or not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', mid) or '..' in mid.split('/') or BLOCK.search(mid):
             continue
         if (m.get('pipeline_tag') or '') not in ('text-generation', 'image-text-to-text', 'any-to-any'):
             continue
-        out.append({'id': mid, 'org': mid.split('/')[0], 'url': f'https://huggingface.co/{mid}', 'likes': int(m.get('likes') or 0),
+        out.append({'id': mid, 'org': mid.split('/')[0], 'url': safe_url(f'https://huggingface.co/{mid}'), 'likes': int(m.get('likes') or 0),
                     'downloads': int(m.get('downloads') or 0), 'trending': int(m.get('trendingScore') or 0),
                     'created': (m.get('createdAt') or '')[:10], 'task': m.get('pipeline_tag') or ''})
     return out[:limit]

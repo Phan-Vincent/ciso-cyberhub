@@ -115,3 +115,32 @@ test('network commands fail like the real ones', () => {
   assert.match(sh.run('curl http://nowhere.example').err.join(''), /Could not resolve host/);
   assert.match(out(sh, 'man dig'), /DNS/);
 });
+
+test('unmatched glob and find patterns return shell errors', () => {
+  const sh = new Shell();
+  assert.doesNotThrow(() => sh.run('ls ['));
+  assert.doesNotThrow(() => sh.run('find /etc -name "["'));
+});
+
+test('self calling scripts stop at a depth limit', () => {
+  const sh = new Shell();
+  sh.run('echo "./loop.sh" > ~/loop.sh && chmod +x ~/loop.sh');
+  const r = sh.run('~/loop.sh');
+  assert.match(r.err.join('\n'), /recursion|depth|level/i);
+  assert.notEqual(r.code, 0);
+});
+
+test('mv rejects moving a directory into itself', () => {
+  const sh = new Shell(); sh.run('mkdir -p ~/m/sub');
+  const r = sh.run('mv ~/m ~/m/sub');
+  assert.match(r.err.join('\n'), /subdirectory of itself/);
+  assert.match(out(sh, 'ls ~/m'), /sub/);
+});
+
+test('root chmod can lock and level reload restores the lab filesystem', () => {
+  const sh = new Shell(); sh.load(LEVELS[0], []);
+  assert.equal(sh.run('sudo chmod 000 /').code, 0);
+  assert.match(sh.run('ls /').err.join('\n'), /Permission denied/);
+  sh.load(LEVELS[0], []);
+  assert.equal(sh.run('ls /').code, 0);
+});
