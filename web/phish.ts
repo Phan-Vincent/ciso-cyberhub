@@ -1,16 +1,16 @@
 // CyberHub Phishing lab: investigate an inbox like an email security analyst.
-// Fictional organisation (Inland State University) on reserved example domains. Text only.
+// Fictional organization (Inland State University) on reserved example domains. Text only.
 
 export type Mail = { id: string; from: string; addr: string; replyTo?: string; subject: string; body: string[]; link?: { text: string; href: string }; attach?: string;
   auth: { spf: string; dkim: string; dmarc: string }; phish: boolean; clues: string[]; why: string };
-export const CLUES = ['Sender domain does not match the organisation', 'Reply-To goes somewhere else', 'Link text and real destination differ', 'Urgency or threat', 'Asks for a password, code or payment',
+export const CLUES = ['Sender domain does not match the organization', 'Reply-To goes somewhere else', 'Link text and real destination differ', 'Urgency or threat', 'Asks for a password, code or payment',
   'Unexpected attachment type', 'SPF/DKIM/DMARC failed', 'Generic greeting'] as const;
 
 export const INBOX: Mail[] = [
   { id: 'it-reset', from: 'ISU IT Service Desk', addr: 'it-support@isu-helpdesk.example', subject: 'ACTION REQUIRED: password expires in 2 hours', phish: true,
     body: ['Dear user,', 'Your Inland State password expires in 2 hours. To avoid losing access to email and Canvas, verify your account now.'],
     link: { text: 'https://login.isu.example/verify', href: 'https://isu.example.login-verify.example/session' }, auth: { spf: 'pass', dkim: 'none', dmarc: 'fail' },
-    clues: ['Sender domain does not match the organisation', 'Link text and real destination differ', 'Urgency or threat', 'Asks for a password, code or payment', 'Generic greeting', 'SPF/DKIM/DMARC failed'],
+    clues: ['Sender domain does not match the organization', 'Link text and real destination differ', 'Urgency or threat', 'Asks for a password, code or payment', 'Generic greeting', 'SPF/DKIM/DMARC failed'],
     why: 'The sender is isu-helpdesk.example, not isu.example. The link text shows the real login page but points to a lookalike domain. DMARC fails. Real IT teams do not threaten two-hour lockouts.' },
   { id: 'registrar', from: 'Office of the Registrar', addr: 'registrar@isu.example', subject: 'Spring registration opens Monday', phish: false,
     body: ['Hi Alex,', 'Registration for spring opens Monday at 8:00 a.m. for seniors. Check your time slot in the student portal. Advisers are available in University Hall all week.'],
@@ -22,10 +22,10 @@ export const INBOX: Mail[] = [
     why: 'The display address looks right, but replies go to a free-mail account and authentication fails: the From address is spoofed. Payroll changes happen in the HR portal, never by email reply.' },
   { id: 'club', from: 'CISO officers', addr: 'officers@clubs.isu.example', subject: 'Cyber Duel night this Thursday', phish: false,
     body: ['Hey everyone,', 'Duel night is Thursday 6 p.m. in JB-359. Bring a laptop or just your phone. Pizza is on us. See the club calendar for details.'],
-    auth: { spf: 'pass', dkim: 'pass', dmarc: 'pass' }, clues: [], why: 'An organisation subdomain, passing checks, and an ordinary event message with nothing to enter or download.' },
+    auth: { spf: 'pass', dkim: 'pass', dmarc: 'pass' }, clues: [], why: 'An organization subdomain, passing checks, and an ordinary event message with nothing to enter or download.' },
   { id: 'invoice', from: 'Accounts Receivable', addr: 'billing@vendor-invoices.example', subject: 'Overdue invoice #88213', phish: true,
     body: ['Please see the attached overdue invoice and process payment today to avoid late fees.'], attach: 'Invoice_88213.html',
-    auth: { spf: 'pass', dkim: 'pass', dmarc: 'none' }, clues: ['Sender domain does not match the organisation', 'Urgency or threat', 'Unexpected attachment type', 'Asks for a password, code or payment', 'Generic greeting'],
+    auth: { spf: 'pass', dkim: 'pass', dmarc: 'none' }, clues: ['Sender domain does not match the organization', 'Urgency or threat', 'Unexpected attachment type', 'Asks for a password, code or payment', 'Generic greeting'],
     why: 'An unknown vendor, pressure to pay today, and an .html "invoice": HTML attachments often open fake login pages. SPF and DKIM can pass for an attacker\'s own domain, so passing checks alone do not prove a message is safe.' },
   { id: 'shared-doc', from: 'Prof. Rivera (via DocShare)', addr: 'no-reply@docshare.example', subject: 'Prof. Rivera shared "Final exam review" with you', phish: false,
     body: ['Prof. Rivera shared a document with you.', 'Open it from your DocShare account. If you were not expecting this, you can ignore it.'], link: { text: 'Open in DocShare', href: 'https://docshare.example/d/7f3k' },
@@ -33,11 +33,11 @@ export const INBOX: Mail[] = [
     why: 'The notification comes from the real sharing service, the link goes to that same service, and it matches a class you take. Still, if in doubt, open the service directly instead of the link.' },
   { id: 'giftcard', from: 'Dr. Patel, Department Chair', addr: 'dr.patel.chair@freemail.example', subject: 'Quick favour', phish: true,
     body: ['Are you on campus? I need you to pick up four $100 gift cards for a student award, I\'m stuck in a meeting. Send me the codes and I\'ll reimburse you.'],
-    auth: { spf: 'pass', dkim: 'pass', dmarc: 'pass' }, clues: ['Sender domain does not match the organisation', 'Urgency or threat', 'Asks for a password, code or payment'],
+    auth: { spf: 'pass', dkim: 'pass', dmarc: 'pass' }, clues: ['Sender domain does not match the organization', 'Urgency or threat', 'Asks for a password, code or payment'],
     why: 'A classic gift-card scam impersonating a boss from a free-mail address. Authentication passes because it is a real free-mail account. Verify by calling the person on a known number.' },
   { id: 'mfa-code', from: 'ISU Security', addr: 'security@isu.example.secure-alert.example', subject: 'Unusual sign-in: confirm it was you', phish: true,
     body: ['We noticed a sign-in from a new device. Reply with the 6-digit code we just texted you to keep your account active.'],
-    auth: { spf: 'pass', dkim: 'none', dmarc: 'none' }, clues: ['Sender domain does not match the organisation', 'Urgency or threat', 'Asks for a password, code or payment', 'Generic greeting'],
+    auth: { spf: 'pass', dkim: 'none', dmarc: 'none' }, clues: ['Sender domain does not match the organization', 'Urgency or threat', 'Asks for a password, code or payment', 'Generic greeting'],
     why: 'The domain only starts with "isu.example"; the real domain is secure-alert.example. No real service asks you to send back a one-time code. That code is the attacker\'s way past MFA.' },
 ];
 

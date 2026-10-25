@@ -125,7 +125,7 @@ the happy path, two edge cases, and negative tests that prove it fails safely
     body += ('<section id="numbers"><h2><span class="label">08</span>The numbers</h2><div class="num-grid">'
              + ''.join(f'<div class="num"><strong>{n}</strong><p>{E(t)}</p><span class="label">{E(s)}</span></div>' for n, t, s in [
                  ('45%', 'of AI-generated code samples failed OWASP Top 10 security tests.', 'Veracode 2025 GenAI Code Security Report'),
-                 ('86%', 'failure rate on cross-site scripting defences in the same tests.', 'Veracode 2025'),
+                 ('86%', 'failure rate on cross-site scripting defenses in the same tests.', 'Veracode 2025'),
                  ('19.7%', 'of package names suggested by 16 code models did not exist (5.2% commercial, 21.7% open models).', 'Spracklen et al., USENIX Security 2025'),
                  ('43%', 'of hallucinated package names came back on every one of ten re-runs: predictable enough to squat.', 'Spracklen et al., USENIX Security 2025')])
              + '</div></section>')
@@ -237,12 +237,12 @@ def ai_hub(site) -> str:
     body = site.heading('AI for builders', 'Use AI to build faster without shipping vulnerabilities. Practical, sourced and reviewed every 90 days.', 'AI / Guides')
     body += '<div class="grid two">'
     for title, desc, path, tag, meta in [
-        ('AI Red Team Lab', 'Get a simulated AI assistant to leak its secret across six levels of real defences, then learn what actually stops prompt injection.', '/ai/red-team/', 'Lab', '6 levels'),
+        ('AI Red Team Lab', 'Get a simulated AI assistant to leak its secret across six levels of real defenses, then learn what actually stops prompt injection.', '/ai/red-team/', 'Lab', '6 levels'),
         ('Prompt testing', 'Test prompts and AI features like software: test sets, scoring, adversarial cases, the OWASP Top 10 for LLMs and open-source tools.', '/ai/prompt-testing/', 'Guide', '7 sections'),
         ('AI and cyber jobs', 'Live daily signals on vulnerabilities, AI-security research and hiring, plus the official job outlook and AI-era roles.', '/ai/jobs/', 'Data', 'Updated daily'),
         ('Secure AI coding cheat sheet', 'The vibe-coding loop, prompts that work, rules to paste into AGENTS.md, red flags and the checks to run before you ship.', '/ai/vibe-coding/', 'Cheat sheet', '9 sections'),
         ('Meta-prompting guide', 'Have a model write and improve your prompts, then prove them with a small test set. Copy-ready templates.', '/ai/meta-prompting/', 'Guide', '9 sections'),
-        ('Working with AI: skills, tokens and context', 'Build reusable skills, cut token costs, keep a context saver, keep AI on track and teach it your organisation and scope.', '/ai/workflow/', 'Guide', '8 sections'),
+        ('Working with AI: skills, tokens and context', 'Build reusable skills, cut token costs, keep a context saver, keep AI on track and teach it your organization and scope.', '/ai/workflow/', 'Guide', '8 sections'),
         ('Run AI on your own computer', 'Install Ollama on Windows, macOS, Linux or Docker, pick a model that fits your hardware, and keep it private.', '/ai/local/', 'Setup guide', 'Every OS'),
         ('AI leaderboard', 'Frontier model rankings, trending open-weight models and what people run locally, each with its date and source.', '/ai/models/', 'Leaderboard', 'Daily + snapshot')]:
         body += site.card(title, desc, path, tag, meta)
@@ -296,7 +296,7 @@ def internships_page(site) -> str:
     body += '<section class="local-sources"><h2>Check these every week</h2><div class="grid two">'
     for t, u, d in LOCAL_SOURCES:
         body += f'<article class="card"><div class="card-top"><span class="label on">Local source</span></div><h2><a href="{E(u)}">{E(t)} ↗</a></h2><p>{E(d)}</p></article>'
-    body += ('</div><p class="notice"><b>Heads up on federal cyber programs.</b> In April 2026 CISA cancelled its summer 2026 internships for CyberCorps Scholarship for Service students because of DHS funding problems. '
+    body += ('</div><p class="notice"><b>Heads up on federal cyber programs.</b> In April 2026 CISA canceled its summer 2026 internships for CyberCorps Scholarship for Service students because of DHS funding problems. '
              'Confirm a program is running before you plan around it. <a href="https://cyberscoop.com/cisa-cancels-cybercorps-internships-dhs-funding-crisis/">CyberScoop report</a></p></section>')
     body += ('<p class="muted scan-fine">Listings come from a community-maintained list and link to each employer\'s own posting. Always confirm details, dates and eligibility on the employer site. '
              f'CyberHub does not collect applications or personal data. {site.a("Find your role first →", "/careers/match/")}</p>')

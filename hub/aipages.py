@@ -29,7 +29,7 @@ def local_page(site) -> str:
                  ('Offline', 'Once a model is downloaded it works on a plane, in a lab network or during an outage.'),
                  ('Free to run', 'No subscription or per-token cost. You pay in disk space, memory and electricity.'),
                  ('Learn how it works', 'You see the moving parts: model files, sizes, quantisation, context windows and APIs.')])
-             + '</div><p class="callout">Trade-off: local models are smaller than the frontier models on the leaderboard. They are great for summarising, drafting, explaining and coding help, less so for the hardest reasoning.</p></section>')
+             + '</div><p class="callout">Trade-off: local models are smaller than the frontier models on the leaderboard. They are great for summarizing, drafting, explaining and coding help, less so for the hardest reasoning.</p></section>')
     body += ('<section id="hardware"><h2><span class="label">02</span>Will my computer handle it?</h2>'
              '<p>The model has to fit in memory: your graphics card\'s VRAM if you have one, otherwise system RAM. Apple Silicon Macs share one pool of "unified memory", which works well. As a rough guide for the common 4-bit versions that Ollama downloads by default:</p>'
              '<table class="guide-table"><thead><tr><th>Your memory</th><th>Comfortable model size</th><th>Try</th></tr></thead><tbody>'
@@ -79,7 +79,7 @@ def local_page(site) -> str:
              '<li><b>Open WebUI</b>: a ChatGPT-style interface for your browser that talks to Ollama. Install with Docker or pip from its official docs and keep it on localhost.</li>'
              '<li><b>LM Studio</b>: a separate desktop app with its own model downloader, if you prefer clicking to typing.</li></ul></section>')
     body += ('<section id="code"><h2><span class="label">08</span>Use it from code and tools</h2>'
-             + _prompt('REST API (any language)', 'curl http://localhost:11434/api/chat -d \'{\n  "model": "gemma4:e4b",\n  "messages": [{"role": "user", "content": "Summarise this log line: Failed password for root from 203.0.113.9"}],\n  "stream": false\n}\'', 'c-1')
+             + _prompt('REST API (any language)', 'curl http://localhost:11434/api/chat -d \'{\n  "model": "gemma4:e4b",\n  "messages": [{"role": "user", "content": "Summarize this log line: Failed password for root from 203.0.113.9"}],\n  "stream": false\n}\'', 'c-1')
              + _prompt('Python', 'pip install ollama\n\nfrom ollama import chat\nr = chat(model="gemma4:e4b", messages=[{"role": "user", "content": "What is a CVE?"}])\nprint(r.message.content)', 'c-2')
              + '<p>Coding agents can use local models too: <code>ollama launch</code> connects Ollama to supported tools such as Claude Code, Codex and OpenCode. Small local models are weaker at multi-step agent work than frontier models, so start with simple tasks.</p></section>')
     body += ('<section id="secure"><h2><span class="label">09</span>Keep it private and safe</h2><ul class="ticks">'
@@ -125,7 +125,7 @@ def models_page(site) -> str:
         body += (f'<li class="lb-row"><span class="lb-rank">{i + 1:02d}</span><span class="lb-name"><b><a href="{E(m["url"])}">{E(m["id"].split("/")[-1])}</a></b><span class="label">{E(m["org"])} · {E(m["task"])}</span></span>'
                  f'<span class="tag">{_num(m["downloads"])} downloads</span><span class="lb-bar" aria-hidden="true"><i class="w{max(1, round(m["trending"] / tmax * 20))}"></i></span>'
                  f'<span class="lb-score">{m["trending"]}</span><span class="lb-meta label">{_num(m["likes"])} likes · since {E(m["created"])}</span></li>')
-    body += '</ol><p class="muted">Trending score reflects recent likes and downloads on Hugging Face. Re-uploads labelled "uncensored", "abliterated" or similar are filtered out. Trending is not an endorsement: check the license and publisher.</p></section>'
+    body += '</ol><p class="muted">Trending score reflects recent likes and downloads on Hugging Face. Re-uploads labeled "uncensored", "abliterated" or similar are filtered out. Trending is not an endorsement: check the license and publisher.</p></section>'
     loc = lb['local']
     body += (f'<section class="lb"><div class="lb-head"><h2>Most-run local models</h2><p class="label">Snapshot {E(lb["as_of"])} · <a href="{E(loc["source"]["url"])}">{E(loc["source"]["name"])}</a> · {E(loc["source"]["metric"])}</p></div>'
              '<div class="table-wrap"><table class="guide-table"><thead><tr><th>#</th><th>Model</th><th>By</th><th>Sizes</th><th>Pulls</th><th>Good for</th></tr></thead><tbody>'
@@ -139,13 +139,13 @@ def trending_page(site) -> str:
     tr = read_json(ROOT / 'data/trending.json')
     body = site.heading('Trending security tools', f'The ten fastest-rising open-source security projects on GitHub, created in the last {tr.get("window_days", 120)} days. Refreshed every week.', 'Tools / Trending')
     body += (f'<p class="guide-meta label"><span class="dot" aria-hidden="true"></span>Last refresh <time datetime="{E(tr["generated_at"][:10])}">{E(tr["generated_at"][:10])}</time> · {E(tr["sources"]["repos"])}</p>'
-             '<p class="notice"><b>Trending is not vetted.</b> New projects can be brilliant, abandoned or unsafe. Read the code and license before running anything, use a VM for offensive tools, and only test systems you are authorised to test. Jailbreak kits, spam and re-uploads are filtered out automatically.</p>')
+             '<p class="notice"><b>Trending is not vetted.</b> New projects can be brilliant, abandoned or unsafe. Read the code and license before running anything, use a VM for offensive tools, and only test systems you are authorized to test. Jailbreak kits, spam and re-uploads are filtered out automatically.</p>')
     for sp in tr.get('spotlight', []):
         owner, name = sp['name'].split('/', 1)
         note = f' ({E(sp["stars_note"])})' if sp.get('stars_note') else ''
         body += (f'<a class="trend-spot" href="{E(sp["url"])}" rel="noopener"><span class="label">Spotlight / {E(owner)}</span><strong>{E(name.upper())}</strong>'
                  f'<span class="ts-why">{E(sp["why"])}</span><span class="ts-stats"><b>{sp["stars"]:,}</b> stars{note} · {sp["forks"]:,} forks · {E(sp.get("license") or "license unknown")}</span>'
-                 '<span class="ts-warn">Reverse engineering is legal for interoperability and research in many places, but check software licenses and only analyse apps you own or are authorised to test.</span></a>')
+                 '<span class="ts-warn">Reverse engineering is legal for interoperability and research in many places, but check software licenses and only analyze apps you own or are authorized to test.</span></a>')
     body += '<ol class="trend-list">'
     for i, r in enumerate(tr['repos']):
         owner, name = r['name'].split('/', 1)

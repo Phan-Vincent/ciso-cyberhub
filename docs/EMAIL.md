@@ -20,5 +20,5 @@ Once the club has a .org domain:
   Email Routing, if the domain's DNS is on Cloudflare): forward it to the Gmail above.
 - **Send** as the .org address from Gmail with "Send mail as", which needs an SMTP service that
   supports the domain. Alternatively, check whether the club qualifies for Google Workspace for
-  Nonprofits, or ask CSUSB about a student-organisation account.
+  Nonprofits, or ask CSUSB about a student-organization account.
 - Then set `contact_email` to the .org address and push.

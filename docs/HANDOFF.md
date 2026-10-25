@@ -55,7 +55,7 @@ This file is for a teammate, or a teammate's Claude session, picking up the Cybe
   - carbon tool grid
   - blue start
   - void footer
-- **Colour:** void `#050505`, carbon `#0c0d10`, graphite `#17191e`, paper `#edeff2`. There is one signal colour, CISO blue `#0068bc`, with `#3b93ff` for small text and strokes on black.
+- **Color:** void `#050505`, carbon `#0c0d10`, graphite `#17191e`, paper `#edeff2`. There is one signal color, CISO blue `#0068bc`, with `#3b93ff` for small text and strokes on black.
 - **Type:** Archivo (display at 62% width, weight about 830, capitals) and Martian Mono (labels like `01 / About`). Both are SIL OFL and self-hosted in `public/assets/fonts/`. Paid fonts (Druk, Aeonik, Neue Haas) are excluded.
 - **Logo:**
   - The CyberHub Core is the mark; the wordmark is CYBER solid with HUB as a blue outline.
@@ -67,7 +67,7 @@ This file is for a teammate, or a teammate's Claude session, picking up the Cybe
   - hacker clichés: hoodies, green matrix rain, glowing padlocks
   - AI-looking gradient blobs
   - generic SaaS cards
-  - stock photos left in full colour (photos get a monochrome grade so mixed sources read as one shoot)
+  - stock photos left in full color (photos get a monochrome grade so mixed sources read as one shoot)
 - **Information architecture:**
   - The front page directs people to `/resources/`, which holds all resources in one place (5 large modules plus an "Also in CyberHub" grid).
   - Main nav: 01 Resources, 02 Tools, 03 Academy, 04 Labs, 05 Intelligence, 06 Careers.
@@ -76,7 +76,7 @@ This file is for a teammate, or a teammate's Claude session, picking up the Cybe
 
 | Commit | What |
 | --- | --- |
-| `9d5ceec` | Flagship redesign, brand system, fonts, new homepage scenes and behaviours |
+| `9d5ceec` | Flagship redesign, brand system, fonts, new homepage scenes and behaviors |
 | `6681284` | `/resources/` page, summary under the hero logotype, "CISO club site" header link |
 | `22190d0` | Three-step radius scale (softened corners) |
 | `117e51f` | Field photo band, `data/photos.json`, `scripts/fetch_photos.py`, this handoff |
@@ -126,7 +126,7 @@ The earlier statement that "visual sign-off and any deployment remain outstandin
 
 ## 6. Photos
 
-The field band is live with five free photos in `public/assets/photos/` (1600 px wide, 173–312 KB each). Each was checked on its Unsplash page as a free **Unsplash License** photo on 22 Oct 2026. The originally listed server-aisle photo (`8CTEFI7fIPM`) turned out to be **Unsplash+** (paid) and a 3D render, so it was replaced by Taylor Vick's data-centre photo (`M5tzZtFCOfs`).
+The field band is live with five free photos in `public/assets/photos/` (1600 px wide, 173–312 KB each). Each was checked on its Unsplash page as a free **Unsplash License** photo on 22 Oct 2026. The originally listed server-aisle photo (`8CTEFI7fIPM`) turned out to be **Unsplash+** (paid) and a 3D render, so it was replaced by Taylor Vick's data-center photo (`M5tzZtFCOfs`).
 
 1. **How fetching works:** `python scripts/fetch_photos.py` downloads each entry's `src` (its `images.unsplash.com/photo-…` address) at 1600 px. The `unsplash.com/photos/<id>/download` endpoint answers scripts with HTTP 401, so it is not used. A `src` on `plus.unsplash.com` is refused, because that host serves Unsplash+.
 2. **To swap or add a photo:** open the photo's page and confirm the title says "Free Photo on Unsplash". Copy the page's `og:image` without its query string into `src`. Fill `file`, `id`, `page`, `by` (photographer), `alt`, `caption` and `note` in `data/photos.json` (slot `field`), run the script, and add the credit row in `THIRD_PARTY_NOTICES.md`. The band credits each photographer by name, linked to the photo page.
@@ -189,7 +189,7 @@ The user explicitly approved committing, pushing and deploying this verified sna
 
 ## Internships and AI guides (24 Oct 2026)
 
-- **Internship scanner (`/careers/internships/`):** `hub/internships.py` reads the community SimplifyJobs Summer 2027 list. It keeps active postings within 110 miles of CSUSB (straight-line, from a fixed SoCal city table) plus remote-US roles, flags security and IT roles and new postings, and dedupes. Runs weekly on the Monday schedule (and on manual runs); `publish_data.py` commits `data/internships.json` to main. The page also lists local sources (CSUSB Handshake, San Bernardino County, federal Pathways) and notes CISA's cancelled 2026 CyberCorps internships.
+- **Internship scanner (`/careers/internships/`):** `hub/internships.py` reads the community SimplifyJobs Summer 2027 list. It keeps active postings within 110 miles of CSUSB (straight-line, from a fixed SoCal city table) plus remote-US roles, flags security and IT roles and new postings, and dedupes. Runs weekly on the Monday schedule (and on manual runs); `publish_data.py` commits `data/internships.json` to main. The page also lists local sources (CSUSB Handshake, San Bernardino County, federal Pathways) and notes CISA's canceled 2026 CyberCorps internships.
 - **AI for builders (`/ai/`):** a secure AI coding cheat sheet and a meta-prompting guide in `hub/guides.py`. `REVIEWED` holds the review date; the page shows "review due" after 90 days. Every statistic is sourced (Veracode 2025, Spracklen et al. USENIX 2025, OWASP Agentic Top 10 2026, OpenSSF, Anthropic, OpenAI, NIST SP 800-218A).
 
 ## Labs and learning PR (24 Oct 2026)
@@ -200,11 +200,11 @@ The user explicitly approved committing, pushing and deploying this verified sna
 - **Local AI guide (`/ai/local/`):** Ollama install for Windows, macOS, Linux and Docker (tabs default to the visitor's OS), hardware sizing, model picks, commands, API, safety and troubleshooting. Install commands come from the Ollama README.
 - **History (`/history/`):** 22 events across 6 eras in `hub/history.py`. Images are fetched by `.github/workflows/assets.yml`, which runs `scripts/fetch_history_images.py` against the Wikimedia Commons API. It accepts only public-domain, CC0, CC BY or CC BY-SA files, records author and license in `data/history_images.json`, and falls back to a typographic plate.
 
-## Organisation, resume tailor and AI workflow (24 Oct 2026)
+## Organization, resume tailor and AI workflow (24 Oct 2026)
 
 - **Structure:** `Site.SECTIONS` in `hub/build.py` defines Learn / Tools / AI / Intel / Careers. It drives the header dropdowns, the grouped phone menu, the footer, `/resources/` (directory), `/learn/` and the homepage section rows. The redundant homepage tools grid was removed.
 - **Resume tailor (`/careers/resume/`):** `web/resume.ts` + `hub/resume.py`. Runs in the browser: reads .docx with a built-in unzip, matches skills, checks the resume, flags weak bullets and builds a no-fabrication prompt. The optional local tailoring calls the user's Ollama; this page alone allows `connect-src` to localhost:11434. Every internship listing links to it with `?job=<id>`. Tests: `tests/resume.test.mjs`.
-- **AI workflow guide (`/ai/workflow/`):** skills (Agent Skills format), saving tokens, the context saver, keeping AI on track, and organisation/scope guidelines. Sources checked 2026-10-24.
+- **AI workflow guide (`/ai/workflow/`):** skills (Agent Skills format), saving tokens, the context saver, keeping AI on track, and organization/scope guidelines. Sources checked 2026-10-24.
 - **Learning map:** nodes are draggable, and the info card is draggable (also by arrow keys on its grip) and collapsible, with a Reset layout button. The default layout no longer puts the card over the map.
 - **Roadmap:** `docs/ROADMAP.md`.
 
@@ -217,8 +217,8 @@ The user explicitly approved committing, pushing and deploying this verified sna
 ## Shifts, competitions, Networking Lab, cover letters, badges (24 Oct 2026)
 
 - **A day defending it:** `hub/shifts.py` holds a 4-step scenario per `/defend/` guide (exactly one best answer per step, each choice explained); `web/journey.ts` runs it and saves scores to `localStorage['cyberhub:defend']`.
-- **Competitions (`/careers/competitions/`):** `hub/competitions.py`. `EVENTS` are dated and marked done/now/upcoming at build time (the nightly rebuild keeps it current); `WINDOWS` are yearly patterns. Update the dates each season from the organisers' sites and bump `CHECKED`.
-- **Networking Lab (`/linux/network/`):** 17 levels in `hub/netlab.py`; simulated network and commands (`ip`, `ping`, `traceroute`, `dig`, `nslookup`, `host`, `ss`, `netstat`, `nc`, `curl`) in `web/linux.ts` (`NET_LEVELS`, `netExec`). Same page builders as the Linux Lab (now parameterised). Progress key `cyberhub:netlab`. `tests/linux.test.mjs` solves every level with real commands.
+- **Competitions (`/careers/competitions/`):** `hub/competitions.py`. `EVENTS` are dated and marked done/now/upcoming at build time (the nightly rebuild keeps it current); `WINDOWS` are yearly patterns. Update the dates each season from the organizers' sites and bump `CHECKED`.
+- **Networking Lab (`/linux/network/`):** 17 levels in `hub/netlab.py`; simulated network and commands (`ip`, `ping`, `traceroute`, `dig`, `nslookup`, `host`, `ss`, `netstat`, `nc`, `curl`) in `web/linux.ts` (`NET_LEVELS`, `netExec`). Same page builders as the Linux Lab (now parameterized). Progress key `cyberhub:netlab`. `tests/linux.test.mjs` solves every level with real commands.
 - **Cover letters:** the resume tailor has a "Tailored resume / Cover letter" switch; `coverPrompt` in `web/resume.ts` keeps the no-fabrication rules and marks unknowns as [PLACEHOLDER].
 - **Badges (`/progress/`):** `hub/badges.py` + `web/journey.ts` read existing progress keys (Linux, Networking, Academy, readiness, Daily, role quiz, guides, shifts). The printable card is cloned into `#print-root` on `beforeprint`. Badge ids must match in both files (tested).
 

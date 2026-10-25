@@ -8,7 +8,7 @@ import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 const f = join(mkdtempSync(join(tmpdir(), 'rt-')), 'resume.mjs');
 writeFileSync(f, stripTypeScriptTypes(readFileSync(new URL('../web/resume.ts', import.meta.url), 'utf8'), { mode: 'strip' }));
-const { analyse, skillsIn, tailorPrompt } = await import(pathToFileURL(f).href);
+const { analyze, skillsIn, tailorPrompt } = await import(pathToFileURL(f).href);
 
 const resume = `Alex Student  alex@example.com  github.com/alex
 Education: B.S. Computer Science, Cal State San Bernardino
@@ -25,7 +25,7 @@ test('skills are detected on word boundaries with aliases', () => {
 });
 
 test('analysis splits matched and missing skills and flags weak bullets', () => {
-  const a = analyse(resume, job);
+  const a = analyze(resume, job);
   for (const k of ['Python', 'Linux', 'SIEM', 'Splunk']) assert.ok(a.matched.includes(k), k);
   for (const k of ['Incident response', 'AWS']) assert.ok(a.missing.includes(k), k);
   assert.equal(a.weak.length, 1);
@@ -34,7 +34,7 @@ test('analysis splits matched and missing skills and flags weak bullets', () => 
 });
 
 test('tailoring prompt forbids invented experience and lists gaps', () => {
-  const p = tailorPrompt(resume, job, 'Security Analyst Intern at Acme', analyse(resume, job));
+  const p = tailorPrompt(resume, job, 'Security Analyst Intern at Acme', analyze(resume, job));
   assert.match(p, /Never invent experience/);
   assert.match(p, /Gaps to address honestly/);
   assert.match(p, /AWS/);
@@ -42,7 +42,7 @@ test('tailoring prompt forbids invented experience and lists gaps', () => {
 
 test('cover letter prompt keeps the no-fabrication rules and placeholders', async () => {
   const { coverPrompt } = await import(pathToFileURL(f).href);
-  const a = analyse('Jane Doe\nBuilt a Splunk dashboard for the CISO club. Python scripts for log parsing. Linux home lab.', 'Security intern: Splunk, Python, AWS, incident response, Linux.');
+  const a = analyze('Jane Doe\nBuilt a Splunk dashboard for the CISO club. Python scripts for log parsing. Linux home lab.', 'Security intern: Splunk, Python, AWS, incident response, Linux.');
   const p = coverPrompt('Jane Doe\nresume text', 'posting text', 'SOC Intern at Acme', a, 'Jane Doe');
   assert.match(p, /Never invent experience/);
   assert.match(p, /\[PLACEHOLDER\]/);

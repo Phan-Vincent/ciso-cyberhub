@@ -204,7 +204,7 @@
       "id": "net-28",
       "deck": "net",
       "topic": "Routing",
-      "front": "Which routing protocol runs the internet between organisations?",
+      "front": "Which routing protocol runs the internet between organizations?",
       "back": "BGP, a path-vector exterior gateway protocol."
     },
     {

@@ -40,7 +40,7 @@ export function skillsIn(text: string): string[] {
   return Object.keys(SKILLS).filter(k => RE[k].test(t));
 }
 
-export function analyse(resume: string, job: string): Analysis {
+export function analyze(resume: string, job: string): Analysis {
   const jobTerms = skillsIn(job), have = new Set(skillsIn(resume));
   const matched = jobTerms.filter(k => have.has(k)), missing = jobTerms.filter(k => !have.has(k));
   const lower = resume.toLowerCase(), words = resume.split(/\s+/).filter(Boolean).length;
@@ -96,7 +96,7 @@ export function tailorPrompt(resume: string, job: string, target: string, a: Ana
 TARGET: ${target || 'the internship described below'}
 
 RULES (follow strictly):
-- Never invent experience, employers, dates, certifications, tools or results. Only rephrase, reorder and emphasise what is already in the resume.
+- Never invent experience, employers, dates, certifications, tools or results. Only rephrase, reorder and emphasize what is already in the resume.
 - If a required skill is missing, do not add it. List it under "Gaps to address honestly" with a way to build it (a project, lab or course).
 - Keep it to one page. Use strong action verbs and keep any numbers that are already there.
 - Mirror the posting's wording only where the resume genuinely shows that skill.
@@ -193,10 +193,10 @@ if (root) {
     $('#rt-local-run').textContent = cover ? 'Write cover letter locally' : 'Tailor locally';
   };
   document.querySelectorAll<HTMLInputElement>('input[name="rt-mode"]').forEach(r => r.addEventListener('change', () => { build(); $('#rt-local-out').hidden = true; $('#rt-download').hidden = true; }));
-  $('#rt-analyse').addEventListener('click', () => {
+  $('#rt-analyze').addEventListener('click', () => {
     const r = resumeEl.value, j = jobEl.value; const out = $('#rt-out');
     if (r.trim().length < 80 || j.trim().length < 80) { $('#rt-msg').textContent = 'Paste your full resume and the full job posting first.'; return; }
-    $('#rt-msg').textContent = ''; const a = analyse(r, j); out.hidden = false;
+    $('#rt-msg').textContent = ''; const a = analyze(r, j); out.hidden = false;
     $('#rt-score').textContent = String(a.score); $('#rt-ring').style.setProperty('--p', String(a.score / 100));
     $('#rt-verdict').textContent = a.score >= 75 ? 'Strong match. Polish and apply.' : a.score >= 55 ? 'Good base. Tailor the wording and fill small gaps.' : 'Stretch role. Apply if it excites you, and build the gaps below.';
     const chips = (id: string, list: string[], cls: string, empty: string) => { const box = $(id); box.replaceChildren(...(list.length ? list.map(k => el('span', k, 'tag ' + cls)) : [el('span', empty, 'muted')])); };

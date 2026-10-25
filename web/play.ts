@@ -18,7 +18,7 @@ async function copy(text: string, btn: HTMLElement | null) {
 }
 async function share(title: string, text: string, url: string, btn: HTMLElement | null) {
   const nav = navigator as Navigator & { share?: (d: ShareData) => Promise<void> };
-  if (nav.share && matchMedia('(pointer: coarse)').matches) { try { await nav.share({ title, text, url }); return; } catch { /* cancelled */ } }
+  if (nav.share && matchMedia('(pointer: coarse)').matches) { try { await nav.share({ title, text, url }); return; } catch { /* canceled */ } }
   await copy(`${text}\n${url}`, btn);
 }
 

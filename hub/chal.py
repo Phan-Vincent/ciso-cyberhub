@@ -31,7 +31,7 @@ def pcap_page(site) -> str:
           '<li><code>http.request</code>, <code>http.host contains "x"</code>, <code>http.request.uri</code>, <code>dns.qry.name contains "x"</code></li>'
           '<li><code>frame contains "text"</code>: anywhere in the packet. Combine with <code>&amp;&amp;</code>, <code>||</code>, <code>!</code> and brackets.</li></ul></details></section>')
     body += _shell('pcap', ws)
-    body += ('<section class="rt-about"><h2>Practise on the real thing</h2><p>Wireshark is free. Capture only on networks you own or have permission to monitor, or open the public sample captures from the Wireshark wiki. '
+    body += ('<section class="rt-about"><h2>Practice on the real thing</h2><p>Wireshark is free. Capture only on networks you own or have permission to monitor, or open the public sample captures from the Wireshark wiki. '
              + site.a('Wireshark in the tool explorer', '/tools/wireshark/') + '.</p></section>')
     return body
 
@@ -75,7 +75,7 @@ def review_page(site) -> str:
 
 
 def build_chal(site) -> None:
-    site.page('/labs/packets/', 'Packet Lab', pcap_page(site), 'Analyse a network capture in your browser: Wireshark-style filters, a port scan, cleartext FTP, a malware download, DNS tunnelling and an ARP sweep.', 'Labs', module='chal')
+    site.page('/labs/packets/', 'Packet Lab', pcap_page(site), 'Analyze a network capture in your browser: Wireshark-style filters, a port scan, cleartext FTP, a malware download, DNS tunneling and an ARP sweep.', 'Labs', module='chal')
     site.page('/labs/logs/', 'Log Hunt', hunt_page(site), 'Hunt through SSH and web server logs with SIEM-style searches: brute force, the breach, the payload, the backdoor and web attacks.', 'Labs', module='chal')
     site.page('/labs/crypto/', 'Crypto & Encoding Lab', crypto_page(site), 'Decode Base64, hex, ROT13, Caesar, URL encoding, XOR and layered payloads with a CyberChef-style recipe, then verify a SHA-256 hash.', 'Labs', module='chal')
     site.page('/labs/code-review/', 'Secure Code Review', review_page(site), 'Find the vulnerable line and choose the right fix: SQL injection, XSS, path traversal, command injection, secrets, weak hashing, IDOR, JWT and cloud misconfigurations.', 'Labs', module='chal')

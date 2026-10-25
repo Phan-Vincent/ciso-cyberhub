@@ -804,7 +804,7 @@
     },
     {
       "objective": "4.3",
-      "front": "Why prioritise vulnerabilities listed in CISA KEV?",
+      "front": "Why prioritize vulnerabilities listed in CISA KEV?",
       "back": "They are confirmed as exploited in the wild, which is stronger evidence of real risk than a severity score alone."
     },
     {

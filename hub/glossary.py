@@ -1,5 +1,5 @@
 """Cyber glossary (/glossary/): plain-English definitions with instant search, each linked to
-the CyberHub page where you can practise it. Data: data/glossary.json."""
+the CyberHub page where you can practice it. Data: data/glossary.json."""
 from __future__ import annotations
 
 import re
@@ -29,4 +29,4 @@ def glossary_page(site) -> str:
 
 
 def build_glossary(site) -> None:
-    site.page('/glossary/', 'Cyber glossary', glossary_page(site), 'Plain-English definitions of cybersecurity terms, from access control to zero trust, with links to practise each one.', 'Learn', module='journey')
+    site.page('/glossary/', 'Cyber glossary', glossary_page(site), 'Plain-English definitions of cybersecurity terms, from access control to zero trust, with links to practice each one.', 'Learn', module='journey')

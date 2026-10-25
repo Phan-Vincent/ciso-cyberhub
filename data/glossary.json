@@ -26,7 +26,7 @@
   },
   {
     "term": "Antivirus",
-    "def": "Software that detects and removes known malware. Modern tools add behaviour monitoring (see EDR).",
+    "def": "Software that detects and removes known malware. Modern tools add behavior monitoring (see EDR).",
     "link": ""
   },
   {
@@ -41,7 +41,7 @@
   },
   {
     "term": "Asset inventory",
-    "def": "A list of every device, account and piece of software an organisation has. You cannot protect what you do not know about.",
+    "def": "A list of every device, account and piece of software an organization has. You cannot protect what you do not know about.",
     "link": "/defend/legacy-systems/"
   },
   {
@@ -91,7 +91,7 @@
   },
   {
     "term": "Bug bounty",
-    "def": "A programme where organisations pay researchers who responsibly report vulnerabilities.",
+    "def": "A program where organizations pay researchers who responsibly report vulnerabilities.",
     "link": ""
   },
   {
@@ -191,7 +191,7 @@
   },
   {
     "term": "Digital forensics",
-    "def": "Collecting and analysing digital evidence in a way that holds up to scrutiny.",
+    "def": "Collecting and analyzing digital evidence in a way that holds up to scrutiny.",
     "link": "/careers/roles/"
   },
   {
@@ -210,13 +210,13 @@
     "link": "/linux/network/dns/"
   },
   {
-    "term": "DNS tunnelling",
+    "term": "DNS tunneling",
     "def": "Hiding data or commands inside DNS queries and answers to sneak them past firewalls. Long, random-looking subdomains are a sign.",
     "link": "/labs/packets/"
   },
   {
     "term": "EDR",
-    "def": "Endpoint Detection and Response: tools on laptops and servers that record behaviour, detect threats and can isolate devices.",
+    "def": "Endpoint Detection and Response: tools on laptops and servers that record behavior, detect threats and can isolate devices.",
     "link": "/labs/soc/"
   },
   {
@@ -236,7 +236,7 @@
   },
   {
     "term": "Exfiltration",
-    "def": "Stealing data by moving it out of an organisation.",
+    "def": "Stealing data by moving it out of an organization.",
     "link": "/labs/soc/"
   },
   {
@@ -296,7 +296,7 @@
   },
   {
     "term": "Incident response",
-    "def": "The organised way to handle a security incident: prepare, detect, contain, eradicate, recover, learn.",
+    "def": "The organized way to handle a security incident: prepare, detect, contain, eradicate, recover, learn.",
     "link": "/labs/incident-response/"
   },
   {
@@ -311,7 +311,7 @@
   },
   {
     "term": "Insider threat",
-    "def": "Risk from people inside an organisation, through malice or mistakes.",
+    "def": "Risk from people inside an organization, through malice or mistakes.",
     "link": ""
   },
   {
@@ -441,7 +441,7 @@
   },
   {
     "term": "Penetration testing",
-    "def": "Authorised simulated attacks to find weaknesses before criminals do.",
+    "def": "Authorized simulated attacks to find weaknesses before criminals do.",
     "link": "/careers/roles/"
   },
   {
@@ -491,7 +491,7 @@
   },
   {
     "term": "Red team",
-    "def": "Authorised attackers who test an organisation's defences.",
+    "def": "Authorized attackers who test an organization's defenses.",
     "link": ""
   },
   {
@@ -521,7 +521,7 @@
   },
   {
     "term": "Security+",
-    "def": "CompTIA's widely recognised entry-level security certification.",
+    "def": "CompTIA's widely recognized entry-level security certification.",
     "link": "/academy/"
   },
   {
@@ -561,7 +561,7 @@
   },
   {
     "term": "SQL injection",
-    "def": "A flaw where input changes a database query. Prevented with parameterised queries.",
+    "def": "A flaw where input changes a database query. Prevented with parameterized queries.",
     "link": ""
   },
   {
