@@ -26,14 +26,18 @@ BADGES = [
     ('on-duty', 'Analyst on duty', 'Score 90 or more on a SOC Simulator shift.', '/labs/soc/'),
     ('phish-spotter', 'Phish spotter', 'Investigate all eight emails in the Phishing lab.', '/labs/phishing/'),
     ('prompt-breaker', 'Prompt breaker', 'Beat the first five AI Red Team levels.', '/ai/red-team/'),
+    ('packet-sniffer', 'Packet sniffer', 'Solve all eight Packet Lab levels.', '/labs/packets/'),
+    ('threat-hunter', 'Threat hunter', 'Solve all nine Log Hunt levels.', '/labs/logs/'),
+    ('decoder', 'Decoder', 'Solve all nine Crypto & Encoding levels.', '/labs/crypto/'),
+    ('code-guardian', 'Code guardian', 'Fix eight vulnerable snippets in Secure Code Review.', '/labs/code-review/'),
 ]
 
 
 def progress_page(site) -> str:
     b = site.base
     body = site.heading('Your progress', 'Badges for what you have done across CyberHub: labs, guides, shifts, the Academy and the Daily. Earn them, then print a completion card to show at CISO meetings and career fairs.', 'Learn / Progress')
-    body += ('<p class="guide-meta label"><span class="dot" aria-hidden="true"></span>Private: progress is read from this browser only. Nothing is uploaded, and there is no account. '
-             'Use the same browser to keep your badges.</p>')
+    body += ('<p class="guide-meta label"><span class="dot" aria-hidden="true"></span>Private: progress is saved in this browser. '
+             f'To keep it across devices, <a href="{E(b)}/account/">sign in (optional)</a> and it syncs.</p>')
     body += '<p class="label bd-sum" id="badge-sum" aria-live="polite">Badges need JavaScript to load from this browser.</p><ol class="bd-grid" id="badges">'
     for i, (bid, title, how, link) in enumerate(BADGES):
         body += (f'<li class="bd" data-badge="{bid}"><span class="bd-medal" aria-hidden="true">{i + 1:02d}</span><div><strong>{E(title)}</strong><p>{E(how)}</p>'

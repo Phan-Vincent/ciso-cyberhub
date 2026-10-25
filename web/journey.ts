@@ -15,7 +15,7 @@ export function shiftVerdict(score: number, max: number): string {
 }
 
 /* ------------------------------------------------------------ badges */
-export type Counts = { linux: number; net: number; read: number; shifts: number; perfect: number; academy: number; readiness: number; streak: number; role: boolean; duels: number; soc: number; phish: number; redteam: number; ps: number };
+export type Counts = { linux: number; net: number; read: number; shifts: number; perfect: number; academy: number; readiness: number; streak: number; role: boolean; duels: number; soc: number; phish: number; redteam: number; ps: number; pcap: number; hunt: number; crypto: number; review: number };
 export const BADGES: { id: string; test: (c: Counts) => boolean; prog: (c: Counts) => string }[] = [
   { id: 'first-flag', test: c => c.linux >= 1, prog: c => `${Math.min(c.linux, 1)}/1 Linux level` },
   { id: 'shell-analyst', test: c => c.linux >= 10, prog: c => `${Math.min(c.linux, 10)}/10 Linux levels` },
@@ -35,6 +35,10 @@ export const BADGES: { id: string; test: (c: Counts) => boolean; prog: (c: Count
   { id: 'on-duty', test: c => c.soc >= 90, prog: c => `Best SOC shift ${c.soc}/120 (need 90)` },
   { id: 'phish-spotter', test: c => c.phish >= 8, prog: c => `${Math.min(c.phish, 8)}/8 emails investigated` },
   { id: 'prompt-breaker', test: c => c.redteam >= 5, prog: c => `${Math.min(c.redteam, 5)}/5 AI red team levels` },
+  { id: 'packet-sniffer', test: c => c.pcap >= 8, prog: c => `${Math.min(c.pcap, 8)}/8 Packet Lab levels` },
+  { id: 'threat-hunter', test: c => c.hunt >= 9, prog: c => `${Math.min(c.hunt, 9)}/9 Log Hunt levels` },
+  { id: 'decoder', test: c => c.crypto >= 9, prog: c => `${Math.min(c.crypto, 9)}/9 crypto levels` },
+  { id: 'code-guardian', test: c => c.review >= 8, prog: c => `${Math.min(c.review, 8)}/8 code reviews` },
 ];
 const arr = (k: string): string[] => { const v = load<unknown>(k, []); return Array.isArray(v) ? v.filter(x => typeof x === 'string') as string[] : []; };
 function counts(base: string): Counts {
@@ -43,7 +47,7 @@ function counts(base: string): Counts {
   const stats = load<{ best?: number }>('cyberhub:daily:stats', {});
   return { linux: arr('cyberhub:linux').length, net: arr('cyberhub:netlab').length, read: j.read.length, shifts: Object.keys(j.shifts).length, perfect: j.perfect.length,
     academy: Math.min(28, lessons), readiness: Number(load<number | null>('cyberhub:readiness:best', 0)) || 0, streak: Number(stats.best) || 0, role: load<unknown>('cyberhub:match', null) != null, duels: Number(load<{ wins?: number }>('cyberhub:duel', {}).wins) || 0, soc: Number(load<{ best?: number }>('cyberhub:soc', {}).best) || 0,
-    phish: Object.keys(load<Record<string, number>>('cyberhub:phish', {}) || {}).length, redteam: (load<number[]>('cyberhub:redteam', []) || []).filter(n => typeof n === 'number' && n < 5).length, ps: arr('cyberhub:pslab').length };
+    phish: Object.keys(load<Record<string, number>>('cyberhub:phish', {}) || {}).length, redteam: (load<number[]>('cyberhub:redteam', []) || []).filter(n => typeof n === 'number' && n < 5).length, ps: arr('cyberhub:pslab').length, pcap: arr('cyberhub:pcap').length, hunt: arr('cyberhub:hunt').length, crypto: arr('cyberhub:crypto').length, review: arr('cyberhub:review').length };
 }
 
 /* ------------------------------------------------------------ UI */

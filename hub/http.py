@@ -39,7 +39,7 @@ class Client:
                 cached = json.loads(entry.read_text())
             except (ValueError, OSError):
                 pass
-        headers = {'User-Agent': 'CISOCyberHub/0.1 (+educational feed reader)', 'Accept': 'application/json, application/atom+xml, application/rss+xml, text/xml'}
+        headers = {'User-Agent': 'CISOCyberHub/0.1 (+educational feed reader)', 'Accept': 'application/json, application/atom+xml, application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8'}
         if cached and cached.get('etag'):
             headers['If-None-Match'] = cached['etag']
         token = os.environ.get('GITHUB_TOKEN')

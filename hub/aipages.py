@@ -119,7 +119,7 @@ def models_page(site) -> str:
                  f'<span class="lb-bar" aria-hidden="true"><i class="w{round(r["score"] / top * 20)}"></i></span><span class="lb-score">{r["score"]:.1f}</span>'
                  f'<span class="lb-meta label">{E(r.get("context") or "–")} ctx · {E(r.get("price") or "–")}</span></li>')
     body += '</ol><p class="muted">Price is the blended cost per million tokens as listed by the source. Scores change as new results land; follow the source link for the live table.</p></section>'
-    body += (f'<section class="lb"><div class="lb-head"><h2>Trending open-weight models</h2><p class="label">Updated weekly · {E((tr.get("generated_at") or "")[:10])} · Hugging Face trending</p></div><ol class="lb-rows">')
+    body += (f'<section class="lb"><div class="lb-head"><h2>Trending open-weight models</h2><p class="label">Updated daily · {E((tr.get("generated_at") or "")[:10])} · Hugging Face trending</p></div><ol class="lb-rows">')
     tmax = max([m['trending'] for m in tr['models']] or [1])
     for i, m in enumerate(tr['models']):
         body += (f'<li class="lb-row"><span class="lb-rank">{i + 1:02d}</span><span class="lb-name"><b><a href="{E(m["url"])}">{E(m["id"].split("/")[-1])}</a></b><span class="label">{E(m["org"])} · {E(m["task"])}</span></span>'

@@ -38,11 +38,26 @@ def phishing_page(site) -> str:
     return body
 
 
+LAB_TRACKS = [
+    ('Command line', 'Type real commands in a safe practice shell.', [
+        ('Linux Lab', '36 levels: files, pipes, permissions, processes', '/linux/'), ('Networking Lab', '17 levels: IP, DNS, ports, subnetting', '/linux/network/'),
+        ('PowerShell Lab', '15 Windows investigation levels', '/linux/powershell/')]),
+    ('Investigate', 'Work the evidence like a SOC analyst.', [
+        ('SOC Simulator', 'Triage a shift of alerts', '/labs/soc/'), ('Phishing lab', 'Investigate a suspicious inbox', '/labs/phishing/'),
+        ('Packet Lab', 'Filter a capture, Wireshark-style', '/labs/packets/'), ('Log Hunt', 'Trace a break-in through server logs', '/labs/logs/')]),
+    ('Build securely', 'Spot and fix the bugs attackers look for.', [
+        ('Secure Code Review', 'Find the vulnerable line, pick the fix', '/labs/code-review/'), ('Crypto & Encoding Lab', 'Decode flags, CyberChef-style', '/labs/crypto/')]),
+    ('AI security', 'Break a guarded AI, then learn the defence.', [
+        ('AI Red Team Lab', 'Six levels of prompt-injection defences', '/ai/red-team/')]),
+]
+
+
 def interactive_cards(site) -> str:
-    cards = [('SOC Simulator', 'Triage a shift of real-looking alerts.', '/labs/soc/', 'Blue team'), ('Phishing lab', 'Investigate an inbox: headers, links, red flags.', '/labs/phishing/', 'Email security'),
-             ('Networking Lab', '17 levels: IP, DNS, ports, subnetting.', '/linux/network/', 'Networking'), ('PowerShell Lab', '15 levels of Windows investigation.', '/linux/powershell/', 'Windows'), ('AI Red Team Lab', 'Trick an AI into leaking a secret, then learn the defence.', '/ai/red-team/', 'AI security'),
-             ('Cyber Duel', 'Head-to-head quiz against friends or bots.', '/duel/', 'Play')]
-    return '<h2 class="lab-sub">Interactive labs</h2><div class="grid">' + ''.join(site.card(t, d, u, tag, 'Interactive') for t, d, u, tag in cards) + '</div><h2 class="lab-sub" id="guided">Guided labs on evidence files</h2>'
+    out = '<div class="lab-tracks">'
+    for name, line, labs in LAB_TRACKS:
+        out += (f'<section class="lab-track"><div class="lab-track-head"><h2>{name}</h2><p>{line}</p></div><div class="dir-grid">'
+                + ''.join(f'<a class="dir-card" href="{site.base}{u}"><b>{t}</b><span>{d}</span><i aria-hidden="true">→</i></a>' for t, d, u in labs) + '</div></section>')
+    return out + '</div><h2 class="lab-sub" id="guided">Guided labs on evidence files</h2>'
 
 
 def build_practice(site) -> None:

@@ -244,7 +244,7 @@ def ai_hub(site) -> str:
         ('Meta-prompting guide', 'Have a model write and improve your prompts, then prove them with a small test set. Copy-ready templates.', '/ai/meta-prompting/', 'Guide', '9 sections'),
         ('Working with AI: skills, tokens and context', 'Build reusable skills, cut token costs, keep a context saver, keep AI on track and teach it your organisation and scope.', '/ai/workflow/', 'Guide', '8 sections'),
         ('Run AI on your own computer', 'Install Ollama on Windows, macOS, Linux or Docker, pick a model that fits your hardware, and keep it private.', '/ai/local/', 'Setup guide', 'Every OS'),
-        ('AI leaderboard', 'Frontier model rankings, trending open-weight models and what people run locally, each with its date and source.', '/ai/models/', 'Leaderboard', 'Weekly + snapshot')]:
+        ('AI leaderboard', 'Frontier model rankings, trending open-weight models and what people run locally, each with its date and source.', '/ai/models/', 'Leaderboard', 'Daily + snapshot')]:
         body += site.card(title, desc, path, tag, meta)
     body += '</div>'
     body += f'<p class="notice">AI tools change monthly. Each guide shows the date it was last checked against its sources. Spot something out of date? {site.a("Contribute a fix", "/contribute/")}.</p>'
@@ -263,7 +263,7 @@ LOCAL_SOURCES = [
 def internships_page(site) -> str:
     data_path = ROOT / 'data/internships.json'
     if not data_path.exists():
-        return site.heading('Internship scanner', 'The first weekly scan has not run yet.', 'Careers / Internships')
+        return site.heading('Internship scanner', 'The first scan has not run yet.', 'Careers / Internships')
     data = read_json(data_path)
     items = data['items']
     gen = (data.get('generated_at') or '')[:10]
@@ -307,4 +307,4 @@ def build_guides(site) -> None:
     site.page('/ai/', 'AI for builders', ai_hub(site), 'Practical, sourced guides to coding with AI securely and writing better prompts.', 'Resources')
     site.page('/ai/vibe-coding/', 'Secure AI coding cheat sheet', vibe_page(site), 'The vibe-coding loop, prompts, AGENTS.md rules, red flags and the checks to run before shipping AI-written code.', 'Resources', module='play')
     site.page('/ai/meta-prompting/', 'Meta-prompting guide', meta_page(site), 'Use a model to write and improve prompts, then prove them with a small test set. Copy-ready templates.', 'Resources', module='play')
-    site.page('/careers/internships/', 'Internship scanner', internships_page(site), 'Weekly internships near Cal State San Bernardino and remote, with security and IT roles flagged.', 'Careers')
+    site.page('/careers/internships/', 'Internship scanner', internships_page(site), 'Internships near Cal State San Bernardino and remote, updated daily, with security and IT roles flagged.', 'Careers')
