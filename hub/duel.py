@@ -19,6 +19,7 @@ def duel_page(site, bank: dict) -> str:
     n = len(bank['questions'])
     body = site.heading('Cyber Duel', f'Go head to head on cybersecurity. {n} questions from "what is phishing?" to SOC, AI security and Security+. Faster correct answers score more.', 'Play / Cyber Duel')
     body += ('<div class="duel" id="duel">'
+             f'<p class="duel-live-cta">Running a class or club meeting? {site.a("Open a Live room: everyone plays on their phone →", "/duel/live/")}</p>'
              '<p class="label duel-stats" id="duel-stats" aria-live="polite"></p>'
              '<div class="duel-incoming" id="duel-incoming" hidden><span class="label">Challenge</span><strong></strong><p></p><button type="button" class="primary">Accept the challenge</button></div>'
              '<section class="duel-setup" id="duel-setup" aria-labelledby="duel-setup-h"><h2 id="duel-setup-h" class="sr-only">Set up a duel</h2>'

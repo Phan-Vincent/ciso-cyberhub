@@ -37,6 +37,7 @@ if (app) {
     if (!saved || !goals[saved.goal]) { $('#pl-out').hidden = true; return; } const g = goals[saved.goal]; const weeks = pack(g.tasks, saved.hours); const done = new Set(saved.done);
     const start = new Date(saved.start + 'T00:00'); $('#pl-out').hidden = false; $('#pl-title').textContent = g.name;
     const total = g.tasks.length, n = g.tasks.filter((t, i) => done.has(`${i}`)).length; $('#pl-sum').textContent = `${weeks.length} weeks at ${saved.hours} h/week · ${n} of ${total} done`; $('#pl-bar').style.setProperty('--p', String(n / total));
+    const nextIdx = g.tasks.findIndex((_, i) => !done.has(`${i}`)); try { if (nextIdx >= 0) localStorage.setItem('cyberhub:plan-next', JSON.stringify({ t: g.tasks[nextIdx].t, u: g.tasks[nextIdx].u, goal: g.name })); else localStorage.removeItem('cyberhub:plan-next'); } catch { /* ignore */ }
     let k = 0; const ol = $('#pl-weeks'); ol.replaceChildren(...weeks.map((w, wi) => { const li = el('li', '', 'pl-week'); const d = new Date(start); d.setDate(start.getDate() + 7 * wi);
       const mins = w.reduce((x, t) => x + t.m, 0); li.append(el('h3', `Week ${wi + 1}`), el('p', `${d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })} · about ${Math.round(mins / 6) / 10} h`, 'label'));
       const ul = el('ul'); for (const t of w) { const id = String(k++); const row = el('li'); const lab = el('label'); const cb = el('input') as HTMLInputElement; cb.type = 'checkbox'; cb.checked = done.has(id);

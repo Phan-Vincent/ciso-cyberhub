@@ -71,13 +71,13 @@ def start_page(site) -> str:
     body += '</div><div class="guide" id="cyber101"><nav class="guide-toc" aria-label="Lessons"><p class="label">Cyber 101</p>' + ''.join(f'<a href="#l-{i}">{n + 1:02d} {E(t)}</a>' for n, (i, t, *_r) in enumerate(LESSONS)) + '<a href="#safe">07 Protect yourself today</a></nav><article class="guide-body">'
     for n, (lid, title, mins, paras, (q, choices, ans, why), nexts) in enumerate(LESSONS):
         opts = ''.join(f'<li><button type="button" class="mini-opt" data-ok="{1 if k == ans else 0}">{E(c)}</button></li>' for k, c in enumerate(choices))
-        body += (f'<section id="l-{lid}" class="st-lesson"><h2><span class="label">{n + 1:02d} · {mins} min</span>{E(title)}</h2>' + ''.join(f'<p>{p}</p>' for p in paras)
+        body += (f'<details id="l-{lid}" class="st-lesson st-acc"{" open" if n == 0 else ""}><summary><h2><span class="label">{n + 1:02d} · {mins} min</span>{E(title)}</h2></summary>' + ''.join(f'<p>{p}</p>' for p in paras)
                  + f'<div class="mini-q" data-mini="{lid}"><p class="label">Quick check</p><p class="mini-ask">{E(q)}</p><ol class="mini-opts">{opts}</ol><p class="mini-why" hidden>{E(why)}</p></div>'
-                 + '<p class="st-next">' + ' '.join(a(t + ' →', u) for t, u in nexts) + '</p></section>')
-    body += '<section id="safe" class="st-lesson"><h2><span class="label">07 · Do it now</span>Protect yourself today</h2><p>Six habits that stop most attacks on ordinary people. Tick them off; your list stays on this device.</p><ul class="st-check" id="st-check">'
+                 + '<p class="st-next">' + ' '.join(a(t + ' →', u) for t, u in nexts) + '</p></details>')
+    body += '<details id="safe" class="st-lesson st-acc"><summary><h2><span class="label">07 · Do it now</span>Protect yourself today</h2></summary><p>Six habits that stop most attacks on ordinary people. Tick them off; your list stays on this device.</p><ul class="st-check" id="st-check">'
     for cid, t, d in CHECKLIST:
         body += f'<li><label><input type="checkbox" data-check="{cid}"><span><b>{E(t)}</b>{E(d)}</span></label></li>'
-    body += (f'</ul><p class="label" id="st-count" aria-live="polite"></p></section>'
+    body += (f'</ul><p class="label" id="st-count" aria-live="polite"></p></details>'
              f'<section class="st-lesson"><h2>Where next?</h2><p>You know more than most people about how attacks work. Keep going: {a("play a Cyber Duel", "/duel/")}, {a("try the Linux Lab", "/linux/")}, or {a("see every resource", "/resources/")}.</p>'
              '<p class="muted">Sources for job figures: US Bureau of Labor Statistics, Occupational Outlook Handbook, Information Security Analysts (May 2025 pay; 2025–35 projections).</p></section></article></div>')
     return body

@@ -136,7 +136,7 @@ DOMAINS = [
             ('Lock physical access', 'Firmware passwords, disabled unused ports and debug interfaces, and locked rooms for servers.'),
         ],
         'frameworks': 'NIST SP 800-193 (Platform Firmware Resiliency: protect, detect, recover), NIST SP 800-147 (BIOS protection), and Trusted Computing Group TPM 2.0 specifications.',
-        'practice': [('Hashing on Bench 01 (homepage)', '/#labs'), ('OpenSSL tutorial', '/tutorials/openssl/'), ('YARA tutorial', '/tutorials/yara/'), ('Linux Lab', '/linux/')],
+        'practice': [('OpenSSL tutorial (hashes)', '/tutorials/openssl/'), ('YARA tutorial', '/tutorials/yara/'), ('PowerShell Lab: match a file hash', '/linux/powershell/forensics/'), ('Linux Lab', '/linux/')],
         'careers': ['Hardware security engineer', 'Embedded and firmware security engineer', 'Reverse engineer', 'Product security (PSIRT) engineer'],
         'sources': [
             ('NIST SP 800-193: Platform Firmware Resiliency Guidelines', 'https://csrc.nist.gov/pubs/sp/800/193/final', '2018'),

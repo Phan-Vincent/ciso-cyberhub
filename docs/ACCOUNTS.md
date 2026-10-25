@@ -57,6 +57,19 @@ and edit the **Magic Link** template so it says "CyberHub".
 3. Open the site on a phone, sign in with the same email: the same progress appears.
 4. In Supabase **Table Editor → progress**, you should see one row per user.
 
+## 7. Live rooms for class (Cyber Duel)
+
+The same project powers **Cyber Duel → Live room** (`/duel/live/`): a room code on the projector,
+students join on their phones, live leaderboard. It uses Supabase **Realtime broadcast** only:
+nothing is written to the database, and only nicknames and answers pass through.
+
+1. Nothing extra to create: once `supabase_url` and `supabase_key` are in `site.json`, the Live room page switches on.
+2. In **Realtime → Settings**, keep public channel access allowed (the default). Rooms use public
+   broadcast channels named `cyberhub-duel-<CODE>`.
+3. Free-plan limits cover a classroom comfortably (check **Realtime** usage in the dashboard; the free
+   plan allows a couple of hundred simultaneous connections).
+4. Rehearse once: open `/duel/live/` on a laptop, **Host a room**, then join from two phones.
+
 ## Notes
 
 - Free projects pause after about a week with no activity; resume from the dashboard. Upgrade
