@@ -309,7 +309,7 @@ const tokenize = (line: string, s: State): string[][] => {
   push();
   return segs;
 };
-const globRe = (pat: string) => new RegExp('^' + pat.replace(/[.+^${}()|\\]/g, '\\$&').replace(/\u0001\*/g, '[^/]*').replace(/\u0001\?/g, '[^/]').replace(/\u0001\[/g, '[') + '$');
+const globRe = (pat: string) => { try { return new RegExp('^' + pat.replace(/[.+^${}()|\\]/g, '\\$&').replace(/\u0001\*/g, '[^/]*').replace(/\u0001\?/g, '[^/]').replace(/\u0001\[/g, '[') + '$'); } catch { return new RegExp('^' + pat.replace(/\u0001/g, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '$'); } };
 function expand(s: State, w: string): string[] {
   if (!w.includes('\u0001')) return [w];
   const abs = w.startsWith('/'); const parts = w.split('/').filter((p, i) => p || i === 0);
@@ -376,7 +376,7 @@ export class Shell {
     for (const a of args) { const [t, e] = this.readFile(norm(this.s.cwd, a, this.s.env), a, su); if (e) err.push(`${cmd}: ${e}`); else texts.push(t!); }
     return { texts, err };
   }
-  exec(argv: string[], input: string | null, su = false): Out {
+  exec(argv: string[], input: string | null, su = false, depth = 0): Out {
     const o: Out = { out: [], err: [], code: 0 }; if (!argv.length) return o;
     const [cmd, ...rest] = argv; const flags = new Set<string>(); const args: string[] = [];
     const s = this.s, P = (p: string) => norm(s.cwd, p, s.env), fail = (m: string, c = 1) => { o.err.push(m); o.code = c; return o; };
@@ -388,7 +388,8 @@ export class Shell {
       if (!n) return fail(`bash: ${cmd}: No such file or directory`, 127);
       if (n.t === 'd') return fail(`bash: ${cmd}: Is a directory`, 126);
       if (!(n.mode & 0o111) && !su) return fail(`bash: ${cmd}: Permission denied`, 126);
-      for (const line of (n.data || '').split('\n')) { if (!line || line.startsWith('#')) continue; const r = this.exec(tokenize(line, s)[0].map(x => x.replace(/\u0001/g, '')), null); o.out.push(...r.out); o.err.push(...r.err); }
+      if (depth >= 32) return fail(`bash: ${cmd}: maximum script depth exceeded`, 126);
+      for (const line of (n.data || '').split('\n')) { if (!line || line.startsWith('#')) continue; const r = this.exec(tokenize(line, s)[0].map(x => x.replace(/\u0001/g, '')), null, su, depth + 1); o.out.push(...r.out); o.err.push(...r.err); o.code = r.code; }
       return o;
     }
     if (NETCMDS.includes(cmd)) return netExec(s, cmd, rest, o);
@@ -460,7 +461,7 @@ export class Shell {
           const sp = P(a), sn = get(s, sp); if (!sn) { fail(`${cmd}: cannot stat '${a}': No such file or directory`); continue; }
           if (sn.t === 'd' && cmd === 'cp' && !flags.has('r') && !flags.has('R')) { fail(`cp: -r not specified; omitting directory '${a}'`); continue; }
           if (cmd === 'cp' && !canRead(sn, su)) { fail(`cp: cannot open '${a}' for reading: Permission denied`); continue; }
-          const target = dn && dn.t === 'd' ? dest + '/' + baseOf(sp) : dest; const tp = get(s, parentOf(target)); if (!tp || tp.t !== 'd') { fail(`${cmd}: cannot create '${args[args.length - 1]}': No such file or directory`); continue; }
+          const target = dn && dn.t === 'd' ? dest + '/' + baseOf(sp) : dest; if (cmd === 'mv' && sn.t === 'd' && (target === sp || target.startsWith(sp + '/'))) { fail(`mv: cannot move '${a}' to a subdirectory of itself`); continue; } const tp = get(s, parentOf(target)); if (!tp || tp.t !== 'd') { fail(`${cmd}: cannot create '${args[args.length - 1]}': No such file or directory`); continue; }
           if (!canWrite(tp, su)) { fail(`${cmd}: cannot create '${args[args.length - 1]}': Permission denied`); continue; }
           const clone = (n: Node): Node => n.t === 'f' ? { ...n, owner: cmd === 'cp' ? (su ? 'root' : ME) : n.owner } : { ...n, kids: new Map([...n.kids!].map(([k, v]) => [k, clone(v)])) };
           tp.kids!.set(baseOf(target), cmd === 'cp' ? clone(sn) : sn); if (cmd === 'mv') { const sparent = get(s, parentOf(sp))!; if (!canWrite(sparent, su)) { fail(`mv: cannot move '${a}': Permission denied`); tp.kids!.delete(baseOf(target)); continue; } sparent.kids!.delete(baseOf(sp)); }
@@ -469,7 +470,7 @@ export class Shell {
       }
       case 'find': {
         const start = rest[0] && !rest[0].startsWith('-') ? rest.shift()! : '.'; const name = optVal('-name') ?? optVal('-iname'); const type = optVal('-type');
-        const re = name ? new RegExp('^' + name.replace(/[.+^${}()|\\]/g, '\\$&').replace(/\*/g, '.*').replace(/\?/g, '.') + '$', rest.includes('-iname') ? 'i' : '') : null;
+        let re: RegExp | null = null; if (name) { const pattern = '^' + name.replace(/[.+^${}()|\\]/g, '\\$&').replace(/\*/g, '.*').replace(/\?/g, '.') + '$'; try { re = new RegExp(pattern, rest.includes('-iname') ? 'i' : ''); } catch { re = new RegExp('^' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '$'); } }
         const walk = (p: string, label: string) => { const n = get(s, p)!; if ((!re || re.test(baseOf(p) || '/')) && (!type || (type === 'd') === (n.t === 'd'))) o.out.push(label); if (n.t === 'd') { if (!su && n.owner !== ME && !(n.mode & 0o004)) { o.err.push(`find: '${label}': Permission denied`); return; } [...n.kids!.keys()].sort().forEach(k => walk(p === '/' ? '/' + k : p + '/' + k, (label === '/' ? '' : label) + '/' + k)); } };
         const sp = P(start); if (!get(s, sp)) return fail(`find: '${start}': No such file or directory`); walk(sp, start); return o;
       }

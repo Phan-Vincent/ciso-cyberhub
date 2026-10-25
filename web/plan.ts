@@ -3,7 +3,7 @@ export type Task = { t: string; u: string; m: number };
 export type Week = Task[];
 /** Greedy, order-preserving packing into weekly minute budgets; an oversized task gets its own week. */
 export function pack(tasks: Task[], hoursPerWeek: number): Week[] {
-  const cap = Math.max(30, hoursPerWeek * 60); const weeks: Week[] = []; let cur: Week = [], used = 0;
+  const cap = Math.max(30, (Number.isFinite(hoursPerWeek) && hoursPerWeek > 0 ? hoursPerWeek : 0.5) * 60); const weeks: Week[] = []; let cur: Week = [], used = 0;
   for (const t of tasks) { if (cur.length && used + t.m > cap) { weeks.push(cur); cur = []; used = 0; } cur.push(t); used += t.m; }
   if (cur.length) weeks.push(cur); return weeks;
 }
@@ -12,6 +12,7 @@ const esc = (s: string) => s.replace(/\\/g, '\\\\').replace(/;/g, '\;').replace(
 const fold = (line: string) => { const out: string[] = []; let s = line; while (s.length > 74) { out.push(s.slice(0, 74)); s = ' ' + s.slice(74); } out.push(s); return out.join('\r\n'); };
 /** One calendar event per week on the chosen weekday and time (floating local time). */
 export function ics(title: string, weeks: Week[], start: Date, weekday: number, time: string, origin: string, now = new Date()): string {
+  if (!Number.isFinite(start.getTime()) || !Number.isInteger(weekday) || weekday < 0 || weekday > 6 || !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) throw new Error('Invalid calendar date, weekday or time');
   const first = new Date(start.getFullYear(), start.getMonth(), start.getDate()); while (first.getDay() !== weekday) first.setDate(first.getDate() + 1);
   const [h, mi] = time.split(':').map(Number); const stamp = `${now.getUTCFullYear()}${pad(now.getUTCMonth() + 1)}${pad(now.getUTCDate())}T${pad(now.getUTCHours())}${pad(now.getUTCMinutes())}00Z`;
   const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CISO CyberHub//Study planner//EN', 'CALSCALE:GREGORIAN'];

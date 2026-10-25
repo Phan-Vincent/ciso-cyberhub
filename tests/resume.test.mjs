@@ -50,3 +50,12 @@ test('cover letter prompt keeps the no-fabrication rules and placeholders', asyn
   assert.match(p, /SOC Intern at Acme/);
   assert.match(p, /Gaps to address honestly/);
 });
+
+test('docxText reports malformed zip offsets and sizes as unreadable', async () => {
+  const { docxText } = await import(pathToFileURL(f).href);
+  const zip = () => { const b = new ArrayBuffer(120); const v = new DataView(b); v.setUint32(0, 0x02014b50, true); v.setUint16(28, 17, true); new Uint8Array(b).set(new TextEncoder().encode('word/document.xml'), 46); v.setUint32(70, 0x06054b50, true); v.setUint16(80, 1, true); return { b, v }; };
+  for (const mutate of [v => v.setUint32(86, 119, true), v => { v.setUint32(86, 0, true); v.setUint32(42, 119, true); }, v => { v.setUint32(86, 0, true); v.setUint32(20, 999, true); }]) {
+    const { b, v } = zip(); mutate(v);
+    await assert.rejects(docxText(b), /No document text found/);
+  }
+});

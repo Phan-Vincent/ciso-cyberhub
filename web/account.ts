@@ -28,21 +28,21 @@ export function mergeProgress(a: Snapshot, b: Snapshot): Snapshot {
     out.defend = { read: union(x.read, y.read), shifts, perfect: union(x.perfect, y.perfect) };
   }
   if (a.duel !== undefined || b.duel !== undefined) { const x = obj(a.duel), y = obj(b.duel); out.duel = { played: Math.max(num(x.played), num(y.played)), wins: Math.max(num(x.wins), num(y.wins)), best: Math.max(num(x.best), num(y.best)) }; }
-  if (a.daily !== undefined || b.daily !== undefined) { const x = obj(a.daily), y = obj(b.daily); const pick = num(y.wins) > num(x.wins) ? y : x; out.daily = { ...pick, best: Math.max(num(x.best), num(y.best)) }; }
+  if (a.daily !== undefined || b.daily !== undefined) { const x = obj(a.daily), y = obj(b.daily); const pick = num(y.wins) > num(x.wins) ? y : x; out.daily = { played: num(pick.played), wins: num(pick.wins), streak: num(pick.streak), best: Math.max(num(x.best), num(y.best)), lastWin: num(pick.lastWin), lastDay: num(pick.lastDay), dist: Array.from({ length: 4 }, (_, i) => num(Array.isArray(pick.dist) ? pick.dist[i] : 0)), fams: arr(pick.fams) }; }
   if (a.readiness !== undefined || b.readiness !== undefined) out.readiness = Math.max(num(a.readiness), num(b.readiness));
-  if (a.match !== undefined || b.match !== undefined) out.match = a.match ?? b.match;
+  if (a.match !== undefined || b.match !== undefined) { const m = [a.match, b.match].find(v => typeof v === 'string' && /^[a-z0-9-]{1,40}$/.test(v)); if (m) out.match = m; }
   if (a.soc !== undefined || b.soc !== undefined) { const x = obj(a.soc), y = obj(b.soc); out.soc = { shifts: Math.max(num(x.shifts), num(y.shifts)), best: Math.max(num(x.best), num(y.best)) }; }
   if (a.phish !== undefined || b.phish !== undefined) { const m: Record<string, number> = {}; for (const [k, v] of [...Object.entries(obj(a.phish)), ...Object.entries(obj(b.phish))]) if (/^[a-z-]{1,40}$/.test(k)) m[k] = Math.max(m[k] ?? 0, num(v)); out.phish = m; }
   if (a.redteam !== undefined || b.redteam !== undefined) { const ok = (v: unknown) => Array.isArray(v) ? v.filter(n => Number.isInteger(n) && n >= 0 && n < 20) as number[] : []; out.redteam = [...new Set([...ok(a.redteam), ...ok(b.redteam)])].sort((p, q) => p - q); }
   if (a.start !== undefined || b.start !== undefined) out.start = union(a.start, b.start);
   if (a.pslab !== undefined || b.pslab !== undefined) out.pslab = union(a.pslab, b.pslab);
   if (a.itcards !== undefined || b.itcards !== undefined) { const m: Record<string, number> = {}; for (const [k, v] of [...Object.entries(obj(a.itcards)), ...Object.entries(obj(b.itcards))]) if (/^[a-z]+-\d{1,4}$/.test(k)) m[k] = Math.min(3, Math.max(m[k] ?? 0, num(v))); out.itcards = m; }
-  if (a.plan !== undefined || b.plan !== undefined) { const x = obj(a.plan), y = obj(b.plan); const pick = x.goal ? x : y; out.plan = x.goal && y.goal && x.goal === y.goal ? { ...pick, done: union(x.done, y.done) } : pick; }
+  if (a.plan !== undefined || b.plan !== undefined) { const x = obj(a.plan), y = obj(b.plan); const pick = x.goal ? x : y; const done = x.goal && y.goal && x.goal === y.goal ? union(x.done, y.done) : arr(pick.done); out.plan = { goal: typeof pick.goal === 'string' ? pick.goal : '', hours: num(pick.hours) > 0 ? num(pick.hours) : 4, start: typeof pick.start === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(pick.start) && Number.isFinite(Date.parse(pick.start)) ? pick.start : new Date().toISOString().slice(0, 10), day: Number.isInteger(pick.day) && pick.day >= 0 && pick.day <= 6 ? pick.day : 6, time: typeof pick.time === 'string' && /^([01]\d|2[0-3]):[0-5]\d$/.test(pick.time) ? pick.time : '10:00', done: done.filter(v => /^\d+$/.test(v)) }; }
   if (a.academy !== undefined || b.academy !== undefined) {
     const x = obj(a.academy), y = obj(b.academy); const seen = new Set<string>(); const attempts: any[] = [];
-    for (const t of [...(Array.isArray(x.attempts) ? x.attempts : []), ...(Array.isArray(y.attempts) ? y.attempts : [])]) { const id = typeof t?.at === 'string' ? t.at : ''; if (id && !seen.has(id)) { seen.add(id); attempts.push(t); } }
+    for (const t of [...(Array.isArray(x.attempts) ? x.attempts : []), ...(Array.isArray(y.attempts) ? y.attempts : [])]) { const id = typeof t?.at === 'string' ? t.at : ''; const domains = obj(t?.domains); if (/^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2}))?$/.test(id) && Number.isFinite(Date.parse(id)) && Number.isInteger(t.score) && Number.isInteger(t.total) && t.total > 0 && t.score >= 0 && t.score <= t.total && Object.keys(domains).length && Object.entries(domains).every(([k, v]) => /^[1-5]$/.test(k) && Number.isInteger(v?.total) && Number.isInteger(v?.correct) && v.total > 0 && v.correct >= 0 && v.correct <= v.total) && !seen.has(id)) { seen.add(id); attempts.push(t); } }
     attempts.sort((p, q) => p.at < q.at ? -1 : 1);
-    out.academy = { version: 1, lessons: union(x.lessons, y.lessons), attempts: attempts.slice(-50) };
+    out.academy = { version: 1, lessons: union(x.lessons, y.lessons).filter(v => /^[a-z0-9./-]{1,150}$/.test(v) && !v.includes('..')).slice(0, 2000), attempts: attempts.slice(-50) };
   }
   return out;
 }
@@ -142,7 +142,7 @@ if (typeof document !== 'undefined') {
       say('Signing you in…');
       cloud.fromHash(location.hash).then(async s => { history.replaceState(null, '', location.pathname); if (!s) { say('That sign-in link did not work. Request a new one.'); return; } await sync(cloud, base, localStorage); say('Signed in. Your progress is saved to your account and merged with this device.'); draw(); })
         .catch(e => say('Sign-in failed: ' + (e as Error).message));
-    } else if (/error_description=/.test(location.hash)) { say('Sign-in failed: ' + decodeURIComponent((/error_description=([^&]+)/.exec(location.hash) || [])[1] || '').replace(/\+/g, ' ')); history.replaceState(null, '', location.pathname); }
+    } else if (/error_description=/.test(location.hash)) { let message = ((/error_description=([^&]+)/.exec(location.hash) || [])[1] || '').replace(/\+/g, ' '); try { message = decodeURIComponent(message); } catch { message = 'Invalid sign-in response'; } say('Sign-in failed: ' + message); history.replaceState(null, '', location.pathname); }
     const redirect = location.origin + location.pathname;
     $('#ac-form').addEventListener('submit', async e => {
       e.preventDefault(); if (!cloud) return; const email = $<HTMLInputElement>('#ac-mail').value.trim();

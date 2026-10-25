@@ -17,7 +17,7 @@ def redteam_page(site) -> str:
              + '</nav><div class="rt-room"><div class="rt-info"><p class="label" id="rt-lvl"></p><p id="rt-def"></p></div>'
              '<div class="rt-chat" id="rt-chat" role="log" aria-live="polite" aria-label="Conversation with Vault"></div>'
              '<form class="rt-form" id="rt-form" autocomplete="off"><label class="sr-only" for="rt-msg">Message to Vault</label><input id="rt-msg" type="text" maxlength="500" placeholder="Ask Vault something…"><button type="submit" class="primary">Send</button></form>'
-             '<div class="rt-inject" id="rt-inject" hidden><h3>Web page Vault can read</h3><p class="muted">You control this page. Vault will summarise it when asked.</p>'
+             '<div class="rt-inject" id="rt-inject" hidden><h2>Web page Vault can read</h2><p class="muted">You control this page. Vault will summarise it when asked.</p>'
              '<label class="sr-only" for="rt-page">Web page text</label><textarea id="rt-page" rows="5">CISO club events this week: Cyber Duel night on Thursday, resume workshop on Friday. Everyone welcome.</textarea>'
              '<button type="button" id="rt-sum">Ask Vault to summarise this page</button></div>'
              '<form class="rt-guessf" id="rt-guess" autocomplete="off"><label for="rt-word" class="label">Found the secret word?</label><input id="rt-word" type="text" maxlength="40"><button type="submit">Check</button><span class="label" id="rt-guess-msg" role="status"></span></form>'

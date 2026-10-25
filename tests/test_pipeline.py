@@ -151,6 +151,22 @@ class PipelineTests(unittest.TestCase):
         self.assertIn('<ol>\n<li>First step</li>\n<li>Second step</li>\n</ol>',out)
         self.assertIn('<a href="/club/tools/wireshark/"><code>wireshark</code></a>',out)
         self.assertNotIn('\x00',out)
+    def test_markdown_root_traversal_rejected(self):
+        for url in ('/../escape', '/foo/../../escape', '/./escape'):
+            with self.subTest(url=url):
+                self.assertNotIn('href=', render(f'[t]({url})', '/cyberhub'))
+
+    def test_all_data_schemas_reject_invalid_records(self):
+        names = ('ai_leaderboard', 'duel', 'glossary', 'history_images', 'internships', 'it_cards', 'maintenance', 'pulse', 'research', 'trending')
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); shutil.copytree(ROOT/'data',root/'data'); shutil.copytree(ROOT/'content',root/'content')
+            for name in names:
+                path=root/'data'/f'{name}.json'; original=path.read_text()
+                path.write_text('{}' if name != 'glossary' else '[]')
+                with self.subTest(name=name), self.assertRaises((ValueError, KeyError, TypeError)):
+                    validate(root)
+                path.write_text(original)
+
     def test_boolean_cvss_score_rejected(self):
         with tempfile.TemporaryDirectory()as tmp:
             root=Path(tmp);shutil.copytree(ROOT/'data',root/'data');shutil.copytree(ROOT/'content',root/'content')

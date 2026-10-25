@@ -42,3 +42,9 @@ test('submit checks answers and errors look like PowerShell', async () => {
   assert.match(sh.run('Get-Bogus').err.join(''), /not recognized/); assert.match(sh.run('cd C:\\Nope').err.join(''), /does not exist/);
   sh.run('cd C:\\Logs'); assert.equal(sh.prompt(), 'PS C:\\Logs> ');
 });
+
+test('Where-Object -match handles invalid regex without throwing', () => {
+  const sh = new PS();
+  assert.doesNotThrow(() => sh.run("Get-Process | Where-Object { $_.Name -match '[' }"));
+  assert.match(sh.run("Get-Process | Where-Object { $_.Name -match '[' }").err.join(''), /invalid|regex|pattern/i);
+});

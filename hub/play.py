@@ -108,7 +108,7 @@ def readiness_page(site) -> str:
              '<div class="check-intro" id="c-intro"><ul class="check-facts label"><li><b>15</b> questions</li><li><b>5</b> domains</li><li><b>~5</b> minutes</li></ul>'
              '<button type="button" class="primary" id="c-start">Start the check →</button><p class="label" id="c-best"></p></div>'
              '<div class="qcard check-q" id="c-q" hidden><div class="label"><span>Objective <span id="c-obj"></span></span><span id="c-num"></span><span id="c-time">0:00</span></div>'
-             '<div class="check-progress"><i id="c-prog"></i></div><h3 id="c-prompt"></h3><ol id="c-choices"></ol><p class="why" id="c-why"></p>'
+             '<div class="check-progress"><i id="c-prog"></i></div><h2 class="sr-only">Question</h2><h3 id="c-prompt"></h3><ol id="c-choices"></ol><p class="why" id="c-why"></p>'
              '<div class="q-foot"><span class="label" id="c-score"></span><button type="button" id="c-next" disabled>Next</button></div></div>'
              '<div class="check-result" id="c-result" hidden><p class="label">Your readiness</p><p class="big-score"><span id="c-pct">0</span><small>%</small></p>'
              '<h3 id="c-band"></h3><p id="c-band-text"></p>'
@@ -127,7 +127,7 @@ def match_page(site) -> str:
     qs = ''.join(f'<fieldset class="match-q" data-q="{i}"{" hidden" if i else ""}><legend><span class="label">{i + 1:02d} / {len(MATCH):02d}</span>{E(q)}</legend><ol>'
                  + ''.join(f'<li><button type="button" class="opt" data-w=\'{E(json.dumps(w))}\'><span class="label">{"ABCD"[j]}</span>{E(a)}</button></li>' for j, (a, w) in enumerate(ans))
                  + '</ol></fieldset>' for i, (q, ans) in enumerate(MATCH))
-    roles = ''.join(f'<article class="role-card" data-role="{rid}" hidden><p class="label">Your match</p><h3>{E(docs[rid]["title"])}</h3><p class="role-line">{E(line)}</p>'
+    roles = ''.join(f'<article class="role-card" data-role="{rid}" hidden><p class="label">Your match</p><h2 class="sr-only">Your matched role</h2><h3>{E(docs[rid]["title"])}</h3><p class="role-line">{E(line)}</p>'
                     f'<p>{E(docs[rid]["description"])}</p>{site.a("Open the " + docs[rid]["title"] + " roadmap →", f"/careers/{rid}/", "button primary")}</article>'
                     for rid, line in ROLES.items() if rid in docs)
     body += ('<div class="match" id="match"><section class="match-board"><div class="check-progress"><i id="m-prog"></i></div>'
