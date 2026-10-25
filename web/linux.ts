@@ -4,7 +4,9 @@
 
 type Node = { t: 'd' | 'f'; kids?: Map<string, Node>; data?: string; mode: number; owner: string };
 type Proc = { pid: number; user: string; cmd: string };
-type State = { root: Node; cwd: string; env: Record<string, string>; procs: Proc[]; ran: string[]; answer: string; hist: string[] };
+type Host = { ip: string; up: boolean; ports: number[]; path?: string[]; dieAfter?: number; http?: { headers: string[]; body: string } };
+type Net = { ip: string; cidr: number; gw: string; mac: string; hosts: Record<string, Host>; dns: Record<string, Record<string, string[]>>; listen: { port: number; proc: string }[]; conns: { local: string; remote: string; proc: string }[] };
+type State = { root: Node; cwd: string; env: Record<string, string>; procs: Proc[]; ran: string[]; answer: string; hist: string[]; net: Net };
 type Out = { out: string[]; err: string[]; code: number };
 type Level = { id: string; setup?: (s: State) => void; check?: (s: State) => boolean; submit?: boolean; start?: string };
 
@@ -41,12 +43,13 @@ const canWrite = (n: Node, su: boolean) => su || (n.owner === ME ? (n.mode & 0o2
 const modeStr = (n: Node) => (n.t === 'd' ? 'd' : '-') + [6, 3, 0].map(sh => { const m = (n.mode >> sh) & 7; return (m & 4 ? 'r' : '-') + (m & 2 ? 'w' : '-') + (m & 1 ? 'x' : '-'); }).join('');
 
 function baseFs(): State {
-  const s: State = { root: dir(), cwd: HOME, env: { HOME, USER: ME, SHELL: '/bin/bash', PATH: '/usr/local/bin:/usr/bin:/bin', PWD: HOME, HOSTNAME: HOST }, procs: [], ran: [], answer: '', hist: [] };
+  const s: State = { root: dir(), cwd: HOME, env: { HOME, USER: ME, SHELL: '/bin/bash', PATH: '/usr/local/bin:/usr/bin:/bin', PWD: HOME, HOSTNAME: HOST }, procs: [], ran: [], answer: '', hist: [], net: baseNet() };
   for (const d of ['/bin', '/usr/bin', '/usr/local/bin', '/etc', '/var/log', '/opt', '/srv', '/root']) mkdirp(s, d);
   get(s, '/root')!.mode = 0o700; mkdirp(s, '/tmp').mode = 0o777;
   mkdirp(s, HOME, ME, 0o755); get(s, '/home')!.owner = 'root';
   for (const c of CMDS) put(s, '/usr/bin/' + c, '#!/bin/cyberhub-builtin', 'root', 0o755);
   put(s, '/etc/hostname', HOST + '\n', 'root');
+  writeNetFiles(s);
   put(s, '/etc/passwd', 'root:x:0:0:root:/root:/bin/bash\nstudent:x:1000:1000:CyberHub Student:/home/student:/bin/bash\nanalyst:x:1001:1001:SOC Analyst:/home/analyst:/bin/bash\nbackup:x:34:34:backup:/var/backups:/usr/sbin/nologin\n', 'root');
   put(s, '/etc/shadow', 'root:$6$redacted:19700:0:99999:7:::\n', 'root', 0o600);
   put(s, HOME + '/README', 'Welcome to hub01, the CISO practice server.\nType "help" for commands, "hint" if you are stuck, and "submit <flag>" when you find one.\n');
@@ -128,8 +131,144 @@ const LEVELS: Level[] = [
   { id: 'who-has-a-shell', submit: true, setup: s => { const extra = pick(['svc_deploy', 'jenkins', 'temp_contractor']); const p = get(s, '/etc/passwd')!; p.data += `${extra}:x:1002:1002::/home/${extra}:/bin/bash\nwww-data:x:33:33:www-data:/var/www:/usr/sbin/nologin\n`; sub(s, extra); } },
 ];
 
+
+/* ------------------------------------------------------------ network (Networking Lab) */
+const ip4 = (a: number, b: number, c: number, d: number) => `${a}.${b}.${c}.${d}`;
+const toInt = (ip: string) => ip.split('.').reduce((n, x) => n * 256 + Number(x), 0);
+const toIp = (n: number) => [24, 16, 8, 0].map(sh => Math.floor(n / 2 ** sh) % 256).join('.');
+const maskOf = (p: number) => p === 0 ? 0 : (2 ** 32 - 2 ** (32 - p));
+const netAddr = (ip: string, p: number) => toIp(Math.floor(toInt(ip) / 2 ** (32 - p)) * 2 ** (32 - p));
+const bcast = (ip: string, p: number) => toIp(toInt(netAddr(ip, p)) + 2 ** (32 - p) - 1);
+function baseNet(): Net {
+  const c = ri(10, 99);
+  return { ip: ip4(10, 20, c, ri(20, 200)), cidr: 24, gw: ip4(10, 20, c, 1), mac: '52:54:00:' + [0, 0, 0].map(() => ri(16, 255).toString(16)).join(':'),
+    hosts: { 'portal.ciso.lab': { ip: ip4(10, 20, c, 80), up: true, ports: [80, 443], http: { headers: ['HTTP/1.1 200 OK', 'Server: nginx', 'Content-Type: text/html'], body: '<h1>CISO portal</h1>' } } },
+    dns: { 'portal.ciso.lab': { A: [ip4(10, 20, c, 80)] }, 'ciso.lab': { NS: ['ns1.ciso.lab.'], MX: ['10 mail.ciso.lab.'] } },
+    listen: [{ port: 22, proc: 'sshd' }], conns: [] };
+}
+function writeNetFiles(s: State, resolver = ip4(10, 20, Number(s.net.gw.split('.')[2]), 53), hostsExtra = '') {
+  put(s, '/etc/resolv.conf', `# managed by netplan\nnameserver ${resolver}\nsearch ciso.lab\n`, 'root');
+  put(s, '/etc/hosts', `127.0.0.1 localhost\n127.0.1.1 ${HOST}\n${hostsExtra}`, 'root');
+}
+function hostsFile(s: State): Record<string, string> {
+  const m: Record<string, string> = {}; for (const l of (get(s, '/etc/hosts')?.data || '').split('\n')) { const [ip, ...names] = l.replace(/#.*/, '').trim().split(/\s+/); if (ip) names.forEach(n => { m[n] = ip; }); } return m;
+}
+function resolve(s: State, name: string): string | null {
+  if (/^\d+\.\d+\.\d+\.\d+$/.test(name)) return name;
+  const fq = name.includes('.') ? name : name + '.ciso.lab';
+  return hostsFile(s)[name] ?? s.net.dns[fq]?.A?.[0] ?? s.net.dns[name]?.A?.[0] ?? null;
+}
+const hostByIp = (s: State, ip: string) => Object.values(s.net.hosts).find(h => h.ip === ip);
+const NETCMDS = ['ip', 'ping', 'traceroute', 'dig', 'nslookup', 'host', 'ss', 'netstat', 'nc', 'curl'];
+function netExec(s: State, cmd: string, rest: string[], o: Out): Out {
+  const fail = (m: string, c = 1) => { o.err.push(m); o.code = c; return o; }; const n = s.net;
+  switch (cmd) {
+    case 'ip': {
+      const obj = rest.find(r => !r.startsWith('-')) || '';
+      if (/^a(ddr(ess)?)?$/.test(obj)) { o.out.push('1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN', '    inet 127.0.0.1/8 scope host lo', `2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 state UP`, `    link/ether ${n.mac} brd ff:ff:ff:ff:ff:ff`, `    inet ${n.ip}/${n.cidr} brd ${bcast(n.ip, n.cidr)} scope global eth0`); return o; }
+      if (/^r(o(ute)?)?$/.test(obj)) { o.out.push(`default via ${n.gw} dev eth0 proto dhcp`, `${netAddr(n.ip, n.cidr)}/${n.cidr} dev eth0 proto kernel scope link src ${n.ip}`); return o; }
+      if (/^n(eigh(bour)?)?$/.test(obj)) { o.out.push(`${n.gw} dev eth0 lladdr 52:54:00:00:00:01 REACHABLE`); return o; }
+      return fail('Usage: ip addr | ip route | ip neigh');
+    }
+    case 'ping': {
+      const ci = rest.indexOf('-c'); const count = ci >= 0 ? Math.min(10, Math.max(1, parseInt(rest[ci + 1], 10) || 4)) : 4;
+      const target = rest.filter((r, i) => !r.startsWith('-') && rest[i - 1] !== '-c')[0]; if (!target) return fail('ping: usage error: Destination address required', 2);
+      const ip = resolve(s, target); if (!ip) return fail(`ping: ${target}: Name or service not known`, 2);
+      const h = hostByIp(s, ip); const up = ip === n.gw || ip === n.ip || ip.startsWith('127.') || !!h?.up;
+      o.out.push(`PING ${target} (${ip}) 56(84) bytes of data.`);
+      for (let i = 1; i <= count; i++) o.out.push(up ? `64 bytes from ${ip}: icmp_seq=${i} ttl=${h?.path ? 64 - h.path.length : 64} time=${(Math.random() * 20 + 0.3).toFixed(1)} ms` : `From ${n.ip} icmp_seq=${i} Destination Host Unreachable`);
+      o.out.push('', `--- ${target} ping statistics ---`, `${count} packets transmitted, ${up ? count : 0} received, ${up ? 0 : 100}% packet loss`); if (!up) o.code = 1; return o;
+    }
+    case 'traceroute': {
+      const target = rest.find(r => !r.startsWith('-')); if (!target) return fail('Usage: traceroute host');
+      const ip = resolve(s, target); if (!ip) return fail(`${target}: Name or service not known`, 2);
+      const h = hostByIp(s, ip); const path = [n.gw, ...(h?.path || []), ip]; o.out.push(`traceroute to ${target} (${ip}), 30 hops max, 60 byte packets`);
+      const stop = h?.dieAfter ?? path.length;
+      for (let i = 0; i < Math.min(path.length, stop); i++) o.out.push(`${String(i + 1).padStart(2)}  ${path[i]}  ${(Math.random() * 9 + 1 + i * 4).toFixed(3)} ms`);
+      if (stop < path.length) for (let i = stop; i < stop + 4; i++) o.out.push(`${String(i + 1).padStart(2)}  * * *`);
+      return o;
+    }
+    case 'dig': case 'host': case 'nslookup': {
+      const short = rest.includes('+short'); const args = rest.filter(r => !r.startsWith('+') && !r.startsWith('@') && !r.startsWith('-'));
+      let type = 'A'; const tIdx = args.findIndex(a => /^(A|AAAA|MX|TXT|NS|CNAME)$/i.test(a)); if (tIdx >= 0) type = args.splice(tIdx, 1)[0].toUpperCase();
+      const ti = rest.indexOf('-t'); if (ti >= 0 && rest[ti + 1]) { type = rest[ti + 1].toUpperCase(); args.splice(args.indexOf(rest[ti + 1]), 1); }
+      const qq = rest.find(r => /^-(type|query)=/.test(r)); if (qq) type = qq.split('=')[1].toUpperCase();
+      const name = (args[0] || '').replace(/\.$/, ''); if (!name) return fail(`usage: ${cmd} name [type]`);
+      const recs = s.net.dns[name]?.[type] || []; const server = (get(s, '/etc/resolv.conf')?.data || '').match(/nameserver (\S+)/)?.[1] || '';
+      if (cmd === 'dig') {
+        if (short) { o.out.push(...recs); return o; }
+        o.out.push(`; <<>> DiG 9.18 <<>> ${name} ${type}`, `;; status: ${recs.length ? 'NOERROR' : (s.net.dns[name] ? 'NOERROR' : 'NXDOMAIN')}`, '', ';; ANSWER SECTION:');
+        recs.forEach(r => o.out.push(`${name}.\t\t300\tIN\t${type}\t${r}`)); o.out.push('', `;; SERVER: ${server}#53(${server})`); return o;
+      }
+      if (!recs.length) return fail(cmd === 'host' ? `Host ${name} not found: 3(NXDOMAIN)` : `** server can't find ${name}: NXDOMAIN`);
+      if (cmd === 'host') recs.forEach(r => o.out.push(type === 'A' ? `${name} has address ${r}` : type === 'MX' ? `${name} mail is handled by ${r}` : type === 'TXT' ? `${name} descriptive text ${r}` : `${name} ${type} ${r}`));
+      else { o.out.push(`Server:\t\t${server}`, `Address:\t${server}#53`, '', 'Non-authoritative answer:'); recs.forEach(r => o.out.push(type === 'A' ? `Name:\t${name}\nAddress: ${r}` : `${name}\t${type.toLowerCase()} = ${r}`)); }
+      return o;
+    }
+    case 'ss': case 'netstat': {
+      const f = rest.join('').replace(/-/g, ''); const listenOnly = f.includes('l'); const showP = f.includes('p');
+      o.out.push('State      Local Address:Port        Peer Address:Port     ' + (showP ? 'Process' : ''));
+      n.listen.forEach(l => o.out.push(`LISTEN     0.0.0.0:${String(l.port).padEnd(18)}0.0.0.0:*              ${showP ? `users:(("${l.proc}"))` : ''}`));
+      if (!listenOnly) n.conns.forEach(c => o.out.push(`ESTAB      ${c.local.padEnd(26)}${c.remote.padEnd(23)}${showP ? `users:(("${c.proc}"))` : ''}`));
+      return o;
+    }
+    case 'nc': {
+      const args = rest.filter(r => !r.startsWith('-')); const target = args[0]; if (!target || args.length < 2) return fail('usage: nc -zv host port [port...]  (ranges like 20-25 work)');
+      const ip = resolve(s, target); if (!ip) return fail(`nc: getaddrinfo for host "${target}" port ${args[1]}: Name or service not known`);
+      const h = hostByIp(s, ip); const ports: number[] = [];
+      args.slice(1).forEach(a => { const m = /^(\d+)-(\d+)$/.exec(a); if (m) { for (let p = +m[1]; p <= Math.min(+m[2], +m[1] + 1024); p++) ports.push(p); } else if (/^\d+$/.test(a)) ports.push(+a); });
+      ports.forEach(p => { if (h?.up && h.ports.includes(p)) o.err.push(`Connection to ${target} (${ip}) ${p} port [tcp/*] succeeded!`); else if (ports.length <= 8) o.err.push(`nc: connect to ${target} (${ip}) port ${p} (tcp) failed: ${h?.up ? 'Connection refused' : 'No route to host'}`); });
+      return o;
+    }
+    case 'curl': {
+      const head = rest.includes('-I') || rest.includes('--head'); const url = rest.find(r => !r.startsWith('-')); if (!url) return fail('curl: try \'curl -I http://host/\'', 2);
+      const m = /^(https?:\/\/)?([^/:]+)/.exec(url); const hname = m?.[2] || ''; const ip = resolve(s, hname); if (!ip) return fail(`curl: (6) Could not resolve host: ${hname}`, 6);
+      const h = hostByIp(s, ip); if (!h?.up || !h.http) return fail(`curl: (7) Failed to connect to ${hname} port 80: Connection refused`, 7);
+      o.out.push(...h.http.headers); if (!head) o.out.push('', h.http.body); return o;
+    }
+  }
+  return fail(`bash: ${cmd}: command not found`, 127);
+}
+const sameNet = (s: State) => s.net.gw.split('.').slice(0, 3).join('.');
+const question = (s: State, text: string) => put(s, HOME + '/question.txt', text + '\n');
+const NET_LEVELS: Level[] = [
+  // your connection
+  { id: 'net-my-ip', submit: true, setup: s => { sub(s, s.net.ip); } },
+  { id: 'net-gateway', submit: true, setup: s => { sub(s, s.net.gw); } },
+  { id: 'net-resolver', submit: true, setup: s => { const r = `${sameNet(s)}.${ri(2, 60)}`; writeNetFiles(s, r); sub(s, r); } },
+  // reachability
+  { id: 'net-ping-down', submit: true, setup: s => { const names = ['web01', 'db01', 'backup01', 'files01']; const down = pick(names);
+    names.forEach((nm, i) => { const ip = `${sameNet(s)}.${100 + i}`; s.net.hosts[nm + '.ciso.lab'] = { ip, up: nm !== down, ports: [22] }; s.net.dns[nm + '.ciso.lab'] = { A: [ip] }; });
+    put(s, HOME + '/servers.txt', names.join('\n') + '\n'); sub(s, down); } },
+  { id: 'net-traceroute', submit: true, setup: s => { const hops = [`100.64.${ri(0, 255)}.1`, `198.51.100.${ri(1, 254)}`, `203.0.113.${ri(1, 120)}`, `203.0.113.${ri(121, 254)}`]; const dieAfter = ri(2, 4);
+    s.net.hosts['vpn.partner.example'] = { ip: `192.0.2.${ri(10, 250)}`, up: false, ports: [], path: hops, dieAfter }; s.net.dns['vpn.partner.example'] = { A: [s.net.hosts['vpn.partner.example'].ip] };
+    sub(s, [s.net.gw, ...hops][dieAfter - 1]); } },
+  // dns
+  { id: 'net-dig-a', submit: true, setup: s => { const ip = `${sameNet(s)}.${ri(110, 250)}`; s.net.dns['grades.ciso.lab'] = { A: [ip] }; s.net.hosts['grades.ciso.lab'] = { ip, up: true, ports: [443] }; sub(s, ip); } },
+  { id: 'net-dig-mx', submit: true, setup: s => { const a = pick(['mx1', 'smtp-a', 'mail-east']), b = pick(['mx2', 'smtp-b', 'mail-west']); s.net.dns['ciso.lab'].MX = [`20 ${b}.ciso.lab.`, `10 ${a}.ciso.lab.`]; sub(s, `${a}.ciso.lab`); } },
+  { id: 'net-dig-txt', submit: true, setup: s => { s.net.dns['_verify.ciso.lab'] = { TXT: [`"v=spf1 -all"`, `"cyberhub-verify=${sub(s, flag())}"`] }; } },
+  { id: 'net-hosts-poison', submit: true, setup: s => { const evil = `185.${ri(100, 220)}.${ri(1, 254)}.${ri(1, 254)}`; s.net.dns['login.bank.example'] = { A: [`192.0.2.${ri(10, 99)}`] };
+    writeNetFiles(s, undefined, `${evil} login.bank.example\n`); sub(s, evil); } },
+  // ports and connections
+  { id: 'net-listening', submit: true, setup: s => { const odd = pick([4444, 1337, 31337, 6667, 9001]); s.net.listen = [{ port: 22, proc: 'sshd' }, { port: 80, proc: 'nginx' }, { port: 443, proc: 'nginx' }, { port: odd, proc: pick(['kworkerd', 'dbus-helper', 'syslogd2']) }, { port: 5432, proc: 'postgres' }].sort((x, y) => x.port - y.port); sub(s, String(odd)); } },
+  { id: 'net-established', submit: true, setup: s => { const evil = `${pick([45, 91, 185])}.${ri(1, 254)}.${ri(1, 254)}.${ri(1, 254)}`; s.net.listen = [{ port: 22, proc: 'sshd' }, { port: 443, proc: 'nginx' }];
+    s.net.conns = [{ local: `${s.net.ip}:22`, remote: `${sameNet(s)}.${ri(2, 60)}:${ri(40000, 60000)}`, proc: 'sshd' }, { local: `${s.net.ip}:${ri(40000, 60000)}`, remote: `${evil}:4444`, proc: 'bash' }, { local: `${s.net.ip}:443`, remote: `${sameNet(s)}.${ri(61, 99)}:${ri(40000, 60000)}`, proc: 'nginx' }];
+    sub(s, evil); } },
+  { id: 'net-port-check', submit: true, setup: s => { const open = pick([3306, 5432, 1433, 27017]); const ip = `${sameNet(s)}.${ri(150, 200)}`; s.net.hosts['db01.ciso.lab'] = { ip, up: true, ports: [22, open] }; s.net.dns['db01.ciso.lab'] = { A: [ip] }; sub(s, String(open)); } },
+  { id: 'net-curl-headers', submit: true, setup: s => { const ip = `${sameNet(s)}.${ri(110, 140)}`; s.net.dns['intranet.ciso.lab'] = { A: [ip] };
+    s.net.hosts['intranet.ciso.lab'] = { ip, up: true, ports: [80], http: { headers: ['HTTP/1.1 200 OK', 'Server: Apache/2.4.29 (Ubuntu)', 'Content-Type: text/html', `X-Debug-Token: ${sub(s, flag())}`], body: '<h1>Intranet</h1><p>Welcome back.</p>' } }; } },
+  // subnetting (answers worked out by hand)
+  { id: 'subnet-hosts', submit: true, setup: s => { const p = ri(22, 29); question(s, `How many usable host addresses are in 10.${ri(1, 250)}.0.0/${p}?`); sub(s, String(2 ** (32 - p) - 2)); } },
+  { id: 'subnet-network', submit: true, setup: s => { const p = pick([25, 26, 27, 28]); const ip = ip4(192, 168, ri(0, 255), ri(1, 254)); question(s, `What is the network address of ${ip}/${p}?`); sub(s, netAddr(ip, p)); } },
+  { id: 'subnet-broadcast', submit: true, setup: s => { const p = pick([25, 26, 27, 28, 29]); const ip = ip4(172, 16, ri(0, 255), ri(1, 254)); question(s, `What is the broadcast address of ${ip}/${p}?`); sub(s, bcast(ip, p)); } },
+  { id: 'subnet-same', submit: true, setup: s => { const p = pick([25, 26, 27, 28]); const a = ip4(10, 0, ri(0, 255), ri(1, 254)); const sizeB = 2 ** (32 - p); const same = Math.random() < .5;
+    const base = toInt(netAddr(a, p)); const bInt = same ? base + ri(1, sizeB - 2) : (base + sizeB + ri(1, sizeB - 2)) % 2 ** 32; const b = toIp(bInt);
+    question(s, `Mask: /${p} (${toIp(maskOf(p))})\nHost A: ${a}\nHost B: ${b}\nAre A and B on the same subnet? Answer yes or no.`); sub(s, netAddr(a, p) === netAddr(b, p) ? 'yes' : 'no'); } },
+];
+const ALL_LEVELS = [...LEVELS, ...NET_LEVELS];
+
 /* ------------------------------------------------------------ shell */
-const CMDS = ['help', 'man', 'whoami', 'id', 'hostname', 'pwd', 'cd', 'ls', 'cat', 'head', 'tail', 'wc', 'grep', 'sort', 'uniq', 'cut', 'echo', 'touch', 'mkdir', 'rm', 'rmdir', 'cp', 'mv', 'find', 'chmod', 'file', 'env', 'export', 'unset', 'which', 'ps', 'kill', 'sudo', 'history', 'clear', 'submit', 'hint', 'date', 'uname'];
+const CMDS = ['help', 'man', 'whoami', 'id', 'hostname', 'pwd', 'cd', 'ls', 'cat', 'head', 'tail', 'wc', 'grep', 'sort', 'uniq', 'cut', 'echo', 'touch', 'mkdir', 'rm', 'rmdir', 'cp', 'mv', 'find', 'chmod', 'file', 'env', 'export', 'unset', 'which', 'ps', 'kill', 'sudo', 'history', 'clear', 'submit', 'hint', 'date', 'uname', ...NETCMDS];
 const MAN: Record<string, string> = {
   ls: 'ls [-a] [-l] [path]  list a directory. -a shows hidden files (names starting with a dot). -l shows permissions, owner and size.',
   cd: 'cd [path]  change directory. "cd" alone goes home. ".." is the parent, "~" is your home.', pwd: 'pwd  print the current working directory.',
@@ -141,7 +280,11 @@ const MAN: Record<string, string> = {
   find: 'find [path] [-name PATTERN] [-type f|d]  search the tree.', chmod: 'chmod MODE file  e.g. chmod 600 key, chmod +x script.sh, chmod o-w file.',
   env: 'env  list environment variables.', export: 'export NAME=value  set a variable for this shell.', which: 'which cmd  where a command lives on your PATH.',
   ps: 'ps [aux]  list processes.', kill: 'kill PID  stop a process.', sudo: 'sudo command  run one command as root (you are allowed to on this lab box).',
-  submit: 'submit FLAG  check a flag or answer for the current level.', hint: 'hint  show the next hint for this level.',
+  submit: 'submit FLAG  check a flag or answer for the current level.',
+  ip: 'ip addr | ip route | ip neigh  show addresses, routes and neighbours.', ping: 'ping [-c N] host  is it reachable? Sends echo requests.',
+  traceroute: 'traceroute host  list each router (hop) on the way. * * * means no reply.', dig: 'dig name [A|MX|TXT|NS] [+short]  ask DNS. +short prints just the answer.',
+  nslookup: 'nslookup name  ask DNS (older tool).', host: 'host [-t TYPE] name  simple DNS lookup.', ss: 'ss -tlnp  listening TCP ports with process. ss -tanp  all connections.',
+  netstat: 'netstat -tlnp  older version of ss.', nc: 'nc -zv host port...  test whether TCP ports are open (ranges like 20-25 work).', curl: 'curl [-I] url  fetch a web page; -I shows only the response headers.', hint: 'hint  show the next hint for this level.',
 };
 
 const tokenize = (line: string, s: State): string[][] => {
@@ -166,7 +309,7 @@ const tokenize = (line: string, s: State): string[][] => {
   push();
   return segs;
 };
-const globRe = (pat: string) => new RegExp('^' + pat.replace(/[.+^${}()|\\]/g, '\\$&').replace(/\u0001\*/g, '[^/]*').replace(/\u0001\?/g, '[^/]').replace(/\u0001\[/g, '[') + '$');
+const globRe = (pat: string) => { try { return new RegExp('^' + pat.replace(/[.+^${}()|\\]/g, '\\$&').replace(/\u0001\*/g, '[^/]*').replace(/\u0001\?/g, '[^/]').replace(/\u0001\[/g, '[') + '$'); } catch { return new RegExp('^' + pat.replace(/\u0001/g, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '$'); } };
 function expand(s: State, w: string): string[] {
   if (!w.includes('\u0001')) return [w];
   const abs = w.startsWith('/'); const parts = w.split('/').filter((p, i) => p || i === 0);
@@ -233,7 +376,7 @@ export class Shell {
     for (const a of args) { const [t, e] = this.readFile(norm(this.s.cwd, a, this.s.env), a, su); if (e) err.push(`${cmd}: ${e}`); else texts.push(t!); }
     return { texts, err };
   }
-  exec(argv: string[], input: string | null, su = false): Out {
+  exec(argv: string[], input: string | null, su = false, depth = 0): Out {
     const o: Out = { out: [], err: [], code: 0 }; if (!argv.length) return o;
     const [cmd, ...rest] = argv; const flags = new Set<string>(); const args: string[] = [];
     const s = this.s, P = (p: string) => norm(s.cwd, p, s.env), fail = (m: string, c = 1) => { o.err.push(m); o.code = c; return o; };
@@ -245,9 +388,11 @@ export class Shell {
       if (!n) return fail(`bash: ${cmd}: No such file or directory`, 127);
       if (n.t === 'd') return fail(`bash: ${cmd}: Is a directory`, 126);
       if (!(n.mode & 0o111) && !su) return fail(`bash: ${cmd}: Permission denied`, 126);
-      for (const line of (n.data || '').split('\n')) { if (!line || line.startsWith('#')) continue; const r = this.exec(tokenize(line, s)[0].map(x => x.replace(/\u0001/g, '')), null); o.out.push(...r.out); o.err.push(...r.err); }
+      if (depth >= 32) return fail(`bash: ${cmd}: maximum script depth exceeded`, 126);
+      for (const line of (n.data || '').split('\n')) { if (!line || line.startsWith('#')) continue; const r = this.exec(tokenize(line, s)[0].map(x => x.replace(/\u0001/g, '')), null, su, depth + 1); o.out.push(...r.out); o.err.push(...r.err); o.code = r.code; }
       return o;
     }
+    if (NETCMDS.includes(cmd)) return netExec(s, cmd, rest, o);
     switch (cmd) {
       case 'help': o.out.push('Commands on hub01:', '  ' + CMDS.join('  '), 'Pipes |, redirection > >> 2>/dev/null, wildcards * ? [..], variables $NAME, ~ and ; or && all work.', 'Try "man ls". Stuck? "hint". Found it? "submit <answer>".'); return o;
       case 'man': { const m = MAN[rest[0]]; return m ? (o.out.push(m), o) : fail(rest[0] ? `No manual entry for ${rest[0]}` : 'What manual page do you want?'); }
@@ -316,7 +461,7 @@ export class Shell {
           const sp = P(a), sn = get(s, sp); if (!sn) { fail(`${cmd}: cannot stat '${a}': No such file or directory`); continue; }
           if (sn.t === 'd' && cmd === 'cp' && !flags.has('r') && !flags.has('R')) { fail(`cp: -r not specified; omitting directory '${a}'`); continue; }
           if (cmd === 'cp' && !canRead(sn, su)) { fail(`cp: cannot open '${a}' for reading: Permission denied`); continue; }
-          const target = dn && dn.t === 'd' ? dest + '/' + baseOf(sp) : dest; const tp = get(s, parentOf(target)); if (!tp || tp.t !== 'd') { fail(`${cmd}: cannot create '${args[args.length - 1]}': No such file or directory`); continue; }
+          const target = dn && dn.t === 'd' ? dest + '/' + baseOf(sp) : dest; if (cmd === 'mv' && sn.t === 'd' && (target === sp || target.startsWith(sp + '/'))) { fail(`mv: cannot move '${a}' to a subdirectory of itself`); continue; } const tp = get(s, parentOf(target)); if (!tp || tp.t !== 'd') { fail(`${cmd}: cannot create '${args[args.length - 1]}': No such file or directory`); continue; }
           if (!canWrite(tp, su)) { fail(`${cmd}: cannot create '${args[args.length - 1]}': Permission denied`); continue; }
           const clone = (n: Node): Node => n.t === 'f' ? { ...n, owner: cmd === 'cp' ? (su ? 'root' : ME) : n.owner } : { ...n, kids: new Map([...n.kids!].map(([k, v]) => [k, clone(v)])) };
           tp.kids!.set(baseOf(target), cmd === 'cp' ? clone(sn) : sn); if (cmd === 'mv') { const sparent = get(s, parentOf(sp))!; if (!canWrite(sparent, su)) { fail(`mv: cannot move '${a}': Permission denied`); tp.kids!.delete(baseOf(target)); continue; } sparent.kids!.delete(baseOf(sp)); }
@@ -325,7 +470,7 @@ export class Shell {
       }
       case 'find': {
         const start = rest[0] && !rest[0].startsWith('-') ? rest.shift()! : '.'; const name = optVal('-name') ?? optVal('-iname'); const type = optVal('-type');
-        const re = name ? new RegExp('^' + name.replace(/[.+^${}()|\\]/g, '\\$&').replace(/\*/g, '.*').replace(/\?/g, '.') + '$', rest.includes('-iname') ? 'i' : '') : null;
+        let re: RegExp | null = null; if (name) { const pattern = '^' + name.replace(/[.+^${}()|\\]/g, '\\$&').replace(/\*/g, '.*').replace(/\?/g, '.') + '$'; try { re = new RegExp(pattern, rest.includes('-iname') ? 'i' : ''); } catch { re = new RegExp('^' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '$'); } }
         const walk = (p: string, label: string) => { const n = get(s, p)!; if ((!re || re.test(baseOf(p) || '/')) && (!type || (type === 'd') === (n.t === 'd'))) o.out.push(label); if (n.t === 'd') { if (!su && n.owner !== ME && !(n.mode & 0o004)) { o.err.push(`find: '${label}': Permission denied`); return; } [...n.kids!.keys()].sort().forEach(k => walk(p === '/' ? '/' + k : p + '/' + k, (label === '/' ? '' : label) + '/' + k)); } };
         const sp = P(start); if (!get(s, sp)) return fail(`find: '${start}': No such file or directory`); walk(sp, start); return o;
       }
@@ -370,7 +515,7 @@ if (app) {
   const levels = Array.from(document.querySelectorAll<HTMLElement>('[data-level]'));
   const term = document.querySelector<HTMLElement>('#term-out')!, form = document.querySelector<HTMLFormElement>('#term-form')!, inp = document.querySelector<HTMLInputElement>('#term-in')!, ps1 = document.querySelector<HTMLElement>('#term-ps1')!;
   const status = document.querySelector<HTMLElement>('#lab-status')!;
-  const key = 'cyberhub:linux';
+  const key = app.dataset.key || 'cyberhub:linux';
   const done = new Set<string>(((): string[] => { try { return JSON.parse(localStorage.getItem(key) || '[]'); } catch { return []; } })());
   const save = () => { try { localStorage.setItem(key, JSON.stringify([...done])); } catch { /* ignore */ } };
   const sh = new Shell(); let cur = 0, hi = -1; const pending: (() => void)[] = [];
@@ -384,7 +529,7 @@ if (app) {
   function open(i: number, focus = true) {
     cur = Math.max(0, Math.min(levels.length - 1, i)); const el = levels[cur]; const id = el.dataset.level!;
     levels.forEach((l, k) => { l.hidden = k !== cur; });
-    const def = LEVELS.find(l => l.id === id); const hints = Array.from(el.querySelectorAll('.hint-list li')).map(li => li.textContent || '');
+    const def = ALL_LEVELS.find(l => l.id === id); const hints = Array.from(el.querySelectorAll('.hint-list li')).map(li => li.textContent || '');
     if (!def) return; sh.load(def, hints);
     sh.onWin = () => { if (sh.level?.id !== id) return; const first = !done.has(id); done.add(id); save(); mark(); pending.push(() => line(first ? `★ Level complete: ${el.querySelector('h2')?.textContent}. ${cur < levels.length - 1 ? 'Type "next" or use the Next button.' : 'Module complete!'}` : '★ Already complete. Nice repeat.', 'win')); el.querySelector('.level-done')?.removeAttribute('hidden'); };
     term.replaceChildren(); line(`Connected to ${HOST}. Level: ${el.querySelector('h2')?.textContent}`, 'sys'); line(el.querySelector('.goal')?.textContent || '', 'goal'); line('Type "help" for commands, "hint" for a nudge.', 'sys');
@@ -415,18 +560,19 @@ if (app) {
 }
 
 // Index page: mark completed levels
-const idx = typeof document === 'undefined' ? null : document.querySelector<HTMLElement>('#linux-index');
-if (idx) { try { const d = new Set<string>(JSON.parse(localStorage.getItem('cyberhub:linux') || '[]')); idx.querySelectorAll<HTMLElement>('[data-lv]').forEach(e => e.classList.toggle('done', d.has(e.dataset.lv!))); idx.querySelectorAll<HTMLElement>('[data-mod-count]').forEach(e => { const ids = (e.dataset.modCount || '').split(','); e.textContent = `${ids.filter(i => d.has(i)).length}/${ids.length}`; }); } catch { /* ignore */ } }
+const idx = typeof document === 'undefined' ? null : document.querySelector<HTMLElement>('#linux-index, #net-index');
+if (idx) { try { const d = new Set<string>(JSON.parse(localStorage.getItem(idx.dataset.key || 'cyberhub:linux') || '[]')); idx.querySelectorAll<HTMLElement>('[data-lv]').forEach(e => e.classList.toggle('done', d.has(e.dataset.lv!))); idx.querySelectorAll<HTMLElement>('[data-mod-count]').forEach(e => { const ids = (e.dataset.modCount || '').split(','); e.textContent = `${ids.filter(i => d.has(i)).length}/${ids.length}`; }); } catch { /* ignore */ } }
 // Rank ladder on the index page
 const rankEl = typeof document === 'undefined' ? null : document.querySelector<HTMLElement>('#lx-rank');
 if (rankEl) {
-  let n = 0; try { n = (JSON.parse(localStorage.getItem('cyberhub:linux') || '[]') as string[]).filter(id => LEVELS.some(l => l.id === id)).length; } catch { /* ignore */ }
+  const set = rankEl.dataset.key === 'cyberhub:netlab' ? NET_LEVELS : LEVELS; const total = set.length;
+  let n = 0; try { n = (JSON.parse(localStorage.getItem(rankEl.dataset.key || 'cyberhub:linux') || '[]') as string[]).filter(id => set.some(l => l.id === id)).length; } catch { /* ignore */ }
   const ranks = (rankEl.dataset.ranks || '').split(',').map(x => { const [a, b] = x.split(':'); return [Number(a), b] as [number, string]; });
   let cur = ranks[0], next: [number, string] | undefined; for (const r of ranks) { if (n >= r[0]) cur = r; else { next = r; break; } }
   rankEl.querySelector('#lx-rank-name')!.textContent = cur[1];
-  rankEl.querySelector<HTMLElement>('#lx-rank-fill')!.style.setProperty('--p', String(Math.min(1, n / LEVELS.length)));
-  rankEl.querySelector('#lx-rank-next')!.textContent = next ? `${n} of ${LEVELS.length} levels · ${next[0] - n} more to reach ${next[1]}` : `All ${LEVELS.length} levels complete. You are root.`;
+  rankEl.querySelector<HTMLElement>('#lx-rank-fill')!.style.setProperty('--p', String(Math.min(1, n / total)));
+  rankEl.querySelector('#lx-rank-next')!.textContent = next ? `${n} of ${total} levels · ${next[0] - n} more to reach ${next[1]}` : `All ${total} levels complete. ${set === LEVELS ? 'You are root.' : 'You own the network.'}`;
   rankEl.querySelectorAll<HTMLElement>('[data-at]').forEach(li => li.classList.toggle('on', n >= Number(li.dataset.at)));
 }
 export const LEVEL_IDS = LEVELS.map(l => l.id);
-export { LEVELS };
+export { LEVELS, NET_LEVELS };

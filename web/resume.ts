@@ -61,6 +61,35 @@ export function analyse(resume: string, job: string): Analysis {
   return { score, matched, missing, jobTerms, checks, weak, words };
 }
 
+export function coverPrompt(resume: string, job: string, target: string, a: Analysis, name = ''): string {
+  return `You are helping a university student write a cover letter for one internship.
+
+TARGET: ${target || 'the internship described below'}
+
+RULES (follow strictly):
+- Use only facts from the resume below. Never invent experience, employers, dates, certifications, tools, results, or reasons for interest the student did not give.
+- Do not claim skills from the "not found" list. If one matters, write one honest sentence about learning it (for example a project or course in progress) only if the resume shows that; otherwise leave it out and list it after the letter under "Gaps to address honestly".
+- 250 to 350 words, four short paragraphs: why this role, two or three matching experiences with specifics, what the student will bring and learn, a polite close.
+- Plain, confident language. No clichés like "I am writing to express my interest", no flattery, no exaggeration.
+- Where a detail is unknown (hiring manager's name, why this company), leave a clearly marked [PLACEHOLDER] for the student to fill in rather than guessing.
+- Sign it as ${name ? name : '[YOUR NAME]'}.
+
+ALREADY MATCHING: ${a.matched.join(', ') || 'none detected'}
+IN THE POSTING BUT NOT FOUND IN THE RESUME: ${a.missing.join(', ') || 'none detected'}
+
+OUTPUT: the letter, then "Gaps to address honestly" (may be empty), then a checklist of every [PLACEHOLDER] the student must fill in.
+
+JOB POSTING:
+"""
+${job.trim().slice(0, 12000)}
+"""
+
+RESUME:
+"""
+${resume.trim().slice(0, 12000)}
+"""`;
+}
+
 export function tailorPrompt(resume: string, job: string, target: string, a: Analysis): string {
   return `You are helping a university student tailor their resume for one internship.
 
@@ -99,11 +128,15 @@ export async function docxText(buf: ArrayBuffer): Promise<string> {
   if (eocd < 0) throw new Error('Not a .docx (zip) file');
   const count = v.getUint16(eocd + 10, true); let p = v.getUint32(eocd + 16, true);
   for (let n = 0; n < count; n++) {
+    if (p > u8.length - 46) throw new Error('No document text found in this .docx');
     if (v.getUint32(p, true) !== 0x02014b50) break;
     const method = v.getUint16(p + 10, true), csize = v.getUint32(p + 20, true), nlen = v.getUint16(p + 28, true), elen = v.getUint16(p + 30, true), clen = v.getUint16(p + 32, true), off = v.getUint32(p + 42, true);
+    if (p + 46 + nlen + elen + clen > u8.length) throw new Error('No document text found in this .docx');
     const name = new TextDecoder().decode(u8.subarray(p + 46, p + 46 + nlen));
     if (name === 'word/document.xml') {
+      if (off > u8.length - 30) throw new Error('No document text found in this .docx');
       const ln = v.getUint16(off + 26, true), le = v.getUint16(off + 28, true), start = off + 30 + ln + le; const data = u8.subarray(start, start + csize);
+      if (start + csize > u8.length) throw new Error('No document text found in this .docx');
       let xml: string;
       if (method === 0) xml = new TextDecoder().decode(data);
       else { const ds = new Blob([data]).stream().pipeThrough(new DecompressionStream('deflate-raw')); xml = await new Response(ds).text(); }
@@ -149,7 +182,17 @@ if (root) {
     } catch (err) { st.textContent = (err as Error).message; }
   });
 
-  let last = '';
+  let last = '', lastA: Analysis | null = null;
+  const mode = () => (document.querySelector<HTMLInputElement>('input[name="rt-mode"]:checked')?.value || 'resume');
+  const firstLine = () => (resumeEl.value.split('\n').map(l => l.trim()).find(Boolean) || '').slice(0, 60);
+  const build = () => {
+    if (!lastA) return; const r = resumeEl.value, j = jobEl.value; const cover = mode() === 'cover';
+    last = cover ? coverPrompt(r, j, targetEl.value, lastA, /^[A-Za-z][A-Za-z .'-]{1,59}$/.test(firstLine()) ? firstLine() : '') : tailorPrompt(r, j, targetEl.value, lastA);
+    $<HTMLElement>('#rt-prompt').textContent = last;
+    $('#rt-mode-what').textContent = cover ? 'cover letter' : 'tailored resume';
+    $('#rt-local-run').textContent = cover ? 'Write cover letter locally' : 'Tailor locally';
+  };
+  document.querySelectorAll<HTMLInputElement>('input[name="rt-mode"]').forEach(r => r.addEventListener('change', () => { build(); $('#rt-local-out').hidden = true; $('#rt-download').hidden = true; }));
   $('#rt-analyse').addEventListener('click', () => {
     const r = resumeEl.value, j = jobEl.value; const out = $('#rt-out');
     if (r.trim().length < 80 || j.trim().length < 80) { $('#rt-msg').textContent = 'Paste your full resume and the full job posting first.'; return; }
@@ -161,7 +204,7 @@ if (root) {
     chips('#rt-missing', a.missing, 'miss', 'Nothing obvious is missing.');
     $('#rt-checks').replaceChildren(...a.checks.map(c => { const li = el('li', c.text, c.ok ? 'ok' : 'no'); return li; }));
     const weak = $('#rt-weak'); weak.replaceChildren(...a.weak.map(w => el('li', w))); $('#rt-weak-box').hidden = !a.weak.length;
-    last = tailorPrompt(r, j, targetEl.value, a); $<HTMLElement>('#rt-prompt').textContent = last;
+    lastA = a; build();
     out.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   });
   $('#rt-copy').addEventListener('click', async e => { const b = e.currentTarget as HTMLElement; try { await navigator.clipboard.writeText(last); b.textContent = 'Copied'; } catch { b.textContent = 'Select the text below'; } setTimeout(() => { b.textContent = 'Copy prompt'; }, 1600); });
@@ -180,7 +223,7 @@ if (root) {
   $('#rt-local-run').addEventListener('click', async e => {
     const btn = e.currentTarget as HTMLButtonElement, out = $<HTMLElement>('#rt-local-out'), st = $('#rt-local-status');
     if (!last) { st.textContent = 'Run the match first (step 3).'; return; }
-    btn.disabled = true; st.textContent = 'Tailoring on your computer… this can take a minute on smaller machines.'; out.textContent = '';
+    btn.disabled = true; st.textContent = (mode() === 'cover' ? 'Writing your cover letter' : 'Tailoring') + ' on your computer… this can take a minute on smaller machines.'; out.textContent = '';
     try {
       const r = await fetch(OLLAMA + '/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: $<HTMLSelectElement>('#rt-model').value, stream: false, messages: [{ role: 'user', content: last }] }) });
       const d = await r.json() as { message?: { content: string }; error?: string };
@@ -191,7 +234,7 @@ if (root) {
   });
   $('#rt-download').addEventListener('click', () => {
     const blob = new Blob([$<HTMLElement>('#rt-local-out').textContent || ''], { type: 'text/markdown' }); const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob); a.download = 'tailored-resume.md'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    a.href = URL.createObjectURL(blob); a.download = mode() === 'cover' ? 'cover-letter.md' : 'tailored-resume.md'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   });
   document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach(btn => btn.addEventListener('click', async () => { const t = document.querySelector(btn.dataset.copy || ''); try { await navigator.clipboard.writeText(t?.textContent || ''); btn.textContent = 'Copied'; } catch { btn.textContent = 'Select text'; } setTimeout(() => { btn.textContent = 'Copy'; }, 1600); }));
   $('#rt-clear').addEventListener('click', () => { resumeEl.value = ''; jobEl.value = ''; targetEl.value = ''; try { localStorage.removeItem('cyberhub:resume'); } catch { /* ignore */ } remember.checked = false; $('#rt-out').hidden = true; });

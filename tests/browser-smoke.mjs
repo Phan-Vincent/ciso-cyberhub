@@ -52,9 +52,9 @@ try {
  assert.ok(phone.top>=phone.introBottom-1,'globe overlaps hero copy on phone');
  assert.ok(phone.bottom<=phone.metaTop+1,'globe overlaps hero meta on phone');
  assert.ok(phone.bottom<=phone.vh,'globe overflows phone viewport');
- await page.locator('.interlude').scrollIntoViewIfNeeded();await page.waitForTimeout(250);
- const mobileIntel=await page.evaluate(()=>{const el=document.querySelector('.intel-feature-headline');return el?parseFloat(getComputedStyle(el).fontSize):0;});
- assert.ok(mobileIntel>=22,`phone intelligence headline is too small (${mobileIntel}px)`);
+ // Phones skip the decorative learning map and keep the homepage short.
+ assert.equal(await page.locator('#map').isVisible(),false,'learning map should be hidden on phones');
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollHeight/innerHeight)<9,'phone homepage is too long');
 
  // Footer sign-off: two complete lockups in equal shared frames; corners come from CSS, not the SVG.
  await page.setViewportSize({width:1440,height:900});
@@ -71,18 +71,12 @@ try {
  assert.equal(frame.border,'0px','lockup frame must not draw a complete border');
  assert.equal(frame.align,'stretch','footer lockup frames are not aligned top and bottom');
 
- // Latest intelligence: one prominent, data-backed report with kicker, source and date.
- await page.goto(origin+'/');await page.waitForSelector('#core-canvas[data-ready="ready"]',{timeout:20000});
- await page.locator('.interlude').scrollIntoViewIfNeeded();await page.waitForTimeout(300);
- const intel=await page.evaluate(()=>{const p=document.querySelector('.intel-feature-panel'),a=p&&p.querySelector('.intel-feature-headline a'),k=p&&p.querySelector('.intel-feature-kicker'),m=p&&p.querySelector('.intel-feature-meta');return p?{href:a&&a.href,title:(a&&a.textContent||'').trim(),size:parseFloat(getComputedStyle(p.querySelector('.intel-feature-headline')).fontSize),kicker:(k&&k.textContent||'').trim(),meta:(m&&m.textContent||'').trim(),border:getComputedStyle(p).backgroundImage}:null;});
- assert.ok(intel,'latest intelligence panel missing');
- assert.match(intel.href,/^https:\/\//,'latest intelligence link is not an external source');
- assert.ok(intel.title.length>20,'latest intelligence headline is too short');
- assert.ok(intel.size>=36,`desktop intelligence headline is too small (${intel.size}px)`);
- assert.match(intel.kicker,/Intel desk \/ latest report/i);
- assert.match(intel.meta,/\d{4}-\d{2}-\d{2}/,'intelligence panel lacks a publication date');
- assert.equal(await overlaps(page,'.intel-feature-panel','#m1'),false,'intelligence panel overlaps the first marquee');
- assert.equal(await overlaps(page,'.intel-feature-panel','#m2'),false,'intelligence panel overlaps the second marquee');
+ // Today: real headlines with sources and dates, and live counts.
+ await page.goto(origin+'/');await page.locator('#today').scrollIntoViewIfNeeded();
+ const today=await page.evaluate(()=>{const items=[...document.querySelectorAll('.today-news li')];const a=items[0]?.querySelector('a');return {n:items.length,href:a?.href||'',meta:items[0]?.querySelector('.label')?.textContent||'',stats:document.querySelectorAll('.today-stat').length};});
+ assert.ok(today.n>=1,'no headlines on the homepage');assert.match(today.href,/^https:\/\//,'headline is not an external source');
+ assert.match(today.meta,/\d{4}-\d{2}-\d{2}/,'headline lacks a date');assert.equal(today.stats,3);
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollHeight/innerHeight)<7,'desktop homepage is too long');
 
  // Globe drag: pointer input rotates both axes, persists across release, and stops autospin conflict.
  await page.goto(origin+'/');await page.waitForSelector('#core-canvas[data-ready="ready"]',{timeout:20000});
@@ -102,14 +96,13 @@ try {
  assert.equal(await globe.getAttribute('data-drag-yaw'),dragYaw,'drag orientation did not persist after release');
  assert.equal(await globe.getAttribute('data-drag-pitch'),dragPitch,'drag pitch did not persist after release');
 
- // Module previews stay out of the title lane at desktop, tablet and phone.
- for(const width of [1440,1024,768]){
+ // Path cards and hands-on tiles: every link goes somewhere real and nothing overlaps.
+ for(const width of [1440,1024,390]){
   await page.setViewportSize({width,height:900});await page.goto(origin+'/');
-  await page.locator('.mod > a').first().hover();await page.waitForTimeout(700);
-  assert.equal(await overlaps(page,'.mod .ttl','.mod-media'),false,`module preview overlap at ${width}`);
+  assert.equal(await page.locator('.path-card').count(),4,'four starting paths');assert.equal(await page.locator('#now .play-tile').count(),6,'six hands-on tiles');
+  assert.equal(await overlaps(page,'.path-card:nth-child(1)','.path-card:nth-child(2)'),false,`path cards overlap at ${width}`);
  }
- await page.setViewportSize({width:390,height:844});await page.goto(origin+'/');
- assert.equal(await overlaps(page,'.mod .ttl','.mod-media'),false,'module preview overlap on phone');
+ await page.setViewportSize({width:1440,height:900});
 
  // Tools filtering and quiz behavior.
  await page.goto(origin+'/tools/');await page.locator('[name=q]').fill('wireshark');await page.waitForTimeout(100);assert.equal(await page.locator('[data-record]:visible').count(),1);
@@ -154,5 +147,5 @@ try {
  // System preference applies only while no explicit choice exists.
  for(const scheme of ['light','dark']){const c=await browser.newContext({colorScheme:scheme});const p=await c.newPage();await p.goto(origin+'/');assert.equal(await p.evaluate(()=>document.documentElement.dataset.theme),scheme);await c.close();}
 
- assert.deepEqual(errors,[]);console.log('Browser smoke tests passed: theme, hero/map separation, module previews, navigation, filtering, quiz, persistence, flashcards, search and mobile overflow.');
+ assert.deepEqual(errors,[]);console.log('Browser smoke tests passed: theme, hero/map separation, homepage paths and today, navigation, filtering, quiz, persistence, flashcards, search and mobile overflow.');
 }finally{await browser.close();}

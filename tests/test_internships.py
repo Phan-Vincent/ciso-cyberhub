@@ -25,6 +25,15 @@ class InternshipTest(unittest.TestCase):
         self.assertEqual(city, 'Irvine')
         self.assertTrue(30 < d < 60)
 
+    def test_place_rejects_foreign_and_extra_city(self):
+        for location in ('Bangalore, India (Remote - US hours)', 'Remote in Russia', 'Fake City, San Bernardino, CA'):
+            with self.subTest(location=location): self.assertIsNone(place(location))
+        self.assertEqual(place('Remote - US')[1], 'Remote (US)')
+
+    def test_scan_skips_bad_posted_timestamp(self):
+        out=scan([job(date_posted='oops'), job(date_posted=10**20), job(title='Valid')], NOW)
+        self.assertEqual([i['title'] for i in out['items']], ['Valid'])
+
     def test_scan_filters_and_flags(self):
         out = scan([
             job(),

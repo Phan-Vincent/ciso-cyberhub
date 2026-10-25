@@ -7,12 +7,12 @@ Goal: **the definitive free CSUSB resource**, spanning multiple professional clu
 - Five-section structure (Learn, Tools, AI, Intel, Careers), generated from `Site.SECTIONS` in `hub/build.py`. Add a page to a section there and it appears in the header dropdown, phone menu, footer and `/resources/` directory.
 - Weekly internship scanner near CSUSB, plus the **resume tailor** (`/careers/resume/`). The tailor runs in the browser, matches skills, flags weak bullets and produces a no-fabrication AI prompt. The private option uses the student's own Ollama.
 - Linux Lab, Daily puzzle, readiness check, role match, AI guides, AI leaderboard, trending tools, cyber history.
+- What you will defend (five guides with interactive shifts), Competitions, Networking Lab (first IT-track lab), cover letters in the resume tailor, and badges with a printable completion card.
 
 ## Next (immediate)
 
-- **Resume tailor v2:** save several tailored versions per internship; export to .docx (a minimal zip writer, no dependencies); a cover-letter variant with the same no-fabrication rules.
+- **Resume tailor v2:** save several tailored versions per internship; export to .docx (a minimal zip writer, no dependencies).
 - **Internship scanner v2:** add local employers that rarely appear on national lists (county, city, hospitals, school districts, Esri) through official RSS/JSON feeds where available; keyword alerts as an RSS feed per filter.
-- **Competitions page:** CCDC, NCL, CPTC, CyberForce, picoCTF: dates, prep plans, how to join through CISO.
 
 ## Mid-term: expand into IT
 
@@ -26,7 +26,7 @@ Reuse the existing engines so each new discipline costs content, not code:
 | Role match and roadmaps | 12 security roles | Help desk, sysadmin, network, cloud and DevOps roles |
 | Internship scanner | Security and IT flag | Category filters per discipline |
 
-Suggested order: Networking Lab, then the Network+ deck, then the IT roles.
+Done: Networking Lab, PowerShell Lab, IT flashcards (Network+/A+ topics), IT duel categories and the IT track page. Next: IT roles in the role quiz.
 
 ## Future: a hub of hubs across CSUSB clubs
 
@@ -34,7 +34,7 @@ Suggested order: Networking Lab, then the Network+ deck, then the IT roles.
 - **Shared engines:** labs, puzzles, flashcards, career tools and the internship scanner work for every section.
 - **Governance:** a `CONTRIBUTING` path per club, a faculty-review badge on checked content, and a content-freshness check (the 90-day review dates already used in the AI guides).
 - **Identity:** a custom domain (for example `hub.ciso-csusb.org`), a neutral umbrella name if clubs beyond CISO join, and per-club colour accents inside the same design system.
-- **Reach:** Spanish versions of the most-used pages (CSUSB is a Hispanic-Serving Institution), a Discord bot that posts the Daily, and printable completion cards.
+- **Reach:** a Discord bot that posts the Daily, and event kits for duel nights.
 
 ## Principles (do not break)
 

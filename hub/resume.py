@@ -23,7 +23,7 @@ def write_assets(site) -> None:
 
 def resume_page(site) -> str:
     a = site.a
-    body = site.heading('Resume tailor', 'Match your resume to an internship posting: see which skills line up, what is missing and how to sharpen your bullets. Then let AI tailor it, without inventing anything.', 'Careers / Resume tailor')
+    body = site.heading('Resume tailor', 'Match your resume to an internship posting: see which skills line up, what is missing and how to sharpen your bullets. Then let AI tailor your resume or write a cover letter, without inventing anything.', 'Careers / Resume tailor')
     body += ('<p class="guide-meta label"><span class="dot" aria-hidden="true"></span>Private by design: your resume stays in this browser tab. Nothing is uploaded or stored by CyberHub.</p>'
              '<div class="tailor" id="tailor">'
              '<section class="rt-step"><h2><span class="label">01</span>Your resume</h2>'
@@ -41,8 +41,12 @@ def resume_page(site) -> str:
              '<p class="muted">Only add a skill if it is true. Otherwise build it: a Linux Lab module, a lab or a small project is a real bullet within a week.</p></div></div>'
              '<h3>Resume checks</h3><ul class="rt-checks" id="rt-checks"></ul>'
              '<div id="rt-weak-box" hidden><h3>Bullets to strengthen</h3><p class="muted">Start with what you did, then the result: "Built…, cutting… by 30%".</p><ul class="rt-weak" id="rt-weak"></ul></div>'
-             '<h3 id="rt-tailor-h">04 / Tailor it with AI</h3><div class="rt-ai"><article class="rt-ai-card"><p class="label">Option A / Any AI assistant</p><h4>Copy the tailoring prompt</h4>'
-             '<p>Paste it into Claude, ChatGPT, Gemini or Copilot. It includes your resume, the posting, the skills match and strict rules against invented experience.</p>'
+             '<h3 id="rt-tailor-h">04 / Tailor it with AI</h3>'
+             '<fieldset class="rt-mode"><legend class="label">What should AI write?</legend>'
+             '<label><input type="radio" name="rt-mode" value="resume" checked> Tailored resume</label>'
+             '<label><input type="radio" name="rt-mode" value="cover"> Cover letter</label></fieldset>'
+             '<p class="muted">Both use the same rules: only facts from your resume, nothing invented. The cover letter marks anything it cannot know as [PLACEHOLDER] for you to fill in.</p><div class="rt-ai"><article class="rt-ai-card"><p class="label">Option A / Any AI assistant</p><h4>Copy the tailoring prompt</h4>'
+             '<p>Paste it into Claude, ChatGPT, Gemini or Copilot to get a <span id="rt-mode-what">tailored resume</span>. It includes your resume, the posting, the skills match and strict rules against invented experience.</p>'
              '<button type="button" class="primary" id="rt-copy">Copy prompt</button><details class="rt-prompt-box"><summary>See the prompt</summary><pre id="rt-prompt"></pre></details>'
              '<p class="muted">This sends your resume to that AI service. Remove your phone number and address first if you prefer.</p></article>'
              '<article class="rt-ai-card"><p class="label">Option B / Fully private</p><h4>Tailor with AI on your own computer</h4>'
@@ -71,4 +75,4 @@ def resume_page(site) -> str:
 
 def build_resume(site) -> None:
     write_assets(site)
-    site.page('/careers/resume/', 'Resume tailor', resume_page(site), 'Match your resume to an internship posting privately in your browser, then tailor it with AI without inventing experience.', 'Careers', module='resume')
+    site.page('/careers/resume/', 'Resume tailor', resume_page(site), 'Match your resume to an internship posting privately in your browser, then tailor it or write a cover letter with AI, without inventing experience.', 'Careers', module='resume')

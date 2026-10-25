@@ -38,5 +38,109 @@
       "isc.sans.org"
     ],
     "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
+  },
+  {
+    "id": "krebs",
+    "name": "Krebs on Security",
+    "kind": "rss",
+    "url": "https://krebsonsecurity.com/feed/",
+    "host": "krebsonsecurity.com",
+    "fixture": "krebs.xml",
+    "category": "Investigations",
+    "article_hosts": [
+      "krebsonsecurity.com"
+    ],
+    "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
+  },
+  {
+    "id": "bleepingcomputer",
+    "name": "BleepingComputer",
+    "kind": "rss",
+    "url": "https://www.bleepingcomputer.com/feed/",
+    "host": "www.bleepingcomputer.com",
+    "fixture": "bleeping.xml",
+    "category": "News",
+    "article_hosts": [
+      "www.bleepingcomputer.com"
+    ],
+    "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
+  },
+  {
+    "id": "the-record",
+    "name": "The Record",
+    "kind": "rss",
+    "url": "https://therecord.media/feed",
+    "host": "therecord.media",
+    "fixture": "record.xml",
+    "category": "News",
+    "article_hosts": [
+      "therecord.media"
+    ],
+    "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
+  },
+  {
+    "id": "schneier",
+    "name": "Schneier on Security",
+    "kind": "rss",
+    "url": "https://www.schneier.com/feed/atom/",
+    "host": "www.schneier.com",
+    "fixture": "schneier.xml",
+    "category": "Analysis",
+    "article_hosts": [
+      "www.schneier.com"
+    ],
+    "policy": "Link-only indexing of published Atom feed; no article bodies or source excerpts."
+  },
+  {
+    "id": "securityweek",
+    "name": "SecurityWeek",
+    "kind": "rss",
+    "url": "https://www.securityweek.com/feed/",
+    "host": "www.securityweek.com",
+    "fixture": "securityweek.xml",
+    "category": "News",
+    "article_hosts": [
+      "www.securityweek.com"
+    ],
+    "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
+  },
+  {
+    "id": "helpnetsecurity",
+    "name": "Help Net Security",
+    "kind": "rss",
+    "url": "https://www.helpnetsecurity.com/feed/",
+    "host": "www.helpnetsecurity.com",
+    "fixture": "helpnet.xml",
+    "category": "News",
+    "article_hosts": [
+      "www.helpnetsecurity.com"
+    ],
+    "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
+  },
+  {
+    "id": "thehackernews",
+    "name": "The Hacker News",
+    "kind": "rss",
+    "url": "https://feeds.feedburner.com/TheHackersNews",
+    "host": "feeds.feedburner.com",
+    "fixture": "thn.xml",
+    "category": "News",
+    "article_hosts": [
+      "thehackernews.com"
+    ],
+    "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
+  },
+  {
+    "id": "darkreading",
+    "name": "Dark Reading",
+    "kind": "rss",
+    "url": "https://www.darkreading.com/rss.xml",
+    "host": "www.darkreading.com",
+    "fixture": "darkreading.xml",
+    "category": "Analysis",
+    "article_hosts": [
+      "www.darkreading.com"
+    ],
+    "policy": "Link-only indexing of published RSS; no article bodies or source excerpts."
   }
 ]

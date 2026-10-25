@@ -17,7 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from propose import api, command  # noqa: E402
 
-PUBLISH = ['data/intelligence.json', 'data/internships.json', 'data/trending.json']
+PUBLISH = ['data/intelligence.json', 'data/internships.json', 'data/trending.json', 'data/pulse.json']
 
 
 def main() -> int:

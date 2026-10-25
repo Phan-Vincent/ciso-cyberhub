@@ -143,6 +143,36 @@ class PipelineTests(unittest.TestCase):
     def test_markdown_injection_escaped(self):
         out=render('<script>alert(1)</script>\n\n[click](javascript:alert)')
         self.assertNotIn('<script>',out);self.assertNotIn('href="javascript',out)
+    def test_markdown_headings_ordered_lists_and_inline_tokens(self):
+        out=render('## Section heading\n\n### Subsection\n\n- Bullet item\n\n1. First step\n2. Second step\n\n[`wireshark`](/tools/wireshark/) and \x0099\x00','/club')
+        self.assertIn('<h2>Section heading</h2>',out)
+        self.assertIn('<h3>Subsection</h3>',out)
+        self.assertIn('<ul>\n<li>Bullet item</li>\n</ul>',out)
+        self.assertIn('<ol>\n<li>First step</li>\n<li>Second step</li>\n</ol>',out)
+        self.assertIn('<a href="/club/tools/wireshark/"><code>wireshark</code></a>',out)
+        self.assertNotIn('\x00',out)
+    def test_markdown_root_traversal_rejected(self):
+        for url in ('/../escape', '/foo/../../escape', '/./escape'):
+            with self.subTest(url=url):
+                self.assertNotIn('href=', render(f'[t]({url})', '/cyberhub'))
+
+    def test_all_data_schemas_reject_invalid_records(self):
+        names = ('ai_leaderboard', 'duel', 'glossary', 'history_images', 'internships', 'it_cards', 'maintenance', 'pulse', 'research', 'trending')
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); shutil.copytree(ROOT/'data',root/'data'); shutil.copytree(ROOT/'content',root/'content')
+            for name in names:
+                path=root/'data'/f'{name}.json'; original=path.read_text()
+                path.write_text('{}' if name != 'glossary' else '[]')
+                with self.subTest(name=name), self.assertRaises((ValueError, KeyError, TypeError)):
+                    validate(root)
+                path.write_text(original)
+
+    def test_boolean_cvss_score_rejected(self):
+        with tempfile.TemporaryDirectory()as tmp:
+            root=Path(tmp);shutil.copytree(ROOT/'data',root/'data');shutil.copytree(ROOT/'content',root/'content')
+            intel=read_json(root/'data/intelligence.json');intel['vulnerabilities'][0]['cvss']={'score':True,'version':'3.1'}
+            write_json(root/'data/intelligence.json',intel)
+            with self.assertRaises(ValueError):validate(root)
     def test_base_path_links(self):self.assertIn('href="/club/labs/"',render('[Lab](/labs/)','/club'))
     def test_code_html_literal(self):self.assertIn('&lt;img',render('```html\n<img onerror=x>\n```'))
     def test_unclosed_fence_fails(self):
@@ -156,7 +186,7 @@ class PipelineTests(unittest.TestCase):
             root=Path(tmp);shutil.copytree(ROOT/'data',root/'data');shutil.copytree(ROOT/'content',root/'content')
             write_json(root/'data/intelligence.json',{'mode':'source-reported','news':[],'sources':{},'vulnerabilities':[]})
             with patch('hub.ingest.now',return_value=STAMP):result=refresh(root,fixture_dir=FIX)
-            self.assertEqual(result['failures'],[]);state=read_json(root/'data/intelligence.json');self.assertEqual(len(state['news']),2);self.assertEqual(len(state['vulnerabilities']),1);validate(root)
+            self.assertEqual(result['failures'],[]);state=read_json(root/'data/intelligence.json');self.assertEqual(len(state['news']),2+sum(1 for s in read_json(root/'data/sources.json') if s['kind']=='rss')-2);self.assertEqual(len(state['vulnerabilities']),1);validate(root)
             old=copy.deepcopy(state)
             state['mode']='source-reported';write_json(root/'data/intelligence.json',state)
             with patch('hub.ingest.Client.get',side_effect=FetchError('outage')):

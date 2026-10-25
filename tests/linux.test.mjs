@@ -72,3 +72,75 @@ test('wrong submissions and permissions are enforced', () => {
   sh.run('submit CISO{nope}'); assert.equal(won, false);
   assert.match(sh.run('rm -r /').err.join(''), /refusing|Permission/);
 });
+
+// Networking Lab: solve every level with the simulated network commands.
+const { NET_LEVELS } = await import(pathToFileURL(file).href);
+const NET = {
+  'net-my-ip': sh => out(sh, 'ip a').match(/inet (10\.[\d.]+)\//)[1],
+  'net-gateway': sh => out(sh, 'ip route').match(/default via (\S+)/)[1],
+  'net-resolver': sh => out(sh, 'cat /etc/resolv.conf').match(/nameserver (\S+)/)[1],
+  'net-ping-down': sh => out(sh, 'cat ~/servers.txt').trim().split('\n').find(n => sh.run('ping -c 1 ' + n).code !== 0),
+  'net-traceroute': sh => out(sh, 'traceroute vpn.partner.example').split('\n').filter(l => /^\s*\d+\s+\d/.test(l)).pop().trim().split(/\s+/)[1],
+  'net-dig-a': sh => out(sh, 'dig grades.ciso.lab +short').trim(),
+  'net-dig-mx': sh => out(sh, 'dig ciso.lab MX +short').trim().split('\n').map(l => l.split(' ')).sort((a, b) => a[0] - b[0])[0][1].replace(/\.$/, ''),
+  'net-dig-txt': sh => grab(out(sh, 'dig _verify.ciso.lab TXT')),
+  'net-hosts-poison': sh => { const dns = out(sh, 'dig login.bank.example +short').trim(); const hosts = out(sh, 'grep bank /etc/hosts').split(' ')[0]; assert.notEqual(dns, hosts); return hosts; },
+  'net-listening': sh => out(sh, 'ss -tlnp').split('\n').find(l => /kworkerd|dbus-helper|syslogd2/.test(l)).match(/:(\d+)/)[1],
+  'net-established': sh => out(sh, 'ss -tanp').split('\n').find(l => l.includes('bash')).match(/(\d+\.\d+\.\d+\.\d+):4444/)[1],
+  'net-port-check': sh => sh.run('nc -zv db01 3306 5432 1433 27017').err.find(l => l.includes('succeeded')).match(/\) (\d+) port/)[1],
+  'net-curl-headers': sh => grab(out(sh, 'curl -I http://intranet.ciso.lab/')),
+};
+const calc = q => {
+  const toInt = ip => ip.split('.').reduce((n, x) => n * 256 + +x, 0), toIp = n => [24, 16, 8, 0].map(s => Math.floor(n / 2 ** s) % 256).join('.');
+  const net = (ip, p) => toIp(Math.floor(toInt(ip) / 2 ** (32 - p)) * 2 ** (32 - p));
+  let m;
+  if ((m = /usable host addresses are in \S+\/(\d+)/.exec(q))) return String(2 ** (32 - +m[1]) - 2);
+  if ((m = /network address of (\S+)\/(\d+)/.exec(q))) return net(m[1], +m[2]);
+  if ((m = /broadcast address of (\S+)\/(\d+)/.exec(q))) return toIp(toInt(net(m[1], +m[2])) + 2 ** (32 - +m[2]) - 1);
+  m = /\/(\d+)[\s\S]*Host A: (\S+)\nHost B: (\S+)/.exec(q); return net(m[2], +m[1]) === net(m[3], +m[1]) ? 'yes' : 'no';
+};
+for (const id of ['subnet-hosts', 'subnet-network', 'subnet-broadcast', 'subnet-same']) NET[id] = sh => calc(out(sh, 'cat ~/question.txt'));
+
+test('every networking level is solvable with real commands', () => {
+  assert.deepEqual(Object.keys(NET).sort(), NET_LEVELS.map(l => l.id).sort());
+  for (let round = 0; round < 5; round++) for (const level of NET_LEVELS) {
+    const sh = new Shell(); let won = false; sh.onWin = () => { won = true; }; sh.load(level, []);
+    const answer = NET[level.id](sh); assert.ok(answer, `${level.id}: no answer`); sh.run('submit ' + answer); assert.ok(won, `${level.id} not solved with ${answer}`);
+  }
+});
+
+test('network commands fail like the real ones', () => {
+  const sh = new Shell(); sh.load(NET_LEVELS[0], []);
+  assert.match(sh.run('ping nowhere.example').err.join(''), /Name or service not known/);
+  assert.match(sh.run('curl http://nowhere.example').err.join(''), /Could not resolve host/);
+  assert.match(out(sh, 'man dig'), /DNS/);
+});
+
+test('unmatched glob and find patterns return shell errors', () => {
+  const sh = new Shell();
+  assert.doesNotThrow(() => sh.run('ls ['));
+  assert.doesNotThrow(() => sh.run('find /etc -name "["'));
+});
+
+test('self calling scripts stop at a depth limit', () => {
+  const sh = new Shell();
+  sh.run('echo "./loop.sh" > ~/loop.sh && chmod +x ~/loop.sh');
+  const r = sh.run('~/loop.sh');
+  assert.match(r.err.join('\n'), /recursion|depth|level/i);
+  assert.notEqual(r.code, 0);
+});
+
+test('mv rejects moving a directory into itself', () => {
+  const sh = new Shell(); sh.run('mkdir -p ~/m/sub');
+  const r = sh.run('mv ~/m ~/m/sub');
+  assert.match(r.err.join('\n'), /subdirectory of itself/);
+  assert.match(out(sh, 'ls ~/m'), /sub/);
+});
+
+test('root chmod can lock and level reload restores the lab filesystem', () => {
+  const sh = new Shell(); sh.load(LEVELS[0], []);
+  assert.equal(sh.run('sudo chmod 000 /').code, 0);
+  assert.match(sh.run('ls /').err.join('\n'), /Permission denied/);
+  sh.load(LEVELS[0], []);
+  assert.equal(sh.run('ls /').code, 0);
+});

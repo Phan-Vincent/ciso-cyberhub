@@ -1,0 +1,2134 @@
+{
+"categories": {
+"basics": "Cyber basics",
+"net": "Networking",
+"linux": "Linux",
+"web": "Web security",
+"crypto": "Cryptography",
+"blue": "SOC & blue team",
+"red": "Ethical hacking",
+"ai": "AI security",
+"history": "Cyber history",
+"careers": "Careers",
+"cloud": "Cloud",
+"secplus": "Security+",
+"itnet": "Networking (Network+)",
+"aplus": "IT support (A+)"
+},
+"questions": [
+{
+"id": "basics-0",
+"cat": "basics",
+"level": 1,
+"q": "Which of these is the strongest password?",
+"choices": [
+"Password123!",
+"correct-horse-river-lamp-72",
+"Summer2026",
+"qwerty"
+],
+"answer": 1,
+"why": "Length beats complexity. A long passphrase of random words is far harder to guess than a short \"complex\" word."
+},
+{
+"id": "basics-1",
+"cat": "basics",
+"level": 1,
+"q": "An email says your account will be deleted in 1 hour unless you click a link. What is this most likely?",
+"choices": [
+"A real warning",
+"Phishing",
+"A software update",
+"Spam filter test"
+],
+"answer": 1,
+"why": "Urgency plus a link to \"fix\" a problem is the classic phishing pattern. Go to the site yourself instead of clicking."
+},
+{
+"id": "basics-2",
+"cat": "basics",
+"level": 1,
+"q": "What does MFA (multi-factor authentication) add to a password?",
+"choices": [
+"A longer password",
+"A second proof, like a code or security key",
+"Faster logins",
+"Encryption of your files"
+],
+"answer": 1,
+"why": "MFA asks for something else you have or are, so a stolen password alone is not enough."
+},
+{
+"id": "basics-3",
+"cat": "basics",
+"level": 1,
+"q": "What is malware?",
+"choices": [
+"Software made to harm or misuse a device",
+"A broken charger",
+"Any free app",
+"A slow internet connection"
+],
+"answer": 0,
+"why": "Malware is malicious software: viruses, worms, ransomware, spyware and more."
+},
+{
+"id": "basics-4",
+"cat": "basics",
+"level": 1,
+"q": "Ransomware usually…",
+"choices": [
+"Speeds up your computer",
+"Encrypts your files and demands payment",
+"Deletes spam",
+"Updates your apps"
+],
+"answer": 1,
+"why": "Ransomware locks data with encryption and demands a ransom, and often steals data first."
+},
+{
+"id": "basics-5",
+"cat": "basics",
+"level": 1,
+"q": "Why should you install software updates promptly?",
+"choices": [
+"They change the wallpaper",
+"They often fix security holes attackers already know about",
+"They free up storage",
+"They are required by law"
+],
+"answer": 1,
+"why": "Many updates patch vulnerabilities that are publicly known and actively exploited."
+},
+{
+"id": "basics-6",
+"cat": "basics",
+"level": 1,
+"q": "A stranger asks for your login code \"to verify your account\". You should…",
+"choices": [
+"Give it if they sound official",
+"Never share it",
+"Share half of it",
+"Post it in a group chat"
+],
+"answer": 1,
+"why": "Legitimate companies never ask for your one-time codes. Sharing one hands over your account."
+},
+{
+"id": "basics-7",
+"cat": "basics",
+"level": 1,
+"q": "What does the padlock icon next to a web address mean?",
+"choices": [
+"The site is safe and honest",
+"The connection to the site is encrypted",
+"The site is government-run",
+"You are logged in"
+],
+"answer": 1,
+"why": "HTTPS only encrypts the connection. A phishing site can have a padlock too."
+},
+{
+"id": "basics-8",
+"cat": "basics",
+"level": 1,
+"q": "Which is safest on public Wi-Fi at a café?",
+"choices": [
+"Online banking without a VPN",
+"Turning off updates",
+"Using sites with HTTPS and avoiding sensitive tasks",
+"Sharing files with everyone"
+],
+"answer": 2,
+"why": "Public networks can be watched. Prefer HTTPS, a trusted VPN, or wait for a network you trust."
+},
+{
+"id": "basics-9",
+"cat": "basics",
+"level": 1,
+"q": "What is a \"patch\"?",
+"choices": [
+"A sticker for laptops",
+"A software fix",
+"A type of virus",
+"A network cable"
+],
+"answer": 1,
+"why": "A patch is an update that fixes bugs, including security vulnerabilities."
+},
+{
+"id": "basics-10",
+"cat": "basics",
+"level": 2,
+"q": "What is social engineering?",
+"choices": [
+"Building social media apps",
+"Manipulating people into giving access or information",
+"Engineering for social good",
+"Fixing networks"
+],
+"answer": 1,
+"why": "Attackers target people, not just computers: phishing, pretexting, tailgating and phone scams."
+},
+{
+"id": "basics-11",
+"cat": "basics",
+"level": 2,
+"q": "The CIA triad in security stands for…",
+"choices": [
+"Confidentiality, Integrity, Availability",
+"Control, Inspect, Alert",
+"Cyber, Intelligence, Agency",
+"Code, Install, Audit"
+],
+"answer": 0,
+"why": "Confidentiality (only the right people see it), Integrity (it is not altered), Availability (it works when needed)."
+},
+{
+"id": "net-12",
+"cat": "net",
+"level": 1,
+"q": "What does an IP address identify?",
+"choices": [
+"A website's owner",
+"A device (interface) on a network",
+"Your password",
+"Your email"
+],
+"answer": 1,
+"why": "An IP address is the network address of a device interface, used to route traffic to it."
+},
+{
+"id": "net-13",
+"cat": "net",
+"level": 1,
+"q": "What does DNS do?",
+"choices": [
+"Encrypts traffic",
+"Turns names like example.com into IP addresses",
+"Blocks viruses",
+"Speeds up Wi-Fi"
+],
+"answer": 1,
+"why": "DNS is the internet's phone book: it resolves names to addresses."
+},
+{
+"id": "net-14",
+"cat": "net",
+"level": 1,
+"q": "Which port does HTTPS use by default?",
+"choices": [
+"21",
+"22",
+"80",
+"443"
+],
+"answer": 3,
+"why": "HTTPS uses TCP 443. HTTP is 80, SSH is 22 and FTP is 21."
+},
+{
+"id": "net-15",
+"cat": "net",
+"level": 2,
+"q": "Which port does SSH use by default?",
+"choices": [
+"22",
+"23",
+"25",
+"3389"
+],
+"answer": 0,
+"why": "SSH uses TCP 22. Telnet is 23, SMTP is 25 and RDP is 3389."
+},
+{
+"id": "net-16",
+"cat": "net",
+"level": 2,
+"q": "How many usable hosts are in a /24 IPv4 subnet?",
+"choices": [
+"256",
+"255",
+"254",
+"128"
+],
+"answer": 2,
+"why": "A /24 has 256 addresses; the network and broadcast addresses are reserved, leaving 254."
+},
+{
+"id": "net-17",
+"cat": "net",
+"level": 2,
+"q": "Which protocol is connectionless and does not guarantee delivery?",
+"choices": [
+"TCP",
+"UDP",
+"SSH",
+"TLS"
+],
+"answer": 1,
+"why": "UDP sends datagrams without a handshake or retransmission. TCP is connection-oriented and reliable."
+},
+{
+"id": "net-18",
+"cat": "net",
+"level": 2,
+"q": "What does a default gateway do?",
+"choices": [
+"Assigns IP addresses",
+"Forwards traffic to other networks",
+"Resolves names",
+"Stores passwords"
+],
+"answer": 1,
+"why": "The gateway is the router your device sends traffic to when the destination is not on the local subnet."
+},
+{
+"id": "net-19",
+"cat": "net",
+"level": 2,
+"q": "Which tool shows each router hop on the path to a host?",
+"choices": [
+"ping",
+"traceroute",
+"dig",
+"ssh"
+],
+"answer": 1,
+"why": "traceroute (tracert on Windows) lists the hops and where the path stops responding."
+},
+{
+"id": "net-20",
+"cat": "net",
+"level": 3,
+"q": "What is the network address of 192.168.10.77/27?",
+"choices": [
+"192.168.10.64",
+"192.168.10.72",
+"192.168.10.0",
+"192.168.10.96"
+],
+"answer": 0,
+"why": "A /27 is a block of 32. 77 falls in the block starting at 64."
+},
+{
+"id": "net-21",
+"cat": "net",
+"level": 3,
+"q": "A TCP three-way handshake is…",
+"choices": [
+"SYN, SYN-ACK, ACK",
+"SYN, ACK, FIN",
+"ACK, SYN, RST",
+"HELLO, KEY, DONE"
+],
+"answer": 0,
+"why": "The client sends SYN, the server answers SYN-ACK, and the client confirms with ACK."
+},
+{
+"id": "net-22",
+"cat": "net",
+"level": 3,
+"q": "Which DNS record type lists a domain's mail servers?",
+"choices": [
+"A",
+"CNAME",
+"MX",
+"TXT"
+],
+"answer": 2,
+"why": "MX records name mail servers with a preference number; the lowest is tried first."
+},
+{
+"id": "net-23",
+"cat": "net",
+"level": 3,
+"q": "Why is network segmentation a security control?",
+"choices": [
+"It speeds up downloads",
+"It limits how far an attacker can move after a breach",
+"It replaces passwords",
+"It encrypts traffic"
+],
+"answer": 1,
+"why": "Separate zones with filtered connections stop one compromised device from reaching everything."
+},
+{
+"id": "linux-24",
+"cat": "linux",
+"level": 1,
+"q": "Which Linux command prints the current directory?",
+"choices": [
+"ls",
+"pwd",
+"cd",
+"whoami"
+],
+"answer": 1,
+"why": "pwd prints the working directory."
+},
+{
+"id": "linux-25",
+"cat": "linux",
+"level": 1,
+"q": "Which command lists files in a directory?",
+"choices": [
+"ls",
+"cat",
+"rm",
+"mv"
+],
+"answer": 0,
+"why": "ls lists directory contents; ls -la also shows hidden files and permissions."
+},
+{
+"id": "linux-26",
+"cat": "linux",
+"level": 2,
+"q": "Which command searches for text inside files?",
+"choices": [
+"find",
+"grep",
+"sort",
+"touch"
+],
+"answer": 1,
+"why": "grep searches file contents for a pattern; find searches for files by name and other properties."
+},
+{
+"id": "linux-27",
+"cat": "linux",
+"level": 2,
+"q": "What does chmod 600 key.pem do?",
+"choices": [
+"Everyone can read it",
+"Only the owner can read and write it",
+"Makes it executable for all",
+"Deletes it"
+],
+"answer": 1,
+"why": "6 = read + write for the owner; 0 for group and others. SSH requires private keys to be this strict."
+},
+{
+"id": "linux-28",
+"cat": "linux",
+"level": 2,
+"q": "In Linux, which account has full control of the system?",
+"choices": [
+"admin",
+"root",
+"system",
+"super"
+],
+"answer": 1,
+"why": "root (user ID 0) can do anything. sudo runs a single command as root."
+},
+{
+"id": "linux-29",
+"cat": "linux",
+"level": 2,
+"q": "Which file lists user accounts on Linux?",
+"choices": [
+"/etc/shadow",
+"/etc/passwd",
+"/var/log/auth.log",
+"/home/users"
+],
+"answer": 1,
+"why": "/etc/passwd lists accounts; password hashes live in /etc/shadow, readable only by root."
+},
+{
+"id": "linux-30",
+"cat": "linux",
+"level": 3,
+"q": "Which command counts failed SSH logins in auth.log?",
+"choices": [
+"grep \"Failed password\" /var/log/auth.log | wc -l",
+"cat auth.log > wc",
+"ls -l | grep failed",
+"find / -name failed"
+],
+"answer": 0,
+"why": "grep filters matching lines and wc -l counts them: a pipeline answer in seconds."
+},
+{
+"id": "linux-31",
+"cat": "linux",
+"level": 3,
+"q": "Which log on Ubuntu records SSH logins and sudo use?",
+"choices": [
+"/var/log/syslog",
+"/var/log/auth.log",
+"/var/log/kern.log",
+"/var/log/dpkg.log"
+],
+"answer": 1,
+"why": "auth.log records authentication events, including SSH and sudo. RHEL-family systems use /var/log/secure."
+},
+{
+"id": "linux-32",
+"cat": "linux",
+"level": 3,
+"q": "What does \"ss -tlnp\" show?",
+"choices": [
+"Running processes",
+"Listening TCP ports and their processes",
+"Disk usage",
+"Logged-in users"
+],
+"answer": 1,
+"why": "t = TCP, l = listening, n = numeric, p = process. A quick backdoor check."
+},
+{
+"id": "web-33",
+"cat": "web",
+"level": 1,
+"q": "What does a cookie on a website usually store?",
+"choices": [
+"Your computer's files",
+"Small pieces of data such as a session ID",
+"Your Wi-Fi password",
+"Viruses"
+],
+"answer": 1,
+"why": "Cookies store small values, often a session identifier that keeps you logged in."
+},
+{
+"id": "web-34",
+"cat": "web",
+"level": 2,
+"q": "SQL injection happens when…",
+"choices": [
+"A database is too large",
+"User input is put into a database query without safe handling",
+"A server runs out of memory",
+"Passwords are too short"
+],
+"answer": 1,
+"why": "If input becomes part of the query, an attacker can change its logic. Parameterised queries prevent it."
+},
+{
+"id": "web-35",
+"cat": "web",
+"level": 2,
+"q": "Cross-site scripting (XSS) lets an attacker…",
+"choices": [
+"Run their script in other users' browsers on a site",
+"Read the server's hard drive directly",
+"Crash the network",
+"Change DNS records"
+],
+"answer": 0,
+"why": "XSS injects script into pages other users load. Output encoding and a Content Security Policy defend against it."
+},
+{
+"id": "web-36",
+"cat": "web",
+"level": 2,
+"q": "What is the OWASP Top 10?",
+"choices": [
+"A list of the top 10 hackers",
+"An awareness list of the most critical web application risks",
+"A firewall product",
+"A programming language"
+],
+"answer": 1,
+"why": "OWASP publishes the Top 10 web application security risks; Broken Access Control topped the 2021 list."
+},
+{
+"id": "web-37",
+"cat": "web",
+"level": 2,
+"q": "What is the best fix for SQL injection?",
+"choices": [
+"Hide the error messages",
+"Parameterised (prepared) queries",
+"Longer passwords",
+"A bigger server"
+],
+"answer": 1,
+"why": "Parameterised queries keep data separate from code, so input cannot change the query."
+},
+{
+"id": "web-38",
+"cat": "web",
+"level": 3,
+"q": "A user changes /invoice?id=1001 to id=1002 and sees someone else's invoice. What is this?",
+"choices": [
+"XSS",
+"Broken access control (IDOR)",
+"CSRF",
+"DNS spoofing"
+],
+"answer": 1,
+"why": "An Insecure Direct Object Reference: the server does not check that the user owns the object."
+},
+{
+"id": "web-39",
+"cat": "web",
+"level": 3,
+"q": "Which HTTP response header helps stop XSS by limiting where scripts load from?",
+"choices": [
+"Content-Security-Policy",
+"Server",
+"Cache-Control",
+"Content-Length"
+],
+"answer": 0,
+"why": "CSP tells the browser which sources of scripts and other content are allowed. CyberHub itself uses a strict CSP."
+},
+{
+"id": "web-40",
+"cat": "web",
+"level": 3,
+"q": "What does CSRF trick a logged-in user's browser into doing?",
+"choices": [
+"Downloading malware",
+"Sending an unwanted request to a site where they are logged in",
+"Revealing their IP",
+"Disabling HTTPS"
+],
+"answer": 1,
+"why": "Cross-site request forgery rides on existing cookies. Anti-CSRF tokens and SameSite cookies prevent it."
+},
+{
+"id": "crypto-41",
+"cat": "crypto",
+"level": 1,
+"q": "Encryption turns readable data into…",
+"choices": [
+"Compressed data",
+"Unreadable ciphertext without the key",
+"Deleted data",
+"A backup"
+],
+"answer": 1,
+"why": "Only someone with the right key can turn ciphertext back into plaintext."
+},
+{
+"id": "crypto-42",
+"cat": "crypto",
+"level": 2,
+"q": "What is the main difference between hashing and encryption?",
+"choices": [
+"Hashing is one-way; encryption can be reversed with a key",
+"They are the same",
+"Encryption is one-way",
+"Hashing needs a key to reverse"
+],
+"answer": 0,
+"why": "Hashes are fingerprints you cannot reverse; encryption is designed to be decrypted by key holders."
+},
+{
+"id": "crypto-43",
+"cat": "crypto",
+"level": 2,
+"q": "Why do password systems add a \"salt\" before hashing?",
+"choices": [
+"To make hashes shorter",
+"So identical passwords get different hashes and precomputed tables fail",
+"To encrypt the password",
+"To make login faster"
+],
+"answer": 1,
+"why": "A unique salt per password defeats rainbow tables and hides users who share a password."
+},
+{
+"id": "crypto-44",
+"cat": "crypto",
+"level": 2,
+"q": "In public-key cryptography, what do you share with others?",
+"choices": [
+"Your private key",
+"Your public key",
+"Both keys",
+"Neither"
+],
+"answer": 1,
+"why": "The public key is shared; the private key never leaves you."
+},
+{
+"id": "crypto-45",
+"cat": "crypto",
+"level": 3,
+"q": "Which algorithm is designed for storing passwords?",
+"choices": [
+"MD5",
+"SHA-1",
+"Argon2",
+"Base64"
+],
+"answer": 2,
+"why": "Argon2, bcrypt and scrypt are deliberately slow and salted. MD5/SHA-1 are fast hashes, and Base64 is just encoding."
+},
+{
+"id": "crypto-46",
+"cat": "crypto",
+"level": 3,
+"q": "Base64 is…",
+"choices": [
+"Strong encryption",
+"An encoding anyone can reverse",
+"A hash function",
+"A key exchange"
+],
+"answer": 1,
+"why": "Base64 only re-represents bytes as text. It provides no secrecy."
+},
+{
+"id": "crypto-47",
+"cat": "crypto",
+"level": 3,
+"q": "What does a digital signature prove?",
+"choices": [
+"The message is secret",
+"Who signed it and that it was not changed",
+"The sender's location",
+"That it was compressed"
+],
+"answer": 1,
+"why": "Signatures give integrity and authenticity, because only the private key holder can sign."
+},
+{
+"id": "crypto-48",
+"cat": "crypto",
+"level": 3,
+"q": "Which TLS version should modern servers prefer?",
+"choices": [
+"SSL 3.0",
+"TLS 1.0",
+"TLS 1.1",
+"TLS 1.3"
+],
+"answer": 3,
+"why": "TLS 1.3 is current; SSL 3.0, TLS 1.0 and 1.1 are deprecated."
+},
+{
+"id": "blue-49",
+"cat": "blue",
+"level": 1,
+"q": "What does a SOC (Security Operations Center) do?",
+"choices": [
+"Builds websites",
+"Monitors, detects and responds to security events",
+"Sells antivirus",
+"Repairs laptops"
+],
+"answer": 1,
+"why": "SOC analysts watch alerts, investigate and coordinate responses, often around the clock."
+},
+{
+"id": "blue-50",
+"cat": "blue",
+"level": 2,
+"q": "What is a SIEM?",
+"choices": [
+"A firewall",
+"A system that collects and correlates logs and alerts",
+"A virus",
+"A password manager"
+],
+"answer": 1,
+"why": "Security Information and Event Management tools such as Splunk, Elastic and Sentinel centralise logs for searching and detection."
+},
+{
+"id": "blue-51",
+"cat": "blue",
+"level": 2,
+"q": "A false positive is…",
+"choices": [
+"An attack nobody noticed",
+"An alert that fired on harmless activity",
+"A successful backup",
+"A patched system"
+],
+"answer": 1,
+"why": "Tuning detections to cut false positives keeps analysts focused on real threats."
+},
+{
+"id": "blue-52",
+"cat": "blue",
+"level": 2,
+"q": "Which Windows Event ID records a failed logon?",
+"choices": [
+"4624",
+"4625",
+"4688",
+"1102"
+],
+"answer": 1,
+"why": "4625 is a failed logon, 4624 a successful one, 4688 a new process, and 1102 means the audit log was cleared."
+},
+{
+"id": "blue-53",
+"cat": "blue",
+"level": 2,
+"q": "What is the first goal after confirming an active intrusion?",
+"choices": [
+"Delete all logs",
+"Contain it to stop the spread",
+"Post about it publicly",
+"Reinstall everything immediately"
+],
+"answer": 1,
+"why": "Containment limits damage while you preserve evidence and plan eradication and recovery."
+},
+{
+"id": "blue-54",
+"cat": "blue",
+"level": 3,
+"q": "Windows Event ID 1102 means…",
+"choices": [
+"A user logged in",
+"The security audit log was cleared",
+"A service started",
+"A file was printed"
+],
+"answer": 1,
+"why": "Clearing the security log is a classic way to cover tracks, so it is high priority."
+},
+{
+"id": "blue-55",
+"cat": "blue",
+"level": 3,
+"q": "What is EDR?",
+"choices": [
+"Email Delivery Relay",
+"Endpoint Detection and Response",
+"Encrypted Data Repository",
+"External DNS Resolver"
+],
+"answer": 1,
+"why": "EDR records endpoint behaviour, detects threats and can isolate hosts remotely."
+},
+{
+"id": "blue-56",
+"cat": "blue",
+"level": 3,
+"q": "MITRE ATT&CK is…",
+"choices": [
+"A malware family",
+"A knowledge base of adversary tactics and techniques",
+"A vulnerability scanner",
+"A US law"
+],
+"answer": 1,
+"why": "ATT&CK maps real attacker behaviour, so defenders can measure detection coverage."
+},
+{
+"id": "blue-57",
+"cat": "blue",
+"level": 3,
+"q": "What does a YARA rule do?",
+"choices": [
+"Blocks network ports",
+"Matches files or memory against patterns to identify malware",
+"Encrypts disks",
+"Resets passwords"
+],
+"answer": 1,
+"why": "YARA rules describe text, byte and condition patterns used to classify malware."
+},
+{
+"id": "blue-58",
+"cat": "blue",
+"level": 3,
+"q": "In incident response, what comes right after containment?",
+"choices": [
+"Lessons learned",
+"Eradication",
+"Preparation",
+"Detection"
+],
+"answer": 1,
+"why": "NIST's lifecycle: preparation, detection and analysis, then containment, eradication and recovery, then post-incident activity."
+},
+{
+"id": "red-59",
+"cat": "red",
+"level": 1,
+"q": "What makes hacking \"ethical\"?",
+"choices": [
+"Using only free tools",
+"Having written permission and staying within scope",
+"Working at night",
+"Not telling anyone"
+],
+"answer": 1,
+"why": "Authorisation and scope separate penetration testing from crime."
+},
+{
+"id": "red-60",
+"cat": "red",
+"level": 2,
+"q": "What does Nmap mainly do?",
+"choices": [
+"Edit photos",
+"Discover hosts and open ports",
+"Crack Wi-Fi",
+"Write malware"
+],
+"answer": 1,
+"why": "Nmap is the standard network discovery and port-scanning tool. Only scan systems you are allowed to test."
+},
+{
+"id": "red-61",
+"cat": "red",
+"level": 2,
+"q": "What is \"privilege escalation\"?",
+"choices": [
+"Getting a raise",
+"Gaining higher permissions than you were given",
+"Encrypting files",
+"Logging out"
+],
+"answer": 1,
+"why": "Moving from a normal user to admin or root is a key step in most attacks."
+},
+{
+"id": "red-62",
+"cat": "red",
+"level": 2,
+"q": "A \"zero-day\" vulnerability is…",
+"choices": [
+"Fixed on day zero",
+"Unknown to the vendor, or with no patch yet",
+"A bug that does nothing",
+"Found only on Mondays"
+],
+"answer": 1,
+"why": "Defenders have had zero days to patch it."
+},
+{
+"id": "red-63",
+"cat": "red",
+"level": 2,
+"q": "What is OSINT?",
+"choices": [
+"Open-source intelligence from public information",
+"An operating system",
+"A Wi-Fi standard",
+"A firewall rule"
+],
+"answer": 0,
+"why": "Public websites, social media, DNS and job posts tell attackers, and defenders, a lot."
+},
+{
+"id": "red-64",
+"cat": "red",
+"level": 3,
+"q": "A reverse shell is when…",
+"choices": [
+"The attacker's machine connects to the victim",
+"The victim machine connects out to the attacker, giving them a shell",
+"A shell runs backwards",
+"SSH is disabled"
+],
+"answer": 1,
+"why": "Outbound connections often pass firewalls, so attackers make the victim call home."
+},
+{
+"id": "red-65",
+"cat": "red",
+"level": 3,
+"q": "What is lateral movement?",
+"choices": [
+"Moving offices",
+"Using a foothold to reach other systems in the network",
+"Changing IP addresses",
+"Scrolling sideways"
+],
+"answer": 1,
+"why": "Attackers pivot with stolen credentials and remote tools. Segmentation and monitoring slow them down."
+},
+{
+"id": "red-66",
+"cat": "red",
+"level": 3,
+"q": "Which deliverable matters most at the end of a penetration test?",
+"choices": [
+"A screenshot of a shell",
+"A clear report with findings, risk and fixes",
+"Deleted logs",
+"A new password"
+],
+"answer": 1,
+"why": "Clients pay for actionable findings. CPTC scores reports and presentations for this reason."
+},
+{
+"id": "ai-67",
+"cat": "ai",
+"level": 1,
+"q": "What is a \"prompt\" in AI?",
+"choices": [
+"A virus",
+"The instructions or question you give the model",
+"The AI's memory chip",
+"A type of password"
+],
+"answer": 1,
+"why": "The prompt is the text (and files) that tells the model what to do."
+},
+{
+"id": "ai-68",
+"cat": "ai",
+"level": 1,
+"q": "Why should you check AI answers before trusting them?",
+"choices": [
+"AI never makes mistakes",
+"AI can state wrong things confidently (\"hallucinate\")",
+"It is illegal not to",
+"AI answers expire"
+],
+"answer": 1,
+"why": "Language models can produce fluent but false answers. Verify important facts against sources."
+},
+{
+"id": "ai-69",
+"cat": "ai",
+"level": 2,
+"q": "What is prompt injection?",
+"choices": [
+"Speeding up AI",
+"Hidden or malicious instructions that make a model ignore its rules",
+"Injecting code into a GPU",
+"A way to train models"
+],
+"answer": 1,
+"why": "Prompt injection is #1 on the OWASP Top 10 for LLM applications."
+},
+{
+"id": "ai-70",
+"cat": "ai",
+"level": 2,
+"q": "Indirect prompt injection comes from…",
+"choices": [
+"The user's own question",
+"Content the AI reads, like a web page or email, containing instructions",
+"The AI vendor",
+"The GPU"
+],
+"answer": 1,
+"why": "If an AI agent reads attacker-controlled content, that content can try to give it orders."
+},
+{
+"id": "ai-71",
+"cat": "ai",
+"level": 2,
+"q": "Should you paste company secrets or customer data into a public AI chatbot?",
+"choices": [
+"Yes, always",
+"Only if your organisation's policy and the tool's data terms allow it",
+"Yes, if you delete the chat",
+"Only on weekends"
+],
+"answer": 1,
+"why": "Follow your organisation's AI policy; some tools may keep or train on inputs."
+},
+{
+"id": "ai-72",
+"cat": "ai",
+"level": 2,
+"q": "What is a \"jailbreak\" for an AI model?",
+"choices": [
+"Repairing the AI",
+"A prompt designed to bypass the model's safety rules",
+"Updating the model",
+"Unlocking a phone"
+],
+"answer": 1,
+"why": "Jailbreaks try to make models do things they are built to refuse."
+},
+{
+"id": "ai-73",
+"cat": "ai",
+"level": 3,
+"q": "An AI agent can read email and send messages. What is the safest design?",
+"choices": [
+"Give it all permissions",
+"Least privilege, plus human approval for risky actions",
+"Let it act on any instruction it reads",
+"Turn off logging"
+],
+"answer": 1,
+"why": "Limit tools and permissions, treat everything the agent reads as untrusted data, and keep a human in the loop."
+},
+{
+"id": "ai-74",
+"cat": "ai",
+"level": 3,
+"q": "What is training-data poisoning?",
+"choices": [
+"Deleting the dataset",
+"Inserting malicious or misleading data so the model learns bad behaviour",
+"Overheating GPUs",
+"Encrypting the model"
+],
+"answer": 1,
+"why": "Poisoned data can plant backdoors or bias. Data provenance and validation are defences."
+},
+{
+"id": "ai-75",
+"cat": "ai",
+"level": 3,
+"q": "Which framework catalogs attacks against AI systems, in the style of ATT&CK?",
+"choices": [
+"MITRE ATLAS",
+"OWASP ZAP",
+"NIST 800-53",
+"PCI DSS"
+],
+"answer": 0,
+"why": "MITRE ATLAS documents adversarial tactics and techniques against machine learning systems."
+},
+{
+"id": "ai-76",
+"cat": "ai",
+"level": 3,
+"q": "\"Insecure output handling\" in an LLM app means…",
+"choices": [
+"The AI talks too much",
+"Using model output directly in code, SQL or HTML without validation",
+"Logging outputs",
+"Showing output to users"
+],
+"answer": 1,
+"why": "Treat model output as untrusted input, or you inherit injection bugs."
+},
+{
+"id": "history-77",
+"cat": "history",
+"level": 1,
+"q": "In 1947, Harvard Mark II operators logged the \"first actual case of bug being found\". What was it?",
+"choices": [
+"A moth",
+"A spider",
+"A beetle",
+"A worm"
+],
+"answer": 0,
+"why": "A moth stuck in a relay. Engineers already called faults \"bugs\"; the joke was that this one was a real insect. The logbook page is at the Smithsonian."
+},
+{
+"id": "history-78",
+"cat": "history",
+"level": 2,
+"q": "The Morris worm (1988) led to the creation of…",
+"choices": [
+"The first antivirus",
+"The first CERT incident response team",
+"The World Wide Web",
+"Bitcoin"
+],
+"answer": 1,
+"why": "CERT/CC was created at Carnegie Mellon in response."
+},
+{
+"id": "history-79",
+"cat": "history",
+"level": 2,
+"q": "Stuxnet targeted…",
+"choices": [
+"Banks",
+"Iranian uranium enrichment centrifuges",
+"Social media",
+"Hospitals"
+],
+"answer": 1,
+"why": "Stuxnet reprogrammed Siemens PLCs to damage centrifuges, an early cyberweapon against physical systems."
+},
+{
+"id": "history-80",
+"cat": "history",
+"level": 2,
+"q": "WannaCry (2017) spread using an exploit for…",
+"choices": [
+"Wi-Fi",
+"SMBv1 on unpatched Windows",
+"Bluetooth",
+"USB drives only"
+],
+"answer": 1,
+"why": "EternalBlue targeted SMBv1. Microsoft had released a patch two months earlier."
+},
+{
+"id": "history-81",
+"cat": "history",
+"level": 2,
+"q": "The ILOVEYOU worm (2000) spread mainly through…",
+"choices": [
+"Email attachments",
+"USB drives",
+"Text messages",
+"Fax"
+],
+"answer": 0,
+"why": "A love-letter email with a script attachment mailed itself to everyone in the victim's address book."
+},
+{
+"id": "history-82",
+"cat": "history",
+"level": 3,
+"q": "The 2015 attack on Ukraine's grid was notable because…",
+"choices": [
+"It was the first confirmed cyberattack to cause a blackout",
+"It used no computers",
+"It targeted only phones",
+"It was an accident"
+],
+"answer": 0,
+"why": "Attackers remotely opened breakers, cutting power to about 225,000 customers."
+},
+{
+"id": "history-83",
+"cat": "history",
+"level": 3,
+"q": "The SolarWinds compromise (2020) was a…",
+"choices": [
+"Phishing campaign",
+"Software supply-chain attack",
+"DDoS attack",
+"Physical break-in"
+],
+"answer": 1,
+"why": "A backdoored update of the Orion IT-monitoring software reached thousands of customers."
+},
+{
+"id": "history-84",
+"cat": "history",
+"level": 3,
+"q": "The 2024 xz Utils backdoor was caught because…",
+"choices": [
+"An antivirus flagged it",
+"An engineer noticed SSH logins were slightly slow",
+"The attacker confessed",
+"A firewall blocked it"
+],
+"answer": 1,
+"why": "Andres Freund investigated a half-second delay and found a backdoor planted by a long-trusted contributor."
+},
+{
+"id": "careers-85",
+"cat": "careers",
+"level": 1,
+"q": "Which entry-level certification is widely used for security jobs, including many US government roles?",
+"choices": [
+"CompTIA Security+",
+"CISSP",
+"OSCP",
+"CCIE"
+],
+"answer": 0,
+"why": "Security+ meets DoD 8140 requirements for many roles. CISSP needs years of experience."
+},
+{
+"id": "careers-86",
+"cat": "careers",
+"level": 2,
+"q": "What is the NICE Framework?",
+"choices": [
+"A US framework describing cybersecurity work roles, tasks and skills",
+"A coding style",
+"A firewall brand",
+"A competition"
+],
+"answer": 0,
+"why": "NIST's NICE Workforce Framework defines work roles and the knowledge and skills they need."
+},
+{
+"id": "careers-87",
+"cat": "careers",
+"level": 2,
+"q": "Which competition has students defend a business network against a live red team?",
+"choices": [
+"CCDC",
+"picoCTF",
+"NCL Individual Game",
+"Hackathon"
+],
+"answer": 0,
+"why": "The Collegiate Cyber Defense Competition is blue-team defence with business injects."
+},
+{
+"id": "careers-88",
+"cat": "careers",
+"level": 2,
+"q": "What best helps an entry-level candidate stand out?",
+"choices": [
+"Listing every buzzword",
+"Hands-on projects, labs and competitions they can explain",
+"A long objective statement",
+"A photo on the resume"
+],
+"answer": 1,
+"why": "Evidence of doing the work, like a home lab, CTFs or club projects, beats keywords."
+},
+{
+"id": "careers-89",
+"cat": "careers",
+"level": 3,
+"q": "A GRC analyst mainly works on…",
+"choices": [
+"Exploit development",
+"Governance, risk and compliance: policies, audits and risk assessments",
+"Network cabling",
+"Malware reversing"
+],
+"answer": 1,
+"why": "GRC connects security to business risk and regulations, and is a strong path for policy-minded students."
+},
+{
+"id": "careers-90",
+"cat": "careers",
+"level": 3,
+"q": "What does a detection engineer do?",
+"choices": [
+"Sells software",
+"Writes and tunes the rules that turn logs into alerts",
+"Repairs hardware",
+"Writes marketing"
+],
+"answer": 1,
+"why": "Detection engineers build and test detections, often as code mapped to MITRE ATT&CK."
+},
+{
+"id": "cloud-91",
+"cat": "cloud",
+"level": 1,
+"q": "What is \"the cloud\"?",
+"choices": [
+"Weather data",
+"Computing and storage services run in someone else's data centers over the internet",
+"A Wi-Fi brand",
+"A virus"
+],
+"answer": 1,
+"why": "Providers like AWS, Azure and Google Cloud rent out servers, storage and services."
+},
+{
+"id": "cloud-92",
+"cat": "cloud",
+"level": 2,
+"q": "In the shared responsibility model, who secures the data you put in the cloud?",
+"choices": [
+"Always the provider",
+"You, the customer",
+"Nobody",
+"The government"
+],
+"answer": 1,
+"why": "Providers secure the cloud itself; customers secure what they put in it, including configuration, identities and data."
+},
+{
+"id": "cloud-93",
+"cat": "cloud",
+"level": 2,
+"q": "A common cause of cloud data leaks is…",
+"choices": [
+"Too many backups",
+"Misconfigured public storage buckets",
+"Using MFA",
+"Strong passwords"
+],
+"answer": 1,
+"why": "Publicly readable storage and over-permissive access are frequent breach causes."
+},
+{
+"id": "cloud-94",
+"cat": "cloud",
+"level": 3,
+"q": "What is IAM in cloud security?",
+"choices": [
+"Internet Access Mode",
+"Identity and Access Management: who can do what to which resources",
+"An encryption algorithm",
+"A monitoring tool"
+],
+"answer": 1,
+"why": "IAM policies are the core cloud control. Least privilege applies to people and services."
+},
+{
+"id": "cloud-95",
+"cat": "cloud",
+"level": 3,
+"q": "Why are long-lived cloud access keys risky?",
+"choices": [
+"They expire too fast",
+"If leaked (for example in a Git repo), they give lasting access",
+"They are too long to type",
+"They slow down servers"
+],
+"answer": 1,
+"why": "Prefer short-lived credentials and roles; scan repositories for secrets with tools like Gitleaks."
+},
+{
+"id": "secplus-q-1-1",
+"cat": "secplus",
+"level": 3,
+"q": "A nightly report reveals unauthorized permission changes. What is its primary role?",
+"choices": [
+"Detective",
+"Preventive",
+"Deterrent",
+"Physical barrier"
+],
+"answer": 0,
+"why": "The report discovers an event after it occurs. It does not itself prevent the change."
+},
+{
+"id": "secplus-q-1-2",
+"cat": "secplus",
+"level": 3,
+"q": "A user signs in successfully but cannot edit a restricted record. Which mechanism denies the edit?",
+"choices": [
+"Hashing",
+"Authentication",
+"Compression",
+"Authorization"
+],
+"answer": 3,
+"why": "Authentication establishes identity; authorization evaluates whether that identity may perform this action."
+},
+{
+"id": "secplus-q-1-3",
+"cat": "secplus",
+"level": 3,
+"q": "Which preparation most directly reduces the risk of a failed remote access change?",
+"choices": [
+"A new asset logo",
+"An untested backup script",
+"A tested rollback path and console access",
+"A larger log-retention period"
+],
+"answer": 2,
+"why": "A recovery path must remain usable when the changed access method fails."
+},
+{
+"id": "secplus-q-1-4",
+"cat": "secplus",
+"level": 3,
+"q": "A download and its hash are replaced together on a compromised website. What additional control can authenticate the release?",
+"choices": [
+"Base64 encoding",
+"A signature checked against a separately trusted key",
+"A second hash on the same compromised page",
+"A shorter filename"
+],
+"answer": 1,
+"why": "A separately authenticated verification key changes the trust boundary. A hash alone does not identify its publisher."
+},
+{
+"id": "secplus-q-2-1",
+"cat": "secplus",
+"level": 3,
+"q": "A familiar malware family is found on a host. What is the strongest immediate conclusion?",
+"choices": [
+"The observed artifact warrants investigation; actor attribution remains uncertain",
+"A specific nation-state is proven responsible",
+"The system owner is the attacker",
+"Every host is compromised"
+],
+"answer": 0,
+"why": "Shared tooling alone does not establish actor identity or incident scope."
+},
+{
+"id": "secplus-q-2-2",
+"cat": "secplus",
+"level": 3,
+"q": "A known supplier emails new payment details. Which check best addresses mailbox compromise?",
+"choices": [
+"Trust the display name",
+"Reply asking whether the request is genuine",
+"Open the attachment first",
+"Confirm through a previously established independent contact method"
+],
+"answer": 3,
+"why": "An independent trusted channel can validate the request even if the mailbox is compromised."
+},
+{
+"id": "secplus-q-2-3",
+"cat": "secplus",
+"level": 3,
+"q": "A service checks a path and later opens it after an attacker replaces a symlink. What is the underlying weakness?",
+"choices": [
+"A hardware failure",
+"A DNS cache refresh",
+"A time-of-check/time-of-use race",
+"A hash collision"
+],
+"answer": 2,
+"why": "The checked filesystem object can differ from the object used later."
+},
+{
+"id": "secplus-q-2-4",
+"cat": "secplus",
+"level": 3,
+"q": "Many accounts each receive one failed attempt with the same candidate password. Which pattern is most consistent?",
+"choices": [
+"Backup replication",
+"Password spraying",
+"Disk encryption",
+"A single-account brute-force burst"
+],
+"answer": 1,
+"why": "Spraying spreads attempts across accounts, often to reduce per-account lockouts."
+},
+{
+"id": "secplus-q-2-5",
+"cat": "secplus",
+"level": 3,
+"q": "An appliance cannot be patched immediately. Which temporary response most directly reduces reachable attack surface?",
+"choices": [
+"Restrict its network paths and management access",
+"Rename the appliance",
+"Increase screen brightness",
+"Stop collecting logs"
+],
+"answer": 0,
+"why": "Reducing reachable paths can limit exposure while a supported replacement or patch is arranged."
+},
+{
+"id": "secplus-q-3-1",
+"cat": "secplus",
+"level": 3,
+"q": "A managed service is securely patched by its provider but its customer grants public read access. Who should correct that permission?",
+"choices": [
+"Only the physical datacenter operator",
+"The internet service provider",
+"No one because the service is managed",
+"The party controlling the customer access configuration"
+],
+"answer": 3,
+"why": "Managed infrastructure does not eliminate the customer configuration responsibilities."
+},
+{
+"id": "secplus-q-3-2",
+"cat": "secplus",
+"level": 3,
+"q": "A passive sensor connected to a mirrored port loses power. What is the direct consequence?",
+"choices": [
+"All identities are revoked",
+"Stored data is deleted",
+"Visibility is lost; the mirrored production path is not inherently blocked",
+"All production traffic must stop"
+],
+"answer": 2,
+"why": "A passive sensor is outside the forwarding path unless another control acts on its results."
+},
+{
+"id": "secplus-q-3-3",
+"cat": "secplus",
+"level": 3,
+"q": "A database is encrypted at rest, but a public API returns its records without access checks. What control is missing?",
+"choices": [
+"An additional screen lock",
+"Authorization at the data access boundary",
+"More disk encryption",
+"A new compression format"
+],
+"answer": 1,
+"why": "At-rest encryption does not govern what an application releases through an API."
+},
+{
+"id": "secplus-q-3-4",
+"cat": "secplus",
+"level": 3,
+"q": "A service must lose no more than two hours of data. Which objective expresses this requirement?",
+"choices": [
+"Recovery point objective",
+"Recovery time objective",
+"Mean time to repair",
+"Maximum password age"
+],
+"answer": 0,
+"why": "RPO concerns acceptable data loss measured in time; RTO concerns restoration time."
+},
+{
+"id": "secplus-q-4-1",
+"cat": "secplus",
+"level": 3,
+"q": "A hardened image is deployed once but later configuration changes go unobserved. What process is missing?",
+"choices": [
+"Initial image naming",
+"File compression",
+"A second desktop background",
+"Ongoing baseline drift detection"
+],
+"answer": 3,
+"why": "A secure baseline requires continued monitoring and managed exceptions after deployment."
+},
+{
+"id": "secplus-q-4-2",
+"cat": "secplus",
+"level": 3,
+"q": "A laptop is securely erased before disposal. What separate action may still be necessary?",
+"choices": [
+"Rename its old hostname",
+"Re-enable its guest account",
+"Revoke credentials and sessions that existed on it",
+"Increase its disk size"
+],
+"answer": 2,
+"why": "Erasing storage does not invalidate a copied credential or an independently active remote session."
+},
+{
+"id": "secplus-q-4-3",
+"cat": "secplus",
+"level": 3,
+"q": "Which source signal establishes that CISA has identified exploitation in the wild?",
+"choices": [
+"An EPSS percentile alone",
+"An entry in CISA KEV",
+"A high CVSS score alone",
+"A popular repository"
+],
+"answer": 1,
+"why": "KEV membership is the relevant exploitation evidence signal; severity and probability measure different things."
+},
+{
+"id": "secplus-q-4-4",
+"cat": "secplus",
+"level": 3,
+"q": "A dashboard shows zero authentication failures after its collector stops. What additional alert is needed?",
+"choices": [
+"A telemetry health or freshness alert",
+"A larger success counter",
+"A new account nickname",
+"A different chart color"
+],
+"answer": 0,
+"why": "Absence of events is not evidence of healthy systems when collection itself may have failed."
+},
+{
+"id": "secplus-q-4-5",
+"cat": "secplus",
+"level": 3,
+"q": "A broad allow rule precedes a narrow deny in a first-match firewall. Why does the deny fail?",
+"choices": [
+"Deny rules always have automatic priority",
+"DNS deletes the rule",
+"TCP ignores firewalls",
+"The earlier rule already accepts the traffic"
+],
+"answer": 3,
+"why": "First-match evaluation stops after the earlier applicable rule. Verify the platform’s actual rule semantics."
+},
+{
+"id": "secplus-q-4-6",
+"cat": "secplus",
+"level": 3,
+"q": "A member leaves, but a token they created still deploys the site. What was missed?",
+"choices": [
+"Public read access to documentation",
+"Browser zoom settings",
+"Service-credential ownership and revocation",
+"The site color scheme"
+],
+"answer": 2,
+"why": "Personal offboarding must consider persistent service credentials and sessions as separate access paths."
+},
+{
+"id": "secplus-q-4-7",
+"cat": "secplus",
+"level": 3,
+"q": "A job concatenates an RSS title into a shell command. What is the best design correction?",
+"choices": [
+"Trust feeds with popular publishers",
+"Keep the title as validated data and avoid shell interpolation",
+"Add more scheduled runs",
+"Shorten the title without validation"
+],
+"answer": 1,
+"why": "External text must not be interpreted as executable syntax, regardless of the source reputation."
+},
+{
+"id": "secplus-q-4-8",
+"cat": "secplus",
+"level": 3,
+"q": "A responder must choose between preserving memory and stopping active destructive activity. What should drive the decision?",
+"choices": [
+"Safety, ongoing impact and the authorized response plan",
+"Always preserve memory regardless of harm",
+"Always reinstall before collecting any notes",
+"The oldest checklist without context"
+],
+"answer": 0,
+"why": "Response decisions balance evidence preservation with immediate safety and damage reduction."
+},
+{
+"id": "secplus-q-4-9",
+"cat": "secplus",
+"level": 3,
+"q": "Two logs disagree by exactly one hour. What should be checked before asserting a sequence?",
+"choices": [
+"The document font",
+"The number of tabs in the file",
+"Whether both filenames are lowercase",
+"Timezone and clock assumptions"
+],
+"answer": 3,
+"why": "Timezone conversion and clock skew can create apparent ordering errors."
+},
+{
+"id": "secplus-q-5-1",
+"cat": "secplus",
+"level": 3,
+"q": "Which document most directly describes the steps to restore a service?",
+"choices": [
+"A risk appetite statement",
+"An organizational mission",
+"A restoration procedure",
+"A high-level acceptable-use policy"
+],
+"answer": 2,
+"why": "A procedure translates requirements into repeatable operational steps."
+},
+{
+"id": "secplus-q-5-2",
+"cat": "secplus",
+"level": 3,
+"q": "An organization buys insurance but still must patch its servers. Why?",
+"choices": [
+"A policy replaces every technical control",
+"Financial transfer does not eliminate the underlying exposure or all obligations",
+"Insurance automatically blocks every attack",
+"Patching is always optional after transfer"
+],
+"answer": 1,
+"why": "Insurance can transfer certain financial consequences while operational risk remains."
+},
+{
+"id": "secplus-q-5-3",
+"cat": "secplus",
+"level": 3,
+"q": "A supplier presents an audit report for a different product. What should the reviewer do?",
+"choices": [
+"Check scope and obtain evidence relevant to the actual service",
+"Treat the report as universal proof",
+"Ignore service boundaries",
+"Accept based only on logo recognition"
+],
+"answer": 0,
+"why": "Assurance evidence is meaningful only within its stated scope and period."
+},
+{
+"id": "secplus-q-5-4",
+"cat": "secplus",
+"level": 3,
+"q": "A team has a written access-review policy but no review records. What is missing?",
+"choices": [
+"A longer policy title",
+"A new icon",
+"A duplicate PDF of the policy",
+"Evidence that the control operated"
+],
+"answer": 3,
+"why": "Control design and control operation are different assurance questions."
+},
+{
+"id": "secplus-q-5-5",
+"cat": "secplus",
+"level": 3,
+"q": "A scoped test reveals a link to an unrelated external service. What is the appropriate action?",
+"choices": [
+"Reuse credentials on it without approval",
+"Expand scope silently",
+"Stop at the scope boundary and seek authorized clarification",
+"Test it because it is linked"
+],
+"answer": 2,
+"why": "A hyperlink or technical dependency does not grant permission to test another system."
+},
+{
+"id": "secplus-q-5-6",
+"cat": "secplus",
+"level": 3,
+"q": "Which metric best supports evaluating a reporting-focused awareness program?",
+"choices": [
+"The length of the policy document",
+"Time and quality of suspicious-message reports",
+"Only the number of slides shown",
+"Only the color of training badges"
+],
+"answer": 1,
+"why": "Reporting behavior and timeliness are closer to the intended security outcome than passive content counts."
+},
+{
+"id": "itnet-0",
+"cat": "itnet",
+"level": 1,
+"q": "Which port does DNS use?",
+"choices": [
+"25",
+"53",
+"80",
+"110"
+],
+"answer": 1,
+"why": "DNS uses port 53, mostly UDP."
+},
+{
+"id": "itnet-1",
+"cat": "itnet",
+"level": 1,
+"q": "Which device forwards traffic between different networks?",
+"choices": [
+"Switch",
+"Hub",
+"Router",
+"Access point"
+],
+"answer": 2,
+"why": "Routers work at layer 3 and forward between networks; switches forward within a network."
+},
+{
+"id": "itnet-2",
+"cat": "itnet",
+"level": 2,
+"q": "A PC has address 169.254.10.4. What is most likely wrong?",
+"choices": [
+"DNS is down",
+"It could not reach a DHCP server",
+"The cable is too long",
+"IPv6 is disabled"
+],
+"answer": 1,
+"why": "169.254.x.x is APIPA: the device gave itself an address because DHCP did not answer."
+},
+{
+"id": "itnet-3",
+"cat": "itnet",
+"level": 2,
+"q": "Which of these is a private IPv4 address?",
+"choices": [
+"172.20.4.9",
+"172.32.4.9",
+"8.8.8.8",
+"100.1.1.1"
+],
+"answer": 0,
+"why": "172.16.0.0/12 covers 172.16.0.0 to 172.31.255.255."
+},
+{
+"id": "itnet-4",
+"cat": "itnet",
+"level": 2,
+"q": "What does 802.1Q do?",
+"choices": [
+"Wireless encryption",
+"Tags VLANs on trunk links",
+"Power over Ethernet",
+"Port authentication"
+],
+"answer": 1,
+"why": "802.1Q adds a VLAN tag so one link can carry many VLANs."
+},
+{
+"id": "itnet-5",
+"cat": "itnet",
+"level": 2,
+"q": "Which protocol prevents switching loops?",
+"choices": [
+"STP",
+"OSPF",
+"DHCP",
+"ARP"
+],
+"answer": 0,
+"why": "Spanning Tree Protocol blocks redundant paths to stop loops and broadcast storms."
+},
+{
+"id": "itnet-6",
+"cat": "itnet",
+"level": 2,
+"q": "Maximum length of a Cat6 Ethernet run for standard use?",
+"choices": [
+"10 m",
+"55 m",
+"100 m",
+"500 m"
+],
+"answer": 2,
+"why": "Twisted-pair Ethernet is specified to 100 metres per run."
+},
+{
+"id": "itnet-7",
+"cat": "itnet",
+"level": 3,
+"q": "Which routing protocol is link-state?",
+"choices": [
+"RIP",
+"OSPF",
+"BGP",
+"Static routing"
+],
+"answer": 1,
+"why": "OSPF builds a full map of the network (link-state). RIP is distance-vector; BGP is path-vector."
+},
+{
+"id": "itnet-8",
+"cat": "itnet",
+"level": 3,
+"q": "Which DHCP message comes right after the client's Discover?",
+"choices": [
+"Request",
+"Acknowledge",
+"Offer",
+"Release"
+],
+"answer": 2,
+"why": "DORA: Discover, Offer, Request, Acknowledge."
+},
+{
+"id": "itnet-9",
+"cat": "itnet",
+"level": 3,
+"q": "Which Wi-Fi standard adds the 6 GHz band?",
+"choices": [
+"Wi-Fi 5",
+"Wi-Fi 6",
+"Wi-Fi 6E",
+"802.11n"
+],
+"answer": 2,
+"why": "Wi-Fi 6E extends Wi-Fi 6 (802.11ax) into 6 GHz."
+},
+{
+"id": "itnet-10",
+"cat": "itnet",
+"level": 3,
+"q": "Which port is RDP?",
+"choices": [
+"22",
+"443",
+"3389",
+"5900"
+],
+"answer": 2,
+"why": "Remote Desktop Protocol uses TCP 3389. Never expose it directly to the internet."
+},
+{
+"id": "aplus-11",
+"cat": "aplus",
+"level": 1,
+"q": "Which part stores data even when the computer is off?",
+"choices": [
+"RAM",
+"SSD",
+"CPU cache",
+"GPU"
+],
+"answer": 1,
+"why": "Storage like SSDs and hard drives is non-volatile; RAM is cleared at power-off."
+},
+{
+"id": "aplus-12",
+"cat": "aplus",
+"level": 1,
+"q": "What should you wear to prevent static damage inside a PC?",
+"choices": [
+"Rubber gloves",
+"An anti-static wrist strap",
+"Safety glasses",
+"Nothing"
+],
+"answer": 1,
+"why": "A grounded wrist strap equalises static charge so you do not zap components."
+},
+{
+"id": "aplus-13",
+"cat": "aplus",
+"level": 2,
+"q": "Which Windows command repairs corrupted system files?",
+"choices": [
+"ipconfig",
+"sfc /scannow",
+"gpupdate",
+"ping"
+],
+"answer": 1,
+"why": "System File Checker scans and replaces damaged Windows files."
+},
+{
+"id": "aplus-14",
+"cat": "aplus",
+"level": 2,
+"q": "Which RAID level mirrors two disks?",
+"choices": [
+"RAID 0",
+"RAID 1",
+"RAID 5",
+"RAID 10"
+],
+"answer": 1,
+"why": "RAID 1 writes the same data to both disks."
+},
+{
+"id": "aplus-15",
+"cat": "aplus",
+"level": 2,
+"q": "Which file system has a 4 GB maximum file size?",
+"choices": [
+"NTFS",
+"exFAT",
+"FAT32",
+"ext4"
+],
+"answer": 2,
+"why": "FAT32 cannot store a single file larger than 4 GB."
+},
+{
+"id": "aplus-16",
+"cat": "aplus",
+"level": 2,
+"q": "Where do you check why an app crashed on Windows?",
+"choices": [
+"Event Viewer",
+"Disk Management",
+"Paint",
+"Control Panel > Mouse"
+],
+"answer": 0,
+"why": "Event Viewer records application errors, crashes and security events."
+},
+{
+"id": "aplus-17",
+"cat": "aplus",
+"level": 2,
+"q": "Which cloud model gives you finished software like web email?",
+"choices": [
+"IaaS",
+"PaaS",
+"SaaS",
+"On-premises"
+],
+"answer": 2,
+"why": "Software as a Service: you use the application, the provider runs everything else."
+},
+{
+"id": "aplus-18",
+"cat": "aplus",
+"level": 3,
+"q": "In the laser printing process, which step melts toner onto the paper?",
+"choices": [
+"Charging",
+"Developing",
+"Fusing",
+"Cleaning"
+],
+"answer": 2,
+"why": "The fuser uses heat and pressure to bond toner to the paper."
+},
+{
+"id": "aplus-19",
+"cat": "aplus",
+"level": 3,
+"q": "First step of the CompTIA malware removal process?",
+"choices": [
+"Quarantine the system",
+"Investigate and verify malware symptoms",
+"Disable System Restore",
+"Educate the user"
+],
+"answer": 1,
+"why": "Confirm it is really malware before acting. Then quarantine, disable System Restore, remediate, schedule scans, re-enable restore, educate."
+},
+{
+"id": "aplus-20",
+"cat": "aplus",
+"level": 3,
+"q": "A type 1 hypervisor…",
+"choices": [
+"Runs on top of Windows",
+"Runs directly on the hardware",
+"Is a cloud storage plan",
+"Only runs Linux"
+],
+"answer": 1,
+"why": "Type 1 (bare-metal) hypervisors such as ESXi or Hyper-V run directly on hardware."
+},
+{
+"id": "net-145",
+"cat": "net",
+"level": 2,
+"q": "In a capture, one host sends SYN packets to many ports and most reply with RST. What is happening?",
+"choices": [
+"A port scan",
+"A DNS lookup",
+"A file download",
+"A TLS handshake"
+],
+"answer": 0,
+"why": "Closed ports answer RST and open ones answer SYN-ACK, so a burst of SYNs to many ports is a scan. Try it in the Packet Lab."
+},
+{
+"id": "blue-146",
+"cat": "blue",
+"level": 2,
+"q": "Many DNS TXT queries with long, random-looking subdomains to one rare domain most likely mean…",
+"choices": [
+"DNS tunnelling (data hidden in DNS)",
+"A slow DNS server",
+"A normal software update",
+"An expired certificate"
+],
+"answer": 0,
+"why": "Attackers smuggle data out inside query names. Long, high-entropy labels to one domain are the tell."
+},
+{
+"id": "blue-147",
+"cat": "blue",
+"level": 2,
+"q": "Which search finds the source IPs with the most failed logins?",
+"choices": [
+"Filter to failed logins, then count them grouped by source IP",
+"Sort all logs by time",
+"Search for the word \"success\"",
+"Delete old logs first"
+],
+"answer": 0,
+"why": "Filter, then count by a field: the core SIEM move. Practise it in the Log Hunt."
+},
+{
+"id": "web-148",
+"cat": "web",
+"level": 2,
+"q": "A login page sends users to whatever URL is in ?next=. What is the flaw?",
+"choices": [
+"Open redirect",
+"SQL injection",
+"Clickjacking",
+"Buffer overflow"
+],
+"answer": 0,
+"why": "Phishers link to your real login page and bounce victims to their own site. Only allow relative paths or an allow-list."
+},
+{
+"id": "web-149",
+"cat": "web",
+"level": 3,
+"q": "An API decodes JWTs without verifying the signature. What can an attacker do?",
+"choices": [
+"Forge a token and act as any user",
+"Nothing, JWTs are encrypted",
+"Only read their own data",
+"Slow down the server"
+],
+"answer": 0,
+"why": "A JWT is only trustworthy if its signature is checked with the key and a pinned algorithm."
+},
+{
+"id": "crypto-150",
+"cat": "crypto",
+"level": 2,
+"q": "Encrypting text with XOR and a single repeated byte as the key is…",
+"choices": [
+"Easy to break by trying all 256 keys",
+"As strong as AES",
+"Impossible to reverse",
+"The same as hashing"
+],
+"answer": 0,
+"why": "One-byte XOR has only 256 possible keys. Malware uses it to hide strings, not to protect data."
+}
+]
+}

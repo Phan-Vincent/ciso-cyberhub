@@ -207,3 +207,42 @@ The user explicitly approved committing, pushing and deploying this verified sna
 - **AI workflow guide (`/ai/workflow/`):** skills (Agent Skills format), saving tokens, the context saver, keeping AI on track, and organisation/scope guidelines. Sources checked 2026-10-24.
 - **Learning map:** nodes are draggable, and the info card is draggable (also by arrow keys on its grip) and collapsible, with a Reset layout button. The default layout no longer puts the card over the map.
 - **Roadmap:** `docs/ROADMAP.md`.
+
+## What you will defend (24 Oct 2026)
+
+- The five homepage field photos are links to `/defend/<slug>/` (`hub/defend.py`); `/defend/` is the overview, also listed under Learn. Each page: what is inside, how it is attacked, real incidents (linked to `/history/` where an event exists), how defenders protect it, frameworks, practice links, careers and sources.
+- Adding a field photo requires a matching entry in `DOMAINS` (`tests/test_defend.py` enforces this).
+- Field captions now wrap onto two lines instead of colliding on narrow tiles.
+
+## Shifts, competitions, Networking Lab, cover letters, badges (24 Oct 2026)
+
+- **A day defending it:** `hub/shifts.py` holds a 4-step scenario per `/defend/` guide (exactly one best answer per step, each choice explained); `web/journey.ts` runs it and saves scores to `localStorage['cyberhub:defend']`.
+- **Competitions (`/careers/competitions/`):** `hub/competitions.py`. `EVENTS` are dated and marked done/now/upcoming at build time (the nightly rebuild keeps it current); `WINDOWS` are yearly patterns. Update the dates each season from the organisers' sites and bump `CHECKED`.
+- **Networking Lab (`/linux/network/`):** 17 levels in `hub/netlab.py`; simulated network and commands (`ip`, `ping`, `traceroute`, `dig`, `nslookup`, `host`, `ss`, `netstat`, `nc`, `curl`) in `web/linux.ts` (`NET_LEVELS`, `netExec`). Same page builders as the Linux Lab (now parameterised). Progress key `cyberhub:netlab`. `tests/linux.test.mjs` solves every level with real commands.
+- **Cover letters:** the resume tailor has a "Tailored resume / Cover letter" switch; `coverPrompt` in `web/resume.ts` keeps the no-fabrication rules and marks unknowns as [PLACEHOLDER].
+- **Badges (`/progress/`):** `hub/badges.py` + `web/journey.ts` read existing progress keys (Linux, Networking, Academy, readiness, Daily, role quiz, guides, shifts). The printable card is cloned into `#print-root` on `beforeprint`. Badge ids must match in both files (tested).
+
+## Duel, accounts, beginner path, labs, AI pages (24 Oct 2026)
+
+- **Cyber Duel (`/duel/`):** `web/duel.ts`, `hub/duel.py`, questions in `data/duel.json` (+ Academy questions). Seeded rounds so challenge links replay exactly.
+- **Accounts (`/account/`):** local-first; Supabase sync turns on when `site.json` has `supabase_url` + publishable `supabase_key`. Setup: `docs/ACCOUNTS.md`, schema `supabase/schema.sql`. Email: `docs/EMAIL.md`.
+- **Start here (`/start/`):** `hub/start.py`; quick checks and checklist in `web/journey.ts`.
+- **Labs:** SOC Simulator (`web/soc.ts`) and Phishing lab (`web/phish.ts`), pages in `hub/practice.py`; listed on `/labs/`.
+- **AI:** Red Team Lab (`web/redteam.ts`), Prompt testing and AI and cyber jobs in `hub/ailab.py`. Daily pulse (`hub/pulse.py` → `data/pulse.json`) runs in the data workflow and is published with the other data files.
+- **Work roles (`/careers/roles/`):** `hub/roles.py`. **Tools:** 25 new tools are `pending-review` (badge shown) until the weekly catalog check confirms repository and license.
+- **News:** five more RSS/Atom sources in `data/sources.json`, each with a test fixture.
+
+## Glossary, tournament, PowerShell Lab (24 Oct 2026)
+
+- **Homepage:** hero now leads with Start here and Cyber Duel; a "Try it right now" strip links the interactive labs.
+- **Glossary (`/glossary/`):** `data/glossary.json` (114 terms) + `hub/glossary.py`; search in `web/journey.ts`.
+- **Duel tournament:** bracket helpers `bracket/settle/nextMatch/champion` in `web/duel.ts`; state in `localStorage['cyberhub:tour']`; each match is a Face-off, ties go to most correct answers, then a rematch.
+- **PowerShell Lab (`/linux/powershell/`):** `web/pslab.ts` (simulated cmdlets with object pipelines) + `hub/pslab.py` (15 levels). Tests solve every level.
+- **Badges:** Windows ready, Analyst on duty, Phish spotter, Prompt breaker; account sync covers the new lab keys.
+- **IT track (`/it/`) and IT flashcards (`/it/flashcards/`):** `hub/ittrack.py`, cards in `data/it_cards.json` (Network+ and A+ topics, original wording), spaced repetition in `web/cards.ts`. Duel gained "Networking (Network+)" and "IT support (A+)" categories.
+- **Study planner (`/plan/`):** goals and task lists in `hub/plan.py` (built from real page paths; a test checks every link), packing and .ics export in `web/plan.ts`.
+
+## Live rooms (25 Oct 2026)
+
+- **Cyber Duel Live room (`/duel/live/`):** `web/live.ts` + `hub/live.py`. Host screen with a 5-letter code; players join on phones; host scores and broadcasts the leaderboard. Transport is Supabase Realtime public broadcast (`realtime:cyberhub-duel-<CODE>`), implemented with a plain WebSocket (Phoenix v1 JSON). No database writes. Turns on with the same `site.json` Supabase settings; CSP adds the project's `https://` and `wss://` origins.
+- Tests: `tests/live.test.mjs` (scoring, codes, channel relay with a fake socket). A browser rehearsal with a mocked Realtime server (host + 3 phones, late join, kick) passed.

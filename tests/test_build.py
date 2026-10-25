@@ -10,8 +10,19 @@ from scripts.check_site import check_site
 
 class BuildTests(unittest.TestCase):
     @classmethod
-    def setUpClass(cls):Site('/cyberhub').build()
-    def test_all_internal_links_and_basic_accessibility(self):self.assertEqual(check_site(ROOT/'dist','/cyberhub')['errors'],0)
+    def setUpClass(cls):Site('/cyberhub').build();cls.out=ROOT/'dist'
+    @classmethod
+    def tearDownClass(cls):Site().build()
+
+    def test_interactive_pages_have_h2_before_h3(self):
+        readiness=(self.out/'academy/readiness/index.html').read_text()
+        match=(self.out/'careers/match/index.html').read_text()
+        redteam=(self.out/'ai/red-team/index.html').read_text()
+        self.assertIn('<h2 class="sr-only">Question</h2><h3 id="c-prompt">', readiness)
+        self.assertIn('<h2 class="sr-only">Your matched role</h2><h3>', match)
+        self.assertIn('id="rt-inject" hidden><h2>Web page Vault can read</h2>', redteam)
+
+    def test_all_internal_links_and_basic_accessibility(self):self.assertEqual(check_site(self.out,'/cyberhub')['errors'],0)
     def test_search_contains_catalog_lessons_and_labs(self):
         index=read_json(ROOT/'dist/assets/search.json');paths={r['path']for r in index}
         self.assertIn('/tools/wireshark/',paths);self.assertIn('/labs/packet-analysis/',paths);self.assertIn('/academy/cryptography-and-key-trust/',paths)
@@ -98,3 +109,43 @@ class BuildTests(unittest.TestCase):
         if len(dates)>=2:
             self.assertGreaterEqual(dates[0],dates[-1])
             self.assertEqual(dates,sorted(dates,reverse=True))
+    def test_search_index_has_unescaped_text_and_404_is_noindex(self):
+        index=read_json(ROOT/'dist/assets/search.json')
+        for entry in index:
+            self.assertIsNone(re.search(r'&(?:#\d+|#x[0-9a-fA-F]+|amp|lt|gt|quot|nbsp);',entry['text']))
+        self.assertIn('<meta name="robots" content="noindex">',(ROOT/'dist/404.html').read_text())
+    def test_content_pages_preserve_h2_hierarchy_and_ordered_lists(self):
+        lesson=(ROOT/'dist/academy/choosing-security-controls/index.html').read_text()
+        self.assertIn('<h2>Understand the concept</h2>',lesson)
+        career=(ROOT/'dist/careers/soc-analyst/index.html').read_text()
+        self.assertIn('<ol>',career)
+
+
+class AccountConfigTests(unittest.TestCase):
+    def test_supabase_config_is_validated_and_wired(self):
+        import tempfile
+        from hub.account import supabase
+        class S: config = {}
+        s = S(); self.assertEqual(supabase(s), ('', ''))
+        s.config = {'supabase_url': 'https://evil.example.com', 'supabase_key': 'x' * 40}
+        with self.assertRaises(ValueError): supabase(s)
+        s.config = {'supabase_url': 'https://abcdefghijklmnopqrst.supabase.co', 'supabase_key': 'sb_secret_' + 'x' * 30}
+        with self.assertRaises(ValueError): supabase(s)
+        s.config = {'supabase_url': 'https://abcdefghijklmnopqrst.supabase.co/', 'supabase_key': 'sb_publishable_' + 'x' * 30}
+        self.assertEqual(supabase(s)[0], 'https://abcdefghijklmnopqrst.supabase.co')
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Site(''); site.out = Path(tmp)
+            site.config = {**site.config, 'supabase_url': 'https://abcdefghijklmnopqrst.supabase.co', 'supabase_key': 'sb_publishable_' + 'x' * 30}
+            site.page('/x/', 'X', '<p>x</p>')
+            html = (Path(tmp) / 'x/index.html').read_text()
+            self.assertIn("connect-src 'self' https://abcdefghijklmnopqrst.supabase.co wss://abcdefghijklmnopqrst.supabase.co;", html)
+            self.assertIn('data-sb-url="https://abcdefghijklmnopqrst.supabase.co"', html)
+            self.assertIn('assets/account.js', html)
+
+class SiteReferenceTests(unittest.TestCase):
+    def test_form_controls_and_id_references(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            Path(tmp,'index.html').write_text('<html lang="en"><meta http-equiv="Content-Security-Policy" content="x"><main><h1>X</h1><textarea></textarea><label for="missing">X</label><button aria-labelledby="gone" aria-controls="absent">X</button></main></html>')
+            with self.assertRaisesRegex(ValueError,'Unlabeled form control') as error:check_site(tmp)
+            for token in ('missing','gone','absent'):self.assertIn(token,str(error.exception))

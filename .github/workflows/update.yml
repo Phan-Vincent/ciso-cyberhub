@@ -34,11 +34,11 @@ jobs:
         run: python scripts/restore_proposals.py
       - name: Refresh news and vulnerability sources
         run: python -m hub.ingest
-      - name: Weekly internship scan (near CSUSB and remote)
-        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '37 6 * * 1'
-        run: python -m hub.internships
-      - name: Weekly trending tools and models
-        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '37 6 * * 1'
+      - name: Daily cyber and AI pulse
+        run: python -m hub.pulse || echo "::warning::Pulse refresh failed; keeping the last reading"
+      - name: Internship scan (near CSUSB and remote), every run
+        run: python -m hub.internships || echo "::warning::Internship scan failed; keeping the last list"
+      - name: Trending tools and models, every run
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python -m hub.trending || echo "::warning::Trending refresh failed; keeping last week's list"
