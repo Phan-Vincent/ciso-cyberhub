@@ -31,6 +31,7 @@ from .glossary import build_glossary
 from .pslab import build_pslab
 from .ittrack import build_ittrack
 from .plan import build_plan
+from .live import build_live
 import hashlib as _hashlib
 from pathlib import Path as _Path
 # Cache-busting version: changes whenever any front-end source changes, so browsers never pair new HTML with an old stylesheet or script.
@@ -111,7 +112,7 @@ class Site:
         ('learn','Learn','/learn/','Courses, labs and practice for every level.',[
             ('Security+ Academy','/academy/','28 lessons mapped to SY0-701'),('Linux Lab','/linux/','36 hands-on levels in a practice shell'),('Networking Lab','/linux/network/','17 levels: IP, DNS, ports, subnetting'),('PowerShell Lab','/linux/powershell/','15 Windows investigation levels'),
             ('Start here','/start/','Cyber 101 for total beginners'),('Cyber glossary','/glossary/','114 terms in plain English'),('IT track','/it/','Networking, Windows, IT support'),('IT flashcards','/it/flashcards/','Network+ and A+ topics'),('Study planner','/plan/','A week-by-week plan for your goal'),('Guided labs','/labs/','Investigations on safe evidence'),('SOC Simulator','/labs/soc/','Triage a shift of alerts'),('Phishing lab','/labs/phishing/','Investigate a suspicious inbox'),('Flashcards','/academy/flashcards/','83 cards across every objective'),
-            ('Readiness check','/academy/readiness/','15 questions, a score by domain'),('Cyber Duel','/duel/','Head-to-head quiz: friends, bots, links'),('CyberHub Daily','/daily/','One real-world puzzle a day'),
+            ('Readiness check','/academy/readiness/','15 questions, a score by domain'),('Cyber Duel','/duel/','Head-to-head quiz: friends, bots, links'),('Live room','/duel/live/','Class-wide duel on phones'),('CyberHub Daily','/daily/','One real-world puzzle a day'),
             ('What you will defend','/defend/','Five systems, explained in depth'),('Cyber history','/history/','1834 to today, with archival photos'),('Your progress','/progress/','Badges and a printable completion card')]),
         ('tools','Tools','/tools/','Open-source tools, checked and explained.',[
             ('Tool explorer','/tools/','Source-checked security tools'),('Trending on GitHub','/tools/trending/','Top 10 rising projects, weekly'),
@@ -172,7 +173,7 @@ class Site:
                 '<div class="loader-line"><i id="load-line"></i></div><div class="loader-row label"><span>Loading modules</span><span>Powered by CISO</span></div></div></div>') if home else ''
         doc=(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="{E(description or title)}"><meta name="referrer" content="strict-origin-when-cross-origin">'
              f'{self.social(path,title,description)}'
-             f'<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'self\'; style-src \'self\'; img-src \'self\' data:; font-src \'self\'; connect-src \'self\'{(" "+CSP_CONNECT) if module=="resume" else ""}{(" "+sb_url) if sb_url else ""}; base-uri \'none\'; form-action \'none\'; object-src \'none\'">'
+             f'<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'self\'; style-src \'self\'; img-src \'self\' data:; font-src \'self\'; connect-src \'self\'{(" "+CSP_CONNECT) if module=="resume" else ""}{(" "+sb_url+" "+sb_url.replace("https://","wss://")) if sb_url else ""}; base-uri \'none\'; form-action \'none\'; object-src \'none\'">'
              f'<meta name="theme-color" content="#050505"><title>{E(title)} · {E(self.config["name"])}</title>{canonical}'
              f'<link rel="icon" href="{b}/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{b}{self.BRAND}cyberhub-app-icon.svg">'
              f'<link rel="preload" href="{b}/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>'
@@ -485,7 +486,7 @@ class Site:
         shutil.copyfile(ROOT/'web/site.css',self.out/'assets/site.css')
         shutil.copyfile(ROOT/'public/assets/brand/cyberhub-favicon.svg',self.out/'assets/favicon.svg')
         subprocess.run(['node','scripts/transpile.mjs'],cwd=ROOT,check=True)
-        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);build_practice(self);build_start(self);build_ailab(self);build_roles(self);build_glossary(self);build_pslab(self);build_ittrack(self);build_plan(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
+        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);build_practice(self);build_start(self);build_ailab(self);build_roles(self);build_glossary(self);build_pslab(self);build_ittrack(self);build_plan(self);build_live(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
         for name,data in [('academy',self.academy),('search',self.search)]:
             (self.out/'assets'/f'{name}.json').write_text(json.dumps(data,ensure_ascii=False))
         self.page('/404/','Page not found',self.heading('This page is not here.','Use search or the main navigation to find a learning resource.')+self.a('Return home','/','button primary'))

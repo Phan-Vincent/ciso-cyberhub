@@ -241,3 +241,8 @@ The user explicitly approved committing, pushing and deploying this verified sna
 - **Badges:** Windows ready, Analyst on duty, Phish spotter, Prompt breaker; account sync covers the new lab keys.
 - **IT track (`/it/`) and IT flashcards (`/it/flashcards/`):** `hub/ittrack.py`, cards in `data/it_cards.json` (Network+ and A+ topics, original wording), spaced repetition in `web/cards.ts`. Duel gained "Networking (Network+)" and "IT support (A+)" categories.
 - **Study planner (`/plan/`):** goals and task lists in `hub/plan.py` (built from real page paths; a test checks every link), packing and .ics export in `web/plan.ts`.
+
+## Live rooms (25 Oct 2026)
+
+- **Cyber Duel Live room (`/duel/live/`):** `web/live.ts` + `hub/live.py`. Host screen with a 5-letter code; players join on phones; host scores and broadcasts the leaderboard. Transport is Supabase Realtime public broadcast (`realtime:cyberhub-duel-<CODE>`), implemented with a plain WebSocket (Phoenix v1 JSON). No database writes. Turns on with the same `site.json` Supabase settings; CSP adds the project's `https://` and `wss://` origins.
+- Tests: `tests/live.test.mjs` (scoring, codes, channel relay with a fake socket). A browser rehearsal with a mocked Realtime server (host + 3 phones, late join, kick) passed.

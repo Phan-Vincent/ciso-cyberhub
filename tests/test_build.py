@@ -127,6 +127,6 @@ class AccountConfigTests(unittest.TestCase):
             site.config = {**site.config, 'supabase_url': 'https://abcdefghijklmnopqrst.supabase.co', 'supabase_key': 'sb_publishable_' + 'x' * 30}
             site.page('/x/', 'X', '<p>x</p>')
             html = (Path(tmp) / 'x/index.html').read_text()
-            self.assertIn("connect-src 'self' https://abcdefghijklmnopqrst.supabase.co;", html)
+            self.assertIn("connect-src 'self' https://abcdefghijklmnopqrst.supabase.co wss://abcdefghijklmnopqrst.supabase.co;", html)
             self.assertIn('data-sb-url="https://abcdefghijklmnopqrst.supabase.co"', html)
             self.assertIn('assets/account.js', html)
