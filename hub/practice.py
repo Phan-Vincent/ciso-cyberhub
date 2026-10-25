@@ -42,7 +42,7 @@ def interactive_cards(site) -> str:
     cards = [('SOC Simulator', 'Triage a shift of real-looking alerts.', '/labs/soc/', 'Blue team'), ('Phishing lab', 'Investigate an inbox: headers, links, red flags.', '/labs/phishing/', 'Email security'),
              ('Networking Lab', '17 levels: IP, DNS, ports, subnetting.', '/linux/network/', 'Networking'), ('PowerShell Lab', '15 levels of Windows investigation.', '/linux/powershell/', 'Windows'), ('AI Red Team Lab', 'Trick an AI into leaking a secret, then learn the defence.', '/ai/red-team/', 'AI security'),
              ('Cyber Duel', 'Head-to-head quiz against friends or bots.', '/duel/', 'Play')]
-    return '<h2 class="lab-sub">Interactive labs</h2><div class="grid">' + ''.join(site.card(t, d, u, tag, 'Interactive') for t, d, u, tag in cards) + '</div><h2 class="lab-sub">Guided labs on evidence files</h2>'
+    return '<h2 class="lab-sub">Interactive labs</h2><div class="grid">' + ''.join(site.card(t, d, u, tag, 'Interactive') for t, d, u, tag in cards) + '</div><h2 class="lab-sub" id="guided">Guided labs on evidence files</h2>'
 
 
 def build_practice(site) -> None:

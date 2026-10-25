@@ -1977,3 +1977,129 @@ input, select { border-radius: 10px; }
 .live .lv-pb:hover, .live .lv-pb:focus-visible { filter: brightness(1.1); color: #fff; }
 .live .lv-pb.lv-c0 { background: #d64545; } .live .lv-pb.lv-c1 { background: #2f6fd6; } .live .lv-pb.lv-c2 { background: #b8860b; } .live .lv-pb.lv-c3 { background: #1f8a4c; }
 @media (max-width: 640px) { .lv-choices { grid-template-columns: 1fr; } }
+
+/* Reorganised homepage: compact hero, non-pinned map, short sections */
+.stage.compact { height: auto; }
+.stage.compact .stage-pin { position: relative; height: auto; min-height: min(92vh, 860px); }
+.net.compact { height: auto; }
+.net.compact .net-pin { position: relative; height: min(84vh, 760px); min-height: 560px; }
+@media (max-width: 860px) { .net.compact .net-pin { height: auto; min-height: 0; } }
+.path-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.path-card { display: grid; gap: 8px; align-content: start; padding: 22px; border: 1px solid var(--rule); border-radius: var(--r-lg); }
+.path-card > .label { color: var(--signal); }
+.path-card h3 { margin: 0; font-family: var(--display); font-stretch: 75%; font-size: 1.7rem; text-transform: uppercase; line-height: 1; }
+.path-card h3 a { color: inherit; text-decoration: none; }
+.path-card h3 a:hover { color: var(--signal); }
+.path-card p { margin: 0; color: var(--ink-muted); }
+.path-links { display: grid; gap: 4px; padding-top: 6px; }
+.path-links a { color: var(--ink); font-weight: 600; text-decoration: none; }
+.path-links a:hover { color: var(--signal); }
+@media (max-width: 1000px) { .path-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .path-grid { grid-template-columns: 1fr; } }
+.today-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 16px; }
+.today-news { padding: 22px; border: 1px solid var(--rule); border-radius: var(--r-lg); }
+.today-news h3 { margin: 0 0 10px; }
+.today-news ol { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 10px; }
+.today-news li { display: grid; gap: 2px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+.today-news li a { color: var(--ink); font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
+.today-news li a:hover { color: var(--signal); }
+.today-news .label { color: var(--ink-muted); }
+.today-stats { display: grid; gap: 12px; }
+.today-stat { display: grid; gap: 4px; padding: 18px 20px; border: 1px solid var(--rule); border-radius: var(--r-lg); color: inherit; text-decoration: none; }
+.today-stat strong { font-family: var(--mono); font-weight: 300; font-size: 2.4rem; line-height: 1; color: var(--signal); }
+.today-stat span { color: var(--ink-muted); }
+.today-stat:hover { border-color: var(--signal); }
+@media (max-width: 860px) { .today-grid { grid-template-columns: 1fr; } }
+.club-band { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between; padding-top: clamp(28px, 4vw, 48px); padding-bottom: clamp(28px, 4vw, 48px); }
+.club-band p { margin: 0; max-width: 70ch; font-size: 1.1rem; }
+.sec-pad { padding-top: clamp(48px, 7vw, 96px); padding-bottom: clamp(48px, 7vw, 96px); }
+/* Compact footer */
+.foot-grid h2 a { color: inherit; text-decoration: none; }
+.foot-all { font-weight: 600; }
+/* Compact footer: one-line slogan, small emblem, links in one row */
+.footer { padding-top: clamp(32px, 4vw, 56px); }
+.foot-say { font-size: clamp(2.2rem, 1rem + 4vw, 4.8rem); line-height: .9; display: flex; flex-wrap: wrap; gap: 0 .35em; }
+.foot-say span, .foot-say span:nth-child(2), .foot-say span:nth-child(4) { display: inline; padding-left: 0; }
+.footer .foot-core, .inner .footer .foot-core { width: clamp(90px, 12vw, 180px); top: clamp(20px, 3vw, 40px); right: 2vw; opacity: .7; }
+.foot-lockup { margin-top: var(--s4); }
+.brand-frame { min-height: 96px; }
+.foot-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+.foot-grid > div { grid-column: auto; gap: 8px; }
+.foot-grid a, .foot-grid span { font-size: .95rem; }
+@media (max-width: 560px) { .foot-grid { grid-template-columns: 1fr 1fr; } .footer .foot-core { display: none; } }
+/* Tighter page headers on inner pages */
+.page-head { margin-bottom: clamp(20px, 3vw, 36px); }
+.page-head h1 { font-size: clamp(2.4rem, 1.2rem + 4vw, 5.2rem); margin-bottom: 14px; }
+.page-head .lead { font-size: clamp(1.02rem, .95rem + .4vw, 1.3rem); max-width: 62ch; }
+/* Phones: drop the decorative map, two-up hands-on tiles */
+@media (max-width: 560px) {
+  #map { display: none; }
+  .play-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .play-tile { padding: 14px; }
+  .play-tile strong { font-size: 1.2rem; }
+  .play-tile span:last-child { display: none; }
+  .path-card { padding: 18px; }
+  .path-card p:not(.path-links) { display: none; }
+}
+.st-acc { border-top: 1px solid var(--rule); padding: 6px 0; scroll-margin-top: 90px; }
+.st-acc > summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.st-acc > summary::-webkit-details-marker { display: none; }
+.st-acc > summary::after { content: "+"; font-family: var(--mono); font-size: 1.6rem; color: var(--signal); }
+.st-acc[open] > summary::after { content: "−"; }
+.st-acc > summary h2 { margin: 12px 0; }
+.st-acc > summary:focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }
+.show-more { display: block; margin: 18px auto 0; }
+/* Continue where you left off */
+.cont[hidden] { display: none !important; }
+.cont { padding-top: 24px; padding-bottom: 8px; }
+.cont-in { padding: 18px 20px; border: 1px solid var(--signal); border-radius: var(--r-lg); }
+.cont-in h2 { margin: 0 0 10px; color: var(--signal); }
+.cont-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 10px; }
+.cont-item { display: grid; gap: 4px; padding: 12px 14px; border: 1px solid var(--rule); border-radius: var(--r-md); color: inherit; text-decoration: none; }
+.cont-item:hover { border-color: var(--signal); }
+.cont-item .label { color: var(--ink-muted); }
+.stage.compact .stage-pin { height: 100vh; height: 100svh; min-height: 560px; max-height: 980px; }
+
+/* ---------- Phone layout: calmer, shorter ---------- */
+@media (max-width: 560px) {
+  /* hero: one clean screen */
+  .hero-meta > div:not(:last-child) { display: none; }
+  #seal { max-width: 230px; margin-left: auto; margin-right: auto; }
+  .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .hero-actions .button { justify-content: center; padding-left: 10px; padding-right: 10px; font-size: .78rem; }
+  /* sections: smaller titles and spacing */
+  .sec-pad { padding-top: 36px; padding-bottom: 36px; }
+  .sec-head { margin-bottom: 18px; }
+  .sec-head h2 { font-size: clamp(2rem, 9vw, 2.6rem); }
+  /* paths: 2 x 2 tappable tiles */
+  .path-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .path-card { padding: 14px; gap: 4px; }
+  .path-card h3 { font-size: 1.15rem; }
+  .path-card .path-links { display: none; }
+  .path-card p:not(.path-links) { display: block; font-size: .85rem; }
+  /* today: three headlines, stats in one row */
+  .today-news { padding: 16px; }
+  .today-news li:nth-child(n+4) { display: none; }
+  .today-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .today-stat { padding: 12px 10px; }
+  .today-stat strong { font-size: 1.5rem; }
+  .today-stat span { font-size: .78rem; line-height: 1.3; }
+  /* club band */
+  .club-band p { font-size: .98rem; }
+  /* footer: just the section links */
+  .foot-say, .foot-lockup, .footer .foot-core { display: none !important; }
+  .foot-grid { grid-template-columns: 1fr 1fr; row-gap: 18px; padding-top: 24px; }
+  .foot-grid > div > a:not(:first-of-type), .foot-grid > div > span, .foot-grid .foot-all { display: none; }
+  .foot-grid h2 { font-size: .8rem; }
+  .foot-base { font-size: .7rem; gap: 6px; }
+}
+
+/* Phone: tidy inner pages */
+@media (max-width: 560px) {
+  .duel-tabs [role=tab] { min-width: 0; padding: 12px; }
+  .duel-tabs [role=tab] b { font-size: 1.05rem; overflow-wrap: anywhere; line-height: 1.1; }
+  .duel-tabs [role=tab] span { font-size: .8rem; }
+  .dir-grid { gap: 8px; }
+  .dir-card { padding: 14px 40px 14px 16px; }
+  .page-head h1 { font-size: clamp(2rem, 11vw, 2.8rem); }
+}

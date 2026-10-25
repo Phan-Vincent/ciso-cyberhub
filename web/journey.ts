@@ -145,3 +145,29 @@ if (typeof document !== 'undefined') {
     q.addEventListener('input', run); run();
   }
 }
+
+/* ------------------------------------------------------------ Start here: open the lesson a link points to */
+if (typeof document !== 'undefined' && document.querySelector('.st-acc')) {
+  const openHash = () => { const t = location.hash && document.getElementById(location.hash.slice(1)); if (t instanceof HTMLDetailsElement) { t.open = true; t.scrollIntoView({ block: 'start' }); } };
+  addEventListener('hashchange', openHash); openHash();
+}
+
+/* ------------------------------------------------------------ Homepage: continue where you left off */
+if (typeof document !== 'undefined') {
+  const box = document.querySelector<HTMLElement>('#continue');
+  if (box) {
+    const base = document.body.dataset.base || ''; const items: [string, string, string][] = [];
+    const next = load<{ t?: string; u?: string; goal?: string } | null>('cyberhub:plan-next', null);
+    if (next && next.t && next.u && next.u.startsWith('/')) items.push(['Next in your plan', next.t, next.u]);
+    for (const [k, name, total, url] of [['cyberhub:linux', 'Linux Lab', 36, '/linux/'], ['cyberhub:netlab', 'Networking Lab', 17, '/linux/network/'], ['cyberhub:pslab', 'PowerShell Lab', 15, '/linux/powershell/']] as [string, string, number, string][]) {
+      const n = arr(k).length; if (n > 0 && n < total) items.push([name, `${n} of ${total} levels done`, url]);
+    }
+    const c = counts(base); const earned = BADGES.filter(b => b.test(c)).length; if (earned) items.push(['Badges', `${earned} of ${BADGES.length} earned`, '/progress/']);
+    const duel = load<{ played?: number; best?: number }>('cyberhub:duel', {}); if (duel.played) items.push(['Cyber Duel', `Best score ${duel.best || 0}. Play again?`, '/duel/']);
+    if (items.length) {
+      const list = box.querySelector('#cont-list')!;
+      list.replaceChildren(...items.slice(0, 4).map(([label, text, url]) => { const a = document.createElement('a'); a.className = 'cont-item'; a.href = base + url; const l = document.createElement('span'); l.className = 'label'; l.textContent = label; const t = document.createElement('strong'); t.textContent = text; a.append(l, t); return a; }));
+      box.hidden = false;
+    }
+  }
+}
