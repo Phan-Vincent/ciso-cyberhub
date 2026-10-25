@@ -73,3 +73,25 @@ test('merge covers flashcards and the study plan', () => {
   const m = A.mergeProgress({ itcards: { 'net-1': 2, 'net-2': 3 }, plan: { goal: 'it', hours: 4, done: ['0'] } }, { itcards: { 'net-1': 3, 'bad key': 9 }, plan: { goal: 'it', hours: 6, done: ['1'] } });
   assert.deepEqual(m.itcards, { 'net-1': 3, 'net-2': 3 }); assert.equal(m.plan.goal, 'it'); assert.deepEqual(m.plan.done, ['0', '1']);
 });
+
+test('merge drops malformed nested daily, plan, match and academy fields', () => {
+  const m = A.mergeProgress({}, { daily: { wins: 10, dist: 'corrupt', fams: null }, plan: { goal: 'secplus', done: 'bad' }, match: { evil: 1 }, academy: { lessons: ['../../x'], attempts: [{ at: 'x', score: 999, total: 0, domains: null }] } });
+  assert.deepEqual(m.daily.dist, [0, 0, 0, 0]); assert.deepEqual(m.daily.fams, []);
+  assert.deepEqual(m.plan.done, []); assert.equal(m.match, undefined);
+  assert.deepEqual(m.academy.lessons, []); assert.deepEqual(m.academy.attempts, []);
+});
+
+test('malformed sign-in error hash does not throw on account load', async () => {
+  const old = { document: globalThis.document, location: globalThis.location, history: globalThis.history };
+  const nodes = new Map(); const node = () => ({ hidden: false, textContent: '', classList: { toggle() {} }, setAttribute() {}, addEventListener() {}, querySelector() { return node(); } });
+  globalThis.document = { body: { dataset: {} }, querySelector(s) { if (s === '#account') return { querySelector(t) { if (!nodes.has(t)) nodes.set(t, node()); return nodes.get(t); } }; return null; } };
+  globalThis.location = { hash: '#error_description=%E0%A4%A', pathname: '/account/', origin: 'https://example.org' };
+  globalThis.history = { replaceState() {} };
+  try { await assert.doesNotReject(import(pathToFileURL(f).href + '?hash=bad')); assert.match(nodes.get('#ac-msg').textContent, /Sign-in failed/); }
+  finally { Object.assign(globalThis, old); }
+});
+
+test('merge keeps lessons from every section', () => {
+  const m = A.mergeProgress({ academy: { version: 1, lessons: ['careers/soc-analyst', 'labs/phishing'], attempts: [] } }, { academy: { version: 1, lessons: ['tutorials/nmap', '../x'], attempts: [] } });
+  assert.deepEqual(m.academy.lessons, ['careers/soc-analyst', 'labs/phishing', 'tutorials/nmap']);
+});

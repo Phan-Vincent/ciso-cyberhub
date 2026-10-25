@@ -23,6 +23,19 @@ test('calendar export is valid iCalendar with one event per week', () => {
   assert.ok(s.split('\r\n').every(l => l.length <= 75), 'lines folded');
 });
 
+test('planner bounds invalid hours', () => {
+  const tasks = [40, 40].map((m, i) => ({ t: String(i), u: '/x', m }));
+  assert.equal(P.pack(tasks, NaN).length, 2);
+});
+
+test('calendar rejects invalid date, weekday and time', () => {
+  const tasks = [40, 40].map((m, i) => ({ t: String(i), u: '/x', m }));
+  const weeks = [tasks];
+  for (const [date, day, time] of [[new Date('invalid'), 6, '10:00'], [new Date(), 7, '10:00'], [new Date(), 6, '']]) {
+    assert.throws(() => P.ics('x', weeks, date, day, time, 'https://example.org'), /Invalid/);
+  }
+});
+
 test('flashcards: missed cards come back first, known cards rise to box 3', () => {
   const cards = ['a', 'b', 'c'].map(id => ({ id, deck: 'net', topic: 'x', front: id, back: id }));
   let b = {}; b = C.grade(b, 'a', true); b = C.grade(b, 'b', false); b = C.grade(b, 'c', true); b = C.grade(b, 'c', true);

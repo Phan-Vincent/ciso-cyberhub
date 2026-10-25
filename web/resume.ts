@@ -128,11 +128,15 @@ export async function docxText(buf: ArrayBuffer): Promise<string> {
   if (eocd < 0) throw new Error('Not a .docx (zip) file');
   const count = v.getUint16(eocd + 10, true); let p = v.getUint32(eocd + 16, true);
   for (let n = 0; n < count; n++) {
+    if (p > u8.length - 46) throw new Error('No document text found in this .docx');
     if (v.getUint32(p, true) !== 0x02014b50) break;
     const method = v.getUint16(p + 10, true), csize = v.getUint32(p + 20, true), nlen = v.getUint16(p + 28, true), elen = v.getUint16(p + 30, true), clen = v.getUint16(p + 32, true), off = v.getUint32(p + 42, true);
+    if (p + 46 + nlen + elen + clen > u8.length) throw new Error('No document text found in this .docx');
     const name = new TextDecoder().decode(u8.subarray(p + 46, p + 46 + nlen));
     if (name === 'word/document.xml') {
+      if (off > u8.length - 30) throw new Error('No document text found in this .docx');
       const ln = v.getUint16(off + 26, true), le = v.getUint16(off + 28, true), start = off + 30 + ln + le; const data = u8.subarray(start, start + csize);
+      if (start + csize > u8.length) throw new Error('No document text found in this .docx');
       let xml: string;
       if (method === 0) xml = new TextDecoder().decode(data);
       else { const ds = new Blob([data]).stream().pipeThrough(new DecompressionStream('deflate-raw')); xml = await new Response(ds).text(); }
