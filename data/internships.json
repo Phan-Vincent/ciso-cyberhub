@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T16:49:29Z",
+  "generated_at": "2026-10-26T22:43:23Z",
   "items": [
     {
       "also_remote": false,
@@ -17,6 +17,22 @@
       ],
       "title": "IT Data Analyst Intern",
       "url": "https://danaher.wd1.myworkdayjobs.com/DanaherJobs/job/Brea-California-United-States/IT-Data-Analyst-Intern_R1316675",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Irvine",
+      "company": "Danaher",
+      "id": "8f175b67-db53-401a-996f-5d1e58c80b78",
+      "miles": 45,
+      "new": true,
+      "posted": "2026-10-26",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Sustaining Engineer Intern",
+      "url": "https://danaher.wd1.myworkdayjobs.com/danaherjobs/job/Irvine-California-United-States/Sustaining-Engineering-Intern_R1320906",
       "zone": "near"
     },
     {
@@ -216,6 +232,24 @@
       ],
       "title": "Digital IC Design Intern - MS - Multiple Teams",
       "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers2/job/Santa-Clara-CA/Digital-IC-Design-Intern--MS---Summer-2027_2604828",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Irvine",
+      "company": "Marvell",
+      "id": "9cb80a43-fcfd-473d-8145-5aba8bb71782",
+      "miles": 45,
+      "new": false,
+      "posted": "2026-09-21",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Test Engineering Intern",
+      "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers2/job/Santa-Clara-CA/Test-Engineering-Intern--BS---Summer-2027_2604537",
       "zone": "near"
     },
     {
@@ -739,6 +773,40 @@
     {
       "also_remote": false,
       "category": "AI/ML/Data",
+      "city": "Pasadena",
+      "company": "NASA Jet Propulsion Laboratory",
+      "id": "ab62bbaa-de9e-4a17-932c-57a3bd31f722",
+      "miles": 47,
+      "new": true,
+      "posted": "2026-10-26",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Academic Part Time Intern",
+      "url": "https://citjpl.wd5.myworkdayjobs.com/Jobs/job/JPL-Campus/Academic-Part-Time-Intern_R6200",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Highmark Health",
+      "id": "58a7bc55-d2fe-4a18-8d1c-ad95595dd5fb",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-26",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Provider Delivery Software Engineer Intern",
+      "url": "https://highmarkhealth.wd1.myworkdayjobs.com/highmark/job/PA-Working-at-Home---Pennsylvania/Summer-2027-Provider-Delivery-Software-Engineer-enGen-Undergraduate-Intern_J290026",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "ConnectPrep",
       "id": "8ea7dfa9-2c59-482d-9584-d63a1fd13505",
@@ -856,42 +924,6 @@
       ],
       "title": "Developer Intern - Credential Brokering",
       "url": "https://jobs.ashbyhq.com/1password/67bfbd8b-aba9-42b1-a8a8-833367888fba/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Coretek Services",
-      "id": "803b306d-364e-4c89-90ae-c3f32c7cd40a",
-      "miles": null,
-      "new": true,
-      "posted": "2026-10-23",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Spring 2027"
-      ],
-      "title": "AI & Data Automation Developer Co-op",
-      "url": "https://apply.workable.com/coretek-services/j/21D19CC253/apply",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Coretek Services",
-      "id": "b62acb8f-73bb-4503-905b-d785adc23fe0",
-      "miles": null,
-      "new": true,
-      "posted": "2026-10-23",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Spring 2027"
-      ],
-      "title": "Data Consultant Co-op",
-      "url": "https://apply.workable.com/coretek-services/j/BD2FA6BDD9/apply",
       "zone": "remote"
     },
     {
@@ -1303,24 +1335,6 @@
       "zone": "region"
     },
     {
-      "also_remote": true,
-      "category": "Software",
-      "city": "Burbank",
-      "company": "Insomniac Games",
-      "id": "3d74d34b-cf5a-4c64-b08a-73afd63a61f6",
-      "miles": 56,
-      "new": true,
-      "posted": "2026-10-19",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2026"
-      ],
-      "title": "Gameplay Programmer Intern",
-      "url": "https://job-boards.greenhouse.io/insomniac/jobs/6226611004",
-      "zone": "region"
-    },
-    {
       "also_remote": false,
       "category": "Product",
       "city": "Remote (US)",
@@ -1484,26 +1498,6 @@
       "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
-      "company": "Tessera Labs",
-      "id": "ff40ee27-6821-4bc8-8929-0a9a37fa6d77",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-15",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Fall 2026",
-        "Spring 2027",
-        "Summer 2027"
-      ],
-      "title": "Full Stack Software Engineer Intern - Full Stack",
-      "url": "https://jobs.ashbyhq.com/tessera-labs/892bb150-8c98-47f4-a8b6-93633ecb2ea7/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
       "company": "Wikimedia Foundation",
       "id": "58133210-2067-49d2-85f6-9cbc957b9b44",
       "miles": null,
@@ -1643,24 +1637,6 @@
       "title": "Technology Intern",
       "url": "https://realtyincome.wd108.myworkdayjobs.com/realty_income_careers/job/San-Diego-California/Technology-Intern---Multiple-Opportunities_R-100339",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "1Password",
-      "id": "ea18d599-afb1-4b87-8d7f-5298310d2473",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-12",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2027"
-      ],
-      "title": "Data Intern - Product Analytics",
-      "url": "https://jobs.ashbyhq.com/1password/412c1aac-13ce-4cc9-9c81-90a9a7a2ee48/application?embed=true",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -2130,6 +2106,24 @@
     },
     {
       "also_remote": false,
+      "category": "Hardware",
+      "city": "Carlsbad",
+      "company": "L3Harris Technologies",
+      "id": "d13887b1-2bb9-4152-adf1-d74dd800da12",
+      "miles": 71,
+      "new": false,
+      "posted": "2026-09-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Winter 2026"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://jobs.l3harris.com/job/Carlsbad-Software-Engineering-Intern-CA-92009/1435250500/?ats=successfactors",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Intel",
@@ -2144,24 +2138,6 @@
       ],
       "title": "Research Scientist Intern - Graphics - ML",
       "url": "https://intel.wd1.myworkdayjobs.com/en-us/external/job/Virtual-US/Research-Scientist-Intern---Graphics--ML_JR0287525",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Assurant",
-      "id": "d3562842-a546-495a-bbe9-da2caa4618ac",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-30",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Product Analyst Intern - Housing",
-      "url": "https://assurant.wd1.myworkdayjobs.com/en-US/Assurant_Careers/job/United-States-Virtual/Summer-2027-Intern--Product-Analyst-Intern---Housing_R-115659",
       "zone": "remote"
     },
     {
@@ -2915,24 +2891,6 @@
       ],
       "title": "Flight Software Engineer Intern - Summer 2027",
       "url": "https://impulsespace.pinpointhq.com/en/postings/d4fdab1d-254b-44a4-96bf-875ebd5b8cd7?ats=pinpointhq",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Carlsbad",
-      "company": "L3Harris Technologies",
-      "id": "afb3e427-b699-426c-8f7e-dcad458a9c1b",
-      "miles": 71,
-      "new": false,
-      "posted": "2026-09-10",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2026"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://jobs.l3harris.com/job/Carlsbad-Software-Engineering-Intern-CA-92009/1428454700/?ats=successfactors",
       "zone": "region"
     },
     {
