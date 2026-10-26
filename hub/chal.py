@@ -74,7 +74,35 @@ def review_page(site) -> str:
     return body
 
 
+def ad_page(site) -> str:
+    body = site.heading('Active Directory Lab', 'Most school and company networks run on Microsoft Active Directory. Investigate a domain controller\'s security log and follow an attacker from a password spray to owning the domain.', 'Labs / Active Directory')
+    quick = ''.join(f'<button type="button" data-q="{q}">{q}</button>' for q in ['event_id=4771 | stats count by src_ip', 'event_id=4624 | table time,user,src_ip', 'event_id=4769 | stats count by enc', 'user=svc_backup', 'cleared'])
+    ws = ('<section class="lh-ws"><form class="pc-form" id="lh-form" autocomplete="off"><label class="sr-only" for="lh-q">Search</label>'
+          '<input id="lh-q" type="text" spellcheck="false" placeholder="Search, e.g. event_id=4771 | stats count by user"><button type="submit">Search</button></form>'
+          f'<p class="ch-err" id="lh-err" role="alert"></p><div class="pc-quick" aria-label="Example searches">{quick}</div><p class="label" id="lh-count"></p><div class="lh-out" id="lh-out"></div>'
+          '<details class="ch-ref"><summary>Event IDs and search cheat sheet</summary><ul>'
+          '<li><b>4624</b> logon succeeded · <b>4771</b> Kerberos pre-auth failed (wrong password) · <b>4768</b> ticket-granting ticket requested · <b>4769</b> service ticket requested</li>'
+          '<li><b>4728</b> member added to a security group · <b>4662</b> directory object accessed · <b>1102</b> audit log cleared</li>'
+          '<li>Ticket encryption: <code>0x12</code> AES (good), <code>0x17</code> RC4 (weak). PreAuthType <code>0</code> means no pre-authentication.</li>'
+          '<li>Fields: time, event_id, dc, user, src_ip, service, enc, preauth, group, member, by, status. Pipes: <code>| stats count by user</code>, <code>| table time,user</code>, <code>| head 10</code></li></ul></details></section>')
+    body += _shell('ad', ws)
+    body += ('<section class="rt-about"><h2>Defend the domain</h2><p>Strong, unique passwords and MFA stop sprays; long random service-account passwords and AES-only Kerberos blunt Kerberoasting; alerts on Domain Admins changes and replication rights catch the rest. '
+             'Microsoft\'s free Sysmon and the open-source BloodHound (used by defenders to find attack paths) are worth learning next.</p></section>')
+    return body
+
+
+def cloud_page(site) -> str:
+    body = site.heading('Cloud Security Lab', 'Most cloud breaches are configuration mistakes, not clever hacks. Review real-looking AWS, Azure, Google Cloud and Kubernetes settings, spot the risky line, and pick the right fix.', 'Labs / Cloud Security')
+    ws = '<section class="rv-ws"><div class="rv-code" id="rv-code" role="group" aria-label="Configuration"></div><div class="rv-fixes" id="rv-fixes" hidden></div></section>'
+    body += _shell('cloud', ws, answer=False)
+    body += ('<section class="rt-about"><h2>The shared responsibility model</h2><p>The cloud provider secures the hardware and the platform; you secure your data, identities and settings. '
+             'Free tools like Prowler, ScoutSuite and Checkov scan for exactly these mistakes. ' + site.a('Cloud roadmap', '/careers/') + '.</p></section>')
+    return body
+
+
 def build_chal(site) -> None:
+    site.page('/labs/active-directory/', 'Active Directory Lab', ad_page(site), 'Investigate a Windows domain controller log: password spraying, Kerberoasting, a Domain Admins change, DCSync and a cleared log.', 'Labs', module='chal')
+    site.page('/labs/cloud/', 'Cloud Security Lab', cloud_page(site), 'Spot cloud misconfigurations in AWS, Azure, Google Cloud, Kubernetes and Terraform: public buckets, open ports, disabled logging, stale keys and more.', 'Labs', module='chal')
     site.page('/labs/packets/', 'Packet Lab', pcap_page(site), 'Analyze a network capture in your browser: Wireshark-style filters, a port scan, cleartext FTP, a malware download, DNS tunneling and an ARP sweep.', 'Labs', module='chal')
     site.page('/labs/logs/', 'Log Hunt', hunt_page(site), 'Hunt through SSH and web server logs with SIEM-style searches: brute force, the breach, the payload, the backdoor and web attacks.', 'Labs', module='chal')
     site.page('/labs/crypto/', 'Crypto & Encoding Lab', crypto_page(site), 'Decode Base64, hex, ROT13, Caesar, URL encoding, XOR and layered payloads with a CyberChef-style recipe, then verify a SHA-256 hash.', 'Labs', module='chal')

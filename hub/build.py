@@ -118,10 +118,10 @@ class Site:
         ('labs','Labs','/labs/','Hands-on practice that runs in your browser.',[
             ('Linux Lab','/linux/','36 levels in a practice shell'),('Networking Lab','/linux/network/','17 levels: IP, DNS, ports, subnetting'),('PowerShell Lab','/linux/powershell/','15 Windows investigation levels'),
             ('SOC Simulator','/labs/soc/','Triage a shift of alerts'),('Phishing lab','/labs/phishing/','Investigate a suspicious inbox'),('Packet Lab','/labs/packets/','Read a capture, Wireshark-style'),('Log Hunt','/labs/logs/','Trace a break-in through logs'),
-            ('Secure Code Review','/labs/code-review/','Find and fix the vulnerable line'),('Crypto & Encoding','/labs/crypto/','Decode flags, CyberChef-style'),('AI Red Team Lab','/ai/red-team/','Make an AI leak its secret'),
+            ('Secure Code Review','/labs/code-review/','Find and fix the vulnerable line'),('Crypto & Encoding','/labs/crypto/','Decode flags, CyberChef-style'),('Cloud Security Lab','/labs/cloud/','Find cloud misconfigurations'),('Active Directory Lab','/labs/active-directory/','Trace a domain takeover'),('AI Red Team Lab','/ai/red-team/','Make an AI leak its secret'),
             ('Guided labs','/labs/#guided','Investigations on evidence files')]),
         ('play','Play','/play/','Quick, fun and made to share.',[
-            ('Cyber Duel','/duel/','Head-to-head: friends, bots, links'),('Live room','/duel/live/','Class-wide duel on phones'),('CyberHub Daily','/daily/','One real-world puzzle a day'),
+            ('Cyber Duel','/duel/','Head-to-head: friends, bots, links'),('Live room','/duel/live/','Class quiz or incident tabletop'),('CyberHub Daily','/daily/','One real-world puzzle a day'),
             ('Which role are you?','/careers/match/','A six-question career match'),('Your progress','/progress/','Badges and a completion card')]),
         ('ai','AI','/ai/','Build with AI, safely.',[
             ('Prompt testing','/ai/prompt-testing/','Test AI like software'),('AI and cyber jobs','/ai/jobs/','Live data and the job outlook'),('Secure AI coding','/ai/vibe-coding/','The vibe-coding cheat sheet'),
@@ -364,7 +364,7 @@ class Site:
             for t in d.get('tools',[]):body+='<p>'+self.a(next(x['name']for x in self.tools if x['id']==t),'/tools/'+t+'/')+'</p>'
             body+='<p>'+self.a('All labs →','/labs/')+'</p><p>'+self.a('Security+ pathway →','/academy/')+'</p></aside></div>'
             self.page(path,d['title'],body,d['description'],{'academy':'Academy','labs':'Labs','careers':'Careers','tutorials':'Tools'}[sec])
-        for section,title,description in [('labs','Practice with a purpose.','Ten interactive labs that run in your browser, grouped by skill, plus guided investigations. Synthetic evidence, clear checks, hints when you are stuck.'),('tutorials','Tool tutorials','Learn a bounded workflow and how to verify the result.'),('careers','Build a path you can demonstrate.','Connect foundational skills to projects, evidence and thoughtful career decisions.')]:
+        for section,title,description in [('labs','Practice with a purpose.','Twelve interactive labs that run in your browser, grouped by skill, plus guided investigations. Synthetic evidence, clear checks, hints when you are stuck.'),('tutorials','Tool tutorials','Learn a bounded workflow and how to verify the result.'),('careers','Build a path you can demonstrate.','Connect foundational skills to projects, evidence and thoughtful career decisions.')]:
             body=self.heading(title,description,section.title())
             if section=='careers':body+=f'<div class="grid two">{self.card("Internship scanner","Internships near CSUSB and remote, refreshed daily, with security and IT roles flagged.","/careers/internships/","Daily","Near CSUSB")}{self.card("Resume tailor","Match your resume to a posting, privately, then tailor it with AI without inventing anything.","/careers/resume/","Tool","Private")}{self.card("Which role are you?","Six questions that match you to a security career and its roadmap.","/careers/match/","Quiz","6 questions")}</div>'
             if section=='labs':body+=interactive_cards(self)

@@ -27,3 +27,19 @@ language sql security definer set search_path = '' as $$
 $$;
 revoke all on function public.delete_me() from public, anon;
 grant execute on function public.delete_me() to authenticated;
+
+-- Officers: only these emails can host Cyber Duel live rooms. Add rows in Table Editor → officers.
+-- No policies are defined, so the table cannot be read or changed with the public key; the
+-- is_officer() function only answers "is the signed-in user an officer?".
+create table if not exists public.officers (
+  email    text primary key check (email = lower(email)),
+  added_at timestamptz not null default now()
+);
+alter table public.officers enable row level security;
+
+create or replace function public.is_officer() returns boolean
+language sql stable security definer set search_path = '' as $$
+  select exists (select 1 from public.officers where email = lower(coalesce((select auth.jwt()) ->> 'email', '')));
+$$;
+revoke all on function public.is_officer() from public, anon;
+grant execute on function public.is_officer() to authenticated;

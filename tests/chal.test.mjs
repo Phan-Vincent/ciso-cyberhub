@@ -61,3 +61,23 @@ test('code review snippets are well formed', () => {
   for (const s of C.REVIEW) { assert.ok(!ids.has(s.id)); ids.add(s.id); assert.ok(s.bad >= 1 && s.bad <= s.code.length, s.id); assert.ok(s.code[s.bad - 1].trim(), s.id); assert.equal(s.fixes.length, 3); assert.ok(s.fix >= 0 && s.fix < 3); assert.ok(s.why.length > 40); }
   assert.equal(C.norm('  21, 22 '), '21,22');
 });
+
+test('Active Directory searches find every answer', () => {
+  const ev = C.adEvents(); const Q = q => C.runQuery(ev, q, C.AD_FIELDS); const A = id => [].concat(C.AD_LEVELS.find(l => l.id === id).a);
+  assert.equal(C.AD_LEVELS.length, 8);
+  assert.equal(Q('event_id=4771 | stats count by src_ip').table.rows[0][0], A('spray-ip')[0]);
+  assert.equal(String(Q('event_id=4771 src_ip=10.10.20.77 | stats count by user').table.rows.length), A('spray-count')[0]);
+  assert.deepEqual(Q('src_ip=10.10.20.77 event_id=4624').rows.map(e => e.user)[0], A('spray-win')[0]);
+  assert.equal(String(Q('event_id=4769 user=jperez enc=0x17').count), A('kerberoast')[0]);
+  assert.equal(Q('event_id=4728').rows[0].member, A('escalate')[0]);
+  assert.ok(A('dcsync').includes(Q('event_id=4662').rows[0].time.slice(11, 16)));
+  assert.equal(String(Q('cleared').rows[0].event_id), A('cleared')[0]);
+  assert.deepEqual(Q('preauth=0').rows.map(e => e.user), A('asrep'));
+  assert.throws(() => Q('ua=x'));
+  for (const L of C.AD_LEVELS) { assert.ok(L.hints.length >= 1, L.id); if (L.start) Q(L.start); }
+});
+
+test('cloud snippets are well formed', () => {
+  assert.equal(C.CLOUD.length, 12); const ids = new Set(C.REVIEW.map(s => s.id));
+  for (const s of C.CLOUD) { assert.ok(!ids.has(s.id), s.id); ids.add(s.id); assert.ok(s.bad >= 1 && s.bad <= s.code.length, s.id); assert.ok(s.code[s.bad - 1].trim(), s.id); assert.equal(s.fixes.length, 3); assert.ok(s.fix >= 0 && s.fix < 3); }
+});

@@ -47,6 +47,8 @@ LAB_TRACKS = [
         ('Packet Lab', 'Filter a capture, Wireshark-style', '/labs/packets/'), ('Log Hunt', 'Trace a break-in through server logs', '/labs/logs/')]),
     ('Build securely', 'Spot and fix the bugs attackers look for.', [
         ('Secure Code Review', 'Find the vulnerable line, pick the fix', '/labs/code-review/'), ('Crypto & Encoding Lab', 'Decode flags, CyberChef-style', '/labs/crypto/')]),
+    ('Cloud and enterprise', 'Secure the systems most organizations actually run.', [
+        ('Cloud Security Lab', 'Spot AWS, Azure and Google Cloud misconfigurations', '/labs/cloud/'), ('Active Directory Lab', 'Trace a domain takeover in DC logs', '/labs/active-directory/')]),
     ('AI security', 'Break a guarded AI, then learn the defense.', [
         ('AI Red Team Lab', 'Six levels of prompt-injection defenses', '/ai/red-team/')]),
 ]

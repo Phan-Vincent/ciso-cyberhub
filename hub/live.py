@@ -8,14 +8,19 @@ def live_page(site) -> str:
     body = site.heading('Cyber Duel: Live room', 'Run a class-wide quiz: put the room code on the projector, everyone joins on their phone with a nickname, and the leaderboard updates after every question.', 'Play / Live room')
     s = lambda i, inner, hidden=True: f'<section class="lv-screen" id="{i}"{" hidden" if hidden else ""}>{inner}</section>'
     st = '<p class="lv-status label" aria-live="polite"></p>'
-    body += '<div class="live" id="live">'
+    hosting = 'anyone' if site.config.get('live_hosting') == 'anyone' else 'officers'
+    body += f'<div class="live" id="live" data-hosting="{hosting}">'
     body += s('lv-off', '<div class="ac-card"><h2>Live rooms are almost ready</h2><p>Live rooms need a free realtime service that an officer sets up once (about 10 minutes). Until then, use Face-off or Tournament mode on one screen, or Challenge links.</p>'
               f'<p>{site.a("Play Cyber Duel →", "/duel/", "button primary")}</p><p class="muted">Setup guide for officers: docs/ACCOUNTS.md in the CyberHub repository.</p></div>', hidden=False)
-    body += s('lv-choose', '<div class="lv-pick"><button type="button" class="lv-big" id="lv-host"><b>Host a room</b><span>On the projector or the teacher\'s laptop</span></button>'
+    body += s('lv-choose', '<div class="lv-pick"><button type="button" class="lv-big" id="lv-host"><b>Host a room</b><span>Officers: on the projector laptop</span></button>'
               '<button type="button" class="lv-big" id="lv-join-btn"><b>Join a room</b><span>On your phone, with the room code</span></button></div>')
+    body += s('lv-officer', '<div class="ac-card"><h2>Hosting is for CISO officers</h2><p id="lv-omsg">Sign in with your officer email to host a room. Anyone can join a room without an account.</p>'
+              f'<p class="rt-actions">{site.a("Sign in", "/account/", "button primary")}<button type="button" id="lv-ocheck">I signed in, check again</button><button type="button" id="lv-oback">Back</button></p>'
+              '<p class="muted">Officers are added by the club in the CyberHub Supabase project (Table Editor → officers).</p></div>')
     body += s('lv-setup', '<h2>New room</h2><div class="duel-form"><label><span class="label">Topic</span><select id="lv-cat"><option value="all">All topics</option></select></label>'
-              '<label><span class="label">Level</span><select id="lv-diff"><option value="1">Beginner</option><option value="2">Student</option><option value="3">Pro</option><option value="mix" selected>Mixed</option></select></label>'
-              '<label><span class="label">Questions</span><select id="lv-n"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></label></div>'
+              '<label class="lv-qonly"><span class="label">Level</span><select id="lv-diff"><option value="1">Beginner</option><option value="2">Student</option><option value="3">Pro</option><option value="mix" selected>Mixed</option></select></label>'
+              '<label class="lv-qonly"><span class="label">Questions</span><select id="lv-n"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></label></div>'
+              '<p class="muted" id="lv-ttnote" hidden>Incident tabletop: six decisions in a real-style incident, 30 seconds each. Put students in teams of 3 or 4 sharing one phone so they talk it through, then discuss each answer on the big screen.</p>'
               '<p><button type="button" class="primary duel-go" id="lv-create">Create room</button></p>')
     body += s('lv-lobby', f'{st}<div class="lv-joinbox"><svg class="lv-qr" id="lv-qr" role="img" aria-label="QR code to join this room"></svg><div><p class="label">Scan to join, or go to</p><p class="lv-url" id="lv-url"></p><p class="label">Room code</p><p class="lv-code" id="lv-code" aria-live="polite"></p></div></div>'
               '<p class="lv-count" id="lv-count" aria-live="polite">0 players</p><div class="lv-players" id="lv-players"></div><p class="muted">Click a name to remove it.</p>'
@@ -36,7 +41,7 @@ def live_page(site) -> str:
     body += s('lv-pr', '<p class="lv-big-msg" id="lv-pres"></p><p class="lv-count" id="lv-prank"></p>')
     body += s('lv-pend', '<p class="lv-big-msg">Game over</p><p class="lv-count" id="lv-pfinal"></p>' + f'<p>{site.a("Keep practicing →", "/duel/", "button")}</p>')
     body += '</div>'
-    body += ('<section class="duel-host"><h2>Running it in class</h2><ol class="steps"><li><b>Host:</b> open this page on the projector laptop, choose Host a room, pick the topic and level, and create the room.</li>'
+    body += ('<section class="duel-host"><h2>Running it in class</h2><ol class="steps"><li><b>Host (a CISO officer, signed in):</b> open this page on the projector laptop, choose Host a room, pick the topic and level, and create the room.</li>'
              '<li><b>Students:</b> scan the QR code on screen with their phone camera (or open the address shown), then pick a nickname. Late? Press <b>Show join QR</b> any time during the game.</li>'
              '<li>When everyone is in, press <b>Start game</b>. Each question lasts 15 seconds; faster correct answers score more.</li>'
              '<li>After each question the projector shows the answer, why it is right, and the top 10.</li></ol>'
