@@ -10,7 +10,7 @@ lessons, badges, duel stats). Never resumes, names or tracking data. Accounts ar
 
 ## 1. Create the project (about 10 minutes, free)
 
-1. Sign in at <https://supabase.com> with the CyberHub Gmail (see `docs/EMAIL.md`). Turn on 2-step verification.
+1. Sign in at <https://supabase.com> with the CyberHub Proton Mail address, csusb.cyberhub@proton.me (see `docs/EMAIL.md`). Turn on 2-step verification.
 2. **New project**: name `cyberhub`, region **West US**, and generate a strong database password.
    Store it in a password manager; do not put it in the repo or chat.
 3. Wait for the project to finish setting up.
@@ -34,7 +34,7 @@ lessons, badges, duel stats). Never resumes, names or tracking data. Accounts ar
 
 Supabase's built-in sender only allows a few sign-in emails per hour. That is fine for testing,
 but before the school launch, set **Authentication → Emails → SMTP settings** to a real sender
-(for example a free transactional email service, or the CyberHub Gmail with an app password)
+(for example a free transactional email service; see `docs/EMAIL.md`)
 and edit the **Magic Link** template so it says "CyberHub".
 
 ## 5. Connect the site
