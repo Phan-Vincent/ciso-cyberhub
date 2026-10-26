@@ -4,6 +4,7 @@
 // The host is the source of truth for scoring. No innerHTML; text only.
 
 import { makeRound, points, cleanName, ROUND_MS, type Bank, type Round } from './duel.js';
+import { qrMatrix, qrPath } from './qr.js';
 
 /* ------------------------------------------------------------ protocol */
 export type Msg =
@@ -82,12 +83,18 @@ if (app) {
   const base = document.body.dataset.base || ''; const sbUrl = document.body.dataset.sbUrl || '', sbKey = document.body.dataset.sbKey || '';
   const $ = <T extends HTMLElement = HTMLElement>(s: string) => app.querySelector<T>(s)!;
   const el = (tag: string, text = '', cls = '') => { const e = document.createElement(tag); if (text) e.textContent = text; if (cls) e.className = cls; return e; };
-  const show = (id: string) => { app.querySelectorAll<HTMLElement>('.lv-screen').forEach(s => { s.hidden = s.id !== id; }); if (!['lv-off', 'lv-choose'].includes(id)) app.scrollIntoView({ block: 'start' }); };
+  const show = (id: string) => { app.querySelectorAll<HTMLElement>('.lv-screen').forEach(s => { s.hidden = s.id !== id; }); const qb = app.querySelector<HTMLElement>('#lv-qrbtn'); if (qb) qb.hidden = !app.dataset.room || !['lv-hq', 'lv-hr', 'lv-hend'].includes(id); if (!['lv-off', 'lv-choose'].includes(id)) app.scrollIntoView({ block: 'start' }); };
   const SHAPES = ['▲', '◆', '●', '■'];
   let bank: Bank | null = null; const ready = fetch(base + '/assets/duel.json').then(r => r.json()).then((b: Bank) => { bank = b; const sel = $<HTMLSelectElement>('#lv-cat'); for (const [k, v] of Object.entries(b.categories)) { const o = el('option', v) as HTMLOptionElement; o.value = k; sel.append(o); } });
   const status = (s: string) => { app.querySelectorAll<HTMLElement>('.lv-status').forEach(x => { x.textContent = s === 'live' ? '● Connected' : s === 'connecting' ? '○ Connecting…' : '○ Reconnecting…'; x.dataset.s = s; }); };
   if (!sbUrl || !sbKey) { show('lv-off'); } else show('lv-choose');
   const joinUrl = (code: string) => `${location.origin}${location.pathname}#${code}`;
+  const drawQr = (svg: SVGSVGElement, text: string) => { const m = qrMatrix(text); const n = m.length + 8; const NS = 'http://www.w3.org/2000/svg';
+    svg.setAttribute('viewBox', `0 0 ${n} ${n}`); svg.setAttribute('shape-rendering', 'crispEdges');
+    const bg = document.createElementNS(NS, 'rect'); bg.setAttribute('width', String(n)); bg.setAttribute('height', String(n)); bg.setAttribute('fill', '#fff');
+    const path = document.createElementNS(NS, 'path'); path.setAttribute('d', qrPath(m)); path.setAttribute('fill', '#000'); svg.replaceChildren(bg, path); };
+  const qrBtn = $<HTMLButtonElement>('#lv-qrbtn'), dlg = app.querySelector<HTMLDialogElement>('#lv-qrdlg')!;
+  qrBtn.addEventListener('click', () => { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', ''); });
 
   // ---------------- host
   let host: HostGame | null = null, ch: Channel | null = null, code = '', timer = 0, tick = 0, t0 = 0; let lastStart: Msg | null = null;
@@ -99,7 +106,10 @@ if (app) {
     await ready; if (!bank) return; code = newCode(); host = new HostGame(); ch?.close(); ch = new Channel(sbUrl, sbKey, code); ch.onStatus = status;
     ch.onMsg = m => { if (!host) return; if (m.t === 'join') { if (host.join(m.id, m.name) && host.i < 0) lobby(); else if (host.i >= 0) { ch!.send({ t: 'lobby', names: host.names() }); if (lastStart) ch!.send(lastStart); } }
       if (m.t === 'ans' && host.answer(m.id, m.i, m.pick, m.ms)) { $('#lv-answered').textContent = `${host.answered()} of ${host.players.size} answered`; if (host.answered() >= host.players.size) reveal(); } };
-    ch.connect(); $('#lv-code').textContent = code; $('#lv-url').textContent = joinUrl(code).replace(/^https?:\/\//, ''); show('lv-lobby'); lobby();
+    ch.connect(); const url = joinUrl(code), shortUrl = url.replace(/^https?:\/\//, '');
+    $('#lv-code').textContent = code; $('#lv-url').textContent = shortUrl; $('#lv-code2').textContent = code; $('#lv-url2').textContent = shortUrl;
+    try { drawQr(app.querySelector<SVGSVGElement>('#lv-qr')!, url); drawQr(app.querySelector<SVGSVGElement>('#lv-qr2')!, url); } catch { app.querySelectorAll<SVGSVGElement>('.lv-qr').forEach(q => { q.style.display = 'none'; }); }
+    app.dataset.room = code; show('lv-lobby'); lobby();
   });
   $('#lv-start').addEventListener('click', () => { if (!host || !bank) return; const seed = crypto.getRandomValues(new Uint32Array(1))[0]; const cat = $<HTMLSelectElement>('#lv-cat').value, diff = $<HTMLSelectElement>('#lv-diff').value, n = Number($<HTMLSelectElement>('#lv-n').value);
     host.start(bank, seed, cat, diff, n); lastStart = { t: 'start', seed, cat, diff, n }; ch!.send(lastStart); ask(); });
