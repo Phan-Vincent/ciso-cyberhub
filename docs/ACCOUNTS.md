@@ -68,7 +68,13 @@ nothing is written to the database, and only nicknames and answers pass through.
    broadcast channels named `cyberhub-duel-<CODE>`.
 3. Free-plan limits cover a classroom comfortably (check **Realtime** usage in the dashboard; the free
    plan allows a couple of hundred simultaneous connections).
-4. Rehearse once: open `/duel/live/` on a laptop, **Host a room**, then join from two phones.
+4. **Officers only host.** `site.json` has `"live_hosting": "officers"`. Add each officer's email (lowercase)
+   in **Table Editor → officers** (the table comes from `schema.sql`). Officers sign in on `/account/`, then
+   choose **Host a room**. Anyone can still join without an account. Set `"live_hosting": "anyone"` to turn
+   the check off. It is a gate in the page, not a hard security boundary, because rooms use public channels.
+5. Rehearse once: open `/duel/live/` on a laptop, **Host a room**, then join from two phones.
+6. **Incident tabletops:** in the room's Topic list, pick a scenario under "Incident tabletop" (ransomware,
+   payroll phishing, leaked cloud key). Six decisions, 30 seconds each; teams of 3 or 4 share a phone.
 
 ## Notes
 

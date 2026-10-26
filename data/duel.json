@@ -2130,5 +2130,277 @@
 "answer": 0,
 "why": "One-byte XOR has only 256 possible keys. Malware uses it to hide strings, not to protect data."
 }
+],
+"scenarios": [
+{
+"id": "ransomware",
+"title": "Ransomware on campus",
+"steps": [
+{
+"id": "tt-ransomware-1",
+"cat": "tt:ransomware",
+"level": 2,
+"q": "7:02 AM. Five calls to the help desk: files on the shared drive now end in .lckd and a note demands Bitcoin. What do you do first?",
+"choices": [
+"Isolate the affected machines from the network",
+"Pay the ransom before it goes up",
+"Reboot every server to stop it",
+"Email the whole campus the technical details"
+],
+"answer": 0,
+"why": "Containment comes first: cut infected machines off (pull the network or quarantine them with EDR) so encryption cannot spread. Rebooting can destroy evidence in memory."
+},
+{
+"id": "tt-ransomware-2",
+"cat": "tt:ransomware",
+"level": 2,
+"q": "7:20 AM. EDR shows the encryption started on one staff laptop, FIN-LT-14. What do you preserve before rebuilding it?",
+"choices": [
+"A memory image, a disk image, and the EDR and firewall logs",
+"Nothing: rebuild it right away",
+"Only a photo of the ransom note",
+"The user's browser bookmarks"
+],
+"answer": 0,
+"why": "Evidence shows how the attacker got in and what else they touched. Without it you may rebuild the same hole."
+},
+{
+"id": "tt-ransomware-3",
+"cat": "tt:ransomware",
+"level": 2,
+"q": "8:05 AM. The nightly backup server sat on the same domain and is encrypted too. What saves you?",
+"choices": [
+"The offline, immutable weekly backup, after a test restore",
+"The attacker's decryptor",
+"Shadow copies on the infected server",
+"Re-running last night's backup job"
+],
+"answer": 0,
+"why": "Attackers hunt for backups first. Offline or immutable copies, tested regularly, are what make recovery possible without paying."
+},
+{
+"id": "tt-ransomware-4",
+"cat": "tt:ransomware",
+"level": 2,
+"q": "9:30 AM. Leadership asks whether to pay. What is the best guidance?",
+"choices": [
+"It is a leadership decision with legal, insurers and law enforcement (FBI / IC3); paying does not guarantee recovery",
+"Always pay: it is the fastest option",
+"Keep leadership out of it",
+"Let the attackers talk to students directly"
+],
+"answer": 0,
+"why": "Payment is a business and legal decision, not the SOC's alone, and it can be restricted. Report to law enforcement either way."
+},
+{
+"id": "tt-ransomware-5",
+"cat": "tt:ransomware",
+"level": 2,
+"q": "11:00 AM. Logs show data was copied to an unknown cloud storage site before the encryption started. What does that change?",
+"choices": [
+"It may be a data breach: bring in legal and privacy for notification duties (for example FERPA and state law)",
+"Nothing: the encryption was the only problem",
+"Delete those logs to limit liability",
+"Only block the ransom note's email address"
+],
+"answer": 0,
+"why": "Modern ransomware steals data first, then encrypts. Stolen student records can trigger legal notification requirements."
+},
+{
+"id": "tt-ransomware-6",
+"cat": "tt:ransomware",
+"level": 2,
+"q": "One week later. Root cause: the attacker signed in to the VPN with a staff password and no MFA. Best lesson-learned action?",
+"choices": [
+"Require MFA on the VPN and all remote access, and rehearse the incident plan",
+"Ban laptops for staff",
+"Move the VPN to a different port",
+"Name the staff member publicly"
+],
+"answer": 0,
+"why": "Stolen passwords without MFA are one of the most common ways in. Fix the control, then practice the plan, without blaming people."
+}
+]
+},
+{
+"id": "bec",
+"title": "Payroll phishing (business email compromise)",
+"steps": [
+{
+"id": "tt-bec-1",
+"cat": "tt:bec",
+"level": 2,
+"q": "Payroll gets an email from the 'CFO' asking to change her direct deposit before Friday. It comes from cfo-isu-edu.com. What first?",
+"choices": [
+"Verify by calling the CFO on a number you already know; change nothing yet",
+"Make the change: it is the CFO",
+"Reply to the email to ask if it is real",
+"Forward it to the whole finance team"
+],
+"answer": 0,
+"why": "Payment changes must be confirmed through a separate, known channel. Replying only reaches the attacker."
+},
+{
+"id": "tt-bec-2",
+"cat": "tt:bec",
+"level": 2,
+"q": "Three more staff report the same lure. Two of them clicked a link to a 'Microsoft 365' sign-in page. What next?",
+"choices": [
+"Reset their passwords, sign them out everywhere, and check their MFA and sign-in logs",
+"Wait to see if anything happens",
+"Just delete the emails",
+"Ask them to change passwords next month"
+],
+"answer": 0,
+"why": "Assume the credentials were captured. Revoking sessions matters because attackers can keep a stolen session even after a password change."
+},
+{
+"id": "tt-bec-3",
+"cat": "tt:bec",
+"level": 2,
+"q": "Sign-in logs show one of those accounts signed in from overseas minutes after the click, and a new inbox rule forwards mail containing 'invoice' to an outside address. What do you do?",
+"choices": [
+"Remove the rule, revoke sessions, and review what the attacker read and sent",
+"Leave the rule so you can watch them",
+"Only change the user's display name",
+"Delete the user's whole mailbox"
+],
+"answer": 0,
+"why": "Forwarding rules are classic business email compromise persistence. Remove them, then find out what was exposed or sent in the user's name."
+},
+{
+"id": "tt-bec-4",
+"cat": "tt:bec",
+"level": 2,
+"q": "How do you stop other people from falling for the same email?",
+"choices": [
+"Search for and remove it from every mailbox, and block the sender domain and link",
+"Email the attacker asking them to stop",
+"Turn off email for the whole campus",
+"Do nothing: people should know better"
+],
+"answer": 0,
+"why": "Email platforms can find and purge a message from all mailboxes. Block the indicators so new copies bounce."
+},
+{
+"id": "tt-bec-5",
+"cat": "tt:bec",
+"level": 2,
+"q": "Which control would have stopped the stolen password from working at all?",
+"choices": [
+"Phishing-resistant MFA, like passkeys or security keys",
+"Making passwords expire more often",
+"Antivirus on every laptop",
+"A VPN for email"
+],
+"answer": 0,
+"why": "Passkeys and security keys are tied to the real site, so a fake sign-in page cannot capture anything reusable."
+},
+{
+"id": "tt-bec-6",
+"cat": "tt:bec",
+"level": 2,
+"q": "What is the best message to staff afterward?",
+"choices": [
+"Thank the people who reported it, show the real example, and remind everyone to verify payment changes by phone",
+"Shame the people who clicked",
+"Ban all links in email",
+"Say it was nothing"
+],
+"answer": 0,
+"why": "Fast reporting is what limited the damage. Reward it, and keep the lesson concrete."
+}
+]
+},
+{
+"id": "cloudkey",
+"title": "Leaked cloud key",
+"steps": [
+{
+"id": "tt-cloudkey-1",
+"cat": "tt:cloudkey",
+"level": 2,
+"q": "GitHub alerts you that a student's class project repo contains an AWS access key for the department's account. What first?",
+"choices": [
+"Deactivate and rotate the key right away",
+"Ask the student to delete the file",
+"Make the repo private and wait",
+"Ignore it: the repo is only a day old"
+],
+"answer": 0,
+"why": "Bots scan GitHub for keys within minutes. Deleting the file does not help, because the key stays in git history. Kill the key first."
+},
+{
+"id": "tt-cloudkey-2",
+"cat": "tt:cloudkey",
+"level": 2,
+"q": "CloudTrail shows the key was used 40 minutes ago to call RunInstances in three regions you never use. What are the attackers most likely doing?",
+"choices": [
+"Running cryptomining on expensive instances",
+"Backing up your data",
+"Testing your website",
+"Nothing important"
+],
+"answer": 0,
+"why": "Leaked cloud keys are most often used for cryptomining, which can cost thousands of dollars in hours."
+},
+{
+"id": "tt-cloudkey-3",
+"cat": "tt:cloudkey",
+"level": 2,
+"q": "What do you investigate next?",
+"choices": [
+"Everything the key did: new users, keys, roles, instances and regions",
+"Only the region you normally use",
+"The student's grades",
+"Your DNS records"
+],
+"answer": 0,
+"why": "Attackers create persistence (new users, keys or roles) so they keep access after you revoke the first key. Check every region."
+},
+{
+"id": "tt-cloudkey-4",
+"cat": "tt:cloudkey",
+"level": 2,
+"q": "You find a new IAM user named 'support-admin' that the key created. What do you do?",
+"choices": [
+"Record the evidence, then delete it and its keys, and keep hunting for more",
+"Rename it to something safer",
+"Leave it for now",
+"Turn on MFA for it"
+],
+"answer": 0,
+"why": "It is the attacker's backdoor. Preserve the details for the report, remove it, and look for other changes."
+},
+{
+"id": "tt-cloudkey-5",
+"cat": "tt:cloudkey",
+"level": 2,
+"q": "The bill already shows $3,000. Who do you contact?",
+"choices": [
+"AWS support, and your leadership and finance office",
+"The student who leaked it, to pay",
+"Nobody: it is already spent",
+"GitHub support"
+],
+"answer": 0,
+"why": "Cloud providers have a process for charges caused by compromise. Leadership needs to know about the cost and the incident."
+},
+{
+"id": "tt-cloudkey-6",
+"cat": "tt:cloudkey",
+"level": 2,
+"q": "How do you stop this from happening again?",
+"choices": [
+"Short-lived role credentials, secret scanning before commits, and least-privilege keys",
+"Forbid students from writing code",
+"Make keys longer",
+"Share keys over email instead"
+],
+"answer": 0,
+"why": "Short-lived credentials leave nothing useful to leak, and secret scanning catches mistakes before they are pushed."
+}
+]
+}
 ]
 }

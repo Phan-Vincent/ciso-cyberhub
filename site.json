@@ -7,5 +7,6 @@
   "affiliation": "An independent student project for the CISO community. University endorsement pending.",
   "contact_email": "csusb.cyberhub@gmail.com",
   "supabase_url": "https://pnfxzpbpjjqcmsirytci.supabase.co",
-  "supabase_key": "sb_publishable_SCQVXuBezzXea4Hk5JTv5g_kyBFBwVT"
+  "supabase_key": "sb_publishable_SCQVXuBezzXea4Hk5JTv5g_kyBFBwVT",
+  "live_hosting": "officers"
 }

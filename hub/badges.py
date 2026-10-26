@@ -30,6 +30,8 @@ BADGES = [
     ('threat-hunter', 'Threat hunter', 'Solve all nine Log Hunt levels.', '/labs/logs/'),
     ('decoder', 'Decoder', 'Solve all nine Crypto & Encoding levels.', '/labs/crypto/'),
     ('code-guardian', 'Code guardian', 'Fix eight vulnerable snippets in Secure Code Review.', '/labs/code-review/'),
+    ('cloud-guard', 'Cloud guard', 'Fix eight misconfigurations in the Cloud Security Lab.', '/labs/cloud/'),
+    ('domain-defender', 'Domain defender', 'Solve all eight Active Directory Lab levels.', '/labs/active-directory/'),
 ]
 
 
