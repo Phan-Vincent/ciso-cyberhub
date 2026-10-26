@@ -764,7 +764,7 @@
       "last_verified": null,
       "name": "mthcht/awesome-lists",
       "repository": "https://github.com/mthcht/awesome-lists",
-      "retrieved_at": "2026-10-24T10:14:17Z",
+      "retrieved_at": "2026-10-26T13:28:38Z",
       "source": "https://api.github.com/search/repositories",
       "status": "pending-review"
     },
@@ -919,10 +919,87 @@
       "retrieved_at": "2026-10-25T20:54:50Z",
       "source": "https://api.github.com/search/repositories",
       "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "sigstore/model-transparency",
+      "repository": "https://github.com/sigstore/model-transparency",
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "mechubsec/mecmcp",
+      "repository": "https://github.com/mechubsec/mecmcp",
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "unmask-sh/unmask",
+      "repository": "https://github.com/unmask-sh/unmask",
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "Danube-Labs/javv-poc",
+      "repository": "https://github.com/Danube-Labs/javv-poc",
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "Chiaro-HQ/methodology",
+      "repository": "https://github.com/Chiaro-HQ/methodology",
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "ee-zvz/sv1",
+      "repository": "https://github.com/ee-zvz/sv1",
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "yandex-cloud-examples/yc-mk8s-emudhra-mitigation",
+      "repository": "https://github.com/yandex-cloud-examples/yc-mk8s-emudhra-mitigation",
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "ChrisAdkin8/tf-analyze",
+      "repository": "https://github.com/ChrisAdkin8/tf-analyze",
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "systerel/S2OPC",
+      "repository": "https://github.com/systerel/S2OPC",
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
     }
   ],
-  "errors": [],
-  "last_attempt": "2026-10-25T20:54:50Z",
+  "errors": [
+    {
+      "error": "Redirect requires source configuration review",
+      "id": "chainsaw"
+    }
+  ],
+  "last_attempt": "2026-10-26T13:28:38Z",
   "updates": [
     {
       "changes": {
@@ -963,6 +1040,24 @@
     {
       "changes": {
         "archived": false,
+        "license_signal": "NOASSERTION",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-24T11:08:06Z",
+        "release": null,
+        "renamed": false,
+        "repository": "https://github.com/kevoreilly/CAPEv2",
+        "stars_signal": 3610
+      },
+      "id": "capev2",
+      "last_verified": null,
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/kevoreilly/CAPEv2",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
         "license_signal": "Apache-2.0",
         "maintenance_signal": "activity-observed",
         "pushed_at": "2026-10-24T11:37:26Z",
@@ -994,6 +1089,42 @@
       "retrieved_at": "2026-10-25T20:54:50Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/Cisco-Talos/clamav",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "MIT",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-26T08:19:33Z",
+        "release": "v1.8.1",
+        "renamed": false,
+        "repository": "https://github.com/crowdsecurity/crowdsec",
+        "stars_signal": 15319
+      },
+      "id": "crowdsec",
+      "last_verified": null,
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/crowdsecurity/crowdsec",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "GPL-3.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-09-11T12:44:05Z",
+        "release": "v2.5.0",
+        "renamed": false,
+        "repository": "https://github.com/rizinorg/cutter",
+        "stars_signal": 20096
+      },
+      "id": "cutter",
+      "last_verified": null,
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/rizinorg/cutter",
       "status": "pending-review"
     },
     {
@@ -1037,15 +1168,33 @@
         "archived": false,
         "license_signal": "Apache-2.0",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-22T13:16:26Z",
+        "pushed_at": "2026-10-23T14:24:38Z",
+        "release": "v0.17.1",
+        "renamed": false,
+        "repository": "https://github.com/NVIDIA/garak",
+        "stars_signal": 9707
+      },
+      "id": "garak",
+      "last_verified": null,
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/NVIDIA/garak",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "Apache-2.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-26T09:09:58Z",
         "release": "Ghidra_12.2_build",
         "renamed": false,
         "repository": "https://github.com/NationalSecurityAgency/ghidra",
-        "stars_signal": 93784
+        "stars_signal": 94512
       },
       "id": "ghidra",
       "last_verified": null,
-      "retrieved_at": "2026-10-24T10:14:17Z",
+      "retrieved_at": "2026-10-26T13:28:38Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/NationalSecurityAgency/ghidra",
       "status": "pending-review"
@@ -1084,6 +1233,42 @@
       "retrieved_at": "2026-10-24T10:14:17Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/anchore/grype",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "AGPL-3.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-25T04:23:08Z",
+        "release": "v4.2.0",
+        "renamed": false,
+        "repository": "https://github.com/Yamato-Security/hayabusa",
+        "stars_signal": 3416
+      },
+      "id": "hayabusa",
+      "last_verified": null,
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/Yamato-Security/hayabusa",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "MIT",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-26T12:58:09Z",
+        "release": "0.3.285",
+        "renamed": false,
+        "repository": "https://github.com/UKGovernmentBEIS/inspect_ai",
+        "stars_signal": 3096
+      },
+      "id": "inspect-ai",
+      "last_verified": null,
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/UKGovernmentBEIS/inspect_ai",
       "status": "pending-review"
     },
     {
@@ -1181,15 +1366,15 @@
         "archived": false,
         "license_signal": "NOASSERTION",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-22T15:45:05Z",
+        "pushed_at": "2026-10-24T15:00:05Z",
         "release": null,
         "renamed": false,
         "repository": "https://github.com/nmap/nmap",
-        "stars_signal": 13862
+        "stars_signal": 13875
       },
       "id": "nmap",
       "last_verified": null,
-      "retrieved_at": "2026-10-24T10:14:17Z",
+      "retrieved_at": "2026-10-26T13:28:38Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/nmap/nmap",
       "status": "pending-review"
@@ -1323,6 +1508,42 @@
     {
       "changes": {
         "archived": false,
+        "license_signal": "NOASSERTION",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-24T11:29:17Z",
+        "release": "v6.5",
+        "renamed": false,
+        "repository": "https://github.com/pi-hole/pi-hole",
+        "stars_signal": 61473
+      },
+      "id": "pi-hole",
+      "last_verified": null,
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/pi-hole/pi-hole",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "MIT",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-26T11:19:23Z",
+        "release": "0.125.1",
+        "renamed": false,
+        "repository": "https://github.com/promptfoo/promptfoo",
+        "stars_signal": 26451
+      },
+      "id": "promptfoo",
+      "last_verified": null,
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/promptfoo/promptfoo",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
         "license_signal": "Apache-2.0",
         "maintenance_signal": "activity-observed",
         "pushed_at": "2026-10-25T02:41:03Z",
@@ -1336,6 +1557,42 @@
       "retrieved_at": "2026-10-25T20:54:50Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/prowler-cloud/prowler",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": true,
+        "license_signal": "MIT",
+        "maintenance_signal": "archived",
+        "pushed_at": "2026-03-25T01:18:52Z",
+        "release": null,
+        "renamed": false,
+        "repository": "https://github.com/Azure/PyRIT",
+        "stars_signal": 121
+      },
+      "id": "pyrit",
+      "last_verified": null,
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/Azure/PyRIT",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
+        "license_signal": "NOASSERTION",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-26T12:59:28Z",
+        "release": "6.2.4",
+        "renamed": false,
+        "repository": "https://github.com/radareorg/radare2",
+        "stars_signal": 25156
+      },
+      "id": "radare2",
+      "last_verified": null,
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/radareorg/radare2",
       "status": "pending-review"
     },
     {
@@ -1433,15 +1690,15 @@
         "archived": false,
         "license_signal": "GPL-2.0",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-23T20:55:55Z",
+        "pushed_at": "2026-10-26T09:44:51Z",
         "release": "suricata-8.0.7",
         "renamed": false,
         "repository": "https://github.com/OISF/suricata",
-        "stars_signal": 6764
+        "stars_signal": 6778
       },
       "id": "suricata",
       "last_verified": null,
-      "retrieved_at": "2026-10-24T10:14:17Z",
+      "retrieved_at": "2026-10-26T13:28:38Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/OISF/suricata",
       "status": "pending-review"
@@ -1521,6 +1778,24 @@
     {
       "changes": {
         "archived": false,
+        "license_signal": "AGPL-3.0",
+        "maintenance_signal": "activity-observed",
+        "pushed_at": "2026-10-26T05:12:16Z",
+        "release": "v3.99.7",
+        "renamed": false,
+        "repository": "https://github.com/trufflesecurity/trufflehog",
+        "stars_signal": 28707
+      },
+      "id": "trufflehog",
+      "last_verified": null,
+      "retrieved_at": "2026-10-26T13:28:38Z",
+      "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
+      "source": "https://api.github.com/repos/trufflesecurity/trufflehog",
+      "status": "pending-review"
+    },
+    {
+      "changes": {
+        "archived": false,
         "license_signal": "NOASSERTION",
         "maintenance_signal": "activity-observed",
         "pushed_at": "2026-10-23T17:51:32Z",
@@ -1545,11 +1820,11 @@
         "release": "v2.28.2",
         "renamed": false,
         "repository": "https://github.com/volatilityfoundation/volatility3",
-        "stars_signal": 4530
+        "stars_signal": 4536
       },
       "id": "volatility-3",
       "last_verified": null,
-      "retrieved_at": "2026-10-24T10:14:17Z",
+      "retrieved_at": "2026-10-26T13:28:38Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/volatilityfoundation/volatility3",
       "status": "pending-review"
@@ -1559,15 +1834,15 @@
         "archived": false,
         "license_signal": "NOASSERTION",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-24T03:35:25Z",
+        "pushed_at": "2026-10-26T13:28:11Z",
         "release": "v4.14.9",
         "renamed": false,
         "repository": "https://github.com/wazuh/wazuh",
-        "stars_signal": 17393
+        "stars_signal": 17431
       },
       "id": "wazuh",
       "last_verified": null,
-      "retrieved_at": "2026-10-24T10:14:17Z",
+      "retrieved_at": "2026-10-26T13:28:38Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/wazuh/wazuh",
       "status": "pending-review"
@@ -1577,15 +1852,15 @@
         "archived": false,
         "license_signal": "GPL-2.0",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-24T09:53:57Z",
+        "pushed_at": "2026-10-26T13:11:29Z",
         "release": null,
         "renamed": false,
         "repository": "https://github.com/wireshark/wireshark",
-        "stars_signal": 10075
+        "stars_signal": 10090
       },
       "id": "wireshark",
       "last_verified": null,
-      "retrieved_at": "2026-10-24T10:14:17Z",
+      "retrieved_at": "2026-10-26T13:28:38Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/wireshark/wireshark",
       "status": "pending-review"
@@ -1599,11 +1874,11 @@
         "release": "v4.5.8",
         "renamed": false,
         "repository": "https://github.com/VirusTotal/yara",
-        "stars_signal": 9964
+        "stars_signal": 9971
       },
       "id": "yara",
       "last_verified": null,
-      "retrieved_at": "2026-10-24T10:14:17Z",
+      "retrieved_at": "2026-10-26T13:28:38Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/VirusTotal/yara",
       "status": "pending-review"
@@ -1631,15 +1906,15 @@
         "archived": false,
         "license_signal": "NOASSERTION",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-23T18:05:29Z",
+        "pushed_at": "2026-10-26T10:18:16Z",
         "release": "v9.0.0",
         "renamed": false,
         "repository": "https://github.com/zeek/zeek",
-        "stars_signal": 8130
+        "stars_signal": 8135
       },
       "id": "zeek",
       "last_verified": null,
-      "retrieved_at": "2026-10-24T10:14:17Z",
+      "retrieved_at": "2026-10-26T13:28:38Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/zeek/zeek",
       "status": "pending-review"

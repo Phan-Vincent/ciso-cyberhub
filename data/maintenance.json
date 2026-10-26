@@ -28,7 +28,7 @@
     "requested_at": "2026-10-25T20:55:03Z",
     "status": "pending-human-verification"
   },
-  "link_offset": 40,
+  "link_offset": 60,
   "links": {
     "https://github.com/CISOfy/lynis": {
       "checked_at": "2026-10-24T10:14:30Z",
@@ -167,6 +167,106 @@
     },
     "https://github.com/aquasecurity/trivy#readme": {
       "checked_at": "2026-10-25T20:55:03Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/arkime/arkime": {
+      "checked_at": "2026-10-26T13:28:52Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/arkime/arkime#readme": {
+      "checked_at": "2026-10-26T13:28:52Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/bridgecrewio/checkov": {
+      "checked_at": "2026-10-26T13:28:52Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/bridgecrewio/checkov#readme": {
+      "checked_at": "2026-10-26T13:28:53Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/cilium/tetragon": {
+      "checked_at": "2026-10-26T13:28:53Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/cilium/tetragon#readme": {
+      "checked_at": "2026-10-26T13:28:54Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/crowdsecurity/crowdsec": {
+      "checked_at": "2026-10-26T13:28:54Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/crowdsecurity/crowdsec#readme": {
+      "checked_at": "2026-10-26T13:28:54Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/falcosecurity/falco": {
+      "checked_at": "2026-10-26T13:28:55Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/falcosecurity/falco#readme": {
+      "checked_at": "2026-10-26T13:28:55Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/gchq/CyberChef": {
+      "checked_at": "2026-10-26T13:28:56Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/gchq/CyberChef#readme": {
+      "checked_at": "2026-10-26T13:28:56Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/gitleaks/gitleaks": {
+      "checked_at": "2026-10-26T13:28:57Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/gitleaks/gitleaks#readme": {
+      "checked_at": "2026-10-26T13:28:57Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/greenbone/openvas-scanner": {
+      "checked_at": "2026-10-26T13:28:58Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/greenbone/openvas-scanner#readme": {
+      "checked_at": "2026-10-26T13:28:58Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/keepassxreboot/keepassxc": {
+      "checked_at": "2026-10-26T13:28:59Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/keepassxreboot/keepassxc#readme": {
+      "checked_at": "2026-10-26T13:28:59Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/kevoreilly/CAPEv2": {
+      "checked_at": "2026-10-26T13:29:00Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/kevoreilly/CAPEv2#readme": {
+      "checked_at": "2026-10-26T13:29:00Z",
       "error": null,
       "status": "reachable"
     }
