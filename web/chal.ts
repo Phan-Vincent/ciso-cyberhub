@@ -41,7 +41,7 @@ export function capture(): Pkt[] {
   add({ src: '10.0.5.31', dst: '198.51.100.77', proto: 'HTTP', sport: 53344, dport: 80, len: 412, info: 'GET /billing/invoice_2026.exe HTTP/1.1', method: 'GET', uri: '/billing/invoice_2026.exe', host: 'invoice-portal.example.net', ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' });
   add({ src: '198.51.100.77', dst: '10.0.5.31', proto: 'HTTP', sport: 80, dport: 53344, len: 1514, info: 'HTTP/1.1 200 OK (application/x-msdownload)' });
   add({ src: '10.0.5.23', dst: '192.0.2.10', proto: 'TLS', sport: 51500, dport: 443, len: 310, info: 'Application Data' });
-  // DNS tunnelling: long encoded labels to one domain
+  // DNS tunneling: long encoded labels to one domain
   for (const label of ['aGVsbG8gZnJvbSBzZXJ2ZXIx', 'dXNlcm5hbWVzLmNzdi5wYXJ0MQ', 'cGFydDIuYmFja3VwLWtleXM', 'ZW5kLW9mLXRyYW5zZmVy'])
     dnsq('10.0.5.52', `${label}.t1.cdn-sync.example.org`, '0.0.0.0', 'TXT');
   // Internal ARP sweep from a rogue device
@@ -162,10 +162,11 @@ export function events(): Ev[] {
   web(ts(11, 45, 2), '10.0.5.44', 'POST', '/login', 302, browsers[0]); web(ts(11, 46, 7), '10.0.5.44', 'GET', '/reports/export', 500, browsers[0]);
   return E.sort((a, b) => a.time < b.time ? -1 : a.time > b.time ? 1 : 0);
 }
-const EVF = ['time', 'source', 'host', 'src_ip', 'user', 'action', 'cmd', 'method', 'path', 'status', 'ua'] as const;
-export type QResult = { rows: Ev[]; table?: { cols: string[]; rows: (string | number)[][] }; count: number };
+export const EV_FIELDS = ['time', 'source', 'host', 'src_ip', 'user', 'action', 'cmd', 'method', 'path', 'status', 'ua'];
+export type Rec = { raw: string } & Record<string, unknown>;
+export type QResult = { rows: any[]; table?: { cols: string[]; rows: (string | number)[][] }; count: number };
 const like = (val: string, pat: string) => { const re = new RegExp('^' + pat.toLowerCase().split('*').map(x => x.replace(/[.+?^${}()|[\]\\]/g, '\\$&')).join('.*') + '$'); return re.test(val.toLowerCase()); };
-export function runQuery(all: Ev[], q: string): QResult {
+export function runQuery(all: Rec[] | Ev[], q: string, EVF: readonly string[] = EV_FIELDS): QResult {
   const [search, ...pipes] = q.split('|').map(s => s.trim());
   const terms = search.match(/(?:[^\s"]+="[^"]*"|"[^"]*"|\S+)/g) || [];
   const tests: ((e: Ev) => boolean)[] = []; let neg = false;
@@ -173,7 +174,7 @@ export function runQuery(all: Ev[], q: string): QResult {
     if (/^not$/i.test(raw)) { neg = true; continue; }
     const m = /^([a-z_]+)(!=|>=|<=|=|>|<)(.*)$/.exec(raw); let t: (e: Ev) => boolean;
     if (m) {
-      const [, f, op, v0] = m; if (!(EVF as readonly string[]).includes(f)) throw new Error(`Unknown field "${f}". Fields: ${EVF.join(', ')}`);
+      const [, f, op, v0] = m; if (!EVF.includes(f)) throw new Error(`Unknown field "${f}". Fields: ${EVF.join(', ')}`);
       const v = v0.replace(/^"|"$/g, '');
       t = e => { const x = (e as unknown as Record<string, unknown>)[f]; if (x === undefined) return op === '!='; const s = String(x);
         if (op === '=' ) return like(s, v); if (op === '!=') return !like(s, v);
@@ -181,17 +182,17 @@ export function runQuery(all: Ev[], q: string): QResult {
     } else { const w = raw.replace(/^"|"$/g, '').toLowerCase(); t = e => e.raw.toLowerCase().includes(w); }
     const n = neg; tests.push(n ? (e => !t(e)) : t); neg = false;
   }
-  let rows = all.filter(e => tests.every(t => t(e))); let table: QResult['table'];
+  let rows = (all as Rec[]).filter(e => tests.every(t => t(e))); let table: QResult['table'];
   for (const p of pipes) {
     let m: RegExpExecArray | null;
     if ((m = /^stats\s+count(?:\s+by\s+([a-z_]+))?$/i.exec(p))) {
       const f = m[1]; if (!f) { table = { cols: ['count'], rows: [[rows.length]] }; continue; }
-      if (!(EVF as readonly string[]).includes(f)) throw new Error(`Unknown field "${f}"`);
+      if (!EVF.includes(f)) throw new Error(`Unknown field "${f}"`);
       const c = new Map<string, number>(); for (const e of rows) { const k = String((e as unknown as Record<string, unknown>)[f] ?? '(none)'); c.set(k, (c.get(k) || 0) + 1); }
       table = { cols: [f, 'count'], rows: [...c.entries()].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)) };
     } else if ((m = /^head\s+(\d+)$/i.exec(p))) { const n = Number(m[1]); if (table) table.rows = table.rows.slice(0, n); else rows = rows.slice(0, n); }
     else if ((m = /^tail\s+(\d+)$/i.exec(p))) { const n = Number(m[1]); if (table) table.rows = table.rows.slice(-n); else rows = rows.slice(-n); }
-    else if ((m = /^table\s+([a-z_,\s]+)$/i.exec(p))) { const cols = m[1].split(/[,\s]+/).filter(Boolean); for (const c of cols) if (!(EVF as readonly string[]).includes(c)) throw new Error(`Unknown field "${c}"`); table = { cols, rows: rows.map(e => cols.map(c => String((e as unknown as Record<string, unknown>)[c] ?? ''))) }; }
+    else if ((m = /^table\s+([a-z_,\s]+)$/i.exec(p))) { const cols = m[1].split(/[,\s]+/).filter(Boolean); for (const c of cols) if (!EVF.includes(c)) throw new Error(`Unknown field "${c}"`); table = { cols, rows: rows.map(e => cols.map(c => String((e as unknown as Record<string, unknown>)[c] ?? ''))) }; }
     else if (p) throw new Error(`Unknown command "${p.split(/\s+/)[0]}". Try: stats count by FIELD, head N, tail N, table f1,f2`);
   }
   return { rows, table, count: rows.length };
@@ -239,7 +240,7 @@ export const REVIEW: Snip[] = [
   { id: 'sqli', title: 'Student lookup', lang: 'Python', cwe: 'CWE-89 SQL injection', bad: 5, fix: 1,
     code: ['@app.get("/students")', 'def find_student():', '    name = request.args.get("name", "")', '    cur = db.cursor()', '    cur.execute(f"SELECT * FROM students WHERE name = \'{name}\'")', '    return jsonify(cur.fetchall())'],
     fixes: ['Escape single quotes with name.replace("\'", "")', 'cur.execute("SELECT * FROM students WHERE name = %s", (name,))', 'Check that name is shorter than 50 characters'],
-    why: 'User input is pasted into the SQL text, so input like \' OR \'1\'=\'1 changes the query. Parameterised queries send data separately from code. Stripping quotes is easy to bypass.' },
+    why: 'User input is pasted into the SQL text, so input like \' OR \'1\'=\'1 changes the query. Parameterized queries send data separately from code. Stripping quotes is easy to bypass.' },
   { id: 'xss', title: 'Greeting page', lang: 'JavaScript', cwe: 'CWE-79 Cross-site scripting', bad: 3, fix: 2,
     code: ['app.get("/hello", (req, res) => {', '  const name = req.query.name || "friend";', '  res.send(`<h1>Hello ${name}</h1>`);', '});'],
     fixes: ['Block requests that contain the word "script"', 'Set a cookie with HttpOnly', 'Escape name for HTML (or render with a template engine that auto-escapes)'],
@@ -247,7 +248,7 @@ export const REVIEW: Snip[] = [
   { id: 'path', title: 'File download', lang: 'Python', cwe: 'CWE-22 Path traversal', bad: 4, fix: 0,
     code: ['@app.get("/download")', 'def download():', '    name = request.args["file"]', '    return send_file(os.path.join("/srv/uploads", name))'],
     fixes: ['Resolve the full path and refuse it unless it is still inside /srv/uploads', 'Make the uploads folder read-only', 'Log the file name before sending'],
-    why: 'file=../../etc/passwd walks out of the folder. Canonicalise the path and check it stays inside the allowed directory (or look files up by ID).' },
+    why: 'file=../../etc/passwd walks out of the folder. Canonicalize the path and check it stays inside the allowed directory (or look files up by ID).' },
   { id: 'cmd', title: 'Network check', lang: 'Python', cwe: 'CWE-78 OS command injection', bad: 3, fix: 2,
     code: ['def ping(host):', '    # host comes from a web form', '    out = subprocess.run(f"ping -c 1 {host}", shell=True, capture_output=True)', '    return out.stdout'],
     fixes: ['Run it with sudo so it always works', 'Remove spaces from host', 'Validate host as an IP or hostname, then subprocess.run(["ping", "-c", "1", host]) without shell=True'],
@@ -296,8 +297,8 @@ export const PCAP_LEVELS: Level[] = [
   { id: 'ftp-user', title: 'Cleartext login', q: 'A backup script logged in to FTP. Which username did it use?', a: 'backup', hints: ['Try the filter ftp', 'Look for a USER request.'], lesson: 'FTP sends usernames and passwords in cleartext: anyone on the path sees them. Look at the PASS line too. Use SFTP or FTPS instead.' },
   { id: 'download', title: 'Suspicious download', q: 'Host 10.0.5.31 downloaded a program over plain HTTP. What is the file name?', a: 'invoice_2026.exe', hints: ['Filter http.request', 'The file name is the last part of the URI.'], lesson: 'An .exe from an invoice-themed site, over unencrypted HTTP, right after an email: a classic phishing payload.' },
   { id: 'domain', title: 'Where did it come from?', q: 'Which domain name served that download?', a: 'invoice-portal.example.net', hints: ['Check the HTTP Host header: http.host contains "invoice"', 'Or find the DNS query 10.0.5.31 made just before.'], lesson: 'DNS and HTTP Host headers tie an IP to a name. Blocking the domain and searching for other hosts that resolved it is the next SOC step.' },
-  { id: 'tunnel', title: 'Data hiding in DNS', q: 'One host sends DNS TXT queries with long, random-looking names, all ending in the same domain. Which domain (the last three labels)?', a: 'cdn-sync.example.org', hints: ['Filter dns && ip.src == 10.0.5.52', 'Ignore the random first label: what do the names end with?'], lesson: 'DNS tunnelling smuggles data out inside query names. Long, high-entropy labels to one rare domain are the giveaway.' },
-  { id: 'arp-sweep', title: 'Rogue device', q: 'An internal device is asking for every address on the subnet. Which IP is it?', a: '10.0.5.99', hints: ['Filter arp', 'Which host sends "Who has" for many different addresses in a row?'], lesson: 'An ARP sweep maps the local network. A device you do not recognise doing it deserves a visit.' },
+  { id: 'tunnel', title: 'Data hiding in DNS', q: 'One host sends DNS TXT queries with long, random-looking names, all ending in the same domain. Which domain (the last three labels)?', a: 'cdn-sync.example.org', hints: ['Filter dns && ip.src == 10.0.5.52', 'Ignore the random first label: what do the names end with?'], lesson: 'DNS tunneling smuggles data out inside query names. Long, high-entropy labels to one rare domain are the giveaway.' },
+  { id: 'arp-sweep', title: 'Rogue device', q: 'An internal device is asking for every address on the subnet. Which IP is it?', a: '10.0.5.99', hints: ['Filter arp', 'Which host sends "Who has" for many different addresses in a row?'], lesson: 'An ARP sweep maps the local network. A device you do not recognize doing it deserves a visit.' },
 ];
 export const HUNT_LEVELS: Level[] = [
   { id: 'fails', title: 'Count the failures', start: 'source=auth action=failed', q: 'How many failed SSH logins are in the logs?', a: '48', hints: ['Run the starting query and read the result count.'], lesson: 'Start every hunt by measuring. One or two failures is normal; dozens is not.' },
@@ -312,6 +313,94 @@ export const HUNT_LEVELS: Level[] = [
 ];
 export function cryptoLevels(): Level[] { return CRYPTO.map(c => ({ id: c.id, title: c.title, q: c.q, a: c.a, hints: c.hints, lesson: c.lesson })); }
 
+/* ============================================================ Active Directory Lab */
+export const AD_FIELDS = ['time', 'event_id', 'dc', 'user', 'src_ip', 'service', 'enc', 'preauth', 'group', 'member', 'by', 'status'];
+export function adEvents(): Rec[] {
+  const E: Rec[] = []; const ts = (h: number, m: number, s: number) => `2026-10-22T${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}Z`;
+  const add = (o: Record<string, unknown>, raw: string) => E.push({ dc: 'DC01', ...o, raw: `${o.time} DC01 EventID=${o.event_id} ${raw}` });
+  const staff = ['mlopez', 'jchen', 'akim', 'rpatel', 'sgarcia', 'tnguyen', 'bwilson', 'jperez'];
+  staff.forEach((u, k) => { const ip = `10.10.20.${30 + k}`;
+    add({ time: ts(7, 50 + k, 3), event_id: 4768, user: u, src_ip: ip, enc: '0x12', preauth: 2, status: '0x0' }, `Kerberos TGT requested Account=${u} Client=${ip} TicketEncryption=0x12 PreAuthType=2 Result=0x0`);
+    add({ time: ts(7, 50 + k, 9), event_id: 4624, user: u, src_ip: ip, status: 'success' }, `An account was successfully logged on Account=${u} Source=${ip} LogonType=3`);
+    add({ time: ts(8, 5 + k, 1), event_id: 4769, user: u, src_ip: ip, service: 'fileserver01$', enc: '0x12', status: '0x0' }, `Kerberos service ticket requested Account=${u} Service=fileserver01$ TicketEncryption=0x12`); });
+  add({ time: ts(8, 30, 0), event_id: 4768, user: 'intern01', src_ip: '10.10.20.61', enc: '0x17', preauth: 0, status: '0x0' }, 'Kerberos TGT requested Account=intern01 Client=10.10.20.61 TicketEncryption=0x17 PreAuthType=0 Result=0x0');
+  // Password spray: one guess per account from one workstation
+  const users = ['administrator', 'mlopez', 'jchen', 'akim', 'rpatel', 'sgarcia', 'tnguyen', 'bwilson', 'kdavis', 'lmartin', 'oyoung', 'pwhite', 'qhall', 'rallen', 'sking', 'twright', 'uscott', 'vgreen', 'wbaker', 'xadams', 'jperez', 'helpdesk'];
+  users.forEach((u, k) => { if (u === 'jperez') return; add({ time: ts(9, 12, k * 2), event_id: 4771, user: u, src_ip: '10.10.20.77', status: '0x18' }, `Kerberos pre-authentication failed Account=${u} Client=10.10.20.77 FailureCode=0x18`); });
+  add({ time: ts(9, 12, 41), event_id: 4768, user: 'jperez', src_ip: '10.10.20.77', enc: '0x12', preauth: 2, status: '0x0' }, 'Kerberos TGT requested Account=jperez Client=10.10.20.77 TicketEncryption=0x12 PreAuthType=2 Result=0x0');
+  add({ time: ts(9, 12, 44), event_id: 4624, user: 'jperez', src_ip: '10.10.20.77', status: 'success' }, 'An account was successfully logged on Account=jperez Source=10.10.20.77 LogonType=3');
+  // Kerberoasting: RC4 service tickets for many SPNs
+  ['svc_sql', 'svc_web', 'svc_backup', 'svc_print', 'svc_sharepoint'].forEach((svc, k) => add({ time: ts(9, 20, k * 3), event_id: 4769, user: 'jperez', src_ip: '10.10.20.77', service: svc, enc: '0x17', status: '0x0' }, `Kerberos service ticket requested Account=jperez Service=${svc} TicketEncryption=0x17`));
+  // Privilege escalation, DCSync and cleanup
+  add({ time: ts(10, 2, 11), event_id: 4624, user: 'svc_backup', src_ip: '10.10.20.77', status: 'success' }, 'An account was successfully logged on Account=svc_backup Source=10.10.20.77 LogonType=3');
+  add({ time: ts(10, 4, 30), event_id: 4728, group: 'Domain Admins', member: 'svc_backup', by: 'svc_backup', user: 'svc_backup', src_ip: '10.10.20.77' }, 'A member was added to a security-enabled global group Group=Domain Admins Member=svc_backup SubjectAccount=svc_backup');
+  add({ time: ts(10, 9, 2), event_id: 4662, user: 'svc_backup', src_ip: '10.10.20.77', status: 'DS-Replication-Get-Changes-All' }, 'An operation was performed on an object Account=svc_backup Properties={1131f6ad-9c07-11d1-f79f-00c04fc2dcd2} DS-Replication-Get-Changes-All');
+  add({ time: ts(10, 15, 48), event_id: 1102, user: 'svc_backup', src_ip: '10.10.20.77' }, 'The audit log was cleared SubjectAccount=svc_backup');
+  return E.sort((a, b) => String(a.time) < String(b.time) ? -1 : String(a.time) > String(b.time) ? 1 : 0);
+}
+export const AD_LEVELS: Level[] = [
+  { id: 'spray-ip', title: 'Password spray', start: 'event_id=4771', q: 'Event 4771 means Kerberos pre-authentication failed (a wrong password). Which workstation IP caused most of them?', a: '10.10.20.77', hints: ['Add: | stats count by src_ip'], lesson: 'One source failing against many accounts is password spraying: a few common passwords tried across everyone to dodge lockouts.' },
+  { id: 'spray-count', title: 'How wide?', q: 'How many different accounts did that IP try and fail on?', a: '21', hints: ['event_id=4771 src_ip=10.10.20.77 | stats count by user', 'Count the rows, or read the "result rows" number.'], lesson: 'Spraying shows one failure per account, many accounts. Brute force shows many failures on one account. The detection rules differ.' },
+  { id: 'spray-win', title: 'Which password worked?', q: 'Right after the spray, one account logged on successfully from the same IP. Which one?', a: 'jperez', hints: ['src_ip=10.10.20.77 event_id=4624'], lesson: 'The account that succeeded during a spray had a weak password. Reset it, and check what it did next.' },
+  { id: 'kerberoast', title: 'Kerberoasting', q: 'The attacker then requested service tickets with weak RC4 encryption so they could crack them offline. How many service tickets did jperez request with TicketEncryption 0x17?', a: '5', hints: ['event_id=4769 user=jperez enc=0x17'], lesson: 'Kerberoasting: any user can request a ticket for a service account, and RC4 (0x17) tickets crack fast offline. Use long random service passwords (or managed service accounts) and disable RC4.' },
+  { id: 'escalate', title: 'Privilege escalation', q: 'A cracked service account was used to add itself to Domain Admins. Which account? (Event 4728)', a: 'svc_backup', hints: ['event_id=4728'], lesson: 'Changes to Domain Admins should page someone immediately. Very few legitimate events ever do this.' },
+  { id: 'dcsync', title: 'DCSync', q: 'Event 4662 with DS-Replication-Get-Changes-All from an account that is not a domain controller means DCSync: copying every password hash. At what time (HH:MM) did it happen?', a: ['10:09', '10:09:02'], hints: ['event_id=4662'], lesson: 'DCSync abuses replication rights to pull every hash, including krbtgt. Treat it as full domain compromise: reset krbtgt twice and rebuild trust.' },
+  { id: 'cleared', title: 'Covering tracks', q: 'What event ID shows the attacker cleared the security log?', a: '1102', hints: ['Search for the word: cleared'], lesson: 'Clearing logs is a loud signal, and forwarding logs to a SIEM means the evidence survives anyway.' },
+  { id: 'asrep', title: 'Hidden weakness', q: 'One account requests tickets without Kerberos pre-authentication (PreAuthType 0), so anyone can request its hash. Which account?', a: 'intern01', hints: ['preauth=0'], lesson: 'Accounts with "Do not require Kerberos preauthentication" are AS-REP roastable. Turn that setting off unless something truly needs it.' },
+];
+
+/* ============================================================ Cloud Security Lab */
+export const CLOUD: Snip[] = [
+  { id: 'bucket-policy', title: 'Student records bucket', lang: 'AWS S3 bucket policy (JSON)', cwe: 'Public data exposure', bad: 5, fix: 0,
+    code: ['{', '  "Statement": [{', '    "Effect": "Allow",', '    "Action": "s3:GetObject",', '    "Principal": "*",', '    "Resource": "arn:aws:s3:::isu-student-records/*"', '  }]', '}'],
+    fixes: ['Remove the public statement; grant read only to the app\'s role, and keep Block Public Access on', 'Rename the bucket so it is harder to guess', 'Enable versioning on the bucket'],
+    why: 'Principal "*" means anyone on the internet can download every object. Misconfigured public buckets are one of the most common cloud data breaches.' },
+  { id: 'bpa', title: 'Account guard rails', lang: 'AWS S3 Block Public Access (JSON)', cwe: 'Missing guard rail', bad: 3, fix: 1,
+    code: ['{', '  "BlockPublicAcls": true,', '  "BlockPublicPolicy": false,', '  "IgnorePublicAcls": true,', '  "RestrictPublicBuckets": true', '}'],
+    fixes: ['Turn on bucket logging instead', 'Set BlockPublicPolicy to true at the account level', 'Set RestrictPublicBuckets to false'],
+    why: 'With BlockPublicPolicy off, one careless bucket policy can make data public. Account-wide Block Public Access stops that class of mistake.' },
+  { id: 'rdp', title: 'Windows server firewall', lang: 'AWS security group (YAML)', cwe: 'Exposed management port', bad: 5, fix: 2,
+    code: ['WebServerSG:', '  Ingress:', '    - { Port: 443, Source: 0.0.0.0/0 }', '    - { Port: 80, Source: 0.0.0.0/0 }', '    - { Port: 3389, Source: 0.0.0.0/0 }'],
+    fixes: ['Remove port 80 instead', 'Change RDP to a different port number', 'Remove public RDP; reach the server through a VPN, bastion or Session Manager'],
+    why: 'RDP open to the internet is hammered by password guessing and exploits within minutes. Web ports are expected to be public; management ports are not.' },
+  { id: 'rds', title: 'Grades database', lang: 'AWS RDS (JSON)', cwe: 'Database reachable from the internet', bad: 4, fix: 1,
+    code: ['{', '  "DBInstanceIdentifier": "grades-db",', '  "Engine": "postgres",', '  "PubliclyAccessible": true,', '  "StorageEncrypted": true', '}'],
+    fixes: ['Add a longer master password', 'Set PubliclyAccessible to false and allow only the app\'s security group', 'Turn off encryption to improve speed'],
+    why: 'Databases belong in private subnets, reachable only by the app. Encryption at rest does not help if anyone can log in over the network.' },
+  { id: 'trail', title: 'Audit logging', lang: 'AWS CloudTrail status (JSON)', cwe: 'Logging disabled', bad: 3, fix: 0,
+    code: ['{', '  "Name": "org-trail",', '  "IsLogging": false,', '  "IsMultiRegionTrail": true,', '  "LogFileValidationEnabled": true', '}'],
+    fixes: ['Turn logging back on, alert when a trail is stopped, and restrict who can call StopLogging', 'Delete the trail and create a new one each month', 'Make the trail single-region to save money'],
+    why: 'Attackers often stop CloudTrail first so their actions leave no record. Without it, incident response is guesswork.' },
+  { id: 'old-key', title: 'Credential report', lang: 'IAM credential report (CSV)', cwe: 'Stale long-lived credentials', bad: 4, fix: 2,
+    code: ['user,mfa_active,access_key_1_active,access_key_1_age_days', 'mlopez,true,false,0', 'jchen,true,true,12', 'ci-deploy,false,true,431', 'akim,true,false,0'],
+    fixes: ['Turn on MFA for mlopez', 'Rename the ci-deploy user', 'Replace ci-deploy\'s 431-day-old key with a short-lived role (or rotate it) and remove unused keys'],
+    why: 'Long-lived access keys leak through repos, laptops and logs. Old, unrotated keys on a user with no MFA are a common way into cloud accounts.' },
+  { id: 'root', title: 'Who signed in?', lang: 'CloudTrail event (JSON)', cwe: 'Root account use without MFA', bad: 4, fix: 1,
+    code: ['{', '  "eventName": "ConsoleLogin",', '  "sourceIPAddress": "203.0.113.66",', '  "userIdentity": { "type": "Root" }, "MFAUsed": "No"', '}'],
+    fixes: ['Block the IP address only', 'Investigate now: enable MFA on root, lock root credentials away and use named admin roles day to day', 'Ignore it: root logins are normal'],
+    why: 'The root user can do anything, including closing the account. It should almost never sign in, and never without MFA.' },
+  { id: 'k8s', title: 'Container settings', lang: 'Kubernetes pod (YAML)', cwe: 'Privileged container', bad: 7, fix: 0,
+    code: ['apiVersion: v1', 'kind: Pod', 'metadata: { name: report-worker }', 'spec:', '  containers:', '  - image: isu/report-worker:1.4', '    securityContext: { privileged: true }'],
+    fixes: ['Remove privileged: true; run as non-root with a read-only filesystem and dropped capabilities', 'Pin the image to :latest', 'Add more CPU to the pod'],
+    why: 'A privileged container is effectively root on the node. One bug in the app becomes a takeover of the host and its other pods.' },
+  { id: 'azure-blob', title: 'Shared files', lang: 'Azure storage container (JSON)', cwe: 'Anonymous blob access', bad: 3, fix: 1,
+    code: ['{', '  "name": "advising-notes",', '  "publicAccess": "Container",', '  "storageAccount": "isufiles"', '}'],
+    fixes: ['Move the files to a container with a longer name', 'Set publicAccess to None and share with signed-in users or short-lived SAS links', 'Turn on soft delete'],
+    why: '"Container" access lets anyone list and download every blob. The same mistake exists in every cloud under different names.' },
+  { id: 'gcp-iam', title: 'Bucket sharing', lang: 'Google Cloud IAM binding (YAML)', cwe: 'Public principal', bad: 3, fix: 2,
+    code: ['bindings:', '- role: roles/storage.objectViewer', '  members: [allUsers]', 'bucket: isu-lab-images'],
+    fixes: ['Change the role to storage.objectAdmin', 'Add allAuthenticatedUsers too', 'Replace allUsers with the specific group or service account that needs access'],
+    why: 'allUsers is the whole internet. allAuthenticatedUsers is anyone with any Google account, which is nearly as bad.' },
+  { id: 'tf-encrypt', title: 'Infrastructure as code', lang: 'Terraform (HCL)', cwe: 'Encryption at rest disabled', bad: 4, fix: 0,
+    code: ['resource "aws_db_instance" "advising" {', '  engine            = "mysql"', '  instance_class    = "db.t3.micro"', '  storage_encrypted = false', '}'],
+    fixes: ['Set storage_encrypted = true (with a managed key) and add a policy check in CI', 'Use a bigger instance class', 'Add a tag that says confidential'],
+    why: 'Encryption at rest protects snapshots, backups and disks. Catching it in Terraform review, or with a policy scanner like Checkov, is far cheaper than fixing it later.' },
+  { id: 'lambda-env', title: 'Serverless function', lang: 'AWS Lambda configuration (JSON)', cwe: 'Secret in plain environment variable', bad: 4, fix: 1,
+    code: ['{', '  "FunctionName": "send-reminders",', '  "Runtime": "python3.12",', '  "Environment": { "SMTP_PASSWORD": "Spring2026!" }', '}'],
+    fixes: ['Base64-encode the password', 'Store it in Secrets Manager (or Parameter Store) and give the function permission to read only that secret', 'Move it to a comment in the code'],
+    why: 'Anyone who can read the function configuration sees the password, and it ends up in templates and logs. Secret stores add access control, auditing and rotation.' },
+];
+
 /* ============================================================ UI */
 const root = typeof document === 'undefined' ? null : document.querySelector<HTMLElement>('#chal');
 if (root) {
@@ -320,7 +409,8 @@ if (root) {
   const $ = <T extends HTMLElement = HTMLElement>(s: string) => root.querySelector<T>(s)!;
   let solved: string[] = []; try { const v = JSON.parse(localStorage.getItem(KEY) || '[]'); if (Array.isArray(v)) solved = v.filter(x => typeof x === 'string'); } catch { /* ignore */ }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(solved)); } catch { /* ignore */ } };
-  const levels: Level[] = lab === 'pcap' ? PCAP_LEVELS : lab === 'hunt' ? HUNT_LEVELS : lab === 'crypto' ? cryptoLevels() : REVIEW.map(r => ({ id: r.id, title: r.title, q: '', a: '', hints: [], lesson: r.why }));
+  const SNIPS = lab === 'cloud' ? CLOUD : REVIEW;
+  const levels: Level[] = lab === 'pcap' ? PCAP_LEVELS : lab === 'hunt' ? HUNT_LEVELS : lab === 'ad' ? AD_LEVELS : lab === 'crypto' ? cryptoLevels() : SNIPS.map(r => ({ id: r.id, title: r.title, q: '', a: '', hints: [], lesson: r.why }));
   let cur = 0, hintN = 0;
   const nav = $('#ch-lvls');
   levels.forEach((l, i) => { const b = el('button', String(i + 1)); b.type = 'button'; b.dataset.i = String(i); b.title = l.title; b.setAttribute('aria-label', `Level ${i + 1}: ${l.title}`); b.addEventListener('click', () => open(i)); nav.append(b); });
@@ -341,11 +431,11 @@ if (root) {
     $('#pc-clear').addEventListener('click', () => { input.value = ''; apply(); });
     root.querySelectorAll<HTMLButtonElement>('[data-f]').forEach(b => b.addEventListener('click', () => { input.value = b.dataset.f!; apply(); }));
     onOpen = L => { input.value = L.start || ''; det.hidden = true; apply(); };
-  } else if (lab === 'hunt') {
-    const ev = events(); const input = $<HTMLInputElement>('#lh-q'); const err = $('#lh-err'); const out = $('#lh-out'); const cnt = $('#lh-count');
-    const apply = () => { try { const r = runQuery(ev, input.value); err.textContent = ''; input.removeAttribute('aria-invalid');
+  } else if (lab === 'hunt' || lab === 'ad') {
+    const ev: Rec[] = lab === 'ad' ? adEvents() : events() as unknown as Rec[]; const FIELDS = lab === 'ad' ? AD_FIELDS : EV_FIELDS; const input = $<HTMLInputElement>('#lh-q'); const err = $('#lh-err'); const out = $('#lh-out'); const cnt = $('#lh-count');
+    const apply = () => { try { const r = runQuery(ev, input.value, FIELDS); err.textContent = ''; input.removeAttribute('aria-invalid');
       if (r.table) { const t = el('table', '', 'lh-table'); const hr = el('tr'); r.table.cols.forEach(c => hr.append(el('th', c))); const th = el('thead'); th.append(hr); const tb = el('tbody'); r.table.rows.forEach(row => { const tr = el('tr'); row.forEach(v => tr.append(el('td', String(v)))); tb.append(tr); }); t.append(th, tb); out.replaceChildren(t); cnt.textContent = `${r.count} events matched · ${r.table.rows.length} result rows`; }
-      else { const ol = el('ol', '', 'lh-lines'); r.rows.slice(0, 200).forEach(e => ol.append(el('li', e.raw))); out.replaceChildren(ol); cnt.textContent = `${r.count} events matched${r.count > 200 ? ' (showing 200)' : ''}`; } }
+      else { const ol = el('ol', '', 'lh-lines'); r.rows.slice(0, 200).forEach(e => ol.append(el('li', String(e.raw)))); out.replaceChildren(ol); cnt.textContent = `${r.count} events matched${r.count > 200 ? ' (showing 200)' : ''}`; } }
       catch (e) { err.textContent = (e as Error).message; input.setAttribute('aria-invalid', 'true'); } };
     $('#lh-form').addEventListener('submit', e => { e.preventDefault(); apply(); });
     root.querySelectorAll<HTMLButtonElement>('[data-q]').forEach(b => b.addEventListener('click', () => { input.value = b.dataset.q!; apply(); }));
@@ -363,16 +453,16 @@ if (root) {
   }
 
   /* ---- review lab has its own flow */
-  if (lab === 'review') {
+  if (lab === 'review' || lab === 'cloud') {
     const code = $('#rv-code'); const fixes = $('#rv-fixes'); let lineOk = false, misses = 0;
-    onOpen = () => { const s = REVIEW[cur]; lineOk = false; misses = 0; $('#ch-q').textContent = `${s.lang} · Click the line that introduces the vulnerability.`; fixes.hidden = true; fixes.replaceChildren();
+    onOpen = () => { const s = SNIPS[cur]; lineOk = false; misses = 0; $('#ch-q').textContent = `${s.lang} · Click the line that ${lab === 'cloud' ? 'shows the misconfiguration' : 'introduces the vulnerability'}.`; fixes.hidden = true; fixes.replaceChildren();
       code.replaceChildren(...s.code.map((ln, i) => { const b = el('button', '', 'rv-line'); b.type = 'button'; b.append(el('span', String(i + 1), 'rv-n'), el('code', ln || ' ')); b.addEventListener('click', () => pickLine(i + 1, b)); return b; })); };
-    const pickLine = (n: number, b: HTMLElement) => { const s = REVIEW[cur]; if (lineOk) return; if (n !== s.bad) { misses++; b.classList.add('miss'); fb.textContent = misses >= 2 ? 'Not that one. Look for where outside input meets something powerful: a query, the shell, the file system, the browser, or a permission.' : 'Not that line. Try again.'; return; }
+    const pickLine = (n: number, b: HTMLElement) => { const s = SNIPS[cur]; if (lineOk) return; if (n !== s.bad) { misses++; b.classList.add('miss'); fb.textContent = misses >= 2 ? (lab === 'cloud' ? 'Not that one. Look for anything open to everyone (*, 0.0.0.0/0, allUsers, public), switched off, or far too old.' : 'Not that one. Look for where outside input meets something powerful: a query, the shell, the file system, the browser, or a permission.') : 'Not that line. Try again.'; return; }
       lineOk = true; b.classList.add('hit'); fb.textContent = `Found it: ${s.cwe}. Now pick the best fix.`; fixes.hidden = false; fixes.replaceChildren(el('p', 'Best fix?', 'label'), ...s.fixes.map((f, i) => { const fbn = el('button', f, 'opt'); fbn.type = 'button'; fbn.addEventListener('click', () => { if (i === s.fix) { fbn.classList.add('right'); fb.textContent = 'Correct.'; win(); } else { fbn.classList.add('wrong'); fbn.disabled = true; fb.textContent = 'That would not fix the root cause. Try another.'; } }); return fbn; })); };
   }
 
   function open(i: number) {
-    cur = i; hintN = 0; const L = levels[i]; $('#ch-lvl').textContent = `Level ${i + 1} of ${levels.length}: ${L.title}`; if (lab !== 'review') $('#ch-q').textContent = L.q;
+    cur = i; hintN = 0; const L = levels[i]; $('#ch-lvl').textContent = `Level ${i + 1} of ${levels.length}: ${L.title}`; if (lab !== 'review' && lab !== 'cloud') $('#ch-q').textContent = L.q;
     $('#ch-lesson').hidden = true; fb.textContent = ''; const hb = root!.querySelector<HTMLButtonElement>('#ch-hint'); if (hb) { hb.hidden = !L.hints.length; hb.textContent = 'Stuck? Get a hint'; }
     root!.querySelector<HTMLElement>('#ch-hints')?.replaceChildren(); const a = root!.querySelector<HTMLInputElement>('#ch-a'); if (a) a.value = '';
     onOpen(L); mark();

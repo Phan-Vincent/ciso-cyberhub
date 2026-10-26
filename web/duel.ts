@@ -6,7 +6,10 @@
 // exact same round. Nothing is uploaded; links carry only the seed, settings, a name and answers.
 
 export type Q = { id: string; cat: string; level: number; q: string; choices: string[]; answer: number; why: string };
-export type Bank = { categories: Record<string, string>; questions: Q[] };
+export type Scenario = { id: string; title: string; steps: Q[] };
+export type Bank = { categories: Record<string, string>; questions: Q[]; scenarios?: Scenario[] };
+export const TABLETOP_MS = 30000;
+export const roundMs = (r: Round) => r.q.cat.startsWith('tt:') ? TABLETOP_MS : ROUND_MS;
 export type Round = { q: Q; order: number[] }; // order[displayIndex] = original choice index
 export type Run = { pick: number; ms: number }[]; // pick = original choice index, -1 = no answer
 export type Challenge = { v: 1; s: number; c: string; d: string; n: string; r: number; a: Run };
@@ -14,6 +17,8 @@ export type Challenge = { v: 1; s: number; c: string; d: string; n: string; r: n
 export const ROUND_MS = 15000;
 export function rng(seed: number) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
 export function makeRound(bank: Bank, seed: number, cat: string, diff: string, n: number): Round[] {
+  if (cat.startsWith('tt:')) { const r = rng(seed); const sc = (bank.scenarios || []).find(x => 'tt:' + x.id === cat);
+    return (sc ? sc.steps : []).map(q => { const order = [0, 1, 2, 3]; for (let i = 3; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; } return { q, order }; }); }
   const r = rng(seed); const lv = diff === '1' ? [1] : diff === '2' ? [1, 2] : diff === '3' ? [2, 3] : [1, 2, 3];
   let pool = bank.questions.filter(q => (cat === 'all' || q.cat === cat) && lv.includes(q.level));
   if (pool.length < n) pool = bank.questions.filter(q => cat === 'all' || q.cat === cat);
@@ -215,7 +220,7 @@ if (root) {
   $('#duel-again').addEventListener('click', () => { result.hidden = true; setup.hidden = false; if (tour.length) { $('#duel-bracket').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); } history.replaceState(null, '', location.pathname); setup.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); });
   $('#duel-quit').addEventListener('click', () => { clearTimeout(timer); cancelAnimationFrame(tick); revealing = true; arena.hidden = true; setup.hidden = false; });
   $('#duel-copy').addEventListener('click', async () => { const b = $('#duel-copy'); try { await navigator.clipboard.writeText($<HTMLInputElement>('#duel-link').value); b.textContent = 'Copied'; } catch { $<HTMLInputElement>('#duel-link').select(); b.textContent = 'Press Ctrl+C'; } setTimeout(() => { b.textContent = 'Copy link'; }, 1600); });
-  $('#duel-native').addEventListener('click', async () => { const url = $<HTMLInputElement>('#duel-link').value; try { if (navigator.share) await navigator.share({ title: 'Cyber Duel', text: `I scored ${players[0]?.score ?? 0} on CyberHub Cyber Duel. Beat me:`, url }); else await navigator.clipboard.writeText(url); } catch { /* cancelled */ } });
+  $('#duel-native').addEventListener('click', async () => { const url = $<HTMLInputElement>('#duel-link').value; try { if (navigator.share) await navigator.share({ title: 'Cyber Duel', text: `I scored ${players[0]?.score ?? 0} on CyberHub Cyber Duel. Beat me:`, url }); else await navigator.clipboard.writeText(url); } catch { /* canceled */ } });
   document.addEventListener('keydown', e => {
     if (arena.hidden || e.ctrlKey || e.metaKey || e.altKey) return; const tgt = e.target as HTMLElement; if (tgt.tagName === 'INPUT' || tgt.tagName === 'SELECT') return;
     if (revealing && (e.key === ' ' || e.key === 'Enter') && !$('#duel-next').hidden) { e.preventDefault(); next(); return; }

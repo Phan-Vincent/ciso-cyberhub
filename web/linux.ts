@@ -281,7 +281,7 @@ const MAN: Record<string, string> = {
   env: 'env  list environment variables.', export: 'export NAME=value  set a variable for this shell.', which: 'which cmd  where a command lives on your PATH.',
   ps: 'ps [aux]  list processes.', kill: 'kill PID  stop a process.', sudo: 'sudo command  run one command as root (you are allowed to on this lab box).',
   submit: 'submit FLAG  check a flag or answer for the current level.',
-  ip: 'ip addr | ip route | ip neigh  show addresses, routes and neighbours.', ping: 'ping [-c N] host  is it reachable? Sends echo requests.',
+  ip: 'ip addr | ip route | ip neigh  show addresses, routes and neighbors.', ping: 'ping [-c N] host  is it reachable? Sends echo requests.',
   traceroute: 'traceroute host  list each router (hop) on the way. * * * means no reply.', dig: 'dig name [A|MX|TXT|NS] [+short]  ask DNS. +short prints just the answer.',
   nslookup: 'nslookup name  ask DNS (older tool).', host: 'host [-t TYPE] name  simple DNS lookup.', ss: 'ss -tlnp  listening TCP ports with process. ss -tanp  all connections.',
   netstat: 'netstat -tlnp  older version of ss.', nc: 'nc -zv host port...  test whether TCP ports are open (ranges like 20-25 work).', curl: 'curl [-I] url  fetch a web page; -I shows only the response headers.', hint: 'hint  show the next hint for this level.',

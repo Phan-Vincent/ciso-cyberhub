@@ -10,7 +10,7 @@ lessons, badges, duel stats). Never resumes, names or tracking data. Accounts ar
 
 ## 1. Create the project (about 10 minutes, free)
 
-1. Sign in at <https://supabase.com> with the CyberHub Gmail (see `docs/EMAIL.md`). Turn on 2-step verification.
+1. Sign in at <https://supabase.com> with the CyberHub Proton Mail address, csusb.cyberhub@proton.me (see `docs/EMAIL.md`). Turn on 2-step verification.
 2. **New project**: name `cyberhub`, region **West US**, and generate a strong database password.
    Store it in a password manager; do not put it in the repo or chat.
 3. Wait for the project to finish setting up.
@@ -34,7 +34,7 @@ lessons, badges, duel stats). Never resumes, names or tracking data. Accounts ar
 
 Supabase's built-in sender only allows a few sign-in emails per hour. That is fine for testing,
 but before the school launch, set **Authentication → Emails → SMTP settings** to a real sender
-(for example a free transactional email service, or the CyberHub Gmail with an app password)
+(for example a free transactional email service; see `docs/EMAIL.md`)
 and edit the **Magic Link** template so it says "CyberHub".
 
 ## 5. Connect the site
@@ -68,7 +68,13 @@ nothing is written to the database, and only nicknames and answers pass through.
    broadcast channels named `cyberhub-duel-<CODE>`.
 3. Free-plan limits cover a classroom comfortably (check **Realtime** usage in the dashboard; the free
    plan allows a couple of hundred simultaneous connections).
-4. Rehearse once: open `/duel/live/` on a laptop, **Host a room**, then join from two phones.
+4. **Officers only host.** `site.json` has `"live_hosting": "officers"`. Add each officer's email (lowercase)
+   in **Table Editor → officers** (the table comes from `schema.sql`). Officers sign in on `/account/`, then
+   choose **Host a room**. Anyone can still join without an account. Set `"live_hosting": "anyone"` to turn
+   the check off. It is a gate in the page, not a hard security boundary, because rooms use public channels.
+5. Rehearse once: open `/duel/live/` on a laptop, **Host a room**, then join from two phones.
+6. **Incident tabletops:** in the room's Topic list, pick a scenario under "Incident tabletop" (ransomware,
+   payroll phishing, leaked cloud key). Six decisions, 30 seconds each; teams of 3 or 4 share a phone.
 
 ## Notes
 

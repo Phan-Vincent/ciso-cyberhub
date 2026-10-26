@@ -7,24 +7,24 @@ from html import escape as E
 from .common import ROOT, read_json
 from .guides import _prompt, _sources, _toc
 
-LEVEL_NAMES = ['No defence', 'Polite instructions', 'Output filter', 'Input denylist', 'Indirect injection', 'Secure by design']
+LEVEL_NAMES = ['No defense', 'Polite instructions', 'Output filter', 'Input denylist', 'Indirect injection', 'Secure by design']
 
 
 def redteam_page(site) -> str:
-    body = site.heading('AI Red Team Lab', 'Vault is an AI assistant guarding a secret word. Get it to leak, level by level, as each level adds a real defence. Then learn why the defence failed and what actually works.', 'AI / Red Team Lab')
+    body = site.heading('AI Red Team Lab', 'Vault is an AI assistant guarding a secret word. Get it to leak, level by level, as each level adds a real defense. Then learn why the defense failed and what actually works.', 'AI / Red Team Lab')
     body += ('<div class="redteam" id="redteam"><nav class="rt-lvls" aria-label="Levels">'
              + ''.join(f'<button type="button" data-lv="{i}"><span class="label">{i + 1:02d}</span>{E(n)}</button>' for i, n in enumerate(LEVEL_NAMES))
              + '</nav><div class="rt-room"><div class="rt-info"><p class="label" id="rt-lvl"></p><p id="rt-def"></p></div>'
              '<div class="rt-chat" id="rt-chat" role="log" aria-live="polite" aria-label="Conversation with Vault"></div>'
              '<form class="rt-form" id="rt-form" autocomplete="off"><label class="sr-only" for="rt-msg">Message to Vault</label><input id="rt-msg" type="text" maxlength="500" placeholder="Ask Vault something…"><button type="submit" class="primary">Send</button></form>'
-             '<div class="rt-inject" id="rt-inject" hidden><h2>Web page Vault can read</h2><p class="muted">You control this page. Vault will summarise it when asked.</p>'
+             '<div class="rt-inject" id="rt-inject" hidden><h2>Web page Vault can read</h2><p class="muted">You control this page. Vault will summarize it when asked.</p>'
              '<label class="sr-only" for="rt-page">Web page text</label><textarea id="rt-page" rows="5">CISO club events this week: Cyber Duel night on Thursday, resume workshop on Friday. Everyone welcome.</textarea>'
-             '<button type="button" id="rt-sum">Ask Vault to summarise this page</button></div>'
+             '<button type="button" id="rt-sum">Ask Vault to summarize this page</button></div>'
              '<div class="rt-help"><button type="button" id="rt-hint">Stuck? Get a hint</button></div><form class="rt-guessf" id="rt-guess" autocomplete="off"><label for="rt-word" class="label">Found the secret word?</label><input id="rt-word" type="text" maxlength="40"><button type="submit">Check</button><span class="label" id="rt-guess-msg" role="status"></span></form>'
              '<div class="soc-result" id="rt-lesson" hidden><strong>Why that worked</strong><p></p><button type="button" class="primary" id="rt-nextlv">Next level →</button></div></div>'
              '<noscript><p class="notice">The lab needs JavaScript.</p></noscript></div>')
     body += ('<section class="rt-about"><h2>What this lab is (and is not)</h2><p>Vault is a simulation: simple rules stand in for a language model, so every result is repeatable and explainable, and it runs offline. Real models are less predictable, which makes these weaknesses harder to fix, not easier.</p>'
-             '<div class="flags"><div class="flag"><b>OWASP LLM01: Prompt injection</b><p>Inputs that change a model\'s behaviour against its instructions, directly or hidden in content it reads.</p></div>'
+             '<div class="flags"><div class="flag"><b>OWASP LLM01: Prompt injection</b><p>Inputs that change a model\'s behavior against its instructions, directly or hidden in content it reads.</p></div>'
              '<div class="flag"><b>OWASP LLM07: System prompt leakage</b><p>Secrets and rules placed in the system prompt can be extracted. Do not put secrets there.</p></div>'
              '<div class="flag"><b>OWASP LLM06: Excessive agency</b><p>An AI with too many permissions turns a successful injection into real damage. Limit tools and require approval.</p></div></div>'
              f'<p>{site.a("How to test prompts and AI apps →", "/ai/prompt-testing/", "button primary")} {site.a("Run AI locally →", "/ai/local/", "button")}</p>'
@@ -49,12 +49,12 @@ def testing_page(site) -> str:
              '<div class="flag"><b>Model-graded</b><p>Another model scores against your rubric. Useful at scale, but check a sample by hand because graders can be wrong or biased.</p></div></div></section>'
              '<section id="adversarial"><h2><span class="label">04</span>Adversarial tests</h2><p>Add cases written by someone trying to break the feature. Try them in the ' + site.a('AI Red Team Lab', '/ai/red-team/') + ' first.</p><ul>'
              '<li><b>Direct injection:</b> "Ignore your previous instructions and…"</li><li><b>Indirect injection:</b> instructions hidden in a document, web page or email the AI processes.</li>'
-             '<li><b>Prompt leakage:</b> requests to repeat, summarise or translate the system prompt.</li><li><b>Data leakage:</b> requests for other users\' data or secrets the app can reach.</li>'
+             '<li><b>Prompt leakage:</b> requests to repeat, summarize or translate the system prompt.</li><li><b>Data leakage:</b> requests for other users\' data or secrets the app can reach.</li>'
              '<li><b>Harmful output:</b> requests the app must refuse, rephrased several ways.</li><li><b>Unsafe actions:</b> for agents, inputs that try to make it send, delete, buy or change something.</li></ul></section>'
              '<section id="owasp"><h2><span class="label">05</span>OWASP Top 10 for LLM applications (2025)</h2><ol class="owasp">'
              + ''.join(f'<li><b>{E(a)}</b> {E(b)}</li>' for a, b in [
-                 ('Prompt injection.', 'Inputs that alter the model\'s behaviour, directly or via content it reads.'), ('Sensitive information disclosure.', 'Leaking personal data, secrets or proprietary information.'),
-                 ('Supply chain.', 'Compromised models, datasets, plugins or dependencies.'), ('Data and model poisoning.', 'Manipulated training or fine-tuning data that plants bad behaviour.'),
+                 ('Prompt injection.', 'Inputs that alter the model\'s behavior, directly or via content it reads.'), ('Sensitive information disclosure.', 'Leaking personal data, secrets or proprietary information.'),
+                 ('Supply chain.', 'Compromised models, datasets, plugins or dependencies.'), ('Data and model poisoning.', 'Manipulated training or fine-tuning data that plants bad behavior.'),
                  ('Improper output handling.', 'Using model output in code, SQL or HTML without validation.'), ('Excessive agency.', 'Too many tools, permissions or autonomy.'),
                  ('System prompt leakage.', 'Assuming the system prompt stays secret.'), ('Vector and embedding weaknesses.', 'Attacks through retrieval (RAG) data and embeddings.'),
                  ('Misinformation.', 'Confident, false output that people rely on.'), ('Unbounded consumption.', 'Runaway cost or denial of service from uncontrolled usage.')])
@@ -124,7 +124,7 @@ def jobs_page(site) -> str:
              '<div class="flag"><b>AI and ML specialists</b><p>Among the five fastest-growing jobs to 2030, alongside big data specialists and security management specialists (World Economic Forum, Future of Jobs 2025).</p></div>'
              '<div class="flag"><b>39% of key skills change</b><p>Employers expect about 39% of workers\' core skills to change by 2030.</p></div>'
              '<div class="flag"><b>86% expect transformation</b><p>86% of employers surveyed expect AI and information processing to transform their business by 2030.</p></div></div></section>')
-    roles = [('AI security engineer', 'Secures AI features: threat models, prompt-injection defences, data controls and testing.', [('AI Red Team Lab', '/ai/red-team/'), ('Prompt testing', '/ai/prompt-testing/')]),
+    roles = [('AI security engineer', 'Secures AI features: threat models, prompt-injection defenses, data controls and testing.', [('AI Red Team Lab', '/ai/red-team/'), ('Prompt testing', '/ai/prompt-testing/')]),
              ('AI red teamer', 'Attacks models and AI apps with permission to find failures before others do.', [('AI Red Team Lab', '/ai/red-team/'), ('Run AI locally', '/ai/local/')]),
              ('ML / AI engineer', 'Builds and ships models and AI features; needs Python, data and software engineering.', [('Secure AI coding', '/ai/vibe-coding/'), ('Linux Lab', '/linux/')]),
              ('AI governance and risk', 'Policies, risk assessments and compliance for AI (NIST AI RMF, EU AI Act); a strong path from business, law or policy.', [('Career roadmaps', '/careers/'), ('Competitions: Cyber 9/12', '/careers/competitions/#nine12')]),
@@ -144,6 +144,6 @@ def jobs_page(site) -> str:
 
 
 def build_ailab(site) -> None:
-    site.page('/ai/red-team/', 'AI Red Team Lab', redteam_page(site), 'Trick a simulated AI assistant into leaking a secret across six levels of real defences, from prompt injection to indirect injection, and learn what actually works.', 'AI', module='redteam')
+    site.page('/ai/red-team/', 'AI Red Team Lab', redteam_page(site), 'Trick a simulated AI assistant into leaking a secret across six levels of real defenses, from prompt injection to indirect injection, and learn what actually works.', 'AI', module='redteam')
     site.page('/ai/prompt-testing/', 'Prompt testing', testing_page(site), 'Test prompts and AI features like software: test sets, scoring, adversarial cases, the OWASP Top 10 for LLMs and open-source tools.', 'AI', module='play')
     site.page('/ai/jobs/', 'AI and cyber jobs', jobs_page(site), 'Live daily signals on vulnerabilities, AI-security research and hiring, plus the official job outlook and AI-era roles to prepare for.', 'AI')

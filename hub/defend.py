@@ -1,7 +1,7 @@
 """What you will defend: one in-depth page per photo on the homepage field band.
 
 /defend/ is the overview; /defend/<slug>/ explains each domain: what it is, what is inside,
-how it is attacked, real incidents, how defenders protect it, where to practise on
+how it is attacked, real incidents, how defenders protect it, where to practice on
 CyberHub, careers, and sources. Facts are dated and sourced; reviewed with the AI guides.
 """
 from __future__ import annotations
@@ -17,9 +17,9 @@ DOMAINS = [
     {
         'slug': 'infrastructure', 'caption': 'Infrastructure',
         'title': 'Infrastructure: servers, cloud and identity',
-        'lead': 'The racks in the photo are where an organisation keeps its data, runs its applications and records what happens: who logged in, what changed, what left the building. Attackers come for what is stored there. Defenders protect it, and they rely on its logs to see the attack happening.',
+        'lead': 'The racks in the photo are where an organization keeps its data, runs its applications and records what happens: who logged in, what changed, what left the building. Attackers come for what is stored there. Defenders protect it, and they rely on its logs to see the attack happening.',
         'what': [
-            ('Servers and virtual machines', 'Physical machines in a data centre, or virtual ones in AWS, Azure or Google Cloud, run websites, databases, email and business apps.'),
+            ('Servers and virtual machines', 'Physical machines in a data center, or virtual ones in AWS, Azure or Google Cloud, run websites, databases, email and business apps.'),
             ('Identity systems', 'Active Directory, Entra ID, Okta and similar services decide who can log in and what they can reach. Attackers aim for these first, because taking one over gives them everything it controls.'),
             ('Storage and backups', 'Databases, file shares and object storage (like S3 buckets) hold the data. Backups are what you recover from after ransomware.'),
             ('Logging and monitoring', 'Every system writes events. A SIEM (Splunk, Elastic, Microsoft Sentinel) collects them so analysts can search across everything at once.'),
@@ -35,7 +35,7 @@ DOMAINS = [
         'incidents': [
             ('2019', 'Capital One', 'A misconfigured web application firewall in AWS let an attacker request cloud credentials and copy data on about 106 million people in the US and Canada.', ''),
             ('2020', 'SolarWinds Orion', 'Attackers attributed to Russia\'s foreign intelligence service hid a backdoor in an IT-monitoring product update. About 18,000 customers installed it; US agencies were among the few the attackers then went after.', 'solarwinds'),
-            ('2023', 'MOVEit Transfer', 'The Cl0p gang used a SQL injection zero-day (CVE-2023-34362) in a file-transfer server to steal data from thousands of organisations without encrypting anything.', ''),
+            ('2023', 'MOVEit Transfer', 'The Cl0p gang used a SQL injection zero-day (CVE-2023-34362) in a file-transfer server to steal data from thousands of organizations without encrypting anything.', ''),
             ('2024', 'Change Healthcare', 'Attackers logged in to a remote-access portal that had no MFA, using stolen credentials. The ransomware attack disrupted US pharmacy and insurance claims for weeks and exposed data on about 190 million people.', ''),
         ],
         'defend': [
@@ -44,7 +44,7 @@ DOMAINS = [
             ('Patch by real risk', 'Fix internet-facing and KEV-listed vulnerabilities first, within days, not months.'),
             ('Least privilege', 'Separate admin accounts, short-lived cloud credentials and no standing access to everything.'),
             ('Log, centralise and alert', 'Forward authentication, admin and cloud audit logs to a SIEM and write detections for what attackers actually do.'),
-            ('Backups you have tested', 'The 3-2-1 rule: three copies, two kinds of media, one offline or immutable. Practise restoring them.'),
+            ('Backups you have tested', 'The 3-2-1 rule: three copies, two kinds of media, one offline or immutable. Practice restoring them.'),
         ],
         'frameworks': 'NIST Cybersecurity Framework 2.0 (Govern, Identify, Protect, Detect, Respond, Recover), CIS Critical Security Controls v8, and the cloud provider\'s shared responsibility model.',
         'practice': [('Linux Lab', '/linux/'), ('Windows event logs lab', '/labs/windows-events/'), ('Detection engineering lab', '/labs/detection-engineering/'), ('Incident response lab', '/labs/incident-response/'), ('Vulnerability feed', '/vulnerabilities/')],
@@ -65,7 +65,7 @@ DOMAINS = [
         'what': [
             ('PLCs (programmable logic controllers)', 'Small, rugged computers that read sensors and drive motors, valves and robot arms. They often run for 15 to 20 years or more.'),
             ('HMIs and SCADA', 'Human-machine interfaces are the operator screens. SCADA systems supervise equipment spread across a city or a pipeline.'),
-            ('Safety instrumented systems (SIS)', 'Independent controllers that shut a process down before it becomes dangerous. They are the last line of defence.'),
+            ('Safety instrumented systems (SIS)', 'Independent controllers that shut a process down before it becomes dangerous. They are the last line of defense.'),
             ('Industrial protocols', 'Modbus, DNP3, EtherNet/IP and others were designed for closed networks and many have no authentication: any device that can reach a controller can tell it what to do.'),
             ('The Purdue model', 'A reference architecture that layers OT from field devices (level 0) up to business IT (levels 4 and 5), with a buffer zone (DMZ) between them.'),
         ],
@@ -110,7 +110,7 @@ DOMAINS = [
         'title': 'Hardware: trust starts at the chip',
         'lead': 'Every security control in software relies on the layers underneath it: the processor, the firmware that starts the machine, the chips that store keys. If those layers are compromised, the operating system can be lied to, and antivirus cannot see the attacker. Hardware security is about making the bottom of that stack trustworthy.',
         'what': [
-            ('Firmware (UEFI/BIOS)', 'The first code that runs when a machine powers on. It starts the operating system, so malware there loads before any defence.'),
+            ('Firmware (UEFI/BIOS)', 'The first code that runs when a machine powers on. It starts the operating system, so malware there loads before any defense.'),
             ('Secure Boot and measured boot', 'Secure Boot only starts code signed by trusted keys. Measured boot records each step so it can be checked later.'),
             ('TPM and secure elements', 'A Trusted Platform Module stores keys and boot measurements in tamper-resistant hardware. Windows 11 requires TPM 2.0; BitLocker and passkeys use it.'),
             ('The processor', 'Modern CPUs speed up by guessing ahead (speculative execution). Guesses leave traces in the cache that can leak secrets.'),
@@ -208,7 +208,7 @@ DOMAINS = [
             ('Unknown assets', 'Systems missing from the inventory are missed by patching and monitoring too.'),
         ],
         'incidents': [
-            ('2017', 'WannaCry', 'Ransomware spread through EternalBlue, an exploit for SMBv1 that Microsoft had patched two months earlier. In the UK, NHS hospitals cancelled about 19,000 appointments.', 'wannacry'),
+            ('2017', 'WannaCry', 'Ransomware spread through EternalBlue, an exploit for SMBv1 that Microsoft had patched two months earlier. In the UK, NHS hospitals canceled about 19,000 appointments.', 'wannacry'),
             ('2017', 'Equifax', 'A web application ran a version of Apache Struts that had not been patched for a known critical flaw (CVE-2017-5638) for months. Attackers took personal data on about 147 million people.', ''),
             ('2020', 'Unemployment systems in the pandemic', 'Several US states\' decades-old COBOL benefit systems struggled under record claims, and they had to call retired programmers back to help.', ''),
             ('2003', 'SQL Slammer', 'A 376-byte worm infected tens of thousands of unpatched database servers within about ten minutes. The patch had been out for six months.', 'slammer'),
@@ -219,7 +219,7 @@ DOMAINS = [
             ('Compensating controls', 'Application allow-listing, extra monitoring and virtual patching on firewalls or web application firewalls.'),
             ('Buy time, then migrate', 'Extended security updates where offered, alongside a funded plan and a date to replace the system.'),
             ('Turn off old protocols', 'Disable SMBv1, TLS 1.0/1.1 and NTLM where possible, after testing what breaks.'),
-            ('Prioritise with KEV', 'If a legacy system has a CISA KEV-listed vulnerability, treat it as urgent.'),
+            ('Prioritize with KEV', 'If a legacy system has a CISA KEV-listed vulnerability, treat it as urgent.'),
         ],
         'frameworks': 'CISA Binding Operational Directive 23-01 (asset visibility), CIS Controls 1 and 2 (enterprise and software asset inventory), and CISA\'s "Bad Practices" list, which names unsupported software.',
         'practice': [('Vulnerability feed', '/vulnerabilities/'), ('Linux hardening lab', '/labs/linux-hardening/'), ('Grype tutorial', '/tutorials/grype/'), ('Trivy tutorial', '/tutorials/trivy/'), ('Cyber history: WannaCry', '/history/#wannacry')],
@@ -263,7 +263,7 @@ def domain_page(site, i: int, photos: dict) -> str:
     a = site.a
     n = len(DOMAINS)
     toc = [('what', 'What is inside'), ('attacks', 'How it is attacked'), ('incidents', 'Real incidents'), ('defend', 'How defenders protect it'),
-           ('day', 'A day defending it'), ('practice', 'Practise it here'), ('careers', 'Careers')]
+           ('day', 'A day defending it'), ('practice', 'Practice it here'), ('careers', 'Careers')]
     body = site.heading(d['caption'], d['lead'], f'Defend / {i + 1:02d} of {n:02d} / {d["title"].split(": ")[1].capitalize()}')
     body += _hero(site, d, photos.get(d['caption']))
     body += f'<div class="guide" data-defend-page="{E(d["slug"])}">' + _toc(toc) + '<article class="guide-body">'
@@ -280,7 +280,7 @@ def domain_page(site, i: int, photos: dict) -> str:
              + ''.join(f'<li><b>{E(t)}.</b> {E(x)}</li>' for t, x in d['defend']) + '</ol>'
              f'<p class="callout"><b>Frameworks to know:</b> {E(d["frameworks"])}</p></section>')
     body += (f'<section id="day"><h2><span class="label">05</span>A day defending it</h2><p>Four decisions from a real kind of shift. Pick what you would do; each choice is explained.</p>{shift_html(site, d["slug"])}</section>')
-    body += ('<section id="practice"><h2><span class="label">06</span>Practise it here</h2><p>Free, in your browser, on CyberHub:</p><div class="df-links">'
+    body += ('<section id="practice"><h2><span class="label">06</span>Practice it here</h2><p>Free, in your browser, on CyberHub:</p><div class="df-links">'
              + ''.join(a(f'{t} →', u, 'button') for t, u in d['practice']) + '</div></section>')
     local = f'<p class="callout">{E(d["local"])}</p>' if d.get('local') else ''
     body += ('<section id="careers"><h2><span class="label">07</span>Careers</h2><p>People who defend this every day:</p><div class="job-tags">'

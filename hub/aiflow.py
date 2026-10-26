@@ -1,5 +1,5 @@
 """Working with AI: skills, token savings, context savers, staying on track, and
-organisation/scope guidelines. Sourced; reviewed every 90 days like the other AI guides.
+organization/scope guidelines. Sourced; reviewed every 90 days like the other AI guides.
 """
 from __future__ import annotations
 
@@ -8,8 +8,8 @@ from .guides import _prompt, _review_badge, _sources, _toc
 
 def workflow_page(site) -> str:
     toc = [('why', 'Why context is everything'), ('skills', 'Build a skill'), ('tokens', 'Save tokens'), ('saver', 'The context saver'),
-           ('track', 'Keep AI on track'), ('org', 'Teach AI your organisation'), ('scope', 'Scope fences'), ('kit', 'Starter kit')]
-    body = site.heading('Working with AI: skills, tokens and context', 'Make AI cheaper, sharper and consistent. Package what it should know as skills, keep its memory small and useful, and give it your organisation\'s rules once instead of every time.', 'AI / Workflow guide')
+           ('track', 'Keep AI on track'), ('org', 'Teach AI your organization'), ('scope', 'Scope fences'), ('kit', 'Starter kit')]
+    body = site.heading('Working with AI: skills, tokens and context', 'Make AI cheaper, sharper and consistent. Package what it should know as skills, keep its memory small and useful, and give it your organization\'s rules once instead of every time.', 'AI / Workflow guide')
     body += _review_badge()
     body += '<div class="guide">' + _toc(toc) + '<article class="guide-body">'
 
@@ -39,7 +39,7 @@ description: Triage Linux auth and web server logs for signs of brute force, new
 1. Identify the log type from the first lines (auth.log, access.log, syslog).
 2. Count failed vs successful logins per source IP; list the top 5.
 3. Flag: successful login after many failures, logins at unusual hours, new users added.
-4. Never run commands on production systems; analyse only what was provided.
+4. Never run commands on production systems; analyze only what was provided.
 
 ## Output
 - Summary (3 lines)
@@ -55,13 +55,13 @@ See references/known-good-ips.md before flagging internal addresses.''', 'sk-1')
                  ('Clear between tasks', 'Start a fresh chat or run /clear when you switch topics. Old context costs tokens on every message and distracts the model.'),
                  ('Be specific', '"Add input validation to login() in auth.ts" reads one file. "Improve this codebase" reads everything.'),
                  ('Right model, right effort', 'Use smaller, faster models and lower reasoning effort for simple edits. Save the largest model for hard design questions.'),
-                 ('Keep instructions lean', 'An always-loaded file (CLAUDE.md, AGENTS.md) is paid for in every request. Keep it short, around 200 lines, and move specialised workflows into skills that load on demand.'),
+                 ('Keep instructions lean', 'An always-loaded file (CLAUDE.md, AGENTS.md) is paid for in every request. Keep it short, around 200 lines, and move specialized workflows into skills that load on demand.'),
                  ('Point, do not paste', 'Give file paths or the relevant 30 lines instead of pasting whole files and logs.'),
                  ('Filter noisy output', 'Ask for failing tests only, or grep logs first. Hooks and scripts can trim output before the model reads it.'),
                  ('Delegate heavy reading', 'Subagents can read long docs or logs in their own context and hand back a summary.'),
                  ('Reuse the cache', 'Providers cache a repeated prompt prefix. On Claude, cache reads cost a small fraction of normal input (0.1× base on most models). Keep the start of long prompts stable.'),
                  ('Ask for short answers', 'Say "answer in five bullets" or "diff only". Output tokens usually cost more than input.')])
-             + '</div><p class="muted">In Claude Code, <code>/usage</code> shows what a session costs and <code>/context</code> shows what fills the window. <code>/compact</code> summarises a long conversation; <code>/clear</code> starts fresh at no cost.</p></section>')
+             + '</div><p class="muted">In Claude Code, <code>/usage</code> shows what a session costs and <code>/context</code> shows what fills the window. <code>/compact</code> summarizes a long conversation; <code>/clear</code> starts fresh at no cost.</p></section>')
 
     body += ('<section id="saver"><h2><span class="label">04</span>The context saver</h2>'
              '<p>Long projects outlive any single chat. A <b>context saver</b> is a short file the AI keeps up to date so that you, a teammate or a fresh session can continue without re-explaining everything. CyberHub itself is built this way: <code>docs/HANDOFF.md</code> in the repo is ours.</p>'
@@ -91,9 +91,9 @@ Repo, docs, designs, tickets.''', 'cs-1')
              + _prompt('Ask the AI to update it', '''Before we stop: update docs/HANDOFF.md. Keep it under 80 lines.
 Record decisions with their reasons, what changed today, what is broken, and the
 exact next three steps. Remove anything no longer true. Do not paste code.''', 'cs-2')
-             + _prompt('Start a new session from it', '''Read docs/HANDOFF.md first. Summarise the goal and the next step in three lines
+             + _prompt('Start a new session from it', '''Read docs/HANDOFF.md first. Summarize the goal and the next step in three lines
 and ask me anything unclear before changing files.''', 'cs-3')
-             + '<p class="muted">Tip: a custom compaction instruction like <code>/compact keep decisions, file paths and failing tests</code> keeps the right details when a long chat is summarised.</p></section>')
+             + '<p class="muted">Tip: a custom compaction instruction like <code>/compact keep decisions, file paths and failing tests</code> keeps the right details when a long chat is summarized.</p></section>')
 
     body += ('<section id="track"><h2><span class="label">05</span>Keep AI on track</h2><ol class="steps">'
              '<li><b>Plan before code.</b> Ask for a short plan and the files it will touch. Approve or correct the plan. Many tools have a plan mode for this.</li>'
@@ -109,8 +109,8 @@ Done means: <tests pass / output looks like X / no new dependencies>
 Out of scope: <what not to touch>
 First show a 5-bullet plan and wait for my OK. After each step, run the checks and report results honestly.''', 'tr-1') + '</section>')
 
-    body += ('<section id="org"><h2><span class="label">06</span>Teach AI your organisation</h2>'
-             '<p>Write your organisation\'s context once, in a file the AI loads automatically: <code>AGENTS.md</code> (the cross-tool standard), <code>CLAUDE.md</code> for Claude Code, project instructions in chat apps, or a shared skill. Keep it short, specific and in version control so changes are reviewed.</p>'
+    body += ('<section id="org"><h2><span class="label">06</span>Teach AI your organization</h2>'
+             '<p>Write your organization\'s context once, in a file the AI loads automatically: <code>AGENTS.md</code> (the cross-tool standard), <code>CLAUDE.md</code> for Claude Code, project instructions in chat apps, or a shared skill. Keep it short, specific and in version control so changes are reviewed.</p>'
              '<div class="flags">'
              + ''.join(f'<div class="flag"><b>{t}</b><p>{d}</p></div>' for t, d in [
                  ('Who we are', 'One paragraph: mission, audience, what you produce.'),
@@ -120,7 +120,7 @@ First show a 5-bullet plan and wait for my OK. After each step, run the checks a
                  ('Rules', 'Privacy, security and approvals: never share member data, never publish without review.'),
                  ('Layers', 'Global defaults, then project files, then folder-specific notes. The most specific wins.')])
              + '</div>'
-             + _prompt('Organisation guide template (AGENTS.md or project instructions)', '''# About us
+             + _prompt('Organization guide template (AGENTS.md or project instructions)', '''# About us
 CISO (Cyber Intelligence & Security Organization) is a student club at Cal State San Bernardino.
 We build CyberHub, a free security-learning site for students of every level.
 
@@ -138,7 +138,7 @@ Club facts: https://www.ciso-csusb.org/. Course content: data/academy.json. If u
 
 # Rules
 - Never include member names, emails or grades.
-- Every statistic needs a source link. Offensive techniques: legal, authorised contexts only.
+- Every statistic needs a source link. Offensive techniques: legal, authorized contexts only.
 - Changes go through a pull request; do not push to main.''', 'org-1') + '</section>')
 
     body += ('<section id="scope"><h2><span class="label">07</span>Scope fences</h2><p>Most "AI went off the rails" moments are scope problems. Fence the work explicitly:</p>'
@@ -168,4 +168,4 @@ Club facts: https://www.ciso-csusb.org/. Course content: data/academy.json. If u
 
 
 def build_aiflow(site) -> None:
-    site.page('/ai/workflow/', 'Working with AI: skills, tokens and context', workflow_page(site), 'Build AI skills, save tokens, keep a context saver, keep AI on track and teach it your organisation\'s rules.', 'Resources', module='play')
+    site.page('/ai/workflow/', 'Working with AI: skills, tokens and context', workflow_page(site), 'Build AI skills, save tokens, keep a context saver, keep AI on track and teach it your organization\'s rules.', 'Resources', module='play')

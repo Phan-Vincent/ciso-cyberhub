@@ -3,7 +3,8 @@
 // nothing is written to a database. Players send only a nickname and their answers.
 // The host is the source of truth for scoring. No innerHTML; text only.
 
-import { makeRound, points, cleanName, ROUND_MS, type Bank, type Round } from './duel.js';
+import { makeRound, points, cleanName, roundMs, ROUND_MS, type Bank, type Round } from './duel.js';
+import { qrMatrix, qrPath } from './qr.js';
 
 /* ------------------------------------------------------------ protocol */
 export type Msg =
@@ -36,12 +37,12 @@ export class HostGame {
   next(): boolean { if (this.i >= this.rounds.length - 1) return false; this.i++; this.open = true; this.answers.set(this.i, new Map()); return true; }
   answer(id: string, i: number, pick: number, ms: number): boolean {
     if (!this.open || i !== this.i || !this.players.has(id) || !Number.isInteger(pick) || pick < 0 || pick > 3) return false;
-    const a = this.answers.get(i)!; if (a.has(id)) return false; a.set(id, { pick, ms: Math.max(0, Math.min(ROUND_MS, Math.round(Number(ms) || ROUND_MS))) }); return true;
+    const a = this.answers.get(i)!; if (a.has(id)) return false; const lim = this.rounds[i] ? roundMs(this.rounds[i]) : ROUND_MS; a.set(id, { pick, ms: Math.max(0, Math.min(lim, Math.round(Number(ms) || lim))) }); return true;
   }
   answered() { return this.answers.get(this.i)?.size || 0; }
   close(): Msg & { t: 'reveal' } {
     this.open = false; const r = this.rounds[this.i]; const got: Record<string, number> = {};
-    for (const [id, a] of this.answers.get(this.i) || []) { const p = this.players.get(id); if (!p) continue; const pts = points(a.pick === r.q.answer, a.ms); p.score += pts; got[id] = pts; }
+    for (const [id, a] of this.answers.get(this.i) || []) { const p = this.players.get(id); if (!p) continue; const pts = points(a.pick === r.q.answer, a.ms * ROUND_MS / roundMs(r)); p.score += pts; got[id] = pts; }
     const { board, ranks, scores } = this.standings(); return { t: 'reveal', i: this.i, board: board.slice(0, 10), scores, ranks, got };
   }
   standings() {
@@ -82,24 +83,60 @@ if (app) {
   const base = document.body.dataset.base || ''; const sbUrl = document.body.dataset.sbUrl || '', sbKey = document.body.dataset.sbKey || '';
   const $ = <T extends HTMLElement = HTMLElement>(s: string) => app.querySelector<T>(s)!;
   const el = (tag: string, text = '', cls = '') => { const e = document.createElement(tag); if (text) e.textContent = text; if (cls) e.className = cls; return e; };
-  const show = (id: string) => { app.querySelectorAll<HTMLElement>('.lv-screen').forEach(s => { s.hidden = s.id !== id; }); if (!['lv-off', 'lv-choose'].includes(id)) app.scrollIntoView({ block: 'start' }); };
+  const show = (id: string) => { app.querySelectorAll<HTMLElement>('.lv-screen').forEach(s => { s.hidden = s.id !== id; }); const qb = app.querySelector<HTMLElement>('#lv-qrbtn'); if (qb) qb.hidden = !app.dataset.room || !['lv-hq', 'lv-hr', 'lv-hend'].includes(id); if (!['lv-off', 'lv-choose'].includes(id)) app.scrollIntoView({ block: 'start' }); };
   const SHAPES = ['▲', '◆', '●', '■'];
-  let bank: Bank | null = null; const ready = fetch(base + '/assets/duel.json').then(r => r.json()).then((b: Bank) => { bank = b; const sel = $<HTMLSelectElement>('#lv-cat'); for (const [k, v] of Object.entries(b.categories)) { const o = el('option', v) as HTMLOptionElement; o.value = k; sel.append(o); } });
+  let bank: Bank | null = null; const ready = fetch(base + '/assets/duel.json').then(r => r.json()).then((b: Bank) => { bank = b; const sel = $<HTMLSelectElement>('#lv-cat'); for (const [k, v] of Object.entries(b.categories)) { const o = el('option', v) as HTMLOptionElement; o.value = k; sel.append(o); }
+    if (b.scenarios?.length) { const g = document.createElement('optgroup'); g.label = 'Incident tabletop (teams, 30 s per decision)';
+      for (const sc of b.scenarios) { b.categories['tt:' + sc.id] = 'Tabletop: ' + sc.title; const o = el('option', sc.title) as HTMLOptionElement; o.value = 'tt:' + sc.id; g.append(o); } sel.append(g); }
+    const sync = () => { const tt = sel.value.startsWith('tt:'); app.querySelectorAll<HTMLElement>('.lv-qonly').forEach(x => { x.hidden = tt; }); $('#lv-ttnote').hidden = !tt; }; sel.addEventListener('change', sync); sync(); });
   const status = (s: string) => { app.querySelectorAll<HTMLElement>('.lv-status').forEach(x => { x.textContent = s === 'live' ? '● Connected' : s === 'connecting' ? '○ Connecting…' : '○ Reconnecting…'; x.dataset.s = s; }); };
   if (!sbUrl || !sbKey) { show('lv-off'); } else show('lv-choose');
   const joinUrl = (code: string) => `${location.origin}${location.pathname}#${code}`;
+  const drawQr = (svg: SVGSVGElement, text: string) => { const m = qrMatrix(text); const n = m.length + 8; const NS = 'http://www.w3.org/2000/svg';
+    svg.setAttribute('viewBox', `0 0 ${n} ${n}`); svg.setAttribute('shape-rendering', 'crispEdges');
+    const bg = document.createElementNS(NS, 'rect'); bg.setAttribute('width', String(n)); bg.setAttribute('height', String(n)); bg.setAttribute('fill', '#fff');
+    const path = document.createElementNS(NS, 'path'); path.setAttribute('d', qrPath(m)); path.setAttribute('fill', '#000'); svg.replaceChildren(bg, path); };
+  const qrBtn = $<HTMLButtonElement>('#lv-qrbtn'), dlg = app.querySelector<HTMLDialogElement>('#lv-qrdlg')!;
+  qrBtn.addEventListener('click', () => { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', ''); });
 
   // ---------------- host
   let host: HostGame | null = null, ch: Channel | null = null, code = '', timer = 0, tick = 0, t0 = 0; let lastStart: Msg | null = null;
   const lobby = () => { const names = host!.names(); $('#lv-count').textContent = `${names.length} player${names.length === 1 ? '' : 's'}`;
     $('#lv-players').replaceChildren(...[...host!.players.entries()].map(([id, p]) => { const b = el('button', p.name, 'lv-chip') as HTMLButtonElement; b.type = 'button'; b.title = 'Remove ' + p.name; b.addEventListener('click', () => { host!.kick(id); ch!.send({ t: 'kick', id }); lobby(); }); return b; }));
     ($('#lv-start') as HTMLButtonElement).disabled = names.length < 1; ch!.send({ t: 'lobby', names }); };
-  $('#lv-host').addEventListener('click', () => { show('lv-setup'); });
+  // Officer gate: hosting needs a signed-in account on the officers list (checked by is_officer()).
+  // This is a convenience gate in the page, not a hard security boundary: rooms use public channels.
+  const officerOnly = app.dataset.hosting !== 'anyone';
+  const session = async (): Promise<{ access_token: string; email: string } | null> => {
+    let s: any = null; try { s = JSON.parse(localStorage.getItem('cyberhub:session') || 'null'); } catch { return null; }
+    if (!s || !s.access_token) return null;
+    if (s.expires_at - Date.now() < 60000 && s.refresh_token) {
+      const r = await fetch(`${sbUrl}/auth/v1/token?grant_type=refresh_token`, { method: 'POST', headers: { apikey: sbKey, 'Content-Type': 'application/json' }, body: JSON.stringify({ refresh_token: s.refresh_token }) }).catch(() => null);
+      if (!r || !r.ok) return null; const d = await r.json(); s = { ...s, access_token: d.access_token, refresh_token: d.refresh_token, expires_at: Date.now() + (d.expires_in || 3600) * 1000 };
+      try { localStorage.setItem('cyberhub:session', JSON.stringify(s)); } catch { /* ignore */ }
+    }
+    return { access_token: s.access_token, email: s.user?.email || 'your account' };
+  };
+  const checkOfficer = async () => {
+    const msg = $('#lv-omsg'); const s = await session();
+    if (!s) { msg.textContent = 'Sign in with your officer email to host a room. Anyone can join a room without an account.'; show('lv-officer'); return; }
+    msg.textContent = 'Checking…';
+    const r = await fetch(`${sbUrl}/rest/v1/rpc/is_officer`, { method: 'POST', headers: { apikey: sbKey, Authorization: 'Bearer ' + s.access_token, 'Content-Type': 'application/json' }, body: '{}' }).catch(() => null);
+    if (r && r.ok && (await r.json()) === true) { show('lv-setup'); return; }
+    msg.textContent = !r ? 'Could not reach the server. Check your connection and try again.' : r.status === 404 ? 'The officer list is not set up yet: run supabase/schema.sql in the Supabase SQL editor.' : `You are signed in as ${s.email}, which is not on the officer list. Ask a club officer to add it.`;
+    show('lv-officer');
+  };
+  $('#lv-host').addEventListener('click', () => { if (officerOnly) checkOfficer(); else show('lv-setup'); });
+  $('#lv-ocheck').addEventListener('click', () => { checkOfficer(); });
+  $('#lv-oback').addEventListener('click', () => show('lv-choose'));
   $('#lv-create').addEventListener('click', async () => {
     await ready; if (!bank) return; code = newCode(); host = new HostGame(); ch?.close(); ch = new Channel(sbUrl, sbKey, code); ch.onStatus = status;
     ch.onMsg = m => { if (!host) return; if (m.t === 'join') { if (host.join(m.id, m.name) && host.i < 0) lobby(); else if (host.i >= 0) { ch!.send({ t: 'lobby', names: host.names() }); if (lastStart) ch!.send(lastStart); } }
       if (m.t === 'ans' && host.answer(m.id, m.i, m.pick, m.ms)) { $('#lv-answered').textContent = `${host.answered()} of ${host.players.size} answered`; if (host.answered() >= host.players.size) reveal(); } };
-    ch.connect(); $('#lv-code').textContent = code; $('#lv-url').textContent = joinUrl(code).replace(/^https?:\/\//, ''); show('lv-lobby'); lobby();
+    ch.connect(); const url = joinUrl(code), shortUrl = url.replace(/^https?:\/\//, '');
+    $('#lv-code').textContent = code; $('#lv-url').textContent = shortUrl; $('#lv-code2').textContent = code; $('#lv-url2').textContent = shortUrl;
+    try { drawQr(app.querySelector<SVGSVGElement>('#lv-qr')!, url); drawQr(app.querySelector<SVGSVGElement>('#lv-qr2')!, url); } catch { app.querySelectorAll<SVGSVGElement>('.lv-qr').forEach(q => { q.style.display = 'none'; }); }
+    app.dataset.room = code; show('lv-lobby'); lobby();
   });
   $('#lv-start').addEventListener('click', () => { if (!host || !bank) return; const seed = crypto.getRandomValues(new Uint32Array(1))[0]; const cat = $<HTMLSelectElement>('#lv-cat').value, diff = $<HTMLSelectElement>('#lv-diff').value, n = Number($<HTMLSelectElement>('#lv-n').value);
     host.start(bank, seed, cat, diff, n); lastStart = { t: 'start', seed, cat, diff, n }; ch!.send(lastStart); ask(); });
@@ -107,8 +144,8 @@ if (app) {
     if (!host || !host.next()) return finish(); const r = host.rounds[host.i]; ch!.send({ t: 'q', i: host.i }); show('lv-hq');
     $('#lv-qn').textContent = `Question ${host.i + 1} of ${host.rounds.length} · ${bank!.categories[r.q.cat] || r.q.cat}`; $('#lv-qtext').textContent = r.q.q; $('#lv-answered').textContent = `0 of ${host.players.size} answered`;
     $('#lv-qchoices').replaceChildren(...r.order.map((o, k) => { const li = el('li', '', 'lv-c lv-c' + k); li.append(el('span', SHAPES[k], 'lv-shape'), el('span', r.q.choices[o])); return li; }));
-    t0 = performance.now(); clearTimeout(timer); timer = window.setTimeout(reveal, ROUND_MS + 1500); cancelAnimationFrame(tick);
-    const loop = () => { const f = Math.max(0, 1 - (performance.now() - t0) / ROUND_MS); $('#lv-bar').style.setProperty('--p', String(f)); if (host?.open) tick = requestAnimationFrame(loop); }; loop();
+    t0 = performance.now(); clearTimeout(timer); const lim = roundMs(r); timer = window.setTimeout(reveal, lim + 1500); cancelAnimationFrame(tick);
+    const loop = () => { const f = Math.max(0, 1 - (performance.now() - t0) / lim); $('#lv-bar').style.setProperty('--p', String(f)); if (host?.open) tick = requestAnimationFrame(loop); }; loop();
   }
   function reveal() { if (!host || !host.open) return; clearTimeout(timer); const msg = host.close(); ch!.send(msg); const r = host.rounds[host.i];
     show('lv-hr'); $('#lv-ans').textContent = `${SHAPES[r.order.indexOf(r.q.answer)]} ${r.q.choices[r.q.answer]}`; $('#lv-why').textContent = r.q.why;

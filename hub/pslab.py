@@ -24,7 +24,7 @@ MODULES = [
          'Somebody requested an admin page with a token in `C:\\Logs\\web.log`. Find it and submit the flag.', ['Select-String -Pattern admin -Path C:\\Logs\\web.log']),
         ('ps-process', 'Stop a cryptominer', ['`Get-Process` lists running programs with their process ID (Id). `Stop-Process -Id 1234` stops one. Sort by CPU to spot something burning the processor: `Get-Process | Sort-Object CPU -Descending`.'],
          'A cryptominer is running. Stop it, and nothing else.', ['Get-Process | Sort-Object CPU -Descending', 'Stop-Process -Id <its Id>']),
-        ('ps-service', 'A suspicious service', ['Services run in the background and often start with Windows, which makes them a favourite way for malware to stay installed. `Get-Service` lists them. Look for a name that does not match its description or does not belong.'],
+        ('ps-service', 'A suspicious service', ['Services run in the background and often start with Windows, which makes them a favorite way for malware to stay installed. `Get-Service` lists them. Look for a name that does not match its description or does not belong.'],
          'One running service was added by an attacker with a generic description. Submit its Name.', ['Get-Service', 'Which Name is not a real Windows service and has DisplayName "Windows Helper"?']),
         ('ps-users', 'Who can log in?', ['`Get-LocalUser` lists the accounts on this computer and whether they are enabled. Attackers add accounts so they can come back later.'],
          'Find the enabled account that should not be there and submit its name.', ['Get-LocalUser', 'Administrator and Guest are disabled; student and analyst are expected.']),

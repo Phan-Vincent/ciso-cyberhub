@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T20:54:50Z",
+  "generated_at": "2026-10-25T20:56:14Z",
   "models": [
     {
       "created": "2026-10-17",
@@ -8,7 +8,7 @@
       "likes": 2961,
       "org": "deepseek-ai",
       "task": "image-text-to-text",
-      "trending": 1239,
+      "trending": 1236,
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
@@ -106,7 +106,7 @@
     {
       "created": "2026-07-13",
       "description": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm: https://www.npmjs.com/package/@openai/codex-security",
-      "gain": 12,
+      "gain": 0,
       "language": "TypeScript",
       "license": "Apache-2.0",
       "name": "openai/codex-security",
@@ -116,7 +116,7 @@
     {
       "created": "2026-09-30",
       "description": "Point Claude at any game. Skills, tools and the fal MCP that let Claude Code mod almost any PC game you own: recon, reverse engineering, fal-generated art/3D/audio, in-game testing",
-      "gain": 116,
+      "gain": 0,
       "language": "Python",
       "license": "MIT",
       "name": "rehan-remade/universal-modder",
@@ -126,7 +126,7 @@
     {
       "created": "2026-10-03",
       "description": "Eleven free Claude skills that clone any app: reverse-engineer it, rebuild it, test it for bugs, then fix what its users hate. Free, MIT.",
-      "gain": 363,
+      "gain": 0,
       "language": "Python",
       "license": "MIT",
       "name": "Jakeschincariol/replica-skill",
@@ -136,7 +136,7 @@
     {
       "created": "2026-08-22",
       "description": "x64dbg-MCP Server is a native MCP (Model Context Protocol) plugin for x64dbg that exposes the debugger's full functionality over HTTP. Connect any MCP-compatible AI assistant and c",
-      "gain": 10,
+      "gain": 0,
       "language": "Zig",
       "license": "MIT",
       "name": "duty1g/x64dbg-mcp-server",
@@ -146,7 +146,7 @@
     {
       "created": "2026-10-09",
       "description": "Rated, auto-refreshed list of decompiled, recompiled & reverse-engineered games: decomps, static recomps, source ports, engine remakes, browser ports.",
-      "gain": 88,
+      "gain": 0,
       "language": "Python",
       "license": "CC0-1.0",
       "name": "SubmitGame/awesome-decomp-games",
@@ -156,7 +156,7 @@
     {
       "created": "2026-10-08",
       "description": "ARTEX · AI autonomous penetration testing system (multi-agent LLM, Go + Next.js) · AI 自主渗透测试系统 · 百度 agent+ 攻防挑战赛冠军",
-      "gain": 75,
+      "gain": 0,
       "language": "Go",
       "license": "AGPL-3.0",
       "name": "trhhubsd/ARTEX",
@@ -166,7 +166,7 @@
     {
       "created": "2026-08-18",
       "description": "Deterministic guardrails that don't break agents",
-      "gain": 4,
+      "gain": 0,
       "language": "Rust",
       "license": "MIT",
       "name": "archestra-ai/OpenAPPA",
@@ -176,7 +176,7 @@
     {
       "created": "2026-08-11",
       "description": "复刻网站的 Agent Skill：抓只读镜像、从压缩代码逐行还原、自动比对验收。An agent skill that mirrors a website, rebuilds it from the minified code, and verifies the result with automated diffs.",
-      "gain": 4,
+      "gain": 0,
       "language": "JavaScript",
       "license": "MIT",
       "name": "boyang-hu/website-rebuild-skill",
@@ -186,7 +186,7 @@
     {
       "created": "2026-10-14",
       "description": "基于 REA 深度拆解并高保真还原 Claude 官方桌面端 UI。还原 30 个独立 React 组件与 8 项硬核交互物理算法，附带 3000+ 行逆向分析手册。",
-      "gain": 19,
+      "gain": 0,
       "language": "TypeScript",
       "license": "MIT",
       "name": "Caho1/open-claude-ui",
@@ -196,7 +196,7 @@
     {
       "created": "2026-10-14",
       "description": "Overdrive, a PS5 homebrew game store with 1,800+ games.",
-      "gain": null,
+      "gain": 0,
       "language": "C++",
       "license": "",
       "name": "MyLuxy/overdrive",
@@ -210,11 +210,11 @@
   },
   "spotlight": [
     {
-      "forks": 96089,
+      "forks": 96092,
       "language": "TypeScript",
       "license": "MIT",
       "name": "morluto/rea",
-      "stars": 384027,
+      "stars": 384032,
       "stars_note": "",
       "url": "https://github.com/morluto/rea",
       "why": "Viral this month: an MCP server that gives AI coding agents 170+ reverse-engineering tools for binaries, Electron apps, websites and Android APKs."

@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 const dir = mkdtempSync(join(tmpdir(), 'live-'));
-for (const n of ['duel', 'live']) writeFileSync(join(dir, n + '.js'), stripTypeScriptTypes(readFileSync(new URL(`../web/${n}.ts`, import.meta.url), 'utf8'), { mode: 'strip' }));
+for (const n of ['duel', 'live', 'qr']) writeFileSync(join(dir, n + '.js'), stripTypeScriptTypes(readFileSync(new URL(`../web/${n}.ts`, import.meta.url), 'utf8'), { mode: 'strip' }));
 const L = await import(pathToFileURL(join(dir, 'live.js')).href); const D = await import(pathToFileURL(join(dir, 'duel.js')).href);
 const bank = JSON.parse(readFileSync(new URL('../data/duel.json', import.meta.url), 'utf8'));
 
@@ -44,4 +44,17 @@ test('channel joins, relays broadcasts between host and player, and queues early
   assert.match(sockets[0].url, /^wss:\/\/abcdefghijklmnopqrst\.supabase\.co\/realtime\/v1\/websocket\?apikey=sb_publishable_x+&vsn=1\.0\.0$/);
   assert.deepEqual(got, [{ t: 'join', id: 'aaaaaaaa1111', name: 'Ana' }]); assert.equal(stray.length, 0, 'other rooms do not hear it');
   host.close(); p1.close(); other.close();
+});
+
+test('incident tabletops run in order with longer rounds and scaled scoring', () => {
+  assert.ok(bank.scenarios.length >= 3);
+  for (const sc of bank.scenarios) {
+    const a = D.makeRound(bank, 1, 'tt:' + sc.id, 'mix', 10), b = D.makeRound(bank, 1, 'tt:' + sc.id, '1', 3);
+    assert.deepEqual(a.map(r => r.q.id), sc.steps.map(s => s.id)); assert.deepEqual(a.map(r => r.order), b.map(r => r.order), 'players rebuild the same rounds');
+    for (const r of a) { assert.deepEqual([...r.order].sort(), [0, 1, 2, 3]); assert.equal(D.roundMs(r), D.TABLETOP_MS); }
+  }
+  assert.deepEqual(D.makeRound(bank, 1, 'tt:nope', 'mix', 5), []);
+  const h = new L.HostGame(); h.join('aaaaaaaa1111', 'Team A'); h.start(bank, 9, 'tt:' + bank.scenarios[0].id, 'mix', 5); assert.equal(h.rounds.length, bank.scenarios[0].steps.length);
+  h.next(); const r = h.rounds[0]; h.answer('aaaaaaaa1111', 0, r.q.answer, 20000);
+  assert.equal(h.close().got['aaaaaaaa1111'], D.points(true, 20000 * D.ROUND_MS / D.TABLETOP_MS));
 });

@@ -53,7 +53,7 @@ const TEMPLATES: (() => Alert)[] = [
   () => { const h = box(); return { id: 'beacon', title: `Regular DNS lookups to random-looking domains from ${h}`, sev: 'Medium', src: 'DNS logs', bad: true, tactic: 'Command and Control',
     evidence: [`${h} looks up a new random domain every 60 seconds (e.g. qx7v2k9p.example)`, 'Domains were registered this week', 'Started after an unsigned program ran from the Downloads folder'],
     actions: ['Close: DNS lookups are normal', `Isolate ${h}, block the domains, and escalate for malware analysis`, 'Clear the DNS cache'], best: 1,
-    why: 'Clockwork lookups to freshly registered random names look like malware calling home (beaconing). Contain and analyse.' }; },
+    why: 'Clockwork lookups to freshly registered random names look like malware calling home (beaconing). Contain and analyze.' }; },
   () => ({ id: 'eicar', title: 'Antivirus detection: EICAR test file', sev: 'Low', src: 'Antivirus', bad: false, tactic: 'Execution',
     evidence: ['File: eicar.com in C:\\IT\\AV-Test\\', 'Detected and quarantined', 'IT ticket: "monthly antivirus alerting test"'],
     actions: BENIGN_CLOSE, best: 0, why: 'EICAR is a harmless industry-standard file for testing antivirus. This is the scheduled test proving alerting works.' }),
