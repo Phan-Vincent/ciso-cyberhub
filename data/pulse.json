@@ -1,6 +1,6 @@
 {
   "errors": [
-    "ai_papers_7d: HTTP 500"
+    "ai_papers_7d: HTTP 406"
   ],
   "series": [
     {
@@ -29,7 +29,16 @@
       "hn_security": 41,
       "hn_total": 393,
       "kev_30d": 30
+    },
+    {
+      "cves_7d": 4433,
+      "date": "2026-10-27",
+      "hn_llm": 40,
+      "hn_month": "October 2026",
+      "hn_security": 41,
+      "hn_total": 393,
+      "kev_30d": 32
     }
   ],
-  "updated": "2026-10-26T22:43:17Z"
+  "updated": "2026-10-27T07:56:30Z"
 }
