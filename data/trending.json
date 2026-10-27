@@ -1,104 +1,104 @@
 {
-  "generated_at": "2026-10-26T16:49:38Z",
+  "generated_at": "2026-10-26T22:43:32Z",
   "models": [
     {
       "created": "2026-10-17",
       "downloads": 95889,
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "likes": 3133,
+      "likes": 3177,
       "org": "deepseek-ai",
       "task": "image-text-to-text",
-      "trending": 1078,
+      "trending": 1051,
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "created": "2026-10-21",
       "downloads": 8470,
       "id": "RecursiveSI/flint",
-      "likes": 898,
+      "likes": 918,
       "org": "RecursiveSI",
       "task": "text-generation",
-      "trending": 863,
+      "trending": 878,
       "url": "https://huggingface.co/RecursiveSI/flint"
     },
     {
       "created": "2026-10-24",
       "downloads": 2787,
       "id": "Nanbeige/Nanbeige4.3-33B",
-      "likes": 556,
+      "likes": 590,
       "org": "Nanbeige",
       "task": "text-generation",
-      "trending": 552,
+      "trending": 584,
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
     },
     {
       "created": "2026-10-19",
       "downloads": 4726,
       "id": "XHToken/Spark-X2.6-4B",
-      "likes": 627,
+      "likes": 638,
       "org": "XHToken",
       "task": "text-generation",
-      "trending": 537,
+      "trending": 548,
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
     },
     {
       "created": "2026-10-23",
       "downloads": 891147,
       "id": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
-      "likes": 330,
+      "likes": 339,
       "org": "ISTA-DASLab",
       "task": "text-generation",
-      "trending": 313,
+      "trending": 321,
       "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF"
     },
     {
       "created": "2026-10-15",
       "downloads": 5235,
       "id": "InternScience/Sage-A1.5",
-      "likes": 308,
+      "likes": 311,
       "org": "InternScience",
       "task": "text-generation",
-      "trending": 301,
+      "trending": 303,
       "url": "https://huggingface.co/InternScience/Sage-A1.5"
     },
     {
       "created": "2026-10-20",
       "downloads": 125188,
       "id": "unsloth/flint-GGUF",
-      "likes": 261,
+      "likes": 269,
       "org": "unsloth",
       "task": "text-generation",
-      "trending": 252,
+      "trending": 258,
       "url": "https://huggingface.co/unsloth/flint-GGUF"
     },
     {
       "created": "2026-10-21",
       "downloads": 1128,
       "id": "HuggingFaceBio/Carbon-X",
-      "likes": 201,
+      "likes": 207,
       "org": "HuggingFaceBio",
       "task": "text-generation",
-      "trending": 193,
+      "trending": 199,
       "url": "https://huggingface.co/HuggingFaceBio/Carbon-X"
     },
     {
       "created": "2026-10-21",
       "downloads": 1450,
       "id": "KRAFTON/Raon-1-mini-preview",
-      "likes": 194,
+      "likes": 195,
       "org": "KRAFTON",
       "task": "text-generation",
-      "trending": 181,
+      "trending": 182,
       "url": "https://huggingface.co/KRAFTON/Raon-1-mini-preview"
     },
     {
       "created": "2026-10-16",
       "downloads": 60210,
       "id": "ornith-ai/Ornith-1.5-122B",
-      "likes": 183,
+      "likes": 187,
       "org": "ornith-ai",
       "task": "text-generation",
-      "trending": 176,
+      "trending": 180,
       "url": "https://huggingface.co/ornith-ai/Ornith-1.5-122B"
     }
   ],
@@ -106,11 +106,11 @@
     {
       "created": "2026-07-13",
       "description": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm: https://www.npmjs.com/package/@openai/codex-security",
-      "gain": 2,
+      "gain": 4,
       "language": "TypeScript",
       "license": "Apache-2.0",
       "name": "openai/codex-security",
-      "stars": 11210,
+      "stars": 11214,
       "url": "https://github.com/openai/codex-security"
     },
     {
@@ -120,17 +120,17 @@
       "language": "Python",
       "license": "MIT",
       "name": "rehan-remade/universal-modder",
-      "stars": 9006,
+      "stars": 9017,
       "url": "https://github.com/rehan-remade/universal-modder"
     },
     {
       "created": "2026-10-03",
       "description": "Eleven free Claude skills that clone any app: reverse-engineer it, rebuild it, test it for bugs, then fix what its users hate. Free, MIT.",
-      "gain": 55,
+      "gain": 65,
       "language": "Python",
       "license": "MIT",
       "name": "Jakeschincariol/replica-skill",
-      "stars": 5712,
+      "stars": 5777,
       "url": "https://github.com/Jakeschincariol/replica-skill"
     },
     {
@@ -140,27 +140,27 @@
       "language": "Zig",
       "license": "MIT",
       "name": "duty1g/x64dbg-mcp-server",
-      "stars": 2610,
+      "stars": 2611,
       "url": "https://github.com/duty1g/x64dbg-mcp-server"
     },
     {
       "created": "2026-10-09",
       "description": "Rated, auto-refreshed list of decompiled, recompiled & reverse-engineered games: decomps, static recomps, source ports, engine remakes, browser ports.",
-      "gain": 11,
+      "gain": 13,
       "language": "Python",
       "license": "CC0-1.0",
       "name": "SubmitGame/awesome-decomp-games",
-      "stars": 2476,
+      "stars": 2489,
       "url": "https://github.com/SubmitGame/awesome-decomp-games"
     },
     {
       "created": "2026-10-08",
       "description": "ARTEX · AI autonomous penetration testing system (multi-agent LLM, Go + Next.js) · AI 自主渗透测试系统 · 百度 agent+ 攻防挑战赛冠军",
-      "gain": 23,
+      "gain": 13,
       "language": "Go",
       "license": "AGPL-3.0",
       "name": "trhhubsd/ARTEX",
-      "stars": 1975,
+      "stars": 1988,
       "url": "https://github.com/trhhubsd/ARTEX"
     },
     {
@@ -170,7 +170,7 @@
       "language": "Rust",
       "license": "MIT",
       "name": "archestra-ai/OpenAPPA",
-      "stars": 1607,
+      "stars": 1608,
       "url": "https://github.com/archestra-ai/OpenAPPA"
     },
     {
@@ -186,21 +186,21 @@
     {
       "created": "2026-10-14",
       "description": "基于 REA 深度拆解并高保真还原 Claude 官方桌面端 UI。还原 30 个独立 React 组件与 8 项硬核交互物理算法，附带 3000+ 行逆向分析手册。",
-      "gain": 7,
+      "gain": 2,
       "language": "TypeScript",
       "license": "MIT",
       "name": "Caho1/open-claude-ui",
-      "stars": 1427,
+      "stars": 1429,
       "url": "https://github.com/Caho1/open-claude-ui"
     },
     {
       "created": "2026-10-14",
-      "description": "Overdrive, a PS5 homebrew game store with 1,800+ games.",
-      "gain": 10,
+      "description": "Overdrive, a PS5 homebrew game store with 2,000+ games.",
+      "gain": 11,
       "language": "C++",
       "license": "",
       "name": "MyLuxy/overdrive",
-      "stars": 1365,
+      "stars": 1376,
       "url": "https://github.com/MyLuxy/overdrive"
     }
   ],
@@ -210,11 +210,11 @@
   },
   "spotlight": [
     {
-      "forks": 97711,
+      "forks": 98043,
       "language": "TypeScript",
       "license": "MIT",
       "name": "morluto/rea",
-      "stars": 390028,
+      "stars": 391324,
       "stars_note": "",
       "url": "https://github.com/morluto/rea",
       "why": "Viral this month: an MCP server that gives AI coding agents 170+ reverse-engineering tools for binaries, Electron apps, websites and Android APKs."
