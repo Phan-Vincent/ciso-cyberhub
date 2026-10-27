@@ -211,6 +211,14 @@ if(cursor&&fine&&!calm){
 // Reveals: in-view elements reveal at once; nothing waits on scrolling to become readable without JS.
 const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}}),{rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.rv, .fade, .acad').forEach(el=>rio.observe(el));
+// Scroll-in: cards and sections below the fold rise in as they enter view, a few at a time.
+// Anything on screen at load stays put, so the first view never waits on motion.
+if(!calm&&'IntersectionObserver' in window){
+ const SR='.card, .job, .digest-row, .dir-section, .wr-card, .role-card, .path-card, .lab-track, .play-tile, .hx-era, .gl-sec, .st-path, .guide-sources, .df-card';
+ let batch=0,batchT=0;
+ const sio=new IntersectionObserver(es=>{const now=performance.now();if(now-batchT>120)batch=0;batchT=now;es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target as HTMLElement;el.style.transitionDelay=`${Math.min(batch++,6)*70}ms`;el.classList.add('in');sio.unobserve(el);const done=()=>{el.style.transitionDelay='';el.classList.remove('sr','in');};el.addEventListener('transitionend',e=>{if(e.target===el&&e.propertyName==='opacity')done();});setTimeout(done,1600);});},{rootMargin:'0px 0px -6% 0px'});
+ document.querySelectorAll<HTMLElement>(`main :is(${SR})`).forEach(el=>{if(el.closest('.sr')||el.getBoundingClientRect().top<innerHeight)return;el.classList.add('sr');sio.observe(el);});
+}
 
 
 // Hero: type sized to its share of the measure; wireframe where it crosses the Core.
@@ -464,12 +472,14 @@ if(coreCv)sealTilt?.classList.add('live');
 const head=$('#site-header'),prog=$('#progress'),stage=$('#top'),aperture=$('#aperture'),apRing=$('#ap-ring');
 const scenes=Array.from(document.querySelectorAll<HTMLElement>('[data-tone]'));
 const m1=$('#m1'),m2=$('#m2'),interlude=$('.interlude');
-let ticking=false,counted=false;
+let ticking=false,counted=false,lastY=scrollY;
 function countUp(){document.querySelectorAll<HTMLElement>('.spec strong[data-count]').forEach(el=>{const end=Number(el.dataset.count),t0=performance.now();const st=(now:number)=>{const p=clamp((now-t0)/1200,0,1);el.textContent=String(Math.round(end*(1-Math.pow(1-p,4)))).padStart(2,'0');if(p<1)requestAnimationFrame(st);};requestAnimationFrame(st);});}
 function onScroll(){
  ticking=false;const sy=scrollY;
  prog?.style.setProperty('--p',(sy/Math.max(1,document.documentElement.scrollHeight-innerHeight)).toFixed(4));
  head?.classList.toggle('scrolled',sy>40);
+ // Header steps aside while reading down the page and comes back on any scroll up.
+ if(head){const dy=sy-lastY;if(sy<160||document.body.style.overflow==='hidden')head.classList.remove('tuck');else if(dy>8)head.classList.add('tuck');else if(dy<-8)head.classList.remove('tuck');if(Math.abs(dy)>8||sy<160)lastY=sy;}
  if(stage&&seal&&aperture&&apRing&&!calm){
   const r=stage.getBoundingClientRect();stageP=clamp(-r.top/(r.height-innerHeight),0,1);
   const sr=seal.getBoundingClientRect(),hasSeal=sr.width>0;
@@ -485,6 +495,7 @@ function onScroll(){
 }
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
 addEventListener('resize',onScroll);
+head?.addEventListener('focusin',()=>head.classList.remove('tuck'));
 
 // Learning map: server-rendered discipline buttons drive a canvas map.
 const netSec=$('#map'),netCv=$('#net-canvas') as HTMLCanvasElement|null;
