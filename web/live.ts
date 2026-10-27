@@ -1,6 +1,9 @@
 // CyberHub Cyber Duel: Live rooms. A host screen (projector) and players on phones, joined by
-// a 5-letter code. Messages travel over Supabase Realtime broadcast (a public channel per room);
-// nothing is written to a database. Players send only a nickname and their answers.
+// a 5-letter code. Messages travel over Supabase Realtime broadcast; nothing is written to a database.
+// Two public channels per room keep traffic inside the free plan's message limit (every delivery
+// counts, and going over disconnects clients): the host broadcasts to everyone on `cyberhub-duel-CODE`,
+// and players send joins and answers to `cyberhub-duel-CODE-up` over the REST broadcast endpoint,
+// which only the host listens to, so one phone's answer is not copied to every other phone. Players send only a nickname and their answers.
 // The host is the source of truth for scoring. No innerHTML; text only.
 
 import { makeRound, points, cleanName, roundMs, ROUND_MS, type Bank, type Round } from './duel.js';
@@ -8,11 +11,12 @@ import { qrMatrix, qrPath } from './qr.js';
 
 /* ------------------------------------------------------------ protocol */
 export type Msg =
-  | { t: 'join'; id: string; name: string }
+  | { t: 'join'; id: string; name: string; p?: 1 }
   | { t: 'ans'; id: string; i: number; pick: number; ms: number }
   | { t: 'lobby'; names: string[] }
   | { t: 'start'; seed: number; cat: string; diff: string; n: number }
-  | { t: 'q'; i: number }
+  | { t: 'q'; i: number; seed: number; cat: string; diff: string; n: number; left: number }
+  | { t: 'sync'; id: string; phase: 'lobby' | 'q' | 'between' | 'end'; names: string[]; q?: Msg & { t: 'q' }; rank?: number; score?: number }
   | { t: 'reveal'; i: number; board: [string, number][]; scores: Record<string, number>; ranks: Record<string, number>; got: Record<string, number> }
   | { t: 'end'; board: [string, number][]; ranks: Record<string, number>; total: number }
   | { t: 'kick'; id: string };
@@ -68,13 +72,25 @@ export class Channel {
     ws.onmessage = e => { let m: any; try { m = JSON.parse(String(e.data)); } catch { return; }
       if (m.event === 'phx_reply' && m.ref === this.joinRef) { if (m.payload?.status === 'ok') { this.tries = 0; this.onStatus('live'); this.queue.splice(0).forEach(q => this.ws?.send(q)); } else this.onStatus('offline'); return; }
       if (m.event === 'broadcast' && m.topic === this.topic && m.payload?.event === 'duel') { const p = m.payload.payload; if (p && typeof p.t === 'string') this.onMsg(p as Msg); } };
-    ws.onclose = () => { clearInterval(this.hb); if (this.closed) return; this.onStatus('offline'); const wait = Math.min(10000, 500 * 2 ** this.tries++); setTimeout(() => { if (!this.closed) this.connect(); }, wait); };
+    ws.onclose = () => { if (this.ws !== ws) return; clearInterval(this.hb); if (this.closed) return; this.onStatus('offline'); const wait = Math.min(10000, 500 * 2 ** this.tries++); setTimeout(() => { if (!this.closed) this.connect(); }, wait); };
     ws.onerror = () => { try { ws.close(); } catch { /* ignore */ } };
   }
   private raw(o: unknown) { const s = JSON.stringify(o); if (this.ws && this.ws.readyState === 1) this.ws.send(s); }
   send(m: Msg) { const s = JSON.stringify({ topic: this.topic, event: 'broadcast', payload: { type: 'broadcast', event: 'duel', payload: m }, ref: String(++this.ref), join_ref: this.joinRef });
     if (this.ws && this.ws.readyState === 1 && this.joinRef) this.ws.send(s); else this.queue.push(s); }
+  /** Reconnect now if the socket dropped (a phone that slept or switched apps). */
+  wake() { if (this.closed) return; if (!this.ws || this.ws.readyState > 1) { try { this.ws?.close(); } catch { /* ignore */ } this.tries = 0; this.connect(); } }
   close() { this.closed = true; clearInterval(this.hb); try { this.ws?.close(); } catch { /* ignore */ } }
+}
+
+/** Send one message to a room's host-only channel through the Realtime REST broadcast endpoint. */
+export async function postUp(url: string, key: string, room: string, m: Msg, f: typeof fetch = fetch): Promise<boolean> {
+  const body = JSON.stringify({ messages: [{ topic: `cyberhub-duel-${room}-up`, event: 'duel', payload: m, private: false }] });
+  for (let k = 0; k < 3; k++) {
+    const r = await f(`${url}/realtime/v1/api/broadcast`, { method: 'POST', headers: { apikey: key, 'Content-Type': 'application/json' }, body, keepalive: true }).catch(() => null);
+    if (r && r.ok) return true; await new Promise(res => setTimeout(res, 400 * (k + 1)));
+  }
+  return false;
 }
 
 /* ------------------------------------------------------------ UI */
@@ -100,10 +116,12 @@ if (app) {
   qrBtn.addEventListener('click', () => { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', ''); });
 
   // ---------------- host
-  let host: HostGame | null = null, ch: Channel | null = null, code = '', timer = 0, tick = 0, t0 = 0; let lastStart: Msg | null = null;
-  const lobby = () => { const names = host!.names(); $('#lv-count').textContent = `${names.length} player${names.length === 1 ? '' : 's'}`;
+  let host: HostGame | null = null, ch: Channel | null = null, up: Channel | null = null, code = '', timer = 0, tick = 0, t0 = 0; let lastStart: (Msg & { t: 'start' }) | null = null, qStart = 0, ended = false;
+  const lobby = (send = true) => { const names = host!.names(); $('#lv-count').textContent = `${names.length} player${names.length === 1 ? '' : 's'}`;
     $('#lv-players').replaceChildren(...[...host!.players.entries()].map(([id, p]) => { const b = el('button', p.name, 'lv-chip') as HTMLButtonElement; b.type = 'button'; b.title = 'Remove ' + p.name; b.addEventListener('click', () => { host!.kick(id); ch!.send({ t: 'kick', id }); lobby(); }); return b; }));
-    ($('#lv-start') as HTMLButtonElement).disabled = names.length < 1; ch!.send({ t: 'lobby', names }); };
+    ($('#lv-start') as HTMLButtonElement).disabled = names.length < 1; if (send) sendLobby(); };
+  let lobbyT = 0, lobbyLast = 0; const sendLobby = () => { if (lobbyT) return; const wait = Math.max(0, lobbyLast + 1500 - Date.now()); lobbyT = window.setTimeout(() => { lobbyT = 0; lobbyLast = Date.now(); if (host && ch) ch.send({ t: 'lobby', names: host.names() }); }, wait); };
+  const qMsg = (): Msg & { t: 'q' } => { const r = host!.rounds[host!.i]; return { t: 'q', i: host!.i, seed: lastStart!.seed, cat: lastStart!.cat, diff: lastStart!.diff, n: lastStart!.n, left: Math.max(0, Math.round(roundMs(r) - (performance.now() - qStart))) }; };
   // Officer gate: hosting needs a signed-in account on the officers list (checked by is_officer()).
   // This is a convenience gate in the page, not a hard security boundary: rooms use public channels.
   const officerOnly = app.dataset.hosting !== 'anyone';
@@ -130,18 +148,27 @@ if (app) {
   $('#lv-ocheck').addEventListener('click', () => { checkOfficer(); });
   $('#lv-oback').addEventListener('click', () => show('lv-choose'));
   $('#lv-create').addEventListener('click', async () => {
-    await ready; if (!bank) return; code = newCode(); host = new HostGame(); ch?.close(); ch = new Channel(sbUrl, sbKey, code); ch.onStatus = status;
-    ch.onMsg = m => { if (!host) return; if (m.t === 'join') { if (host.join(m.id, m.name) && host.i < 0) lobby(); else if (host.i >= 0) { ch!.send({ t: 'lobby', names: host.names() }); if (lastStart) ch!.send(lastStart); } }
+    await ready; if (!bank) return; code = newCode(); host = new HostGame(); ch?.close(); up?.close(); ch = new Channel(sbUrl, sbKey, code); up = new Channel(sbUrl, sbKey, code + '-up');
+    const both: Record<string, string> = { out: 'connecting', in: 'connecting' }; const mix = () => status(both.out === 'live' && both.in === 'live' ? 'live' : Object.values(both).includes('offline') ? 'offline' : 'connecting');
+    ch.onStatus = x => { both.out = x; mix(); }; up.onStatus = x => { both.in = x; mix(); };
+    up.onMsg = m => { if (!host) return;
+      if (m.t === 'join') { const known = host.players.has(m.id); if (!host.join(m.id, m.name)) return;
+        // New players in the lobby update everyone's count. Anyone else (a late joiner, or a phone that
+        // reconnected after sleeping) gets a private catch-up: the current question, or what to wait for.
+        if (host.i < 0 && !ended) { if (!known) lobby(); else if (!m.p) ch!.send({ t: 'sync', id: m.id, phase: 'lobby', names: host.names() }); return; }
+        if (!known) lobby(false);
+        const s = host.standings(); const base = { t: 'sync' as const, id: m.id, names: host.names(), rank: s.ranks[m.id], score: s.scores[m.id] };
+        ch!.send(ended ? { ...base, phase: 'end' } : host.open ? { ...base, phase: 'q', q: qMsg() } : { ...base, phase: 'between' }); }
       if (m.t === 'ans' && host.answer(m.id, m.i, m.pick, m.ms)) { $('#lv-answered').textContent = `${host.answered()} of ${host.players.size} answered`; if (host.answered() >= host.players.size) reveal(); } };
-    ch.connect(); const url = joinUrl(code), shortUrl = url.replace(/^https?:\/\//, '');
+    ch.connect(); up.connect(); const url = joinUrl(code), shortUrl = url.replace(/^https?:\/\//, '');
     $('#lv-code').textContent = code; $('#lv-url').textContent = shortUrl; $('#lv-code2').textContent = code; $('#lv-url2').textContent = shortUrl;
     try { drawQr(app.querySelector<SVGSVGElement>('#lv-qr')!, url); drawQr(app.querySelector<SVGSVGElement>('#lv-qr2')!, url); } catch { app.querySelectorAll<SVGSVGElement>('.lv-qr').forEach(q => { q.style.display = 'none'; }); }
     app.dataset.room = code; show('lv-lobby'); lobby();
   });
   $('#lv-start').addEventListener('click', () => { if (!host || !bank) return; const seed = crypto.getRandomValues(new Uint32Array(1))[0]; const cat = $<HTMLSelectElement>('#lv-cat').value, diff = $<HTMLSelectElement>('#lv-diff').value, n = Number($<HTMLSelectElement>('#lv-n').value);
-    host.start(bank, seed, cat, diff, n); lastStart = { t: 'start', seed, cat, diff, n }; ch!.send(lastStart); ask(); });
+    host.start(bank, seed, cat, diff, n); ended = false; lastStart = { t: 'start', seed, cat, diff, n }; ask(); });
   function ask() {
-    if (!host || !host.next()) return finish(); const r = host.rounds[host.i]; ch!.send({ t: 'q', i: host.i }); show('lv-hq');
+    if (!host || !host.next()) return finish(); const r = host.rounds[host.i]; qStart = performance.now(); ch!.send(qMsg()); show('lv-hq');
     $('#lv-qn').textContent = `Question ${host.i + 1} of ${host.rounds.length} · ${bank!.categories[r.q.cat] || r.q.cat}`; $('#lv-qtext').textContent = r.q.q; $('#lv-answered').textContent = `0 of ${host.players.size} answered`;
     $('#lv-qchoices').replaceChildren(...r.order.map((o, k) => { const li = el('li', '', 'lv-c lv-c' + k); li.append(el('span', SHAPES[k], 'lv-shape'), el('span', r.q.choices[o])); return li; }));
     t0 = performance.now(); clearTimeout(timer); const lim = roundMs(r); timer = window.setTimeout(reveal, lim + 1500); cancelAnimationFrame(tick);
@@ -152,31 +179,55 @@ if (app) {
     $('#lv-board').replaceChildren(...msg.board.map(([n, s], k) => { const li = el('li'); li.append(el('span', `${k + 1}. ${n}`), el('strong', String(s))); return li; }));
     $('#lv-next').textContent = host.i < host.rounds.length - 1 ? 'Next question →' : 'Final results →'; }
   $('#lv-next').addEventListener('click', ask); $('#lv-skip').addEventListener('click', reveal);
-  function finish() { if (!host) return; const m = host.end(); ch!.send(m); show('lv-hend'); $('#lv-podium').replaceChildren(...m.board.map(([n, s], k) => { const li = el('li', '', k < 3 ? 'top' : ''); li.append(el('span', `${['🥇', '🥈', '🥉'][k] || k + 1 + '.'} ${n}`), el('strong', String(s))); return li; })); }
-  $('#lv-again').addEventListener('click', () => { if (!host) return; host.i = -1; host.players.forEach(p => { p.score = 0; }); show('lv-lobby'); lobby(); });
+  function finish() { if (!host) return; ended = true; const m = host.end(); ch!.send(m); show('lv-hend'); $('#lv-podium').replaceChildren(...m.board.map(([n, s], k) => { const li = el('li', '', k < 3 ? 'top' : ''); li.append(el('span', `${['🥇', '🥈', '🥉'][k] || k + 1 + '.'} ${n}`), el('strong', String(s))); return li; })); }
+  $('#lv-again').addEventListener('click', () => { if (!host) return; ended = false; host.i = -1; host.players.forEach(p => { p.score = 0; }); show('lv-lobby'); lobby(); });
 
   // ---------------- player
   let me = ''; try { me = sessionStorage.getItem('cyberhub:live-id') || ''; } catch { /* ignore */ }
   if (!/^[a-f0-9]{12}$/.test(me)) { me = Array.from(crypto.getRandomValues(new Uint8Array(6)), b => b.toString(16).padStart(2, '0')).join(''); try { sessionStorage.setItem('cyberhub:live-id', me); } catch { /* ignore */ } }
-  let rounds: Round[] = [], qi = -1, q0 = 0, myName = '', answeredQ = -1, joinTimer = 0, joined = false;
+  let rounds: Round[] = [], gameKey = '', qi = -1, q0 = 0, qLim = ROUND_MS, myName = '', answeredQ = -1, joinTimer = 0, joined = false, pingTimer = 0;
+  const setGame = (seed: number, cat: string, diff: string, n: number) => { const k = `${seed}|${cat}|${diff}|${n}`; if (k !== gameKey && bank) { rounds = makeRound(bank, seed, cat, diff, n); gameKey = k; answeredQ = -1; } };
+  const waiting = (count: string) => { $('#lv-wtitle').textContent = joined ? 'You are in!' : 'Joining…'; $('#lv-wcount').textContent = count; show('lv-wait'); };
+  const showQ = (m: Msg & { t: 'q' }) => {
+    setGame(m.seed, m.cat, m.diff, m.n); const r = rounds[m.i]; if (!r) return;
+    joined = true; clearInterval(joinTimer);
+    if (m.i === qi && answeredQ === qi) { show('lv-locked'); return; }
+    if (m.i === qi && !app.querySelector<HTMLElement>('#lv-pq')!.hidden) return;
+    qi = m.i; qLim = roundMs(r); q0 = performance.now() - Math.max(0, qLim - (Number(m.left) || qLim)); show('lv-pq'); $('#lv-pqn').textContent = `Question ${qi + 1} of ${rounds.length}`; $('#lv-pqtext').textContent = r.q.q;
+    $('#lv-pbtns').replaceChildren(...r.order.map((o, k) => { const b = el('button', '', 'lv-pb lv-c' + k) as HTMLButtonElement; b.type = 'button'; b.append(el('span', SHAPES[k], 'lv-shape'), el('span', r.q.choices[o])); b.addEventListener('click', () => {
+      if (answeredQ === qi) return; answeredQ = qi; const ai = qi; show('lv-locked'); toHost({ t: 'ans', id: me, i: ai, pick: o, ms: Math.min(qLim, Math.round(performance.now() - q0)) }).then(ok => { if (!ok && answeredQ === ai) { answeredQ = -1; show('lv-pq'); $('#lv-pqn').textContent = 'Your answer did not send. Check your connection and tap again.'; } }); }); return b; }));
+  };
+  const standing = (rank?: number, score?: number) => rank ? `You are #${rank} with ${score || 0} points` : '';
   $('#lv-join-btn').addEventListener('click', () => show('lv-join'));
   const fromHash = location.hash.slice(1).toUpperCase(); if (sbUrl && validCode(fromHash)) { $<HTMLInputElement>('#lv-jcode').value = fromHash; show('lv-join'); }
+  // A phone that slept or switched apps drops its connection: reconnect at once and ask the host to catch us up.
+  let room = ''; const toHost = (m: Msg) => postUp(sbUrl, sbKey, room, m);
+  const hello = (ping = false) => { if (room && myName) toHost(ping ? { t: 'join', id: me, name: myName, p: 1 } : { t: 'join', id: me, name: myName }); };
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && ch && myName) { ch.wake(); hello(); } });
+  addEventListener('online', () => { if (ch && myName) { ch.wake(); hello(); } });
+  addEventListener('pageshow', e => { if ((e as PageTransitionEvent).persisted && ch && myName) { ch.wake(); hello(); } });
   $('#lv-jform').addEventListener('submit', async e => {
     e.preventDefault(); const c = $<HTMLInputElement>('#lv-jcode').value.trim().toUpperCase(); myName = cleanName($<HTMLInputElement>('#lv-jname').value);
     if (!validCode(c)) { $('#lv-jmsg').textContent = 'Room codes are 5 letters and numbers, like K7QPX.'; return; } if (!myName) { $('#lv-jmsg').textContent = 'Pick a nickname (letters and numbers).'; return; }
-    await ready; ch?.close(); ch = new Channel(sbUrl, sbKey, c); ch.onStatus = status; joined = false;
+    $('#lv-jmsg').textContent = ''; await ready; ch?.close(); room = c; ch = new Channel(sbUrl, sbKey, c); joined = false; qi = -1; gameKey = ''; rounds = [];
+    ch.onStatus = st => { status(st); if (st === 'live') hello(); }; // announce once listening, so the host's reply is not missed
     ch.onMsg = m => {
-      if (m.t === 'lobby') { if (m.names.some(n => n.toLowerCase().startsWith(myName.toLowerCase()))) { joined = true; clearInterval(joinTimer); } if (qi < 0) { show('lv-wait'); $('#lv-wcount').textContent = `${m.names.length} in the room`; } }
-      if (m.t === 'kick' && m.id === me) { ch!.close(); show('lv-join'); $('#lv-jmsg').textContent = 'The host removed you from the room.'; }
-      if (m.t === 'start' && bank) { rounds = makeRound(bank, m.seed, m.cat, m.diff, m.n); qi = -1; }
-      if (m.t === 'q' && rounds[m.i]) { qi = m.i; q0 = performance.now(); const r = rounds[qi]; show('lv-pq'); $('#lv-pqn').textContent = `Question ${qi + 1} of ${rounds.length}`; $('#lv-pqtext').textContent = r.q.q;
-        $('#lv-pbtns').replaceChildren(...r.order.map((o, k) => { const b = el('button', '', 'lv-pb lv-c' + k) as HTMLButtonElement; b.type = 'button'; b.append(el('span', SHAPES[k], 'lv-shape'), el('span', r.q.choices[o])); b.addEventListener('click', () => {
-          if (answeredQ === qi) return; answeredQ = qi; ch!.send({ t: 'ans', id: me, i: qi, pick: o, ms: Math.round(performance.now() - q0) }); show('lv-locked'); }); return b; })); }
+      if (m.t === 'lobby') { if (m.names.some(n => n.toLowerCase().startsWith(myName.toLowerCase()))) { joined = true; clearInterval(joinTimer); } if (qi < 0) waiting(`${m.names.length} in the room`); }
+      if (m.t === 'kick' && m.id === me) { ch!.close(); clearInterval(pingTimer); myName = ''; show('lv-join'); $('#lv-jmsg').textContent = 'The host removed you from the room.'; }
+      if (m.t === 'start') { setGame(m.seed, m.cat, m.diff, m.n); qi = -1; }
+      if (m.t === 'q') showQ(m);
+      if (m.t === 'sync' && m.id === me) { joined = true; clearInterval(joinTimer);
+        if (m.phase === 'q' && m.q) showQ(m.q);
+        else if (m.phase === 'lobby') waiting(`${m.names.length} in the room`);
+        else if (m.phase === 'between' && app.querySelector<HTMLElement>('#lv-pr')!.hidden) { show('lv-pr'); $('#lv-pres').textContent = 'Get ready for the next question'; $('#lv-pres').dataset.ok = ''; $('#lv-prank').textContent = standing(m.rank, m.score); }
+        else if (m.phase === 'end') { show('lv-pend'); $('#lv-pfinal').textContent = m.rank ? `You finished #${m.rank} of ${m.names.length}` : 'Game over'; } }
       if (m.t === 'reveal') { show('lv-pr'); const pts = m.got[me]; $('#lv-pres').textContent = pts ? `Correct! +${pts}` : answeredQ === m.i ? 'Not this time' : 'Too slow!'; $('#lv-pres').dataset.ok = pts ? '1' : '0';
-        $('#lv-prank').textContent = m.ranks[me] ? `You are #${m.ranks[me]} with ${m.scores[me]} points` : ''; }
+        $('#lv-prank').textContent = standing(m.ranks[me], m.scores[me]); }
       if (m.t === 'end') { show('lv-pend'); $('#lv-pfinal').textContent = m.ranks[me] ? `You finished #${m.ranks[me]} of ${m.total}` : 'Game over'; }
     };
-    ch.connect(); show('lv-wait'); $('#lv-wcount').textContent = 'Joining…';
-    const announce = () => ch!.send({ t: 'join', id: me, name: myName }); announce(); clearInterval(joinTimer); joinTimer = window.setInterval(() => { if (!joined) announce(); else clearInterval(joinTimer); }, 2000);
+    ch.connect(); waiting('Connecting to the room…');
+    clearInterval(joinTimer); joinTimer = window.setInterval(() => { if (!joined) hello(); else clearInterval(joinTimer); }, 3000);
+    // While waiting between screens, check in now and then so a missed message never strands the phone.
+    clearInterval(pingTimer); pingTimer = window.setInterval(() => { if (joined && document.visibilityState === 'visible' && !app.querySelector<HTMLElement>('#lv-wait')!.hidden) hello(true); }, 8000);
   });
 }
