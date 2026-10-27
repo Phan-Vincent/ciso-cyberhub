@@ -1,6 +1,6 @@
 {
   "errors": [
-    "ai_papers_7d: HTTP 406"
+    "ai_papers_7d: HTTP 500"
   ],
   "series": [
     {
@@ -40,5 +40,5 @@
       "kev_30d": 32
     }
   ],
-  "updated": "2026-10-27T07:56:30Z"
+  "updated": "2026-10-27T15:54:54Z"
 }

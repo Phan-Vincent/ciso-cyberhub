@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T07:56:32Z",
+  "generated_at": "2026-10-27T15:55:00Z",
   "items": [
     {
       "also_remote": false,
@@ -769,6 +769,22 @@
       "title": "Software Tools and Assurance Intern - Information Systems and Cyber Division",
       "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Software-Tools-and-Assurance-Intern_R016429",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "EQT Corporation",
+      "id": "018f57c0-2519-4072-80fe-679c055ee4d6",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-27",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "AI Intern",
+      "url": "https://job-boards.greenhouse.io/eqtcorporation/jobs/5462562008",
+      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -1553,6 +1569,24 @@
     },
     {
       "also_remote": false,
+      "category": "Hardware",
+      "city": "El Segundo",
+      "company": "RTX",
+      "id": "7ffed1dc-9635-4e2b-87f6-9098f3eab4ac",
+      "miles": 65,
+      "new": false,
+      "posted": "2026-10-14",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Electro-Optics Systems Engineer Intern",
+      "url": "https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-CA-EL-SEGUNDO-E01--2000-E-El-Segundo-Blvd--BLDG-E01/Electro-Optics-Systems-Engineer-Intern--Summer-2027-_01880582",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Businessolver",
@@ -1821,24 +1855,6 @@
       "title": "Research Fellow",
       "url": "https://job-boards.greenhouse.io/snorkelai/jobs/6175199004",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Torrance",
-      "company": "Moog",
-      "id": "2aca0513-4399-42cb-9896-91871273e679",
-      "miles": 63,
-      "new": false,
-      "posted": "2026-10-06",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Electrical Engineer Intern",
-      "url": "https://moog.wd5.myworkdayjobs.com/moog_external_career_site/job/Torrance-CA/Intern--Electrical-Engineering_R-26-19827",
-      "zone": "region"
     },
     {
       "also_remote": false,
@@ -3596,25 +3612,6 @@
       ],
       "title": "Robotics Data Operator Intern",
       "url": "https://job-boards.greenhouse.io/faradayfuture/jobs/7828531003",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "San Diego",
-      "company": "Tesla",
-      "id": "dc98760f-d794-4d68-be4d-5639d2bcf3f3",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-08-04",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2027",
-        "Spring 2027"
-      ],
-      "title": "Cell Engineering Intern - Cell Qualification",
-      "url": "https://www.tesla.com/careers/search/job/278620",
       "zone": "region"
     },
     {
