@@ -1,137 +1,147 @@
 {
-  "generated_at": "2026-10-27T15:55:11Z",
+  "generated_at": "2026-10-27T22:19:33Z",
   "models": [
     {
       "created": "2026-10-17",
       "downloads": 105667,
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "likes": 3319,
+      "likes": 3361,
       "org": "deepseek-ai",
       "task": "image-text-to-text",
-      "trending": 984,
+      "trending": 962,
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "created": "2026-10-21",
       "downloads": 10574,
       "id": "RecursiveSI/flint",
-      "likes": 951,
+      "likes": 965,
       "org": "RecursiveSI",
       "task": "text-generation",
-      "trending": 911,
+      "trending": 924,
       "url": "https://huggingface.co/RecursiveSI/flint"
     },
     {
       "created": "2026-10-24",
       "downloads": 4785,
       "id": "Nanbeige/Nanbeige4.3-33B",
-      "likes": 641,
+      "likes": 663,
       "org": "Nanbeige",
       "task": "text-generation",
-      "trending": 634,
+      "trending": 656,
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
     },
     {
       "created": "2026-10-19",
       "downloads": 6191,
       "id": "XHToken/Spark-X2.6-4B",
-      "likes": 754,
+      "likes": 781,
       "org": "XHToken",
       "task": "text-generation",
-      "trending": 613,
+      "trending": 596,
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
     },
     {
       "created": "2026-10-23",
       "downloads": 1105751,
       "id": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
-      "likes": 377,
+      "likes": 390,
       "org": "ISTA-DASLab",
       "task": "text-generation",
-      "trending": 356,
+      "trending": 368,
       "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF"
     },
     {
       "created": "2026-10-15",
       "downloads": 6613,
       "id": "InternScience/Sage-A1.5",
-      "likes": 327,
+      "likes": 333,
       "org": "InternScience",
       "task": "text-generation",
-      "trending": 317,
+      "trending": 320,
       "url": "https://huggingface.co/InternScience/Sage-A1.5"
     },
     {
       "created": "2026-10-20",
       "downloads": 149888,
       "id": "unsloth/flint-GGUF",
-      "likes": 280,
+      "likes": 288,
       "org": "unsloth",
       "task": "text-generation",
-      "trending": 267,
+      "trending": 273,
       "url": "https://huggingface.co/unsloth/flint-GGUF"
     },
     {
       "created": "2026-10-21",
       "downloads": 1595,
       "id": "HuggingFaceBio/Carbon-X",
-      "likes": 217,
+      "likes": 223,
       "org": "HuggingFaceBio",
       "task": "text-generation",
-      "trending": 207,
+      "trending": 213,
       "url": "https://huggingface.co/HuggingFaceBio/Carbon-X"
     },
     {
       "created": "2026-10-21",
       "downloads": 2208,
       "id": "KRAFTON/Raon-1-mini-preview",
-      "likes": 205,
+      "likes": 207,
       "org": "KRAFTON",
       "task": "text-generation",
-      "trending": 189,
+      "trending": 191,
       "url": "https://huggingface.co/KRAFTON/Raon-1-mini-preview"
     },
     {
-      "created": "2026-10-19",
-      "downloads": 104927,
-      "id": "XHToken/Spark-X2.6-4B-GGUF",
-      "likes": 185,
-      "org": "XHToken",
+      "created": "2026-10-05",
+      "downloads": 44651,
+      "id": "nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
+      "likes": 180,
+      "org": "nvidia",
       "task": "text-generation",
-      "trending": 174,
-      "url": "https://huggingface.co/XHToken/Spark-X2.6-4B-GGUF"
+      "trending": 173,
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB"
     }
   ],
   "repos": [
     {
       "created": "2026-07-13",
       "description": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm: https://www.npmjs.com/package/@openai/codex-security",
-      "gain": 5,
-      "language": "TypeScript",
+      "gain": 2,
+      "language": "",
       "license": "Apache-2.0",
       "name": "openai/codex-security",
-      "stars": 11225,
+      "stars": 11227,
       "url": "https://github.com/openai/codex-security"
     },
     {
       "created": "2026-09-30",
       "description": "Point Claude at any game. Skills, tools and the fal MCP that let Claude Code mod almost any PC game you own: recon, reverse engineering, fal-generated art/3D/audio, in-game testing",
-      "gain": 24,
+      "gain": 19,
       "language": "Python",
       "license": "MIT",
       "name": "rehan-remade/universal-modder",
-      "stars": 9059,
+      "stars": 9078,
       "url": "https://github.com/rehan-remade/universal-modder"
     },
     {
       "created": "2026-10-03",
       "description": "Eleven free Claude skills that clone any app: reverse-engineer it, rebuild it, test it for bugs, then fix what its users hate. Free, MIT.",
-      "gain": 104,
+      "gain": 69,
       "language": "Python",
       "license": "MIT",
       "name": "Jakeschincariol/replica-skill",
-      "stars": 5975,
+      "stars": 6044,
       "url": "https://github.com/Jakeschincariol/replica-skill"
+    },
+    {
+      "created": "2026-10-09",
+      "description": "Rated, auto-refreshed list of decompiled, recompiled & reverse-engineered games: decomps, static recomps, source ports, engine remakes, browser ports.",
+      "gain": 20,
+      "language": "Python",
+      "license": "CC0-1.0",
+      "name": "SubmitGame/awesome-decomp-games",
+      "stars": 2616,
+      "url": "https://github.com/SubmitGame/awesome-decomp-games"
     },
     {
       "created": "2026-08-22",
@@ -140,27 +150,17 @@
       "language": "Zig",
       "license": "MIT",
       "name": "duty1g/x64dbg-mcp-server",
-      "stars": 2614,
+      "stars": 2615,
       "url": "https://github.com/duty1g/x64dbg-mcp-server"
-    },
-    {
-      "created": "2026-10-09",
-      "description": "Rated, auto-refreshed list of decompiled, recompiled & reverse-engineered games: decomps, static recomps, source ports, engine remakes, browser ports.",
-      "gain": 43,
-      "language": "Python",
-      "license": "CC0-1.0",
-      "name": "SubmitGame/awesome-decomp-games",
-      "stars": 2596,
-      "url": "https://github.com/SubmitGame/awesome-decomp-games"
     },
     {
       "created": "2026-10-08",
       "description": "ARTEX · AI autonomous penetration testing system (multi-agent LLM, Go + Next.js) · AI 自主渗透测试系统 · 百度 agent+ 攻防挑战赛冠军",
-      "gain": 31,
+      "gain": 11,
       "language": "Go",
       "license": "AGPL-3.0",
       "name": "trhhubsd/ARTEX",
-      "stars": 2050,
+      "stars": 2061,
       "url": "https://github.com/trhhubsd/ARTEX"
     },
     {
@@ -170,13 +170,13 @@
       "language": "Rust",
       "license": "MIT",
       "name": "archestra-ai/OpenAPPA",
-      "stars": 1609,
+      "stars": 1610,
       "url": "https://github.com/archestra-ai/OpenAPPA"
     },
     {
       "created": "2026-08-11",
       "description": "复刻网站的 Agent Skill：抓只读镜像、从压缩代码逐行还原、自动比对验收。An agent skill that mirrors a website, rebuilds it from the minified code, and verifies the result with automated diffs.",
-      "gain": 3,
+      "gain": 0,
       "language": "JavaScript",
       "license": "MIT",
       "name": "boyang-hu/website-rebuild-skill",
@@ -186,22 +186,22 @@
     {
       "created": "2026-10-14",
       "description": "基于 REA 深度拆解并高保真还原 Claude 官方桌面端 UI。还原 30 个独立 React 组件与 8 项硬核交互物理算法，附带 3000+ 行逆向分析手册。",
-      "gain": 12,
+      "gain": 3,
       "language": "TypeScript",
       "license": "MIT",
       "name": "Caho1/open-claude-ui",
-      "stars": 1450,
+      "stars": 1453,
       "url": "https://github.com/Caho1/open-claude-ui"
     },
     {
-      "created": "2026-08-31",
-      "description": "Stop your AI from making things up — it proposes, deterministic tools decide, every claim checked against ground truth with evidence. Grounded facts and context survive resets. Rev",
-      "gain": 2,
+      "created": "2026-10-09",
+      "description": "Curated reverse-engineering tools and learning resources for binaries, apps, firmware, formats, and protocols.",
+      "gain": null,
       "language": "Python",
-      "license": "MIT",
-      "name": "2akouwu/reverify",
-      "stars": 1318,
-      "url": "https://github.com/2akouwu/reverify"
+      "license": "CC0-1.0",
+      "name": "morluto/awesome-reverse-engineering",
+      "stars": 1321,
+      "url": "https://github.com/morluto/awesome-reverse-engineering"
     }
   ],
   "sources": {
@@ -210,11 +210,11 @@
   },
   "spotlight": [
     {
-      "forks": 99222,
+      "forks": 99544,
       "language": "TypeScript",
       "license": "MIT",
       "name": "morluto/rea",
-      "stars": 395742,
+      "stars": 397024,
       "stars_note": "",
       "url": "https://github.com/morluto/rea",
       "why": "Viral this month: an MCP server that gives AI coding agents 170+ reverse-engineering tools for binaries, Electron apps, websites and Android APKs."
