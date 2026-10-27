@@ -64,8 +64,12 @@ students join on their phones, live leaderboard. It uses Supabase **Realtime bro
 nothing is written to the database, and only nicknames and answers pass through.
 
 1. Nothing extra to create: once `supabase_url` and `supabase_key` are in `site.json`, the Live room page switches on.
-2. In **Realtime → Settings**, keep public channel access allowed (the default). Rooms use public
-   broadcast channels named `cyberhub-duel-<CODE>`.
+2. In **Realtime → Settings**, keep public channel access allowed (the default). Each room uses two public
+   broadcast channels: the host sends to `cyberhub-duel-<CODE>`, and players send joins and answers to
+   `cyberhub-duel-<CODE>-up` through the REST broadcast endpoint, so one phone's answer is not copied to
+   every other phone. The free plan counts every delivered message (100 per second) and disconnects
+   clients that go over, so this split is what keeps a full classroom inside the limit. Phones that sleep
+   or reconnect ask the host to catch them up.
 3. Free-plan limits cover a classroom comfortably (check **Realtime** usage in the dashboard; the free
    plan allows a couple of hundred simultaneous connections).
 4. **Officers only host.** `site.json` has `"live_hosting": "officers"`. Add each officer's email (lowercase)

@@ -35,7 +35,7 @@ def live_page(site) -> str:
     body += s('lv-join', f'{st}<h2>Join a room</h2><form class="ac-form" id="lv-jform" autocomplete="off"><label for="lv-jcode" class="label">Room code</label><input id="lv-jcode" class="lv-in" type="text" maxlength="5" inputmode="text" autocapitalize="characters" placeholder="K7QPX">'
               '<label for="lv-jname" class="label">Nickname</label><input id="lv-jname" class="lv-in" type="text" maxlength="20" placeholder="Pick a fun nickname"><p class="muted">Use a nickname, not your full name. Nothing is saved.</p>'
               '<button type="submit" class="primary duel-go">Join</button><p class="label" id="lv-jmsg" role="status"></p></form>')
-    body += s('lv-wait', f'{st}<p class="lv-big-msg">You are in!</p><p class="lv-count" id="lv-wcount"></p><p>Watch the big screen. The game starts when the host is ready.</p>')
+    body += s('lv-wait', f'{st}<p class="lv-big-msg" id="lv-wtitle">Joining…</p><p class="lv-count" id="lv-wcount"></p><p>Watch the big screen. The game starts when the host is ready.</p>')
     body += s('lv-pq', '<p class="label" id="lv-pqn"></p><p class="lv-pqtext" id="lv-pqtext"></p><div class="lv-pbtns" id="lv-pbtns"></div>')
     body += s('lv-locked', '<p class="lv-big-msg">Locked in</p><p>Waiting for everyone else…</p>')
     body += s('lv-pr', '<p class="lv-big-msg" id="lv-pres"></p><p class="lv-count" id="lv-prank"></p>')

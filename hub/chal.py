@@ -41,7 +41,7 @@ def hunt_page(site) -> str:
     quick = ''.join(f'<button type="button" data-q="{q}">{q}</button>' for q in ['source=auth', 'source=web', 'action=failed | stats count by user', 'status>=400 | stats count by path', 'source=web | table time,src_ip,path,status'])
     ws = ('<section class="lh-ws"><form class="pc-form" id="lh-form" autocomplete="off"><label class="sr-only" for="lh-q">Search</label>'
           '<input id="lh-q" type="text" spellcheck="false" placeholder="Search, e.g. action=failed | stats count by src_ip"><button type="submit">Search</button></form>'
-          f'<p class="ch-err" id="lh-err" role="alert"></p><div class="pc-quick" aria-label="Example searches">{quick}</div><p class="label" id="lh-count"></p><div class="lh-out" id="lh-out"></div>'
+          f'<p class="ch-err" id="lh-err" role="alert"></p><div class="pc-quick" aria-label="Example searches">{quick}</div><p class="label" id="lh-count"></p><div class="lh-out" id="lh-out" tabindex="0" role="region" aria-label="Search results"></div>'
           '<details class="ch-ref"><summary>Search cheat sheet</summary><ul>'
           '<li>Words match anywhere in the raw line: <code>sudo</code>, <code>"new user"</code></li>'
           '<li><code>field=value</code> (use <code>*</code> as a wildcard), <code>field!=value</code>, <code>status&gt;=500</code>, <code>NOT</code> before a term</li>'
@@ -79,7 +79,7 @@ def ad_page(site) -> str:
     quick = ''.join(f'<button type="button" data-q="{q}">{q}</button>' for q in ['event_id=4771 | stats count by src_ip', 'event_id=4624 | table time,user,src_ip', 'event_id=4769 | stats count by enc', 'user=svc_backup', 'cleared'])
     ws = ('<section class="lh-ws"><form class="pc-form" id="lh-form" autocomplete="off"><label class="sr-only" for="lh-q">Search</label>'
           '<input id="lh-q" type="text" spellcheck="false" placeholder="Search, e.g. event_id=4771 | stats count by user"><button type="submit">Search</button></form>'
-          f'<p class="ch-err" id="lh-err" role="alert"></p><div class="pc-quick" aria-label="Example searches">{quick}</div><p class="label" id="lh-count"></p><div class="lh-out" id="lh-out"></div>'
+          f'<p class="ch-err" id="lh-err" role="alert"></p><div class="pc-quick" aria-label="Example searches">{quick}</div><p class="label" id="lh-count"></p><div class="lh-out" id="lh-out" tabindex="0" role="region" aria-label="Search results"></div>'
           '<details class="ch-ref"><summary>Event IDs and search cheat sheet</summary><ul>'
           '<li><b>4624</b> logon succeeded · <b>4771</b> Kerberos pre-auth failed (wrong password) · <b>4768</b> ticket-granting ticket requested · <b>4769</b> service ticket requested</li>'
           '<li><b>4728</b> member added to a security group · <b>4662</b> directory object accessed · <b>1102</b> audit log cleared</li>'

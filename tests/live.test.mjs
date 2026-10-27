@@ -58,3 +58,22 @@ test('incident tabletops run in order with longer rounds and scaled scoring', ()
   h.next(); const r = h.rounds[0]; h.answer('aaaaaaaa1111', 0, r.q.answer, 20000);
   assert.equal(h.close().got['aaaaaaaa1111'], D.points(true, 20000 * D.ROUND_MS / D.TABLETOP_MS));
 });
+
+test('players send to the host-only channel over REST, with retries', async () => {
+  const calls = []; let fail = 1;
+  const f = async (u, o) => { calls.push([u, o]); if (fail-- > 0) return { ok: false }; return { ok: true }; };
+  const ok = await L.postUp('https://abcdefghijklmnopqrst.supabase.co', 'sb_publishable_k', 'K7QPX', { t: 'ans', id: 'aaaaaaaa1111', i: 0, pick: 2, ms: 900 }, f);
+  assert.ok(ok); assert.equal(calls.length, 2, 'retried once');
+  const [u, o] = calls[1]; assert.equal(u, 'https://abcdefghijklmnopqrst.supabase.co/realtime/v1/api/broadcast'); assert.equal(o.headers.apikey, 'sb_publishable_k');
+  const body = JSON.parse(o.body); assert.deepEqual(body.messages[0], { topic: 'cyberhub-duel-K7QPX-up', event: 'duel', payload: { t: 'ans', id: 'aaaaaaaa1111', i: 0, pick: 2, ms: 900 }, private: false });
+  assert.equal(await L.postUp('u', 'k', 'K7QPX', { t: 'join', id: 'a', name: 'b' }, async () => { throw new Error('offline'); }), false);
+});
+
+test('a dropped channel reconnects at once on wake and rejoins its room', async () => {
+  const made = []; class WS { constructor(u) { this.readyState = 0; made.push(this); setTimeout(() => { this.readyState = 1; this.onopen?.(); }, 1); }
+    send(s) { const m = JSON.parse(s); if (m.event === 'phx_join') { this.topic = m.topic; setTimeout(() => this.onmessage?.({ data: JSON.stringify({ event: 'phx_reply', topic: m.topic, ref: m.ref, payload: { status: 'ok' } }) }), 1); } }
+    close() { this.readyState = 3; this.onclose?.(); } }
+  const c = new L.Channel('https://x.supabase.co', 'k', 'K7QPX', u => new WS(u)); const st = []; c.onStatus = s => st.push(s);
+  c.connect(); await new Promise(r => setTimeout(r, 10)); made[0].readyState = 3; c.wake(); await new Promise(r => setTimeout(r, 10));
+  assert.equal(made.length, 2); assert.equal(made[1].topic, 'realtime:cyberhub-duel-K7QPX'); assert.equal(st.at(-1), 'live'); c.close();
+});
