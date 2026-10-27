@@ -1,104 +1,104 @@
 {
-  "generated_at": "2026-10-26T22:43:32Z",
+  "generated_at": "2026-10-27T07:56:39Z",
   "models": [
     {
       "created": "2026-10-17",
       "downloads": 95889,
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "likes": 3177,
+      "likes": 3252,
       "org": "deepseek-ai",
       "task": "image-text-to-text",
-      "trending": 1051,
+      "trending": 1024,
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "created": "2026-10-21",
       "downloads": 8470,
       "id": "RecursiveSI/flint",
-      "likes": 918,
+      "likes": 937,
       "org": "RecursiveSI",
       "task": "text-generation",
-      "trending": 878,
+      "trending": 897,
       "url": "https://huggingface.co/RecursiveSI/flint"
     },
     {
       "created": "2026-10-24",
       "downloads": 2787,
       "id": "Nanbeige/Nanbeige4.3-33B",
-      "likes": 590,
+      "likes": 615,
       "org": "Nanbeige",
       "task": "text-generation",
-      "trending": 584,
+      "trending": 609,
       "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
     },
     {
       "created": "2026-10-19",
       "downloads": 4726,
       "id": "XHToken/Spark-X2.6-4B",
-      "likes": 638,
+      "likes": 720,
       "org": "XHToken",
       "task": "text-generation",
-      "trending": 548,
+      "trending": 592,
       "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
     },
     {
       "created": "2026-10-23",
       "downloads": 891147,
       "id": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
-      "likes": 339,
+      "likes": 356,
       "org": "ISTA-DASLab",
       "task": "text-generation",
-      "trending": 321,
+      "trending": 338,
       "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF"
     },
     {
       "created": "2026-10-15",
       "downloads": 5235,
       "id": "InternScience/Sage-A1.5",
-      "likes": 311,
+      "likes": 321,
       "org": "InternScience",
       "task": "text-generation",
-      "trending": 303,
+      "trending": 311,
       "url": "https://huggingface.co/InternScience/Sage-A1.5"
     },
     {
       "created": "2026-10-20",
       "downloads": 125188,
       "id": "unsloth/flint-GGUF",
-      "likes": 269,
+      "likes": 276,
       "org": "unsloth",
       "task": "text-generation",
-      "trending": 258,
+      "trending": 264,
       "url": "https://huggingface.co/unsloth/flint-GGUF"
     },
     {
       "created": "2026-10-21",
       "downloads": 1128,
       "id": "HuggingFaceBio/Carbon-X",
-      "likes": 207,
+      "likes": 211,
       "org": "HuggingFaceBio",
       "task": "text-generation",
-      "trending": 199,
+      "trending": 202,
       "url": "https://huggingface.co/HuggingFaceBio/Carbon-X"
     },
     {
       "created": "2026-10-21",
       "downloads": 1450,
       "id": "KRAFTON/Raon-1-mini-preview",
-      "likes": 195,
+      "likes": 202,
       "org": "KRAFTON",
       "task": "text-generation",
-      "trending": 182,
+      "trending": 187,
       "url": "https://huggingface.co/KRAFTON/Raon-1-mini-preview"
     },
     {
       "created": "2026-10-16",
       "downloads": 60210,
       "id": "ornith-ai/Ornith-1.5-122B",
-      "likes": 187,
+      "likes": 190,
       "org": "ornith-ai",
       "task": "text-generation",
-      "trending": 180,
+      "trending": 182,
       "url": "https://huggingface.co/ornith-ai/Ornith-1.5-122B"
     }
   ],
@@ -106,67 +106,67 @@
     {
       "created": "2026-07-13",
       "description": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm: https://www.npmjs.com/package/@openai/codex-security",
-      "gain": 4,
+      "gain": 6,
       "language": "TypeScript",
       "license": "Apache-2.0",
       "name": "openai/codex-security",
-      "stars": 11214,
+      "stars": 11220,
       "url": "https://github.com/openai/codex-security"
     },
     {
       "created": "2026-09-30",
       "description": "Point Claude at any game. Skills, tools and the fal MCP that let Claude Code mod almost any PC game you own: recon, reverse engineering, fal-generated art/3D/audio, in-game testing",
-      "gain": 11,
+      "gain": 18,
       "language": "Python",
       "license": "MIT",
       "name": "rehan-remade/universal-modder",
-      "stars": 9017,
+      "stars": 9035,
       "url": "https://github.com/rehan-remade/universal-modder"
     },
     {
       "created": "2026-10-03",
       "description": "Eleven free Claude skills that clone any app: reverse-engineer it, rebuild it, test it for bugs, then fix what its users hate. Free, MIT.",
-      "gain": 65,
+      "gain": 94,
       "language": "Python",
       "license": "MIT",
       "name": "Jakeschincariol/replica-skill",
-      "stars": 5777,
+      "stars": 5871,
       "url": "https://github.com/Jakeschincariol/replica-skill"
     },
     {
       "created": "2026-08-22",
       "description": "x64dbg-MCP Server is a native MCP (Model Context Protocol) plugin for x64dbg that exposes the debugger's full functionality over HTTP. Connect any MCP-compatible AI assistant and c",
-      "gain": 1,
+      "gain": 2,
       "language": "Zig",
       "license": "MIT",
       "name": "duty1g/x64dbg-mcp-server",
-      "stars": 2611,
+      "stars": 2613,
       "url": "https://github.com/duty1g/x64dbg-mcp-server"
     },
     {
       "created": "2026-10-09",
       "description": "Rated, auto-refreshed list of decompiled, recompiled & reverse-engineered games: decomps, static recomps, source ports, engine remakes, browser ports.",
-      "gain": 13,
+      "gain": 64,
       "language": "Python",
       "license": "CC0-1.0",
       "name": "SubmitGame/awesome-decomp-games",
-      "stars": 2489,
+      "stars": 2553,
       "url": "https://github.com/SubmitGame/awesome-decomp-games"
     },
     {
       "created": "2026-10-08",
       "description": "ARTEX · AI autonomous penetration testing system (multi-agent LLM, Go + Next.js) · AI 自主渗透测试系统 · 百度 agent+ 攻防挑战赛冠军",
-      "gain": 13,
+      "gain": 31,
       "language": "Go",
       "license": "AGPL-3.0",
       "name": "trhhubsd/ARTEX",
-      "stars": 1988,
+      "stars": 2019,
       "url": "https://github.com/trhhubsd/ARTEX"
     },
     {
       "created": "2026-08-18",
       "description": "Deterministic guardrails that don't break agents",
-      "gain": 1,
+      "gain": 0,
       "language": "Rust",
       "license": "MIT",
       "name": "archestra-ai/OpenAPPA",
@@ -186,22 +186,22 @@
     {
       "created": "2026-10-14",
       "description": "基于 REA 深度拆解并高保真还原 Claude 官方桌面端 UI。还原 30 个独立 React 组件与 8 项硬核交互物理算法，附带 3000+ 行逆向分析手册。",
-      "gain": 2,
+      "gain": 9,
       "language": "TypeScript",
       "license": "MIT",
       "name": "Caho1/open-claude-ui",
-      "stars": 1429,
+      "stars": 1438,
       "url": "https://github.com/Caho1/open-claude-ui"
     },
     {
-      "created": "2026-10-14",
-      "description": "Overdrive, a PS5 homebrew game store with 2,000+ games.",
-      "gain": 11,
-      "language": "C++",
-      "license": "",
-      "name": "MyLuxy/overdrive",
-      "stars": 1376,
-      "url": "https://github.com/MyLuxy/overdrive"
+      "created": "2026-08-31",
+      "description": "Stop your AI from making things up — it proposes, deterministic tools decide, every claim checked against ground truth with evidence. Grounded facts and context survive resets. Rev",
+      "gain": null,
+      "language": "Python",
+      "license": "MIT",
+      "name": "2akouwu/reverify",
+      "stars": 1316,
+      "url": "https://github.com/2akouwu/reverify"
     }
   ],
   "sources": {
@@ -210,11 +210,11 @@
   },
   "spotlight": [
     {
-      "forks": 98043,
+      "forks": 98656,
       "language": "TypeScript",
       "license": "MIT",
       "name": "morluto/rea",
-      "stars": 391324,
+      "stars": 393564,
       "stars_note": "",
       "url": "https://github.com/morluto/rea",
       "why": "Viral this month: an MCP server that gives AI coding agents 170+ reverse-engineering tools for binaries, Electron apps, websites and Android APKs."
