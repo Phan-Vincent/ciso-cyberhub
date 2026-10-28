@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 const ver = name => createHash('sha256').update(readFileSync(`web/${name}.ts`)).digest('hex').slice(0, 10);
 mkdirSync('dist/assets', { recursive: true });
 for (const file of readdirSync('web').filter(f => /^[a-z0-9_-]+\.ts$/i.test(f))) {
-  const code = stripTypeScriptTypes(readFileSync(`web/${file}`, 'utf8'), { mode: 'strip' }).replace(/from '\.\/([\w-]+)\.js'/g, (_, n) => `from './${n}.js?v=${ver(n)}'`);
+  const code = stripTypeScriptTypes(readFileSync(`web/${file}`, 'utf8'), { mode: 'strip' }).replace(/(from |import\()'\.\/([\w-]+)\.js'/g, (_, p, n) => `${p}'./${n}.js?v=${ver(n)}'`);
   // Node's parser checks emitted ESM using --check in CI; stripping is NOT type checking.
   if (!process.argv.includes('--check')) writeFileSync(`dist/assets/${file.replace('.ts','.js')}`, code);
 }

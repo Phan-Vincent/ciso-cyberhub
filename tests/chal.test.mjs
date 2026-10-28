@@ -47,7 +47,7 @@ test('log searches find every Log Hunt answer', () => {
   for (const L of C.HUNT_LEVELS) if (L.start) Q(L.start);
 });
 
-test('sha256Bytes matches the FIPS 180-4 vectors', async () => {
+test('sha256Bytes matches the FIPS 180-4 vectors', () => {
   const node = s => createHash('sha256').update(s).digest('hex');
   const hex = u => [...u].map(b => b.toString(16).padStart(2, '0')).join('');
   const enc = new TextEncoder();
@@ -56,9 +56,17 @@ test('sha256Bytes matches the FIPS 180-4 vectors', async () => {
     ['abc', 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad'],
     ['abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq', '248d6a61d20638b8e5c026930c3e6039a33ce45964ff2167f6ecedd419db06c1'],
     ['a'.repeat(1000), node('a'.repeat(1000))],
+    // Padding boundaries: 55 bytes still fits one block, 56 and 64 spill into a second.
+    ...[55, 56, 63, 64, 65].map(n => ['b'.repeat(n), node('b'.repeat(n))]),
   ];
   for (const [input, want] of vectors) assert.equal(hex(S.sha256Bytes(enc.encode(input))), want, `input length ${input.length}`);
-  assert.equal(await C.sha256('CISO CyberHub'), node('CISO CyberHub'));
+});
+
+test('sha256 works without crypto.subtle, as on the Pi over plain http', t => {
+  const real = Object.getOwnPropertyDescriptor(globalThis, 'crypto');
+  Object.defineProperty(globalThis, 'crypto', { value: {}, configurable: true });
+  t.after(() => Object.defineProperty(globalThis, 'crypto', real));
+  assert.equal(C.sha256('CISO CyberHub'), createHash('sha256').update('CISO CyberHub').digest('hex'));
 });
 
 test('crypto recipes recover every flag', async () => {

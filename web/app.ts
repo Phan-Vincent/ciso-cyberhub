@@ -1,5 +1,4 @@
 import {emptyProgress,parseProgress,scoreQuiz,matches,countAcademyLessons,compareRecords,type Question} from './core.js';
-import {sha256Bytes} from './sha256.js';
 const base=document.body.dataset.base || '';
 const $=(s:string)=>document.querySelector(s) as HTMLElement | null;
 const key='cyberhub:'+base+':progress:v1';
@@ -600,12 +599,15 @@ const bitsBox=$('#bits'),hashIn=$('#hash-in') as HTMLInputElement|null;
 if(bitsBox&&hashIn){
  const cells:HTMLElement[]=[];for(let i=0;i<256;i++){const c=document.createElement('i');bitsBox.append(c);cells.push(c);}
  let prev:Uint8Array|null=null;
- const run=async()=>{const bytes=new TextEncoder().encode(hashIn.value);let buf:Uint8Array;try{buf=new Uint8Array(await globalThis.crypto.subtle.digest('SHA-256',bytes));}catch{buf=sha256Bytes(bytes);}
+ // Loaded only here: the pure SHA-256 also works on the Pi's plain-http origin, where crypto.subtle is undefined.
+ import('./sha256.js').then(({sha256Bytes})=>{
+ const run=()=>{const buf=sha256Bytes(new TextEncoder().encode(hashIn.value));
   const out=$('#hash-out')!;out.replaceChildren();let changed=0;
   buf.forEach((v,i)=>{const b=element('b',v.toString(16).padStart(2,'0'));if(prev&&prev[i]!==v){b.className='flip';requestAnimationFrame(()=>requestAnimationFrame(()=>b.classList.remove('flip')));}out.append(b);});
   for(let i=0;i<256;i++){const bit=(buf[i>>3]>>(7-(i&7)))&1,was=prev?(prev[i>>3]>>(7-(i&7)))&1:bit;cells[i].className=bit?'one':'';if(bit!==was){changed++;const c=cells[i];c.classList.add('chg');requestAnimationFrame(()=>requestAnimationFrame(()=>c.classList.remove('chg')));}}
   $('#aval')!.textContent=prev?`${changed} / 256 (${(changed/2.56).toFixed(1)}%)`:'Edit the input';prev=buf;};
  hashIn.addEventListener('input',run);run();
+ });
 }
 
 // Home practice card: cycles through the real question set.

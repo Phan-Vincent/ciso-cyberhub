@@ -202,7 +202,8 @@ export function runQuery(all: Rec[] | Ev[], q: string, EVF: readonly string[] = 
 /* ============================================================ Crypto & Encoding */
 const b64e = (s: string) => btoa(unescape(encodeURIComponent(s)));
 const b64d = (s: string) => decodeURIComponent(escape(atob(s.replace(/\s+/g, ''))));
-const hexe = (s: string) => [...new TextEncoder().encode(s)].map(b => b.toString(16).padStart(2, '0')).join('');
+const hexb = (u: Uint8Array) => [...u].map(b => b.toString(16).padStart(2, '0')).join('');
+const hexe = (s: string) => hexb(new TextEncoder().encode(s));
 const hexd = (s: string) => { const h = s.replace(/[^0-9a-f]/gi, ''); if (h.length % 2) throw new Error('Hex needs an even number of digits'); return new TextDecoder().decode(new Uint8Array(h.match(/../g)!.map(x => parseInt(x, 16)))); };
 const shift = (s: string, n: number) => s.replace(/[a-z]/gi, c => { const b = c <= 'Z' ? 65 : 97; return String.fromCharCode(((c.charCodeAt(0) - b + n) % 26 + 26) % 26 + b); });
 const xorHex = (s: string, k: number) => { const h = s.replace(/[^0-9a-f]/gi, ''); if (h.length % 2) throw new Error('Hex needs an even number of digits'); return String.fromCharCode(...h.match(/../g)!.map(x => parseInt(x, 16) ^ k)); };
@@ -221,11 +222,8 @@ export function applyRecipe(input: string, recipe: { id: string; p: number }[]):
     try { s = op.run(s, r.p); } catch { throw new Error(`step ${i + 1} (${op.name}) could not read its input. It is probably not in that format yet: check the order of your recipe`); } });
   return s;
 }
-export async function sha256(s: string): Promise<string> {
-  const bytes = new TextEncoder().encode(s); let d: ArrayBuffer | undefined;
-  try { if (globalThis.crypto?.subtle?.digest) d = await globalThis.crypto.subtle.digest('SHA-256', bytes); } catch { /* insecure origin or blocked digest: use the fallback */ }
-  return [...(d ? new Uint8Array(d) : sha256Bytes(bytes))].map(b => b.toString(16).padStart(2, '0')).join('');
-}
+// Always the pure implementation, so the Pi (plain http, no crypto.subtle) runs the same code as the public site.
+export function sha256(s: string): string { return hexb(sha256Bytes(new TextEncoder().encode(s))); }
 const xorEnc = (s: string, k: number) => [...s].map(c => (c.charCodeAt(0) ^ k).toString(16).padStart(2, '0')).join(' ');
 export const CRYPTO = [
   { id: 'b64', title: 'Base64', input: b64e('CISO{base64_is_not_encryption}'), q: 'Decode the message. What is the flag?', a: 'CISO{base64_is_not_encryption}', hints: ['Strings of letters, numbers, + and / that often end in = are usually Base64.', 'Add "From Base64" to the recipe.'], lesson: 'Base64 is an encoding, not encryption: anyone can reverse it, no key needed. You will see it in emails, web tokens and malware.' },
@@ -453,7 +451,7 @@ if (root) {
     const compute = () => { try { outp.textContent = applyRecipe(inp.value, recipe); err.textContent = ''; } catch (e) { outp.textContent = ''; err.textContent = 'Recipe stopped: ' + (e as Error).message + '.'; } };
     const ops = $('#cr-ops'); OPS.forEach(o => { const b = el('button', o.name); b.type = 'button'; b.addEventListener('click', () => { recipe.push({ id: o.id, p: 0 }); run(); }); ops.append(b); });
     inp.addEventListener('input', compute); $('#cr-reset').addEventListener('click', () => { recipe = []; run(); });
-    $('#cr-hash').addEventListener('click', async () => { outp.textContent = 'SHA-256: ' + await sha256(applyRecipe(inp.value, recipe)); });
+    $('#cr-hash').addEventListener('click', () => { outp.textContent = 'SHA-256: ' + sha256(applyRecipe(inp.value, recipe)); });
     onOpen = L => { const c = CRYPTO.find(x => x.id === L.id)!; inp.value = c.input; recipe = []; run(); };
   }
 
@@ -473,8 +471,8 @@ if (root) {
     onOpen(L); mark();
   }
   root.querySelector('#ch-hint')?.addEventListener('click', () => { const H = levels[cur].hints; if (!H.length) return; const box = $('#ch-hints'); if (hintN < H.length) { box.append(el('li', H[hintN])); hintN++; } $('#ch-hint').textContent = hintN >= H.length ? 'No more hints' : 'Another hint'; });
-  root.querySelector('#ch-form')?.addEventListener('submit', async e => { e.preventDefault(); const L = levels[cur]; const v = norm($<HTMLInputElement>('#ch-a').value); if (!v) return;
-    let ok: boolean; if (lab === 'crypto' && L.id === 'hash') ok = v.length >= 8 && (await sha256('CISO CyberHub')).startsWith(v); else ok = (Array.isArray(L.a) ? L.a : [L.a]).some(x => norm(x) === v || norm(x).replace(/^\//, '') === v.replace(/^\//, ''));
+  root.querySelector('#ch-form')?.addEventListener('submit', e => { e.preventDefault(); const L = levels[cur]; const v = norm($<HTMLInputElement>('#ch-a').value); if (!v) return;
+    let ok: boolean; if (lab === 'crypto' && L.id === 'hash') ok = v.length >= 8 && sha256('CISO CyberHub').startsWith(v); else ok = (Array.isArray(L.a) ? L.a : [L.a]).some(x => norm(x) === v || norm(x).replace(/^\//, '') === v.replace(/^\//, ''));
     fb.textContent = ok ? '✔ Correct. Level complete.' : '✘ Not quite. Check the evidence again, or take a hint.'; if (ok) win(); });
   $('#ch-next').addEventListener('click', () => open(Math.min(cur + 1, levels.length - 1)));
   const first = levels.findIndex(l => !solved.includes(l.id)); open(first < 0 ? 0 : first); status();
