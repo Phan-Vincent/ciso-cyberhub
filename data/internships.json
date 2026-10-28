@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T22:19:25Z",
+  "generated_at": "2026-10-28T08:38:30Z",
   "items": [
     {
       "also_remote": false,
@@ -773,6 +773,78 @@
     {
       "also_remote": false,
       "category": "AI/ML/Data",
+      "city": "Carson",
+      "company": "GrayMatter Robotics",
+      "id": "901b53ec-fba2-40bc-89d6-a7200607ee62",
+      "miles": 60,
+      "new": true,
+      "posted": "2026-10-28",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Fall 2026"
+      ],
+      "title": "Robotics Engineering Intern: Systems & Applications",
+      "url": "https://jobs.ashbyhq.com/graymatter-robotics/1cdbf03d-438b-46f8-808e-76fb6cfd4320/application?embed=true",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "VSP Vision",
+      "id": "178d0613-9e8b-480c-b35e-f7b89b94e02e",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-28",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Software-Engineer_R-10068",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "VSP Vision",
+      "id": "ee6ec003-29b0-4b45-84ff-f2bc079dd1cf",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-28",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern - Technology Innovation",
+      "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Technology-Innovation_R-10020",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Burbank",
+      "company": "The Walt Disney Company",
+      "id": "2a8775c3-4d2e-4339-9991-eaac25f7d658",
+      "miles": 56,
+      "new": true,
+      "posted": "2026-10-27",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Winter 2027"
+      ],
+      "title": "Content Research Insights & Analytics Intern",
+      "url": "https://disney.wd5.myworkdayjobs.com/disneycareer/job/Burbank-CA-USA/Content-Research-Insights---Analytics-Intern--Spring-2027_10164072-1",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "EQT Corporation",
       "id": "018f57c0-2519-4072-80fe-679c055ee4d6",
@@ -1259,7 +1331,7 @@
       "company": "AeroVironment",
       "id": "4c21866b-8acd-4bce-b804-6482c07400fa",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-10-20",
       "security": false,
       "sponsorship": "Other",
@@ -1277,7 +1349,7 @@
       "company": "Aptiv",
       "id": "af4c13fb-d5b5-4e8e-a1b6-5fa1aacbf330",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-10-20",
       "security": false,
       "sponsorship": "Other",
@@ -1316,6 +1388,24 @@
       "terms": [],
       "title": "Photonics Design Software & Automation Engineer Intern",
       "url": "https://jobs.keysight.com/jobs/54619?icims=1",
+      "zone": "region"
+    },
+    {
+      "also_remote": true,
+      "category": "Software",
+      "city": "Burbank",
+      "company": "Insomniac Games",
+      "id": "3d74d34b-cf5a-4c64-b08a-73afd63a61f6",
+      "miles": 56,
+      "new": false,
+      "posted": "2026-10-19",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2026"
+      ],
+      "title": "Gameplay Programmer Intern",
+      "url": "https://job-boards.greenhouse.io/insomniac/jobs/6226611004",
       "zone": "region"
     },
     {
@@ -1477,6 +1567,26 @@
       "title": "Research Engineer Intern - Video and Edge - Multimedia Lab",
       "url": "https://lifeattiktok.com/search/7696664743112788277",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Tessera Labs",
+      "id": "ff40ee27-6821-4bc8-8929-0a9a37fa6d77",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-15",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Fall 2026",
+        "Spring 2027",
+        "Summer 2027"
+      ],
+      "title": "Full Stack Software Engineer Intern - Full Stack",
+      "url": "https://jobs.ashbyhq.com/tessera-labs/892bb150-8c98-47f4-a8b6-93633ecb2ea7/application?embed=true",
+      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -1912,6 +2022,22 @@
     },
     {
       "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Sikich",
+      "id": "bb153fdc-6998-4d29-9e79-01b24c0db807",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Intelligence Transformation Intern",
+      "url": "https://jobs.jobvite.com/sikichcareers/job/oGOPAfwD?nl=1&nl=1&fr=false",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "NVIDIA",
@@ -2086,24 +2212,6 @@
       ],
       "title": "Software Engineer Intern",
       "url": "https://job-boards.greenhouse.io/amca/jobs/4425120009",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Carlsbad",
-      "company": "L3Harris Technologies",
-      "id": "d13887b1-2bb9-4152-adf1-d74dd800da12",
-      "miles": 71,
-      "new": false,
-      "posted": "2026-09-30",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2026"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://jobs.l3harris.com/job/Carlsbad-Software-Engineering-Intern-CA-92009/1435250500/?ats=successfactors",
       "zone": "region"
     },
     {
@@ -2875,6 +2983,24 @@
       ],
       "title": "Flight Software Engineer Intern - Summer 2027",
       "url": "https://impulsespace.pinpointhq.com/en/postings/d4fdab1d-254b-44a4-96bf-875ebd5b8cd7?ats=pinpointhq",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Carlsbad",
+      "company": "L3Harris Technologies",
+      "id": "afb3e427-b699-426c-8f7e-dcad458a9c1b",
+      "miles": 71,
+      "new": false,
+      "posted": "2026-09-10",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Winter 2026"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://jobs.l3harris.com/job/Carlsbad-Software-Engineering-Intern-CA-92009/1428454700/?ats=successfactors",
       "zone": "region"
     },
     {
