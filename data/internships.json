@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T08:38:30Z",
+  "generated_at": "2026-10-28T22:39:35Z",
   "items": [
     {
       "also_remote": false,
@@ -790,6 +790,24 @@
     },
     {
       "also_remote": false,
+      "category": "Hardware",
+      "city": "El Segundo",
+      "company": "RTX",
+      "id": "3f3c57d3-3d85-4024-9f7f-43350270aabf",
+      "miles": 65,
+      "new": true,
+      "posted": "2026-10-28",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Electrical Engineer Intern",
+      "url": "https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-CA-EL-SEGUNDO-E01--2000-E-El-Segundo-Blvd--BLDG-E01/Electrical-Engineering-Intern--Summer-2027-_01883292",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
       "company": "VSP Vision",
@@ -822,6 +840,22 @@
       ],
       "title": "Software Engineer Intern - Technology Innovation",
       "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Technology-Innovation_R-10020",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Subtotal",
+      "id": "f5f92fa6-34b5-4a3d-9bb0-65f4e2a13555",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-28",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Software Engineer Intern",
+      "url": "https://jobs.ashbyhq.com/subtotal/3891929c-0ee6-46ea-a833-4efba2862801/application?embed=true",
       "zone": "remote"
     },
     {
@@ -1297,7 +1331,7 @@
       "company": "Insomniac Games",
       "id": "f3b0993a-b1fc-4fa4-a1f4-bc7129fb05f3",
       "miles": 56,
-      "new": true,
+      "new": false,
       "posted": "2026-10-20",
       "security": false,
       "sponsorship": "Other",
@@ -1313,7 +1347,7 @@
       "company": "Insomniac Games",
       "id": "9f461243-b3dd-46c6-882c-7cece23604c7",
       "miles": 56,
-      "new": true,
+      "new": false,
       "posted": "2026-10-20",
       "security": false,
       "sponsorship": "Other",
@@ -2430,6 +2464,24 @@
     },
     {
       "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Cencora",
+      "id": "fea9f279-8f49-4840-bf20-b5cdaf60b8d9",
+      "miles": null,
+      "new": false,
+      "posted": "2026-09-25",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Winter 2026"
+      ],
+      "title": "Business Analytics Intern",
+      "url": "https://myhrabc.wd5.myworkdayjobs.com/Global/job/Remote-USA/Business-Analytics-Intern_R2616423",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "Hawthorne",
       "company": "Reflect Orbital",
@@ -2754,24 +2806,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Chemours",
-      "id": "32023baa-10fc-4ab0-b943-ff9337e3f641",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Spring 2027"
-      ],
-      "title": "Data Visualization Analyst Intern",
-      "url": "https://chemours.wd103.myworkdayjobs.com/Chemours/job/US---Remote/Data-Visualization-Analyst-Spring-Intern_JR15000",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Product",
       "city": "Hawthorne",
       "company": "Tesla",
@@ -2788,150 +2822,6 @@
       "title": "Vehicle Accessories & Merchandise Product Intern - Global Merchandise",
       "url": "https://www.tesla.com/careers/search/job/283137",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Amgen",
-      "id": "97071ed7-a906-402b-b755-8a9a9f9968c7",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-11",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Machine Learning Engineer Intern",
-      "url": "https://amgen.wd1.myworkdayjobs.com/careers/job/United-States---Remote/Grad-Intern---Machine-Learning-Engineer---Amgen-s-Technology---Medical-Organizations--Summer-2027-_R-255743",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Amgen",
-      "id": "dc2aebf1-8c3c-4139-937e-f31dfd69950e",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-11",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Machine Learning Engineer Intern - Technology & Medical Organizations",
-      "url": "https://amgen.wd1.myworkdayjobs.com/careers/job/United-States---Remote/Undergrad-Intern---Machine-Learning-Engineer---Amgen-s-Technology---Medical-Organizations--Summer-2027-_R-255709",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Amgen",
-      "id": "9eef895c-2727-4ebb-92bc-fda2b10c3d34",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-11",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Data Scientist Intern",
-      "url": "https://amgen.wd1.myworkdayjobs.com/careers/job/United-States---Remote/Undergrad-Intern---Data-Scientist---Amgen-s-Technology---Medical-Organizations--Summer-2027-_R-255704",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Amgen",
-      "id": "811210da-553e-4d37-b262-9897450dc43d",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-11",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Data Scientist Intern - Amgen’s Technology & Medical Organizations",
-      "url": "https://amgen.wd1.myworkdayjobs.com/careers/job/United-States---Remote/Grad-Intern---Data-Scientist---Amgen-s-Technology---Medical-Organizations--Summer-2027-_R-255722",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Amgen",
-      "id": "079b70ee-8105-46b4-9163-319c8610f157",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-11",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern - Technology & Medical Organizations",
-      "url": "https://amgen.wd1.myworkdayjobs.com/careers/job/United-States---Remote/Undergrad-Intern---Software-Engineer---Amgen-s-Technology---Medical-Organizations--Summer-2027-_R-255719",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Product",
-      "city": "Remote (US)",
-      "company": "Amgen",
-      "id": "6e4f094f-682c-4e8f-b9a8-f1ee44c201d3",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-11",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Digital Product Intern",
-      "url": "https://amgen.wd1.myworkdayjobs.com/careers/job/United-States---Remote/Undergrad-Intern---Digital-Product---Amgen-s-Technology---Medical-Organizations--Summer-2027-_R-255711",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Amgen",
-      "id": "5012230e-2a8b-4047-80ec-4b7c9ecbf427",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-11",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern - Amgen’s Technology & Medical Organizations",
-      "url": "https://amgen.wd1.myworkdayjobs.com/careers/job/United-States---Remote/Grad-Intern---Software-Engineer---Amgen-s-Technology---Medical-Organizations--Summer-2027-_R-255745",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Product",
-      "city": "Remote (US)",
-      "company": "Amgen",
-      "id": "27460c05-e022-499c-bcc8-2783559d2639",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-11",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Digital Product Intern - Digital Product - Technology & Medical Organizations",
-      "url": "https://amgen.wd1.myworkdayjobs.com/careers/job/United-States---Remote/Grad-Intern---Digital-Product---Amgen-s-Technology---Medical-Organizations--Summer-2027-_R-255744",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -3579,24 +3469,6 @@
       "title": "AI Research Intern - Foundation Models",
       "url": "https://jobs.ashbyhq.com/graymatter-robotics/dea0f08d-ebf5-4e55-b9cb-e6302014f429/application?embed=true",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Ancestry",
-      "id": "ee03f6e5-4ee4-4045-9664-e38ffc7617bd",
-      "miles": null,
-      "new": false,
-      "posted": "2026-08-26",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Fall 2026"
-      ],
-      "title": "Software Engineer Co-op - Observability",
-      "url": "https://ancestry.wd501.myworkdayjobs.com/Careers/job/Remote/Software-Engineer---Observability--Co-op_R003434",
-      "zone": "remote"
     },
     {
       "also_remote": false,
