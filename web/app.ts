@@ -1,4 +1,5 @@
 import {emptyProgress,parseProgress,scoreQuiz,matches,countAcademyLessons,compareRecords,type Question} from './core.js';
+import {sha256Bytes} from './sha256.js';
 const base=document.body.dataset.base || '';
 const $=(s:string)=>document.querySelector(s) as HTMLElement | null;
 const key='cyberhub:'+base+':progress:v1';
@@ -599,7 +600,7 @@ const bitsBox=$('#bits'),hashIn=$('#hash-in') as HTMLInputElement|null;
 if(bitsBox&&hashIn){
  const cells:HTMLElement[]=[];for(let i=0;i<256;i++){const c=document.createElement('i');bitsBox.append(c);cells.push(c);}
  let prev:Uint8Array|null=null;
- const run=async()=>{let buf:Uint8Array;try{buf=new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(hashIn.value)));}catch{$('#hash-out')!.textContent='Hashing is unavailable in this browser.';return;}
+ const run=async()=>{const bytes=new TextEncoder().encode(hashIn.value);let buf:Uint8Array;try{buf=new Uint8Array(await globalThis.crypto.subtle.digest('SHA-256',bytes));}catch{buf=sha256Bytes(bytes);}
   const out=$('#hash-out')!;out.replaceChildren();let changed=0;
   buf.forEach((v,i)=>{const b=element('b',v.toString(16).padStart(2,'0'));if(prev&&prev[i]!==v){b.className='flip';requestAnimationFrame(()=>requestAnimationFrame(()=>b.classList.remove('flip')));}out.append(b);});
   for(let i=0;i<256;i++){const bit=(buf[i>>3]>>(7-(i&7)))&1,was=prev?(prev[i>>3]>>(7-(i&7)))&1:bit;cells[i].className=bit?'one':'';if(bit!==was){changed++;const c=cells[i];c.classList.add('chg');requestAnimationFrame(()=>requestAnimationFrame(()=>c.classList.remove('chg')));}}

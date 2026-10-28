@@ -1,6 +1,7 @@
 // CyberHub challenge labs: Packet Lab, Log Hunt, Crypto & Encoding Lab and Secure Code Review.
 // All data is synthetic and generated here (reserved example IPs and domains), so every answer is
 // checkable offline. Engines are exported for tests. Text only, no innerHTML.
+import { sha256Bytes } from './sha256.js';
 
 /* ============================================================ Packet Lab */
 export type Pkt = { no: number; t: number; src: string; dst: string; proto: string; sport?: number; dport?: number; flags?: string; len: number; info: string;
@@ -220,7 +221,11 @@ export function applyRecipe(input: string, recipe: { id: string; p: number }[]):
     try { s = op.run(s, r.p); } catch { throw new Error(`step ${i + 1} (${op.name}) could not read its input. It is probably not in that format yet: check the order of your recipe`); } });
   return s;
 }
-export async function sha256(s: string): Promise<string> { const d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)); return [...new Uint8Array(d)].map(b => b.toString(16).padStart(2, '0')).join(''); }
+export async function sha256(s: string): Promise<string> {
+  const bytes = new TextEncoder().encode(s); let d: ArrayBuffer | undefined;
+  try { if (globalThis.crypto?.subtle?.digest) d = await globalThis.crypto.subtle.digest('SHA-256', bytes); } catch { /* insecure origin or blocked digest: use the fallback */ }
+  return [...(d ? new Uint8Array(d) : sha256Bytes(bytes))].map(b => b.toString(16).padStart(2, '0')).join('');
+}
 const xorEnc = (s: string, k: number) => [...s].map(c => (c.charCodeAt(0) ^ k).toString(16).padStart(2, '0')).join(' ');
 export const CRYPTO = [
   { id: 'b64', title: 'Base64', input: b64e('CISO{base64_is_not_encryption}'), q: 'Decode the message. What is the flag?', a: 'CISO{base64_is_not_encryption}', hints: ['Strings of letters, numbers, + and / that often end in = are usually Base64.', 'Add "From Base64" to the recipe.'], lesson: 'Base64 is an encoding, not encryption: anyone can reverse it, no key needed. You will see it in emails, web tokens and malware.' },
