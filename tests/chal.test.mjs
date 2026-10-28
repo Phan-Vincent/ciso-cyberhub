@@ -7,9 +7,11 @@ import { readFileSync, writeFileSync, mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
-const f = join(mkdtempSync(join(tmpdir(), 'chal-')), 'chal.mjs');
-writeFileSync(f, stripTypeScriptTypes(readFileSync(new URL('../web/chal.ts', import.meta.url), 'utf8'), { mode: 'strip' }));
-const C = await import(pathToFileURL(f).href);
+import { createHash } from 'node:crypto';
+const dir = mkdtempSync(join(tmpdir(), 'chal-'));
+for (const n of ['chal', 'sha256']) writeFileSync(join(dir, n + '.js'), stripTypeScriptTypes(readFileSync(new URL(`../web/${n}.ts`, import.meta.url), 'utf8'), { mode: 'strip' }));
+const C = await import(pathToFileURL(join(dir, 'chal.js')).href);
+const S = await import(pathToFileURL(join(dir, 'sha256.js')).href);
 
 test('packet filters find every Packet Lab answer', () => {
   const pk = C.capture(); const F = s => pk.filter(C.compileFilter(s)); const A = id => C.PCAP_LEVELS.find(l => l.id === id).a;
@@ -43,6 +45,20 @@ test('log searches find every Log Hunt answer', () => {
   assert.equal(Q('source=web | head 2').rows.length, 2); assert.deepEqual(Q('source=web | table src_ip,status | head 1').table.cols, ['src_ip', 'status']);
   assert.throws(() => Q('nope=1')); assert.throws(() => Q('source=web | sort x'));
   for (const L of C.HUNT_LEVELS) if (L.start) Q(L.start);
+});
+
+test('sha256Bytes matches the FIPS 180-4 vectors', async () => {
+  const node = s => createHash('sha256').update(s).digest('hex');
+  const hex = u => [...u].map(b => b.toString(16).padStart(2, '0')).join('');
+  const enc = new TextEncoder();
+  const vectors = [
+    ['', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'],
+    ['abc', 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad'],
+    ['abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq', '248d6a61d20638b8e5c026930c3e6039a33ce45964ff2167f6ecedd419db06c1'],
+    ['a'.repeat(1000), node('a'.repeat(1000))],
+  ];
+  for (const [input, want] of vectors) assert.equal(hex(S.sha256Bytes(enc.encode(input))), want, `input length ${input.length}`);
+  assert.equal(await C.sha256('CISO CyberHub'), node('CISO CyberHub'));
 });
 
 test('crypto recipes recover every flag', async () => {
