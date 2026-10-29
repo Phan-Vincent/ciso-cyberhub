@@ -141,7 +141,7 @@ const netAddr = (ip: string, p: number) => toIp(Math.floor(toInt(ip) / 2 ** (32 
 const bcast = (ip: string, p: number) => toIp(toInt(netAddr(ip, p)) + 2 ** (32 - p) - 1);
 function baseNet(): Net {
   const c = ri(10, 99);
-  return { ip: ip4(10, 20, c, ri(20, 200)), cidr: 24, gw: ip4(10, 20, c, 1), mac: '52:54:00:' + [0, 0, 0].map(() => ri(16, 255).toString(16)).join(':'),
+  return { ip: ip4(10, 20, c, ri(201, 250)), cidr: 24, gw: ip4(10, 20, c, 1), mac: '52:54:00:' + [0, 0, 0].map(() => ri(16, 255).toString(16)).join(':'),
     hosts: { 'portal.ciso.lab': { ip: ip4(10, 20, c, 80), up: true, ports: [80, 443], http: { headers: ['HTTP/1.1 200 OK', 'Server: nginx', 'Content-Type: text/html'], body: '<h1>CISO portal</h1>' } } },
     dns: { 'portal.ciso.lab': { A: [ip4(10, 20, c, 80)] }, 'ciso.lab': { NS: ['ns1.ciso.lab.'], MX: ['10 mail.ciso.lab.'] } },
     listen: [{ port: 22, proc: 'sshd' }], conns: [] };
@@ -244,7 +244,7 @@ const NET_LEVELS: Level[] = [
     s.net.hosts['vpn.partner.example'] = { ip: `192.0.2.${ri(10, 250)}`, up: false, ports: [], path: hops, dieAfter }; s.net.dns['vpn.partner.example'] = { A: [s.net.hosts['vpn.partner.example'].ip] };
     sub(s, [s.net.gw, ...hops][dieAfter - 1]); } },
   // dns
-  { id: 'net-dig-a', submit: true, setup: s => { const ip = `${sameNet(s)}.${ri(110, 250)}`; s.net.dns['grades.ciso.lab'] = { A: [ip] }; s.net.hosts['grades.ciso.lab'] = { ip, up: true, ports: [443] }; sub(s, ip); } },
+  { id: 'net-dig-a', submit: true, setup: s => { const ip = `${sameNet(s)}.${ri(110, 199)}`; s.net.dns['grades.ciso.lab'] = { A: [ip] }; s.net.hosts['grades.ciso.lab'] = { ip, up: true, ports: [443] }; sub(s, ip); } },
   { id: 'net-dig-mx', submit: true, setup: s => { const a = pick(['mx1', 'smtp-a', 'mail-east']), b = pick(['mx2', 'smtp-b', 'mail-west']); s.net.dns['ciso.lab'].MX = [`20 ${b}.ciso.lab.`, `10 ${a}.ciso.lab.`]; sub(s, `${a}.ciso.lab`); } },
   { id: 'net-dig-txt', submit: true, setup: s => { s.net.dns['_verify.ciso.lab'] = { TXT: [`"v=spf1 -all"`, `"cyberhub-verify=${sub(s, flag())}"`] }; } },
   { id: 'net-hosts-poison', submit: true, setup: s => { const evil = `185.${ri(100, 220)}.${ri(1, 254)}.${ri(1, 254)}`; s.net.dns['login.bank.example'] = { A: [`192.0.2.${ri(10, 99)}`] };
@@ -252,7 +252,7 @@ const NET_LEVELS: Level[] = [
   // ports and connections
   { id: 'net-listening', submit: true, setup: s => { const odd = pick([4444, 1337, 31337, 6667, 9001]); s.net.listen = [{ port: 22, proc: 'sshd' }, { port: 80, proc: 'nginx' }, { port: 443, proc: 'nginx' }, { port: odd, proc: pick(['kworkerd', 'dbus-helper', 'syslogd2']) }, { port: 5432, proc: 'postgres' }].sort((x, y) => x.port - y.port); sub(s, String(odd)); } },
   { id: 'net-established', submit: true, setup: s => { const evil = `${pick([45, 91, 185])}.${ri(1, 254)}.${ri(1, 254)}.${ri(1, 254)}`; s.net.listen = [{ port: 22, proc: 'sshd' }, { port: 443, proc: 'nginx' }];
-    s.net.conns = [{ local: `${s.net.ip}:22`, remote: `${sameNet(s)}.${ri(2, 60)}:${ri(40000, 60000)}`, proc: 'sshd' }, { local: `${s.net.ip}:${ri(40000, 60000)}`, remote: `${evil}:4444`, proc: 'bash' }, { local: `${s.net.ip}:443`, remote: `${sameNet(s)}.${ri(61, 99)}:${ri(40000, 60000)}`, proc: 'nginx' }];
+    s.net.conns = [{ local: `${s.net.ip}:22`, remote: `${sameNet(s)}.${ri(2, 60)}:${ri(40000, 60000)}`, proc: 'sshd' }, { local: `${s.net.ip}:${ri(50000, 60000)}`, remote: `${evil}:4444`, proc: 'bash' }, { local: `${s.net.ip}:443`, remote: `${sameNet(s)}.${ri(61, 99)}:${ri(40000, 60000)}`, proc: 'nginx' }];
     sub(s, evil); } },
   { id: 'net-port-check', submit: true, setup: s => { const open = pick([3306, 5432, 1433, 27017]); const ip = `${sameNet(s)}.${ri(150, 200)}`; s.net.hosts['db01.ciso.lab'] = { ip, up: true, ports: [22, open] }; s.net.dns['db01.ciso.lab'] = { A: [ip] }; sub(s, String(open)); } },
   { id: 'net-curl-headers', submit: true, setup: s => { const ip = `${sameNet(s)}.${ri(110, 140)}`; s.net.dns['intranet.ciso.lab'] = { A: [ip] };
