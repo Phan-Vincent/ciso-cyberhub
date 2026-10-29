@@ -66,7 +66,7 @@ def crypto_page(site) -> str:
 
 
 def review_page(site) -> str:
-    body = site.heading('Secure Code Review', 'Twelve short snippets from apps and cloud configs, each with one real vulnerability. Find the line, then choose the fix that removes the root cause.', 'Labs / Secure Code Review')
+    body = site.heading('Secure Code Review', 'Eighteen short snippets from apps and cloud configs, each with one real vulnerability, the last six at an Advanced level. Find the line, then choose the fix that removes the root cause.', 'Labs / Secure Code Review')
     ws = '<section class="rv-ws"><div class="rv-code" id="rv-code" role="group" aria-label="Code"></div><div class="rv-fixes" id="rv-fixes" hidden></div></section>'
     body += _shell('review', ws, answer=False)
     body += ('<section class="rt-about"><h2>Why this matters</h2><p>These are the same bug classes as the OWASP Top 10 and the CWE Top 25. Tools like Semgrep catch many of them automatically, and AI coding assistants write them often, so review every line you ship. See '
