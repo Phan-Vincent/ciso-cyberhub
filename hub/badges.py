@@ -33,6 +33,7 @@ BADGES = [
     ('cloud-guard', 'Cloud guard', 'Fix eight misconfigurations in the Cloud Security Lab.', '/labs/cloud/'),
     ('domain-defender', 'Domain defender', 'Solve all eight Active Directory Lab levels.', '/labs/active-directory/'),
     ('deep-diver', 'Deep diver', 'Solve ten Advanced levels across the labs.', '/labs/'),
+    ('flag-hunter', 'Flag hunter', 'Score 1,000 points on the challenge board.', '/challenges/'),
 ]
 
 
