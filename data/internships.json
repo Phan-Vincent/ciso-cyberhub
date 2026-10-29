@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T16:57:30Z",
+  "generated_at": "2026-10-29T22:48:52Z",
   "items": [
     {
       "also_remote": false,
@@ -17,6 +17,22 @@
       ],
       "title": "IT Data Analyst Intern",
       "url": "https://danaher.wd1.myworkdayjobs.com/DanaherJobs/job/Brea-California-United-States/IT-Data-Analyst-Intern_R1316675",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Brea",
+      "company": "Danaher",
+      "id": "14dbefc9-5e7e-42f5-b526-0e0349f60cab",
+      "miles": 38,
+      "new": true,
+      "posted": "2026-10-29",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Application Integration Developer Intern",
+      "url": "https://danaher.wd1.myworkdayjobs.com/DanaherJobs/job/Brea-California-United-States/Intern---Application-Integration-Developer_R1316677",
       "zone": "near"
     },
     {
@@ -39,28 +55,12 @@
     },
     {
       "also_remote": false,
-      "category": "Hardware",
-      "city": "Irvine",
-      "company": "Danaher",
-      "id": "8f175b67-db53-401a-996f-5d1e58c80b78",
-      "miles": 45,
-      "new": true,
-      "posted": "2026-10-26",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Sustaining Engineer Intern",
-      "url": "https://danaher.wd1.myworkdayjobs.com/danaherjobs/job/Irvine-California-United-States/Sustaining-Engineering-Intern_R1320906",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Irvine",
       "company": "Trace3",
       "id": "bf1f43e3-d62e-4bdd-954f-a48e648fa7ba",
       "miles": 45,
-      "new": true,
+      "new": false,
       "posted": "2026-10-21",
       "security": false,
       "sponsorship": "Other",
@@ -827,6 +827,24 @@
       "category": "Software",
       "city": "Remote (US)",
       "company": "VSP Vision",
+      "id": "178d0613-9e8b-480c-b35e-f7b89b94e02e",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-28",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Software-Engineer_R-10068",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "VSP Vision",
       "id": "ee6ec003-29b0-4b45-84ff-f2bc079dd1cf",
       "miles": null,
       "new": true,
@@ -838,24 +856,6 @@
       ],
       "title": "Software Engineer Intern - Technology Innovation",
       "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Technology-Innovation_R-10020",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "VSP Vision",
-      "id": "d54ad503-0917-4cd9-8e73-8ecd6fe2d56d",
-      "miles": null,
-      "new": true,
-      "posted": "2026-10-28",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Software-Engineer_R-10071",
       "zone": "remote"
     },
     {
@@ -1213,7 +1213,7 @@
       "company": "Anduril",
       "id": "9b8baf0a-0a8c-4351-9fcc-ed44351e77e5",
       "miles": 51,
-      "new": true,
+      "new": false,
       "posted": "2026-10-21",
       "security": false,
       "sponsorship": "Other",
@@ -1231,7 +1231,7 @@
       "company": "Anduril",
       "id": "9b0a00f8-306d-4f85-be43-6b438422bb5c",
       "miles": 51,
-      "new": true,
+      "new": false,
       "posted": "2026-10-21",
       "security": false,
       "sponsorship": "Other",
@@ -1821,24 +1821,6 @@
     },
     {
       "also_remote": false,
-      "category": "Hardware",
-      "city": "El Segundo",
-      "company": "RTX",
-      "id": "7ffed1dc-9635-4e2b-87f6-9098f3eab4ac",
-      "miles": 65,
-      "new": false,
-      "posted": "2026-10-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Electro-Optics Systems Engineer Intern",
-      "url": "https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-CA-EL-SEGUNDO-E01--2000-E-El-Segundo-Blvd--BLDG-E01/Electro-Optics-Systems-Engineer-Intern--Summer-2027-_01880582",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Businessolver",
@@ -2321,24 +2303,6 @@
     {
       "also_remote": false,
       "category": "Software",
-      "city": "Remote (US)",
-      "company": "CACI",
-      "id": "5db8bd0a-d6b5-46ef-b430-298959f57fe5",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-01",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Development/Engineer Intern",
-      "url": "https://caci.wd1.myworkdayjobs.com/external/job/Remote-Any-State/Software-Development-Engineer-Intern---Summer-2027_332894-1",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
       "city": "El Segundo",
       "company": "AMCA",
       "id": "9cb9b3d0-14d5-47cb-bd55-ce2ce7c5213e",
@@ -2495,24 +2459,6 @@
       "title": "Software Engineer Intern",
       "url": "https://aero.wd5.myworkdayjobs.com/external/job/Chantilly-VA/XMLNAME-2027-Software-Engineering-Grad-Intern_R016759",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "GovSignals",
-      "id": "954f1915-886d-44d2-b63c-900fb3b88410",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-26",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Fall 2026"
-      ],
-      "title": "Engineering Intern",
-      "url": "https://jobs.ashbyhq.com/GovSignals/e894290c-3263-424e-b7a4-8dcc32ca8ca9/application?embed=true",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -2927,25 +2873,6 @@
       "title": "Software Engineer Intern - Summer 2027",
       "url": "https://caci.wd1.myworkdayjobs.com/external/job/437-DENVER-CO/Cleared-Software-Engineer-Intern---Summer-2027_331999",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Product",
-      "city": "Hawthorne",
-      "company": "Tesla",
-      "id": "d5c67b95-ec5f-4c2d-b9dc-68c0a2efad5d",
-      "miles": 62,
-      "new": false,
-      "posted": "2026-09-11",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2027",
-        "Spring 2027"
-      ],
-      "title": "Vehicle Accessories & Merchandise Product Intern - Global Merchandise",
-      "url": "https://www.tesla.com/careers/search/job/283137",
-      "zone": "region"
     },
     {
       "also_remote": false,
