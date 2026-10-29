@@ -692,3 +692,8 @@ if(calm)countUp();
  document.getElementById('infra-next')?.addEventListener('click',()=>show(cur+1));
  document.getElementById('infra-prev')?.addEventListener('click',()=>show(cur<0?marks.length-1:cur-1));
  box.addEventListener('keydown',e=>{if(cur<0)return;if(e.key==='ArrowRight'){e.preventDefault();show(cur+1,true);}if(e.key==='ArrowLeft'){e.preventDefault();show(cur-1,true);}});}}
+
+// About page motion: word-by-word headlines, clip-wipe reveals, a spec sheet that types in row by row.
+document.querySelectorAll<HTMLElement>('.wr').forEach(h => h.querySelectorAll<HTMLElement>('.w').forEach((w, i) => w.style.setProperty('--i', String(i))));
+document.querySelectorAll<HTMLElement>('.ab-row').forEach((r, i) => r.style.setProperty('--i', String(i)));
+document.querySelectorAll('.wr, .clip, .ab-spec').forEach(el => rio.observe(el));

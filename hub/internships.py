@@ -124,7 +124,7 @@ def fetch() -> list[dict]:
     safe_url(SOURCE_URL)
     if urlsplit(SOURCE_URL).hostname != 'raw.githubusercontent.com':
         raise RuntimeError('Unexpected source host')
-    req = urllib.request.Request(SOURCE_URL, headers={'User-Agent': 'CISOCyberHub/0.1 (+internship scanner)', 'Accept': 'application/json'})
+    req = urllib.request.Request(SOURCE_URL, headers={'User-Agent': 'CyberHub/0.1 (+internship scanner)', 'Accept': 'application/json'})
     with urllib.request.urlopen(req, timeout=60) as r:  # noqa: S310 - fixed HTTPS allowlisted URL
         body = r.read(MAX_BYTES + 1)
     if len(body) > MAX_BYTES:

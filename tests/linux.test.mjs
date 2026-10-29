@@ -13,7 +13,7 @@ writeFileSync(file, stripTypeScriptTypes(readFileSync(new URL('../web/linux.ts',
 const { Shell, LEVELS } = await import(pathToFileURL(file).href);
 
 const out = (sh, cmd) => { const r = sh.run(cmd); return r.out.join('\n'); };
-const grab = s => (s.match(/CISO\{[0-9a-f-]+\}/) || [])[0];
+const grab = s => (s.match(/HUB\{[0-9a-f-]+\}/) || [])[0];
 // For each level: commands to run, then optional function producing the submission from outputs.
 const SOLVE = {
   'first-command': ['whoami'],
@@ -29,7 +29,7 @@ const SOLVE = {
   'head': sh => grab(out(sh, 'head -n 1 /var/log/boot.log')),
   'tail': sh => grab(out(sh, 'tail -n 1 /var/log/app.log')),
   'count-lines': sh => out(sh, 'wc -l /var/log/dns.log').split(' ')[0],
-  'grep': sh => grab(out(sh, 'grep CISO /var/log/proxy.log')),
+  'grep': sh => grab(out(sh, 'grep HUB /var/log/proxy.log')),
   'mkdir': ['mkdir ~/cases'],
   'touch': ['touch ~/cases/report.txt'],
   'copy': ['cp /opt/evidence/capture.pcap ~/cases/'],
@@ -42,7 +42,7 @@ const SOLVE = {
   'pipe-count': sh => out(sh, 'grep "Failed password" /var/log/auth.log | wc -l').trim(),
   'top-talker': sh => out(sh, "grep Failed /var/log/auth.log | cut -d ' ' -f 11 | sort | uniq -c | sort -nr | head -n 1").trim().split(/\s+/)[1],
   'find': sh => { const p = out(sh, 'find / -name "*.key" 2>/dev/null').trim().split('\n')[0]; return grab(out(sh, 'cat ' + p)); },
-  'grep-recursive': sh => grab(out(sh, 'grep -r CISO /srv/config')),
+  'grep-recursive': sh => grab(out(sh, 'grep -r HUB /srv/config')),
   'read-permissions': sh => (out(sh, 'ls -l ~/configs').split('\n').find(l => l.startsWith('-rw-rw-rw-')) || '').trim().split(/\s+/).pop(),
   'chmod-private': ['chmod 600 ~/.ssh/id_ed25519'],
   'run-script': sh => { assert.match(out(sh, 'cd ~/tools; chmod +x triage.sh'), /^$/); return grab(out(sh, './triage.sh')); },
@@ -69,7 +69,7 @@ test('every level has a solution and is solvable', () => {
 test('wrong submissions and permissions are enforced', () => {
   const lvl = LEVELS.find(l => l.id === 'sudo'); const sh = new Shell(); let won = false; sh.onWin = () => { won = true; }; sh.load(lvl, []);
   assert.match(sh.run('cat /root/incident-key.txt').err.join(''), /Permission denied/);
-  sh.run('submit CISO{nope}'); assert.equal(won, false);
+  sh.run('submit HUB{nope}'); assert.equal(won, false);
   assert.match(sh.run('rm -r /').err.join(''), /refusing|Permission/);
 });
 
@@ -81,14 +81,14 @@ const NET = {
   'net-resolver': sh => out(sh, 'cat /etc/resolv.conf').match(/nameserver (\S+)/)[1],
   'net-ping-down': sh => out(sh, 'cat ~/servers.txt').trim().split('\n').find(n => sh.run('ping -c 1 ' + n).code !== 0),
   'net-traceroute': sh => out(sh, 'traceroute vpn.partner.example').split('\n').filter(l => /^\s*\d+\s+\d/.test(l)).pop().trim().split(/\s+/)[1],
-  'net-dig-a': sh => out(sh, 'dig grades.ciso.lab +short').trim(),
-  'net-dig-mx': sh => out(sh, 'dig ciso.lab MX +short').trim().split('\n').map(l => l.split(' ')).sort((a, b) => a[0] - b[0])[0][1].replace(/\.$/, ''),
-  'net-dig-txt': sh => grab(out(sh, 'dig _verify.ciso.lab TXT')),
+  'net-dig-a': sh => out(sh, 'dig grades.hub.lab +short').trim(),
+  'net-dig-mx': sh => out(sh, 'dig hub.lab MX +short').trim().split('\n').map(l => l.split(' ')).sort((a, b) => a[0] - b[0])[0][1].replace(/\.$/, ''),
+  'net-dig-txt': sh => grab(out(sh, 'dig _verify.hub.lab TXT')),
   'net-hosts-poison': sh => { const dns = out(sh, 'dig login.bank.example +short').trim(); const hosts = out(sh, 'grep bank /etc/hosts').split(' ')[0]; assert.notEqual(dns, hosts); return hosts; },
   'net-listening': sh => out(sh, 'ss -tlnp').split('\n').find(l => /kworkerd|dbus-helper|syslogd2/.test(l)).match(/:(\d+)/)[1],
   'net-established': sh => out(sh, 'ss -tanp').split('\n').find(l => l.includes('bash')).match(/(\d+\.\d+\.\d+\.\d+):4444/)[1],
   'net-port-check': sh => sh.run('nc -zv db01 3306 5432 1433 27017').err.find(l => l.includes('succeeded')).match(/\) (\d+) port/)[1],
-  'net-curl-headers': sh => grab(out(sh, 'curl -I http://intranet.ciso.lab/')),
+  'net-curl-headers': sh => grab(out(sh, 'curl -I http://intranet.hub.lab/')),
 };
 const calc = q => {
   const toInt = ip => ip.split('.').reduce((n, x) => n * 256 + +x, 0), toIp = n => [24, 16, 8, 0].map(s => Math.floor(n / 2 ** s) % 256).join('.');

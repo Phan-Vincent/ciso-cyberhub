@@ -74,14 +74,14 @@ test('sha256Bytes matches the FIPS 180-4 vectors', async () => {
     ['a'.repeat(1000), node('a'.repeat(1000))],
   ];
   for (const [input, want] of vectors) assert.equal(hex(S.sha256Bytes(enc.encode(input))), want, `input length ${input.length}`);
-  assert.equal(await C.sha256('CISO CyberHub'), node('CISO CyberHub'));
+  assert.equal(await C.sha256('CyberHub'), node('CyberHub'));
 });
 
 test('crypto recipes recover every flag', async () => {
   const R = { b64: ['fromb64'], hex: ['fromhex'], rot13: ['rot13'], caesar: [['caesar', -3]], url: ['urld'], layers: ['fromb64', 'fromhex', 'rot13'], xor: [['xor', 42]], bin: ['frombin'],
     'adv-xor-key': [['xor', 92]], 'adv-decimal': ['fromdec'], 'adv-onion': ['fromb64', 'fromhex', 'rev', 'rot13', 'fromb64'] };
   const jwt = C.CRYPTO.find(c => c.id === 'adv-jwt'); assert.ok(C.applyRecipe(jwt.input.split('.')[1], [{ id: 'fromb64url', p: 0 }]).includes(jwt.a));
-  const xk = C.CRYPTO.find(c => c.id === 'adv-xor-key'); assert.equal(parseInt(xk.input.split(' ')[0], 16) ^ 0x43, 92, 'key follows from the known C');
+  const xk = C.CRYPTO.find(c => c.id === 'adv-xor-key'); assert.equal(parseInt(xk.input.split(' ')[0], 16) ^ 0x48, 92, 'key follows from the known H');
   for (const c of C.CRYPTO) {
     if (c.id === 'hash') { assert.equal((await C.sha256(c.input)).length, 64); continue; }
     if (c.id === 'adv-jwt') continue;

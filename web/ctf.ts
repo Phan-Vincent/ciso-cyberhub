@@ -3,7 +3,7 @@
 import { sha256Bytes } from './sha256.js';
 
 export type Prog = Record<string, { s?: 1; h?: number; p?: number }>;
-export const normFlag = (s: string) => { let v = s.replace(/\s+/g, '').toLowerCase(); if (v.startsWith('ciso{') && v.endsWith('}')) v = v.slice(5, -1); return v; };
+export const normFlag = (s: string) => { let v = s.replace(/\s+/g, '').toLowerCase(); if (v.startsWith('hub{') && v.endsWith('}')) v = v.slice(4, -1); return v; };
 export const award = (pts: number, hints: number) => Math.max(Math.round(pts / 4), Math.round(pts * (1 - 0.25 * hints)));
 export const hashHex = (s: string) => [...sha256Bytes(new TextEncoder().encode(s))].map(b => b.toString(16).padStart(2, '0')).join('');
 
@@ -28,7 +28,7 @@ if (root) {
       hb.addEventListener('click', () => { const p = prog[id] || (prog[id] = {}); if (p.s) return; p.h = Math.min(hints.length, (p.h || 0) + 1); save(); paint(); });
       form.addEventListener('submit', e => { e.preventDefault(); const v = normFlag(input.value); if (!v) return; const p = prog[id] || (prog[id] = {});
         if (hashHex(v) === meta.hash) { p.s = 1; p.p = award(meta.pts, p.h || 0); save(); paint(); score(); msg.textContent = `✔ Correct! +${p.p} points.`; }
-        else msg.textContent = '✘ Not the flag. Check the format CISO{...}, or take a hint.'; });
+        else msg.textContent = '✘ Not the flag. Check the format HUB{...}, or take a hint.'; });
       paint();
     }
     score();

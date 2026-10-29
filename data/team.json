@@ -1,0 +1,9 @@
+{
+  "note": "Roles shown on /about/. Officers can add real names: set \"name\" (and optionally \"title\") on an entry. Leave name empty to show the role only.",
+  "team": [
+    {"role": "Organizers", "name": "", "title": "Run the project", "bio": "Host live rooms and tabletops, run events, and decide what CyberHub builds next."},
+    {"role": "Lab builders", "name": "", "title": "Design the labs", "bio": "Write the levels, hints and lessons, and keep every answer checked by tests."},
+    {"role": "Reviewers", "name": "", "title": "Test every change", "bio": "Try each change on a phone in light and dark mode, and check facts, links and spelling."},
+    {"role": "You", "name": "", "title": "Contribute", "bio": "Suggest a tool, fix a typo, report a bug or write a lesson. Every contribution is reviewed."}
+  ]
+}

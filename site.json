@@ -1,10 +1,9 @@
 {
-  "name": "CISO CyberHub",
+  "name": "CyberHub",
   "tagline": "Learn the craft. Build your practice.",
-  "club_url": "https://www.ciso-csusb.org/",
   "site_url": "",
   "base_path": "",
-  "affiliation": "An independent student project for the CISO community. University endorsement pending.",
+  "affiliation": "An independent student project. Not affiliated with any university, club or certification provider.",
   "contact_email": "csusb.cyberhub@proton.me",
   "supabase_url": "https://pnfxzpbpjjqcmsirytci.supabase.co",
   "supabase_key": "sb_publishable_SCQVXuBezzXea4Hk5JTv5g_kyBFBwVT",

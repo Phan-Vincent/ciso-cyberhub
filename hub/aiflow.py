@@ -115,14 +115,13 @@ First show a 5-bullet plan and wait for my OK. After each step, run the checks a
              + ''.join(f'<div class="flag"><b>{t}</b><p>{d}</p></div>' for t, d in [
                  ('Who we are', 'One paragraph: mission, audience, what you produce.'),
                  ('Voice and format', 'Tone, spelling, banned phrases, preferred structure, with one short example of "good".'),
-                 ('Glossary', 'Your acronyms and names: what CISO, CCDC or "the lab" mean here.'),
+                 ('Glossary', 'Your acronyms and names: what KEV, CCDC or "the lab" mean here.'),
                  ('Sources of truth', 'Where facts come from: official site, policies, data files. "If it is not there, say you do not know."'),
                  ('Rules', 'Privacy, security and approvals: never share member data, never publish without review.'),
                  ('Layers', 'Global defaults, then project files, then folder-specific notes. The most specific wins.')])
              + '</div>'
              + _prompt('Organization guide template (AGENTS.md or project instructions)', '''# About us
-CISO (Cyber Intelligence & Security Organization) is a student club at Cal State San Bernardino.
-We build CyberHub, a free security-learning site for students of every level.
+We build CyberHub, a free, student-built security-learning site for learners of every level.
 
 # Audience
 Students from first-years with no IT background to seniors preparing for Security+.
@@ -131,10 +130,10 @@ Students from first-years with no IT background to seniors preparing for Securit
 Plain, encouraging, precise. American English. Short sentences. No hype, no hacker cliches.
 
 # Glossary
-CISO = our club (not the job title). CCDC/NCL = competitions we enter. KEV = CISA Known Exploited Vulnerabilities.
+CCDC/NCL = student security competitions. KEV = CISA Known Exploited Vulnerabilities.
 
 # Sources of truth
-Club facts: https://www.ciso-csusb.org/. Course content: data/academy.json. If unsure, ask; never invent.
+Project facts: the About page. Course content: data/academy.json. If unsure, ask; never invent.
 
 # Rules
 - Never include member names, emails or grades.

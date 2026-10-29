@@ -67,7 +67,7 @@ def resume_page(site) -> str:
                  ('Numbers make it real', '"Triaged 40+ alerts a week" or "cut setup time from 2 hours to 15 minutes" is remembered.'),
                  ('Match the language, honestly', 'If the posting says "SIEM" and you used Splunk, write "Splunk (SIEM)". Never claim what you have not done.'),
                  ('One page, clean format', 'Simple layout, standard headings and no images or tables, so applicant-tracking systems can read it.'),
-                 ('Clubs count', 'CISO projects, CCDC, NCL and officer roles are leadership and hands-on experience. List them.'),
+                 ('Clubs count', 'Club projects, CCDC, NCL and officer roles are leadership and hands-on experience. List them.'),
                  ('Tailor every application', 'Ten tailored applications beat a hundred generic ones. That is what this page is for.')])
              + f'</div><p>{a("Find internships near CSUSB →", "/careers/internships/", "button primary")} {a("Find your role →", "/careers/match/", "button")}</p></section>')
     return body
