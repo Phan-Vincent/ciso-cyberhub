@@ -94,12 +94,12 @@ class BuildTests(unittest.TestCase):
         self.assertIn('/assets/geo/ne_110m_countries.json',js)
         for label in ('SIMULATED / ATTACK PATHS','SCENARIO 01 · NOT LIVE TELEMETRY','NODES 08 / ARCS 05','ILLUSTRATIVE EXERCISE'):
             self.assertNotIn(label,js)
-    def test_site_is_dark_only(self):
+    def test_theme_follows_the_system(self):
         html=(ROOT/'dist/index.html').read_text()
         self.assertNotIn('id="theme"',html)
-        self.assertIn('<meta name="color-scheme" content="dark">',html)
+        self.assertIn('<meta name="color-scheme" content="dark light">',html)
         theme=(ROOT/'web/theme.ts').read_text()
-        self.assertIn("dataset.theme = 'dark'",theme)
+        self.assertIn("prefers-color-scheme: light",theme)
     def test_endorsement_sentence_matches_config(self):
         home=(ROOT/'dist/index.html').read_text()
         self.assertIn('University endorsement pending.',home)
