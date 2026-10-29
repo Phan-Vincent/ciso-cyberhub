@@ -11,6 +11,15 @@ for (const n of ['duel', 'live', 'qr']) writeFileSync(join(dir, n + '.js'), stri
 const L = await import(pathToFileURL(join(dir, 'live.js')).href); const D = await import(pathToFileURL(join(dir, 'duel.js')).href);
 const bank = JSON.parse(readFileSync(new URL('../data/duel.json', import.meta.url), 'utf8'));
 
+test('host and player rebuild the same Hard round from the room settings', () => {
+  for (const cat of Object.keys(bank.categories)) {
+    const host = new L.HostGame(); host.start(bank, 123456, cat, '4', 10);
+    const player = D.makeRound(bank, 123456, cat, '4', 10);
+    assert.deepEqual(host.rounds, player, cat);
+    assert.ok(player.every(r => r.q.level === 4), cat);
+  }
+});
+
 test('room codes avoid look-alike characters', () => {
   for (let i = 0; i < 200; i++) { const c = L.newCode(); assert.ok(L.validCode(c), c); assert.doesNotMatch(c, /[01ILO]/); }
   assert.ok(!L.validCode('abcde')); assert.ok(!L.validCode('K7QP'));

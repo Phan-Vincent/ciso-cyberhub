@@ -167,6 +167,16 @@ class PipelineTests(unittest.TestCase):
                     validate(root)
                 path.write_text(original)
 
+    def test_duel_hard_level_accepted_and_other_levels_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);shutil.copytree(ROOT/'data',root/'data');shutil.copytree(ROOT/'content',root/'content')
+            duel=read_json(root/'data/duel.json')
+            duel['questions'][0]['level']=4;write_json(root/'data/duel.json',duel)
+            validate(root)
+            for bad in (0,5,True):
+                duel['questions'][0]['level']=bad;write_json(root/'data/duel.json',duel)
+                with self.subTest(level=bad),self.assertRaises(ValueError):validate(root)
+
     def test_boolean_cvss_score_rejected(self):
         with tempfile.TemporaryDirectory()as tmp:
             root=Path(tmp);shutil.copytree(ROOT/'data',root/'data');shutil.copytree(ROOT/'content',root/'content')
