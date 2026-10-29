@@ -2137,6 +2137,20 @@ input, select { border-radius: 10px; }
 .pc-quick { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 10px; }
 .pc-quick button { height: auto; padding: 6px 10px; font-family: var(--mono); font-size: .78rem; text-transform: none; letter-spacing: 0; }
 .pc-scroll { max-height: 380px; overflow: auto; border: 1px solid var(--rule); border-radius: var(--r-md); background: #0b0d11; }
+/* Capstone evidence stays inside its own scroll box on narrow phones. */
+.capstone, .cap-stage { min-width: 0; }
+.cap-stage { margin: 20px 0; }
+.cap-stage[hidden], #cap-result[hidden] { display: none; }
+.cap-evidence { max-width: 100%; overflow-x: auto; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: var(--r-md); }
+.cap-evidence pre { width: max-content; min-width: 100%; margin: 0; padding: 14px; font: .78rem/1.65 var(--mono); white-space: pre; }
+.cap-question { border-top: 1px solid var(--rule); padding: 12px 0; color: var(--ink); }
+.cap-question h3 { font-size: 1rem; }
+.cap-question form { display: flex; flex-wrap: wrap; gap: 8px; }
+.cap-question input, .cap-question select { flex: 1 1 220px; min-width: 0; max-width: 100%; }
+.cap-feedback { min-height: 1.5em; color: var(--ink-muted); }
+.cap-carry { color: var(--signal); }
+.cap-field { display: grid; gap: 6px; margin: 14px 0; }
+.cap-field textarea, #cap-markdown { width: 100%; max-width: 100%; box-sizing: border-box; }
 .pc-table, .lh-table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: .78rem; color: #edeff2; }
 .pc-table th, .lh-table th { position: sticky; top: 0; background: #17191e; text-align: left; padding: 8px; font-weight: 600; }
 .pc-table td, .lh-table td { padding: 6px 8px; border-top: 1px solid rgba(255,255,255,.07); white-space: nowrap; }

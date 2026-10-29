@@ -10,7 +10,55 @@ def require(value, message):
 def string(value, limit=2000):
     return isinstance(value,str) and 0 < len(value) <= limit
 
+def validate_capstone(root):
+    case = read_json(root/'data/capstone.json')
+    require(isinstance(case, dict) and isinstance(case.get('id'), str) and re.fullmatch(r'[a-z0-9-]+', case['id']) and string(case.get('title')) and string(case.get('setting')), 'Invalid capstone metadata')
+    stages = case.get('stages')
+    require(isinstance(stages, list) and len(stages) == 4, 'Capstone needs four evidence stages')
+    seen = set()
+    prior = {}
+    stage_ids = set()
+    for stage in stages:
+        require(isinstance(stage, dict) and re.fullmatch(r'adv-[a-z-]+', stage.get('id', '')) and string(stage.get('title')) and string(stage.get('intro')), 'Invalid capstone stage')
+        require(stage['id'] not in stage_ids, 'Duplicate capstone stage')
+        stage_ids.add(stage['id'])
+        evidence = stage.get('evidence')
+        questions = stage.get('questions')
+        require(isinstance(evidence, list) and 3 <= len(evidence) <= 20 and all(string(line, 500) for line in evidence), 'Invalid capstone evidence')
+        require(isinstance(questions, list) and 2 <= len(questions) <= 4, 'Invalid capstone questions')
+        line_ids = [line.split(' | ')[0] for line in evidence]
+        require(len(set(line_ids)) == len(line_ids) and all(re.fullmatch(r'[EPNA]\d{2}', x) for x in line_ids), 'Invalid capstone line ids')
+        joined = '\n'.join(evidence).lower()
+        for q in questions:
+            require(isinstance(q, dict) and re.fullmatch(r'[a-z0-9-]+', q.get('id', '')) and q['id'] not in seen, 'Duplicate or invalid capstone question id')
+            require(string(q.get('prompt')) and string(q.get('hint')) and string(q.get('answer')), 'Invalid capstone question')
+            require(q.get('type') in ('exact', 'choice', 'line'), 'Invalid capstone answer type')
+            if q['type'] == 'line': require(q['answer'] in line_ids, 'Capstone line answer missing')
+            elif q['type'] == 'choice': require(isinstance(q.get('options'), list) and len(q['options']) >= 2 and q['answer'] in q['options'] and len(set(q['options'])) == len(q['options']), 'Invalid capstone choice')
+            else:
+                require(isinstance(q.get('derived', False), bool), 'Invalid capstone derived flag')
+                if not q.get('derived'): require(q['answer'].lower() in joined, 'Capstone exact answer absent from evidence')
+                aliases = q.get('accept', [])
+                require(isinstance(aliases, list) and all(string(alias, 100) for alias in aliases), 'Invalid capstone aliases')
+                # Aliases may vary in case, account notation, or stated time/size units.
+                def canonical(value):
+                    value = re.sub(r'\s+', ' ', value.strip().lower())
+                    value = re.sub(r'^isu[\\/]', '', value)
+                    if re.fullmatch(r'1\s*minute', value): return '60'
+                    value = re.sub(r'^([0-9]+)\s*(?:s|sec|seconds|kib|kb)$', r'\1', value)
+                    return value
+                require(all(canonical(alias) == canonical(q['answer']) for alias in aliases), 'Capstone alias changes answer')
+            if q.get('carry'):
+                require(q['carry'] in prior, 'Broken capstone carry')
+                require(prior[q['carry']].lower() in joined, 'Carried answer absent from next evidence')
+            if q.get('timeline'): require(string(q['timeline'], 250), 'Invalid capstone timeline')
+            seen.add(q['id'])
+        prior.update({q['id']: q['answer'] for q in questions})
+    require(isinstance(case.get('model'), dict) and all(string(case['model'].get(k), 2000) for k in ('summary', 'timeline', 'affected', 'indicators', 'containment')), 'Invalid capstone model notes')
+    return case
+
 def validate(root=ROOT):
+    validate_capstone(root)
     tools=read_json(root/'data/tools.json'); academy=read_json(root/'data/academy.json')
     intel=read_json(root/'data/intelligence.json'); docs=read_json(root/'data/content.json')
     ids=set(); repos=set()

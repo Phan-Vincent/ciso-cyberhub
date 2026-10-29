@@ -46,7 +46,8 @@ LAB_TRACKS = [
         ('PowerShell Lab', '15 Windows investigation levels', '/linux/powershell/', [I], '1–2 h')]),
     ('Investigate', 'Work the evidence like a SOC analyst.', [
         ('SOC Simulator', 'Triage a shift of alerts', '/labs/soc/', [B, I], '20 min'), ('Phishing lab', 'Investigate a suspicious inbox', '/labs/phishing/', [B], '15 min'),
-        ('Packet Lab', '13 levels: filter a capture, Wireshark-style', '/labs/packets/', [I, A], '45 min'), ('Log Hunt', '14 levels: trace a break-in through server logs', '/labs/logs/', [I, A], '45 min')]),
+        ('Packet Lab', '13 levels: filter a capture, Wireshark-style', '/labs/packets/', [I, A], '45 min'), ('Log Hunt', '14 levels: trace a break-in through server logs', '/labs/logs/', [I, A], '45 min'),
+        ('Capstone investigation', 'One case: email, endpoint, packets, AD and report', '/labs/capstone/', [A], '30–45 min')]),
     ('Build securely', 'Spot and fix the bugs attackers look for.', [
         ('Secure Code Review', '18 bugs: find the vulnerable line, pick the fix', '/labs/code-review/', [I, A], '30 min'), ('Crypto & Encoding Lab', '13 puzzles: decode flags, CyberChef-style', '/labs/crypto/', [B, I, A], '30 min')]),
     ('Cloud and enterprise', 'Secure the systems most organizations actually run.', [

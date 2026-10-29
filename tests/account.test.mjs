@@ -6,7 +6,10 @@ import { readFileSync, writeFileSync, mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
-const f = join(mkdtempSync(join(tmpdir(), 'acct-')), 'account.mjs');
+const dir = mkdtempSync(join(tmpdir(), 'acct-'));
+writeFileSync(join(dir, 'package.json'), '{"type":"module"}');
+writeFileSync(join(dir, 'capstone-progress.js'), stripTypeScriptTypes(readFileSync(new URL('../web/capstone-progress.ts', import.meta.url), 'utf8'), { mode: 'strip' }));
+const f = join(dir, 'account.mjs');
 writeFileSync(f, stripTypeScriptTypes(readFileSync(new URL('../web/account.ts', import.meta.url), 'utf8'), { mode: 'strip' }));
 const A = await import(pathToFileURL(f).href);
 class Mem { constructor() { this.m = new Map(); } getItem(k) { return this.m.has(k) ? this.m.get(k) : null; } setItem(k, v) { this.m.set(k, String(v)); } removeItem(k) { this.m.delete(k); } }
