@@ -6,6 +6,8 @@
 // row-level security so each user can only read and write their own row.
 // Never synced: resume text, theme, names typed for printing.
 
+import { completedStages } from './capstone-progress.js';
+
 export type Snapshot = Record<string, unknown>;
 const ACADEMY = (base: string) => `cyberhub:${base}:progress:v1`;
 // payload key -> localStorage key (academy depends on the base path, so it is mapped)
@@ -39,7 +41,8 @@ export function mergeProgress(a: Snapshot, b: Snapshot): Snapshot {
   for (const k of ['pcap', 'hunt', 'crypto', 'review', 'cloud', 'ad', 'gis', 'data'] as const) if (a[k] !== undefined || b[k] !== undefined) out[k] = union(a[k], b[k]).filter(v => /^[a-z0-9-]{1,40}$/.test(v));
   if (a.capstone !== undefined || b.capstone !== undefined) { const x = obj(a.capstone), y = obj(b.capstone);
     const ids = (v: unknown) => union(v, []).filter(id => /^[a-z0-9-]{1,40}$/.test(id));
-    out.capstone = { solved: ids(union(x.solved, y.solved)), hints: ids(union(x.hints, y.hints)), stages: ids(union(x.stages, y.stages)).filter(id => id.startsWith('adv-')), submitted: x.submitted === true || y.submitted === true, best: Math.min(160, Math.max(num(x.best), num(y.best))) }; }
+    const solved = ids(union(x.solved, y.solved));
+    out.capstone = { solved, hints: ids(union(x.hints, y.hints)), stages: completedStages(solved), submitted: x.submitted === true || y.submitted === true, best: Math.min(160, Math.max(num(x.best), num(y.best))) }; }
   if (a.ctf !== undefined || b.ctf !== undefined) { const m: Record<string, { s?: 1; h?: number; p?: number }> = {};
     for (const [k, v0] of [...Object.entries(obj(a.ctf)), ...Object.entries(obj(b.ctf))]) { if (!/^[a-z0-9-]{1,40}$/.test(k)) continue; const v = obj(v0), cur = m[k] || {};
       const h = Math.min(10, Math.max(num(cur.h), Math.floor(num(v.h)))); const solved = !!cur.s || v.s === 1; const pts = Math.min(500, Math.max(num(cur.p), v.s === 1 ? num(v.p) : 0));

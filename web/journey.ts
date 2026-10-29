@@ -2,10 +2,10 @@
 // and the badges page. Everything is stored only in this browser (localStorage).
 // No innerHTML: all text is set with textContent.
 
+import { CAP_STAGE_QUESTIONS, completedStages } from './capstone-progress.js';
+
 type Journey = { read: string[]; shifts: Record<string, number>; perfect: string[] };
 const JKEY = 'cyberhub:defend';
-const CAP_STAGES = ['adv-email', 'adv-endpoint', 'adv-network', 'adv-ad'];
-const CAP_QUESTIONS = ['target', 'lure', 'authentication', 'attachment', 'first-process', 'persistence', 'c2', 'interval', 'exfil', 'source-ip', 'group-event', 'compromised', 'credential-method', 'contain'];
 const load = <T>(k: string, d: T): T => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) as T : d; } catch { return d; } };
 const store = (k: string, v: unknown) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* storage unavailable */ } };
 const journey = (): Journey => { const j = load<Partial<Journey>>(JKEY, {}); return { read: Array.isArray(j.read) ? j.read : [], shifts: j.shifts && typeof j.shifts === 'object' ? j.shifts : {}, perfect: Array.isArray(j.perfect) ? j.perfect : [] }; };
@@ -56,10 +56,10 @@ export function counts(base: string): Counts {
   const lessons = Array.isArray(academy.lessons) ? new Set((academy.lessons as unknown[]).filter(x => typeof x === 'string' && (x as string).startsWith('academy/'))).size : 0;
   const stats = load<{ best?: number }>('cyberhub:daily:stats', {});
   const cap = load<{ stages?: unknown; solved?: unknown; submitted?: unknown }>('cyberhub:capstone', {});
-  const capStages = Array.isArray(cap.stages) ? [...new Set(cap.stages.filter((id: unknown) => typeof id === 'string' && CAP_STAGES.includes(id as string)))] : [];
+  const capStages = completedStages(cap.solved);
   return { linux: arr('cyberhub:linux').length, net: arr('cyberhub:netlab').length, read: j.read.length, shifts: Object.keys(j.shifts).length, perfect: j.perfect.length,
     academy: Math.min(28, lessons), readiness: Number(load<number | null>('cyberhub:readiness:best', 0)) || 0, streak: Number(stats.best) || 0, role: load<unknown>('cyberhub:match', null) != null, duels: Number(load<{ wins?: number }>('cyberhub:duel', {}).wins) || 0, soc: Number(load<{ best?: number }>('cyberhub:soc', {}).best) || 0,
-    phish: Object.keys(load<Record<string, number>>('cyberhub:phish', {}) || {}).length, redteam: (load<number[]>('cyberhub:redteam', []) || []).filter(n => typeof n === 'number' && n < 5).length, ps: arr('cyberhub:pslab').length, ctf: Object.values(load<Record<string, { s?: number; p?: number }>>('cyberhub:ctf', {}) || {}).reduce((n, v) => n + (v && v.s && typeof v.p === 'number' ? Math.min(500, Math.max(0, v.p)) : 0), 0), adv: ['pcap', 'hunt', 'crypto', 'review', 'cloud', 'ad'].reduce((n, k) => n + arr('cyberhub:' + k).filter(x => typeof x === 'string' && x.startsWith('adv-')).length, 0) + capStages.length, pcap: arr('cyberhub:pcap').length, gis: arr('cyberhub:gis').length, data: arr('cyberhub:data').length, phys: Object.values(load<Record<string, number>>('cyberhub:phys', {}) || {}).reduce((n, v) => n + (typeof v === 'number' ? Math.min(3, Math.max(0, v)) : 0), 0), hunt: arr('cyberhub:hunt').length, crypto: arr('cyberhub:crypto').length, review: arr('cyberhub:review').length, cloud: arr('cyberhub:cloud').length, ad: arr('cyberhub:ad').length, capstone: cap.submitted === true && CAP_STAGES.every(id => capStages.includes(id)) && Array.isArray(cap.solved) && CAP_QUESTIONS.every(id => cap.solved!.includes(id)) };
+    phish: Object.keys(load<Record<string, number>>('cyberhub:phish', {}) || {}).length, redteam: (load<number[]>('cyberhub:redteam', []) || []).filter(n => typeof n === 'number' && n < 5).length, ps: arr('cyberhub:pslab').length, ctf: Object.values(load<Record<string, { s?: number; p?: number }>>('cyberhub:ctf', {}) || {}).reduce((n, v) => n + (v && v.s && typeof v.p === 'number' ? Math.min(500, Math.max(0, v.p)) : 0), 0), adv: ['pcap', 'hunt', 'crypto', 'review', 'cloud', 'ad'].reduce((n, k) => n + arr('cyberhub:' + k).filter(x => typeof x === 'string' && x.startsWith('adv-')).length, 0) + capStages.length, pcap: arr('cyberhub:pcap').length, gis: arr('cyberhub:gis').length, data: arr('cyberhub:data').length, phys: Object.values(load<Record<string, number>>('cyberhub:phys', {}) || {}).reduce((n, v) => n + (typeof v === 'number' ? Math.min(3, Math.max(0, v)) : 0), 0), hunt: arr('cyberhub:hunt').length, crypto: arr('cyberhub:crypto').length, review: arr('cyberhub:review').length, cloud: arr('cyberhub:cloud').length, ad: arr('cyberhub:ad').length, capstone: cap.submitted === true && capStages.length === Object.keys(CAP_STAGE_QUESTIONS).length };
 }
 
 /* ------------------------------------------------------------ UI */

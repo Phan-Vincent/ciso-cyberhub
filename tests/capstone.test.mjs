@@ -6,7 +6,9 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 const dir = mkdtempSync(join(tmpdir(), 'capstone-'));
-for (const n of ['capstone', 'account', 'journey']) writeFileSync(join(dir, n + '.mjs'), stripTypeScriptTypes(readFileSync(new URL(`../web/${n}.ts`, import.meta.url), 'utf8'), { mode: 'strip' }));
+writeFileSync(join(dir, 'package.json'), '{"type":"module"}');
+for (const n of ['capstone-progress', 'capstone', 'account', 'journey']) writeFileSync(join(dir, n + (n === 'capstone-progress' ? '.js' : '.mjs')), stripTypeScriptTypes(readFileSync(new URL(`../web/${n}.ts`, import.meta.url), 'utf8'), { mode: 'strip' }));
+const P = await import(pathToFileURL(join(dir, 'capstone-progress.js')).href);
 const C = await import(pathToFileURL(join(dir, 'capstone.mjs')).href);
 const A = await import(pathToFileURL(join(dir, 'account.mjs')).href);
 const J = await import(pathToFileURL(join(dir, 'journey.mjs')).href);
@@ -84,14 +86,12 @@ test('normalization accepts sensible variants and rejects wrong values', () => {
 });
 
 test('progress merge and badge require all case questions and submitted report', () => {
-  const journeySource=readFileSync(new URL('../web/journey.ts',import.meta.url),'utf8');
-  const badgeQuestions=[...journeySource.match(/const CAP_QUESTIONS = \[([^\]]+)\]/)[1].matchAll(/'([^']+)'/g)].map(x=>x[1]);
-  assert.deepEqual(badgeQuestions,questions.map(x=>x.id));
+  assert.deepEqual(Object.entries(P.CAP_STAGE_QUESTIONS), data.stages.map(stage => [stage.id, stage.questions.map(q => q.id)]));
   assert.ok(A.KEYS.includes('capstone'));
   const left = { capstone: { solved: ['target'], hints: ['lure'], stages: ['adv-email'], submitted: false, best: 8 } };
   const right = { capstone: { solved: ['lure'], hints: [], stages: ['adv-endpoint'], submitted: true, best: 20 } };
   const merged = A.mergeProgress(left,right).capstone;
-  assert.deepEqual(merged.solved,['lure','target']); assert.deepEqual(merged.hints,['lure']); assert.equal(merged.best,20); assert.equal(merged.submitted,true);
+  assert.deepEqual(merged.solved,['lure','target']); assert.deepEqual(merged.stages, []); assert.deepEqual(merged.hints,['lure']); assert.equal(merged.best,20); assert.equal(merged.submitted,true);
   assert.deepEqual(A.mergeProgress({capstone:merged},{capstone:merged}).capstone,merged);
   const p = { solved: questions.map(x => x.id), hints: [], stages: data.stages.map(s => s.id), submitted: false, best: 0 };
   assert.equal(C.complete(p,data),true); assert.equal(C.caseClosed(p,data),false); p.submitted=true; assert.equal(C.caseClosed(p,data),true);
@@ -104,4 +104,37 @@ test('progress merge and badge require all case questions and submitted report',
     for (const item of questions) { store.set('cyberhub:capstone',JSON.stringify({...p,solved:p.solved.filter(x=>x!==item.id)})); assert.equal(J.counts('').capstone,false,item.id); }
   } finally { if(saved) Object.defineProperty(globalThis,'localStorage',saved); else delete globalThis.localStorage; }
   assert.equal(C.score(p,data),questions.length*10); assert.match(C.confirmedTimeline(p,data),/09:11 UTC/);
+});
+
+
+test('two partial devices complete each stage after merge, then earn Case closed', () => {
+  let left = {capstone:{solved:[],hints:[],stages:[],submitted:false,best:0}};
+  let right = {capstone:{solved:[],hints:[],stages:[],submitted:true,best:0}};
+  for (const stage of data.stages) stage.questions.forEach((question, index) => (index % 2 ? right : left).capstone.solved.push(question.id));
+  const merged = A.mergeProgress(left,right).capstone;
+  assert.deepEqual(merged.stages,data.stages.map(stage=>stage.id));
+  assert.equal(merged.submitted,true);
+  const previous=Object.getOwnPropertyDescriptor(globalThis,'localStorage');
+  globalThis.localStorage={getItem:key=>key==='cyberhub:capstone'?JSON.stringify(merged):null};
+  try { const counts=J.counts(''); assert.equal(counts.capstone,true); assert.equal(counts.adv,4); assert.equal(J.BADGES.find(b=>b.id==='case-closed').test(counts),true); }
+  finally { if(previous) Object.defineProperty(globalThis,'localStorage',previous); else delete globalThis.localStorage; }
+});
+
+test('load reconciliation derives stages from solved ids and ignores stale stage claims', () => {
+  const solved=email.questions.map(q=>q.id);
+  assert.deepEqual(C.reconcileProgress({solved,hints:[],stages:['adv-ad'],submitted:false,best:20}).stages,['adv-email']);
+  assert.deepEqual(C.reconcileProgress({solved:[],hints:[],stages:['adv-email'],submitted:false,best:0}).stages,[]);
+});
+
+test('answer refresh targets only the confirmed card and newly unlocked stage', () => {
+  assert.deepEqual(C.refreshTargets(0,'target',false),{questionId:'target',stageIndex:0,newStageIndex:null});
+  assert.deepEqual(C.refreshTargets(0,'attachment',true),{questionId:'attachment',stageIndex:0,newStageIndex:1});
+  const source=readFileSync(new URL('../web/capstone.ts',import.meta.url),'utf8');
+  assert.doesNotMatch(source,/box\.replaceChildren\(/);
+  assert.match(source,/card\.input\.remove\(\); card\.button\.remove\(\); updateProgress\(stageIndex\)/);
+  assert.match(source,/cards\[next\.id\]\.input\.focus\(\)/);
+});
+
+test('Markdown report uses the case title', () => {
+  assert.match(C.markdown('Another case',{summary:'Example'}),/^# Incident report: Another case/);
 });
