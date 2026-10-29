@@ -10,7 +10,7 @@ export type Room = { name: string; x0: number; y0: number; x1: number; y1: numbe
 export type Attack = { id: string; name: string; brief: string; phase: 'night' | 'day'; start: 'edge' | Pt; mode: 'fast' | 'scout' | 'stealth'; targets: string[];
   tailgate?: boolean; delivery?: boolean; insider?: boolean };
 export type Tier = { id: string; name: string; level: string; blurb: string; budget: number; it: number; response: number; w: number; h: number; grid: string[][]; rooms: Room[];
-  assets: Record<string, { name: string; kind: 'rack' | 'ws' | 'ot' }>; attacks: Attack[]; model: Placement[]; modelIt: string[] };
+  assets: Record<string, { name: string; kind: 'rack' | 'ws' | 'ot'; label?: string }>; attacks: Attack[]; model: Placement[]; modelIt: string[] };
 
 function plan(w: number, h: number) {
   const g: string[][] = Array.from({ length: h }, () => Array(w).fill(','));
@@ -63,8 +63,8 @@ export const TIERS: Tier[] = (() => {
       modelIt: ['screen', 'usb', 'cleandesk', 'nac'] }),
     T({ id: 'black', name: 'Black Site', level: 'Expert', blurb: 'A fenced data center with a generator yard. Attackers avoid your sensors, and one of them works here.', budget: 5500, it: 10, response: 300, w: 38, h: 22, grid: p3.g,
       rooms: [{ name: 'Data hall', x0: 7, y0: 5, x1: 19, y1: 11, restricted: true, furniture: 'racks' }, { name: 'NOC', x0: 21, y0: 5, x1: 28, y1: 11, restricted: true, furniture: 'desks' }, { name: 'Lobby', x0: 14, y0: 13, x1: 21, y1: 15, furniture: 'lobby' },
-        { name: 'Staging', x0: 7, y0: 13, x1: 12, y1: 15, furniture: 'shelves' }, { name: 'Dock', x0: 23, y0: 13, x1: 28, y1: 15, furniture: 'dock' }, { name: 'Generator yard', x0: 32, y0: 7, x1: 35, y1: 11, restricted: true, furniture: 'gens' }],
-      assets: { '1': { name: 'Customer racks', kind: 'rack' }, '2': { name: 'NOC console', kind: 'ws' }, '3': { name: 'Generator controller', kind: 'ot' } },
+        { name: 'Staging', x0: 7, y0: 13, x1: 12, y1: 15, furniture: 'shelves' }, { name: 'Dock', x0: 23, y0: 13, x1: 28, y1: 15, furniture: 'dock' }, { name: 'Gen yard', x0: 32, y0: 7, x1: 35, y1: 11, restricted: true, furniture: 'gens' }],
+      assets: { '1': { name: 'Customer racks', kind: 'rack' }, '2': { name: 'NOC console', kind: 'ws' }, '3': { name: 'Generator controller', kind: 'ot', label: 'Gen control' } },
       attacks: [
         { id: 'crew', name: 'Night crew', brief: 'Professionals. They study your sensors and take the quietest route, over the fence if needed.', phase: 'night', start: 'edge', mode: 'stealth', targets: ['1', '3'] },
         { id: 'insider', name: 'Insider', brief: 'A contractor with a valid badge, already in the lobby. Cameras are the only witness.', phase: 'day', start: { x: 17, y: 14 }, mode: 'fast', targets: ['2', '1'], insider: true },
@@ -372,7 +372,7 @@ function basePlan(T: Tier): string {
   // assets
   for (let y = 0; y < T.h; y++) for (let x = 0; x < T.w; x++) { const c = g(x, y); if (!'123'.includes(c)) continue;
     s += `<rect class="pl-asset" x="${x * C + 3}" y="${y * C + 3}" width="${C - 6}" height="${C - 6}"/><path class="pl-asset-x" d="M${x * C + 3} ${y * C + 3}l${C - 6} ${C - 6}M${x * C + C - 3} ${y * C + 3}l${-(C - 6)} ${C - 6}"/>`
-      + `<text class="pl-asset-t" x="${x * C + C / 2}" y="${(y + 1) * C + 9}">${T.assets[c].name.toUpperCase()}</text>`; }
+      + `<text class="pl-asset-t" x="${x * C + C / 2}" y="${(y + 1) * C + 9}">${(T.assets[c].label || T.assets[c].name).toUpperCase()}</text>`; }
   // dimension strings (red), from building extents
   let bx0 = T.w, bx1 = -1, by0 = T.h, by1 = -1;
   for (let y = 0; y < T.h; y++) for (let x = 0; x < T.w; x++) if ('#EBWD'.includes(g(x, y))) { bx0 = Math.min(bx0, x); bx1 = Math.max(bx1, x); by0 = Math.min(by0, y); by1 = Math.max(by1, y); }

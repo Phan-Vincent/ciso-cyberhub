@@ -229,7 +229,8 @@ class Site:
             f'<link>{E(origin)}/intelligence/</link><description>Attributed security headlines collected by CyberHub.</description><language>en-us</language>{items}</channel></rss>',encoding='utf-8')
     def heading(self,title,desc,eyebrow=''):
         crumb=f'<p class="crumb">{E(eyebrow)}</p>' if eyebrow else ''
-        return f'<header class="page-head">{crumb}<h1>{E(title)}</h1><p class="lead">{E(desc)}</p></header>'
+        words=''.join(f'<span class="w">{E(w)}</span> ' for w in title.split())
+        return f'<header class="page-head">{crumb}<h1 class="wr" aria-label="{E(title)}">{words.strip()}</h1><p class="lead">{E(desc)}</p></header>'
     def card(self,title,desc,path,tag,footer=''):
         return f'<article class="card"><div class="card-top"><span class="label on">{E(tag)}</span><span class="meta-mono">{E(footer)}</span></div><h2>{self.a(title,path)}</h2><p>{E(desc)}</p></article>'
     def filters(self, fields, sort_options=(('name','Name A–Z'),)):
