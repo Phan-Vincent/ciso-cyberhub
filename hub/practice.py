@@ -38,27 +38,40 @@ def phishing_page(site) -> str:
     return body
 
 
+# Each lab: (name, line, url, levels it covers, typical time). Levels drive the badges and the filter on /labs/.
+B, I, A = 'Beginner', 'Intermediate', 'Advanced'
 LAB_TRACKS = [
     ('Command line', 'Type real commands in a safe practice shell.', [
-        ('Linux Lab', '36 levels: files, pipes, permissions, processes', '/linux/'), ('Networking Lab', '17 levels: IP, DNS, ports, subnetting', '/linux/network/'),
-        ('PowerShell Lab', '15 Windows investigation levels', '/linux/powershell/')]),
+        ('Linux Lab', '36 levels: files, pipes, permissions, processes', '/linux/', [B, I], '2–4 h'), ('Networking Lab', '17 levels: IP, DNS, ports, subnetting', '/linux/network/', [B, I], '1–2 h'),
+        ('PowerShell Lab', '15 Windows investigation levels', '/linux/powershell/', [I], '1–2 h')]),
     ('Investigate', 'Work the evidence like a SOC analyst.', [
-        ('SOC Simulator', 'Triage a shift of alerts', '/labs/soc/'), ('Phishing lab', 'Investigate a suspicious inbox', '/labs/phishing/'),
-        ('Packet Lab', 'Filter a capture, Wireshark-style', '/labs/packets/'), ('Log Hunt', 'Trace a break-in through server logs', '/labs/logs/')]),
+        ('SOC Simulator', 'Triage a shift of alerts', '/labs/soc/', [B, I], '20 min'), ('Phishing lab', 'Investigate a suspicious inbox', '/labs/phishing/', [B], '15 min'),
+        ('Packet Lab', 'Filter a capture, Wireshark-style', '/labs/packets/', [I], '45 min'), ('Log Hunt', 'Trace a break-in through server logs', '/labs/logs/', [I], '45 min')]),
     ('Build securely', 'Spot and fix the bugs attackers look for.', [
-        ('Secure Code Review', 'Find the vulnerable line, pick the fix', '/labs/code-review/'), ('Crypto & Encoding Lab', 'Decode flags, CyberChef-style', '/labs/crypto/')]),
+        ('Secure Code Review', 'Find the vulnerable line, pick the fix', '/labs/code-review/', [I], '30 min'), ('Crypto & Encoding Lab', 'Decode flags, CyberChef-style', '/labs/crypto/', [B, I], '30 min')]),
     ('Cloud and enterprise', 'Secure the systems most organizations actually run.', [
-        ('Cloud Security Lab', 'Spot AWS, Azure and Google Cloud misconfigurations', '/labs/cloud/'), ('Active Directory Lab', 'Trace a domain takeover in DC logs', '/labs/active-directory/')]),
+        ('Cloud Security Lab', 'Spot AWS, Azure and Google Cloud misconfigurations', '/labs/cloud/', [I], '30 min'), ('Active Directory Lab', 'Trace a domain takeover in DC logs', '/labs/active-directory/', [I], '45 min')]),
     ('AI security', 'Break a guarded AI, then learn the defense.', [
-        ('AI Red Team Lab', 'Six levels of prompt-injection defenses', '/ai/red-team/')]),
+        ('AI Red Team Lab', 'Six levels of prompt-injection defenses', '/ai/red-team/', [B, I], '30 min')]),
+    ('Games and challenges', 'Quick rounds to test what you know.', [
+        ('Cyber Duel', 'Head-to-head quiz: friends, bots or a link', '/duel/', [B, I, A], '5 min'), ('Live room', 'Class quiz or incident tabletop on the projector', '/duel/live/', [B, I], '15 min'),
+        ('CyberHub Daily', 'One real exploited vulnerability a day', '/daily/', [I], '5 min')]),
 ]
 
 
 def interactive_cards(site) -> str:
-    out = '<div class="lab-tracks">'
+    levels = (B, I, A)
+    out = ('<div class="lab-filter" role="group" aria-label="Filter labs by level"><span class="label">Show</span>'
+           '<button type="button" class="chip" data-lab-level="" aria-pressed="true">All</button>'
+           + ''.join(f'<button type="button" class="chip" data-lab-level="{lv}" aria-pressed="false">{lv}</button>' for lv in levels)
+           + '<span class="label lab-filter-count" aria-live="polite"></span></div><div class="lab-tracks">')
     for name, line, labs in LAB_TRACKS:
-        out += (f'<section class="lab-track"><div class="lab-track-head"><h2>{name}</h2><p>{line}</p></div><div class="dir-grid">'
-                + ''.join(f'<a class="dir-card" href="{site.base}{u}"><b>{t}</b><span>{d}</span><i aria-hidden="true">→</i></a>' for t, d, u in labs) + '</div></section>')
+        out += f'<section class="lab-track"><div class="lab-track-head"><h2>{name}</h2><p>{line}</p></div><div class="dir-grid">'
+        for t, d, u, lv, mins in labs:
+            badges = ''.join(f'<em class="lvl lvl-{x[0].lower()}">{x}</em>' for x in lv)
+            out += (f'<a class="dir-card" href="{site.base}{u}" data-levels="{" ".join(lv)}"><b>{t}</b><span>{d}</span>'
+                    f'<span class="lab-meta">{badges}<small>{mins}</small></span><i aria-hidden="true">→</i></a>')
+        out += '</div></section>'
     return out + '</div><h2 class="lab-sub" id="guided">Guided labs on evidence files</h2>'
 
 

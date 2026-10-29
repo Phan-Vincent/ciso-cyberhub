@@ -1,0 +1,13 @@
+{
+  "paths": [
+    {"id": "beginner", "title": "Total beginner", "line": "Never studied security? Start with plain-English lessons, then try your first labs.", "steps": [
+      ["Cyber 101 lessons", "/start/"], ["Learn the words", "/glossary/"], ["Spot a phishing email", "/labs/phishing/"], ["Your first commands", "/linux/"],
+      ["Test yourself in Cyber Duel", "/duel/"], ["Work a SOC shift", "/labs/soc/"], ["How networks talk", "/linux/network/"], ["Find your role", "/careers/match/"]]},
+    {"id": "secplus", "title": "Studying for Security+", "line": "Find your weak domains, study them, then prove it under exam pressure.", "steps": [
+      ["Take the readiness check", "/academy/readiness/"], ["Build a study plan", "/plan/"], ["Work through the Academy", "/academy/"], ["Drill the flashcards", "/academy/flashcards/"],
+      ["Practice questions", "/academy/practice/"], ["Apply it: SOC Simulator", "/labs/soc/"], ["Apply it: Crypto & Encoding", "/labs/crypto/"], ["Duel on Security+ questions", "/duel/"]]},
+    {"id": "handson", "title": "I want hands-on", "line": "Skip the reading. Work real-looking evidence from the shell to the domain controller.", "steps": [
+      ["Linux Lab", "/linux/"], ["Networking Lab", "/linux/network/"], ["PowerShell Lab", "/linux/powershell/"], ["Packet Lab", "/labs/packets/"], ["Log Hunt", "/labs/logs/"],
+      ["Secure Code Review", "/labs/code-review/"], ["Cloud Security Lab", "/labs/cloud/"], ["Active Directory Lab", "/labs/active-directory/"], ["AI Red Team Lab", "/ai/red-team/"]]}
+  ]
+}
