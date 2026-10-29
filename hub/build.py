@@ -26,6 +26,7 @@ from .account import build_account, supabase
 from .practice import build_practice, interactive_cards
 from .chal import build_chal
 from .ctf import build_ctf
+from .physlab import build_physlab
 from .infra import infra_hero
 from .start import build_start
 from .ailab import build_ailab
@@ -447,7 +448,7 @@ class Site:
         shutil.copyfile(ROOT/'web/site.css',self.out/'assets/site.css')
         shutil.copyfile(ROOT/'public/assets/brand/cyberhub-favicon.svg',self.out/'assets/favicon.svg')
         subprocess.run(['node','scripts/transpile.mjs'],cwd=ROOT,check=True)
-        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);build_practice(self);build_chal(self);build_ctf(self);build_start(self);build_ailab(self);build_roles(self);build_glossary(self);build_pslab(self);build_ittrack(self);build_plan(self);build_live(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
+        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);build_practice(self);build_chal(self);build_ctf(self);build_physlab(self);build_start(self);build_ailab(self);build_roles(self);build_glossary(self);build_pslab(self);build_ittrack(self);build_plan(self);build_live(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
         for name,data in [('academy',self.academy),('search',self.search)]:
             (self.out/'assets'/f'{name}.json').write_text(json.dumps(data,ensure_ascii=False))
         self.page('/404/','Page not found',self.heading('This page is not here.','Use search or the main navigation to find a learning resource.')+self.a('Return home','/','button primary'))
