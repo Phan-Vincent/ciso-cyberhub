@@ -163,6 +163,8 @@ if (typeof document !== 'undefined') {
   const box = document.querySelector<HTMLElement>('#continue');
   if (box) {
     const base = document.body.dataset.base || ''; const items: [string, string, string][] = [];
+    const last = load<{ t?: string; u?: string } | null>('cyberhub:last', null);
+    if (last && last.t && last.u && last.u.startsWith('/')) items.push(['Last visited', last.t, last.u]);
     const next = load<{ t?: string; u?: string; goal?: string } | null>('cyberhub:plan-next', null);
     if (next && next.t && next.u && next.u.startsWith('/')) items.push(['Next in your plan', next.t, next.u]);
     for (const [k, name, total, url] of [['cyberhub:linux', 'Linux Lab', 36, '/linux/'], ['cyberhub:netlab', 'Networking Lab', 17, '/linux/network/'], ['cyberhub:pslab', 'PowerShell Lab', 15, '/linux/powershell/']] as [string, string, number, string][]) {

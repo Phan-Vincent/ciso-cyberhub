@@ -177,6 +177,31 @@ for(const el of document.querySelectorAll<HTMLElement>('[data-verification]')){c
 // enhancement; server-rendered content stays readable without it.
 // ---------------------------------------------------------------------------
 const calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// Guided paths: "Start this path" remembers the choice; each step then shows a Next up bar.
+{const base=document.body.dataset.base||'',rel=location.pathname.slice(base.length)||'/';
+ document.querySelectorAll<HTMLAnchorElement>('a.path-go[data-path]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem('cyberhub:path',a.dataset.path||'');}catch{}}));
+ let pid='';try{pid=localStorage.getItem('cyberhub:path')||'';}catch{}
+ if(/^[a-z]{2,20}$/.test(pid))fetch(base+'/assets/paths.json').then(r=>r.json()).then((d:{paths:{id:string;title:string;steps:[string,string][]}[]})=>{
+  const p=d.paths.find(x=>x.id===pid);if(!p)return;const i=p.steps.findIndex(s=>s[1]===rel);if(i<0)return;
+  const bar=document.createElement('nav');bar.className='path-bar';bar.setAttribute('aria-label','Your path');
+  const info=document.createElement('span');info.className='label';info.textContent=`${p.title} · step ${i+1} of ${p.steps.length}`;
+  const go=document.createElement('a');go.className='button primary';
+  if(i<p.steps.length-1){go.href=base+p.steps[i+1][1];go.textContent=`Next up: ${p.steps[i+1][0]} →`;}else{go.href=base+'/progress/';go.textContent='Path complete. See your badges →';}
+  const x=document.createElement('button');x.type='button';x.className='path-x';const xl=document.createElement('span');xl.className='lbl';xl.textContent='Leave path';const xi=document.createElement('span');xi.className='ico';xi.setAttribute('aria-hidden','true');xi.textContent='×';x.append(xl,xi);x.setAttribute('aria-label','Leave this path');x.addEventListener('click',()=>{try{localStorage.removeItem('cyberhub:path');}catch{}bar.remove();});
+  bar.append(info,go,x);document.body.append(bar);document.body.classList.add('has-path-bar');}).catch(()=>{});}
+// Labs page: filter cards by level; tracks with nothing left hide themselves.
+{const chips=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-lab-level]'));
+ if(chips.length){const count=document.querySelector('.lab-filter-count');
+  const apply=(lv:string)=>{let n=0;document.querySelectorAll<HTMLElement>('.lab-track').forEach(t=>{let shown=0;t.querySelectorAll<HTMLElement>('[data-levels]').forEach(c=>{const ok=!lv||(c.dataset.levels||'').split(' ').includes(lv);c.hidden=!ok;if(ok)shown++;});t.hidden=!shown;n+=shown;});
+   chips.forEach(c=>c.setAttribute('aria-pressed',String((c.dataset.labLevel||'')===lv)));if(count)count.textContent=`${n} lab${n===1?'':'s'}`;try{sessionStorage.setItem('cyberhub:lab-level',lv);}catch{}};
+  chips.forEach(c=>c.addEventListener('click',()=>apply(c.dataset.labLevel||'')));let saved='';try{saved=sessionStorage.getItem('cyberhub:lab-level')||'';}catch{}apply(saved);}}
+// Continue: remember the last lab, lesson or game page visited, so the menu can send people back to it.
+{const base=document.body.dataset.base||'',rel=location.pathname.slice(base.length)||'/';
+ const worth=/^\/(labs\/[^/]+|linux\/.+|academy\/[^/]+|it\/[^/]+|ai\/red-team|duel|daily|challenges|start|defend\/[^/]+|plan|tutorials\/[^/]+|careers\/(?:match|resume))\//.test(rel);
+ let last:{u?:string;t?:string}|null=null;try{last=JSON.parse(localStorage.getItem('cyberhub:last')||'null');}catch{}
+ if(worth){try{localStorage.setItem('cyberhub:last',JSON.stringify({u:rel,t:document.title.split(' · ')[0].slice(0,60),at:Date.now()}));}catch{}}
+ const mc=document.getElementById('menu-continue') as HTMLAnchorElement|null;
+ if(mc){if(last&&last.u&&last.t&&last.u.startsWith('/')&&last.u!==rel){mc.href=base+last.u;mc.textContent=`Continue: ${last.t.length>26?last.t.slice(0,25)+'…':last.t} →`;}else{mc.href=base+'/progress/';mc.textContent='My progress →';}}}
 const fine=matchMedia('(hover: hover) and (pointer: fine)').matches;
 const clamp=(v:number,a:number,b:number)=>Math.min(b,Math.max(a,v));
 const lerp=(a:number,b:number,t:number)=>a+(b-a)*t;
