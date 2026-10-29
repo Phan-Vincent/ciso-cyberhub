@@ -409,12 +409,12 @@ def gis_drawing(base: str) -> str:
     s += f'<text class="dw-coord" x="{mx0 + 20}" y="{my1 - 30}">0</text><text class="dw-coord" x="{mx0 + 200}" y="{my1 - 30}">1 km</text></g>'
     calls = [
         (sub[0], sub[1], 600, 70, 'Buffer analysis', '#buffer', 'what sits within 500 m of the substation?'),
-        (dc[0], dc[1], 1000, 470 - 60, 'Flood exposure', '#layers', 'data center near the 100-year floodplain'),
-        (tower[0], tower[1], 120, 90, 'Coverage', '#coords', 'cell tower range, a 1.5 km radius'),
+        (dc[0], dc[1], 1120, 452, 'Flood exposure', '#layers', 'data center near the floodplain', 'end'),
+        (tower[0], tower[1], 90, 70, 'Coverage', '#coords', 'cell tower range, 1.5 km', 'start'),
         (700, 300, 760, 240, 'Coordinates', '#coords', 'every feature has a location'),
     ]
-    for cx, cy, tx, ty, t, href, subt in calls:
-        s += _call(cx, cy, tx, ty, t, href, 'start' if tx >= cx else 'end', subt)
+    for cx, cy, tx, ty, t, href, subt, *anc in calls:
+        s += _call(cx, cy, tx, ty, t, href, anc[0] if anc else ('start' if tx >= cx else 'end'), subt)
     s += _sheet(60, H - 62, W - 120, 'SITE PLAN · CRITICAL INFRASTRUCTURE', 'CYBERHUB · GIS · ILLUSTRATIVE MAP, NOT SURVEY DATA · CONTOUR INTERVAL 10 m', 'G-101')
     return _figure('dw-gis', W, H, 'Hand-drafted site plan with contour lines, a river and its floodplain, roads, parcels, a substation with buffer rings, a data center and a cell tower with its coverage radius.', s)
 

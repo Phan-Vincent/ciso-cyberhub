@@ -9,7 +9,7 @@
 export type Snapshot = Record<string, unknown>;
 const ACADEMY = (base: string) => `cyberhub:${base}:progress:v1`;
 // payload key -> localStorage key (academy depends on the base path, so it is mapped)
-export const KEYS = ['linux', 'netlab', 'defend', 'duel', 'daily', 'readiness', 'match', 'academy', 'soc', 'phish', 'redteam', 'start', 'pslab', 'itcards', 'plan', 'pcap', 'hunt', 'crypto', 'review', 'cloud', 'ad', 'ctf', 'phys'] as const;
+export const KEYS = ['linux', 'netlab', 'defend', 'duel', 'daily', 'readiness', 'match', 'academy', 'soc', 'phish', 'redteam', 'start', 'pslab', 'itcards', 'plan', 'pcap', 'hunt', 'crypto', 'review', 'cloud', 'ad', 'ctf', 'phys', 'gis', 'data'] as const;
 const storageKey = (k: string, base: string) => k === 'academy' ? ACADEMY(base) : k === 'daily' ? 'cyberhub:daily:stats' : k === 'readiness' ? 'cyberhub:readiness:best' : 'cyberhub:' + k;
 
 const arr = (v: unknown): string[] => Array.isArray(v) ? v.filter(x => typeof x === 'string') as string[] : [];
@@ -36,7 +36,7 @@ export function mergeProgress(a: Snapshot, b: Snapshot): Snapshot {
   if (a.redteam !== undefined || b.redteam !== undefined) { const ok = (v: unknown) => Array.isArray(v) ? v.filter(n => Number.isInteger(n) && n >= 0 && n < 20) as number[] : []; out.redteam = [...new Set([...ok(a.redteam), ...ok(b.redteam)])].sort((p, q) => p - q); }
   if (a.start !== undefined || b.start !== undefined) out.start = union(a.start, b.start);
   if (a.pslab !== undefined || b.pslab !== undefined) out.pslab = union(a.pslab, b.pslab);
-  for (const k of ['pcap', 'hunt', 'crypto', 'review', 'cloud', 'ad'] as const) if (a[k] !== undefined || b[k] !== undefined) out[k] = union(a[k], b[k]).filter(v => /^[a-z0-9-]{1,40}$/.test(v));
+  for (const k of ['pcap', 'hunt', 'crypto', 'review', 'cloud', 'ad', 'gis', 'data'] as const) if (a[k] !== undefined || b[k] !== undefined) out[k] = union(a[k], b[k]).filter(v => /^[a-z0-9-]{1,40}$/.test(v));
   if (a.ctf !== undefined || b.ctf !== undefined) { const m: Record<string, { s?: 1; h?: number; p?: number }> = {};
     for (const [k, v0] of [...Object.entries(obj(a.ctf)), ...Object.entries(obj(b.ctf))]) { if (!/^[a-z0-9-]{1,40}$/.test(k)) continue; const v = obj(v0), cur = m[k] || {};
       const h = Math.min(10, Math.max(num(cur.h), Math.floor(num(v.h)))); const solved = !!cur.s || v.s === 1; const pts = Math.min(500, Math.max(num(cur.p), v.s === 1 ? num(v.p) : 0));
