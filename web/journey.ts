@@ -15,7 +15,7 @@ export function shiftVerdict(score: number, max: number): string {
 }
 
 /* ------------------------------------------------------------ badges */
-export type Counts = { linux: number; net: number; read: number; shifts: number; perfect: number; academy: number; readiness: number; streak: number; role: boolean; duels: number; soc: number; phish: number; redteam: number; ps: number; pcap: number; hunt: number; crypto: number; review: number; cloud: number; ad: number; adv: number; ctf: number };
+export type Counts = { linux: number; net: number; read: number; shifts: number; perfect: number; academy: number; readiness: number; streak: number; role: boolean; duels: number; soc: number; phish: number; redteam: number; ps: number; pcap: number; hunt: number; crypto: number; review: number; cloud: number; ad: number; adv: number; ctf: number; phys: number; gis: number; data: number };
 export const BADGES: { id: string; test: (c: Counts) => boolean; prog: (c: Counts) => string }[] = [
   { id: 'first-flag', test: c => c.linux >= 1, prog: c => `${Math.min(c.linux, 1)}/1 Linux level` },
   { id: 'shell-analyst', test: c => c.linux >= 10, prog: c => `${Math.min(c.linux, 10)}/10 Linux levels` },
@@ -42,6 +42,9 @@ export const BADGES: { id: string; test: (c: Counts) => boolean; prog: (c: Count
   { id: 'cloud-guard', test: c => c.cloud >= 8, prog: c => `${Math.min(c.cloud, 8)}/8 cloud misconfigurations fixed` },
   { id: 'domain-defender', test: c => c.ad >= 8, prog: c => `${Math.min(c.ad, 8)}/8 Active Directory levels` },
   { id: 'deep-diver', test: c => c.adv >= 10, prog: c => `${Math.min(c.adv, 10)}/10 Advanced lab levels` },
+  { id: 'mapmaker', test: c => c.gis >= 10, prog: c => `${Math.min(c.gis, 10)}/10 GIS Lab levels` },
+  { id: 'data-detective', test: c => c.data >= 10, prog: c => `${Math.min(c.data, 10)}/10 Data Lab levels` },
+  { id: 'locked-down', test: c => c.phys >= 9, prog: c => `${Math.min(c.phys, 9)}/9 Lockdown Lab stars` },
   { id: 'flag-hunter', test: c => c.ctf >= 1000, prog: c => `${Math.min(c.ctf, 1000)}/1000 challenge points` },
 ];
 const arr = (k: string): string[] => { const v = load<unknown>(k, []); return Array.isArray(v) ? v.filter(x => typeof x === 'string') as string[] : []; };
@@ -51,7 +54,7 @@ function counts(base: string): Counts {
   const stats = load<{ best?: number }>('cyberhub:daily:stats', {});
   return { linux: arr('cyberhub:linux').length, net: arr('cyberhub:netlab').length, read: j.read.length, shifts: Object.keys(j.shifts).length, perfect: j.perfect.length,
     academy: Math.min(28, lessons), readiness: Number(load<number | null>('cyberhub:readiness:best', 0)) || 0, streak: Number(stats.best) || 0, role: load<unknown>('cyberhub:match', null) != null, duels: Number(load<{ wins?: number }>('cyberhub:duel', {}).wins) || 0, soc: Number(load<{ best?: number }>('cyberhub:soc', {}).best) || 0,
-    phish: Object.keys(load<Record<string, number>>('cyberhub:phish', {}) || {}).length, redteam: (load<number[]>('cyberhub:redteam', []) || []).filter(n => typeof n === 'number' && n < 5).length, ps: arr('cyberhub:pslab').length, ctf: Object.values(load<Record<string, { s?: number; p?: number }>>('cyberhub:ctf', {}) || {}).reduce((n, v) => n + (v && v.s && typeof v.p === 'number' ? Math.min(500, Math.max(0, v.p)) : 0), 0), adv: ['pcap', 'hunt', 'crypto', 'review', 'cloud', 'ad'].reduce((n, k) => n + arr('cyberhub:' + k).filter(x => typeof x === 'string' && x.startsWith('adv-')).length, 0), pcap: arr('cyberhub:pcap').length, hunt: arr('cyberhub:hunt').length, crypto: arr('cyberhub:crypto').length, review: arr('cyberhub:review').length, cloud: arr('cyberhub:cloud').length, ad: arr('cyberhub:ad').length };
+    phish: Object.keys(load<Record<string, number>>('cyberhub:phish', {}) || {}).length, redteam: (load<number[]>('cyberhub:redteam', []) || []).filter(n => typeof n === 'number' && n < 5).length, ps: arr('cyberhub:pslab').length, ctf: Object.values(load<Record<string, { s?: number; p?: number }>>('cyberhub:ctf', {}) || {}).reduce((n, v) => n + (v && v.s && typeof v.p === 'number' ? Math.min(500, Math.max(0, v.p)) : 0), 0), adv: ['pcap', 'hunt', 'crypto', 'review', 'cloud', 'ad'].reduce((n, k) => n + arr('cyberhub:' + k).filter(x => typeof x === 'string' && x.startsWith('adv-')).length, 0), pcap: arr('cyberhub:pcap').length, gis: arr('cyberhub:gis').length, data: arr('cyberhub:data').length, phys: Object.values(load<Record<string, number>>('cyberhub:phys', {}) || {}).reduce((n, v) => n + (typeof v === 'number' ? Math.min(3, Math.max(0, v)) : 0), 0), hunt: arr('cyberhub:hunt').length, crypto: arr('cyberhub:crypto').length, review: arr('cyberhub:review').length, cloud: arr('cyberhub:cloud').length, ad: arr('cyberhub:ad').length };
 }
 
 /* ------------------------------------------------------------ UI */

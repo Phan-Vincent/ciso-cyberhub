@@ -53,11 +53,11 @@ class BuildTests(unittest.TestCase):
         self.assertIn('<button class="card flashcard" id="card-text" type="button" aria-pressed="false">',html)
         self.assertIn('aria-live="polite"',html)
         self.assertIn('Click the card, or press Enter or Space, to flip it.',html)
-    def test_home_labels_the_attack_map_as_simulated(self):
+    def test_home_labels_the_attack_map_as_an_illustration(self):
         html=(ROOT/'dist/index.html').read_text()
         self.assertNotIn('Simulated / not live telemetry',html)
-        self.assertIn('aria-label="Simulated cyberattack map: illustrative arcs between eight countries. Not live telemetry."',html)
-        self.assertIn('simulated paths',html)
+        self.assertIn('aria-label="Illustration of cyberattacks moving between countries on a rotating globe. Drag to spin it."',html)
+        self.assertNotRegex(html.lower(),r'live (attack|threat) (map|feed)|real-time attacks')
         self.assertNotIn('core-yaw',html)
     def test_footer_lockup_uses_shared_css_frame(self):
         svg=(ROOT/'public/assets/brand/cyberhub-lockup-on-dark.svg').read_text()
@@ -94,11 +94,12 @@ class BuildTests(unittest.TestCase):
         self.assertIn('/assets/geo/ne_110m_countries.json',js)
         for label in ('SIMULATED / ATTACK PATHS','SCENARIO 01 · NOT LIVE TELEMETRY','NODES 08 / ARCS 05','ILLUSTRATIVE EXERCISE'):
             self.assertNotIn(label,js)
-    def test_theme_button_exposes_dark_state(self):
+    def test_theme_follows_the_system(self):
         html=(ROOT/'dist/index.html').read_text()
-        self.assertIn('id="theme"',html)
-        self.assertIn('aria-label="Dark theme"',html)
-        self.assertIn('aria-pressed="false"',html)
+        self.assertNotIn('id="theme"',html)
+        self.assertIn('<meta name="color-scheme" content="dark light">',html)
+        theme=(ROOT/'web/theme.ts').read_text()
+        self.assertIn("prefers-color-scheme: light",theme)
     def test_endorsement_sentence_matches_config(self):
         home=(ROOT/'dist/index.html').read_text()
         self.assertIn('University endorsement pending.',home)

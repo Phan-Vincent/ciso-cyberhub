@@ -51,6 +51,10 @@ LAB_TRACKS = [
         ('Secure Code Review', '18 bugs: find the vulnerable line, pick the fix', '/labs/code-review/', [I, A], '30 min'), ('Crypto & Encoding Lab', '13 puzzles: decode flags, CyberChef-style', '/labs/crypto/', [B, I, A], '30 min')]),
     ('Cloud and enterprise', 'Secure the systems most organizations actually run.', [
         ('Cloud Security Lab', '17 configs: AWS, Azure, Google Cloud, Kubernetes', '/labs/cloud/', [I, A], '30 min'), ('Active Directory Lab', '11 levels: trace a domain takeover', '/labs/active-directory/', [I, A], '45 min')]),
+    ('Physical security', 'Lock down a building, then watch someone try to break in.', [
+        ('Lockdown Lab', 'Cameras, locks and guards on a budget, three buildings', '/labs/physical/', [B, I, A], '45–90 min')]),
+    ('Maps and data', 'Location and numbers, the way analysts use them.', [
+        ('GIS Lab', '10 levels: coordinates, impossible travel, geofences', '/labs/gis/', [B, I, A], '45 min'), ('Data Lab', '10 levels on real CISA KEV and internship data', '/labs/data/', [B, I, A], '45 min')]),
     ('AI security', 'Break a guarded AI, then learn the defense.', [
         ('AI Red Team Lab', 'Six levels of prompt-injection defenses', '/ai/red-team/', [B, I], '30 min')]),
     ('Games and challenges', 'Quick rounds to test what you know.', [
