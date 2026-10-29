@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T22:39:35Z",
+  "generated_at": "2026-10-29T08:34:26Z",
   "items": [
     {
       "also_remote": false,
@@ -17,6 +17,24 @@
       ],
       "title": "IT Data Analyst Intern",
       "url": "https://danaher.wd1.myworkdayjobs.com/DanaherJobs/job/Brea-California-United-States/IT-Data-Analyst-Intern_R1316675",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Santa Ana",
+      "company": "Anduril",
+      "id": "15d1fca0-add9-47d8-9d9d-87f8cbbd3f73",
+      "miles": 43,
+      "new": true,
+      "posted": "2026-10-28",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Winter 2027"
+      ],
+      "title": "Library Science Co-op",
+      "url": "https://boards.greenhouse.io/andurilindustries/jobs/5278662007",
       "zone": "near"
     },
     {
@@ -754,24 +772,6 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "El Segundo",
-      "company": "The Aerospace Corporation",
-      "id": "3faca9c1-e66c-437c-a5bd-9ab5cd608a2f",
-      "miles": 65,
-      "new": false,
-      "posted": "2026-09-22",
-      "security": true,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Tools and Assurance Intern - Information Systems and Cyber Division",
-      "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Software-Tools-and-Assurance-Intern_R016429",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Carson",
       "company": "GrayMatter Robotics",
@@ -808,21 +808,19 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "VSP Vision",
-      "id": "178d0613-9e8b-480c-b35e-f7b89b94e02e",
-      "miles": null,
+      "category": "AI/ML/Data",
+      "city": "San Diego",
+      "company": "ASML",
+      "id": "3338e211-5030-4319-9e46-aba103ce8cbd",
+      "miles": 102,
       "new": true,
       "posted": "2026-10-28",
       "security": false,
       "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Software-Engineer_R-10068",
-      "zone": "remote"
+      "terms": [],
+      "title": "Data Engineer Co-op Intern",
+      "url": "https://asml.wd3.myworkdayjobs.com/asmlext1/job/San-Diego-CA-USA/Internship-Co-Op--Data-Engineer_J-00355626",
+      "zone": "region"
     },
     {
       "also_remote": false,
@@ -840,6 +838,24 @@
       ],
       "title": "Software Engineer Intern - Technology Innovation",
       "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Technology-Innovation_R-10020",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "VSP Vision",
+      "id": "d54ad503-0917-4cd9-8e73-8ecd6fe2d56d",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-28",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Software-Engineer_R-10071",
       "zone": "remote"
     },
     {
@@ -1213,7 +1229,7 @@
       "company": "The Aerospace Corporation",
       "id": "7f1577fe-f906-4768-872a-6a8b2a16dd0a",
       "miles": 65,
-      "new": true,
+      "new": false,
       "posted": "2026-10-21",
       "security": false,
       "sponsorship": "Other",
@@ -1229,7 +1245,7 @@
       "company": "The Aerospace Corporation",
       "id": "3c5aa30b-a574-4c60-b5bb-5d75268f2945",
       "miles": 65,
-      "new": true,
+      "new": false,
       "posted": "2026-10-21",
       "security": false,
       "sponsorship": "Other",
@@ -1245,7 +1261,7 @@
       "company": "ClickHouse",
       "id": "1396b282-ae49-4b5f-a315-27c109ef26fd",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-21",
       "security": false,
       "sponsorship": "Other",
@@ -1263,7 +1279,7 @@
       "company": "ICF International",
       "id": "24537423-4d5f-4c4e-96e3-47f55defe704",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-21",
       "security": false,
       "sponsorship": "Other",
@@ -1279,7 +1295,7 @@
       "company": "ICF International",
       "id": "73395dc9-ae40-45b9-b46a-7c823d29cc98",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-21",
       "security": false,
       "sponsorship": "Other",
@@ -1295,7 +1311,7 @@
       "company": "Zillow",
       "id": "6244dbb0-e314-486b-b2c6-143c829bd211",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-21",
       "security": false,
       "sponsorship": "Other",
@@ -1313,7 +1329,7 @@
       "company": "Motorola Solutions",
       "id": "5f70632d-c11e-4006-a4eb-a0ab37ed4448",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-21",
       "security": false,
       "sponsorship": "Other",
@@ -1660,6 +1676,54 @@
     {
       "also_remote": false,
       "category": "Hardware",
+      "city": "Aliso Viejo",
+      "company": "Indie",
+      "id": "e925d6fc-4054-4d56-bd4b-a35f60724d50",
+      "miles": 48,
+      "new": false,
+      "posted": "2026-10-14",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Design Verification Engineer Intern",
+      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265698007",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Aliso Viejo",
+      "company": "Indie",
+      "id": "2081c3f3-7a52-4da7-a160-43d0509b4835",
+      "miles": 48,
+      "new": false,
+      "posted": "2026-10-14",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Wireless Charging Engineer Intern",
+      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265700007",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Aliso Viejo",
+      "company": "Indie",
+      "id": "07aad510-60aa-4f59-a810-1efbb9d74d6f",
+      "miles": 48,
+      "new": false,
+      "posted": "2026-10-14",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Applications Software Developer Intern",
+      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265696007",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
       "city": "Costa Mesa",
       "company": "Anduril",
       "id": "7bb707f9-e94b-4f2d-8921-ee6d523213bc",
@@ -1949,24 +2013,6 @@
       "title": "AI Engineer Intern",
       "url": "https://axos.wd5.myworkdayjobs.com/Axos/job/HQ---San-Diego-CA/AI-Engineer-Intern_JR5658",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "ICF International",
-      "id": "8938d4f1-3093-43eb-a443-bd11de15a159",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-07",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Data Engineer Intern",
-      "url": "https://icf.wd5.myworkdayjobs.com/icfexternal_career_site/job/Reston-VA/XMLNAME-2027-Summer-Intern--Data-Engineer--Reston--VA-or-Remote-_R2603380",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -2572,6 +2618,24 @@
     },
     {
       "also_remote": false,
+      "category": "Hardware",
+      "city": "Torrance",
+      "company": "Castelion",
+      "id": "08c3913b-f70d-4fc7-bce0-4f9a3caebd07",
+      "miles": 63,
+      "new": false,
+      "posted": "2026-09-22",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Fall 2026"
+      ],
+      "title": "Electrical Engineer Intern - Avionics",
+      "url": "https://job-boards.greenhouse.io/castelioncorporation/jobs/4417146009",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Upstart",
@@ -2979,6 +3043,24 @@
       ],
       "title": "Product Management Intern",
       "url": "https://trimble.wd1.myworkdayjobs.com/en-US/TrimbleCareers/job/US---CO-Westminster/Product-Management-Intern_R57675-1",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Torrance",
+      "company": "Castelion",
+      "id": "58001b74-5cf5-4090-9ded-e59302c22da0",
+      "miles": 63,
+      "new": false,
+      "posted": "2026-09-07",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Fall 2026"
+      ],
+      "title": "Embedded Software Engineer Intern",
+      "url": "https://job-boards.greenhouse.io/castelioncorporation/jobs/4386047009",
       "zone": "region"
     },
     {
