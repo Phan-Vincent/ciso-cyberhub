@@ -27,6 +27,7 @@ from .practice import build_practice, interactive_cards
 from .chal import build_chal
 from .ctf import build_ctf
 from .physlab import build_physlab
+from .drawings import learn_drawing, practice_drawing, careers_drawing, resources_drawing
 from .infra import infra_hero
 from .start import build_start
 from .ailab import build_ailab
@@ -325,12 +326,12 @@ class Site:
         info={p:(t,d) for _k,_l,_g,_d,kids in self.SECTIONS for t,p,d in kids}
         return '<div class="dir-grid">'+''.join(f'<a class="dir-card" href="{E(self.base+p)}"><b>{E(info[p][0])}</b><span>{E(info[p][1])}</span><i aria-hidden="true">→</i></a>' for p in paths if p in info)+'</div>'
     def resources_page(self):
-        body=self.heading('All resources','Everything on CyberHub in one place, in four sections.','Directory')
+        body=self.heading('All resources','Everything on CyberHub in one place, in four sections.','Directory')+resources_drawing(self.base)
         body+='<nav class="dir-jump" aria-label="Sections">'+''.join(f'<a href="#{key}"><span class="label">{i+1:02d}</span>{E(label)}</a>' for i,(key,label,landing,desc,kids) in enumerate(self.SECTIONS))+'</nav>'
         body+=self.directory()
         body+=f'<p class="notice">CyberHub is a free resource built by CISO at CSUSB. Want a team, projects or competitions? Visit the <a href="{E(self.config["club_url"])}">CISO club site</a>.</p>'
         self.page('/resources/','All resources',body,'Every CyberHub resource in one directory: learn, tools, AI, intel and careers.')
-        self.page('/learn/','Learn',self.heading('Learn','Courses and study tools for every level, from your first command to exam day.','Learn')+'<h2 class="lab-sub">Not sure where to start? Pick a path</h2>'+self.path_picker()+'<h2 class="lab-sub">Everything in Learn</h2>'+self.directory(['learn'],False),'Security+ academy, Linux Lab, guided labs, flashcards, readiness check, daily puzzle and cyber history.')
+        self.page('/learn/','Learn',self.heading('Learn','Courses and study tools for every level, from your first command to exam day.','Learn')+learn_drawing(self.base)+'<h2 class="lab-sub">Not sure where to start? Pick a path</h2>'+self.path_picker()+'<h2 class="lab-sub">Everything in Learn</h2>'+self.directory(['learn'],False),'Security+ academy, Linux Lab, guided labs, flashcards, readiness check, daily puzzle and cyber history.')
         self.page('/play/','Play',self.heading('Play','Quick games that teach: duel your friends, run a class-wide live room, solve the Daily and find your role.','Play')+self.cards_for(['/duel/','/duel/live/','/daily/','/careers/match/','/progress/']),'Cyber Duel, live class rooms, the Daily puzzle and the role quiz.','Play')
 
     def tool_pages(self):
@@ -384,6 +385,7 @@ class Site:
             self.page(path,d['title'],body,d['description'],{'academy':'Academy','labs':'Labs','careers':'Careers','tutorials':'Tools'}[sec])
         for section,title,description in [('labs','Practice','Interactive labs and games that run in your browser, grouped by skill and marked by level. Synthetic evidence, clear checks, hints when you are stuck.'),('tutorials','Tool tutorials','Learn a bounded workflow and how to verify the result.'),('careers','Build a path you can demonstrate.','Connect foundational skills to projects, evidence and thoughtful career decisions.')]:
             body=self.heading(title,description,section.title())
+            body+={'labs':practice_drawing,'careers':careers_drawing}.get(section,lambda b:'')(self.base)
             if section=='careers':body+=f'<div class="grid two">{self.card("Internship scanner","Internships near CSUSB and remote, refreshed daily, with security and IT roles flagged.","/careers/internships/","Daily","Near CSUSB")}{self.card("Resume tailor","Match your resume to a posting, privately, then tailor it with AI without inventing anything.","/careers/resume/","Tool","Private")}{self.card("Which role are you?","Six questions that match you to a security career and its roadmap.","/careers/match/","Quiz","6 questions")}</div>'
             if section=='labs':body+=interactive_cards(self)
             body+='<div class="grid">'

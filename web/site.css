@@ -2924,3 +2924,88 @@ img[src$="ciso-seal.png"] { filter: grayscale(1) contrast(1.15); }
 .pl-tl { height: 72px; }
 .pl-tl-m.reach i { height: 30px; margin-top: 0; }
 .pl-tl-m.reach em { top: 50px; left: 0; }
+
+/* =====================================================================
+   SECTION DRAWINGS (hub/drawings.py): measured drawings and sketches
+   ===================================================================== */
+.dw { margin: 8px 0 40px; padding: 0; position: relative; }
+.dw-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.dw-svg pattern line, .dw-svg pattern path { stroke: var(--ink); stroke-width: .7; fill: none; }
+.dw-svg pattern circle { fill: var(--ink); }
+.dw-stipple { opacity: .5; }
+.dw-ground { stroke: var(--ink); stroke-width: 2.4; fill: none; }
+.dw-poche { stroke: var(--ink); stroke-width: 1.2; }
+.dw-line, .dw-concrete + .dw-line { stroke: var(--ink); stroke-width: 1.1; fill: none; }
+.dw-thin, .dw-glass, .dw-branch { stroke: var(--ink); stroke-width: .7; fill: none; }
+.dw-hair { stroke: var(--ink-muted); stroke-width: .45; fill: none; }
+.dw-reflect { stroke: var(--ink-muted); stroke-width: .6; fill: none; }
+.dw-concrete { opacity: .55; }
+.dw-ties circle { fill: var(--ink); }
+.dw-scribble { stroke: var(--ink-muted); stroke-width: .5; fill: none; stroke-linejoin: round; }
+.dw-fig circle, .dw-fig path { stroke: var(--ink); stroke-width: .9; fill: none; stroke-linecap: round; }
+.dw-cast { opacity: .35; stroke: none; }
+.dw-led, .dw-red-fill { fill: var(--red); }
+.dw-air { stroke: var(--red); stroke-width: 1.3; fill: none; stroke-linecap: round; }
+.dw-lvl path { stroke: var(--ink); stroke-width: .7; fill: none; }
+.dw-lvl .dw-tri { fill: var(--red); stroke: none; }
+.dw-lvl text, .dw-coord, .dw-dim text, .dw-call-s { font-family: var(--code); font-size: 9px; letter-spacing: .06em; fill: var(--ink-muted); }
+.dw-lvl text.end, .dw-coord.end, .dw-call-t.end, .dw-call-s.end { text-anchor: end; }
+.dw-coord { text-anchor: middle; }
+.dw-dim path { stroke: var(--red); stroke-width: .8; fill: none; }
+.dw-dim text { fill: var(--red); text-anchor: middle; }
+.dw-rule { stroke: var(--ink); stroke-width: 1.3; }
+.dw-title { font-family: var(--body); font-weight: 600; font-size: 17px; letter-spacing: .04em; fill: var(--ink); }
+.dw-sub { font-family: var(--code); font-size: 9px; letter-spacing: .12em; fill: var(--ink-muted); }
+.dw-no { font-family: var(--body); font-weight: 600; font-size: 28px; fill: var(--ink); text-anchor: end; }
+.dw-call { cursor: pointer; }
+.dw-ring { fill: none; stroke: var(--red); stroke-width: 1.2; stroke-dasharray: 3 2; }
+.dw-pin { fill: var(--red); }
+.dw-lead { stroke: var(--red); stroke-width: 1; fill: none; }
+.dw-call-t { font-family: var(--body); font-size: 14px; font-weight: 600; fill: var(--red); paint-order: stroke; stroke: var(--ground); stroke-width: 4px; stroke-linejoin: round; }
+.dw-call-s { paint-order: stroke; stroke: var(--ground); stroke-width: 3px; stroke-linejoin: round; }
+.dw-call:hover .dw-call-t, .dw-call:focus-visible .dw-call-t { text-decoration: underline; }
+.dw-call:hover .dw-ring, .dw-call:focus-visible .dw-ring { stroke-dasharray: none; stroke-width: 2; }
+.dw-call:focus-visible { outline: none; }
+.dw-call:focus-visible .dw-ring { stroke-width: 3; }
+/* sketches */
+.dw-sk, .dw-sk-node { stroke: var(--ink); stroke-width: 1.3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dw-sk-red { stroke: var(--red); stroke-width: 1.6; fill: none; stroke-linecap: round; }
+.dw-fill { opacity: .55; }
+.dw-fill-l { stroke: var(--ink-muted); stroke-width: .8; fill: none; }
+.dw-hand { font-family: var(--code); font-size: 13px; text-anchor: middle; fill: var(--ink); }
+.dw-red-t { fill: var(--red); }
+.dw-node-t { font-family: var(--body); font-weight: 600; font-size: 14px; text-anchor: middle; fill: var(--ink); }
+.dw-node.red .dw-sk-node { stroke: var(--red); }
+.dw-node:hover .dw-node-t, .dw-node:focus-visible .dw-node-t { fill: var(--red); text-decoration: underline; }
+.dw-node:focus-visible { outline: none; }
+.dw-node:focus-visible .dw-sk-node { stroke-width: 3; }
+/* maps */
+.dw-paper { fill: var(--raised); }
+.dw-frame { fill: none; stroke: var(--ink); stroke-width: 1.4; }
+.dw-contour { stroke: var(--ink-muted); stroke-width: .5; fill: none; }
+.dw-contour-i { stroke: var(--ink); stroke-width: .9; fill: none; }
+.dw-river { stroke: var(--ink); stroke-width: 1; fill: none; }
+.dw-flood { opacity: .55; }
+.dw-road { stroke: var(--ink); stroke-width: 14; fill: none; opacity: .12; }
+.dw-road-c { stroke: var(--ink); stroke-width: .6; stroke-dasharray: 10 6; fill: none; }
+.dw-parcel { fill: none; stroke: var(--ink-muted); stroke-width: .6; }
+.dw-site { fill: var(--ground); stroke: var(--ink); stroke-width: 1.3; }
+.dw-buffer { fill: none; stroke: var(--red); stroke-width: 1; stroke-dasharray: 6 4; }
+.dw-power { stroke: var(--red); stroke-width: 1.2; stroke-dasharray: 2 4; fill: none; }
+.dw-north { fill: var(--ink); }
+.dw-scale rect { fill: var(--ink); }
+.dw-scale rect.w { fill: none; stroke: var(--ink); stroke-width: 1; }
+/* draw-in once visible */
+.js .dw:not(.in) .dw-svg { opacity: 0; }
+.js .dw.in .dw-svg { opacity: 1; transition: opacity .3s; }
+.js .dw.in :is(.dw-line, .dw-thin, .dw-ground, .dw-sk, .dw-sk-node, .dw-contour, .dw-contour-i, .dw-river, .dw-scribble, .dw-branch) { stroke-dasharray: 1; animation: dw-draw 2.2s cubic-bezier(.4, 0, .2, 1) both; }
+.js .dw.in :is(.dw-call, .dw-node, .dw-lvl, .dw-dim, .dw-sk-red, .dw-red-t, .dw-buffer, .dw-power, .dw-air, .dw-hand) { animation: dw-in .8s 1.4s both; }
+.js .dw.in :is(.dw-poche, .dw-cast, .dw-stipple, .dw-fill, .dw-fill-l, .dw-concrete, .dw-flood, .dw-road, .dw-fig, .dw-ties) { animation: dw-in 1s .9s both; }
+@keyframes dw-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes dw-in { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .js .dw .dw-svg, .js .dw * { animation: none !important; opacity: 1; } .js .dw.in :is(.dw-line, .dw-thin, .dw-ground, .dw-sk, .dw-sk-node, .dw-contour, .dw-contour-i, .dw-river, .dw-scribble, .dw-branch) { stroke-dasharray: none; } }
+@media (max-width: 760px) {
+  .dw { margin: 0 -16px 28px; overflow-x: auto; }
+  .dw-svg { min-width: 760px; }
+}
+.dw-void { fill: var(--ground); }

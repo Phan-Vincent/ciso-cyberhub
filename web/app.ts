@@ -240,7 +240,7 @@ if(cursor&&fine&&!calm){
 
 // Reveals: in-view elements reveal at once; nothing waits on scrolling to become readable without JS.
 const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}}),{rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.rv, .fade, .acad').forEach(el=>rio.observe(el));
+document.querySelectorAll('.rv, .fade, .acad, .dw').forEach(el=>rio.observe(el));
 // Scroll-in: cards and sections below the fold rise in as they enter view, a few at a time.
 // Anything on screen at load stays put, so the first view never waits on motion.
 if(!calm&&'IntersectionObserver' in window){
