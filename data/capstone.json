@@ -1,0 +1,258 @@
+{
+  "id": "inland-vpn",
+  "title": "The VPN update",
+  "setting": "Fictional Inland State University, 2026-10-28. All people, hosts, messages, logs and flows are invented for practice. Addresses use reserved example ranges.",
+  "stages": [
+    {
+      "id": "adv-email",
+      "title": "1. Email triage",
+      "intro": "Read the message and authentication results. Record the attachment for the endpoint pivot.",
+      "evidence": [
+        "E01 | 2026-10-28 09:02 UTC | To: Maya Chen <maya.chen@isu.example.org> | From: IT Service Desk <help@isu-support.example.com> | Subject: Required VPN certificate update",
+        "E02 | Reply-To: service@isu-support.example.com | Return-Path: bounce@isu-support.example.com | Message-ID: <4621@isu-support.example.com>",
+        "E03 | Authentication-Results: spf=pass smtp.mailfrom=isu-support.example.com; dkim=pass header.d=isu-support.example.com; dmarc=pass header.from=isu-support.example.com",
+        "E04 | Body: “Install the attached certificate updater before noon to keep campus VPN access.” Attachment: VPN-Cert-Update.zip",
+        "E05 | Gateway extraction: VPN-Cert-Update.zip contains VPN-Cert-Update.js; SHA-256 (script) = 6e9e6b8ffb8c29a258ba2e37df1461fa896675e682d593af13b6d4b579207a92",
+        "E06 | Directory note: official IT notices use isu.example.org; isu-support.example.com is an unrelated lookalike example domain."
+      ],
+      "questions": [
+        {
+          "id": "target",
+          "prompt": "Who was targeted? Enter the mailbox.",
+          "type": "exact",
+          "answer": "maya.chen@isu.example.org",
+          "hint": "Read the To header in E01.",
+          "timeline": "09:02 UTC — phishing email sent to maya.chen@isu.example.org."
+        },
+        {
+          "id": "lure",
+          "prompt": "What was the lure?",
+          "type": "choice",
+          "options": [
+            "VPN certificate update",
+            "Payroll tax form",
+            "Course enrollment",
+            "Library renewal"
+          ],
+          "answer": "VPN certificate update",
+          "hint": "The subject and body in E01 and E04 agree."
+        },
+        {
+          "id": "authentication",
+          "prompt": "SPF, DKIM and DMARC all pass. What does that establish?",
+          "type": "choice",
+          "options": [
+            "The lookalike sender domain authenticated, but the message can still be phishing",
+            "The university approved the message",
+            "The attachment is safe",
+            "The recipient opened it"
+          ],
+          "answer": "The lookalike sender domain authenticated, but the message can still be phishing",
+          "hint": "E03 authenticates the sending domain; E06 compares it with the official domain."
+        },
+        {
+          "id": "attachment",
+          "prompt": "Which extracted file should you seek in endpoint logs?",
+          "type": "exact",
+          "answer": "VPN-Cert-Update.js",
+          "hint": "E05 names the script inside the ZIP."
+        }
+      ]
+    },
+    {
+      "id": "adv-endpoint",
+      "title": "2. Endpoint",
+      "intro": "Carry the extracted file name from Email. Search process events across three hosts, then follow only that process chain to persistence and C2.",
+      "evidence": [
+        "P01 | 09:03:04 | ISU-LT-017 | Event 4688 | explorer.exe → WINWORD.EXE | CommandLine: WINWORD.EXE C:\\Users\\jlopez\\Documents\\agenda.docx",
+        "P02 | 09:03:20 | ISU-LT-042 | Event 4688 | explorer.exe → Teams.exe | CommandLine: Teams.exe --processStart Teams.exe",
+        "P03 | 09:04:01 | ISU-IT-003 | Event 4688 | explorer.exe → powershell.exe | CommandLine: powershell.exe -File C:\\IT\\Inventory.ps1 | Actor=ISU\\itadmin",
+        "P04 | 09:05:11 | ISU-LT-042 | Event 4688 | explorer.exe (PID 2100) → wscript.exe (PID 3812) | CommandLine: wscript.exe C:\\Users\\mchen\\Downloads\\VPN-Cert-Update.js",
+        "P05 | 09:05:12 | ISU-LT-042 | Sysmon 1 | wscript.exe (PID 3812) → powershell.exe (PID 3920) | CommandLine: powershell.exe -NoProfile -WindowStyle Hidden -File C:\\ProgramData\\ISU\\cache.ps1",
+        "P06 | 09:05:14 | ISU-LT-017 | Event 4688 | WINWORD.EXE → msedge.exe | CommandLine: msedge.exe https://library.isu.example.org",
+        "P07 | 09:05:16 | ISU-IT-003 | Sysmon 1 | powershell.exe → conhost.exe | ParentCommandLine: powershell.exe -File C:\\IT\\Inventory.ps1",
+        "P08 | 09:05:18 | ISU-LT-042 | Sysmon 3 | powershell.exe (PID 3920) → 198.51.100.42:443 | TLS SNI=sync.isu-support.example.com",
+        "P09 | 09:05:40 | ISU-LT-017 | Sysmon 1 | explorer.exe → ISUUpdater.exe | SignedBy=Inland State University IT | CommandLine: ISUUpdater.exe /check",
+        "P10 | 09:06:01 | ISU-LT-042 | Security 4698 | TaskName: ISU VPN Update | Author: ISU\\mchen | Action: powershell.exe -NoProfile -File C:\\ProgramData\\ISU\\cache.ps1 | Trigger: at user logon",
+        "P11 | 09:06:20 | ISU-LT-042 | Defender | VPN-Cert-Update.js quarantined after execution; scheduled task remains present",
+        "P12 | 09:07:05 | ISU-IT-003 | Sysmon 3 | ISUUpdater.exe → 203.0.113.10:443 | SignedBy=Inland State University IT",
+        "P13 | 09:07:18 | ISU-LT-042 | Event 4688 | Teams.exe → msedgewebview2.exe | CommandLine: msedgewebview2.exe --embedded",
+        "P14 | 09:08:10 | ISU-LT-017 | Event 4688 | explorer.exe → EXCEL.EXE | CommandLine: EXCEL.EXE C:\\Users\\jlopez\\Documents\\budget.xlsx",
+        "P15 | 09:14:02 | ISU-IT-003 | System 7045 | ServiceName: ISUUpdaterSvc | ImagePath: C:\\Program Files\\ISU\\ISUUpdater.exe | SignedBy=Inland State University IT"
+      ],
+      "questions": [
+        {
+          "id": "first-process",
+          "prompt": "Select the log line showing the first malicious process and its parent.",
+          "type": "line",
+          "answer": "P04",
+          "hint": "Search the command lines for the extracted file from E05; other PowerShell and Office activity is unrelated.",
+          "timeline": "09:05 UTC — explorer.exe launched wscript.exe on ISU-LT-042.",
+          "carry": "attachment"
+        },
+        {
+          "id": "persistence",
+          "prompt": "Which persistence mechanism was created?",
+          "type": "choice",
+          "options": [
+            "At-logon scheduled task",
+            "Run registry key",
+            "Windows service",
+            "Startup folder shortcut"
+          ],
+          "answer": "At-logon scheduled task",
+          "hint": "Follow the P04 child process to its task creation event.",
+          "timeline": "09:06 UTC — at-logon task ISU VPN Update created."
+        },
+        {
+          "id": "c2",
+          "prompt": "What C2 IP should you seek in the capture?",
+          "type": "exact",
+          "answer": "198.51.100.42",
+          "hint": "Follow P04 to P05, then find that PowerShell PID in a network connection."
+        }
+      ]
+    },
+    {
+      "id": "adv-network",
+      "title": "3. Network",
+      "intro": "Carry the C2 IP from Endpoint. These are TLS flow records: times are UTC and bytes are client-to-server application payload. Encrypted contents and HTTP headers are not visible.",
+      "evidence": [
+        "N01 | 09:05:18 | ISU-LT-042 (192.0.2.42) → 198.51.100.42:443 | TLS SNI=sync.isu-support.example.com | 412 B out",
+        "N02 | 09:05:30 | ISU-LT-017 (192.0.2.17) → 203.0.113.10:443 | TLS SNI=updates.isu.example.org | 350 B out",
+        "N03 | 09:05:48 | ISU-IT-003 (192.0.2.3) → 203.0.113.10:443 | TLS SNI=telemetry.isu.example.org | 390 B out",
+        "N04 | 09:06:18 | ISU-LT-042 (192.0.2.42) → 198.51.100.42:443 | TLS SNI=sync.isu-support.example.com | 408 B out",
+        "N05 | 09:06:18 | ISU-IT-003 (192.0.2.3) → 203.0.113.10:443 | TLS SNI=telemetry.isu.example.org | 388 B out",
+        "N06 | 09:06:22 | ISU-LT-017 (192.0.2.17) → 203.0.113.22:443 | TLS SNI=onedrive.example.com | 1048576 B out | approved backup",
+        "N07 | 09:06:48 | ISU-IT-003 (192.0.2.3) → 203.0.113.10:443 | TLS SNI=telemetry.isu.example.org | 391 B out",
+        "N08 | 09:07:18 | ISU-LT-042 (192.0.2.42) → 198.51.100.42:443 | TLS SNI=sync.isu-support.example.com | 415 B out",
+        "N09 | 09:07:20 | ISU-LT-017 (192.0.2.17) → 203.0.113.10:443 | TLS SNI=updates.isu.example.org | 925 B out",
+        "N10 | 09:08:18 | ISU-LT-042 (192.0.2.42) → 198.51.100.42:443 | TLS SNI=sync.isu-support.example.com | 410 B out",
+        "N11 | 09:08:45 | ISU-LT-017 (192.0.2.17) → 203.0.113.22:443 | TLS SNI=onedrive.example.com | 8192 B out",
+        "N12 | 09:09:20 | ISU-IT-003 (192.0.2.3) → 203.0.113.10:443 | TLS SNI=updates.isu.example.org | 714 B out",
+        "N13 | 09:10:04 | ISU-LT-042 (192.0.2.42) → 198.51.100.42:443 | TLS SNI=sync.isu-support.example.com | 262144 B out | bulk outbound TLS flow",
+        "N14 | 09:10:06 | ISU-LT-042 (192.0.2.42) → 198.51.100.42:443 | TLS SNI=sync.isu-support.example.com | 262144 B out | bulk outbound TLS flow",
+        "N15 | 09:11:00 | ISU-LT-017 (192.0.2.17) → 203.0.113.22:443 | TLS SNI=onedrive.example.com | 2048 B out"
+      ],
+      "questions": [
+        {
+          "id": "interval",
+          "prompt": "For the carried C2 IP, what is the interval between its four small flows? Answer in seconds.",
+          "type": "exact",
+          "answer": "60",
+          "hint": "Filter by the C2 destination and subtract consecutive small-flow times. The 30-second telemetry pattern belongs to another host.",
+          "carry": "c2",
+          "derived": true,
+          "accept": [
+            "60s",
+            "60 sec",
+            "60 seconds",
+            "1 minute"
+          ]
+        },
+        {
+          "id": "exfil",
+          "prompt": "For the carried C2 IP, how many KiB left in its two bulk outbound flows? Answer in KiB.",
+          "type": "exact",
+          "answer": "512",
+          "hint": "Filter by the C2 destination, add its two bulk outbound byte counts, then divide by 1024. The larger OneDrive flow has a different destination.",
+          "timeline": "09:10 UTC — about 512 KiB uploaded from ISU-LT-042.",
+          "carry": "c2",
+          "derived": true,
+          "accept": [
+            "512 KiB",
+            "512KB",
+            "512 KB"
+          ]
+        },
+        {
+          "id": "source-ip",
+          "prompt": "What internal source IP sent the C2 flows? Carry it into AD.",
+          "type": "exact",
+          "answer": "192.0.2.42",
+          "hint": "Filter by the C2 destination, then read the source address. Other hosts have their own flows.",
+          "carry": "c2"
+        }
+      ]
+    },
+    {
+      "id": "adv-ad",
+      "title": "4. Active Directory",
+      "intro": "Carry the internal source IP from Network. Filter domain events by that source before attributing logons, group changes and ticket requests.",
+      "evidence": [
+        "A01 | 09:04:10 | DC-01 | Event 4624 | Account=ISU\\registrar | Source=ISU-LT-017 (192.0.2.17) | Status=success",
+        "A02 | 09:05:31 | DC-01 | Event 4624 | Account=ISU\\itadmin | Source=ISU-IT-003 (192.0.2.3) | Status=success",
+        "A03 | 09:06:01 | DC-01 | Event 4769 | Requester=ISU\\itadmin | Source=ISU-IT-003 (192.0.2.3) | Service=host/DC-01 | TicketEncryptionType=0x12",
+        "A04 | 09:07:10 | DC-01 | Event 4728 | Group=Helpdesk-Readers | Member=ISU\\jlopez | Actor=ISU\\itadmin | Source=ISU-IT-003 (192.0.2.3) | approved change CHG-4821",
+        "A05 | 09:07:30 | DC-01 | Event 4624 | Account=ISU\\jlopez | Source=ISU-LT-017 (192.0.2.17) | Status=success",
+        "A06 | 09:08:15 | DC-01 | Event 4769 | Requester=ISU\\mchen | Source=ISU-LT-042 (192.0.2.42) | Service=svc-vpn-backup/isu.example.org | TicketEncryptionType=0x17",
+        "A07 | 09:08:44 | DC-01 | Event 4769 | Requester=ISU\\jlopez | Source=ISU-LT-017 (192.0.2.17) | Service=host/FILES-01 | TicketEncryptionType=0x12",
+        "A08 | 09:09:41 | DC-01 | Event 4624 | LogonType=3 | Account=ISU\\mchen | Source=ISU-LT-042 (192.0.2.42) | Status=success",
+        "A09 | 09:10:40 | DC-01 | Event 4624 | Account=ISU\\registrar | Source=ISU-LT-017 (192.0.2.17) | Status=success",
+        "A10 | 09:11:03 | DC-01 | Event 4728 | Group=VPN-Admins | Member=ISU\\svc-vpn-backup | Actor=ISU\\mchen | Source=ISU-LT-042 (192.0.2.42) | delegated VPN group-write permission",
+        "A11 | 09:11:12 | DC-01 | Event 4624 | LogonType=3 | Account=ISU\\svc-vpn-backup | Source=ISU-LT-042 (192.0.2.42) | Status=success; first observed logon for this account from this source",
+        "A12 | 09:12:40 | DC-01 | Event 4662 | Account=ISU\\svc-vpn-backup | Source=ISU-LT-042 (192.0.2.42) | Object=VPN configuration | Access=read",
+        "A13 | 09:13:00 | DC-01 | Event 4624 | Account=ISU\\itadmin | Source=ISU-IT-003 (192.0.2.3) | Status=success",
+        "A14 | 09:13:20 | DC-01 | Event 4769 | Requester=ISU\\itadmin | Source=ISU-IT-003 (192.0.2.3) | Service=legacy-print/isu.example.org | TicketEncryptionType=0x17 | approved legacy service"
+      ],
+      "questions": [
+        {
+          "id": "group-event",
+          "prompt": "Using the carried source IP, select its VPN-Admins group membership change.",
+          "type": "line",
+          "answer": "A10",
+          "hint": "Filter 4728 events by the carried source IP. The admin workstation has an approved group change.",
+          "timeline": "09:11 UTC — ISU\\mchen added ISU\\svc-vpn-backup to VPN-Admins.",
+          "carry": "source-ip"
+        },
+        {
+          "id": "compromised",
+          "prompt": "Which account made that VPN-Admins change from the carried source IP?",
+          "type": "exact",
+          "answer": "ISU\\mchen",
+          "hint": "Read Actor in the 4728 event from the carried source IP.",
+          "carry": "source-ip",
+          "accept": [
+            "mchen",
+            "isu/mchen"
+          ]
+        },
+        {
+          "id": "credential-method",
+          "prompt": "Which method most likely obtained svc-vpn-backup credentials on the carried source host?",
+          "type": "choice",
+          "options": [
+            "Kerberoasting",
+            "Password spray",
+            "Pass-the-hash",
+            "Phishing of the service account"
+          ],
+          "answer": "Kerberoasting",
+          "carry": "source-ip",
+          "hint": "Find the 4769 for the service SPN from the carried source with RC4 (0x17), before its first logon."
+        },
+        {
+          "id": "contain",
+          "prompt": "Which host should be isolated first based on the carried source IP?",
+          "type": "choice",
+          "options": [
+            "ISU-LT-042",
+            "ISU-LT-017",
+            "DC-01",
+            "No host"
+          ],
+          "answer": "ISU-LT-042",
+          "hint": "Map the carried source IP to its host name in the AD source field.",
+          "carry": "source-ip"
+        }
+      ]
+    }
+  ],
+  "model": {
+    "summary": "A fake VPN certificate update reached Maya Chen. The extracted JavaScript ran on ISU-LT-042, launched PowerShell, installed an at-logon task and contacted 198.51.100.42. TLS flow records show about 512 KiB of outbound payload; they do not reveal its contents. From the same host, an RC4 service ticket request preceded the first observed svc-vpn-backup logon and an unauthorized VPN-Admins change.",
+    "affected": "ISU\\mchen; ISU\\svc-vpn-backup; ISU-LT-042 (192.0.2.42). Investigate DC-01 activity; no evidence here proves DC-01 itself is compromised.",
+    "indicators": "VPN-Cert-Update.zip; VPN-Cert-Update.js; 6e9e6b8ffb8c29a258ba2e37df1461fa896675e682d593af13b6d4b579207a92; sync.isu-support.example.com; 198.51.100.42; ISU VPN Update task.",
+    "containment": "Isolate ISU-LT-042; disable or reset ISU\\mchen and ISU\\svc-vpn-backup after preserving evidence; remove unauthorized VPN-Admins membership and scheduled task; block C2; scope mailbox delivery, other host connections and account activity. The RC4 4769 request before the first service-account logon is consistent with Kerberoasting, but ticket cracking and credential theft are inferred rather than directly observed. Verify outbound data contents before claiming which records left.",
+    "timeline": "09:02 email to Maya Chen; 09:05 script launched on ISU-LT-042 and C2 began; 09:06 at-logon task created; 09:08 RC4 service ticket request; 09:10 about 512 KiB outbound to C2; 09:11 unauthorized VPN-Admins membership change and first observed svc-vpn-backup logon from the laptop."
+  }
+}

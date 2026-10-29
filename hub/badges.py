@@ -36,6 +36,7 @@ BADGES = [
     ('mapmaker', 'Mapmaker', 'Solve all ten GIS Lab levels.', '/labs/gis/'),
     ('data-detective', 'Data detective', 'Solve all ten Data Lab levels.', '/labs/data/'),
     ('locked-down', 'Locked down', 'Earn three stars on all three Lockdown Lab buildings.', '/labs/physical/'),
+    ('case-closed', 'Case closed', 'Solve the capstone and submit an incident write-up.', '/labs/capstone/'),
     ('flag-hunter', 'Flag hunter', 'Score 1,000 points on the challenge board.', '/challenges/'),
 ]
 
