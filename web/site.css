@@ -1457,7 +1457,7 @@ input, select { border-radius: 10px; }
 @media (prefers-reduced-motion: reduce) { .mega { transition: none; } }
 
 /* grouped phone/overlay menu */
-.menu nav { align-self: start; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 32px; padding-top: 24px; overflow-y: auto; }
+.menu nav { align-self: stretch; align-content: start; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 32px; padding-top: 24px; overflow-y: auto; min-height: 0; overscroll-behavior: contain; }
 .menu-group { display: grid; align-content: start; gap: 2px; }
 .menu-group h2 { margin: 0 0 8px; color: var(--ink-muted); font-weight: 400; } .menu-group h2 span { color: var(--signal); }
 .menu nav .menu-group a { font-size: clamp(1.5rem, 1rem + 1.6vw, 2.3rem); padding: 6px 0; gap: 0; }

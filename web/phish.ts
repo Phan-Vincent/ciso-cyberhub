@@ -31,7 +31,7 @@ export const INBOX: Mail[] = [
     body: ['Prof. Rivera shared a document with you.', 'Open it from your DocShare account. If you were not expecting this, you can ignore it.'], link: { text: 'Open in DocShare', href: 'https://docshare.example/d/7f3k' },
     auth: { spf: 'pass', dkim: 'pass', dmarc: 'pass' }, clues: [],
     why: 'The notification comes from the real sharing service, the link goes to that same service, and it matches a class you take. Still, if in doubt, open the service directly instead of the link.' },
-  { id: 'giftcard', from: 'Dr. Patel, Department Chair', addr: 'dr.patel.chair@freemail.example', subject: 'Quick favour', phish: true,
+  { id: 'giftcard', from: 'Dr. Patel, Department Chair', addr: 'dr.patel.chair@freemail.example', subject: 'Quick favor', phish: true,
     body: ['Are you on campus? I need you to pick up four $100 gift cards for a student award, I\'m stuck in a meeting. Send me the codes and I\'ll reimburse you.'],
     auth: { spf: 'pass', dkim: 'pass', dmarc: 'pass' }, clues: ['Sender domain does not match the organization', 'Urgency or threat', 'Asks for a password, code or payment'],
     why: 'A classic gift-card scam impersonating a boss from a free-mail address. Authentication passes because it is a real free-mail account. Verify by calling the person on a known number.' },

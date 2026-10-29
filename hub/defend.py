@@ -43,7 +43,7 @@ DOMAINS = [
             ('MFA everywhere, phishing-resistant for admins', 'Security keys or passkeys for anyone with privileged access. MFA alone would have stopped several of the breaches above.'),
             ('Patch by real risk', 'Fix internet-facing and KEV-listed vulnerabilities first, within days, not months.'),
             ('Least privilege', 'Separate admin accounts, short-lived cloud credentials and no standing access to everything.'),
-            ('Log, centralise and alert', 'Forward authentication, admin and cloud audit logs to a SIEM and write detections for what attackers actually do.'),
+            ('Log, centralize and alert', 'Forward authentication, admin and cloud audit logs to a SIEM and write detections for what attackers actually do.'),
             ('Backups you have tested', 'The 3-2-1 rule: three copies, two kinds of media, one offline or immutable. Practice restoring them.'),
         ],
         'frameworks': 'NIST Cybersecurity Framework 2.0 (Govern, Identify, Protect, Detect, Respond, Recover), CIS Critical Security Controls v8, and the cloud provider\'s shared responsibility model.',
@@ -197,7 +197,7 @@ DOMAINS = [
         'what': [
             ('End-of-life operating systems', 'Windows 7 lost support in January 2020 and Windows 10 in October 2025 (paid Extended Security Updates aside). Unsupported systems get no new security fixes.'),
             ('Mainframes and COBOL', 'Banks, insurers and governments still run core systems on mainframes and decades-old code, maintained by a shrinking pool of experts.'),
-            ('Embedded and medical devices', 'Imaging machines, lab analysers and building controllers are certified as a whole, so upgrading the OS can mean recertifying the device.'),
+            ('Embedded and medical devices', 'Imaging machines, lab analyzers and building controllers are certified as a whole, so upgrading the OS can mean recertifying the device.'),
             ('Forgotten servers and "shadow IT"', 'The test server nobody turned off, an old website and a vendor appliance in a closet all count.'),
             ('Old protocols', 'SMBv1, TLS 1.0, NTLM and Telnet linger because something still depends on them.'),
         ],

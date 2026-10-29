@@ -154,7 +154,7 @@ class Site:
             nav+=(f'<div class="nav-item"><a class="nav-top" href="{E(b+landing)}"'+(' aria-current="page"' if cur==key else '')+f'><span>{i+1:02d}</span>{label}</a>'
                   f'<div class="mega" role="group" aria-label="{E(label)}"><p class="mega-desc">{E(desc)}</p><div class="mega-links">{links}</div></div></div>')
         menu_nav=''.join(f'<section class="menu-group"><h2 class="label"><span>{i+1:02d}</span> {E(label)}</h2>'+''.join(f'<a href="{E(b+p)}">{E(t)}</a>' for t,p,d in kids)+'</section>' for i,(key,label,landing,desc,kids) in enumerate(self.SECTIONS))
-        menu_nav+=f'<section class="menu-group"><h2 class="label"><span>06</span> More</h2><a href="{E(b)}/resources/">All resources</a><a href="{E(b)}/search/">Search</a><a href="{E(b)}/contribute/">Contribute</a><a href="{E(self.config["club_url"])}">CISO club ↗</a></section>'
+        menu_nav+=f'<section class="menu-group"><h2 class="label"><span>{len(self.SECTIONS)+1:02d}</span> More</h2><a href="{E(b)}/resources/">All resources</a><a href="{E(b)}/search/">Search</a><a href="{E(b)}/contribute/">Contribute</a><a href="{E(self.config["club_url"])}">CISO club ↗</a></section>'
         canonical=f'<link rel="canonical" href="{E(self.site_url+b+path)}">' if self.site_url and path!='/404/' else '<meta name="robots" content="noindex">'
         brand=(f'<a class="brand" href="{E(b)}/" aria-label="CyberHub home">'
                f'<span class="brand-core">{self.img("cyberhub-core-on-dark.svg","","dark",32,32)}{self.img("cyberhub-core-on-light.svg","","light",32,32)}</span>'

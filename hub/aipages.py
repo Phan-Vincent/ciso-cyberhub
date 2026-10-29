@@ -28,7 +28,7 @@ def local_page(site) -> str:
                  ('Privacy', 'Prompts and files never leave your machine. Useful for logs, notes and anything you would not paste into a website.'),
                  ('Offline', 'Once a model is downloaded it works on a plane, in a lab network or during an outage.'),
                  ('Free to run', 'No subscription or per-token cost. You pay in disk space, memory and electricity.'),
-                 ('Learn how it works', 'You see the moving parts: model files, sizes, quantisation, context windows and APIs.')])
+                 ('Learn how it works', 'You see the moving parts: model files, sizes, quantization, context windows and APIs.')])
              + '</div><p class="callout">Trade-off: local models are smaller than the frontier models on the leaderboard. They are great for summarizing, drafting, explaining and coding help, less so for the hardest reasoning.</p></section>')
     body += ('<section id="hardware"><h2><span class="label">02</span>Will my computer handle it?</h2>'
              '<p>The model has to fit in memory: your graphics card\'s VRAM if you have one, otherwise system RAM. Apple Silicon Macs share one pool of "unified memory", which works well. As a rough guide for the common 4-bit versions that Ollama downloads by default:</p>'

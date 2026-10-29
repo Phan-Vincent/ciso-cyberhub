@@ -1669,7 +1669,7 @@
   {
     "id": "hayabusa",
     "name": "Hayabusa",
-    "description": "Fast Windows event log analyser that turns logs into timelines and Sigma-based detections.",
+    "description": "Fast Windows event log analyzer that turns logs into timelines and Sigma-based detections.",
     "category": "Log analysis",
     "secondary_categories": [],
     "repository": "https://github.com/Yamato-Security/hayabusa",
@@ -1681,7 +1681,7 @@
     "installation": "https://github.com/Yamato-Security/hayabusa#readme",
     "difficulty": "intermediate",
     "use_cases": [
-      "Fast Windows event log analyser that turns logs into timelines and Sigma-based detections."
+      "Fast Windows event log analyzer that turns logs into timelines and Sigma-based detections."
     ],
     "classification": [
       "defensive"

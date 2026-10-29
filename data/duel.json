@@ -728,7 +728,7 @@
 "A password manager"
 ],
 "answer": 1,
-"why": "Security Information and Event Management tools such as Splunk, Elastic and Sentinel centralise logs for searching and detection."
+"why": "Security Information and Event Management tools such as Splunk, Elastic and Sentinel centralize logs for searching and detection."
 },
 {
 "id": "blue-51",
@@ -1848,7 +1848,7 @@
 "500 m"
 ],
 "answer": 2,
-"why": "Twisted-pair Ethernet is specified to 100 metres per run."
+"why": "Twisted-pair Ethernet is specified to 100 meters per run."
 },
 {
 "id": "itnet-7",
@@ -1932,7 +1932,7 @@
 "Nothing"
 ],
 "answer": 1,
-"why": "A grounded wrist strap equalises static charge so you do not zap components."
+"why": "A grounded wrist strap equalizes static charge so you do not zap components."
 },
 {
 "id": "aplus-13",
