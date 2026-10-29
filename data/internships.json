@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T08:34:26Z",
+  "generated_at": "2026-10-29T16:57:30Z",
   "items": [
     {
       "also_remote": false,
@@ -1174,16 +1174,36 @@
       "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
-      "company": "RTX",
-      "id": "3acab1ad-8c1c-4e51-b8d6-95ea67db24c1",
+      "company": "Crystal Dynamics",
+      "id": "68688728-c254-4961-b5ba-f479aace81a0",
       "miles": null,
       "new": true,
       "posted": "2026-10-22",
       "security": false,
       "sponsorship": "Other",
-      "terms": [],
-      "title": "Software Engineer Co-op",
-      "url": "https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-CO-AURORA-S77--16470-E-Hughes-Dr--BLDG-S77/Part-Time-Software-Engineer-Co-op-Remote-_01883451",
+      "terms": [
+        "Spring 2027"
+      ],
+      "title": "Gameplay Engineer Intern",
+      "url": "https://job-boards.greenhouse.io/crystaldynamics/jobs/4746848005",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Crystal Dynamics",
+      "id": "28764194-7d52-4d45-b292-fc66a47c6503",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-22",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Spring 2027"
+      ],
+      "title": "Technical Artist Intern",
+      "url": "https://job-boards.greenhouse.io/crystaldynamics/jobs/4746826005",
       "zone": "remote"
     },
     {
@@ -1342,6 +1362,26 @@
     },
     {
       "also_remote": false,
+      "category": "Product",
+      "city": "Remote (US)",
+      "company": "OneEthos",
+      "id": "4df32e9a-c2bf-41b5-a2d3-5bffe9caf0b5",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-21",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Fall 2026",
+        "Spring 2027",
+        "Summer 2027"
+      ],
+      "title": "Product Management Intern",
+      "url": "https://job-boards.greenhouse.io/oneethos/jobs/4459298009",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "Burbank",
       "company": "Insomniac Games",
@@ -1407,6 +1447,26 @@
       "title": "Product Analyst Intern - AI & Incubation",
       "url": "https://aptiv.wd5.myworkdayjobs.com/aptiv_careers/job/USA-San-Diego-CA---WR/Product-Analyst-Intern_J000704400",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "OneEthos",
+      "id": "e7dad441-1919-402c-8936-123968e0e6b3",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-20",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Fall 2026",
+        "Spring 2027",
+        "Summer 2027"
+      ],
+      "title": "Research and Development Intern",
+      "url": "https://job-boards.greenhouse.io/oneethos/jobs/4459193009",
+      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -4015,6 +4075,24 @@
       ],
       "title": "ntern, Engineer Software",
       "url": "https://careers-calamp.icims.com/jobs/4326/intern%2c-engineer-software---carlsbad%2c-ca-%28summer-2026%29/job",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Torrance",
+      "company": "Mantari",
+      "id": "e6ce61ca-3c29-426e-aa5d-365b7f5cf7c2",
+      "miles": 63,
+      "new": false,
+      "posted": "2026-03-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2026"
+      ],
+      "title": "Electrical Engineering Intern",
+      "url": "https://job-boards.greenhouse.io/mantari/jobs/4173653009",
       "zone": "region"
     }
   ],
