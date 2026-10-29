@@ -819,7 +819,7 @@
     },
     {
       "objective": "4.4",
-      "front": "Why synchronise time (NTP) across systems?",
+      "front": "Why synchronize time (NTP) across systems?",
       "back": "Investigations depend on lining up events from many logs; clock drift breaks the timeline."
     },
     {
@@ -924,8 +924,8 @@
     },
     {
       "objective": "5.2",
-      "front": "How is annualised loss expectancy (ALE) calculated?",
-      "back": "ALE = single loss expectancy x annualised rate of occurrence."
+      "front": "How is annualized loss expectancy (ALE) calculated?",
+      "back": "ALE = single loss expectancy x annualized rate of occurrence."
     },
     {
       "objective": "5.3",
@@ -970,7 +970,7 @@
     {
       "objective": "5.5",
       "front": "Known, partially known and unknown environment tests differ how?",
-      "back": "By how much the testers are told beforehand: full information, some, or none (formerly white, grey and black box)."
+      "back": "By how much the testers are told beforehand: full information, some, or none (formerly white, gray and black box)."
     },
     {
       "objective": "5.6",

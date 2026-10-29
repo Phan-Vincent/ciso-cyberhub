@@ -25,6 +25,7 @@ from .duel import build_duel
 from .account import build_account, supabase
 from .practice import build_practice, interactive_cards
 from .chal import build_chal
+from .ctf import build_ctf
 from .start import build_start
 from .ailab import build_ailab
 from .roles import build_roles
@@ -107,40 +108,41 @@ class Site:
         size=(f' width="{w}"' if w else '')+(f' height="{h}"' if h else '')
         c=f' class="{cls}"' if cls else ''
         return f'<img{c} src="{E(self.base+self.BRAND+name)}" alt="{E(alt)}"{size}>'
-    # Site structure: five sections. Header dropdowns, phone menu, footer, the
-    # resources directory and the homepage tiles are all generated from this list.
+    # Site structure: four sections. Header dropdowns (first six items + "See all"), the phone menu,
+    # the footer, the /resources/ directory and the section hub pages are all generated from this list.
+    # Order matters: the first items are what a newcomer most likely wants.
     SECTIONS=[
         ('learn','Learn','/learn/','Courses and study tools, from total beginner to exam day.',[
             ('Start here','/start/','Cyber 101 for total beginners'),('Security+ Academy','/academy/','28 lessons mapped to SY0-701'),('IT track','/it/','Networking, Windows, IT support'),
-            ('Security+ flashcards','/academy/flashcards/','83 cards across every objective'),('IT flashcards','/it/flashcards/','Network+ and A+ topics'),('Readiness check','/academy/readiness/','15 questions, a score by domain'),
-            ('Study planner','/plan/','A week-by-week plan for your goal'),('Cyber glossary','/glossary/','134 terms in plain English'),('What you will defend','/defend/','Five systems, explained in depth'),
-            ('Cyber history','/history/','1834 to today, with archival photos')]),
-        ('labs','Labs','/labs/','Hands-on practice that runs in your browser.',[
-            ('Linux Lab','/linux/','36 levels in a practice shell'),('Networking Lab','/linux/network/','17 levels: IP, DNS, ports, subnetting'),('PowerShell Lab','/linux/powershell/','15 Windows investigation levels'),
-            ('SOC Simulator','/labs/soc/','Triage a shift of alerts'),('Phishing lab','/labs/phishing/','Investigate a suspicious inbox'),('Packet Lab','/labs/packets/','Read a capture, Wireshark-style'),('Log Hunt','/labs/logs/','Trace a break-in through logs'),
-            ('Secure Code Review','/labs/code-review/','Find and fix the vulnerable line'),('Crypto & Encoding','/labs/crypto/','Decode flags, CyberChef-style'),('Cloud Security Lab','/labs/cloud/','Find cloud misconfigurations'),('Active Directory Lab','/labs/active-directory/','Trace a domain takeover'),('AI Red Team Lab','/ai/red-team/','Make an AI leak its secret'),
-            ('Guided labs','/labs/#guided','Investigations on evidence files')]),
-        ('play','Play','/play/','Quick, fun and made to share.',[
-            ('Cyber Duel','/duel/','Head-to-head: friends, bots, links'),('Live room','/duel/live/','Class quiz or incident tabletop'),('CyberHub Daily','/daily/','One real-world puzzle a day'),
-            ('Which role are you?','/careers/match/','A six-question career match'),('Your progress','/progress/','Badges and a completion card')]),
-        ('ai','AI','/ai/','Build with AI, safely.',[
-            ('Prompt testing','/ai/prompt-testing/','Test AI like software'),('AI and cyber jobs','/ai/jobs/','Live data and the job outlook'),('Secure AI coding','/ai/vibe-coding/','The vibe-coding cheat sheet'),
-            ('Skills, tokens and context','/ai/workflow/','Skills, context savers, org guidelines'),('Meta-prompting','/ai/meta-prompting/','Make AI write better prompts'),
-            ('Run AI locally','/ai/local/','Ollama on any computer'),('AI leaderboard','/ai/models/','Frontier and open-weight rankings')]),
+            ('Readiness check','/academy/readiness/','15 questions, a score by domain'),('Study planner','/plan/','A week-by-week plan for your goal'),('Cyber glossary','/glossary/','134 terms in plain English'),
+            ('Security+ flashcards','/academy/flashcards/','83 cards across every objective'),('IT flashcards','/it/flashcards/','Network+ and A+ topics'),
+            ('What you will defend','/defend/','Five systems, explained in depth'),('Cyber history','/history/','1834 to today, with archival photos')]),
+        ('practice','Practice','/labs/','Hands-on labs and games that run in your browser.',[
+            ('Linux Lab','/linux/','36 levels in a practice shell'),('Challenge board','/challenges/','16 flags, 100 to 500 points'),('SOC Simulator','/labs/soc/','Triage a shift of alerts'),('Packet Lab','/labs/packets/','Read a capture, Wireshark-style'),
+            ('Cyber Duel','/duel/','Head-to-head: friends, bots, links'),('Live room','/duel/live/','Class quiz or incident tabletop'),
+            ('CyberHub Daily','/daily/','One real-world puzzle a day'),('Networking Lab','/linux/network/','17 levels: IP, DNS, ports, subnetting'),('PowerShell Lab','/linux/powershell/','15 Windows investigation levels'),('Phishing lab','/labs/phishing/','Investigate a suspicious inbox'),
+            ('Log Hunt','/labs/logs/','Trace a break-in through logs'),('Secure Code Review','/labs/code-review/','Find and fix the vulnerable line'),('Crypto & Encoding','/labs/crypto/','Decode flags, CyberChef-style'),
+            ('Cloud Security Lab','/labs/cloud/','Find cloud misconfigurations'),('Active Directory Lab','/labs/active-directory/','Trace a domain takeover'),('AI Red Team Lab','/ai/red-team/','Make an AI leak its secret'),
+            ('Guided labs','/labs/#guided','Investigations on evidence files'),('Your progress','/progress/','Badges and a completion card')]),
         ('careers','Careers','/careers/','From first internship to security architect.',[
-            ('Career roadmaps','/careers/','12 roles, skills and projects'),('Work roles','/careers/roles/','15 roles, mapped to labs and tools'),('Internship scanner','/careers/internships/','Near CSUSB and remote, daily'),
-            ('Resume tailor','/careers/resume/','Resume and cover letter, privately'),('Competitions','/careers/competitions/','NCL, CCDC, CPTC, picoCTF and more')]),
-        ('tools','Tools','/tools/','Open-source tools and today\'s threat news.',[
-            ('Tool explorer','/tools/','Open-source security tools'),('Trending on GitHub','/tools/trending/','Top 10 rising projects, daily'),('Tutorials','/tutorials/','Step-by-step workflows'),
-            ('Intelligence desk','/intelligence/','Attributed headlines, daily'),('Vulnerabilities','/vulnerabilities/','Known-exploited CVEs'),('Daily digest','/archive/','Every day, archived')]),
+            ('Career roadmaps','/careers/','12 roles, skills and projects'),('Which role are you?','/careers/match/','A six-question career match'),('Internship scanner','/careers/internships/','Near CSUSB and remote, daily'),
+            ('Resume tailor','/careers/resume/','Resume and cover letter, privately'),('Competitions','/careers/competitions/','NCL, CCDC, CPTC, picoCTF and more'),('Work roles','/careers/roles/','15 roles, mapped to labs and tools'),
+            ('AI and cyber jobs','/ai/jobs/','Live data and the job outlook')]),
+        ('resources','Resources','/resources/','Tools, AI guides and today\'s threat news.',[
+            ('Tool explorer','/tools/','Open-source security tools'),('Tutorials','/tutorials/','Step-by-step workflows'),('AI for builders','/ai/','Use AI safely and well'),
+            ('Intelligence desk','/intelligence/','Attributed headlines, daily'),('Vulnerabilities','/vulnerabilities/','Known-exploited CVEs'),('Trending on GitHub','/tools/trending/','Top 10 rising projects, daily'),
+            ('Secure AI coding','/ai/vibe-coding/','The vibe-coding cheat sheet'),('Prompt testing','/ai/prompt-testing/','Test AI like software'),('Meta-prompting','/ai/meta-prompting/','Make AI write better prompts'),
+            ('Skills, tokens and context','/ai/workflow/','Skills, context savers, org guidelines'),('Run AI locally','/ai/local/','Ollama on any computer'),('AI leaderboard','/ai/models/','Frontier and open-weight rankings'),
+            ('Daily digest','/archive/','Every day, archived'),('Search','/search/','Find anything on CyberHub'),('Contribute','/contribute/','Suggest a tool, fix or lesson')]),
     ]
+    MEGA_MAX=6
     def section_of(self,path):
         best=('',0)
         for key,_l,landing,_d,kids in self.SECTIONS:
             for p in [landing]+[k[1] for k in kids]:
                 if path.startswith(p) and len(p)>best[1]:best=(key,len(p))
         if path.startswith('/academy/'):return 'learn'
-        if path.startswith('/labs/') or path.startswith('/linux/'):return 'labs'
+        if path.startswith(('/labs/','/linux/','/duel/','/play/','/daily/','/challenges/','/ai/red-team/')):return 'practice'
         return best[0]
     def page(self,path,title,body,description='',section='',module=''):
         if not path.startswith('/') or '..' in path:raise ValueError('Invalid output path')
@@ -150,11 +152,16 @@ class Site:
         cur=self.section_of(path)
         nav=''
         for i,(key,label,landing,desc,kids) in enumerate(self.SECTIONS):
-            links=''.join(f'<a href="{E(b+p)}"><b>{E(t)}</b><span>{E(d)}</span></a>' for t,p,d in kids)
+            top=[k for k in kids if not k[1].startswith('/search/')][:self.MEGA_MAX]
+            links=''.join(f'<a href="{E(b+p)}"><b>{E(t)}</b><span>{E(d)}</span></a>' for t,p,d in top)
+            if len(kids)>len(top):links+=f'<a class="mega-all" href="{E(b+landing)}"><b>See all {len(kids)} in {E(label)} →</b></a>'
             nav+=(f'<div class="nav-item"><a class="nav-top" href="{E(b+landing)}"'+(' aria-current="page"' if cur==key else '')+f'><span>{i+1:02d}</span>{label}</a>'
                   f'<div class="mega" role="group" aria-label="{E(label)}"><p class="mega-desc">{E(desc)}</p><div class="mega-links">{links}</div></div></div>')
-        menu_nav=''.join(f'<section class="menu-group"><h2 class="label"><span>{i+1:02d}</span> {E(label)}</h2>'+''.join(f'<a href="{E(b+p)}">{E(t)}</a>' for t,p,d in kids)+'</section>' for i,(key,label,landing,desc,kids) in enumerate(self.SECTIONS))
-        menu_nav+=f'<section class="menu-group"><h2 class="label"><span>06</span> More</h2><a href="{E(b)}/resources/">All resources</a><a href="{E(b)}/search/">Search</a><a href="{E(b)}/contribute/">Contribute</a><a href="{E(self.config["club_url"])}">CISO club ↗</a></section>'
+        # Phone menu: one collapsible group per section; the section you are in starts open.
+        menu_nav=''.join(f'<details class="menu-group"'+(' open' if cur==key else '')+f'><summary class="label"><span>{i+1:02d}</span> {E(label)}<i aria-hidden="true">+</i></summary>'
+                         +f'<a class="menu-all" href="{E(b+landing)}">{E(label)} home →</a>'+''.join(f'<a href="{E(b+p)}">{E(t)}</a>' for t,p,d in kids)+'</details>' for i,(key,label,landing,desc,kids) in enumerate(self.SECTIONS))
+        menu_nav=(f'<div class="menu-quick"><a href="{E(b)}/start/">New here? Start →</a><a href="{E(b)}/progress/" id="menu-continue">Continue →</a><a href="{E(b)}/search/">Search</a></div>'
+                  +menu_nav+f'<p class="menu-club"><a href="{E(self.config["club_url"])}">CISO club site ↗</a></p>')
         canonical=f'<link rel="canonical" href="{E(self.site_url+b+path)}">' if self.site_url and path!='/404/' else '<meta name="robots" content="noindex">'
         brand=(f'<a class="brand" href="{E(b)}/" aria-label="CyberHub home">'
                f'<span class="brand-core">{self.img("cyberhub-core-on-dark.svg","","dark",32,32)}{self.img("cyberhub-core-on-light.svg","","light",32,32)}</span>'
@@ -245,6 +252,7 @@ class Site:
               '<div>Map / <b>simulated paths</b> · 08 nodes<br>Illustrative only &nbsp; Pointer <span id="coords">x 0.500 y 0.500</span></div>'
               f'<div>{self.a("Or browse every resource →","/resources/","scroll-cue")}</div></div></div>'
               '</div></section>')
+        body+=('<section class="wrap cont" id="continue" hidden aria-labelledby="cont-title"><div class="cont-in"><h2 id="cont-title" class="label">Continue where you left off</h2><div class="cont-list" id="cont-list"></div></div></section>')
         # 03 learning map
         tool_by_cat=defaultdict(list)
         for t in self.tools:tool_by_cat[t['category']].append(t)
@@ -264,39 +272,26 @@ class Site:
                '<div class="net-canvas" id="net-area"><canvas id="net-canvas" aria-hidden="true"></canvas><p class="net-hint label" id="net-hint">Drag nodes to rearrange the map · <button type="button" id="net-reset">Reset layout</button></p><div class="node-card" id="node-card" aria-live="polite">'
                f'<div class="nc-bar"><span class="label" id="nc-idx">Node / 001</span><button type="button" class="nc-grip" id="nc-grip" aria-label="Move this card (drag, or use arrow keys)" title="Drag to move"><i></i><i></i><i></i></button><button type="button" class="nc-min" id="nc-min" aria-expanded="true" aria-label="Collapse card">–</button></div><h3 id="nc-name">{E(n0[0])}</h3><p id="nc-text">{E(n0[1])}</p><span class="label links" id="nc-links">Tools / {E(n0[2])}{" — "+E(n0[3]) if n0[3] else ""}</span></div></div></div></section>')
         # personal: continue where you left off (filled in by web/journey.ts from this browser only)
-        body+=('<section class="wrap cont" id="continue" hidden aria-labelledby="cont-title"><div class="cont-in"><h2 id="cont-title" class="label">Continue where you left off</h2><div class="cont-list" id="cont-list"></div></div></section>')
         # 04 pick a path
-        paths=[('New to cyber','Start with six plain-English lessons, then protect your own accounts.','/start/',[('Start here','/start/'),('Glossary','/glossary/'),('Study planner','/plan/')]),
-               ('Learn the skills','Security+ and IT courses, flashcards and a readiness check.','/learn/',[('Security+ Academy','/academy/'),('IT track','/it/'),('Flashcards','/academy/flashcards/')]),
-               ('Practice hands-on','Labs that run in your browser: Linux, networks, Windows, SOC and AI.','/labs/',[('Linux Lab','/linux/'),('SOC Simulator','/labs/soc/'),('AI Red Team','/ai/red-team/')]),
-               ('Get hired','Roles, internships near CSUSB, competitions and your resume.','/careers/',[('Internships','/careers/internships/'),('Resume tailor','/careers/resume/'),('Competitions','/careers/competitions/')])]
         body+=('<section class="scene tone-paper sec-pad wrap" id="paths" data-tone="paper" data-sec="04" aria-labelledby="paths-title"><div class="sec-head rv">'
-               f'<span class="label"><span class="on">04</span> / Your path</span><h2 id="paths-title">{R("Pick a")}{R("starting point","d1")}</h2></div><div class="path-grid">')
-        for i,(t,d,u,links) in enumerate(paths):
-            body+=(f'<article class="path-card"><span class="label">{i+1:02d}</span><h3>{self.a(t,u)}</h3><p>{E(d)}</p>'
-                   '<p class="path-links">'+''.join(self.a(x+' →',y) for x,y in links)+'</p></article>')
-        body+='</div></section>'
-        # 05 hands-on now
-        play=[('Cyber Duel','Go head to head: friends, bots, links or a class-wide live room.','/duel/','Play'),('SOC Simulator','Work a shift of real-looking alerts.','/labs/soc/','Blue team'),
-              ('AI Red Team Lab','Make a guarded AI leak its secret.','/ai/red-team/','AI security'),('Phishing lab','Investigate a suspicious inbox.','/labs/phishing/','Email security'),
-              ('PowerShell Lab','Investigate a Windows PC from the command line.','/linux/powershell/','Windows'),('CyberHub Daily','A real exploited vulnerability, a new puzzle every day.','/daily/','Daily')]
-        body+=('<section class="scene tone-void sec-pad wrap" id="now" data-tone="void" data-sec="05" aria-labelledby="now-title"><div class="sec-head rv"><span class="label"><span class="on">05</span> / Hands-on</span>'
-               f'<h2 id="now-title">{R("Try it")}{R("right now","d1")}</h2></div><div class="play-grid">'
-               +''.join(f'<a class="play-tile" href="{E(b+u)}"><span class="label">{E(tag)}</span><strong>{E(t)}</strong><span>{E(d)}</span></a>' for t,d,u,tag in play)+'</div></section>')
-        # 06 today: news, exploited vulnerabilities, internships
+               f'<span class="label"><span class="on">04</span> / Your path</span><h2 id="paths-title">{R("Where do I")}{R("start?","d1")}</h2>'
+               '<p class="intro">Pick a path. CyberHub walks you through it one step at a time, with a Next up button at the bottom of every step.</p></div>')
+        body+=self.path_picker()
+        body+='</section>'
+        # 05 today: news, exploited vulnerabilities, internships
         heads=''.join(f'<li><a href="{E(n["url"])}">{E(n["title"])}</a><span class="label">{E(n["source"])} · {E((n.get("published_at") or "")[:10])}</span></li>' for n in news[:4])
         ip=ROOT/'data/internships.json';near_n=new_n=total_n=0
         if ip.exists():
             jd=read_json(ip);near_n=sum(1 for i in jd['items'] if i['zone']=='near');new_n=sum(1 for i in jd['items'] if i['new']);total_n=len(jd['items'])
         kev30=sum(1 for v in self.intel['vulnerabilities'] if (v.get('date_added') or '')>=(datetime.now(timezone.utc)-timedelta(days=30)).date().isoformat())
-        body+=('<section class="scene tone-paper sec-pad wrap" id="today" data-tone="paper" data-sec="06" aria-labelledby="today-title"><div class="sec-head rv">'
-               f'<span class="label"><span class="on">06</span> / Today</span><h2 id="today-title">{R("Today on")}{R("CyberHub","d1")}</h2></div><div class="today-grid">'
+        body+=('<section class="scene tone-void sec-pad wrap" id="today" data-tone="void" data-sec="05" aria-labelledby="today-title"><div class="sec-head rv">'
+               f'<span class="label"><span class="on">05</span> / Today</span><h2 id="today-title">{R("Today on")}{R("CyberHub","d1")}</h2></div><div class="today-grid">'
                f'<article class="today-news"><h3>Latest security news</h3><ol>{heads or "<li>No headlines yet.</li>"}</ol><p>{self.a("Intelligence desk →","/intelligence/")} · {self.a("News archive →","/archive/")}</p></article>'
                f'<div class="today-stats"><a class="today-stat" href="{E(b)}/vulnerabilities/"><strong>{kev30}</strong><span>newly exploited vulnerabilities, last 30 days</span></a>'
                f'<a class="today-stat" href="{E(b)}/careers/internships/"><strong>{near_n}</strong><span>internships near CSUSB ({new_n} new this week)</span></a>'
                f'<a class="today-stat" href="{E(b)}/ai/jobs/"><strong>Live</strong><span>AI and cyber job data, daily</span></a></div></div></section>')
-        # 07 club band
-        body+=(f'<section class="scene tone-blue wrap club-band" id="start" data-tone="blue" data-sec="07" aria-label="Join CISO"><p><b>Want a team?</b> CyberHub is built by CISO, the Cyber Intelligence &amp; Security Organization at CSUSB. Compete in CCDC, NCL and CPTC, and build projects together.</p>'
+        # 06 club band
+        body+=(f'<section class="scene tone-blue wrap club-band" id="start" data-tone="blue" data-sec="06" aria-label="Join CISO"><p><b>Want a team?</b> CyberHub is built by CISO, the Cyber Intelligence &amp; Security Organization at CSUSB. Compete in CCDC, NCL and CPTC, and build projects together.</p>'
                f'<a class="button" href="{E(self.config["club_url"])}">Visit the club ↗</a></section>')
         self.page('/','Open security learning',body,'Free cybersecurity learning, tools and practical labs for students, powered by CISO at CSUSB.',module='journey')
     def directory(self,keys=None,head=True):
@@ -306,14 +301,27 @@ class Site:
             out+=(f'<section class="dir-section" id="{key}">'+(f'<div class="dir-head"><span class="label">{i+1:02d} / {E(label)}</span><h2>{E(label)}</h2><p>{E(desc)}</p></div>' if head else '')+'<div class="dir-grid">'
                   +''.join(f'<a class="dir-card" href="{E(self.base+p)}"><b>{E(t)}</b><span>{E(d)}</span><i aria-hidden="true">→</i></a>' for t,p,d in kids)+'</div></section>')
         return out
+    def path_picker(self):
+        """Three guided paths. Choosing one stores it in the browser; app.ts then shows a Next up bar on each step."""
+        data=read_json(ROOT/'data/paths.json');(self.out/'assets/paths.json').write_text(json.dumps(data,separators=(',',':')))
+        out='<div class="path-grid paths-pick">'
+        for i,p in enumerate(data['paths']):
+            steps=''.join(f'<li>{self.a(t,u)}</li>' for t,u in p['steps'])
+            out+=(f'<article class="path-card"><span class="label">{i+1:02d} · {len(p["steps"])} steps</span><h3>{E(p["title"])}</h3><p>{E(p["line"])}</p>'
+                  f'<details class="path-steps-d"><summary>See the {len(p["steps"])} steps</summary><ol class="path-steps">{steps}</ol></details><a class="button primary path-go" href="{E(self.base+p["steps"][0][1])}" data-path="{E(p["id"])}">Start this path →</a></article>')
+        return out+'</div>'
+    def cards_for(self,paths):
+        """A card grid for the given paths, using each one's title and line from SECTIONS."""
+        info={p:(t,d) for _k,_l,_g,_d,kids in self.SECTIONS for t,p,d in kids}
+        return '<div class="dir-grid">'+''.join(f'<a class="dir-card" href="{E(self.base+p)}"><b>{E(info[p][0])}</b><span>{E(info[p][1])}</span><i aria-hidden="true">→</i></a>' for p in paths if p in info)+'</div>'
     def resources_page(self):
-        body=self.heading('All resources','Everything on CyberHub in one place, in five sections.','Directory')
+        body=self.heading('All resources','Everything on CyberHub in one place, in four sections.','Directory')
         body+='<nav class="dir-jump" aria-label="Sections">'+''.join(f'<a href="#{key}"><span class="label">{i+1:02d}</span>{E(label)}</a>' for i,(key,label,landing,desc,kids) in enumerate(self.SECTIONS))+'</nav>'
         body+=self.directory()
         body+=f'<p class="notice">CyberHub is a free resource built by CISO at CSUSB. Want a team, projects or competitions? Visit the <a href="{E(self.config["club_url"])}">CISO club site</a>.</p>'
         self.page('/resources/','All resources',body,'Every CyberHub resource in one directory: learn, tools, AI, intel and careers.')
-        self.page('/learn/','Learn',self.heading('Learn','Courses, labs and practice for every level, from your first command to exam day.','Learn')+self.directory(['learn'],False),'Security+ academy, Linux Lab, guided labs, flashcards, readiness check, daily puzzle and cyber history.')
-        self.page('/play/','Play',self.heading('Play','Quick games that teach: duel your friends, run a class-wide live room, solve the Daily and find your role.','Play')+self.directory(['play'],False),'Cyber Duel, live class rooms, the Daily puzzle and the role quiz.','Play')
+        self.page('/learn/','Learn',self.heading('Learn','Courses and study tools for every level, from your first command to exam day.','Learn')+'<h2 class="lab-sub">Not sure where to start? Pick a path</h2>'+self.path_picker()+'<h2 class="lab-sub">Everything in Learn</h2>'+self.directory(['learn'],False),'Security+ academy, Linux Lab, guided labs, flashcards, readiness check, daily puzzle and cyber history.')
+        self.page('/play/','Play',self.heading('Play','Quick games that teach: duel your friends, run a class-wide live room, solve the Daily and find your role.','Play')+self.cards_for(['/duel/','/duel/live/','/daily/','/careers/match/','/progress/']),'Cyber Duel, live class rooms, the Daily puzzle and the role quiz.','Play')
 
     def tool_pages(self):
         body=self.heading('Tool Explorer','Find a tool for the problem in front of you. Licensing and verification stay visible.','Explore / Security tooling')
@@ -364,7 +372,7 @@ class Site:
             for t in d.get('tools',[]):body+='<p>'+self.a(next(x['name']for x in self.tools if x['id']==t),'/tools/'+t+'/')+'</p>'
             body+='<p>'+self.a('All labs →','/labs/')+'</p><p>'+self.a('Security+ pathway →','/academy/')+'</p></aside></div>'
             self.page(path,d['title'],body,d['description'],{'academy':'Academy','labs':'Labs','careers':'Careers','tutorials':'Tools'}[sec])
-        for section,title,description in [('labs','Practice with a purpose.','Twelve interactive labs that run in your browser, grouped by skill, plus guided investigations. Synthetic evidence, clear checks, hints when you are stuck.'),('tutorials','Tool tutorials','Learn a bounded workflow and how to verify the result.'),('careers','Build a path you can demonstrate.','Connect foundational skills to projects, evidence and thoughtful career decisions.')]:
+        for section,title,description in [('labs','Practice','Interactive labs and games that run in your browser, grouped by skill and marked by level. Synthetic evidence, clear checks, hints when you are stuck.'),('tutorials','Tool tutorials','Learn a bounded workflow and how to verify the result.'),('careers','Build a path you can demonstrate.','Connect foundational skills to projects, evidence and thoughtful career decisions.')]:
             body=self.heading(title,description,section.title())
             if section=='careers':body+=f'<div class="grid two">{self.card("Internship scanner","Internships near CSUSB and remote, refreshed daily, with security and IT roles flagged.","/careers/internships/","Daily","Near CSUSB")}{self.card("Resume tailor","Match your resume to a posting, privately, then tailor it with AI without inventing anything.","/careers/resume/","Tool","Private")}{self.card("Which role are you?","Six questions that match you to a security career and its roadmap.","/careers/match/","Quiz","6 questions")}</div>'
             if section=='labs':body+=interactive_cards(self)
@@ -430,7 +438,7 @@ class Site:
         shutil.copyfile(ROOT/'web/site.css',self.out/'assets/site.css')
         shutil.copyfile(ROOT/'public/assets/brand/cyberhub-favicon.svg',self.out/'assets/favicon.svg')
         subprocess.run(['node','scripts/transpile.mjs'],cwd=ROOT,check=True)
-        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);build_practice(self);build_chal(self);build_start(self);build_ailab(self);build_roles(self);build_glossary(self);build_pslab(self);build_ittrack(self);build_plan(self);build_live(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
+        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);build_practice(self);build_chal(self);build_ctf(self);build_start(self);build_ailab(self);build_roles(self);build_glossary(self);build_pslab(self);build_ittrack(self);build_plan(self);build_live(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
         for name,data in [('academy',self.academy),('search',self.search)]:
             (self.out/'assets'/f'{name}.json').write_text(json.dumps(data,ensure_ascii=False))
         self.page('/404/','Page not found',self.heading('This page is not here.','Use search or the main navigation to find a learning resource.')+self.a('Return home','/','button primary'))

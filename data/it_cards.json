@@ -240,13 +240,13 @@
       "deck": "net",
       "topic": "Cabling",
       "front": "Max length of twisted-pair Ethernet run?",
-      "back": "100 metres."
+      "back": "100 meters."
     },
     {
       "id": "net-34",
       "deck": "net",
       "topic": "Cabling",
-      "front": "Single-mode vs multimode fibre?",
+      "front": "Single-mode vs multimode fiber?",
       "back": "Single-mode: thin core, laser, long distances. Multimode: wider core, shorter distances, cheaper optics."
     },
     {
