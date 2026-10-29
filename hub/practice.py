@@ -54,7 +54,8 @@ LAB_TRACKS = [
     ('AI security', 'Break a guarded AI, then learn the defense.', [
         ('AI Red Team Lab', 'Six levels of prompt-injection defenses', '/ai/red-team/', [B, I], '30 min')]),
     ('Games and challenges', 'Quick rounds to test what you know.', [
-        ('Cyber Duel', 'Head-to-head quiz: friends, bots or a link', '/duel/', [B, I, A], '5 min'), ('Live room', 'Class quiz or incident tabletop on the projector', '/duel/live/', [B, I], '15 min'),
+        ('Challenge board', '16 flags worth 100 to 500 points; hints cost points', '/challenges/', [I, A], '2–6 h'), ('Cyber Duel', 'Head-to-head quiz: friends, bots or a link', '/duel/', [B, I, A], '5 min'),
+        ('Live room', 'Class quiz or incident tabletop on the projector', '/duel/live/', [B, I], '15 min'),
         ('CyberHub Daily', 'One real exploited vulnerability a day', '/daily/', [I], '5 min')]),
 ]
 

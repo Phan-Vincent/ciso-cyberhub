@@ -25,6 +25,7 @@ from .duel import build_duel
 from .account import build_account, supabase
 from .practice import build_practice, interactive_cards
 from .chal import build_chal
+from .ctf import build_ctf
 from .start import build_start
 from .ailab import build_ailab
 from .roles import build_roles
@@ -117,9 +118,9 @@ class Site:
             ('Security+ flashcards','/academy/flashcards/','83 cards across every objective'),('IT flashcards','/it/flashcards/','Network+ and A+ topics'),
             ('What you will defend','/defend/','Five systems, explained in depth'),('Cyber history','/history/','1834 to today, with archival photos')]),
         ('practice','Practice','/labs/','Hands-on labs and games that run in your browser.',[
-            ('Linux Lab','/linux/','36 levels in a practice shell'),('SOC Simulator','/labs/soc/','Triage a shift of alerts'),('Packet Lab','/labs/packets/','Read a capture, Wireshark-style'),
-            ('Cyber Duel','/duel/','Head-to-head: friends, bots, links'),('Live room','/duel/live/','Class quiz or incident tabletop'),('CyberHub Daily','/daily/','One real-world puzzle a day'),
-            ('Networking Lab','/linux/network/','17 levels: IP, DNS, ports, subnetting'),('PowerShell Lab','/linux/powershell/','15 Windows investigation levels'),('Phishing lab','/labs/phishing/','Investigate a suspicious inbox'),
+            ('Linux Lab','/linux/','36 levels in a practice shell'),('Challenge board','/challenges/','16 flags, 100 to 500 points'),('SOC Simulator','/labs/soc/','Triage a shift of alerts'),('Packet Lab','/labs/packets/','Read a capture, Wireshark-style'),
+            ('Cyber Duel','/duel/','Head-to-head: friends, bots, links'),('Live room','/duel/live/','Class quiz or incident tabletop'),
+            ('CyberHub Daily','/daily/','One real-world puzzle a day'),('Networking Lab','/linux/network/','17 levels: IP, DNS, ports, subnetting'),('PowerShell Lab','/linux/powershell/','15 Windows investigation levels'),('Phishing lab','/labs/phishing/','Investigate a suspicious inbox'),
             ('Log Hunt','/labs/logs/','Trace a break-in through logs'),('Secure Code Review','/labs/code-review/','Find and fix the vulnerable line'),('Crypto & Encoding','/labs/crypto/','Decode flags, CyberChef-style'),
             ('Cloud Security Lab','/labs/cloud/','Find cloud misconfigurations'),('Active Directory Lab','/labs/active-directory/','Trace a domain takeover'),('AI Red Team Lab','/ai/red-team/','Make an AI leak its secret'),
             ('Guided labs','/labs/#guided','Investigations on evidence files'),('Your progress','/progress/','Badges and a completion card')]),
@@ -437,7 +438,7 @@ class Site:
         shutil.copyfile(ROOT/'web/site.css',self.out/'assets/site.css')
         shutil.copyfile(ROOT/'public/assets/brand/cyberhub-favicon.svg',self.out/'assets/favicon.svg')
         subprocess.run(['node','scripts/transpile.mjs'],cwd=ROOT,check=True)
-        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);build_practice(self);build_chal(self);build_start(self);build_ailab(self);build_roles(self);build_glossary(self);build_pslab(self);build_ittrack(self);build_plan(self);build_live(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
+        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);build_practice(self);build_chal(self);build_ctf(self);build_start(self);build_ailab(self);build_roles(self);build_glossary(self);build_pslab(self);build_ittrack(self);build_plan(self);build_live(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
         for name,data in [('academy',self.academy),('search',self.search)]:
             (self.out/'assets'/f'{name}.json').write_text(json.dumps(data,ensure_ascii=False))
         self.page('/404/','Page not found',self.heading('This page is not here.','Use search or the main navigation to find a learning resource.')+self.a('Return home','/','button primary'))

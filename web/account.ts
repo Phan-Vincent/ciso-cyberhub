@@ -9,7 +9,7 @@
 export type Snapshot = Record<string, unknown>;
 const ACADEMY = (base: string) => `cyberhub:${base}:progress:v1`;
 // payload key -> localStorage key (academy depends on the base path, so it is mapped)
-export const KEYS = ['linux', 'netlab', 'defend', 'duel', 'daily', 'readiness', 'match', 'academy', 'soc', 'phish', 'redteam', 'start', 'pslab', 'itcards', 'plan', 'pcap', 'hunt', 'crypto', 'review', 'cloud', 'ad'] as const;
+export const KEYS = ['linux', 'netlab', 'defend', 'duel', 'daily', 'readiness', 'match', 'academy', 'soc', 'phish', 'redteam', 'start', 'pslab', 'itcards', 'plan', 'pcap', 'hunt', 'crypto', 'review', 'cloud', 'ad', 'ctf'] as const;
 const storageKey = (k: string, base: string) => k === 'academy' ? ACADEMY(base) : k === 'daily' ? 'cyberhub:daily:stats' : k === 'readiness' ? 'cyberhub:readiness:best' : 'cyberhub:' + k;
 
 const arr = (v: unknown): string[] => Array.isArray(v) ? v.filter(x => typeof x === 'string') as string[] : [];
@@ -37,6 +37,10 @@ export function mergeProgress(a: Snapshot, b: Snapshot): Snapshot {
   if (a.start !== undefined || b.start !== undefined) out.start = union(a.start, b.start);
   if (a.pslab !== undefined || b.pslab !== undefined) out.pslab = union(a.pslab, b.pslab);
   for (const k of ['pcap', 'hunt', 'crypto', 'review', 'cloud', 'ad'] as const) if (a[k] !== undefined || b[k] !== undefined) out[k] = union(a[k], b[k]).filter(v => /^[a-z0-9-]{1,40}$/.test(v));
+  if (a.ctf !== undefined || b.ctf !== undefined) { const m: Record<string, { s?: 1; h?: number; p?: number }> = {};
+    for (const [k, v0] of [...Object.entries(obj(a.ctf)), ...Object.entries(obj(b.ctf))]) { if (!/^[a-z0-9-]{1,40}$/.test(k)) continue; const v = obj(v0), cur = m[k] || {};
+      const h = Math.min(10, Math.max(num(cur.h), Math.floor(num(v.h)))); const solved = !!cur.s || v.s === 1; const pts = Math.min(500, Math.max(num(cur.p), v.s === 1 ? num(v.p) : 0));
+      m[k] = solved ? { s: 1, h, p: pts } : h ? { h } : {}; } out.ctf = m; }
   if (a.itcards !== undefined || b.itcards !== undefined) { const m: Record<string, number> = {}; for (const [k, v] of [...Object.entries(obj(a.itcards)), ...Object.entries(obj(b.itcards))]) if (/^[a-z]+-\d{1,4}$/.test(k)) m[k] = Math.min(3, Math.max(m[k] ?? 0, num(v))); out.itcards = m; }
   if (a.plan !== undefined || b.plan !== undefined) { const x = obj(a.plan), y = obj(b.plan); const pick = x.goal ? x : y; const done = x.goal && y.goal && x.goal === y.goal ? union(x.done, y.done) : arr(pick.done); out.plan = { goal: typeof pick.goal === 'string' ? pick.goal : '', hours: num(pick.hours) > 0 ? num(pick.hours) : 4, start: typeof pick.start === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(pick.start) && Number.isFinite(Date.parse(pick.start)) ? pick.start : new Date().toISOString().slice(0, 10), day: Number.isInteger(pick.day) && pick.day >= 0 && pick.day <= 6 ? pick.day : 6, time: typeof pick.time === 'string' && /^([01]\d|2[0-3]):[0-5]\d$/.test(pick.time) ? pick.time : '10:00', done: done.filter(v => /^\d+$/.test(v)) }; }
   if (a.academy !== undefined || b.academy !== undefined) {

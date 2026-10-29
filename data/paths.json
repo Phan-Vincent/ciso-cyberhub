@@ -8,6 +8,6 @@
       ["Practice questions", "/academy/practice/"], ["Apply it: SOC Simulator", "/labs/soc/"], ["Apply it: Crypto & Encoding", "/labs/crypto/"], ["Duel on Security+ questions", "/duel/"]]},
     {"id": "handson", "title": "I want hands-on", "line": "Skip the reading. Work real-looking evidence from the shell to the domain controller.", "steps": [
       ["Linux Lab", "/linux/"], ["Networking Lab", "/linux/network/"], ["PowerShell Lab", "/linux/powershell/"], ["Packet Lab", "/labs/packets/"], ["Log Hunt", "/labs/logs/"],
-      ["Secure Code Review", "/labs/code-review/"], ["Cloud Security Lab", "/labs/cloud/"], ["Active Directory Lab", "/labs/active-directory/"], ["AI Red Team Lab", "/ai/red-team/"]]}
+      ["Secure Code Review", "/labs/code-review/"], ["Cloud Security Lab", "/labs/cloud/"], ["Active Directory Lab", "/labs/active-directory/"], ["AI Red Team Lab", "/ai/red-team/"], ["Challenge board", "/challenges/"]]}
   ]
 }
