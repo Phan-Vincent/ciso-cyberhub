@@ -2236,3 +2236,9 @@ body.has-path-bar { padding-bottom: 96px; }
 .lab-track[hidden], .dir-card[hidden] { display: none; }
 .path-steps-d summary { cursor: pointer; color: var(--signal); font-family: var(--mono); font-size: .85rem; }
 .path-steps-d[open] summary { margin-bottom: 6px; }
+/* Advanced lab levels */
+.ch-adv-sep { align-self: center; margin: 0 4px 0 10px; color: var(--lvl-adv, #a01d25); }
+#ch-lvls button.adv { border-color: #a01d25; }
+#ch-lvls button.adv.done { background: #a01d25; color: #fff; }
+:root[data-theme=dark] .ch-adv-sep, :root[data-theme=dark] #ch-lvls button.adv { color: #ff7b80; border-color: #ff7b80; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme=light]) .ch-adv-sep, :root:not([data-theme=light]) #ch-lvls button.adv { color: #ff7b80; border-color: #ff7b80; } }

