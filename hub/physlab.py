@@ -63,7 +63,7 @@ def build_physlab(site) -> None:
       <button type="button" role="tab" data-phase="attack" aria-controls="pl-p3" aria-selected="false" tabindex="-1"><span>3</span> Attack</button>
     </div>
     <div class="pl-pane" id="pl-p1" role="tabpanel" data-pane="defend">
-      <p class="pl-hint">Pick an item, then click the plan. Red squares are what the intruders want.</p>
+      <p class="pl-hint">Pick an item, then click the plan. Blue squares are what the intruders want.</p>
       <div class="pl-tools">{tools}</div>
       <div id="pl-dir" class="pl-dir" role="group" aria-label="New cameras face"><span class="label">New cameras face</span>{dirs}<small>Click a placed camera to turn it.</small></div>
       <p class="pl-what" id="pl-what"></p>
@@ -94,7 +94,7 @@ def build_physlab(site) -> None:
   {_ddr()}
   <div class="pl-cols">
     <div><h3>Detect, delay, respond</h3><p>Security engineers model protection as a race. Sensors and people <b>detect</b> an intrusion, barriers <b>delay</b> the intruder, and a guard or police unit <b>responds</b>. The system works only if detection happens early enough that the remaining delay is longer than the response time. A camera that records a theft but alerts nobody detects too late.</p></div>
-    <div><h3>The critical detection point</h3><p>After each run the plan marks a red ✕ on the intruder&#39;s route: the last place where detecting them still gives the response time to arrive. Detection after that point only tells you what happened. Move sensors outward, toward the perimeter, or add delay so the point moves inward.</p></div>
+    <div><h3>The critical detection point</h3><p>After each run the plan marks a blue ✕ on the intruder&#39;s route: the last place where detecting them still gives the response time to arrive. Detection after that point only tells you what happened. Move sensors outward, toward the perimeter, or add delay so the point moves inward.</p></div>
     <div><h3>Defense in depth</h3><p>Layers matter more than any single device: fence, lit grounds, locked and alarmed doors, badge-controlled interior doors, caged equipment and hardened computers. Attackers go around a strong layer, so the weakest window or the loading dock usually decides the outcome.</p></div>
     <div><h3>Where physical meets IT</h3><p>Once inside, an intruder works fast: a rogue Wi-Fi bridge in a switch port, a USB stick that types commands, a drive pulled from a server, a password on a sticky note. Controls like 802.1X, USB device control and full-disk encryption make physical access worth much less.</p></div>
   </div>
