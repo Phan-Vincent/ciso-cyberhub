@@ -19,9 +19,9 @@ export function rng(seed: number) { let a = seed >>> 0; return () => { a = (a + 
 export function makeRound(bank: Bank, seed: number, cat: string, diff: string, n: number): Round[] {
   if (cat.startsWith('tt:')) { const r = rng(seed); const sc = (bank.scenarios || []).find(x => 'tt:' + x.id === cat);
     return (sc ? sc.steps : []).map(q => { const order = [0, 1, 2, 3]; for (let i = 3; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; } return { q, order }; }); }
-  const r = rng(seed); const lv = diff === '1' ? [1] : diff === '2' ? [1, 2] : diff === '3' ? [2, 3] : [1, 2, 3];
+  const r = rng(seed); const lv = diff === '1' ? [1] : diff === '2' ? [1, 2] : diff === '3' ? [2, 3] : diff === '4' ? [4] : [1, 2, 3];
   let pool = bank.questions.filter(q => (cat === 'all' || q.cat === cat) && lv.includes(q.level));
-  if (pool.length < n) pool = bank.questions.filter(q => cat === 'all' || q.cat === cat);
+  if (pool.length < n && diff !== '4') pool = bank.questions.filter(q => (cat === 'all' || q.cat === cat) && q.level <= 3);
   pool = [...pool].sort((x, y) => x.id < y.id ? -1 : 1);
   for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
   return pool.slice(0, n).map(q => { const order = [0, 1, 2, 3]; for (let i = 3; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; } return { q, order }; });
@@ -38,7 +38,7 @@ export function decodeChallenge(s: string, bank: Bank): Challenge | null {
     const x = JSON.parse(unb64(s)); if (!Array.isArray(x) || x[0] !== 1) return null;
     const [, seed, cat, diff, name, rounds, ans] = x;
     if (!Number.isInteger(seed) || seed < 0 || seed > 4294967295) return null;
-    if (cat !== 'all' && !(cat in bank.categories)) return null; if (!['1', '2', '3', 'mix'].includes(diff)) return null;
+    if (cat !== 'all' && !(cat in bank.categories)) return null; if (!['1', '2', '3', '4', 'mix'].includes(diff)) return null;
     if (!Number.isInteger(rounds) || rounds < 3 || rounds > 20 || !Array.isArray(ans) || ans.length !== rounds) return null;
     const a = ans.map((p: unknown) => Array.isArray(p) && Number.isInteger(p[0]) && p[0] >= -1 && p[0] <= 3 && Number.isInteger(p[1]) && p[1] >= 0 && p[1] <= ROUND_MS ? { pick: p[0] as number, ms: p[1] as number } : null);
     if (a.some((v: unknown) => v === null)) return null;
@@ -50,7 +50,7 @@ export const BOTS: Record<string, { name: string; acc: number; min: number; max:
 };
 export function botRun(rounds: Round[], level: string, seed: number): Run {
   const b = BOTS[level] || BOTS.analyst; const r = rng(seed ^ 0x9e3779b9);
-  return rounds.map(rd => { const ok = r() < b.acc * (rd.q.level === 3 ? 0.9 : 1); const ms = Math.round(b.min + r() * (b.max - b.min)); const wrong = [0, 1, 2, 3].filter(i => i !== rd.q.answer); return { pick: ok ? rd.q.answer : wrong[Math.floor(r() * 3)], ms }; });
+  return rounds.map(rd => { const ok = r() < b.acc * (rd.q.level === 4 ? 0.75 : rd.q.level === 3 ? 0.9 : 1); const ms = Math.round(b.min + r() * (b.max - b.min)); const wrong = [0, 1, 2, 3].filter(i => i !== rd.q.answer); return { pick: ok ? rd.q.answer : wrong[Math.floor(r() * 3)], ms }; });
 }
 
 
@@ -153,7 +153,7 @@ if (root) {
   }
   function ask() {
     revealing = false; const rd = rounds[idx]; players.forEach(p => { p.locked = false; });
-    $('#duel-cat').textContent = `${idx + 1} / ${rounds.length} · ${bank!.categories[rd.q.cat] || rd.q.cat} · ${['', 'Beginner', 'Student', 'Pro'][rd.q.level]}`;
+    $('#duel-cat').textContent = `${idx + 1} / ${rounds.length} · ${bank!.categories[rd.q.cat] || rd.q.cat} · ${['', 'Beginner', 'Student', 'Pro', 'Hard'][rd.q.level]}`;
     $('#duel-q').textContent = rd.q.q; $('#duel-why').hidden = true; $('#duel-next').hidden = true;
     players.forEach((p, i) => {
       const box = pane(i).querySelector<HTMLElement>('.dp-choices')!; box.replaceChildren(); pane(i).querySelector('.dp-state')!.textContent = p.ghost ? 'Thinking…' : '';
