@@ -548,7 +548,7 @@ if (root) {
     const out: string[] = []; const cp = critical(r);
     if (r.outcome !== 'breached') { if (r.detectAt === null) out.push('Nothing was taken, but nobody saw them. Next time they might bring different tools. Add detection on their route.'); return out; }
     if (r.detectAt === null) out.push(`Nobody saw them. They came in through ${r.path.filter(p => 'EBWGD%'.includes(at(T, p.x, p.y))).map(p => ({ E: 'the main entrance', B: 'the service door', W: 'a window', G: 'the gate', D: 'an interior door', '%': 'the fence' } as Record<string, string>)[at(T, p.x, p.y)]).filter((v, i, a) => a.indexOf(v) === i).join(', then ') || 'an open route'}. Put a sensor or camera on that route.`);
-    else out.push(`Detected at T+${fmtT(r.detectAt)} by ${r.detectBy}, but the response takes ${r.response} s and they reached the target at T+${fmtT(r.reachAt!)}. Detect them earlier (before the red ✕ on the plan) or add delay: locks, bars or a cage.`);
+    else out.push(`Detected at T+${fmtT(r.detectAt)} by ${r.detectBy}, but the response takes ${r.response} s and they reached the target at T+${fmtT(r.reachAt!)}. Detect them earlier (before the blue ✕ on the plan) or add delay: locks, bars or a cage.`);
     const miss = r.executed.map(id => Object.values(STEPS).flat().find(s => s.id === id)!).filter(Boolean).map(s => CONTROLS[s.by].name).filter((v, i, a) => a.indexOf(v) === i);
     if (miss.length) out.push(`At the keyboard, these would have stopped them: ${miss.join(', ')}.`);
     if (cp < 0 && r.reachAt !== null) out.push('Even detecting them at the property line would be too late without more delay. Delay buys time for the response.');

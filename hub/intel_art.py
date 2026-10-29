@@ -12,7 +12,7 @@ import hashlib
 import re
 from html import escape as E
 
-BLUE, HI, INK, PAPER, MUTED = '#d71e1e', '#ff3b30', '#050505', '#edeff2', '#8d929c'
+BLUE, HI, INK, PAPER, MUTED = '#005eb8', '#4d9de6', '#050505', '#edeff2', '#8d929c'
 
 # (motif, label, keywords). First match wins, so specific motifs come before general ones.
 TOPICS = [

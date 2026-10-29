@@ -204,7 +204,7 @@ def learn_drawing(base: str) -> str:
     ]
     for cx, cy, tx, ty, t, href, sub in calls:
         s += _call(cx, cy, tx, ty, t, base + href, 'end' if tx < cx else 'start', sub)
-    s += _sheet(40, H - 62, W - 80, 'SECTION A–A · LEARNING CENTER', 'CYBERHUB · LEARN · SCALE 1:200 · CLICK A RED CALLOUT TO OPEN THAT FLOOR', 'A-301')
+    s += _sheet(40, H - 62, W - 80, 'SECTION A–A · LEARNING CENTER', 'CYBERHUB · LEARN · SCALE 1:200 · CLICK A BLUE CALLOUT TO OPEN THAT FLOOR', 'A-301')
     return _figure('dw-learn', W, H, 'Section drawing of a four-story learning center. Each floor links to a part of Learn: Start here, Security+ Academy, IT track, Readiness check and the glossary.', s)
 
 
