@@ -275,7 +275,10 @@ const PLACES:Place[]=[
  ['Egypt',30,26.5,1],['Nigeria',8,9.5,1],['Kenya',38,0.5,0],['South Africa',24,-29,1],['Morocco',-6,32,0],['Algeria',3,28,1],['Ethiopia',39.5,8.5,0],
  ['Indonesia',117,-2,1],['Vietnam',106,15,0],['Thailand',101,15,0],['Philippines',122,12,0],['Singapore',103.8,1.35,0],['Australia',134,-25,1],['New Zealand',172,-41.5,0]
 ].map(([name,lon,lat,big])=>({name:name as string,lon:lon as number,lat:lat as number,big:!!big}));
-const ATTACK_TYPES=[{name:'Malware',color:'#4d9de6'},{name:'Phishing',color:'#e8eef5'},{name:'DDoS',color:'#9ccaf7'},{name:'Intrusion',color:'#bdbdbd'}];
+const ATTACK_TYPES=[{name:'Malware',color:'0'},{name:'Phishing',color:'1'},{name:'DDoS',color:'2'},{name:'Intrusion',color:'3'}];
+// Attack colors are resolved per theme so every type stays visible on the pale and the dark globe.
+const ATK_LIGHT=['#005eb8','#111111','#5c9ee0','#8a8a8a'],ATK_DARK=['#4d9de6','#ffffff','#a9d1fb','#7d7d7d'];
+const atkCol=(k:string)=>(document.documentElement.dataset.theme==='light'?ATK_LIGHT:ATK_DARK)[Number(k)]||'#888';
 type Attack={from:number;to:number;t0:number;dur:number;color:string;pts:number[][]};
 const attacks:Attack[]=[];const hot=new Map<number,{until:number;color:string}>();let nextAttack=0;
 const mapLight=()=>document.documentElement.dataset.theme==='light';
@@ -364,12 +367,12 @@ function advanceSpin(){
  if(!dragState)spinClock+=dt;
 }
 function globeCamera(w:number,h:number):Globe{
- const small=w<520,cx=w*(small?.5:.52),cy=h*(small?.52:.5),R=Math.min(w,h)*(small?.34:.39);
+ const small=w<520,cx=w*(small?.5:.5),cy=h*(small?.5:.5),R=Math.min(w,h)*(small?.41:.44);
  const aim=fine&&hasPointer&&!calm&&!dragState;
- globeYaw=lerp(globeYaw,aim?(px/innerWidth-.5)*1.1:0,.06);
+ globeYaw=lerp(globeYaw,aim?-(px/innerWidth-.5)*1.1:0,.06);
  globePitch=lerp(globePitch,aim?(.5-py/innerHeight)*.7:0,.06);
  const spin=calm?0:spinClock*.00003;
- const lon0=(GLOBE_START+spin+dragYaw+globeYaw)%(Math.PI*2);
+ const lon0=(GLOBE_START-spin+dragYaw+globeYaw)%(Math.PI*2);
  const lat=clamp(GLOBE_LAT+dragPitch+globePitch,-1.35,1.35);
  return {small,cx,cy,R,c:Math.cos(lon0),s:Math.sin(lon0),pc:Math.cos(lat),ps:Math.sin(lat)};
 }
@@ -395,7 +398,7 @@ if(coreCv){
   const dx=e.clientX-dragState.x,dy=e.clientY-dragState.y;
   dragState.x=e.clientX;dragState.y=e.clientY;
   if(dx||dy){
-   dragYaw+=dx*.0062;
+   dragYaw-=dx*.0062;
    dragPitch=clamp(dragPitch+dy*.0062,-1.15,1.15);
    syncDrag();
   }
@@ -409,7 +412,7 @@ if(coreCv){
 function globePoint(v:number[],g:Globe):[number,number,number]{
  const x=g.c*v[0]+g.s*v[1],y0=-g.s*v[0]+g.c*v[1],z0=v[2];
  const y=g.pc*z0-g.ps*y0,z=g.ps*z0+g.pc*y0;
- return [g.cx+g.R*x,g.cy-g.R*y,z];
+ return [g.cx-g.R*x,g.cy-g.R*y,z];
 }
 function strokeVisible(ctx:CanvasRenderingContext2D,pts:number[][],g:Globe,minZ=.02){
  let open=false;ctx.beginPath();
@@ -427,8 +430,8 @@ function strokeGeo(ctx:CanvasRenderingContext2D,flat:Float64Array,g:Globe,minZ=.
   const ay2=g.pc*az-g.ps*ayr,az2=g.ps*az+g.pc*ayr;
   const by2=g.pc*bz-g.ps*byr,bz2=g.ps*bz+g.pc*byr;
   if(az2<minZ||bz2<minZ)continue;
-  ctx.moveTo(g.cx+g.R*axr,g.cy-g.R*ay2);
-  ctx.lineTo(g.cx+g.R*bxr,g.cy-g.R*by2);
+  ctx.moveTo(g.cx-g.R*axr,g.cy-g.R*ay2);
+  ctx.lineTo(g.cx-g.R*bxr,g.cy-g.R*by2);
  }
  ctx.stroke();
 }
@@ -451,7 +454,7 @@ function drawAttackMap(){
   for(let i=0;i<globeGeo.dots.length;i+=3){
    const vx=globeGeo.dots[i],vy=globeGeo.dots[i+1],vz=globeGeo.dots[i+2];
    const x=g.c*vx+g.s*vy,y0=-g.s*vx+g.c*vy,y=g.pc*vz-g.ps*y0,z=g.ps*vz+g.pc*y0;
-   if(z>.02)ctx.fillRect(cx+R*x-dot/2,cy-R*y-dot/2,dot,dot);
+   if(z>.02)ctx.fillRect(cx-R*x-dot/2,cy-R*y-dot/2,dot,dot);
   }
   ctx.strokeStyle=p.line(light?.22:.2);ctx.lineWidth=.7;strokeGeo(ctx,globeGeo.borders,g);ctx.lineWidth=1;
   ctx.strokeStyle=p.line(light?.58:.54);strokeGeo(ctx,globeGeo.coast,g);
@@ -474,11 +477,11 @@ function drawAttackMap(){
   const n=A.pts.length-1,head=Math.max(1,Math.round(prog*n)),tail=Math.max(0,head-Math.round(n*.45));
   ctx.lineWidth=small?1.4:1.8;ctx.lineCap='round';
   for(let s2=Math.max(tail,1);s2<=head;s2++){const [x0,y0,z0]=globePoint(A.pts[s2-1],g),[x1,y1,z1]=globePoint(A.pts[s2],g);if(z0<-.02||z1<-.02)continue;
-   ctx.globalAlpha=fade*Math.pow((s2-tail)/Math.max(1,head-tail),1.6)*(prog<1?1:.55);ctx.strokeStyle=A.color;ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(x1,y1);ctx.stroke();}
+   ctx.globalAlpha=fade*Math.pow((s2-tail)/Math.max(1,head-tail),1.6)*(prog<1?1:.55);ctx.strokeStyle=atkCol(A.color);ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(x1,y1);ctx.stroke();}
   ctx.globalAlpha=1;ctx.lineWidth=1;
-  if(prog<1){const [hx,hy,hz]=globePoint(A.pts[head],g);if(hz>-.02){ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(hx,hy,small?1.6:2.1,0,Math.PI*2);ctx.fill();ctx.fillStyle=A.color;ctx.globalAlpha=.35;ctx.beginPath();ctx.arc(hx,hy,small?4:5.5,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;}}
+  if(prog<1){const [hx,hy,hz]=globePoint(A.pts[head],g);if(hz>-.02){ctx.fillStyle=light?'#111':'#fff';ctx.beginPath();ctx.arc(hx,hy,small?1.6:2.1,0,Math.PI*2);ctx.fill();ctx.fillStyle=atkCol(A.color);ctx.globalAlpha=.35;ctx.beginPath();ctx.arc(hx,hy,small?4:5.5,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;}}
   else{const [tx,ty,tz]=globePoint(PLACE_VEC[A.to],g);hot.set(A.to,{until:now+1600,color:A.color});
-   if(tz>.02){const r=(small?5:7)+(1-fade)*(small?14:22);ctx.strokeStyle=A.color;ctx.globalAlpha=fade*.9;ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(tx,ty,r,0,Math.PI*2);ctx.stroke();ctx.lineWidth=1;ctx.globalAlpha=1;}}
+   if(tz>.02){const r=(small?5:7)+(1-fade)*(small?14:22);ctx.strokeStyle=atkCol(A.color);ctx.globalAlpha=fade*.9;ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(tx,ty,r,0,Math.PI*2);ctx.stroke();ctx.lineWidth=1;ctx.globalAlpha=1;}}
   if(age<500)hot.set(A.from,{until:now+1200,color:A.color});
  }
  // Country names: attack participants first, then the big ones, never overlapping.
@@ -486,9 +489,9 @@ function drawAttackMap(){
  const order=PLACES.map((pl,i)=>{const h0=hot.get(i);return {i,pl,active:!!h0&&h0.until>now,color:h0?h0.color:''};}).sort((x,y)=>Number(y.active)-Number(x.active)||Number(y.pl.big)-Number(x.pl.big));
  for(const {i,pl,active,color} of order){const [x,y,z]=globePoint(PLACE_VEC[i],g);if(z<=.18)continue;if(!active&&(!pl.big||small))continue;
   ctx.font=`${active?600:500} ${small?9.5:11}px "IBM Plex Sans", system-ui, sans-serif`;const tw=ctx.measureText(pl.name).width,ly=y-(small?9:11),bx=[x-tw/2-3,ly-7,x+tw/2+3,ly+7];
-  if(boxes.some(o=>bx[0]<o[2]&&bx[2]>o[0]&&bx[1]<o[3]&&bx[3]>o[1])){if(active){ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,2.6,0,Math.PI*2);ctx.fill();}continue;}
+  if(boxes.some(o=>bx[0]<o[2]&&bx[2]>o[0]&&bx[1]<o[3]&&bx[3]>o[1])){if(active){ctx.fillStyle=atkCol(color);ctx.beginPath();ctx.arc(x,y,2.6,0,Math.PI*2);ctx.fill();}continue;}
   boxes.push(bx);const a=Math.min(1,(z-.18)/.3);ctx.globalAlpha=a*(active?1:.75);
-  ctx.fillStyle=active?color:p.muted;ctx.beginPath();ctx.arc(x,y,active?2.6:1.6,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle=active?atkCol(color):p.muted;ctx.beginPath();ctx.arc(x,y,active?2.6:1.6,0,Math.PI*2);ctx.fill();
   ctx.fillStyle=active?p.ink:p.muted;ctx.fillText(pl.name,x,ly);ctx.globalAlpha=1;}
 }
 if(coreCv)sealTilt?.classList.add('live');
