@@ -20,7 +20,7 @@ export const INBOX: Mail[] = [
     body: ['Hello,', 'Due to a system change, all student workers must reply with their new bank account and routing number before Friday or paychecks will be delayed.'],
     auth: { spf: 'softfail', dkim: 'none', dmarc: 'fail' }, clues: ['Reply-To goes somewhere else', 'Urgency or threat', 'Asks for a password, code or payment', 'Generic greeting', 'SPF/DKIM/DMARC failed'],
     why: 'The display address looks right, but replies go to a free-mail account and authentication fails: the From address is spoofed. Payroll changes happen in the HR portal, never by email reply.' },
-  { id: 'club', from: 'CISO officers', addr: 'officers@clubs.isu.example', subject: 'Cyber Duel night this Thursday', phish: false,
+  { id: 'club', from: 'Cyber club officers', addr: 'officers@clubs.isu.example', subject: 'Cyber Duel night this Thursday', phish: false,
     body: ['Hey everyone,', 'Duel night is Thursday 6 p.m. in JB-359. Bring a laptop or just your phone. Pizza is on us. See the club calendar for details.'],
     auth: { spf: 'pass', dkim: 'pass', dmarc: 'pass' }, clues: [], why: 'An organization subdomain, passing checks, and an ordinary event message with nothing to enter or download.' },
   { id: 'invoice', from: 'Accounts Receivable', addr: 'billing@vendor-invoices.example', subject: 'Overdue invoice #88213', phish: true,

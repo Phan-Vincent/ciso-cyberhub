@@ -10,7 +10,7 @@ const f = join(mkdtempSync(join(tmpdir(), 'ps-')), 'ps.mjs');
 writeFileSync(f, stripTypeScriptTypes(readFileSync(new URL('../web/pslab.ts', import.meta.url), 'utf8'), { mode: 'strip' }));
 const { PS, PS_LEVELS } = await import(pathToFileURL(f).href);
 const out = (sh, c) => sh.run(c).out.join('\n');
-const grab = s => (s.match(/CISO\{[0-9a-f-]+\}/) || [])[0];
+const grab = s => (s.match(/HUB\{[0-9a-f-]+\}/) || [])[0];
 const SOLVE = {
   'ps-whoami': ['whoami'], 'ps-location': ['Get-Location'],
   'ps-list': sh => { const l = out(sh, 'Get-ChildItem C:\\Cases -Recurse'); assert.match(l, /IR-2026-17/); return grab(out(sh, 'Get-Content C:\\Cases\\IR-2026-17\\handoff.txt')); },

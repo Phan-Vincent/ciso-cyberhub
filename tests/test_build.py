@@ -59,16 +59,11 @@ class BuildTests(unittest.TestCase):
         self.assertIn('aria-label="Illustration of cyberattacks moving between countries on a rotating globe. Drag to spin it."',html)
         self.assertNotRegex(html.lower(),r'live (attack|threat) (map|feed)|real-time attacks')
         self.assertNotIn('core-yaw',html)
-    def test_footer_lockup_uses_shared_css_frame(self):
-        svg=(ROOT/'public/assets/brand/cyberhub-lockup-on-dark.svg').read_text()
-        self.assertNotIn('M6 18 V6 H18',svg)
-        css=(ROOT/'web/site.css').read_text()
-        self.assertIn('.brand-frame::before',css)
-        self.assertIn('--corner-len: 22px',css)
-        self.assertIn('--corner-weight: 1.5px',css)
-        home=(ROOT/'dist/index.html').read_text()
-        self.assertEqual(home.count('class="brand-frame'),2)
-        self.assertIn('class="brand-frame powered"',home)
+    def test_site_has_no_club_affiliation(self):
+        for page in ['index.html','about/index.html','labs/index.html','careers/competitions/index.html']:
+            html=(ROOT/'dist'/page).read_text()
+            self.assertNotIn('CISO',html.replace('ciso-cyberhub',''),page)
+            self.assertNotIn('ciso-csusb',html,page)
     def test_geography_asset_is_vendored_complete_and_attributed(self):
         geo=read_json(ROOT/'public/assets/geo/ne_110m_countries.json')
         source=geo['source']
@@ -102,8 +97,7 @@ class BuildTests(unittest.TestCase):
         self.assertIn("prefers-color-scheme: light",theme)
     def test_endorsement_sentence_matches_config(self):
         home=(ROOT/'dist/index.html').read_text()
-        self.assertIn('University endorsement pending.',home)
-        self.assertNotIn('University and club endorsement pending.',home)
+        self.assertIn('Not affiliated with any university, club or certification provider.',home)
     def test_vulnerabilities_page_orders_newest_kev_first(self):
         html=(ROOT/'dist/vulnerabilities/index.html').read_text()
         dates=re.findall(r'Added:\s*(\d{4}-\d{2}-\d{2})',html)

@@ -1,5 +1,5 @@
 """Competitions page (/careers/competitions/): what each major student cyber competition is,
-when it runs, team rules, how to prepare with CyberHub, and how to form a team through CISO.
+when it runs, team rules, how to prepare with CyberHub, and how to form a team.
 Dates come from the organizers' own sites (checked 2026-10-24); the page marks each event as
 upcoming or past at build time, so the nightly rebuild keeps it current.
 """
@@ -121,14 +121,14 @@ def competitions_page(site, today: date | None = None) -> str:
                  f'<dl class="cx-facts"><div><dt>Team</dt><dd>{E(c["team"])}</dd></div><div><dt>Cost</dt><dd>{E(c["cost"])}</dd></div><div><dt>When</dt><dd>{E(c["when"])}</dd></div><div><dt>Level</dt><dd>{E(c["level"])}</dd></div></dl>'
                  f'<h3>How to prepare</h3><ol class="steps">{prep}</ol><div class="df-links">{links}<a class="button primary" href="{E(c["url"])}" rel="noopener">Official site ↗</a></div></section>')
 
-    # join through CISO
-    body += ('<section class="cx-join"><h2>Compete with CISO</h2><p>Most team competitions need students from the same school and a faculty coach. CISO is where CSUSB students find teammates, practice together and organize registration.</p>'
-             '<ol class="steps"><li><b>Come to a CISO meeting</b> and say which competition you want to try. Beginners are welcome; NCL and picoCTF are built for first-timers.</li>'
+    # forming a team
+    body += ('<section class="cx-join"><h2>Form a team</h2><p>Most team competitions need students from the same school and a faculty coach. Your school\'s cybersecurity or computing club, or a computer science instructor, is the usual place to find teammates and a coach.</p>'
+             '<ol class="steps"><li><b>Find teammates</b> and agree which competition you want to try. Beginners are welcome; NCL and picoCTF are built for first-timers.</li>'
              '<li><b>Pick a role early.</b> Linux, Windows, networking, web, reporting or communications. Teams win by covering every role, not by having one expert.</li>'
              '<li><b>Practice weekly</b> with the CyberHub labs and past challenges, and keep a shared notes file of commands and fixes.</li>'
              '<li><b>Put it on your resume.</b> Your NCL Scouting Report, CCDC or CPTC placement and team role are real experience. '
              + a('Add it with the resume tailor →', '/careers/resume/') + '</li></ol>'
-             f'<p><a class="button primary" href="https://www.ciso-csusb.org/" rel="noopener">CISO club site ↗</a> {a("Internships near CSUSB →", "/careers/internships/", "button")}</p></section>')
+             f'<p>{a("Internships near CSUSB →", "/careers/internships/", "button")}</p></section>')
     body += _sources(SOURCES)
     return body
 

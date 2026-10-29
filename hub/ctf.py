@@ -20,7 +20,7 @@ def build_ctf(site) -> None:
     body = site.heading('Challenge board', f'{len(data)} original challenges, 100 to 500 points, no hints unless you ask. Every hint costs a quarter of the points. Everything is synthetic and safe to poke at.', 'Practice / Challenges')
     body += (f'<div class="ctf" id="ctf" data-total="{total}"><div class="ctf-score"><div><span class="label">Your score</span><strong id="ctf-score">0</strong><span class="label">of {total}</span></div>'
              f'<div><span class="label">Solved</span><strong id="ctf-solved">0</strong><span class="label">of {len(data)}</span></div>'
-             '<p class="ctf-rules">Flags look like <code>CISO{...}</code>. Case and spaces do not matter. Stuck? The <a href="' + E(site.base) + '/labs/crypto/">Crypto &amp; Encoding Lab</a> is your decoder.</p></div>'
+             '<p class="ctf-rules">Flags look like <code>HUB{...}</code>. Case and spaces do not matter. Stuck? The <a href="' + E(site.base) + '/labs/crypto/">Crypto &amp; Encoding Lab</a> is your decoder.</p></div>'
              '<div class="ctf-filter" role="group" aria-label="Filter by category"><button type="button" class="chip" data-ctf-cat="" aria-pressed="true">All</button>'
              + ''.join(f'<button type="button" class="chip" data-ctf-cat="{c}" aria-pressed="false">{c}</button>' for c in CATS) + '</div><div class="ctf-board">')
     for pts in sorted({c['pts'] for c in data}):
@@ -31,7 +31,7 @@ def build_ctf(site) -> None:
                      f'<summary><span class="label">{E(c["cat"])} · {c["pts"]}</span><b>{E(c["title"])}</b><i class="ctf-state" aria-hidden="true"></i></summary>'
                      f'<div class="ctf-body"><p>{E(c["prompt"])}</p><pre class="ctf-art" tabindex="0" aria-label="Evidence">{E(c["artifact"])}</pre>'
                      f'<ol class="ctf-hints">{hints}</ol><div class="ctf-actions"><button type="button" class="ctf-hint">Hint (−25%)</button>'
-                     f'<form class="ctf-form"><label class="sr-only" for="f-{E(c["id"])}">Flag</label><input id="f-{E(c["id"])}" name="flag" autocomplete="off" spellcheck="false" placeholder="CISO{{...}}"><button class="primary" type="submit">Submit</button></form></div>'
+                     f'<form class="ctf-form"><label class="sr-only" for="f-{E(c["id"])}">Flag</label><input id="f-{E(c["id"])}" name="flag" autocomplete="off" spellcheck="false" placeholder="HUB{{...}}"><button class="primary" type="submit">Submit</button></form></div>'
                      f'<p class="ctf-msg" role="status"></p><div class="ctf-explain" hidden><p class="label">Why it matters</p><p>{E(c["explain"])}</p></div></div></details>')
         body += '</div></section>'
     body += '</div><p class="muted">Progress and score stay in this browser (and sync if you sign in on <a href="' + E(site.base) + '/account/">your account</a>). Flags are checked by hash, so answers are not in the page.</p></div>'

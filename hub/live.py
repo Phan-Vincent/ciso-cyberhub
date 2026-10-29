@@ -14,7 +14,7 @@ def live_page(site) -> str:
               f'<p>{site.a("Play Cyber Duel →", "/duel/", "button primary")}</p><p class="muted">Setup guide for officers: docs/ACCOUNTS.md in the CyberHub repository.</p></div>', hidden=False)
     body += s('lv-choose', '<div class="lv-pick"><button type="button" class="lv-big" id="lv-host"><b>Host a room</b><span>Officers: on the projector laptop</span></button>'
               '<button type="button" class="lv-big" id="lv-join-btn"><b>Join a room</b><span>On your phone, with the room code</span></button></div>')
-    body += s('lv-officer', '<div class="ac-card"><h2>Hosting is for CISO officers</h2><p id="lv-omsg">Sign in with your officer email to host a room. Anyone can join a room without an account.</p>'
+    body += s('lv-officer', '<div class="ac-card"><h2>Hosting is for approved hosts</h2><p id="lv-omsg">Sign in with your officer email to host a room. Anyone can join a room without an account.</p>'
               f'<p class="rt-actions">{site.a("Sign in", "/account/", "button primary")}<button type="button" id="lv-ocheck">I signed in, check again</button><button type="button" id="lv-oback">Back</button></p>'
               '<p class="muted">Officers are added by the club in the CyberHub Supabase project (Table Editor → officers).</p></div>')
     body += s('lv-setup', '<h2>New room</h2><div class="duel-form"><label><span class="label">Topic</span><select id="lv-cat"><option value="all">All topics</option></select></label>'
@@ -41,7 +41,7 @@ def live_page(site) -> str:
     body += s('lv-pr', '<p class="lv-big-msg" id="lv-pres"></p><p class="lv-count" id="lv-prank"></p>')
     body += s('lv-pend', '<p class="lv-big-msg">Game over</p><p class="lv-count" id="lv-pfinal"></p>' + f'<p>{site.a("Keep practicing →", "/duel/", "button")}</p>')
     body += '</div>'
-    body += ('<section class="duel-host"><h2>Running it in class</h2><ol class="steps"><li><b>Host (a CISO officer, signed in):</b> open this page on the projector laptop, choose Host a room, pick the topic and level, and create the room.</li>'
+    body += ('<section class="duel-host"><h2>Running it in class</h2><ol class="steps"><li><b>Host (an approved host, signed in):</b> open this page on the projector laptop, choose Host a room, pick the topic and level, and create the room.</li>'
              '<li><b>Students:</b> scan the QR code on screen with their phone camera (or open the address shown), then pick a nickname. Late? Press <b>Show join QR</b> any time during the game.</li>'
              '<li>When everyone is in, press <b>Start game</b>. Each question lasts 15 seconds; faster correct answers score more.</li>'
              '<li>After each question the projector shows the answer, why it is right, and the top 10.</li></ol>'

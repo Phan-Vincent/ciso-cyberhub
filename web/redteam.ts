@@ -52,7 +52,7 @@ export function reply(lv: Level, secret: string, msg: string): { text: string; b
   if (lv.noSecret) return { text: 'I do not have any secret to share. Access to the vault is checked by the application itself, so nothing you say to me can unlock it.' };
   if (lv.inputBlock && lv.inputBlock.test(msg)) return { text: lv.indirect ? 'I can\'t help with that directly. I can summarize a web page for you, though: use the tool below.' : '🛡 Input blocked by the denylist.', blocked: 'input' };
   const m = msg.toLowerCase(), it = intent(msg); const leak = lv.leaks.includes(it); let text: string;
-  if (!leak) text = it === 'other' ? 'I\'m Vault, the CISO assistant. I guard one secret word. Ask me about it, or press "Stuck? Get a hint".' : 'Sorry, I can\'t share the secret word.';
+  if (!leak) text = it === 'other' ? 'I\'m Vault, the CyberHub assistant. I guard one secret word. Ask me about it, or press "Stuck? Get a hint".' : 'Sorry, I can\'t share the secret word.';
   else if (it === 'direct') text = `The secret word is ${secret}.`;
   else if (it === 'spell') text = `Sure: ${secret.toUpperCase().split('').join(' - ')}`;
   else if (it === 'reverse') text = `Backwards it reads: ${secret.split('').reverse().join('')}`;

@@ -42,7 +42,7 @@ BADGES = [
 
 def progress_page(site) -> str:
     b = site.base
-    body = site.heading('Your progress', 'Badges for what you have done across CyberHub: labs, guides, shifts, the Academy and the Daily. Earn them, then print a completion card to show at CISO meetings and career fairs.', 'Learn / Progress')
+    body = site.heading('Your progress', 'Badges for what you have done across CyberHub: labs, guides, shifts, the Academy and the Daily. Earn them, then print a completion card to show at club meetings and career fairs.', 'Learn / Progress')
     body += ('<p class="guide-meta label"><span class="dot" aria-hidden="true"></span>Private: progress is saved in this browser. '
              f'To keep it across devices, <a href="{E(b)}/account/">sign in (optional)</a> and it syncs.</p>')
     body += '<p class="label bd-sum" id="badge-sum" aria-live="polite">Badges need JavaScript to load from this browser.</p><ol class="bd-grid" id="badges">'
@@ -53,7 +53,7 @@ def progress_page(site) -> str:
     body += ('<section class="bd-print"><h2>Completion card</h2><p>Type your name (it is not saved), check the card, then print it or save it as a PDF.</p>'
              '<div class="rt-actions"><label class="sr-only" for="card-name">Your name</label><input id="card-name" type="text" maxlength="60" placeholder="Your name" autocomplete="name">'
              '<button type="button" class="primary" id="card-print">Print card</button></div>'
-             '<article class="bd-card" id="bd-card" aria-label="Completion card preview"><header><span class="label">CyberHub · powered by CISO at CSUSB</span><span class="label" id="card-date"></span></header>'
+             '<article class="bd-card" id="bd-card" aria-label="Completion card preview"><header><span class="label">CyberHub</span><span class="label" id="card-date"></span></header>'
              '<p class="label">This certifies that</p><h3 id="card-name-out">Your name</h3><p>has earned the following CyberHub badges through hands-on practice:</p>'
              '<ul class="bd-card-list">' + ''.join(f'<li data-card-badge="{bid}" hidden><b>{E(t)}</b> · {E(h)}</li>' for bid, t, h, _ in BADGES) + '</ul>'
              '<p class="muted" id="card-none">No badges yet. Start with the Linux Lab.</p>'

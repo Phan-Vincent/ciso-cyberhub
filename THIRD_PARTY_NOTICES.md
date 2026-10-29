@@ -25,7 +25,7 @@ GitHub Actions are official actions pinned to upstream release commits checked o
 
 Fonts: Archivo (The Archivo Project Authors) and Martian Mono (The Martian Mono Project Authors) are self-hosted under the SIL Open Font License 1.1. License texts ship beside the files in public/assets/fonts/. They are served from this site because the Content Security Policy allows fonts from 'self' only.
 
-Brand assets: the CyberHub Core logo family in public/assets/brand/ comes from the CISO CyberHub design system. The CISO seal (public/assets/brand/ciso-seal.png) belongs to the Cyber Intelligence & Security Organization at CSUSB and appears once per page, as the footer's "Powered by" sign-off. See docs/BRAND.md.
+Brand assets: the CyberHub Core logo family in public/assets/brand/ is original to this project.
 
 ## Photography (field band)
 

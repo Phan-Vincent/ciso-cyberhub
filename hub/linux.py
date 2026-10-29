@@ -9,15 +9,15 @@ import re
 
 # Each level: id, title, lesson paragraphs, goal, hints. `code` spans use backticks in text.
 MODULES = [
-    ('shell-basics', 'Shell basics', 'Your first minutes on hub01, the CISO practice server.', [
+    ('shell-basics', 'Shell basics', 'Your first minutes on hub01, the CyberHub practice server.', [
         ('first-command', 'Your first command', ['A shell reads a line you type, runs the program you named, and prints what it says back. On a server you will investigate, the first question is always: who am I logged in as?', 'The program `whoami` answers that.'],
          'Run `whoami`.', ['Type the word whoami and press Enter.']),
         ('echo', 'Say something', ['`echo` prints its arguments. It looks trivial, but you will use it to write files, check variables and build scripts.', 'Arguments are separated by spaces. Quotes keep words together: `echo "two words"`.'],
          'Print exactly: `hello, hub01`', ['echo hello, hub01', 'Quotes are optional here, but they never hurt.']),
         ('manual', 'Read the manual', ['Nobody memorizes every option. Professionals look things up. On this lab box `man <command>` shows a short manual, and `help` lists every command available.'],
          'Open the manual for `ls`.', ['man followed by the command name.']),
-        ('read-the-flag', 'Capture your first flag', ['Flags are secret strings like `CISO{...}` hidden on the box. Finding one proves you did the task. `cat` prints a file to the screen.', 'Files are named by paths. `/flag` is a file called flag at the very top of the filesystem.'],
-         'Print `/flag` and submit what you find with `submit <flag>`.', ['cat /flag', 'Copy the whole CISO{...} string, braces included.']),
+        ('read-the-flag', 'Capture your first flag', ['Flags are secret strings like `HUB{...}` hidden on the box. Finding one proves you did the task. `cat` prints a file to the screen.', 'Files are named by paths. `/flag` is a file called flag at the very top of the filesystem.'],
+         'Print `/flag` and submit what you find with `submit <flag>`.', ['cat /flag', 'Copy the whole HUB{...} string, braces included.']),
     ]),
     ('navigation', 'Finding your way', 'The filesystem is a tree. Learn to move around it without getting lost.', [
         ('where-am-i', 'Where am I?', ['Every shell has a current working directory. Commands that take a relative path start from there. `pwd` prints it.'], 'Print your working directory.', ['pwd stands for print working directory.']),
@@ -31,7 +31,7 @@ MODULES = [
         ('head', 'The top of the file', ['`head` prints the first lines of a file (10 by default). `head -n 1` prints just one. Boot logs record what happened first.'], 'The flag is the first line of `/var/log/boot.log`.', ['head -n 1 /var/log/boot.log']),
         ('tail', 'The end of the file', ['`tail` prints the last lines. The newest events in a log are at the bottom, so this is the command you will use most during an incident.'], 'The flag is the last line of `/var/log/app.log`.', ['tail -n 1 /var/log/app.log']),
         ('count-lines', 'Counting', ['`wc -l` counts lines. Quick sizing tells you whether a log is worth reading by hand or needs filtering.'], 'How many lines are in `/var/log/dns.log`? Submit the number.', ['wc -l /var/log/dns.log', 'Submit only the number.']),
-        ('grep', 'Search with grep', ['`grep PATTERN file` prints only matching lines. It is the single most useful tool for log work. Add `-i` to ignore case and `-n` for line numbers.'], 'A beacon left a flag somewhere in `/var/log/proxy.log`, which has 1,500 lines. Find it.', ['Flags contain CISO.', 'grep CISO /var/log/proxy.log']),
+        ('grep', 'Search with grep', ['`grep PATTERN file` prints only matching lines. It is the single most useful tool for log work. Add `-i` to ignore case and `-n` for line numbers.'], 'A beacon left a flag somewhere in `/var/log/proxy.log`, which has 1,500 lines. Find it.', ['Flags contain HUB.', 'grep HUB /var/log/proxy.log']),
     ]),
     ('files', 'Making and moving files', 'Set up a case folder and keep evidence tidy.', [
         ('mkdir', 'Make a case folder', ['`mkdir` creates a directory. `mkdir -p a/b/c` creates the whole chain at once.'], 'Create a directory called `cases` in your home directory.', ['mkdir ~/cases']),
@@ -52,7 +52,7 @@ MODULES = [
     ]),
     ('finding', 'Finding things', 'Search the whole box, not just one folder.', [
         ('find', 'Find a leaked key', ['`find PATH -name PATTERN` walks a directory tree. Put patterns in quotes so the shell does not expand them first. Add `2>/dev/null` to hide "Permission denied" noise.'], 'Someone left a `.key` file somewhere on the server. Find it and submit the flag inside.', ['find / -name "*.key" 2>/dev/null', 'Then cat the path it prints.']),
-        ('grep-recursive', 'Search inside every file', ['`grep -r PATTERN DIR` searches every file under a directory. It shows the file name with each match, which tells you where the secret leaked.'], 'One of the configs under `/srv/config` contains a token with a flag. Find it.', ['grep -r CISO /srv/config']),
+        ('grep-recursive', 'Search inside every file', ['`grep -r PATTERN DIR` searches every file under a directory. It shows the file name with each match, which tells you where the secret leaked.'], 'One of the configs under `/srv/config` contains a token with a flag. Find it.', ['grep -r HUB /srv/config']),
     ]),
     ('permissions', 'Permissions', 'Who can read, write and run what. The heart of Linux security.', [
         ('read-permissions', 'Read the permission bits', ['`ls -l` shows a mode like `-rw-r--r--`: the file type, then read/write/execute for the owner, the group and everyone else. A `w` in the last three means anyone on the system can change the file.'], 'One file in `~/configs` is world-writable. Submit its name.', ['ls -l ~/configs', 'Look for rw- at the end of the permission string.']),
@@ -85,7 +85,7 @@ def index_page(site, modules=None, path='/linux/', key='cyberhub:linux', ranks=N
     body += ('<div class="lx-hero"><pre class="lx-teaser" aria-hidden="true">student@hub01:~$ grep "Failed password" /var/log/auth.log | wc -l\n214\nstudent@hub01:~$ submit 214\n✔ Correct.</pre>'
              '<ul class="lx-points"><li><b>Real commands.</b> A simulated shell with pipes, redirection, wildcards, permissions, sudo, variables and processes.</li>'
              '<li><b>Fresh flags.</b> Every level generates new data and flags, so the only way through is to do it.</li>'
-             '<li><b>Security first.</b> Every module is framed as investigation work on a CISO server.</li></ul></div>') if not intro else ''
+             '<li><b>Security first.</b> Every module is framed as investigation work on a practice server.</li></ul></div>') if not intro else ''
     ranks = ranks or [(0, 'Recruit'), (4, 'Operator'), (10, 'Analyst'), (18, 'Hunter'), (27, 'Responder'), (36, 'Root')]
     body += (f'<div class="lx-rank" id="lx-rank" data-key="{key}" data-ranks=\'' + ','.join(f'{n}:{t}' for n, t in ranks) + '\'><span class="label">Your rank</span><strong id="lx-rank-name">Recruit</strong>'
              '<span class="lx-rank-bar" aria-hidden="true"><i id="lx-rank-fill"></i></span><span class="label" id="lx-rank-next">Complete 4 levels to reach Operator</span>'

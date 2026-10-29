@@ -23,7 +23,7 @@ TOPICS = ['security', 'cybersecurity', 'pentesting', 'devsecops', 'threat-intell
 BLOCK = re.compile(r'jailbreak|uncensor|abliterat|unfilter|nsfw|crack(ed)?\b|keygen|stealer|rat\b|botnet|ddos|carding|phishing[- ]?kit|meme|airdrop|token[- ]?sniper|casino|humanizer|dealign|bypass[- ]?(av|edr|antivirus)|破甲|越狱', re.I)
 # Viral projects worth showing even when they fall outside the topic/date window. Refreshed live weekly.
 SPOTLIGHT = [('morluto/rea', 'Viral this month: an MCP server that gives AI coding agents 170+ reverse-engineering tools for binaries, Electron apps, websites and Android APKs.')]
-UA = {'User-Agent': 'CISOCyberHub/0.1 (+trending feed)', 'Accept': 'application/json'}
+UA = {'User-Agent': 'CyberHub/0.1 (+trending feed)', 'Accept': 'application/json'}
 
 
 def _get(url: str, headers: dict | None = None):
