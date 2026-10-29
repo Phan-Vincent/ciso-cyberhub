@@ -39,7 +39,7 @@ def duel_page(site, bank: dict) -> str:
              '<label data-for="faceoff"><span class="label">Player 2</span><input id="d-p2" type="text" maxlength="20" placeholder="Player 2"></label>'
              '<label data-for="bot" hidden><span class="label">Opponent</span><select id="d-bot"><option value="rookie">Rookie bot</option><option value="analyst" selected>Analyst bot</option><option value="elite">Elite bot</option></select></label>'
              '<label><span class="label">Topic</span><select id="d-cat"><option value="all">All topics</option></select></label>'
-             '<label><span class="label">Level</span><select id="d-diff"><option value="1">Beginner (never studied cyber)</option><option value="2">Student</option><option value="3">Pro</option><option value="mix" selected>Mixed</option></select></label>'
+             '<label><span class="label">Level</span><select id="d-diff"><option value="1">Beginner (never studied cyber)</option><option value="2">Student</option><option value="3">Pro</option><option value="4">Hard</option><option value="mix" selected>Mixed (Beginner–Pro)</option></select></label>'
              '<label><span class="label">Questions</span><select id="d-rounds"><option>5</option><option selected>10</option><option>15</option></select></label></div>'
              '<div class="rt-actions" data-for="faceoff bot challenge"><button type="button" class="primary duel-go" id="d-start" disabled>Start duel</button><span class="label" id="d-status" role="status">Loading questions…</span></div>'
              '<p class="muted">Scoring: 100 points for a correct answer plus up to 100 for speed. Each player answers once per question, so think fast but not too fast. Names stay on this device; challenge links carry only the name you type, the settings and your answers.</p></section>'
@@ -63,10 +63,10 @@ def duel_page(site, bank: dict) -> str:
     body += ('<section class="duel-host"><h2>Hosting a duel night</h2><div class="flags">'
              '<div class="flag"><b>Projector bracket</b><p>Put Face-off on the big screen. Winners stay on, challengers rotate. Ten questions take about four minutes.</p></div>'
              '<div class="flag"><b>Class-wide challenge</b><p>An officer plays one round in Challenge mode and posts the link in the group chat. Everyone races the same run; post your scores.</p></div>'
-             '<div class="flag"><b>Pick the level</b><p>Beginner for open houses and new members, Mixed for meetings, Pro for competition practice.</p></div></div></section>')
+             '<div class="flag"><b>Pick the level</b><p>Beginner for open houses and new members, Mixed (Beginner–Pro) for meetings, Pro for practice, Hard for club competition.</p></div></div></section>')
     return body
 
 
 def build_duel(site) -> None:
     bank = write_assets(site)
-    site.page('/duel/', 'Cyber Duel', duel_page(site, bank), 'Head-to-head cybersecurity quiz: face off on one screen, race a bot, or challenge a friend by link. Beginner to pro.', 'Play', module='duel')
+    site.page('/duel/', 'Cyber Duel', duel_page(site, bank), 'Head-to-head cybersecurity quiz: face off on one screen, race a bot, or challenge a friend by link. Beginner to Hard.', 'Play', module='duel')
