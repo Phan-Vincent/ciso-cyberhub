@@ -24,7 +24,6 @@ from .badges import build_badges
 from .duel import build_duel
 from .account import build_account, supabase
 from .practice import build_practice, interactive_cards
-from .capstone import build_capstone
 from .chal import build_chal
 from .ctf import build_ctf
 from .physlab import build_physlab
@@ -128,7 +127,7 @@ class Site:
             ('CyberHub Daily','/daily/','One real-world puzzle a day'),('Networking Lab','/linux/network/','17 levels: IP, DNS, ports, subnetting'),('PowerShell Lab','/linux/powershell/','15 Windows investigation levels'),('Phishing lab','/labs/phishing/','Investigate a suspicious inbox'),
             ('Log Hunt','/labs/logs/','Trace a break-in through logs'),('Secure Code Review','/labs/code-review/','Find and fix the vulnerable line'),('Crypto & Encoding','/labs/crypto/','Decode flags, CyberChef-style'),
             ('Cloud Security Lab','/labs/cloud/','Find cloud misconfigurations'),('Active Directory Lab','/labs/active-directory/','Trace a domain takeover'),('AI Red Team Lab','/ai/red-team/','Make an AI leak its secret'),
-            ('Lockdown Lab','/labs/physical/','Lock down a building on a budget'),('GIS Lab','/labs/gis/','10 levels: coordinates to geofences'),('Data Lab','/labs/data/','10 levels on real CISA KEV data'),('Capstone investigation','/labs/capstone/','Chain email, endpoint, network and AD evidence'),('Guided labs','/labs/#guided','Investigations on evidence files'),('Your progress','/progress/','Badges and a completion card')]),
+            ('Lockdown Lab','/labs/physical/','Lock down a building on a budget'),('GIS Lab','/labs/gis/','10 levels: coordinates to geofences'),('Data Lab','/labs/data/','10 levels on real CISA KEV data'),('Guided labs','/labs/#guided','Investigations on evidence files'),('Your progress','/progress/','Badges and a completion card')]),
         ('careers','Careers','/careers/','From first internship to security architect.',[
             ('Career roadmaps','/careers/','12 roles, skills and projects'),('Which role are you?','/careers/match/','A six-question career match'),('Internship scanner','/careers/internships/','Near CSUSB and remote, daily'),
             ('Resume tailor','/careers/resume/','Resume and cover letter, privately'),('Competitions','/careers/competitions/','NCL, CCDC, CPTC, picoCTF and more'),('Work roles','/careers/roles/','15 roles, mapped to labs and tools'),
@@ -452,7 +451,7 @@ class Site:
         shutil.copyfile(ROOT/'web/site.css',self.out/'assets/site.css')
         shutil.copyfile(ROOT/'public/assets/brand/cyberhub-favicon.svg',self.out/'assets/favicon.svg')
         subprocess.run(['node','scripts/transpile.mjs'],cwd=ROOT,check=True)
-        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);build_practice(self);build_chal(self);build_capstone(self);build_ctf(self);build_physlab(self);build_geodata(self);build_start(self);build_ailab(self);build_roles(self);build_glossary(self);build_pslab(self);build_ittrack(self);build_plan(self);build_live(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
+        self.home();self.resources_page();self.feed();build_play(self);build_guides(self);build_linux(self);build_history(self);build_ai_extras(self);build_resume(self);build_aiflow(self);build_defend(self);build_netlab(self);build_competitions(self);build_badges(self);build_duel(self);build_account(self);build_practice(self);build_chal(self);build_ctf(self);build_physlab(self);build_geodata(self);build_start(self);build_ailab(self);build_roles(self);build_glossary(self);build_pslab(self);build_ittrack(self);build_plan(self);build_live(self);self.tool_pages();self.academy_pages();self.document_pages();self.intelligence_pages();self.misc()
         for name,data in [('academy',self.academy),('search',self.search)]:
             (self.out/'assets'/f'{name}.json').write_text(json.dumps(data,ensure_ascii=False))
         self.page('/404/','Page not found',self.heading('This page is not here.','Use search or the main navigation to find a learning resource.')+self.a('Return home','/','button primary'))
