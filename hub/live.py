@@ -18,7 +18,7 @@ def live_page(site) -> str:
               f'<p class="rt-actions">{site.a("Sign in", "/account/", "button primary")}<button type="button" id="lv-ocheck">I signed in, check again</button><button type="button" id="lv-oback">Back</button></p>'
               '<p class="muted">Officers are added by the club in the CyberHub Supabase project (Table Editor → officers).</p></div>')
     body += s('lv-setup', '<h2>New room</h2><div class="duel-form"><label><span class="label">Topic</span><select id="lv-cat"><option value="all">All topics</option></select></label>'
-              '<label class="lv-qonly"><span class="label">Level</span><select id="lv-diff"><option value="1">Beginner</option><option value="2">Student</option><option value="3">Pro</option><option value="4">Hard</option><option value="mix" selected>Mixed (Beginner–Pro)</option></select></label>'
+              '<label class="lv-qonly"><span class="label">Level</span><select id="lv-diff"><option value="1">Beginner</option><option value="2">Student</option><option value="3">Pro</option><option value="mix" selected>Mixed</option></select></label>'
               '<label class="lv-qonly"><span class="label">Questions</span><select id="lv-n"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></label></div>'
               '<p class="muted" id="lv-ttnote" hidden>Incident tabletop: six decisions in a real-style incident, 30 seconds each. Put students in teams of 3 or 4 sharing one phone so they talk it through, then discuss each answer on the big screen.</p>'
               '<p><button type="button" class="primary duel-go" id="lv-create">Create room</button></p>')
@@ -41,7 +41,7 @@ def live_page(site) -> str:
     body += s('lv-pr', '<p class="lv-big-msg" id="lv-pres"></p><p class="lv-count" id="lv-prank"></p>')
     body += s('lv-pend', '<p class="lv-big-msg">Game over</p><p class="lv-count" id="lv-pfinal"></p>' + f'<p>{site.a("Keep practicing →", "/duel/", "button")}</p>')
     body += '</div>'
-    body += ('<section class="duel-host"><h2>Running it in class</h2><ol class="steps"><li><b>Host (a CISO officer, signed in):</b> open this page on the projector laptop, choose Host a room, pick the topic and level (Mixed covers Beginner–Pro; Hard is separate), and create the room.</li>'
+    body += ('<section class="duel-host"><h2>Running it in class</h2><ol class="steps"><li><b>Host (a CISO officer, signed in):</b> open this page on the projector laptop, choose Host a room, pick the topic and level, and create the room.</li>'
              '<li><b>Students:</b> scan the QR code on screen with their phone camera (or open the address shown), then pick a nickname. Late? Press <b>Show join QR</b> any time during the game.</li>'
              '<li>When everyone is in, press <b>Start game</b>. Each question lasts 15 seconds; faster correct answers score more.</li>'
              '<li>After each question the projector shows the answer, why it is right, and the top 10.</li></ol>'

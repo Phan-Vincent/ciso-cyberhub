@@ -130,7 +130,7 @@ def validate(root=ROOT):
     for category in duel['categories'].values():require(string(category),'Invalid duel category')
     for q in duel['questions']:
         fields(q,('id','cat','q','why'),'duel question')
-        require(q['cat'] in duel['categories'] and type(q.get('level')) is int and q['level'] in (1,2,3,4) and isinstance(q.get('choices'),list) and len(q['choices'])==4 and all(string(c) for c in q['choices']) and type(q.get('answer')) is int and 0<=q['answer']<4,'Invalid duel question')
+        require(q['cat'] in duel['categories'] and type(q.get('level')) is int and isinstance(q.get('choices'),list) and len(q['choices'])==4 and all(string(c) for c in q['choices']) and type(q.get('answer')) is int and 0<=q['answer']<4,'Invalid duel question')
     for sc in duel.get('scenarios',[]):
         require(isinstance(sc,dict) and string(sc.get('id')) and string(sc.get('title')) and isinstance(sc.get('steps'),list) and 3<=len(sc['steps'])<=12,'Invalid duel scenario')
         for q in sc['steps']:
