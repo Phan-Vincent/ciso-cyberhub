@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T08:42:52Z",
+  "generated_at": "2026-10-30T16:43:19Z",
   "items": [
     {
       "also_remote": false,
@@ -268,40 +268,6 @@
       ],
       "title": "Test Engineering Intern",
       "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers2/job/Santa-Clara-CA/Test-Engineering-Intern--BS---Summer-2027_2604537",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Irvine",
-      "company": "CoStar Group",
-      "id": "78bfe38c-e7ab-4387-af08-28aa2ecf4d6e",
-      "miles": 45,
-      "new": false,
-      "posted": "2026-09-16",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Technology Intern",
-      "url": "https://costar.wd1.myworkdayjobs.com/Costar_Campus/job/Irvine-US/Summer-2027-Technology-Intern---Irvine--CA_R39673",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Irvine",
-      "company": "CoStar Group",
-      "id": "fec5c82d-3e40-46de-bad2-93a1b2669f21",
-      "miles": 45,
-      "new": false,
-      "posted": "2026-09-16",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Associate Software Engineer Intern",
-      "url": "https://costar.wd1.myworkdayjobs.com/Costar_Campus/job/Irvine-US/Associate-Software-Engineer---Irvine--CA_R39736",
       "zone": "near"
     },
     {
@@ -2493,6 +2459,24 @@
       "title": "Student Worker Intern",
       "url": "https://viatris.wd5.myworkdayjobs.com/External/job/United-States-Remote-Office/Student-Worker_R5674339",
       "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Long Beach",
+      "company": "Voyager Technologies",
+      "id": "d70a18b1-4e20-4567-af5a-45ade24493b2",
+      "miles": 57,
+      "new": false,
+      "posted": "2026-09-28",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://job-boards.greenhouse.io/voyagertechnologiesinc/jobs/4423330009",
+      "zone": "region"
     },
     {
       "also_remote": false,
