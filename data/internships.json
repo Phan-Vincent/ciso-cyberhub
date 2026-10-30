@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T22:48:52Z",
+  "generated_at": "2026-10-30T08:42:52Z",
   "items": [
     {
       "also_remote": false,
@@ -773,6 +773,42 @@
     {
       "also_remote": false,
       "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "CareSource",
+      "id": "d479bef7-8f0d-4384-8b62-13d11f539acd",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-29",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "AI Intern",
+      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program---AI-Intern_R14123",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "CareSource",
+      "id": "4d168e58-9786-4bbf-93b9-85ed973a0ab6",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-29",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Full Stack AI Development Intern",
+      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program---Full-Stack-AI-Development-Intern-1_R14181",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
       "city": "Carson",
       "company": "GrayMatter Robotics",
       "id": "901b53ec-fba2-40bc-89d6-a7200607ee62",
@@ -1089,7 +1125,7 @@
       "company": "Keysight Technologies",
       "id": "7a944b5d-00b3-4976-a381-49c8b71abe4c",
       "miles": 77,
-      "new": true,
+      "new": false,
       "posted": "2026-10-22",
       "security": false,
       "sponsorship": "Other",
@@ -1660,6 +1696,22 @@
       ],
       "title": "Data Internship - Analytics & Decision Science",
       "url": "https://internaljobs.centurylink.com/job/Remote-Data,-Analytics-&-Decision-Science-Summer-2027-Internship-Pathway/1440961600/?ats=successfactors",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Scale AI",
+      "id": "41101dfb-9fa5-4eac-b1cf-f6c93e3c3f48",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-16",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Safety Research Scholar Intern",
+      "url": "https://job-boards.greenhouse.io/scaleai/jobs/4744402005",
       "zone": "remote"
     },
     {
@@ -2500,24 +2552,6 @@
       "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
-      "company": "ICF International",
-      "id": "acafb8f1-75b4-44f1-8450-4628ddf3b8a1",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-25",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Data Scientist Intern",
-      "url": "https://icf.wd5.myworkdayjobs.com/icfexternal_career_site/job/Reston-VA/XMLNAME-2027-Summer-Intern--Data-Scientist--Reston--VA--Denver--CO--Remote-_R2603252",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
       "company": "Cencora",
       "id": "fea9f279-8f49-4840-bf20-b5cdaf60b8d9",
       "miles": null,
@@ -2872,22 +2906,6 @@
       ],
       "title": "Software Engineer Intern - Summer 2027",
       "url": "https://caci.wd1.myworkdayjobs.com/external/job/437-DENVER-CO/Cleared-Software-Engineer-Intern---Summer-2027_331999",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Product",
-      "city": "Remote (US)",
-      "company": "Businessolver",
-      "id": "91f41328-4a4c-4ded-82fe-df25f52e8c51",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-11",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Product Manager Intern",
-      "url": "https://job-boards.greenhouse.io/businessolverinvitationonly/jobs/8197663",
       "zone": "remote"
     },
     {
