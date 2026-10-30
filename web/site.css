@@ -3357,3 +3357,56 @@ body::after { content: ""; position: fixed; inset: 6px; border: 1px solid var(--
 :root[data-theme=dark] .button.primary:hover, :root[data-theme=dark] button.primary:hover { background: #0a6fd4 !important; border-color: #0a6fd4 !important; }
 .button, button.primary, button.ghost, .pl-row button, .hero-actions .button, .ab-go .button, .gx-go .button { text-transform: uppercase !important; letter-spacing: -.005em !important; }
 @media (max-width: 860px) { .site-header { height: 56px; } }
+
+/* =====================================================================
+   HERON MOTION (web/motion.ts). Curves: expo.out for reveals, Heron's
+   cubic-bezier(.23,1,.32,1) for hovers, in-out for hairlines and wipes.
+   ===================================================================== */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+/* headings: words rise out of a mask, line by line */
+.hx-motion .wr .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; opacity: 1 !important; transform: none !important; transition: none !important; }
+.hx-motion .wr .w > span { display: inline-block; transform: translate3d(0, 108%, 0); transition: transform 1.2s cubic-bezier(.16, 1, .3, 1) var(--d, 0ms); will-change: transform; }
+.hx-motion .wr.hx-in .w > span, .hx-motion .wr.in .w > span { transform: none; }
+/* typed mono labels */
+.hx-motion .hx-type:not(.typing) { opacity: 0; }
+/* lead paragraphs drift up */
+.hx-motion main :is(.lead, .intro, .hero-lead, .ab-intro, .gx-lead) { opacity: 0; transform: translate3d(0, 14px, 0); transition: opacity 1.2s cubic-bezier(.16, 1, .3, 1) .25s, transform 1.2s cubic-bezier(.16, 1, .3, 1) .25s; }
+.hx-motion main :is(.lead, .intro, .hero-lead, .ab-intro, .gx-lead).hx-in { opacity: 1; transform: none; }
+/* boxes settle in from a slight zoom (Heron: scale + autoAlpha, expo.out) */
+.hx-motion .sr { opacity: 1 !important; transform: none !important; transition-delay: 0s !important; }
+.hx-motion .hx-box { opacity: 0; transform: scale(1.035); transform-origin: 50% 60%; transition: opacity 1.2s cubic-bezier(.16, 1, .3, 1) var(--d, 0ms), transform 1.6s cubic-bezier(.16, 1, .3, 1) var(--d, 0ms), border-color .4s, box-shadow .4s; }
+.hx-motion .hx-box.hx-in { opacity: 1; transform: none; }
+/* hairlines draw in from the left: a cover on the top border retracts */
+.hx-motion .hx-rule { position: relative; }
+.hx-motion .hx-rule::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--ground); transform-origin: 100% 50%; transform: scaleX(1); transition: transform 1.2s cubic-bezier(.65, 0, .35, 1) .1s; z-index: 2; pointer-events: none; }
+.hx-motion .hx-rule.hx-in::before { transform: scaleX(0); }
+/* buttons: the label rolls up and a copy rolls in */
+.hx-roll { display: inline-grid; overflow: hidden; line-height: 1.25; vertical-align: middle; }
+.hx-roll > span { grid-area: 1 / 1; display: block; transition: transform .5s cubic-bezier(.23, 1, .32, 1); }
+.hx-roll > span + span { transform: translate3d(0, 110%, 0); }
+a:hover > .hx-roll > span:first-child, button:hover > .hx-roll > span:first-child, a:focus-visible > .hx-roll > span:first-child, button:focus-visible > .hx-roll > span:first-child { transform: translate3d(0, -110%, 0); }
+a:hover > .hx-roll > span + span, button:hover > .hx-roll > span + span, a:focus-visible > .hx-roll > span + span, button:focus-visible > .hx-roll > span + span { transform: none; }
+/* outline buttons fill from the bottom on hover */
+.hx-motion .button:not(.primary), .hx-motion button.ghost { background-image: linear-gradient(var(--ink), var(--ink)) !important; background-repeat: no-repeat !important; background-position: 50% 100% !important; background-size: 100% 0% !important; transition: background-size .5s cubic-bezier(.23, 1, .32, 1), color .4s, border-color .4s !important; }
+.hx-motion .button:not(.primary):hover, .hx-motion button.ghost:hover { background-size: 100% 100% !important; color: var(--ground) !important; border-color: var(--ink) !important; }
+/* crosshair cursor with coordinates over the hero drawing */
+.infra-art, .ab-art { overflow: hidden; }
+.hx-cross { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .4s; z-index: 3; }
+.hx-cross.on { opacity: 1; }
+.hx-cross i { position: absolute; background: var(--red); opacity: .55; }
+.hx-cross .h { left: 0; right: 0; height: 1px; top: var(--y, 0); }
+.hx-cross .v { top: 0; bottom: 0; width: 1px; left: var(--x, 0); }
+.hx-cross b { position: absolute; left: calc(var(--x, 0px) + 10px); top: calc(var(--y, 0px) + 10px); font: 500 10px/1 var(--code); letter-spacing: 0; color: var(--red); background: var(--ground); padding: 3px 5px; border: 1px solid var(--rule); white-space: nowrap; }
+/* page transition: a panel wipes up, then away on the next page */
+.hx-veil { position: fixed; inset: 0; z-index: 2147482000; background: var(--ground); transform: scaleY(0); transform-origin: 50% 100%; pointer-events: none; display: grid; place-items: center; }
+.hx-veil::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--rule); }
+.hx-veil span { position: relative; font: 500 12px/1 var(--code); letter-spacing: 0; color: var(--red); background: var(--ground); padding: 6px 10px; border: 1px solid var(--rule); }
+.hx-veil.in { transform: scaleY(1); transition: transform .5s cubic-bezier(.65, 0, .35, 1); }
+.hx-veil.cover { transform: scaleY(1); transition: none; }
+.hx-veil.cover.out { transform: scaleY(0); transform-origin: 50% 0%; transition: transform .7s cubic-bezier(.65, 0, .35, 1) .05s; }
+/* nav labels, links: Heron's .4s color fades */
+.main-nav .nav-top, .mega-links a, .footer a { transition: color .4s, background-color .4s !important; }
+@media (prefers-reduced-motion: reduce) { .hx-veil { display: none; } .hx-cross { display: none; } .hx-roll > span { transition: none; } }

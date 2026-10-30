@@ -18,7 +18,7 @@ STACK = ['CISA KEV', 'NIST NVD', 'FIRST EPSS', 'USGS', 'Natural Earth', 'OpenStr
 
 
 def _words(text: str) -> str:
-    return ''.join(f'<span class="w">{E(w)}</span> ' for w in text.split())
+    return ''.join(f'<span class="w" aria-hidden="true"><span>{E(w)}</span></span> ' for w in text.split())
 
 
 def _figure(i: int) -> str:

@@ -196,7 +196,7 @@ class Site:
              f'<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f1efe9" media="(prefers-color-scheme: light)"><meta name="color-scheme" content="dark light"><title>{E(title)} · {E(self.config["name"])}</title>{canonical}'
              f'<link rel="icon" href="{b}/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{b}{self.BRAND}cyberhub-app-icon.svg">'
              f'<link rel="preload" href="{b}/assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>'
-             f'<link rel="stylesheet" href="{b}/assets/site.css?v={ASSET_V}"><script src="{b}/assets/theme.js?v={ASSET_V}"></script><script type="module" src="{b}/assets/app.js?v={ASSET_V}"></script>'+(f'<script type="module" src="{b}/assets/{module}.js?v={ASSET_V}"></script>' if module else '')+(f'<script type="module" src="{b}/assets/account.js?v={ASSET_V}"></script>' if sb_url and module!='account' else '')+'</head>'
+             f'<link rel="stylesheet" href="{b}/assets/site.css?v={ASSET_V}"><script src="{b}/assets/theme.js?v={ASSET_V}"></script><script src="{b}/assets/vendor/lenis.min.js?v={ASSET_V}" defer></script><script type="module" src="{b}/assets/app.js?v={ASSET_V}"></script>'+(f'<script type="module" src="{b}/assets/{module}.js?v={ASSET_V}"></script>' if module else '')+(f'<script type="module" src="{b}/assets/account.js?v={ASSET_V}"></script>' if sb_url and module!='account' else '')+'</head>'
              f'<body class="{"home" if home else "inner"}" data-base="{E(b)}"{(f' data-sb-url="{E(sb_url)}" data-sb-key="{E(sb_key)}"') if sb_url else ""}><a class="skip" href="#main">Skip to content</a>{loader}{header}'
              f'<main id="main" class="shell">{body}<div id="status" class="status" role="status" aria-live="polite"></div></main>{footer}'
              '<div class="cursor" id="cursor" aria-hidden="true"><div class="ring"><span id="cursor-label">View</span></div><div class="dot"></div></div></body></html>')
@@ -229,7 +229,7 @@ class Site:
             f'<link>{E(origin)}/intelligence/</link><description>Attributed security headlines collected by CyberHub.</description><language>en-us</language>{items}</channel></rss>',encoding='utf-8')
     def heading(self,title,desc,eyebrow=''):
         crumb=f'<p class="crumb">{E(eyebrow)}</p>' if eyebrow else ''
-        words=''.join(f'<span class="w">{E(w)}</span> ' for w in title.split())
+        words=''.join(f'<span class="w" aria-hidden="true"><span>{E(w)}</span></span> ' for w in title.split())
         return f'<header class="page-head">{crumb}<h1 class="wr" aria-label="{E(title)}">{words.strip()}</h1><p class="lead">{E(desc)}</p></header>'
     def card(self,title,desc,path,tag,footer=''):
         return f'<article class="card"><div class="card-top"><span class="label on">{E(tag)}</span><span class="meta-mono">{E(footer)}</span></div><h2>{self.a(title,path)}</h2><p>{E(desc)}</p></article>'

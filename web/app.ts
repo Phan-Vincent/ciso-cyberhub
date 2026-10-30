@@ -1,3 +1,4 @@
+import './motion.js';
 import {emptyProgress,parseProgress,scoreQuiz,matches,countAcademyLessons,compareRecords,type Question} from './core.js';
 import {sha256Bytes} from './sha256.js';
 const base=document.body.dataset.base || '';
