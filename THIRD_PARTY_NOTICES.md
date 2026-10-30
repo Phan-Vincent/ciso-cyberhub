@@ -23,7 +23,9 @@ The home globe renders real country geometry, not a hand-drawn approximation. `p
 
 GitHub Actions are official actions pinned to upstream release commits checked on 2026-10-21. Their own licenses apply when GitHub executes them. Runtime Python and Node retain their own licenses. This repository declares no npm or Python package dependencies.
 
-Fonts: Archivo (The Archivo Project Authors) and Martian Mono (The Martian Mono Project Authors) are self-hosted under the SIL Open Font License 1.1. License texts ship beside the files in public/assets/fonts/. They are served from this site because the Content Security Policy allows fonts from 'self' only.
+Fonts: Geist and Geist Mono (Vercel) and IBM Plex Sans and Plex Mono (IBM) are self-hosted under the SIL Open Font License 1.1. License texts ship beside the files in public/assets/fonts/. They are served from this site because the Content Security Policy allows fonts from 'self' only.
+
+Lenis 1.1.5 (darkroom.engineering, MIT) provides smooth scrolling. It is vendored at public/assets/vendor/lenis.min.js with its license beside it.
 
 Brand assets: the CyberHub Core logo family in public/assets/brand/ is original to this project.
 
