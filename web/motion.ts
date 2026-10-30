@@ -70,7 +70,7 @@ if (!reduce) {
     const full = l.dataset.hxText || ''; const glyphs = '#/_[]<>01'; let i = 0;
     const tick = () => { i++; const shown = full.slice(0, i); const tail = i < full.length ? glyphs[i % glyphs.length] : '';
       l.textContent = shown + tail; if (i < full.length) setTimeout(tick, 22); else l.textContent = full; };
-    l.textContent = ''; l.classList.add('typing'); setTimeout(tick, 120);
+    l.textContent = ''; l.classList.add('typing'); setTimeout(tick, doc.classList.contains('hx-booting') ? 1100 : 120);
   };
 
   /* ---------------------------------------------------------- settle-in for boxes, draw-in for hairlines */
@@ -111,6 +111,33 @@ if (!reduce) {
       tag.textContent = `X:${Math.round(x)}PX / Y:${Math.round(y)}PX`; if (Math.abs(tx - x) + Math.abs(ty - y) > .3) raf = requestAnimationFrame(step); else raf = 0; };
     hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); tx = e.clientX - r.left; ty = e.clientY - r.top; if (!on) { x = tx; y = ty; on = true; box.classList.add('on'); } if (!raf) raf = requestAnimationFrame(step); });
     hero.addEventListener('pointerleave', () => { on = false; box.classList.remove('on'); });
+  }
+
+  /* ---------------------------------------------------------- first-visit loader: rulers, counter, X/Y readout */
+  // Once per browser session, like Heron's intro: a ruled panel counts to 100% and lifts away.
+  let booted = true; try { booted = sessionStorage.getItem('cyberhub:hx-boot') === '1'; sessionStorage.setItem('cyberhub:hx-boot', '1'); } catch { /* storage off */ }
+  let comingFromWipe = false; try { comingFromWipe = sessionStorage.getItem('cyberhub:hx-nav') === '1'; } catch { /* storage off */ }
+  if (!booted && !comingFromWipe) {
+    const ld = document.createElement('div'); ld.className = 'hx-load'; ld.setAttribute('aria-hidden', 'true');
+    const top = document.createElement('i'); top.className = 'rl rl-x';
+    const side = document.createElement('i'); side.className = 'rl rl-y';
+    const name = document.createElement('b'); name.className = 'nm'; name.textContent = 'CYBERHUB';
+    const pct = document.createElement('strong'); pct.className = 'pc'; pct.textContent = '0%';
+    const bar = document.createElement('i'); bar.className = 'bar';
+    const xy = document.createElement('span'); xy.className = 'xy'; xy.textContent = 'X:0PX / Y:0PX';
+    const note = document.createElement('span'); note.className = 'nt'; note.textContent = 'LOADING LABS';
+    ld.append(top, side, name, pct, bar, xy, note); document.body.append(ld); doc.classList.add('hx-booting');
+    const t0 = performance.now(), dur = 950;
+    const move = (e: PointerEvent) => { xy.textContent = `X:${Math.round(e.clientX)}PX / Y:${Math.round(e.clientY)}PX`; };
+    addEventListener('pointermove', move, { passive: true });
+    const tick = (t: number) => {
+      const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      pct.textContent = `${Math.round(e * 100)}%`; ld.style.setProperty('--p', String(e));
+      if (k < 1) requestAnimationFrame(tick);
+      else { ld.classList.add('done'); removeEventListener('pointermove', move);
+        setTimeout(() => { ld.remove(); doc.classList.remove('hx-booting'); }, 900); }
+    };
+    requestAnimationFrame(tick);
   }
 
   /* ---------------------------------------------------------- page transition: a panel wipes across */
