@@ -1,29 +1,13 @@
-# Brand
+# CyberHub brand
 
-CyberHub follows the CISO CyberHub design system: a black machine environment, a cool paper editorial environment, and one signal color, CISO blue (`#0068bc`, sampled from the CISO seal). The site's styles live in `web/site.css`; its tokens mirror the design system's.
+CyberHub is blue and black, after CSUSB Coyote Blue (Pantone 300). Light mode is Coyote Blue `#005eb8` and black on warm paper; dark mode uses a lighter tint, `#4d9de6`, on black so it stays readable (6.9:1). The theme follows the visitor's system setting. There is no red accent.
 
-## Logo files
+| File | Use |
+|---|---|
+| `cyberhub-core-on-dark.svg`, `cyberhub-core-on-light.svg` | The Core mark in the header and footer |
+| `cyberhub-favicon.svg`, `cyberhub-app-icon.svg` | Browser and home-screen icons |
+| `cyberhub-core-animated.svg`, `*-mono-*`, `*-wordmark-*` | Slides, print and social |
 
-All files are in `public/assets/brand/` and are served at `/assets/brand/`.
+Type: IBM Plex Sans for headlines and body (headlines uppercase), IBM Plex Mono for labels and code. In code the accent token is still named `--red` for history; its value is the blue above.
 
-| File | Where the site uses it |
-| --- | --- |
-| `cyberhub-core-on-dark.svg`, `-on-light.svg` | Header mark (32px), footer Core, hero still frame before the live 3D Core starts |
-| `cyberhub-core-animated.svg` | Homepage loader. Never shown when reduced motion is set |
-| `cyberhub-lockup-on-dark.svg` | Footer lockup |
-| `cyberhub-favicon.svg` | Copied to `/assets/favicon.svg` at build time |
-| `cyberhub-app-icon.svg` | Apple touch icon |
-| `ciso-seal.png` | Footer "Powered by" sign-off only, once per page |
-| `*-on-light`, `*-mono-*`, `*-stacked-*`, `*-wordmark-*`, `*-app-icon-blue` | Not used by the site; kept for slides, print and social |
-
-## Rules that matter in code
-
-- The wordmark is set in Archivo at 62% width, weight 830, in capitals. CYBER is solid, HUB is a blue outline. Never fill HUB, never outline CYBER.
-- The CISO seal never replaces the Core and never sits beside it at the same size.
-- Soft corners on a three-step scale (`web/site.css`, RADIUS SYSTEM): 6–10px for badges, code and inputs; 12px for buttons, chips and header controls; 20px for cards, panels and tile-grid frames; 28px for the large object frames (lab device, machine-render band). Full-bleed scenes, list rows and rules stay straight. Never pill-shaped except progress tracks and dots.
-- Color carries meaning: blue is the signal (live, selected, important). Amber marks stale or failing sources.
-- Motion eases with `cubic-bezier(.2,.7,0,1)` and turns off under `prefers-reduced-motion`.
-
-## Fonts
-
-Archivo (display and body) and Martian Mono (labels, counters) are self-hosted in `public/assets/fonts/` under the SIL Open Font License. Commercial faces common on award sites (Druk, Aeonik, Neue Haas) are deliberately not used: Archivo's narrow, heavy setting covers that role without a license.
+CyberHub is an independent student project with no club or university affiliation for now. The blue nods to CSUSB colors only; do not add CSUSB or club logos without permission.

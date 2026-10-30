@@ -1,5 +1,5 @@
 """Home hero: an original line drawing of a small organization's infrastructure (campus office,
-data center, cell tower, substation) with clickable red markers for its vulnerabilities.
+data center, cell tower, substation) with clickable blue markers for its vulnerabilities.
 Everything is drawn here as SVG so it inherits the theme (currentColor) and stays crisp."""
 from __future__ import annotations
 
@@ -187,7 +187,7 @@ def drawing() -> str:
     body = re.sub(r'<(path|line|rect|circle|polygon)\b(?![^>]*class="(?:tex|cast)")', r'<\1 pathLength="1"', ''.join(g))
     defs = ('<defs>' + _stipple(rnd, 'stip', 70) + _stipple(rnd, 'stip-d', 260) + '</defs>')
     return (f'<svg class="infra-svg" viewBox="0 0 {W} {H}" role="img" aria-labelledby="infra-title infra-desc"><title id="infra-title">A fictional college campus network</title>'
-            f'<desc id="infra-desc">Architectural drawing of a campus office, a data center, a cell tower and a power substation, marked up in red with {len(FINDINGS)} vulnerabilities you can open.</desc>'
+            f'<desc id="infra-desc">Architectural drawing of a campus office, a data center, a cell tower and a power substation, marked up in blue with {len(FINDINGS)} vulnerabilities you can open.</desc>'
             + defs + body + '</svg>')
 
 
@@ -202,5 +202,5 @@ def infra_hero(site) -> str:
     return ('<div class="infra" id="infra"><div class="infra-art">' + drawing() + marks + '</div>'
             f'<aside class="infra-panel" aria-live="polite"><div class="infra-head label"><span id="infra-found">0 of {len(FINDINGS)} found</span>'
             '<span class="infra-nav"><button type="button" id="infra-prev" aria-label="Previous vulnerability">←</button><button type="button" id="infra-next" aria-label="Next vulnerability">Next →</button></span></div>'
-            '<div class="infra-empty" id="infra-empty"><h3>Find the weak spots</h3><p>This campus has nine vulnerabilities. Click a red marker, or press Next to walk through them.</p></div>'
+            '<div class="infra-empty" id="infra-empty"><h3>Find the weak spots</h3><p>This campus has nine vulnerabilities. Click a blue marker, or press Next to walk through them.</p></div>'
             + cards + '</aside></div>')

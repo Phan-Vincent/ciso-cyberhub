@@ -15,7 +15,7 @@ export function ics(title: string, weeks: Week[], start: Date, weekday: number, 
   if (!Number.isFinite(start.getTime()) || !Number.isInteger(weekday) || weekday < 0 || weekday > 6 || !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) throw new Error('Invalid calendar date, weekday or time');
   const first = new Date(start.getFullYear(), start.getMonth(), start.getDate()); while (first.getDay() !== weekday) first.setDate(first.getDate() + 1);
   const [h, mi] = time.split(':').map(Number); const stamp = `${now.getUTCFullYear()}${pad(now.getUTCMonth() + 1)}${pad(now.getUTCDate())}T${pad(now.getUTCHours())}${pad(now.getUTCMinutes())}00Z`;
-  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CISO CyberHub//Study planner//EN', 'CALSCALE:GREGORIAN'];
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CyberHub//Study planner//EN', 'CALSCALE:GREGORIAN'];
   weeks.forEach((w, i) => { const d = new Date(first); d.setDate(first.getDate() + 7 * i); const mins = w.reduce((x, t) => x + t.m, 0);
     const end = new Date(d.getFullYear(), d.getMonth(), d.getDate(), h, mi + Math.min(mins, 180));
     const f = (x: Date, hh: number, mm: number) => `${x.getFullYear()}${pad(x.getMonth() + 1)}${pad(x.getDate())}T${pad(hh)}${pad(mm)}00`;

@@ -10,7 +10,7 @@ export type PLevel = { id: string; setup?: (w: World) => void; check?: (w: World
 
 const R = Math.random; const pick = <T>(a: T[]) => a[Math.floor(R() * a.length)]; const ri = (a: number, b: number) => a + Math.floor(R() * (b - a + 1));
 const hex = (n: number) => Array.from(crypto.getRandomValues(new Uint8Array(n)), b => b.toString(16).padStart(2, '0')).join('');
-const flag = () => `CISO{${hex(3)}-${hex(3)}-${hex(2)}}`;
+const flag = () => `HUB{${hex(3)}-${hex(3)}-${hex(2)}}`;
 const HOME = 'C:\\Users\\student';
 const key = (p: string) => p.toLowerCase().replace(/\\+$/, '');
 function abs(w: World, p: string) {
@@ -27,7 +27,7 @@ const mkdir = (w: World, path: string) => w.files.set(key(path), { dir: true, pa
 function base(): World {
   const w: World = { files: new Map(), cwd: HOME, procs: [], services: [], users: [], admins: [], events: [], run: [], tasks: [], conns: [], answer: '', ran: [], env: { USERNAME: 'student', COMPUTERNAME: 'HUB-WIN01', USERPROFILE: HOME } };
   for (const d of ['C:\\', 'C:\\Users', HOME, HOME + '\\Desktop', HOME + '\\Documents', 'C:\\Windows', 'C:\\Windows\\System32', 'C:\\Cases', 'C:\\Logs']) mkdir(w, d);
-  put(w, HOME + '\\Desktop\\README.txt', 'Welcome to HUB-WIN01, the CISO Windows practice box.\nType "help" for commands, "hint" if stuck, "submit <answer>" to check an answer.');
+  put(w, HOME + '\\Desktop\\README.txt', 'Welcome to HUB-WIN01, the CyberHub Windows practice box.\nType "help" for commands, "hint" if stuck, "submit <answer>" to check an answer.');
   w.procs = [['System', 4, 'SYSTEM'], ['svchost', 812, 'SYSTEM'], ['explorer', 3120, 'student'], ['msedge', 4410, 'student'], ['Teams', 5120, 'student'], ['OneDrive', 6004, 'student']].map(([n, i, u]) => ({ Name: n, Id: i, UserName: u, CPU: ri(0, 40) }));
   w.services = [['Dnscache', 'DNS Client', 'Running'], ['EventLog', 'Windows Event Log', 'Running'], ['WinDefend', 'Microsoft Defender Antivirus', 'Running'], ['Spooler', 'Print Spooler', 'Running'], ['wuauserv', 'Windows Update', 'Running'], ['RemoteRegistry', 'Remote Registry', 'Stopped']].map(([n, d, s]) => ({ Name: n, DisplayName: d, Status: s }));
   w.users = [['Administrator', false], ['student', true], ['Guest', false], ['analyst', true]].map(([n, e]) => ({ Name: n, Enabled: e }));

@@ -42,7 +42,7 @@ test('tailoring prompt forbids invented experience and lists gaps', () => {
 
 test('cover letter prompt keeps the no-fabrication rules and placeholders', async () => {
   const { coverPrompt } = await import(pathToFileURL(f).href);
-  const a = analyze('Jane Doe\nBuilt a Splunk dashboard for the CISO club. Python scripts for log parsing. Linux home lab.', 'Security intern: Splunk, Python, AWS, incident response, Linux.');
+  const a = analyze('Jane Doe\nBuilt a Splunk dashboard for the cyber club. Python scripts for log parsing. Linux home lab.', 'Security intern: Splunk, Python, AWS, incident response, Linux.');
   const p = coverPrompt('Jane Doe\nresume text', 'posting text', 'SOC Intern at Acme', a, 'Jane Doe');
   assert.match(p, /Never invent experience/);
   assert.match(p, /\[PLACEHOLDER\]/);

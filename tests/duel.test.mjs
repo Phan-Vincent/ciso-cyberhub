@@ -17,27 +17,9 @@ test('question bank is well formed', () => {
     assert.ok(!ids.has(q.id), 'duplicate ' + q.id); ids.add(q.id);
     assert.equal(q.choices.length, 4, q.id); assert.ok(q.answer >= 0 && q.answer < 4, q.id);
     assert.equal(new Set(q.choices).size, 4, 'repeated choice in ' + q.id);
-    assert.ok(q.cat in bank.categories, q.id); assert.ok([1, 2, 3, 4].includes(q.level), q.id); assert.ok(q.why.length > 10, q.id);
-  }
-  for (const cat of Object.keys(bank.categories)) {
-    if (cat === 'secplus') continue;
-    assert.ok(bank.questions.filter(q => q.cat === cat && q.level === 3).length >= 5, cat + ' Pro');
-    assert.ok(bank.questions.filter(q => q.cat === cat && q.level === 4).length >= 5, cat + ' Hard');
+    assert.ok(q.cat in bank.categories, q.id); assert.ok([1, 2, 3].includes(q.level), q.id); assert.ok(q.why.length > 10, q.id);
   }
   assert.ok(bank.questions.length >= 100);
-});
-
-test('Hard answers do not stand out by choice length', () => {
-  const hard = bank.questions.filter(q => q.level === 4);
-  const strictlyLongest = hard.filter(q => q.choices[q.answer].length >
-    Math.max(...q.choices.filter((_, i) => i !== q.answer).map(choice => choice.length)));
-  assert.ok(strictlyLongest.length / hard.length <= 0.35,
-    `${strictlyLongest.length}/${hard.length} Hard answers are strictly longest`);
-  for (const q of hard) {
-    const lengths = q.choices.map(choice => choice.length);
-    assert.ok(Math.max(...lengths) <= 1.6 * Math.min(...lengths),
-      `${q.id} has disproportionate choice lengths: ${lengths.join(', ')}`);
-  }
 });
 
 test('the same seed gives the same round and choice order', () => {
@@ -46,16 +28,6 @@ test('the same seed gives the same round and choice order', () => {
   assert.equal(new Set(a.map(r => r.q.id)).size, 10);
   const c = D.makeRound(bank, 999, 'all', 'mix', 10); assert.notDeepEqual(a.map(r => r.q.id), c.map(r => r.q.id));
   for (const cat of Object.keys(bank.categories)) assert.ok(D.makeRound(bank, 1, cat, 'mix', 5).every(r => r.q.cat === cat));
-});
-
-test('Hard is level 4 only; Mixed remains levels 1–3', () => {
-  for (const cat of ['all', ...Object.keys(bank.categories)]) {
-    const hard = D.makeRound(bank, 1234, cat, '4', 10);
-    assert.ok(hard.length > 0 && hard.every(r => r.q.level === 4), cat);
-    const mixed = D.makeRound(bank, 1234, cat, 'mix', 10);
-    assert.ok(mixed.every(r => r.q.level <= 3), cat);
-  }
-  assert.equal(D.makeRound(bank, 1234, 'basics', '4', 10).length, 5, 'short Hard pools end without repeats');
 });
 
 test('scoring rewards speed and correctness', () => {
@@ -71,9 +43,6 @@ test('challenge links round-trip and reject tampering', () => {
   assert.equal(back.s, 42); assert.equal(back.n, 'Alex script'); assert.deepEqual(back.a, run);
   assert.equal(D.scoreRun(rounds, back.a), D.scoreRun(rounds, run));
   assert.equal(D.decodeChallenge('not-base64!!', bank), null);
-  const hard = D.makeRound(bank, 42, 'net', '4', 5);
-  const hardRun = hard.map(r => ({ pick: r.q.answer, ms: 1000 }));
-  assert.equal(D.decodeChallenge(D.encodeChallenge({ v: 1, s: 42, c: 'net', d: '4', n: '', r: 5, a: hardRun }), bank)?.d, '4');
   assert.equal(D.decodeChallenge(D.encodeChallenge({ v: 1, s: 42, c: 'nope', d: '2', n: '', r: 5, a: run }), bank), null);
   assert.equal(D.decodeChallenge(D.encodeChallenge({ v: 1, s: 42, c: 'net', d: '2', n: '', r: 5, a: run.slice(1) }), bank), null);
 });

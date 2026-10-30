@@ -125,7 +125,7 @@ export const LEVELS: Level[] = [
     hints: ['Draw a 50 km circle around Riverside. The calculator gives distances.', 'IP geolocation gives an area, not a pin.'],
     lesson: 'MaxMind describes its result as a circle the address is "more likely than not" inside, and warns it is not precise enough to put a pin on a map. Never treat an IP location as a street address, and never accuse someone of being somewhere because of one.' },
   { id: 'buffer', tier: 'Intermediate', title: 'Buffer analysis', kind: 'pick', map: 'local', pins: SUBSTATIONS,
-    q: 'Scenario: an earthquake at 34.25, −117.45 (the red star). Utilities inspect everything within 25 km first. Select the substations inside that buffer.',
+    q: 'Scenario: an earthquake at 34.25, −117.45 (the blue star). Utilities inspect everything within 25 km first. Select the substations inside that buffer.',
     check: v => sameSet(v as string[], SUBSTATIONS.filter(s => haversine(s, QUAKE) <= 25).map(s => s.id)),
     hints: ['A buffer is every point within a distance of a feature.', 'Measure from the star to each substation.'],
     lesson: 'Buffers answer "what is near this?": assets near a fault, a flood zone, a wildfire or a compromised cell tower. Incident responders and utilities use the same query to decide where to send people first.' },

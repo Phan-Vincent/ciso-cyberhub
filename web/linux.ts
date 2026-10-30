@@ -12,7 +12,7 @@ type Level = { id: string; setup?: (s: State) => void; check?: (s: State) => boo
 
 const ME = 'student', HOME = '/home/student', HOST = 'hub01';
 const rnd = (n = 12) => Array.from(crypto.getRandomValues(new Uint8Array(n)), b => (b % 16).toString(16)).join('');
-const flag = () => `CISO{${rnd(6)}-${rnd(6)}-${rnd(4)}}`;
+const flag = () => `HUB{${rnd(6)}-${rnd(6)}-${rnd(4)}}`;
 const pick = <T>(a: T[]) => a[Math.floor(Math.random() * a.length)];
 const ri = (a: number, b: number) => a + Math.floor(Math.random() * (b - a + 1));
 
@@ -52,7 +52,7 @@ function baseFs(): State {
   writeNetFiles(s);
   put(s, '/etc/passwd', 'root:x:0:0:root:/root:/bin/bash\nstudent:x:1000:1000:CyberHub Student:/home/student:/bin/bash\nanalyst:x:1001:1001:SOC Analyst:/home/analyst:/bin/bash\nbackup:x:34:34:backup:/var/backups:/usr/sbin/nologin\n', 'root');
   put(s, '/etc/shadow', 'root:$6$redacted:19700:0:99999:7:::\n', 'root', 0o600);
-  put(s, HOME + '/README', 'Welcome to hub01, the CISO practice server.\nType "help" for commands, "hint" if you are stuck, and "submit <flag>" when you find one.\n');
+  put(s, HOME + '/README', 'Welcome to hub01, the CyberHub practice server.\nType "help" for commands, "hint" if you are stuck, and "submit <flag>" when you find one.\n');
   s.procs = [{ pid: 1, user: 'root', cmd: '/sbin/init' }, { pid: 412, user: 'root', cmd: 'sshd: /usr/sbin/sshd -D' }, { pid: 733, user: 'syslog', cmd: '/usr/sbin/rsyslogd' }, { pid: 1201, user: ME, cmd: '-bash' }];
   return s;
 }
@@ -142,12 +142,12 @@ const bcast = (ip: string, p: number) => toIp(toInt(netAddr(ip, p)) + 2 ** (32 -
 function baseNet(): Net {
   const c = ri(10, 99);
   return { ip: ip4(10, 20, c, ri(201, 250)), cidr: 24, gw: ip4(10, 20, c, 1), mac: '52:54:00:' + [0, 0, 0].map(() => ri(16, 255).toString(16)).join(':'),
-    hosts: { 'portal.ciso.lab': { ip: ip4(10, 20, c, 80), up: true, ports: [80, 443], http: { headers: ['HTTP/1.1 200 OK', 'Server: nginx', 'Content-Type: text/html'], body: '<h1>CISO portal</h1>' } } },
-    dns: { 'portal.ciso.lab': { A: [ip4(10, 20, c, 80)] }, 'ciso.lab': { NS: ['ns1.ciso.lab.'], MX: ['10 mail.ciso.lab.'] } },
+    hosts: { 'portal.hub.lab': { ip: ip4(10, 20, c, 80), up: true, ports: [80, 443], http: { headers: ['HTTP/1.1 200 OK', 'Server: nginx', 'Content-Type: text/html'], body: '<h1>CyberHub portal</h1>' } } },
+    dns: { 'portal.hub.lab': { A: [ip4(10, 20, c, 80)] }, 'hub.lab': { NS: ['ns1.hub.lab.'], MX: ['10 mail.hub.lab.'] } },
     listen: [{ port: 22, proc: 'sshd' }], conns: [] };
 }
 function writeNetFiles(s: State, resolver = ip4(10, 20, Number(s.net.gw.split('.')[2]), 53), hostsExtra = '') {
-  put(s, '/etc/resolv.conf', `# managed by netplan\nnameserver ${resolver}\nsearch ciso.lab\n`, 'root');
+  put(s, '/etc/resolv.conf', `# managed by netplan\nnameserver ${resolver}\nsearch hub.lab\n`, 'root');
   put(s, '/etc/hosts', `127.0.0.1 localhost\n127.0.1.1 ${HOST}\n${hostsExtra}`, 'root');
 }
 function hostsFile(s: State): Record<string, string> {
@@ -155,7 +155,7 @@ function hostsFile(s: State): Record<string, string> {
 }
 function resolve(s: State, name: string): string | null {
   if (/^\d+\.\d+\.\d+\.\d+$/.test(name)) return name;
-  const fq = name.includes('.') ? name : name + '.ciso.lab';
+  const fq = name.includes('.') ? name : name + '.hub.lab';
   return hostsFile(s)[name] ?? s.net.dns[fq]?.A?.[0] ?? s.net.dns[name]?.A?.[0] ?? null;
 }
 const hostByIp = (s: State, ip: string) => Object.values(s.net.hosts).find(h => h.ip === ip);
@@ -238,15 +238,15 @@ const NET_LEVELS: Level[] = [
   { id: 'net-resolver', submit: true, setup: s => { const r = `${sameNet(s)}.${ri(2, 60)}`; writeNetFiles(s, r); sub(s, r); } },
   // reachability
   { id: 'net-ping-down', submit: true, setup: s => { const names = ['web01', 'db01', 'backup01', 'files01']; const down = pick(names);
-    names.forEach((nm, i) => { const ip = `${sameNet(s)}.${100 + i}`; s.net.hosts[nm + '.ciso.lab'] = { ip, up: nm !== down, ports: [22] }; s.net.dns[nm + '.ciso.lab'] = { A: [ip] }; });
+    names.forEach((nm, i) => { const ip = `${sameNet(s)}.${100 + i}`; s.net.hosts[nm + '.hub.lab'] = { ip, up: nm !== down, ports: [22] }; s.net.dns[nm + '.hub.lab'] = { A: [ip] }; });
     put(s, HOME + '/servers.txt', names.join('\n') + '\n'); sub(s, down); } },
   { id: 'net-traceroute', submit: true, setup: s => { const hops = [`100.64.${ri(0, 255)}.1`, `198.51.100.${ri(1, 254)}`, `203.0.113.${ri(1, 120)}`, `203.0.113.${ri(121, 254)}`]; const dieAfter = ri(2, 4);
     s.net.hosts['vpn.partner.example'] = { ip: `192.0.2.${ri(10, 250)}`, up: false, ports: [], path: hops, dieAfter }; s.net.dns['vpn.partner.example'] = { A: [s.net.hosts['vpn.partner.example'].ip] };
     sub(s, [s.net.gw, ...hops][dieAfter - 1]); } },
   // dns
-  { id: 'net-dig-a', submit: true, setup: s => { const ip = `${sameNet(s)}.${ri(110, 199)}`; s.net.dns['grades.ciso.lab'] = { A: [ip] }; s.net.hosts['grades.ciso.lab'] = { ip, up: true, ports: [443] }; sub(s, ip); } },
-  { id: 'net-dig-mx', submit: true, setup: s => { const a = pick(['mx1', 'smtp-a', 'mail-east']), b = pick(['mx2', 'smtp-b', 'mail-west']); s.net.dns['ciso.lab'].MX = [`20 ${b}.ciso.lab.`, `10 ${a}.ciso.lab.`]; sub(s, `${a}.ciso.lab`); } },
-  { id: 'net-dig-txt', submit: true, setup: s => { s.net.dns['_verify.ciso.lab'] = { TXT: [`"v=spf1 -all"`, `"cyberhub-verify=${sub(s, flag())}"`] }; } },
+  { id: 'net-dig-a', submit: true, setup: s => { const ip = `${sameNet(s)}.${ri(110, 199)}`; s.net.dns['grades.hub.lab'] = { A: [ip] }; s.net.hosts['grades.hub.lab'] = { ip, up: true, ports: [443] }; sub(s, ip); } },
+  { id: 'net-dig-mx', submit: true, setup: s => { const a = pick(['mx1', 'smtp-a', 'mail-east']), b = pick(['mx2', 'smtp-b', 'mail-west']); s.net.dns['hub.lab'].MX = [`20 ${b}.hub.lab.`, `10 ${a}.hub.lab.`]; sub(s, `${a}.hub.lab`); } },
+  { id: 'net-dig-txt', submit: true, setup: s => { s.net.dns['_verify.hub.lab'] = { TXT: [`"v=spf1 -all"`, `"cyberhub-verify=${sub(s, flag())}"`] }; } },
   { id: 'net-hosts-poison', submit: true, setup: s => { const evil = `185.${ri(100, 220)}.${ri(1, 254)}.${ri(1, 254)}`; s.net.dns['login.bank.example'] = { A: [`192.0.2.${ri(10, 99)}`] };
     writeNetFiles(s, undefined, `${evil} login.bank.example\n`); sub(s, evil); } },
   // ports and connections
@@ -254,9 +254,9 @@ const NET_LEVELS: Level[] = [
   { id: 'net-established', submit: true, setup: s => { const evil = `${pick([45, 91, 185])}.${ri(1, 254)}.${ri(1, 254)}.${ri(1, 254)}`; s.net.listen = [{ port: 22, proc: 'sshd' }, { port: 443, proc: 'nginx' }];
     s.net.conns = [{ local: `${s.net.ip}:22`, remote: `${sameNet(s)}.${ri(2, 60)}:${ri(40000, 60000)}`, proc: 'sshd' }, { local: `${s.net.ip}:${ri(50000, 60000)}`, remote: `${evil}:4444`, proc: 'bash' }, { local: `${s.net.ip}:443`, remote: `${sameNet(s)}.${ri(61, 99)}:${ri(40000, 60000)}`, proc: 'nginx' }];
     sub(s, evil); } },
-  { id: 'net-port-check', submit: true, setup: s => { const open = pick([3306, 5432, 1433, 27017]); const ip = `${sameNet(s)}.${ri(150, 200)}`; s.net.hosts['db01.ciso.lab'] = { ip, up: true, ports: [22, open] }; s.net.dns['db01.ciso.lab'] = { A: [ip] }; sub(s, String(open)); } },
-  { id: 'net-curl-headers', submit: true, setup: s => { const ip = `${sameNet(s)}.${ri(110, 140)}`; s.net.dns['intranet.ciso.lab'] = { A: [ip] };
-    s.net.hosts['intranet.ciso.lab'] = { ip, up: true, ports: [80], http: { headers: ['HTTP/1.1 200 OK', 'Server: Apache/2.4.29 (Ubuntu)', 'Content-Type: text/html', `X-Debug-Token: ${sub(s, flag())}`], body: '<h1>Intranet</h1><p>Welcome back.</p>' } }; } },
+  { id: 'net-port-check', submit: true, setup: s => { const open = pick([3306, 5432, 1433, 27017]); const ip = `${sameNet(s)}.${ri(150, 200)}`; s.net.hosts['db01.hub.lab'] = { ip, up: true, ports: [22, open] }; s.net.dns['db01.hub.lab'] = { A: [ip] }; sub(s, String(open)); } },
+  { id: 'net-curl-headers', submit: true, setup: s => { const ip = `${sameNet(s)}.${ri(110, 140)}`; s.net.dns['intranet.hub.lab'] = { A: [ip] };
+    s.net.hosts['intranet.hub.lab'] = { ip, up: true, ports: [80], http: { headers: ['HTTP/1.1 200 OK', 'Server: Apache/2.4.29 (Ubuntu)', 'Content-Type: text/html', `X-Debug-Token: ${sub(s, flag())}`], body: '<h1>Intranet</h1><p>Welcome back.</p>' } }; } },
   // subnetting (answers worked out by hand)
   { id: 'subnet-hosts', submit: true, setup: s => { const p = ri(22, 29); question(s, `How many usable host addresses are in 10.${ri(1, 250)}.0.0/${p}?`); sub(s, String(2 ** (32 - p) - 2)); } },
   { id: 'subnet-network', submit: true, setup: s => { const p = pick([25, 26, 27, 28]); const ip = ip4(192, 168, ri(0, 255), ri(1, 254)); question(s, `What is the network address of ${ip}/${p}?`); sub(s, netAddr(ip, p)); } },
