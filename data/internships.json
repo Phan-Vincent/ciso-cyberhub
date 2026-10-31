@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T08:28:57Z",
+  "generated_at": "2026-10-31T15:46:06Z",
   "items": [
     {
       "also_remote": false,
@@ -775,6 +775,24 @@
     },
     {
       "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "San Diego",
+      "company": "Northrop Grumman",
+      "id": "e8f323c9-7a0d-4a50-9915-19d7661ecb06",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-10-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Data Scientist Intern - Product Support",
+      "url": "https://ngc.wd1.myworkdayjobs.com/Northrop_Grumman_External_Site/job/United-States-California-San-Diego/XMLNAME-2027-Intern-Product-Support---Data-Scientist_R10258679",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
       "company": "Wex",
@@ -1110,7 +1128,7 @@
       "company": "1Password",
       "id": "e6004504-fc09-4fa4-8b4f-0e12d0e319a6",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-23",
       "security": false,
       "sponsorship": "Other",
@@ -1128,7 +1146,7 @@
       "company": "1Password",
       "id": "fc8cae17-5e4e-43fc-802d-41864d7e3c10",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-23",
       "security": false,
       "sponsorship": "Other",
@@ -1146,7 +1164,7 @@
       "company": "1Password",
       "id": "c27dd769-5cb4-46de-9658-90d85c12cfbc",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-23",
       "security": false,
       "sponsorship": "Other",
@@ -1295,24 +1313,6 @@
       ],
       "title": "Gameplay Engineer Intern",
       "url": "https://job-boards.greenhouse.io/crystaldynamics/jobs/4746848005",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Crystal Dynamics",
-      "id": "28764194-7d52-4d45-b292-fc66a47c6503",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-22",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Spring 2027"
-      ],
-      "title": "Technical Artist Intern",
-      "url": "https://job-boards.greenhouse.io/crystaldynamics/jobs/4746826005",
       "zone": "remote"
     },
     {
@@ -3381,24 +3381,6 @@
       ],
       "title": "Quantitative Research Analyst Intern - Portfolio Management",
       "url": "https://pimco.wd1.myworkdayjobs.com/pimco-careers/job/Newport-Beach-CA-USA/XMLNAME-2027-PhD-Summer-Intern---Portfolio-Management--Quantitative-Research-Analyst_R106749",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "El Segundo",
-      "company": "RTX",
-      "id": "eaf4c7cf-4e64-4286-8d4e-01db86f66220",
-      "miles": 65,
-      "new": false,
-      "posted": "2026-09-01",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Electrical Engineer Intern - Summer 2027",
-      "url": "https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-CA-EL-SEGUNDO-R01--2000-E-Imperial-Hwy--BLDG-R01/Electrical-Engineering-Intern--Summer-2027-_01868034",
       "zone": "region"
     },
     {
