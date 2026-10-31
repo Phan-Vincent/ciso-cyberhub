@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T16:43:19Z",
+  "generated_at": "2026-10-30T22:25:31Z",
   "items": [
     {
       "also_remote": false,
@@ -250,24 +250,6 @@
       ],
       "title": "Digital IC Design Intern - MS - Multiple Teams",
       "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers2/job/Santa-Clara-CA/Digital-IC-Design-Intern--MS---Summer-2027_2604828",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Irvine",
-      "company": "Marvell",
-      "id": "9cb80a43-fcfd-473d-8145-5aba8bb71782",
-      "miles": 45,
-      "new": false,
-      "posted": "2026-09-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Test Engineering Intern",
-      "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers2/job/Santa-Clara-CA/Test-Engineering-Intern--BS---Summer-2027_2604537",
       "zone": "near"
     },
     {
@@ -691,7 +673,7 @@
       "company": "1Password",
       "id": "1c5e8952-b8d8-438e-a4a2-0c43e815da28",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-22",
       "security": true,
       "sponsorship": "Other",
@@ -1107,7 +1089,7 @@
       "company": "1Password",
       "id": "c4f7b9a7-0136-490c-891e-ee3a84d6864c",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-22",
       "security": false,
       "sponsorship": "Other",
@@ -1125,7 +1107,7 @@
       "company": "1Password",
       "id": "379fb3aa-7732-4809-8b51-dac32b966e6c",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-22",
       "security": false,
       "sponsorship": "Other",
@@ -1143,7 +1125,7 @@
       "company": "1Password",
       "id": "28e22b29-32bb-4e01-8a30-19fea4fe8f28",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-22",
       "security": false,
       "sponsorship": "Other",
@@ -1161,7 +1143,7 @@
       "company": "1Password",
       "id": "a8540a76-75da-4ebe-9e00-0e8eefa3b9cf",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-22",
       "security": false,
       "sponsorship": "Other",
@@ -1179,7 +1161,7 @@
       "company": "Crystal Dynamics",
       "id": "68688728-c254-4961-b5ba-f479aace81a0",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-22",
       "security": false,
       "sponsorship": "Other",
@@ -1197,7 +1179,7 @@
       "company": "Crystal Dynamics",
       "id": "28764194-7d52-4d45-b292-fc66a47c6503",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-22",
       "security": false,
       "sponsorship": "Other",
@@ -3399,24 +3381,6 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "San Diego",
-      "company": "Booz Allen",
-      "id": "097e5358-9e45-41e0-86bc-5289976e1828",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-09-01",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Systems Engineer Intern - Summer Games",
-      "url": "https://bah.wd1.myworkdayjobs.com/bah_jobs/job/San-Diego-CA/University---2027-Summer-Games-Systems-Engineer-Intern---El-Segundo--CA_R0248366",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Pluralis Research",
@@ -3467,24 +3431,6 @@
       ],
       "title": "Software Developer Intern - Summer Games",
       "url": "https://bah.wd1.myworkdayjobs.com/bah_jobs/job/El-Segundo-CA/University---2027-Summer-Games-Software-Developer-Intern---El-Segundo--CA_R0248046",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "El Segundo",
-      "company": "Booz Allen",
-      "id": "596a789f-9d3f-4275-91f3-da77d86fc246",
-      "miles": 65,
-      "new": false,
-      "posted": "2026-08-27",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Data Scientist Intern - University - Summer Games",
-      "url": "https://bah.wd1.myworkdayjobs.com/bah_jobs/job/El-Segundo-CA/University--2027-Summer-Games-Data-Scientist-Intern_R0248050",
       "zone": "region"
     },
     {
