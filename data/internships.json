@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T15:46:06Z",
+  "generated_at": "2026-10-31T21:39:46Z",
   "items": [
     {
       "also_remote": false,
@@ -1076,7 +1076,7 @@
       "company": "Keysight Technologies",
       "id": "e15f8359-3642-4162-aac1-71bad5eb72aa",
       "miles": 77,
-      "new": true,
+      "new": false,
       "posted": "2026-10-23",
       "security": false,
       "sponsorship": "Other",
