@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T22:25:31Z",
+  "generated_at": "2026-10-31T08:28:57Z",
   "items": [
     {
       "also_remote": false,
@@ -17,6 +17,43 @@
       ],
       "title": "IT Data Analyst Intern",
       "url": "https://danaher.wd1.myworkdayjobs.com/DanaherJobs/job/Brea-California-United-States/IT-Data-Analyst-Intern_R1316675",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Irvine",
+      "company": "Amazon",
+      "id": "c5138e81-eb36-45f4-8460-5c616a7abbf5",
+      "miles": 45,
+      "new": true,
+      "posted": "2026-10-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027",
+        "Fall 2027"
+      ],
+      "title": "Software Engineer Intern - Machine Learning/Automated Reasoning",
+      "url": "https://amazon.jobs/en/jobs/10593521/software-development-engineer-intern-machine-learning-automated-reasoning-summer-2027",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Irvine",
+      "company": "Obsidian Entertainment",
+      "id": "cafb9ee2-6d84-4473-b7f3-b464596c8c17",
+      "miles": 45,
+      "new": true,
+      "posted": "2026-10-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Gameplay Engineer Intern",
+      "url": "https://obsidian.applytojob.com/apply/zxhj1ePGcR/Gameplay-Engineer-2027-Summer-Internship",
       "zone": "near"
     },
     {
@@ -721,6 +758,94 @@
     {
       "also_remote": false,
       "category": "AI/ML/Data",
+      "city": "Torrance",
+      "company": "Divergent Technologies",
+      "id": "b2f1fe9d-fc42-40d8-9d37-4d7457195c8d",
+      "miles": 63,
+      "new": true,
+      "posted": "2026-10-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Business Intelligence Intern",
+      "url": "https://job-boards.greenhouse.io/divergent/jobs/5393519008",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Wex",
+      "id": "29a95b15-0c3d-48df-b7cf-6a72e17df163",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2026"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://wexinc.wd5.myworkdayjobs.com/en-US/WEXInc/job/US---Remote/Software-Engineer-Intern_R22585",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Molina Healthcare",
+      "id": "18803ec8-f589-4545-bb91-2d5378346d55",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Customer Experience & Analytics Intern - Undergraduate",
+      "url": "https://hckd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2040169",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Product",
+      "city": "Remote (US)",
+      "company": "Teamworks",
+      "id": "7e1b898b-15c7-401a-890c-d1985a5a54f3",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Product Management MBA Intern",
+      "url": "https://jobs.ashbyhq.com/teamworks/13cc2066-5dfe-45ec-8064-3d7a20d9fc06/application?embed=true",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "VSP Vision",
+      "id": "046091a9-a6ce-44b7-9a9f-151534102afe",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "AI, Agentic & Machine Learning Development Intern - AI, Agentic & Machine Learning Development",
+      "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--AI---Agentic---Machine-Learning-Development_R-10072",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "CareSource",
       "id": "d479bef7-8f0d-4384-8b62-13d11f539acd",
@@ -949,7 +1074,7 @@
       "company": "Amazon",
       "id": "78ea4501-d20c-468c-a9f7-9374fd9a67ad",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-10-23",
       "security": false,
       "sponsorship": "Other",
@@ -967,7 +1092,7 @@
       "company": "Amazon",
       "id": "1f204319-dfd9-4b7a-b098-c48f8a6c1435",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-10-23",
       "security": false,
       "sponsorship": "Other",
@@ -1039,7 +1164,7 @@
       "company": "DIRECTV",
       "id": "9643ee32-58ca-42a8-bc62-290781c58aae",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-23",
       "security": false,
       "sponsorship": "Other",
@@ -1057,7 +1182,7 @@
       "company": "Sardine",
       "id": "860a5d35-fd73-4f09-9dab-71f9950473cf",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-23",
       "security": false,
       "sponsorship": "Other",
@@ -1837,6 +1962,24 @@
     },
     {
       "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "TPG",
+      "id": "94ce00a6-1104-4883-b62a-4615691ce825",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-14",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Winter 2027"
+      ],
+      "title": "Data Analytics Research Assistant Intern - Data Analytics and Reporting - Spring Research Assistant",
+      "url": "https://job-boards.greenhouse.io/tpgcareers/jobs/8034245003",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "San Diego",
       "company": "ServiceNow",
@@ -1971,22 +2114,6 @@
       "title": "AI & Data Science Intern - GPSU",
       "url": "https://boards.greenhouse.io/guidepointsecurity/jobs/6218650004",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "El Segundo",
-      "company": "The Aerospace Corporation",
-      "id": "a3bc2e02-54a9-46bc-8322-c42571a8600b",
-      "miles": 65,
-      "new": false,
-      "posted": "2026-10-07",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Embedded Systems / Software Engineer Intern",
-      "url": "https://aero.wd5.myworkdayjobs.com/external/job/Chantilly-VA/XMLNAME-2027-Embedded-Systems---Software-Engineering-Undergrad-Intern_R016804",
-      "zone": "region"
     },
     {
       "also_remote": false,
@@ -2316,6 +2443,44 @@
       ],
       "title": "Software Engineer Intern",
       "url": "https://job-boards.greenhouse.io/amca/jobs/4425120009",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "San Diego",
+      "company": "Peraton",
+      "id": "cde86f58-8020-4b23-a2f5-f3b3b886a06d",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-09-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Spring 2027",
+        "Summer 2027"
+      ],
+      "title": "Software Engineering Co-op",
+      "url": "https://peraton.jibeapply.com/jobs/171547?icims=1",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "San Diego",
+      "company": "Peraton",
+      "id": "681c6933-2937-47c4-9608-44e26bd1cb06",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-09-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Spring 2027",
+        "Summer 2027"
+      ],
+      "title": "Sustainability Engineer Co-op",
+      "url": "https://peraton.jibeapply.com/jobs/171537?icims=1",
       "zone": "region"
     },
     {
@@ -3611,6 +3776,24 @@
       ],
       "title": "Robotics Data Operator Intern",
       "url": "https://job-boards.greenhouse.io/faradayfuture/jobs/7828531003",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Huntington Beach",
+      "company": "The Boeing Company",
+      "id": "3c052483-a306-453e-a3dc-ccfe99cf5624",
+      "miles": 53,
+      "new": false,
+      "posted": "2026-08-03",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Data Analytics Intern",
+      "url": "https://boeing.wd1.myworkdayjobs.com/INTERN/job/USA---Everett-WA/Boeing-Summer-2027-Internship-Program--Paid----Data-Analytics-Intern_JR2026520976",
       "zone": "region"
     },
     {
