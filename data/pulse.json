@@ -74,7 +74,16 @@
       "hn_security": 41,
       "hn_total": 391,
       "kev_30d": 36
+    },
+    {
+      "cves_7d": 3678,
+      "date": "2026-11-01",
+      "hn_llm": 37,
+      "hn_month": "October 2026",
+      "hn_security": 41,
+      "hn_total": 391,
+      "kev_30d": 35
     }
   ],
-  "updated": "2026-10-31T21:39:40Z"
+  "updated": "2026-11-01T09:20:06Z"
 }
