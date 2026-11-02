@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T09:35:05Z",
+  "generated_at": "2026-11-02T16:29:20Z",
   "items": [
     {
       "also_remote": false,
@@ -724,24 +724,6 @@
     {
       "also_remote": false,
       "category": "Software",
-      "city": "Remote (US)",
-      "company": "1Password",
-      "id": "1c5e8952-b8d8-438e-a4a2-0c43e815da28",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-22",
-      "security": true,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2027"
-      ],
-      "title": "Developer Intern - Machine Identity",
-      "url": "https://jobs.ashbyhq.com/1password/6a6869a7-98d2-43e3-b9b5-b68fa4daeb9f/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
       "city": "El Segundo",
       "company": "The Aerospace Corporation",
       "id": "aabefc1e-0371-47db-9e90-a6428f01409b",
@@ -772,6 +754,22 @@
       "title": "Software Engineering Intern - Software Tools and Assurance",
       "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Software-Tools-and-Assurance-Engineering-Grad-Intern_R016753",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Nebius",
+      "id": "45f6734f-e60b-44a6-920a-9cc63b07564e",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-02",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "ML Solution Architect Intern",
+      "url": "https://nebius.com/early-talent-program/swe-ml?gh_jid=5024729101",
+      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -972,24 +970,6 @@
       "category": "Software",
       "city": "Remote (US)",
       "company": "VSP Vision",
-      "id": "178d0613-9e8b-480c-b35e-f7b89b94e02e",
-      "miles": null,
-      "new": true,
-      "posted": "2026-10-28",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Software-Engineer_R-10068",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "VSP Vision",
       "id": "ee6ec003-29b0-4b45-84ff-f2bc079dd1cf",
       "miles": null,
       "new": true,
@@ -1007,6 +987,24 @@
       "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
+      "company": "VSP Vision",
+      "id": "d54ad503-0917-4cd9-8e73-8ecd6fe2d56d",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-28",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Software-Engineer_R-10071",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
       "company": "Subtotal",
       "id": "f5f92fa6-34b5-4a3d-9bb0-65f4e2a13555",
       "miles": null,
@@ -1018,24 +1016,6 @@
       "title": "Software Engineer Intern",
       "url": "https://jobs.ashbyhq.com/subtotal/3891929c-0ee6-46ea-a833-4efba2862801/application?embed=true",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Burbank",
-      "company": "The Walt Disney Company",
-      "id": "2a8775c3-4d2e-4339-9991-eaac25f7d658",
-      "miles": 56,
-      "new": true,
-      "posted": "2026-10-27",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2027"
-      ],
-      "title": "Content Research Insights & Analytics Intern",
-      "url": "https://disney.wd5.myworkdayjobs.com/disneycareer/job/Burbank-CA-USA/Content-Research-Insights---Analytics-Intern--Spring-2027_10164072-1",
-      "zone": "region"
     },
     {
       "also_remote": false,
@@ -1141,24 +1121,6 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "1Password",
-      "id": "e6004504-fc09-4fa4-8b4f-0e12d0e319a6",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-23",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2027"
-      ],
-      "title": "Developer Intern - Developer Interfaces",
-      "url": "https://jobs.ashbyhq.com/1password/00f861d4-2b4a-4159-b6dc-8aed0cde6e39/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Product",
       "city": "Remote (US)",
       "company": "1Password",
@@ -1173,24 +1135,6 @@
       ],
       "title": "Product Management Intern - End User Experience",
       "url": "https://jobs.ashbyhq.com/1password/bef2e88e-9590-467d-8ba6-821b30529003/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "1Password",
-      "id": "c27dd769-5cb4-46de-9658-90d85c12cfbc",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-23",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2027"
-      ],
-      "title": "Developer Intern - Credential Brokering",
-      "url": "https://jobs.ashbyhq.com/1password/67bfbd8b-aba9-42b1-a8a8-833367888fba/application?embed=true",
       "zone": "remote"
     },
     {
@@ -1242,78 +1186,6 @@
       "title": "Software Engineer Intern",
       "url": "https://jobs.keysight.com/jobs/55115?icims=1",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "1Password",
-      "id": "c4f7b9a7-0136-490c-891e-ee3a84d6864c",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-22",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2027"
-      ],
-      "title": "Developer Intern - Vault Team",
-      "url": "https://jobs.ashbyhq.com/1password/b2726ac7-dd0d-42f3-93a5-139e18c90779/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "1Password",
-      "id": "379fb3aa-7732-4809-8b51-dac32b966e6c",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-22",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2027"
-      ],
-      "title": "Developer Intern - Extension Excellence",
-      "url": "https://jobs.ashbyhq.com/1password/7f1732a6-5317-4319-82b9-67c62e88d491/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "1Password",
-      "id": "28e22b29-32bb-4e01-8a30-19fea4fe8f28",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-22",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2027"
-      ],
-      "title": "Developer Intern - Provisioning",
-      "url": "https://jobs.ashbyhq.com/1password/c5289ef1-e919-4672-85c5-ee3112f9ddb9/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "1Password",
-      "id": "a8540a76-75da-4ebe-9e00-0e8eefa3b9cf",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-22",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2027"
-      ],
-      "title": "Developer Intern - Front-End Platform",
-      "url": "https://jobs.ashbyhq.com/1password/71a3afd1-12b3-4f55-a3bd-fc4e7c46ee37/application?embed=true",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -1820,26 +1692,6 @@
       "title": "Research Engineer Intern - Video and Edge - Multimedia Lab",
       "url": "https://lifeattiktok.com/search/7696664743112788277",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Tessera Labs",
-      "id": "ff40ee27-6821-4bc8-8929-0a9a37fa6d77",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-15",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Fall 2026",
-        "Spring 2027",
-        "Summer 2027"
-      ],
-      "title": "Full Stack Software Engineer Intern - Full Stack",
-      "url": "https://jobs.ashbyhq.com/tessera-labs/892bb150-8c98-47f4-a8b6-93633ecb2ea7/application?embed=true",
-      "zone": "remote"
     },
     {
       "also_remote": false,
