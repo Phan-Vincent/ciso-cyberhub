@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T09:38:05Z",
+  "generated_at": "2026-11-03T17:53:22Z",
   "items": [
     {
       "also_remote": false,
@@ -822,22 +822,6 @@
       "title": "Software Engineering Intern",
       "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Software-Engineering-Grad-Intern_R017101",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Nebius",
-      "id": "45f6734f-e60b-44a6-920a-9cc63b07564e",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-02",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "ML Solution Architect Intern",
-      "url": "https://nebius.com/early-talent-program/swe-ml?gh_jid=5024729101",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -3167,24 +3151,6 @@
     },
     {
       "also_remote": false,
-      "category": "Product",
-      "city": "San Diego",
-      "company": "Trimble",
-      "id": "63bb5635-fcbb-4c10-ac91-d7f76b6c3d75",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-09-08",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Product Management Intern",
-      "url": "https://trimble.wd1.myworkdayjobs.com/en-US/TrimbleCareers/job/US---CO-Westminster/Product-Management-Intern_R57675-1",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "Hardware",
       "city": "Torrance",
       "company": "Castelion",
@@ -3765,24 +3731,6 @@
     {
       "also_remote": false,
       "category": "AI/ML/Data",
-      "city": "Huntington Beach",
-      "company": "The Boeing Company",
-      "id": "3c052483-a306-453e-a3dc-ccfe99cf5624",
-      "miles": 53,
-      "new": false,
-      "posted": "2026-08-03",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Data Analytics Intern",
-      "url": "https://boeing.wd1.myworkdayjobs.com/INTERN/job/USA---Everett-WA/Boeing-Summer-2027-Internship-Program--Paid----Data-Analytics-Intern_JR2026520976",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Yotta Labs",
       "id": "48c4cfa3-389b-4a66-abd7-a1d6cb9708a5",
@@ -3850,6 +3798,22 @@
       ],
       "title": "Data Scientist Intern",
       "url": "https://ensemblehp.wd5.myworkdayjobs.com/ensemblehealthpartnerscareers/job/Remote---Nationwide/Data-Scientist--AI_R048077",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Nebius",
+      "id": "b380c306-bed2-4e4a-8c77-71a792a86621",
+      "miles": null,
+      "new": false,
+      "posted": "2026-07-16",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "ML Solution Architect Intern",
+      "url": "https://careers.nebius.com/?gh_jid=4883829101",
       "zone": "remote"
     },
     {
