@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T23:27:01Z",
+  "generated_at": "2026-11-04T09:21:42Z",
   "items": [
     {
       "also_remote": false,
@@ -791,6 +791,58 @@
     },
     {
       "also_remote": false,
+      "category": "Software",
+      "city": "Redondo Beach",
+      "company": "Northrop Grumman",
+      "id": "c5e86824-dfe7-4736-af3b-f8a7222c6536",
+      "miles": 65,
+      "new": true,
+      "posted": "2026-11-03",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Ground Software Engineer Intern",
+      "url": "https://ngc.wd1.myworkdayjobs.com/Northrop_Grumman_External_Site/job/United-States-California-Redondo-Beach/XMLNAME-2027-Ground-Software-Engineer-Intern---Redondo-Beach-CA_R10259057",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "San Diego",
+      "company": "ByteDance",
+      "id": "fb9acb15-3d71-47bf-a454-59041cddff33",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-03",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Research Scientist Intern - Video and Edge - Multimedia Lab",
+      "url": "https://jobs.bytedance.com/en/position/7701477754169968901/detail",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "CareSource",
+      "id": "85296cc2-e177-4e6b-a942-962f6643c9b5",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-03",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Data Science Intern",
+      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program---Data-Science-Intern_R14306",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Torrance",
       "company": "Divergent Technologies",
@@ -1272,22 +1324,6 @@
     {
       "also_remote": false,
       "category": "Software",
-      "city": "Calabasas",
-      "company": "Keysight Technologies",
-      "id": "7a944b5d-00b3-4976-a381-49c8b71abe4c",
-      "miles": 77,
-      "new": false,
-      "posted": "2026-10-22",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Software Engineer Intern",
-      "url": "https://jobs.keysight.com/jobs/55115?icims=1",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
       "city": "Remote (US)",
       "company": "Crystal Dynamics",
       "id": "68688728-c254-4961-b5ba-f479aace81a0",
@@ -1476,22 +1512,6 @@
       "title": "Product Management Intern",
       "url": "https://job-boards.greenhouse.io/oneethos/jobs/4459298009",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Burbank",
-      "company": "Insomniac Games",
-      "id": "f3b0993a-b1fc-4fa4-a1f4-bc7129fb05f3",
-      "miles": 56,
-      "new": false,
-      "posted": "2026-10-20",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Engine and Tools Programming Intern",
-      "url": "https://job-boards.greenhouse.io/insomniac/jobs/6227080004",
-      "zone": "region"
     },
     {
       "also_remote": false,
@@ -2236,22 +2256,6 @@
       "title": "Product Intern",
       "url": "https://axos.wd5.myworkdayjobs.com/Axos/job/Edison-NJ/Product-Intern_JR5663",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Sikich",
-      "id": "bb153fdc-6998-4d29-9e79-01b24c0db807",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-05",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Intelligence Transformation Intern",
-      "url": "https://jobs.jobvite.com/sikichcareers/job/oGOPAfwD?nl=1&nl=1&fr=false",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -3129,6 +3133,24 @@
       ],
       "title": "Mobile Developer Intern - Summer Associate",
       "url": "https://fa-etbx-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/nfcu/job/32368",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Product",
+      "city": "San Diego",
+      "company": "Trimble",
+      "id": "63bb5635-fcbb-4c10-ac91-d7f76b6c3d75",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-09-08",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Product Management Intern",
+      "url": "https://trimble.wd1.myworkdayjobs.com/en-US/TrimbleCareers/job/US---CO-Westminster/Product-Management-Intern_R57675-1",
       "zone": "region"
     },
     {
