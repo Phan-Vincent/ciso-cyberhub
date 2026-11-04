@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T09:21:42Z",
+  "generated_at": "2026-11-04T18:01:57Z",
   "items": [
     {
       "also_remote": false,
@@ -509,24 +509,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Fullerton",
-      "company": "Edison International",
-      "id": "eac0d398-9f96-4736-880f-8b8bd6a17886",
-      "miles": 41,
-      "new": false,
-      "posted": "2026-09-01",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Summer Internship - Data Analytics/Science/Applied Math",
-      "url": "https://apply.edisoncareers.com/job/Westminster-2027-Summer-Internship-Data-AnalyticsScienceApplied-Math-Santa-AnaWestminsterIrvineFullerton-CA-92683-5240/1425175800/?ats=successfactors",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
       "category": "Software",
       "city": "Santa Ana",
       "company": "Edison International",
@@ -959,24 +941,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "San Diego",
-      "company": "Northrop Grumman",
-      "id": "e8f323c9-7a0d-4a50-9915-19d7661ecb06",
-      "miles": 102,
-      "new": true,
-      "posted": "2026-10-30",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Data Scientist Intern - Product Support",
-      "url": "https://ngc.wd1.myworkdayjobs.com/Northrop_Grumman_External_Site/job/United-States-California-San-Diego/XMLNAME-2027-Intern-Product-Support---Data-Scientist_R10258679",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
       "company": "Wex",
@@ -1174,7 +1138,7 @@
       "company": "EQT Corporation",
       "id": "018f57c0-2519-4072-80fe-679c055ee4d6",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-27",
       "security": false,
       "sponsorship": "Other",
@@ -2472,6 +2436,24 @@
       "title": "Research Scientist Intern - Graphics - ML",
       "url": "https://intel.wd1.myworkdayjobs.com/en-us/external/job/Virtual-US/Research-Scientist-Intern---Graphics--ML_JR0287525",
       "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Torrance",
+      "company": "Moog",
+      "id": "5f7a34ef-1409-4c5f-8952-1bbeaad4cedd",
+      "miles": 63,
+      "new": false,
+      "posted": "2026-09-29",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2026"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://moog.wd5.myworkdayjobs.com/moog_external_career_site/job/Torrance-CA/Intern--Software-Engineering_R-26-19948",
+      "zone": "region"
     },
     {
       "also_remote": false,
