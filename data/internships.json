@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T09:33:57Z",
+  "generated_at": "2026-11-05T18:05:36Z",
   "items": [
     {
       "also_remote": false,
@@ -861,24 +861,6 @@
     },
     {
       "also_remote": false,
-      "category": "Hardware",
-      "city": "San Diego",
-      "company": "Renesas Electronics",
-      "id": "86f29393-c9a9-4a9a-b1c5-1a45932658b1",
-      "miles": 102,
-      "new": true,
-      "posted": "2026-11-04",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "PMIC Analog Intern",
-      "url": "https://jobs.smartrecruiters.com/RenesasElectronics/744000159733449",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
       "company": "Leidos",
@@ -985,6 +967,22 @@
     },
     {
       "also_remote": false,
+      "category": "Hardware",
+      "city": "Pasadena",
+      "company": "NASA Jet Propulsion Laboratory",
+      "id": "e04d6353-4982-4bf4-ac14-0b166b6ecaaa",
+      "miles": 47,
+      "new": true,
+      "posted": "2026-11-02",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Electrical & Computer Engineering Intern - Flight Communications and Tracking Section - GNSS, Radiometric & Gravity Sensing Instruments Group",
+      "url": "https://citjpl.wd5.myworkdayjobs.com/Jobs/job/JPL-Campus/Academic-Part-Time-Intern_R6220",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Torrance",
       "company": "Divergent Technologies",
@@ -1019,22 +1017,6 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Cincinnati Children’s Hospital and Medical Center",
-      "id": "f7d94cc4-15c3-4072-a1c9-9e8a2413fd5a",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-02",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Software Engineer Intern",
-      "url": "https://cincinnatichildrens.wd5.myworkdayjobs.com/careersatcincinnatichildrens/job/Remote/Student-II---Software-Engineering-Developer--A-_JR226736",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Cincinnati Children’s Hospital and Medical Center",
@@ -1063,22 +1045,6 @@
       "terms": [],
       "title": "Software Engineering Developer Intern",
       "url": "https://cincinnatichildrens.wd5.myworkdayjobs.com/careersatcincinnatichildrens/job/Remote/Student-II---Software-Engineering-Developer--B-_JR226743",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Cincinnati Children’s Hospital and Medical Center",
-      "id": "0fe9f15d-03e4-48d3-b51b-4509e048d44c",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-02",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Student 2 Intern - BA Enterprise Business Intelligence",
-      "url": "https://cincinnatichildrens.wd5.myworkdayjobs.com/careersatcincinnatichildrens/job/Remote/Student-II---BA-Enterprise-Business-Intelligence_JR226747-1",
       "zone": "remote"
     },
     {
