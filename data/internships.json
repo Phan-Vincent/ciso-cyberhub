@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T23:43:37Z",
+  "generated_at": "2026-11-05T09:33:57Z",
   "items": [
     {
       "also_remote": false,
@@ -126,6 +126,24 @@
     },
     {
       "also_remote": false,
+      "category": "Hardware",
+      "city": "Brea",
+      "company": "Garmin",
+      "id": "43a55f5c-b38e-4c74-a8e9-0aa4b95370c7",
+      "miles": 38,
+      "new": false,
+      "posted": "2026-10-15",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://careers.garmin.com/jobs/20129?icims=1",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "Santa Ana",
       "company": "Anduril",
@@ -195,6 +213,24 @@
       "terms": [],
       "title": "Analog Mixed Signal Engineer Intern",
       "url": "https://job-boards.greenhouse.io/asteraearlycareer2027/jobs/4739767005",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Irvine",
+      "company": "ITT",
+      "id": "41f0a82d-c8df-476e-bdf4-626934104325",
+      "miles": 45,
+      "new": false,
+      "posted": "2026-09-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Data Analytics / AI Intern - Summer 2027",
+      "url": "https://careersenus-itt-inc.icims.com/jobs/17657/job?mobile=true&needsRedirect=false",
       "zone": "near"
     },
     {
@@ -740,6 +776,24 @@
     {
       "also_remote": false,
       "category": "Software",
+      "city": "San Diego",
+      "company": "Constellation Energy",
+      "id": "8d5a68f3-3c90-4a0f-9579-ef3d5483e360",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-10-21",
+      "security": true,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "IT Development Intern",
+      "url": "https://jobs.constellationenergy.com/jobs/140300?icims=1&lang=en-us",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
       "city": "El Segundo",
       "company": "The Aerospace Corporation",
       "id": "aabefc1e-0371-47db-9e90-a6428f01409b",
@@ -770,6 +824,112 @@
       "title": "Software Engineering Intern - Software Tools and Assurance",
       "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Software-Tools-and-Assurance-Engineering-Grad-Intern_R016753",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "San Diego",
+      "company": "Peraton",
+      "id": "e02b0a85-0fde-4075-baba-1e4e48f6f949",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Social Media & Marketing Analyst Intern",
+      "url": "https://careers-peraton.icims.com/jobs/171546/job?mobile=true&needsRedirect=false",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "San Diego",
+      "company": "ASML",
+      "id": "b90babbc-5fa6-4414-b46f-911f2e400a97",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-04",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Machine Learning and Image-Based Metrics for EUV System Setup Intern",
+      "url": "https://asml.wd3.myworkdayjobs.com/asmlext1/job/San-Diego-CA-USA/Internship----Machine-Learning-and-image-based-EUV-system-setup_J-00356567",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "San Diego",
+      "company": "Renesas Electronics",
+      "id": "86f29393-c9a9-4a9a-b1c5-1a45932658b1",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-04",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "PMIC Analog Intern",
+      "url": "https://jobs.smartrecruiters.com/RenesasElectronics/744000159733449",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Leidos",
+      "id": "994390d2-e931-4203-9755-1169361ef34d",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-04",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineering & AI Intern",
+      "url": "https://leidos.wd5.myworkdayjobs.com/External/job/6314-RemoteTeleworker-US/Software-Engineering---AI-Intern_R-00196220",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Amgen",
+      "id": "5f438b5b-8f19-4780-b104-36fd3633f9e1",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-04",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Graduate Intern",
+      "url": "https://amgen.wd1.myworkdayjobs.com/careers/job/United-States---Remote/Grad-Intern---R-D-TSRS-Data-Sciences-Operations---Analytic--Summer-2027-_R-260585",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Vizient",
+      "id": "b82c266b-358b-4cf2-b927-d7bda329770e",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-04",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Pharmacy Aggregation Intern",
+      "url": "https://vizient.wd1.myworkdayjobs.com/Vizient_Careers/job/Irving-TX-75062-Vizient-Corporate-HQ/XMLNAME-2027-Summer-Internship---Pharmacy-Aggregation_35995R-1",
+      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -998,7 +1158,7 @@
       "company": "GrayMatter Robotics",
       "id": "901b53ec-fba2-40bc-89d6-a7200607ee62",
       "miles": 60,
-      "new": true,
+      "new": false,
       "posted": "2026-10-28",
       "security": false,
       "sponsorship": "Other",
@@ -1016,7 +1176,7 @@
       "company": "RTX",
       "id": "3f3c57d3-3d85-4024-9f7f-43350270aabf",
       "miles": 65,
-      "new": true,
+      "new": false,
       "posted": "2026-10-28",
       "security": false,
       "sponsorship": "Other",
@@ -1034,7 +1194,7 @@
       "company": "ASML",
       "id": "3338e211-5030-4319-9e46-aba103ce8cbd",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-10-28",
       "security": false,
       "sponsorship": "Other",
@@ -1050,7 +1210,7 @@
       "company": "VSP Vision",
       "id": "d54ad503-0917-4cd9-8e73-8ecd6fe2d56d",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-28",
       "security": false,
       "sponsorship": "Other",
@@ -1068,7 +1228,7 @@
       "company": "Subtotal",
       "id": "f5f92fa6-34b5-4a3d-9bb0-65f4e2a13555",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-28",
       "security": false,
       "sponsorship": "Other",
@@ -1233,6 +1393,24 @@
     },
     {
       "also_remote": false,
+      "category": "Quant",
+      "city": "San Diego",
+      "company": "Constellation Energy",
+      "id": "45a33390-e3d3-4475-8ae9-1e37c162103a",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-10-22",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Structuring & Portfolio Management Intern",
+      "url": "https://jobs.constellationenergy.com/jobs/140355?icims=1&lang=en-us",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
       "company": "Crystal Dynamics",
@@ -1315,6 +1493,22 @@
       "terms": [],
       "title": "Embedded Software Engineer Grad Intern",
       "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Embedded-Software-Engineering-Grad-Intern_R016950",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "San Diego",
+      "company": "SDSU Research Foundation",
+      "id": "9d2e8616-d457-4092-b63e-97eb1cf2fefe",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-10-21",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Computer Science Intern",
+      "url": "https://careers-sdsurf.icims.com/jobs/21086/job?mobile=true&needsRedirect=false",
       "zone": "region"
     },
     {
@@ -1422,6 +1616,22 @@
       "title": "Product Management Intern",
       "url": "https://job-boards.greenhouse.io/oneethos/jobs/4459298009",
       "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Burbank",
+      "company": "Insomniac Games",
+      "id": "f3b0993a-b1fc-4fa4-a1f4-bc7129fb05f3",
+      "miles": 56,
+      "new": false,
+      "posted": "2026-10-20",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Engine and Tools Programming Intern",
+      "url": "https://job-boards.greenhouse.io/insomniac/jobs/6227080004",
+      "zone": "region"
     },
     {
       "also_remote": false,
@@ -2332,7 +2542,7 @@
       "category": "Software",
       "city": "San Diego",
       "company": "Peraton",
-      "id": "cde86f58-8020-4b23-a2f5-f3b3b886a06d",
+      "id": "f3437876-fa5c-490c-a81a-74af68437738",
       "miles": 102,
       "new": false,
       "posted": "2026-09-30",
@@ -2343,7 +2553,7 @@
         "Summer 2027"
       ],
       "title": "Software Engineering Co-op",
-      "url": "https://peraton.jibeapply.com/jobs/171547?icims=1",
+      "url": "https://careers-peraton.icims.com/jobs/171547/job?mobile=true&needsRedirect=false",
       "zone": "region"
     },
     {
@@ -2721,6 +2931,24 @@
       ],
       "title": "Marketing & Operations Analytics Co-op - Strategy & Analytics",
       "url": "https://risepoint.wd503.myworkdayjobs.com/Risepoint/job/US---Remote/Marketing---Ops-Analytics-Co-Op_JR101345",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Cotiviti",
+      "id": "1e080067-6ebc-4e83-be3e-6231a1a8ff1d",
+      "miles": null,
+      "new": false,
+      "posted": "2026-09-18",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Fall 2026"
+      ],
+      "title": "Generative AI Research Engineer Intern",
+      "url": "https://careers-cotiviti.icims.com/jobs/20183/job?mobile=true&needsRedirect=false",
       "zone": "remote"
     },
     {
@@ -3733,6 +3961,24 @@
     {
       "also_remote": false,
       "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Cotiviti",
+      "id": "1cf14ab5-bc9d-4842-9fb3-7f423c965a86",
+      "miles": null,
+      "new": false,
+      "posted": "2026-07-09",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2026"
+      ],
+      "title": "AI Engineer Intern",
+      "url": "https://careers-cotiviti.icims.com/jobs/19531/job?mobile=true&needsRedirect=false",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
       "city": "Long Beach",
       "company": "Odys Aviation",
       "id": "a201939d-a1a1-491e-a0dc-18779905da32",
@@ -3802,6 +4048,22 @@
       "title": "System Architecture Intern",
       "url": "https://www.psiquantum.com/apply?gh_jid=7695577003",
       "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "San Diego",
+      "company": "SDSU Research Foundation",
+      "id": "41e5d607-8e4b-4840-8a89-834022636c99",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-06-16",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Undergraduate Student - Port Contamination Project",
+      "url": "https://careers-sdsurf.icims.com/jobs/20513/job?mobile=true&needsRedirect=false",
+      "zone": "region"
     },
     {
       "also_remote": false,
@@ -3892,6 +4154,24 @@
       "title": "Automation Analyst Intern",
       "url": "https://axos.wd5.myworkdayjobs.com/Axos/job/HQ---San-Diego-CA/Automation-Analyst-Intern_JR4507",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Cotiviti",
+      "id": "1497c112-6957-44c5-8912-4b7a454cc4ff",
+      "miles": null,
+      "new": false,
+      "posted": "2026-04-15",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2026"
+      ],
+      "title": "Generative AI/Agentic AI/Research Intern",
+      "url": "https://careers-cotiviti.icims.com/jobs/18929/job?mobile=true&needsRedirect=false",
+      "zone": "remote"
     },
     {
       "also_remote": false,
