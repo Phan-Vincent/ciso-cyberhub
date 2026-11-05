@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T18:01:57Z",
+  "generated_at": "2026-11-04T23:43:37Z",
   "items": [
     {
       "also_remote": false,
@@ -941,24 +941,6 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Wex",
-      "id": "29a95b15-0c3d-48df-b7cf-6a72e17df163",
-      "miles": null,
-      "new": true,
-      "posted": "2026-10-30",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2026"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://wexinc.wd5.myworkdayjobs.com/en-US/WEXInc/job/US---Remote/Software-Engineer-Intern_R22585",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Molina Healthcare",
@@ -989,24 +971,6 @@
       "terms": [],
       "title": "Product Management MBA Intern",
       "url": "https://jobs.ashbyhq.com/teamworks/13cc2066-5dfe-45ec-8064-3d7a20d9fc06/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "VSP Vision",
-      "id": "046091a9-a6ce-44b7-9a9f-151534102afe",
-      "miles": null,
-      "new": true,
-      "posted": "2026-10-30",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "AI, Agentic & Machine Learning Development Intern - AI, Agentic & Machine Learning Development",
-      "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--AI---Agentic---Machine-Learning-Development_R-10072",
       "zone": "remote"
     },
     {
@@ -1078,24 +1042,6 @@
       "title": "Data Engineer Co-op Intern",
       "url": "https://asml.wd3.myworkdayjobs.com/asmlext1/job/San-Diego-CA-USA/Internship-Co-Op--Data-Engineer_J-00355626",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "VSP Vision",
-      "id": "ee6ec003-29b0-4b45-84ff-f2bc079dd1cf",
-      "miles": null,
-      "new": true,
-      "posted": "2026-10-28",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern - Technology Innovation",
-      "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Technology-Innovation_R-10020",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -2671,24 +2617,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Wurl",
-      "id": "adb0bde1-6acf-4a2d-b952-e77db57cea5c",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-24",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2026"
-      ],
-      "title": "Data Science Intern",
-      "url": "https://job-boards.greenhouse.io/wurljobs/jobs/4716249006",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Hardware",
       "city": "Pasadena",
       "company": "Amazon",
@@ -3837,22 +3765,6 @@
       ],
       "title": "Full Stack Developer Intern",
       "url": "https://vetsez.breezy.hr/p/a4010fdb3a7001-full-stack-developer-intern-remote-opportunity",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Chainlink Labs",
-      "id": "25fc66da-f7d2-4a82-b918-c0645c1eb9db",
-      "miles": null,
-      "new": false,
-      "posted": "2026-06-24",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Research Intern",
-      "url": "https://jobs.ashbyhq.com/chainlink-labs/c71ed144-8eb4-4acf-9bf3-137b1b067ed8/application?embed=true",
       "zone": "remote"
     },
     {
