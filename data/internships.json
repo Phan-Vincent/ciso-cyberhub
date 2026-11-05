@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T18:05:36Z",
+  "generated_at": "2026-11-05T23:40:42Z",
   "items": [
     {
       "also_remote": false,
@@ -79,7 +79,7 @@
       "company": "Anduril",
       "id": "15d1fca0-add9-47d8-9d9d-87f8cbbd3f73",
       "miles": 43,
-      "new": true,
+      "new": false,
       "posted": "2026-10-28",
       "security": false,
       "sponsorship": "Other",
@@ -758,24 +758,6 @@
     {
       "also_remote": false,
       "category": "Software",
-      "city": "Remote (US)",
-      "company": "Motorola Solutions",
-      "id": "d961770e-2db5-4501-bd6a-d25420fa4238",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-02",
-      "security": true,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Cybersecurity Services Intern",
-      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/Careers/job/Virginia-Remote-Work/Software-Engineer-Cybersecurity-Services---2027-Summer-Internship_R69250",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
       "city": "San Diego",
       "company": "Constellation Energy",
       "id": "8d5a68f3-3c90-4a0f-9579-ef3d5483e360",
@@ -842,6 +824,96 @@
       "title": "Social Media & Marketing Analyst Intern",
       "url": "https://careers-peraton.icims.com/jobs/171546/job?mobile=true&needsRedirect=false",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "San Diego",
+      "company": "Shield AI",
+      "id": "65e41535-86d1-4d10-9d27-bac6fad3e8d9",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Co-op Intern",
+      "url": "https://jobs.lever.co/shieldai/db8fc063-8856-4404-991c-f287712de949/apply",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Ballotpedia",
+      "id": "dd16f64f-a794-4611-9dcc-8913da108e5e",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Spring 2027"
+      ],
+      "title": "GIS Analyst Intern",
+      "url": "https://apply.workable.com/ballotpedia/j/4AF879CDEA/apply",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "CareSource",
+      "id": "14b94b0f-6bb3-4494-8ba0-ac642f092799",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Data Analyst Intern",
+      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program---Data-Analyst_R14356",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "CareSource",
+      "id": "16b5b145-fefc-4085-997b-de2f26e8d5f2",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Configuration and Automation Intern",
+      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program---Configuration-and-Automation_R14185",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Centene",
+      "id": "d0c99133-455b-4c9d-be96-3c3a60640926",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2026"
+      ],
+      "title": "Workforce Analytics Graduate Intern",
+      "url": "https://centene.wd5.myworkdayjobs.com/Centene_External/job/Remote-MO/Workforce-Analytics-Graduate-Summer-Intern_1667777",
+      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -1914,22 +1986,6 @@
       ],
       "title": "Software Engineering Intern",
       "url": "https://job-boards.greenhouse.io/wikimedia/jobs/8268853",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Leidos",
-      "id": "d22f3e14-e4d1-4fff-9e8a-373760835d7d",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-15",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Performance Enablement AI/ML Intern",
-      "url": "https://leidos.wd5.myworkdayjobs.com/External/job/6314-RemoteTeleworker-US/Performance-Enablement-AI-ML-Intern_R-00194656",
       "zone": "remote"
     },
     {
@@ -3600,6 +3656,24 @@
       ],
       "title": "Systems Engineer Intern",
       "url": "https://bah.wd1.myworkdayjobs.com/bah_jobs/job/San-Diego-CA/University---2027-Summer-Games-Systems-Engineer-Intern---San-Diego--CA_R0248365",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "San Diego",
+      "company": "Booz Allen",
+      "id": "097e5358-9e45-41e0-86bc-5289976e1828",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-09-01",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Systems Engineer Intern - Summer Games",
+      "url": "https://bah.wd1.myworkdayjobs.com/bah_jobs/job/San-Diego-CA/University---2027-Summer-Games-Systems-Engineer-Intern---El-Segundo--CA_R0248366",
       "zone": "region"
     },
     {
