@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T17:32:41Z",
+  "generated_at": "2026-11-06T23:13:35Z",
   "items": [
     {
       "also_remote": false,
@@ -1245,24 +1245,6 @@
       "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
-      "company": "VSP Vision",
-      "id": "d54ad503-0917-4cd9-8e73-8ecd6fe2d56d",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-28",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Software-Engineer_R-10071",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
       "company": "Subtotal",
       "id": "f5f92fa6-34b5-4a3d-9bb0-65f4e2a13555",
       "miles": null,
@@ -1289,24 +1271,6 @@
       "terms": [],
       "title": "AI Intern",
       "url": "https://job-boards.greenhouse.io/eqtcorporation/jobs/5462562008",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Highmark Health",
-      "id": "58a7bc55-d2fe-4a18-8d1c-ad95595dd5fb",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-26",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Provider Delivery Software Engineer Intern",
-      "url": "https://highmarkhealth.wd1.myworkdayjobs.com/highmark/job/PA-Working-at-Home---Pennsylvania/Summer-2027-Provider-Delivery-Software-Engineer-enGen-Undergraduate-Intern_J290026",
       "zone": "remote"
     },
     {
@@ -1549,38 +1513,6 @@
       ],
       "title": "Research Intern",
       "url": "https://jobs.ashbyhq.com/clickhouse/558c0c16-5fde-407a-966b-7a2255d3531b/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "ICF International",
-      "id": "24537423-4d5f-4c4e-96e3-47f55defe704",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Seasonal Associate Intern - Full Stack Developer",
-      "url": "https://icf.wd5.myworkdayjobs.com/icfexternal_career_site/job/Reston-VA/Seasonal-Associate--Full-Stack-Developer--Remote-_R2603571",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "ICF International",
-      "id": "73395dc9-ae40-45b9-b46a-7c823d29cc98",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Full-Stack Developer Intern",
-      "url": "https://icf.wd5.myworkdayjobs.com/icfexternal_career_site/job/Reston-VA/Seasonal-Associate--Full-Stack-Developer--Remote-_R2603570",
       "zone": "remote"
     },
     {
