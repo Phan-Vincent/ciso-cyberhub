@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T23:40:42Z",
+  "generated_at": "2026-11-06T09:28:18Z",
   "items": [
     {
       "also_remote": false,
@@ -63,7 +63,7 @@
       "company": "Danaher",
       "id": "14dbefc9-5e7e-42f5-b526-0e0349f60cab",
       "miles": 38,
-      "new": true,
+      "new": false,
       "posted": "2026-10-29",
       "security": false,
       "sponsorship": "Other",
@@ -901,18 +901,18 @@
       "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
-      "company": "Centene",
-      "id": "d0c99133-455b-4c9d-be96-3c3a60640926",
+      "company": "J.M. Smucker",
+      "id": "387ea422-5e64-458e-b052-8dee5cbf777e",
       "miles": null,
       "new": true,
       "posted": "2026-11-05",
       "security": false,
       "sponsorship": "Other",
       "terms": [
-        "Summer 2026"
+        "Summer 2027"
       ],
-      "title": "Workforce Analytics Graduate Intern",
-      "url": "https://centene.wd5.myworkdayjobs.com/Centene_External/job/Remote-MO/Workforce-Analytics-Graduate-Summer-Intern_1667777",
+      "title": "Data Science Intern",
+      "url": "https://smucker.wd5.myworkdayjobs.com/US_External_Careers/job/Working-Remote-USA/Data-Science-Intern--Summer-2027_116118",
       "zone": "remote"
     },
     {
@@ -1178,7 +1178,7 @@
       "company": "CareSource",
       "id": "4d168e58-9786-4bbf-93b9-85ed973a0ab6",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-29",
       "security": false,
       "sponsorship": "Other",
@@ -1411,22 +1411,6 @@
       ],
       "title": "Customer Operations Product Management Intern",
       "url": "https://directv.wd1.myworkdayjobs.com/careers/job/El-Segundo-CA/Customer-Operations-Product-Management--MBA-Opportunity-_R260333",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Sardine",
-      "id": "860a5d35-fd73-4f09-9dab-71f9950473cf",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-23",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Engineering Intern",
-      "url": "https://jobs.ashbyhq.com/sardine/b25449a4-c78c-4b1a-b5b2-74b45981a37a/application?embed=true",
       "zone": "remote"
     },
     {
@@ -2073,22 +2057,6 @@
       "title": "Hardware Development Engineer Intern",
       "url": "https://amazon.jobs/en/jobs/10578090/hardware-development-engineer-intern-summer-2027",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Businessolver",
-      "id": "c3531726-3761-43df-9283-622508689b62",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Business Intelligence Analyst Intern - Innovation & Data Science",
-      "url": "https://www.businessolver.com/careers/openings/?gh_jid=8281727",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -3275,24 +3243,6 @@
       ],
       "title": "Software Engineer Intern",
       "url": "https://jobs.l3harris.com/job/San-Diego-Software-Engineering-Intern-CA-92123/1428452400/?ats=successfactors",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "San Diego",
-      "company": "Navy Federal",
-      "id": "3b7f6701-dabe-416a-af5f-efb2491cfbd4",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-09-09",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Mobile Developer Intern - Summer Associate",
-      "url": "https://fa-etbx-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/nfcu/job/32368",
       "zone": "region"
     },
     {
