@@ -45,7 +45,7 @@ def _rng(seed: str):
     return nxt
 
 
-def _text(x, y, s, size=11, fill=MUTED, anchor='start', weight=400, family='Martian Mono, monospace'):
+def _text(x, y, s, size=11, fill=MUTED, anchor='start', weight=400, family='Geist Mono, monospace'):
     return (f'<text x="{x:.1f}" y="{y:.1f}" font-family="{family}" font-size="{size}" font-weight="{weight}" '
             f'fill="{fill}" text-anchor="{anchor}" letter-spacing=".6">{E(s)}</text>')
 
@@ -85,7 +85,7 @@ def _motif(kind: str, r) -> str:
         dots = ''.join(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="6" fill="{INK}" stroke="rgba(255,255,255,.6)"/>' for x, y in nodes)
         return (lines + dots + f'<rect x="196" y="140" width="88" height="64" rx="10" fill="{BLUE}" stroke="#fff"/>'
                 + ''.join(f'<circle cx="{212 + i * 14}" cy="190" r="3" fill="{"#fff" if i != 2 else INK}"/>' for i in range(5))
-                + _text(240, 166, 'EDGE', 12, '#fff', 'middle', 700, 'Archivo, sans-serif'))
+                + _text(240, 166, 'EDGE', 12, '#fff', 'middle', 700, 'Geist, sans-serif'))
     if kind == 'cloud':
         return (f'<path d="M150 210 a44 44 0 0 1 10 -86 a62 62 0 0 1 118 -14 a46 46 0 0 1 52 100 z" fill="#0c0d10" stroke="rgba(255,255,255,.45)" stroke-width="1.5"/>'
                 + ''.join(f'<rect x="{186 + i * 38}" y="150" width="28" height="28" rx="5" fill="{BLUE if i == 1 else "none"}" stroke="{HI}"/>' for i in range(3))
@@ -109,7 +109,7 @@ def _motif(kind: str, r) -> str:
     if kind == 'ai':
         ring = ''.join(f'<circle cx="{cx + 92 * __import__("math").cos(i / 10 * 6.283):.1f}" cy="{cy + 92 * __import__("math").sin(i / 10 * 6.283):.1f}" r="5" fill="{HI if i in (2, 7) else "rgba(255,255,255,.5)"}"/>' for i in range(10))
         return (f'<circle cx="{cx}" cy="{cy}" r="92" fill="none" stroke="rgba(255,255,255,.18)"/>{ring}'
-                f'<rect x="196" y="140" width="88" height="64" rx="12" fill="{BLUE}"/>' + _text(cx, 178, 'MODEL', 12, '#fff', 'middle', 700, 'Archivo, sans-serif')
+                f'<rect x="196" y="140" width="88" height="64" rx="12" fill="{BLUE}"/>' + _text(cx, 178, 'MODEL', 12, '#fff', 'middle', 700, 'Geist, sans-serif')
                 + f'<path d="M150 260 h180" stroke="{HI}" stroke-width="2" stroke-dasharray="6 6"/>' + _text(cx, 284, 'ignore previous instructions…', 10, HI, 'middle'))
     # general vulnerability: a chip with a crack through it
     pins = ''.join(f'<rect x="{168 + i * 20}" y="78" width="6" height="18" fill="rgba(255,255,255,.4)"/><rect x="{168 + i * 20}" y="248" width="6" height="18" fill="rgba(255,255,255,.4)"/>' for i in range(8))

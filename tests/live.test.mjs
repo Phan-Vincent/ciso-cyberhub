@@ -77,3 +77,13 @@ test('a dropped channel reconnects at once on wake and rejoins its room', async 
   c.connect(); await new Promise(r => setTimeout(r, 10)); made[0].readyState = 3; c.wake(); await new Promise(r => setTimeout(r, 10));
   assert.equal(made.length, 2); assert.equal(made[1].topic, 'realtime:cyberhub-duel-K7QPX'); assert.equal(st.at(-1), 'live'); c.close();
 });
+
+test('host ignores malformed join messages from the room channel', () => {
+  const g = new L.HostGame();
+  assert.equal(D.cleanName(42), '42');
+  assert.equal(D.cleanName({ toString: () => 'x<b>' }), 'xb');
+  assert.equal(g.join('abcdef12', null), false);
+  assert.equal(g.join('not-hex!', 'Ana'), false);
+  assert.equal(g.join('abcdef12', 'Ana'), true);
+  assert.equal(g.answer('abcdef12', 0, '1', 100), false);
+});
