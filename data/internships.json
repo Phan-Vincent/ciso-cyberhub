@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T09:28:18Z",
+  "generated_at": "2026-11-06T17:32:41Z",
   "items": [
     {
       "also_remote": false,
@@ -987,24 +987,6 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "Redondo Beach",
-      "company": "Northrop Grumman",
-      "id": "c5e86824-dfe7-4736-af3b-f8a7222c6536",
-      "miles": 65,
-      "new": true,
-      "posted": "2026-11-03",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Ground Software Engineer Intern",
-      "url": "https://ngc.wd1.myworkdayjobs.com/Northrop_Grumman_External_Site/job/United-States-California-Redondo-Beach/XMLNAME-2027-Ground-Software-Engineer-Intern---Redondo-Beach-CA_R10259057",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "San Diego",
       "company": "ByteDance",
@@ -1169,6 +1151,24 @@
       "terms": [],
       "title": "Product Management MBA Intern",
       "url": "https://jobs.ashbyhq.com/teamworks/13cc2066-5dfe-45ec-8064-3d7a20d9fc06/application?embed=true",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Molina Healthcare",
+      "id": "b0d0060c-2d0c-4a83-874e-ea2eb2436956",
+      "miles": null,
+      "new": true,
+      "posted": "2026-10-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Electronic Data Interchange Intern",
+      "url": "https://hckd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2040156",
       "zone": "remote"
     },
     {
@@ -2283,22 +2283,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Snorkel AI",
-      "id": "f82d94de-f52e-4b46-b37a-05ce2c1feeb2",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-07",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Research Fellow",
-      "url": "https://job-boards.greenhouse.io/snorkelai/jobs/6175199004",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
       "company": "Cadence Solutions",
@@ -2778,24 +2762,6 @@
       "title": "Data Engineering Intern",
       "url": "https://pacificlife.wd1.myworkdayjobs.com/en-US/PacificLifeCareers/job/Newport-Beach-CA-700/Summer-2027-Data-Engineering-Internship_R17828",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Cencora",
-      "id": "fea9f279-8f49-4840-bf20-b5cdaf60b8d9",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-25",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2026"
-      ],
-      "title": "Business Analytics Intern",
-      "url": "https://myhrabc.wd5.myworkdayjobs.com/Global/job/Remote-USA/Business-Analytics-Intern_R2616423",
-      "zone": "remote"
     },
     {
       "also_remote": false,
