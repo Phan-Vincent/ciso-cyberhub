@@ -1,104 +1,104 @@
 {
-  "generated_at": "2026-11-07T16:29:30Z",
+  "generated_at": "2026-11-07T21:55:28Z",
   "models": [
     {
       "created": "2026-11-02",
       "downloads": 22571,
       "id": "moonshotai/Kimi-K3.1-Pro",
-      "likes": 1605,
+      "likes": 1626,
       "org": "moonshotai",
       "task": "image-text-to-text",
-      "trending": 520,
+      "trending": 527,
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
     },
     {
       "created": "2026-10-23",
       "downloads": 3835,
       "id": "OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated",
-      "likes": 272,
+      "likes": 274,
       "org": "OBLITERATUS",
       "task": "text-generation",
-      "trending": 231,
+      "trending": 232,
       "url": "https://huggingface.co/OBLITERATUS/DeepSeek-V4.1-Flash-1017-obliterated"
     },
     {
       "created": "2026-11-01",
       "downloads": 24479,
       "id": "ccore/Qwen3.5-4B-GLB-3D-Coder",
-      "likes": 242,
+      "likes": 252,
       "org": "ccore",
       "task": "text-generation",
-      "trending": 220,
+      "trending": 229,
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-GLB-3D-Coder"
     },
     {
       "created": "2026-10-17",
       "downloads": 277323,
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "likes": 5382,
+      "likes": 5388,
       "org": "deepseek-ai",
       "task": "image-text-to-text",
-      "trending": 219,
+      "trending": 212,
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
-    },
-    {
-      "created": "2026-10-23",
-      "downloads": 70034,
-      "id": "LiquidAI/LFM3-1.7B",
-      "likes": 1544,
-      "org": "LiquidAI",
-      "task": "text-generation",
-      "trending": 216,
-      "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
     },
     {
       "created": "2026-10-14",
       "downloads": 15324,
       "id": "webAI-Official/TwIL-8B",
-      "likes": 204,
+      "likes": 211,
       "org": "webAI-Official",
       "task": "text-generation",
-      "trending": 202,
+      "trending": 209,
       "url": "https://huggingface.co/webAI-Official/TwIL-8B"
+    },
+    {
+      "created": "2026-10-23",
+      "downloads": 70034,
+      "id": "LiquidAI/LFM3-1.7B",
+      "likes": 1547,
+      "org": "LiquidAI",
+      "task": "text-generation",
+      "trending": 208,
+      "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
+    },
+    {
+      "created": "2026-11-06",
+      "downloads": 989,
+      "id": "NousResearch/Arete-27B",
+      "likes": 196,
+      "org": "NousResearch",
+      "task": "text-generation",
+      "trending": 190,
+      "url": "https://huggingface.co/NousResearch/Arete-27B"
     },
     {
       "created": "2026-11-02",
       "downloads": 243190,
       "id": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF",
-      "likes": 190,
+      "likes": 193,
       "org": "ISTA-DASLab",
       "task": "image-text-to-text",
-      "trending": 170,
+      "trending": 173,
       "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-Coder-GGUF"
     },
     {
       "created": "2026-10-28",
       "downloads": 3306,
       "id": "sensenova/SenseNova-Loop-9B-Preview",
-      "likes": 268,
+      "likes": 272,
       "org": "sensenova",
       "task": "image-text-to-text",
-      "trending": 165,
+      "trending": 160,
       "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview"
-    },
-    {
-      "created": "2026-11-06",
-      "downloads": 989,
-      "id": "NousResearch/Arete-27B",
-      "likes": 165,
-      "org": "NousResearch",
-      "task": "text-generation",
-      "trending": 162,
-      "url": "https://huggingface.co/NousResearch/Arete-27B"
     },
     {
       "created": "2026-10-21",
       "downloads": 971,
       "id": "baidu/ERNIE-5.5-Flash-Base",
-      "likes": 219,
+      "likes": 220,
       "org": "baidu",
       "task": "text-generation",
-      "trending": 158,
+      "trending": 159,
       "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base"
     }
   ],
@@ -106,81 +106,81 @@
     {
       "created": "2026-07-13",
       "description": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm: https://www.npmjs.com/package/@openai/codex-security",
-      "gain": 2,
+      "gain": 1,
       "language": "TypeScript",
       "license": "Apache-2.0",
       "name": "openai/codex-security",
-      "stars": 11324,
+      "stars": 11325,
       "url": "https://github.com/openai/codex-security"
     },
     {
       "created": "2026-09-30",
       "description": "Point Claude at any game. Skills, tools and the fal MCP that let Claude Code mod almost any PC game you own: recon, reverse engineering, fal-generated art/3D/audio, in-game testing",
-      "gain": 9,
+      "gain": 11,
       "language": "Python",
       "license": "MIT",
       "name": "rehan-remade/universal-modder",
-      "stars": 9493,
+      "stars": 9504,
       "url": "https://github.com/rehan-remade/universal-modder"
     },
     {
       "created": "2026-10-03",
       "description": "Eleven free Claude skills that clone any app: reverse-engineer it, rebuild it, test it for bugs, then fix what its users hate. Free, MIT.",
-      "gain": 87,
+      "gain": 50,
       "language": "Python",
       "license": "MIT",
       "name": "Jakeschincariol/replica-skill",
-      "stars": 8137,
+      "stars": 8187,
       "url": "https://github.com/Jakeschincariol/replica-skill"
     },
     {
       "created": "2026-10-29",
       "description": "Reverse-engineer any video, shot by shot: tells whether each shot was filmed, AI-generated or coded, how the captions, cuts and audio were made, and how to remake it. 逆向一切视频，逐镜拆出制作",
-      "gain": 209,
+      "gain": 91,
       "language": "Python",
       "license": "Apache-2.0",
       "name": "JuneYaooo/rea-video",
-      "stars": 3547,
+      "stars": 3638,
       "url": "https://github.com/JuneYaooo/rea-video"
     },
     {
       "created": "2026-10-09",
       "description": "Rated, auto-refreshed list of decompiled, recompiled & reverse-engineered games: decomps, static recomps, source ports, engine remakes, browser ports.",
-      "gain": 12,
+      "gain": 6,
       "language": "Python",
       "license": "CC0-1.0",
       "name": "SubmitGame/awesome-decomp-games",
-      "stars": 2933,
+      "stars": 2939,
       "url": "https://github.com/SubmitGame/awesome-decomp-games"
     },
     {
       "created": "2026-08-22",
       "description": "x64dbg-MCP Server is a native MCP (Model Context Protocol) plugin for x64dbg that exposes the debugger's full functionality over HTTP. Connect any MCP-compatible AI assistant and c",
-      "gain": 1,
+      "gain": 2,
       "language": "Zig",
       "license": "MIT",
       "name": "duty1g/x64dbg-mcp-server",
-      "stars": 2800,
+      "stars": 2802,
       "url": "https://github.com/duty1g/x64dbg-mcp-server"
     },
     {
       "created": "2026-10-25",
       "description": "🛡️ BLA (Blind LLM Agents) — Adversarial defense shield that protects binaries, Electron apps, JS bundles, Python, and WebAssembly against AI reverse-engineering agents like REA. Po",
-      "gain": 65,
+      "gain": 46,
       "language": "TypeScript",
       "license": "MIT",
       "name": "qybaihe/bla",
-      "stars": 2692,
+      "stars": 2738,
       "url": "https://github.com/qybaihe/bla"
     },
     {
       "created": "2026-10-09",
       "description": "Curated reverse-engineering tools and learning resources for binaries, apps, firmware, formats, and protocols.",
-      "gain": 17,
+      "gain": 11,
       "language": "Python",
       "license": "CC0-1.0",
       "name": "morluto/awesome-reverse-engineering",
-      "stars": 1923,
+      "stars": 1934,
       "url": "https://github.com/morluto/awesome-reverse-engineering"
     },
     {
@@ -190,17 +190,17 @@
       "language": "TypeScript",
       "license": "MIT",
       "name": "Caho1/open-claude-ui",
-      "stars": 1723,
+      "stars": 1725,
       "url": "https://github.com/Caho1/open-claude-ui"
     },
     {
       "created": "2026-08-11",
       "description": "复刻网站的 Agent Skill：抓只读镜像、从压缩代码逐行还原、自动比对验收。An agent skill that mirrors a website, rebuilds it from the minified code, and verifies the result with automated diffs.",
-      "gain": 23,
+      "gain": 2,
       "language": "JavaScript",
       "license": "MIT",
       "name": "boyang-hu/website-rebuild-skill",
-      "stars": 1683,
+      "stars": 1685,
       "url": "https://github.com/boyang-hu/website-rebuild-skill"
     }
   ],
@@ -210,11 +210,11 @@
   },
   "spotlight": [
     {
-      "forks": 108953,
+      "forks": 109074,
       "language": "TypeScript",
       "license": "MIT",
       "name": "morluto/rea",
-      "stars": 440136,
+      "stars": 440798,
       "stars_note": "",
       "url": "https://github.com/morluto/rea",
       "why": "Viral this month: an MCP server that gives AI coding agents 170+ reverse-engineering tools for binaries, Electron apps, websites and Android APKs."
