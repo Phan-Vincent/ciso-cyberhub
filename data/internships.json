@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T23:13:35Z",
+  "generated_at": "2026-11-07T08:51:22Z",
   "items": [
     {
       "also_remote": false,
@@ -809,6 +809,90 @@
     },
     {
       "also_remote": false,
+      "category": "Hardware",
+      "city": "Torrance",
+      "company": "Moog",
+      "id": "141dbf1a-3431-4425-9d88-1a10fb649f64",
+      "miles": 63,
+      "new": true,
+      "posted": "2026-11-06",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Electrical Engineering Intern",
+      "url": "https://moog.wd5.myworkdayjobs.com/moog_external_career_site/job/Torrance-CA/Intern--Electrical-Engineering_R-26-19824",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Calabasas",
+      "company": "Keysight Technologies",
+      "id": "aabb6bc2-6230-4e0f-aa9d-24371647b689",
+      "miles": 77,
+      "new": true,
+      "posted": "2026-11-06",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Agentic AI PhD Intern - Autonomous AI Agent",
+      "url": "https://jobs.keysight.com/jobs/54741?icims=1&lang=en-us",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Calabasas",
+      "company": "Keysight Technologies",
+      "id": "4b45ecee-9bc6-4dc2-bb9c-22f6ab97785f",
+      "miles": 77,
+      "new": true,
+      "posted": "2026-11-06",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Machine Learning PhD Intern - Modeling and Data Analysis",
+      "url": "https://jobs.keysight.com/jobs/54742?icims=1&lang=en-us",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Calabasas",
+      "company": "Keysight Technologies",
+      "id": "4b21b691-3465-4007-add7-aeb6cdb3ba00",
+      "miles": 77,
+      "new": true,
+      "posted": "2026-11-06",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Fall 2027"
+      ],
+      "title": "Agentic AI PhD Intern - Modeling Agent",
+      "url": "https://jobs.keysight.com/jobs/54739?icims=1&lang=en-us",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Leidos",
+      "id": "77c8e346-3780-4747-992a-a0692af4336d",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-06",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "AI/Automation Development Intern - Assessment & Authorization",
+      "url": "https://leidos.wd5.myworkdayjobs.com/External/job/6314-RemoteTeleworker-US/AI-Automation-Development-Intern---Assessment---Authorization_R-00195319",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "San Diego",
       "company": "Peraton",
@@ -1071,22 +1155,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Cincinnati Children’s Hospital and Medical Center",
-      "id": "d4af5767-b5a8-4242-9292-be11ba375b8c",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-02",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Student 2 Intern - Data Management Engineer",
-      "url": "https://cincinnatichildrens.wd5.myworkdayjobs.com/careersatcincinnatichildrens/job/Remote/Student-II---Data-Management-Engineer_JR226749",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
       "company": "Cincinnati Children’s Hospital and Medical Center",
@@ -1144,7 +1212,7 @@
       "company": "Teamworks",
       "id": "7e1b898b-15c7-401a-890c-d1985a5a54f3",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-30",
       "security": false,
       "sponsorship": "Other",
@@ -2715,24 +2783,6 @@
     },
     {
       "also_remote": false,
-      "category": "Hardware",
-      "city": "Pasadena",
-      "company": "Amazon",
-      "id": "6beedee0-ada2-4d31-8f0f-a0db9a46235d",
-      "miles": 47,
-      "new": false,
-      "posted": "2026-09-23",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Quantum Applied Science Intern - Quantum Technologies team",
-      "url": "https://amazon.jobs/en/jobs/10556930/2027-quantum-applied-science-internship-quantum-technologies-team",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "Software",
       "city": "Torrance",
       "company": "Vital Lyfe",
@@ -3141,6 +3191,24 @@
       ],
       "title": "Software Engineer Intern",
       "url": "https://jobs.l3harris.com/job/San-Diego-Software-Engineering-Intern-CA-92123/1428452400/?ats=successfactors",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "San Diego",
+      "company": "Accenture",
+      "id": "14e80d85-4ad4-4325-8b16-b03eeeb9834d",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-09-10",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2026"
+      ],
+      "title": "Technology Summer Analyst - Multiple Teams",
+      "url": "https://accenture.wd103.myworkdayjobs.com/AccentureCareers/job/Chicago-Accenture-Tower-Corp/Technology-Summer-Analyst---Various-Locations---NAELFY27_R00355981",
       "zone": "region"
     },
     {
