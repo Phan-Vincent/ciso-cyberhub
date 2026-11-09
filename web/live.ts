@@ -71,7 +71,7 @@ export class Channel {
       clearInterval(this.hb); this.hb = setInterval(() => this.raw({ topic: 'phoenix', event: 'heartbeat', payload: {}, ref: String(++this.ref) }), 25000) as unknown as number; };
     ws.onmessage = e => { let m: any; try { m = JSON.parse(String(e.data)); } catch { return; }
       if (m.event === 'phx_reply' && m.ref === this.joinRef) { if (m.payload?.status === 'ok') { this.tries = 0; this.onStatus('live'); this.queue.splice(0).forEach(q => this.ws?.send(q)); } else this.onStatus('offline'); return; }
-      if (m.event === 'broadcast' && m.topic === this.topic && m.payload?.event === 'duel') { const p = m.payload.payload; if (p && typeof p.t === 'string') this.onMsg(p as Msg); } };
+      if (m.event === 'broadcast' && m.topic === this.topic && m.payload?.event === 'duel') { const p = m.payload.payload; if (p && typeof p.t === 'string') try { this.onMsg(p as Msg); } catch { /* ignore malformed room messages */ } } };
     ws.onclose = () => { if (this.ws !== ws) return; clearInterval(this.hb); if (this.closed) return; this.onStatus('offline'); const wait = Math.min(10000, 500 * 2 ** this.tries++); setTimeout(() => { if (!this.closed) this.connect(); }, wait); };
     ws.onerror = () => { try { ws.close(); } catch { /* ignore */ } };
   }

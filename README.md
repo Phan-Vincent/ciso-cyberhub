@@ -1,6 +1,6 @@
-# CISO CyberHub
+# CyberHub
 
-A working static cybersecurity learning hub for a proposed student-maintained CISO community project. This repository complements https://www.ciso-csusb.org/; it does not replace that site or claim university or club authorization.
+A free, static cybersecurity learning site built by students. It is an independent project, not affiliated with any university, club or certification provider.
 
 **Release 0.1.0: working foundation, not the completed production scope.** The local build produces 131 routes. Live source acceptance, deeper curriculum review and club deployment sign-off remain documented in [coverage](docs/COVERAGE.md) and [test evidence](docs/TEST_RESULTS.md).
 
@@ -48,7 +48,7 @@ These commands only change local data when not in dry-run mode. No script merges
 
 ## Design
 
-The interface follows the CISO CyberHub design system: void, paper and CISO-blue scenes, Archivo and Martian Mono, and the CyberHub Core logo. The homepage's 3D Core, learning map and machine renders are drawn on canvas by `web/app.ts` and fall back to static content without JavaScript or under reduced motion. See [brand](docs/BRAND.md).
+The interface uses CSUSB Coyote Blue on a square-cornered grey paper system with Geist type, and follows the visitor's light or dark system setting. The home page draws a security-review elevation of a campus and a real-world globe on canvas (`web/app.ts`); page motion lives in `web/motion.ts`. Everything stays readable without JavaScript or under reduced motion. See [brand](docs/BRAND.md).
 
 ## Repository map
 

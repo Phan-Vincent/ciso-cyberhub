@@ -31,7 +31,7 @@ export function scoreRun(rounds: Round[], run: Run) { return run.reduce((t, a, i
 
 const b64 = (s: string) => btoa(unescape(encodeURIComponent(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 const unb64 = (s: string) => decodeURIComponent(escape(atob(s.replace(/-/g, '+').replace(/_/g, '/'))));
-export const cleanName = (s: string) => (s || '').replace(/[^\p{L}\p{N} ._-]/gu, '').trim().slice(0, 20);
+export const cleanName = (s: string) => String(s ?? '').replace(/[^\p{L}\p{N} ._-]/gu, '').trim().slice(0, 20);
 export function encodeChallenge(c: Challenge) { return b64(JSON.stringify([c.v, c.s, c.c, c.d, c.n, c.r, c.a.map(x => [x.pick, x.ms])])); }
 export function decodeChallenge(s: string, bank: Bank): Challenge | null {
   try {

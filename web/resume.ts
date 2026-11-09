@@ -167,7 +167,7 @@ if (root) {
       const list = await (await fetch(base + '/assets/internships.json')).json() as { id: string; company: string; title: string; url: string; city: string }[];
       const j = list.find(x => x.id === id); if (!j) return;
       targetEl.value = `${j.title} at ${j.company} (${j.city})`;
-      const link = $<HTMLAnchorElement>('#rt-posting'); link.href = j.url; link.hidden = false; link.textContent = `Open the ${j.company} posting ↗ and copy its description into box 2`;
+      const link = $<HTMLAnchorElement>('#rt-posting'); if (!/^https:\/\//.test(j.url)) return; link.href = j.url; link.hidden = false; link.textContent = `Open the ${j.company} posting ↗ and copy its description into box 2`;
     } catch { /* offline: user can type */ }
   })();
 

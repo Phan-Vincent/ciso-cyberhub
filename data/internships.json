@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T18:05:36Z",
+  "generated_at": "2026-11-09T09:52:33Z",
   "items": [
     {
       "also_remote": false,
@@ -26,7 +26,7 @@
       "company": "Amazon",
       "id": "c5138e81-eb36-45f4-8460-5c616a7abbf5",
       "miles": 45,
-      "new": true,
+      "new": false,
       "posted": "2026-10-30",
       "security": false,
       "sponsorship": "Other",
@@ -45,7 +45,7 @@
       "company": "Obsidian Entertainment",
       "id": "cafb9ee2-6d84-4473-b7f3-b464596c8c17",
       "miles": 45,
-      "new": true,
+      "new": false,
       "posted": "2026-10-30",
       "security": false,
       "sponsorship": "Other",
@@ -63,7 +63,7 @@
       "company": "Danaher",
       "id": "14dbefc9-5e7e-42f5-b526-0e0349f60cab",
       "miles": 38,
-      "new": true,
+      "new": false,
       "posted": "2026-10-29",
       "security": false,
       "sponsorship": "Other",
@@ -79,7 +79,7 @@
       "company": "Anduril",
       "id": "15d1fca0-add9-47d8-9d9d-87f8cbbd3f73",
       "miles": 43,
-      "new": true,
+      "new": false,
       "posted": "2026-10-28",
       "security": false,
       "sponsorship": "Other",
@@ -528,24 +528,6 @@
     {
       "also_remote": false,
       "category": "Software",
-      "city": "Pomona",
-      "company": "Edison International",
-      "id": "344f9541-1bdc-41ab-8c57-ba63a9e11517",
-      "miles": 26,
-      "new": false,
-      "posted": "2026-09-01",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Computer Science Intern",
-      "url": "https://apply.edisoncareers.com/job/Alhambra-2027-Summer-Internship-Computer-Science-(AlhambraRosemeadPomona)-CA-91803-0000/1425151100/?ats=successfactors",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
       "city": "Santa Ana",
       "company": "Edison International",
       "id": "7db598e3-bc08-420a-a69f-e39447549d49",
@@ -758,24 +740,6 @@
     {
       "also_remote": false,
       "category": "Software",
-      "city": "Remote (US)",
-      "company": "Motorola Solutions",
-      "id": "d961770e-2db5-4501-bd6a-d25420fa4238",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-02",
-      "security": true,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Cybersecurity Services Intern",
-      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/Careers/job/Virginia-Remote-Work/Software-Engineer-Cybersecurity-Services---2027-Summer-Internship_R69250",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
       "city": "San Diego",
       "company": "Constellation Energy",
       "id": "8d5a68f3-3c90-4a0f-9579-ef3d5483e360",
@@ -827,6 +791,90 @@
     },
     {
       "also_remote": false,
+      "category": "Hardware",
+      "city": "Torrance",
+      "company": "Moog",
+      "id": "141dbf1a-3431-4425-9d88-1a10fb649f64",
+      "miles": 63,
+      "new": true,
+      "posted": "2026-11-06",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Electrical Engineering Intern",
+      "url": "https://moog.wd5.myworkdayjobs.com/moog_external_career_site/job/Torrance-CA/Intern--Electrical-Engineering_R-26-19824",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Calabasas",
+      "company": "Keysight Technologies",
+      "id": "aabb6bc2-6230-4e0f-aa9d-24371647b689",
+      "miles": 77,
+      "new": true,
+      "posted": "2026-11-06",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Agentic AI PhD Intern - Autonomous AI Agent",
+      "url": "https://jobs.keysight.com/jobs/54741?icims=1&lang=en-us",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Calabasas",
+      "company": "Keysight Technologies",
+      "id": "4b45ecee-9bc6-4dc2-bb9c-22f6ab97785f",
+      "miles": 77,
+      "new": true,
+      "posted": "2026-11-06",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Machine Learning PhD Intern - Modeling and Data Analysis",
+      "url": "https://jobs.keysight.com/jobs/54742?icims=1&lang=en-us",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Calabasas",
+      "company": "Keysight Technologies",
+      "id": "4b21b691-3465-4007-add7-aeb6cdb3ba00",
+      "miles": 77,
+      "new": true,
+      "posted": "2026-11-06",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Fall 2027"
+      ],
+      "title": "Agentic AI PhD Intern - Modeling Agent",
+      "url": "https://jobs.keysight.com/jobs/54739?icims=1&lang=en-us",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Leidos",
+      "id": "77c8e346-3780-4747-992a-a0692af4336d",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-06",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "AI/Automation Development Intern - Assessment & Authorization",
+      "url": "https://leidos.wd5.myworkdayjobs.com/External/job/6314-RemoteTeleworker-US/AI-Automation-Development-Intern---Assessment---Authorization_R-00195319",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "San Diego",
       "company": "Peraton",
@@ -842,6 +890,96 @@
       "title": "Social Media & Marketing Analyst Intern",
       "url": "https://careers-peraton.icims.com/jobs/171546/job?mobile=true&needsRedirect=false",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "San Diego",
+      "company": "Shield AI",
+      "id": "65e41535-86d1-4d10-9d27-bac6fad3e8d9",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Co-op Intern",
+      "url": "https://jobs.lever.co/shieldai/db8fc063-8856-4404-991c-f287712de949/apply",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Ballotpedia",
+      "id": "dd16f64f-a794-4611-9dcc-8913da108e5e",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Spring 2027"
+      ],
+      "title": "GIS Analyst Intern",
+      "url": "https://apply.workable.com/ballotpedia/j/4AF879CDEA/apply",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "CareSource",
+      "id": "14b94b0f-6bb3-4494-8ba0-ac642f092799",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Data Analyst Intern",
+      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program---Data-Analyst_R14356",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "CareSource",
+      "id": "16b5b145-fefc-4085-997b-de2f26e8d5f2",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Configuration and Automation Intern",
+      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program---Configuration-and-Automation_R14185",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "J.M. Smucker",
+      "id": "387ea422-5e64-458e-b052-8dee5cbf777e",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Data Science Intern",
+      "url": "https://smucker.wd5.myworkdayjobs.com/US_External_Careers/job/Working-Remote-USA/Data-Science-Intern--Summer-2027_116118",
+      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -912,24 +1050,6 @@
       "title": "Pharmacy Aggregation Intern",
       "url": "https://vizient.wd1.myworkdayjobs.com/Vizient_Careers/job/Irving-TX-75062-Vizient-Corporate-HQ/XMLNAME-2027-Summer-Internship---Pharmacy-Aggregation_35995R-1",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Redondo Beach",
-      "company": "Northrop Grumman",
-      "id": "c5e86824-dfe7-4736-af3b-f8a7222c6536",
-      "miles": 65,
-      "new": true,
-      "posted": "2026-11-03",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Ground Software Engineer Intern",
-      "url": "https://ngc.wd1.myworkdayjobs.com/Northrop_Grumman_External_Site/job/United-States-California-Redondo-Beach/XMLNAME-2027-Ground-Software-Engineer-Intern---Redondo-Beach-CA_R10259057",
-      "zone": "region"
     },
     {
       "also_remote": false,
@@ -1017,22 +1137,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Cincinnati Children’s Hospital and Medical Center",
-      "id": "d4af5767-b5a8-4242-9292-be11ba375b8c",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-02",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Student 2 Intern - Data Management Engineer",
-      "url": "https://cincinnatichildrens.wd5.myworkdayjobs.com/careersatcincinnatichildrens/job/Remote/Student-II---Data-Management-Engineer_JR226749",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
       "company": "Cincinnati Children’s Hospital and Medical Center",
@@ -1054,7 +1158,7 @@
       "company": "Divergent Technologies",
       "id": "b2f1fe9d-fc42-40d8-9d37-4d7457195c8d",
       "miles": 63,
-      "new": true,
+      "new": false,
       "posted": "2026-10-30",
       "security": false,
       "sponsorship": "Other",
@@ -1067,30 +1171,12 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Molina Healthcare",
-      "id": "18803ec8-f589-4545-bb91-2d5378346d55",
-      "miles": null,
-      "new": true,
-      "posted": "2026-10-30",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Customer Experience & Analytics Intern - Undergraduate",
-      "url": "https://hckd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2040169",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Product",
       "city": "Remote (US)",
       "company": "Teamworks",
       "id": "7e1b898b-15c7-401a-890c-d1985a5a54f3",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-30",
       "security": false,
       "sponsorship": "Other",
@@ -1103,10 +1189,28 @@
       "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
+      "company": "Molina Healthcare",
+      "id": "b0d0060c-2d0c-4a83-874e-ea2eb2436956",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Electronic Data Interchange Intern",
+      "url": "https://hckd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2040156",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
       "company": "CareSource",
       "id": "4d168e58-9786-4bbf-93b9-85ed973a0ab6",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-10-29",
       "security": false,
       "sponsorship": "Other",
@@ -1155,40 +1259,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "San Diego",
-      "company": "ASML",
-      "id": "3338e211-5030-4319-9e46-aba103ce8cbd",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-10-28",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Data Engineer Co-op Intern",
-      "url": "https://asml.wd3.myworkdayjobs.com/asmlext1/job/San-Diego-CA-USA/Internship-Co-Op--Data-Engineer_J-00355626",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "VSP Vision",
-      "id": "d54ad503-0917-4cd9-8e73-8ecd6fe2d56d",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-28",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://vsp.wd1.myworkdayjobs.com/vspvisioncareers/job/Remote-US/Internship--Software-Engineer_R-10071",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
       "company": "Subtotal",
@@ -1217,24 +1287,6 @@
       "terms": [],
       "title": "AI Intern",
       "url": "https://job-boards.greenhouse.io/eqtcorporation/jobs/5462562008",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Highmark Health",
-      "id": "58a7bc55-d2fe-4a18-8d1c-ad95595dd5fb",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-26",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Provider Delivery Software Engineer Intern",
-      "url": "https://highmarkhealth.wd1.myworkdayjobs.com/highmark/job/PA-Working-at-Home---Pennsylvania/Summer-2027-Provider-Delivery-Software-Engineer-enGen-Undergraduate-Intern_J290026",
       "zone": "remote"
     },
     {
@@ -1339,22 +1391,6 @@
       ],
       "title": "Customer Operations Product Management Intern",
       "url": "https://directv.wd1.myworkdayjobs.com/careers/job/El-Segundo-CA/Customer-Operations-Product-Management--MBA-Opportunity-_R260333",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Sardine",
-      "id": "860a5d35-fd73-4f09-9dab-71f9950473cf",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-23",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Engineering Intern",
-      "url": "https://jobs.ashbyhq.com/sardine/b25449a4-c78c-4b1a-b5b2-74b45981a37a/application?embed=true",
       "zone": "remote"
     },
     {
@@ -1493,38 +1529,6 @@
       ],
       "title": "Research Intern",
       "url": "https://jobs.ashbyhq.com/clickhouse/558c0c16-5fde-407a-966b-7a2255d3531b/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "ICF International",
-      "id": "24537423-4d5f-4c4e-96e3-47f55defe704",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Seasonal Associate Intern - Full Stack Developer",
-      "url": "https://icf.wd5.myworkdayjobs.com/icfexternal_career_site/job/Reston-VA/Seasonal-Associate--Full-Stack-Developer--Remote-_R2603571",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "ICF International",
-      "id": "73395dc9-ae40-45b9-b46a-7c823d29cc98",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Full-Stack Developer Intern",
-      "url": "https://icf.wd5.myworkdayjobs.com/icfexternal_career_site/job/Reston-VA/Seasonal-Associate--Full-Stack-Developer--Remote-_R2603570",
       "zone": "remote"
     },
     {
@@ -1851,24 +1855,6 @@
       "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
-      "company": "CenturyLink",
-      "id": "f51bdd40-5f4d-429e-a22b-1e826726e2ad",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-16",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Data Internship - Analytics & Decision Science",
-      "url": "https://internaljobs.centurylink.com/job/Remote-Data,-Analytics-&-Decision-Science-Summer-2027-Internship-Pathway/1440961600/?ats=successfactors",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
       "company": "Scale AI",
       "id": "41101dfb-9fa5-4eac-b1cf-f6c93e3c3f48",
       "miles": null,
@@ -1914,22 +1900,6 @@
       ],
       "title": "Software Engineering Intern",
       "url": "https://job-boards.greenhouse.io/wikimedia/jobs/8268853",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Leidos",
-      "id": "d22f3e14-e4d1-4fff-9e8a-373760835d7d",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-15",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Performance Enablement AI/ML Intern",
-      "url": "https://leidos.wd5.myworkdayjobs.com/External/job/6314-RemoteTeleworker-US/Performance-Enablement-AI-ML-Intern_R-00194656",
       "zone": "remote"
     },
     {
@@ -2017,22 +1987,6 @@
       "title": "Hardware Development Engineer Intern",
       "url": "https://amazon.jobs/en/jobs/10578090/hardware-development-engineer-intern-summer-2027",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Businessolver",
-      "id": "c3531726-3761-43df-9283-622508689b62",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Business Intelligence Analyst Intern - Innovation & Data Science",
-      "url": "https://www.businessolver.com/careers/openings/?gh_jid=8281727",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -2256,22 +2210,6 @@
       "title": "AI Engineer Intern",
       "url": "https://axos.wd5.myworkdayjobs.com/Axos/job/HQ---San-Diego-CA/AI-Engineer-Intern_JR5658",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Snorkel AI",
-      "id": "f82d94de-f52e-4b46-b37a-05ce2c1feeb2",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-07",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Research Fellow",
-      "url": "https://job-boards.greenhouse.io/snorkelai/jobs/6175199004",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -2757,24 +2695,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Cencora",
-      "id": "fea9f279-8f49-4840-bf20-b5cdaf60b8d9",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-25",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2026"
-      ],
-      "title": "Business Analytics Intern",
-      "url": "https://myhrabc.wd5.myworkdayjobs.com/Global/job/Remote-USA/Business-Analytics-Intern_R2616423",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Software",
       "city": "Hawthorne",
       "company": "Reflect Orbital",
@@ -2789,24 +2709,6 @@
       ],
       "title": "Ground Software Systems Intern",
       "url": "https://jobs.ashbyhq.com/reflect-orbital/c394615d-26c6-4435-ad84-3ca3269c2952/application?embed=true",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Pasadena",
-      "company": "Amazon",
-      "id": "6beedee0-ada2-4d31-8f0f-a0db9a46235d",
-      "miles": 47,
-      "new": false,
-      "posted": "2026-09-23",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Quantum Applied Science Intern - Quantum Technologies team",
-      "url": "https://amazon.jobs/en/jobs/10556930/2027-quantum-applied-science-internship-quantum-technologies-team",
       "zone": "region"
     },
     {
@@ -3225,18 +3127,18 @@
       "also_remote": false,
       "category": "Software",
       "city": "San Diego",
-      "company": "Navy Federal",
-      "id": "3b7f6701-dabe-416a-af5f-efb2491cfbd4",
+      "company": "Accenture",
+      "id": "14e80d85-4ad4-4325-8b16-b03eeeb9834d",
       "miles": 102,
       "new": false,
-      "posted": "2026-09-09",
+      "posted": "2026-09-10",
       "security": false,
       "sponsorship": "Other",
       "terms": [
-        "Summer 2027"
+        "Summer 2026"
       ],
-      "title": "Mobile Developer Intern - Summer Associate",
-      "url": "https://fa-etbx-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/nfcu/job/32368",
+      "title": "Technology Summer Analyst - Multiple Teams",
+      "url": "https://accenture.wd103.myworkdayjobs.com/AccentureCareers/job/Chicago-Accenture-Tower-Corp/Technology-Summer-Analyst---Various-Locations---NAELFY27_R00355981",
       "zone": "region"
     },
     {
@@ -3604,6 +3506,24 @@
     },
     {
       "also_remote": false,
+      "category": "Software",
+      "city": "San Diego",
+      "company": "Booz Allen",
+      "id": "097e5358-9e45-41e0-86bc-5289976e1828",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-09-01",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Systems Engineer Intern - Summer Games",
+      "url": "https://bah.wd1.myworkdayjobs.com/bah_jobs/job/San-Diego-CA/University---2027-Summer-Games-Systems-Engineer-Intern---El-Segundo--CA_R0248366",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Pluralis Research",
@@ -3619,6 +3539,24 @@
       "title": "Research Scientist Intern",
       "url": "https://jobs.ashbyhq.com/pluralis-research/c8f78978-a693-4863-bcc0-66af5c3fd0be/application?embed=true",
       "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Torrance",
+      "company": "Northwood Space",
+      "id": "f6b7f447-ad5a-434e-bf7f-b120f36843eb",
+      "miles": 63,
+      "new": false,
+      "posted": "2026-08-29",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Supply Chain Data & Analytics Intern",
+      "url": "https://jobs.ashbyhq.com/NorthwoodSpace/69f99cd7-3ce7-413a-8cfe-29b7ccbc1490/application?embed=true",
+      "zone": "region"
     },
     {
       "also_remote": false,
@@ -4155,22 +4093,6 @@
       ],
       "title": "Speech Intern 4",
       "url": "https://centific.wd1.myworkdayjobs.com/Centific_Global/job/Remote-Work-USA/Speech-Intern-4_JR107037",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Anthropic",
-      "id": "0d633297-0371-40a5-bcfe-d66992c2ba79",
-      "miles": null,
-      "new": false,
-      "posted": "2026-04-10",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Anthropic Fellows Program - ML Systems & Performance",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5183051008",
       "zone": "remote"
     },
     {

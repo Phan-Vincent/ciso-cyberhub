@@ -574,5 +574,4 @@ if (rankEl) {
   rankEl.querySelector('#lx-rank-next')!.textContent = next ? `${n} of ${total} levels · ${next[0] - n} more to reach ${next[1]}` : `All ${total} levels complete. ${set === LEVELS ? 'You are root.' : 'You own the network.'}`;
   rankEl.querySelectorAll<HTMLElement>('[data-at]').forEach(li => li.classList.toggle('on', n >= Number(li.dataset.at)));
 }
-export const LEVEL_IDS = LEVELS.map(l => l.id);
 export { LEVELS, NET_LEVELS };

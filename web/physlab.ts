@@ -523,7 +523,7 @@ if (root) {
   function setTier(id: string) {
     T = TIERS.find(t => t.id === id) || TIERS[0]; graded = null;
     tierBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tier === T.id)));
-    const L = layouts[T.id]; P = Array.isArray(L?.P) ? L.P.filter(p => p && p.item in ITEMS && canPlace(T, [], p.item, p.x, p.y) === null) : []; CT = Array.isArray(L?.C) ? L.C.filter(c => c in CONTROLS) : [];
+    const L = layouts[T.id]; P = Array.isArray(L?.P) ? L.P.filter(p => p && p.item in ITEMS && Number.isInteger(p.x) && Number.isInteger(p.y) && (p.dir === undefined || [0, 1, 2, 3].includes(p.dir)) && canPlace(T, [], p.item, p.x, p.y) === null) : []; CT = Array.isArray(L?.C) ? L.C.filter(c => c in CONTROLS) : [];
     svg.setAttribute('viewBox', `${-M.l} ${-M.t} ${T.w * C + M.l + M.r} ${T.h * C + M.t + M.b}`);
     svgSet(base, basePlan(T)); run.replaceChildren();
     $('#pl-brief').textContent = T.blurb;
