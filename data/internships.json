@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T09:52:33Z",
+  "generated_at": "2026-11-09T16:47:36Z",
   "items": [
     {
       "also_remote": false,
@@ -1069,24 +1069,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "CareSource",
-      "id": "85296cc2-e177-4e6b-a942-962f6643c9b5",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-03",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Data Science Intern",
-      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program---Data-Science-Intern_R14306",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Hardware",
       "city": "Pasadena",
       "company": "NASA Jet Propulsion Laboratory",
@@ -1201,24 +1183,6 @@
       ],
       "title": "Electronic Data Interchange Intern",
       "url": "https://hckd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2040156",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "CareSource",
-      "id": "4d168e58-9786-4bbf-93b9-85ed973a0ab6",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-29",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Full Stack AI Development Intern",
-      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program---Full-Stack-AI-Development-Intern-1_R14181",
       "zone": "remote"
     },
     {
