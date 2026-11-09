@@ -150,12 +150,12 @@
     {
       "cves_7d": 3574,
       "date": "2026-11-09",
-      "hn_llm": 26,
+      "hn_llm": 28,
       "hn_month": "November 2026",
-      "hn_security": 36,
-      "hn_total": 317,
-      "kev_30d": 30
+      "hn_security": 37,
+      "hn_total": 319,
+      "kev_30d": 33
     }
   ],
-  "updated": "2026-11-09T16:47:30Z"
+  "updated": "2026-11-09T20:47:32Z"
 }
