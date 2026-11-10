@@ -1,81 +1,81 @@
 {
-  "generated_at": "2026-11-10T17:54:42Z",
+  "generated_at": "2026-11-10T23:27:01Z",
   "models": [
     {
       "created": "2026-11-02",
       "downloads": 30721,
       "id": "moonshotai/Kimi-K3.1-Pro",
-      "likes": 1844,
+      "likes": 1867,
       "org": "moonshotai",
       "task": "image-text-to-text",
-      "trending": 608,
+      "trending": 616,
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
     },
     {
       "created": "2026-11-06",
       "downloads": 3431,
       "id": "NousResearch/Arete-27B",
-      "likes": 385,
+      "likes": 402,
       "org": "NousResearch",
       "task": "text-generation",
-      "trending": 370,
+      "trending": 385,
       "url": "https://huggingface.co/NousResearch/Arete-27B"
     },
     {
       "created": "2026-10-14",
       "downloads": 43175,
       "id": "webAI-Official/TwIL-8B",
-      "likes": 272,
+      "likes": 275,
       "org": "webAI-Official",
       "task": "text-generation",
-      "trending": 265,
+      "trending": 267,
       "url": "https://huggingface.co/webAI-Official/TwIL-8B"
-    },
-    {
-      "created": "2026-10-23",
-      "downloads": 82718,
-      "id": "LiquidAI/LFM3-1.7B",
-      "likes": 1586,
-      "org": "LiquidAI",
-      "task": "text-generation",
-      "trending": 189,
-      "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
     },
     {
       "created": "2026-10-21",
       "downloads": 2111,
       "id": "baidu/ERNIE-5.5-Flash-Base",
-      "likes": 249,
+      "likes": 251,
       "org": "baidu",
       "task": "text-generation",
-      "trending": 179,
+      "trending": 181,
       "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base"
+    },
+    {
+      "created": "2026-10-23",
+      "downloads": 82718,
+      "id": "LiquidAI/LFM3-1.7B",
+      "likes": 1588,
+      "org": "LiquidAI",
+      "task": "text-generation",
+      "trending": 172,
+      "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
     },
     {
       "created": "2026-11-01",
       "downloads": 43008,
       "id": "ccore/Qwen3.5-4B-GLB-3D-Coder",
-      "likes": 300,
+      "likes": 304,
       "org": "ccore",
       "task": "text-generation",
-      "trending": 168,
+      "trending": 167,
       "url": "https://huggingface.co/ccore/Qwen3.5-4B-GLB-3D-Coder"
     },
     {
       "created": "2026-11-07",
       "downloads": 2627,
       "id": "tencent/Qwen3.8-27B-DSpine-b16",
-      "likes": 161,
+      "likes": 168,
       "org": "tencent",
       "task": "text-generation",
-      "trending": 157,
+      "trending": 164,
       "url": "https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16"
     },
     {
       "created": "2026-11-02",
       "downloads": 11066,
       "id": "Scantist/GLM-5.3-SLIM-GGUF",
-      "likes": 1301,
+      "likes": 1302,
       "org": "Scantist",
       "task": "text-generation",
       "trending": 150,
@@ -85,20 +85,20 @@
       "created": "2026-10-17",
       "downloads": 329529,
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "likes": 5463,
+      "likes": 5468,
       "org": "deepseek-ai",
       "task": "image-text-to-text",
-      "trending": 120,
+      "trending": 115,
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
     },
     {
       "created": "2026-09-23",
       "downloads": 2388,
       "id": "taobao-mnn/MNN-Pocket-0.3B",
-      "likes": 96,
+      "likes": 99,
       "org": "taobao-mnn",
       "task": "text-generation",
-      "trending": 90,
+      "trending": 93,
       "url": "https://huggingface.co/taobao-mnn/MNN-Pocket-0.3B"
     }
   ],
@@ -106,51 +106,51 @@
     {
       "created": "2026-09-30",
       "description": "Point Claude at any game. Skills, tools and the fal MCP that let Claude Code mod almost any PC game you own: recon, reverse engineering, fal-generated art/3D/audio, in-game testing",
-      "gain": 16,
+      "gain": 5,
       "language": "Python",
       "license": "MIT",
       "name": "rehan-remade/universal-modder",
-      "stars": 9586,
+      "stars": 9591,
       "url": "https://github.com/rehan-remade/universal-modder"
     },
     {
       "created": "2026-10-03",
       "description": "Eleven free Claude skills that clone any app: reverse-engineer it, rebuild it, test it for bugs, then fix what its users hate. Free, MIT.",
-      "gain": 49,
+      "gain": 42,
       "language": "Python",
       "license": "MIT",
       "name": "Jakeschincariol/replica-skill",
-      "stars": 8757,
+      "stars": 8799,
       "url": "https://github.com/Jakeschincariol/replica-skill"
     },
     {
       "created": "2026-10-29",
       "description": "Reverse-engineer any video, shot by shot: filmed, AI-generated or coded, and how to remake it. 逆向一切视频，逐个镜头看是拍的、AI 生成的还是代码做的，再告诉你怎么复刻。",
-      "gain": 271,
+      "gain": 114,
       "language": "Python",
       "license": "Apache-2.0",
       "name": "JuneYaooo/rea-video",
-      "stars": 6214,
+      "stars": 6328,
       "url": "https://github.com/JuneYaooo/rea-video"
     },
     {
       "created": "2026-10-25",
       "description": "🛡️ BLA (Blind LLM Agents) — Adversarial defense shield that protects binaries, Electron apps, JS bundles, Python, and WebAssembly against AI reverse-engineering agents like REA. Po",
-      "gain": 222,
+      "gain": 79,
       "language": "TypeScript",
       "license": "MIT",
       "name": "qybaihe/bla",
-      "stars": 4911,
+      "stars": 4990,
       "url": "https://github.com/qybaihe/bla"
     },
     {
       "created": "2026-10-09",
       "description": "Rated, auto-refreshed list of decompiled, recompiled & reverse-engineered games: decomps, static recomps, source ports, engine remakes, browser ports.",
-      "gain": 10,
+      "gain": 3,
       "language": "Python",
       "license": "CC0-1.0",
       "name": "SubmitGame/awesome-decomp-games",
-      "stars": 3003,
+      "stars": 3006,
       "url": "https://github.com/SubmitGame/awesome-decomp-games"
     },
     {
@@ -166,41 +166,41 @@
     {
       "created": "2026-10-16",
       "description": "Curated tools, case studies and papers for reverse engineering websites, games, apps, binaries, firmware and protocols. Source-reviewed, English and Chinese.",
-      "gain": 44,
+      "gain": 35,
       "language": "Python",
       "license": "MIT",
       "name": "reacher-z/Awesome-REA",
-      "stars": 2434,
+      "stars": 2469,
       "url": "https://github.com/reacher-z/Awesome-REA"
     },
     {
       "created": "2026-10-09",
       "description": "Curated reverse-engineering tools and learning resources for binaries, apps, firmware, formats, and protocols.",
-      "gain": 13,
+      "gain": 7,
       "language": "Python",
       "license": "CC0-1.0",
       "name": "morluto/awesome-reverse-engineering",
-      "stars": 2023,
+      "stars": 2030,
       "url": "https://github.com/morluto/awesome-reverse-engineering"
     },
     {
       "created": "2026-10-14",
       "description": "基于 REA 深度拆解并高保真还原 Claude 官方桌面端 UI。还原 30 个独立 React 组件与 8 项硬核交互物理算法，附带 3000+ 行逆向分析手册。",
-      "gain": 1,
+      "gain": 2,
       "language": "TypeScript",
       "license": "MIT",
       "name": "Caho1/open-claude-ui",
-      "stars": 1739,
+      "stars": 1741,
       "url": "https://github.com/Caho1/open-claude-ui"
     },
     {
       "created": "2026-08-11",
       "description": "复刻网站的 Agent Skill：抓只读镜像、从压缩代码逐行还原、自动比对验收。An agent skill that mirrors a website, rebuilds it from the minified code, and verifies the result with automated diffs.",
-      "gain": 2,
+      "gain": 7,
       "language": "JavaScript",
       "license": "MIT",
       "name": "boyang-hu/website-rebuild-skill",
-      "stars": 1693,
+      "stars": 1700,
       "url": "https://github.com/boyang-hu/website-rebuild-skill"
     }
   ],
@@ -210,11 +210,11 @@
   },
   "spotlight": [
     {
-      "forks": 110675,
+      "forks": 110740,
       "language": "TypeScript",
       "license": "MIT",
       "name": "morluto/rea",
-      "stars": 449360,
+      "stars": 449869,
       "stars_note": "",
       "url": "https://github.com/morluto/rea",
       "why": "Viral this month: an MCP server that gives AI coding agents 170+ reverse-engineering tools for binaries, Electron apps, websites and Android APKs."

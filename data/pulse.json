@@ -1,6 +1,6 @@
 {
   "errors": [
-    "ai_papers_7d: TimeoutError"
+    "ai_papers_7d: HTTP 500"
   ],
   "series": [
     {
@@ -161,10 +161,10 @@
       "date": "2026-11-10",
       "hn_llm": 26,
       "hn_month": "November 2026",
-      "hn_security": 37,
-      "hn_total": 325,
-      "kev_30d": 34
+      "hn_security": 38,
+      "hn_total": 326,
+      "kev_30d": 40
     }
   ],
-  "updated": "2026-11-10T17:54:14Z"
+  "updated": "2026-11-10T23:26:39Z"
 }

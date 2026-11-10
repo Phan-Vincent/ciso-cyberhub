@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T17:54:32Z",
+  "generated_at": "2026-11-10T23:26:52Z",
   "items": [
     {
       "also_remote": false,
@@ -1140,7 +1140,7 @@
       "company": "Divergent Technologies",
       "id": "5d80b793-a83d-4b0f-abd7-0869dda444b9",
       "miles": 63,
-      "new": true,
+      "new": false,
       "posted": "2026-11-02",
       "security": false,
       "sponsorship": "Other",
@@ -3787,40 +3787,6 @@
       ],
       "title": "Graduate Intern",
       "url": "https://nrel.wd5.myworkdayjobs.com/NLR/job/Golden-CO/Graduate-Intern---LLM-Reliability-and-Uncertainty-for-AI-Science-Assistants_R14416",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Ensemble Health Partners",
-      "id": "c49d403e-9c01-4e02-bbf3-31cbc36e6522",
-      "miles": null,
-      "new": false,
-      "posted": "2026-07-17",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Fall 2026"
-      ],
-      "title": "Data Scientist Intern",
-      "url": "https://ensemblehp.wd5.myworkdayjobs.com/ensemblehealthpartnerscareers/job/Remote---Nationwide/Data-Scientist--AI_R048077",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Nebius",
-      "id": "b380c306-bed2-4e4a-8c77-71a792a86621",
-      "miles": null,
-      "new": false,
-      "posted": "2026-07-16",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "ML Solution Architect Intern",
-      "url": "https://careers.nebius.com/?gh_jid=4883829101",
       "zone": "remote"
     },
     {
