@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T16:47:36Z",
+  "generated_at": "2026-11-09T20:47:38Z",
   "items": [
     {
       "also_remote": false,
@@ -999,24 +999,6 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Leidos",
-      "id": "994390d2-e931-4203-9755-1169361ef34d",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-04",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineering & AI Intern",
-      "url": "https://leidos.wd5.myworkdayjobs.com/External/job/6314-RemoteTeleworker-US/Software-Engineering---AI-Intern_R-00196220",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Amgen",
@@ -1951,24 +1933,6 @@
       "title": "Hardware Development Engineer Intern",
       "url": "https://amazon.jobs/en/jobs/10578090/hardware-development-engineer-intern-summer-2027",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "TPG",
-      "id": "94ce00a6-1104-4883-b62a-4615691ce825",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2027"
-      ],
-      "title": "Data Analytics Research Assistant Intern - Data Analytics and Reporting - Spring Research Assistant",
-      "url": "https://job-boards.greenhouse.io/tpgcareers/jobs/8034245003",
-      "zone": "remote"
     },
     {
       "also_remote": false,
