@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T09:56:01Z",
+  "generated_at": "2026-11-10T17:54:32Z",
   "items": [
     {
       "also_remote": false,
@@ -841,24 +841,6 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Wex",
-      "id": "129a8767-b9fb-44a9-9a22-6efeae78cf1f",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-09",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2026"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://wexinc.wd5.myworkdayjobs.com/en-US/WEXInc/job/US---Remote/Software-Engineer-Intern_R22542",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Fortrea",
@@ -1323,6 +1305,22 @@
     },
     {
       "also_remote": false,
+      "category": "Hardware",
+      "city": "El Segundo",
+      "company": "The Aerospace Corporation",
+      "id": "2504b83a-b236-4dd0-a755-bd49281455a5",
+      "miles": 65,
+      "new": false,
+      "posted": "2026-10-26",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Photonic Integrated Circuit Engineer Intern",
+      "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Photonic-Integrated-Circuits-Engineer_R016928",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "ConnectPrep",
@@ -1495,22 +1493,6 @@
       ],
       "title": "Business Operations Engineer Intern",
       "url": "https://boards.greenhouse.io/andurilindustries/jobs/5271672007",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "El Segundo",
-      "company": "The Aerospace Corporation",
-      "id": "7f1577fe-f906-4768-872a-6a8b2a16dd0a",
-      "miles": 65,
-      "new": false,
-      "posted": "2026-10-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Embedded Software Engineer Intern - Multiple Teams",
-      "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Embedded-Software-Engineering-Undergrad-Intern_R016949",
       "zone": "region"
     },
     {
@@ -2475,24 +2457,6 @@
       "title": "Research Scientist Intern - Graphics - ML",
       "url": "https://intel.wd1.myworkdayjobs.com/en-us/external/job/Virtual-US/Research-Scientist-Intern---Graphics--ML_JR0287525",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Torrance",
-      "company": "Moog",
-      "id": "5f7a34ef-1409-4c5f-8952-1bbeaad4cedd",
-      "miles": 63,
-      "new": false,
-      "posted": "2026-09-29",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2026"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://moog.wd5.myworkdayjobs.com/moog_external_career_site/job/Torrance-CA/Intern--Software-Engineering_R-26-19948",
-      "zone": "region"
     },
     {
       "also_remote": false,
