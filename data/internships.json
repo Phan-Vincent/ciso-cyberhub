@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T20:47:38Z",
+  "generated_at": "2026-11-10T09:56:01Z",
   "items": [
     {
       "also_remote": false,
@@ -724,22 +724,6 @@
     {
       "also_remote": false,
       "category": "Software",
-      "city": "El Segundo",
-      "company": "The Aerospace Corporation",
-      "id": "5d700994-d5ab-41f3-9bb8-8b08d9f547fa",
-      "miles": 65,
-      "new": true,
-      "posted": "2026-11-02",
-      "security": true,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Software Engineer Intern - Software Process and Architecture Department - Information Systems and Cyber Division",
-      "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Software-Engineering-Undergrad-Intern_R017102",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
       "city": "San Diego",
       "company": "Constellation Energy",
       "id": "8d5a68f3-3c90-4a0f-9579-ef3d5483e360",
@@ -788,6 +772,108 @@
       "title": "Software Engineering Intern - Software Tools and Assurance",
       "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Software-Tools-and-Assurance-Engineering-Grad-Intern_R016753",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "San Diego",
+      "company": "Art of Problem Solving",
+      "id": "ee2563b2-9b6b-44b2-9c70-3a8e4b9284da",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-09",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://artofproblemsolving.com/careers/job/8199296003?gh_jid=8199296003",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "San Diego",
+      "company": "ASML",
+      "id": "fad75819-fb09-45d1-8d92-13b71a137ef9",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-09",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "AI Engineer Co-op Intern",
+      "url": "https://asml.wd3.myworkdayjobs.com/asmlext1/job/San-Diego-CA-USA/Internship--Co-Op--Data-Engineer_J-00355627",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Zoetis Services",
+      "id": "0eace308-9ccb-4920-a1f1-ac2de6804966",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-09",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "AI Capabilities Intern - AI Architecture, Enablement & Tools",
+      "url": "https://zoetis.wd5.myworkdayjobs.com/zoetis/job/US-Remote/AI-CAPABILITIES-INTERN---AI-ARCHITECTURE--ENABLEMENT---TOOLS_JR00022016",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Tonic",
+      "id": "2f889d44-57d3-4ede-906e-ecf56eef67eb",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-09",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Forward Deployed Engineer Co-op - Data De-Identification",
+      "url": "https://jobs.ashbyhq.com/tonicai/e632d472-fbd2-475a-9878-536c0eacb5e9/application?embed=true",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Wex",
+      "id": "129a8767-b9fb-44a9-9a22-6efeae78cf1f",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-09",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2026"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://wexinc.wd5.myworkdayjobs.com/en-US/WEXInc/job/US---Remote/Software-Engineer-Intern_R22542",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Fortrea",
+      "id": "de7fe0e3-6022-4f95-a291-1b8cc48f3f10",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-09",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "AIML Rapid Development Studio Intern",
+      "url": "https://fortrea.wd1.myworkdayjobs.com/Fortrea/job/Durham/AIML-Rapid-Development-Studio-Internship_266655",
+      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -1056,7 +1142,7 @@
       "company": "NASA Jet Propulsion Laboratory",
       "id": "e04d6353-4982-4bf4-ac14-0b166b6ecaaa",
       "miles": 47,
-      "new": true,
+      "new": false,
       "posted": "2026-11-02",
       "security": false,
       "sponsorship": "Other",
@@ -1090,7 +1176,7 @@
       "company": "The Aerospace Corporation",
       "id": "af890f74-8fde-4b67-8656-a12802746f53",
       "miles": 65,
-      "new": true,
+      "new": false,
       "posted": "2026-11-02",
       "security": false,
       "sponsorship": "Other",
@@ -1106,7 +1192,7 @@
       "company": "Cincinnati Children’s Hospital and Medical Center",
       "id": "fc3fa536-4c6e-430d-ae11-d6231289e10a",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-02",
       "security": false,
       "sponsorship": "Other",
@@ -1972,25 +2058,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "San Diego",
-      "company": "Realty Income",
-      "id": "0ad43f00-594b-4b01-876b-4b6f89a23b2e",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-10-12",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2026",
-        "Summer 2027"
-      ],
-      "title": "Technology Intern",
-      "url": "https://realtyincome.wd108.myworkdayjobs.com/realty_income_careers/job/San-Diego-California/Technology-Intern---Multiple-Opportunities_R-100339",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "Hardware",
       "city": "Vista",
       "company": "Danaher",
@@ -2054,22 +2121,6 @@
       "title": "Autonomy & Robotics Engineer Intern",
       "url": "https://avav.wd1.myworkdayjobs.com/en-US/avav/job/Simi-Valley-CA/Summer-2027-Autonomy---Robotics-Engineering-Intern_8556",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "GuidePoint Security",
-      "id": "9c708edf-68f9-43ac-a86d-b27868f9d200",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-08",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "AI & Data Science Intern - GPSU",
-      "url": "https://boards.greenhouse.io/guidepointsecurity/jobs/6218650004",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -3700,6 +3751,24 @@
       ],
       "title": "Robotics Data Operator Intern",
       "url": "https://job-boards.greenhouse.io/faradayfuture/jobs/7828531003",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Huntington Beach",
+      "company": "The Boeing Company",
+      "id": "3c052483-a306-453e-a3dc-ccfe99cf5624",
+      "miles": 53,
+      "new": false,
+      "posted": "2026-08-03",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Data Analytics Intern",
+      "url": "https://boeing.wd1.myworkdayjobs.com/INTERN/job/USA---Everett-WA/Boeing-Summer-2027-Internship-Program--Paid----Data-Analytics-Intern_JR2026520976",
       "zone": "region"
     },
     {
