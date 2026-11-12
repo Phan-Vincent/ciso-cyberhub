@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T09:30:42Z",
+  "generated_at": "2026-11-12T00:47:49Z",
   "items": [
     {
       "also_remote": false,
@@ -265,64 +265,6 @@
       ],
       "title": "Analog Layout Intern - BS",
       "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers/job/Santa-Clara-CA/Analog-Layout-Intern--BS---Summer-2027_2604735-1",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Irvine",
-      "company": "Marvell",
-      "id": "d72a211e-044f-49a3-86c1-7b6b5c9fa66e",
-      "miles": 45,
-      "new": false,
-      "posted": "2026-09-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027",
-        "Fall 2027",
-        "Winter 2028"
-      ],
-      "title": "Digital IC Design Intern - BS",
-      "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers/job/Santa-Clara-CA/Digital-IC-Design-Intern--BS---Summer-2027_2604827-1",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Irvine",
-      "company": "Marvell",
-      "id": "7cc624ba-7ee7-48f0-bddc-e6d5e064f6f9",
-      "miles": 45,
-      "new": false,
-      "posted": "2026-09-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Digital IC Design Intern",
-      "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers/job/Santa-Clara-CA/Digital-IC-Design-Intern--MS---Summer-2027_2604828-1",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Irvine",
-      "company": "Marvell",
-      "id": "5cea235d-5221-4084-b43e-f96fc1894a55",
-      "miles": 45,
-      "new": false,
-      "posted": "2026-09-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027",
-        "Fall 2027",
-        "Winter 2028"
-      ],
-      "title": "Digital IC Design Intern - MS - Multiple Teams",
-      "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers2/job/Santa-Clara-CA/Digital-IC-Design-Intern--MS---Summer-2027_2604828",
       "zone": "near"
     },
     {
@@ -873,6 +815,106 @@
     },
     {
       "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Bask Health",
+      "id": "9582c4ee-4d88-47d4-8b67-db20474e723a",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-11",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Software Engineer Intern",
+      "url": "https://apply.workable.com/bask-health-1/j/E81C7F7D3B/apply",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Bask Health",
+      "id": "a108ad1b-5f10-4f6c-ae91-95ca1c4d865e",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-11",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Backend Engineer Intern - Backend Engineering",
+      "url": "https://apply.workable.com/bask-health-1/j/98DB106D88/apply",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Bask Health",
+      "id": "60be7de4-e01f-4279-9e3b-cbba3d97c638",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-11",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Product Engineering Intern",
+      "url": "https://apply.workable.com/bask-health-1/j/1C108B16E2/apply",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Vanderlande Industries",
+      "id": "ad8ba622-f60f-4be2-a7df-744def610f7d",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-11",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Supply Chain Data & Analytics Intern",
+      "url": "https://vanderlande.wd3.myworkdayjobs.com/careers/job/Remote-United-States-of-America/Supply-Chain-Data---Analytics-Intern_JR38708",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Airbnb",
+      "id": "f176d1e9-17ce-4475-93c3-e20392a140d5",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-11",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Advanced Analytics Intern",
+      "url": "https://careers.airbnb.com/positions/8380007?gh_jid=8380007",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Riot Games",
+      "id": "7e6b380e-ef69-43cd-a4de-89c7773ae701",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-11",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Machine Learning Engineer Intern",
+      "url": "https://www.riotgames.com/en/work-with-us/job/8356771?gh_jid=8356771",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "San Diego",
       "company": "Art of Problem Solving",
@@ -1150,29 +1192,11 @@
     {
       "also_remote": false,
       "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "J.M. Smucker",
-      "id": "387ea422-5e64-458e-b052-8dee5cbf777e",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-05",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Data Science Intern",
-      "url": "https://smucker.wd5.myworkdayjobs.com/US_External_Careers/job/Working-Remote-USA/Data-Science-Intern--Summer-2027_116118",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
       "city": "San Diego",
       "company": "ASML",
       "id": "b90babbc-5fa6-4414-b46f-911f2e400a97",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-11-04",
       "security": false,
       "sponsorship": "Other",
@@ -1188,7 +1212,7 @@
       "company": "Amgen",
       "id": "5f438b5b-8f19-4780-b104-36fd3633f9e1",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-04",
       "security": false,
       "sponsorship": "Other",
@@ -1206,7 +1230,7 @@
       "company": "Vizient",
       "id": "b82c266b-358b-4cf2-b927-d7bda329770e",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-04",
       "security": false,
       "sponsorship": "Other",
@@ -1224,7 +1248,7 @@
       "company": "ByteDance",
       "id": "fb9acb15-3d71-47bf-a454-59041cddff33",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-11-03",
       "security": false,
       "sponsorship": "Other",
@@ -1681,24 +1705,6 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Motorola Solutions",
-      "id": "5f70632d-c11e-4006-a4eb-a0ab37ed4448",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Spring 2026"
-      ],
-      "title": "Software Engineering Co-op",
-      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/Careers/job/Chicago-IL/Software-Engineering---2026-Spring-Co-Op_R67662",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Product",
       "city": "Remote (US)",
       "company": "OneEthos",
@@ -1716,6 +1722,22 @@
       "title": "Product Management Intern",
       "url": "https://job-boards.greenhouse.io/oneethos/jobs/4459298009",
       "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Costa Mesa",
+      "company": "Anduril",
+      "id": "bad6f9e8-fe91-4660-93ea-5cd96b5e822d",
+      "miles": 51,
+      "new": false,
+      "posted": "2026-10-20",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Finance Data Analyst Intern",
+      "url": "https://boards.greenhouse.io/andurilindustries/jobs/5269977007",
+      "zone": "region"
     },
     {
       "also_remote": false,
@@ -3903,24 +3925,6 @@
       ],
       "title": "Robotics Data Operator Intern",
       "url": "https://job-boards.greenhouse.io/faradayfuture/jobs/7828531003",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Huntington Beach",
-      "company": "The Boeing Company",
-      "id": "3c052483-a306-453e-a3dc-ccfe99cf5624",
-      "miles": 53,
-      "new": false,
-      "posted": "2026-08-03",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Data Analytics Intern",
-      "url": "https://boeing.wd1.myworkdayjobs.com/INTERN/job/USA---Everett-WA/Boeing-Summer-2027-Internship-Program--Paid----Data-Analytics-Intern_JR2026520976",
       "zone": "region"
     },
     {
