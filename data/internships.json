@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T00:47:49Z",
+  "generated_at": "2026-11-12T09:53:53Z",
   "items": [
     {
       "also_remote": false,
@@ -717,6 +717,38 @@
     },
     {
       "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Bask Health",
+      "id": "ef469032-ac28-42a0-b8a3-09bac01d9a2b",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Creative Engineering Intern",
+      "url": "https://apply.workable.com/bask-health-1/j/24DD93E3BA/apply",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Bask Health",
+      "id": "6b8e3394-dd09-4734-be54-025c5d544c77",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Frontend Engineer Intern - Frontend Engineering",
+      "url": "https://apply.workable.com/bask-health-1/j/9C2964C7CD/apply",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "Product",
       "city": "Remote (US)",
       "company": "Bask Health",
@@ -948,24 +980,6 @@
       "title": "Applied AI Intern",
       "url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4650662",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "San Diego",
-      "company": "Art of Problem Solving",
-      "id": "ee2563b2-9b6b-44b2-9c70-3a8e4b9284da",
-      "miles": 102,
-      "new": true,
-      "posted": "2026-11-09",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://artofproblemsolving.com/careers/job/8199296003?gh_jid=8199296003",
-      "zone": "region"
     },
     {
       "also_remote": false,
@@ -1666,24 +1680,6 @@
       "title": "Computer Science Intern",
       "url": "https://careers-sdsurf.icims.com/jobs/21086/job?mobile=true&needsRedirect=false",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "ClickHouse",
-      "id": "1396b282-ae49-4b5f-a315-27c109ef26fd",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2026"
-      ],
-      "title": "Research Intern",
-      "url": "https://jobs.ashbyhq.com/clickhouse/558c0c16-5fde-407a-966b-7a2255d3531b/application?embed=true",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -4212,6 +4208,22 @@
       ],
       "title": "Speech Intern 4",
       "url": "https://centific.wd1.myworkdayjobs.com/Centific_Global/job/Remote-Work-USA/Speech-Intern-4_JR107037",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Anthropic",
+      "id": "0d633297-0371-40a5-bcfe-d66992c2ba79",
+      "miles": null,
+      "new": false,
+      "posted": "2026-04-10",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Anthropic Fellows Program - ML Systems & Performance",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5183051008",
       "zone": "remote"
     },
     {
