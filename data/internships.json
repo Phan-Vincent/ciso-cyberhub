@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T18:22:22Z",
+  "generated_at": "2026-11-13T09:36:45Z",
   "items": [
     {
       "also_remote": false,
@@ -734,6 +734,92 @@
     {
       "also_remote": false,
       "category": "Software",
+      "city": "Torrance",
+      "company": "Vital Lyfe",
+      "id": "f856d645-fee3-4ce9-a3ca-7610daf558ca",
+      "miles": 63,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://jobs.ashbyhq.com/vital-lyfe/5b5e7e6d-d59e-410b-9a7f-619717c3c942/application?embed=true",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "San Diego",
+      "company": "Zoox",
+      "id": "37bf0c0b-a114-4602-8750-fd6dbab9ca2d",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Firmware Engineer Intern - FW Core System Services",
+      "url": "https://jobs.lever.co/zoox/54be0f19-9a45-466d-89bc-bc72dd3f9d68/apply",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Product",
+      "city": "San Diego",
+      "company": "ServiceNow",
+      "id": "6c1db6a9-db3d-4a8f-8f50-a15d2d049104",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2028"
+      ],
+      "title": "Senior Outbound Product Manager Intern",
+      "url": "https://jobs.smartrecruiters.com/ServiceNow/744000161362293",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Product",
+      "city": "San Diego",
+      "company": "ServiceNow",
+      "id": "0426a336-7f89-4536-b830-d0fc489947e7",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2028"
+      ],
+      "title": "Senior Inbound Product Manager Intern",
+      "url": "https://jobs.smartrecruiters.com/ServiceNow/744000161364609",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "San Diego",
+      "company": "E2 Consulting Engineers",
+      "id": "8f0be6fa-e4b9-467b-bcd6-654bb5eb2f65",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Data Analyst Intern",
+      "url": "https://careers-e2.icims.com/jobs/6496/job?mobile=true&needsRedirect=false",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
       "city": "Remote (US)",
       "company": "Bask Health",
       "id": "ef469032-ac28-42a0-b8a3-09bac01d9a2b",
@@ -761,6 +847,192 @@
       "terms": [],
       "title": "Frontend Engineer Intern - Frontend Engineering",
       "url": "https://apply.workable.com/bask-health-1/j/9C2964C7CD/apply",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "StackAV",
+      "id": "b93c8f86-a564-4e72-9fa9-39d5a5329901",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Research Intern - Autonomy",
+      "url": "https://job-boards.greenhouse.io/stackav/jobs/5287594007",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "National Laboratory of the Rockies",
+      "id": "1930aa1f-6b82-411d-88d7-1c42cdfa1597",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Year-Round Graduate Internship - AI/Machine Learning Time Series Modeling",
+      "url": "https://nrel.wd5.myworkdayjobs.com/NLR/job/Remote-Site/Year-Round-Graduate-Internship---AI-Machine-Learning-Time-Series-Modeling_R14589",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Intermountain Healthcare",
+      "id": "3ce645b0-f6de-4226-a5b3-65a6d95354ae",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Machine Learning Operations Intern",
+      "url": "https://imh.wd108.myworkdayjobs.com/IntermountainCareers/job/Key-Bank-Tower/Machine-Learning-Operations--MLOps--Intern_R188318",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Intermountain Healthcare",
+      "id": "eb961a40-c8ad-450e-9ef6-4a0b05ba5920",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "AI/ML Engineer Intern",
+      "url": "https://imh.wd108.myworkdayjobs.com/IntermountainCareers/job/Key-Bank-Tower/AI-ML-Engineer-Intern_R188835",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Environmental Defense Fund",
+      "id": "4b853c05-5bdf-470c-a923-8b825bb0ac8a",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Consumer Energy Analytics Intern",
+      "url": "https://osv-edf.wd5.myworkdayjobs.com/Confidential/job/Remote---US-Home/Florida-Consumer-Energy-Analytics-Intern_REQ-002752",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Bask Health",
+      "id": "9e4b5f94-6379-451c-bb60-f4b9e11ad685",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Machine Learning Engineer Intern",
+      "url": "https://apply.workable.com/bask-health-1/j/71AEBBCADE/apply",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Bask Health",
+      "id": "f998d09f-9c9c-49be-93b6-49b526534bc4",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "AI Engineering Intern",
+      "url": "https://apply.workable.com/bask-health-1/j/F0E122E877/apply",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "CareSource",
+      "id": "858c0ee0-0430-4380-bd5f-089a625da132",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Summer Internship Program – Provider Analytics AI Intern",
+      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program----Provider-Analytics-AI-Intern_R14481",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "CareSource",
+      "id": "591ce27b-c9c3-4753-9411-c8c9b6186cf7",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program---Software-Engineer_R14136",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "CareSource",
+      "id": "70dcf5c5-f95e-4cbf-aecb-0f50a5e9302a",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Clinical Operations Business Analyst Intern",
+      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program---Clinical-Operations-Business-Analyst_R14353",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "White Cap Supply Holdings",
+      "id": "5c0936f7-a4e5-4593-886e-818b6de0d5a4",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Product Data Management Intern",
+      "url": "https://whitecap.wd1.myworkdayjobs.com/careers/job/Corporate-Intern---Product-Data-Management_WCJR-036650",
       "zone": "remote"
     },
     {
@@ -963,24 +1235,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "San Diego",
-      "company": "Art of Problem Solving",
-      "id": "99f21d5c-7198-4ea0-af0f-623286ed3a1f",
-      "miles": 102,
-      "new": true,
-      "posted": "2026-11-10",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Data Science Intern",
-      "url": "https://artofproblemsolving.com/careers/job/8201037003?gh_jid=8201037003",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
       "company": "DwyerOmega",
@@ -1046,24 +1300,6 @@
       "title": "AIML Rapid Development Studio Intern",
       "url": "https://fortrea.wd1.myworkdayjobs.com/Fortrea/job/Durham/AIML-Rapid-Development-Studio-Internship_266655",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Torrance",
-      "company": "Moog",
-      "id": "141dbf1a-3431-4425-9d88-1a10fb649f64",
-      "miles": 63,
-      "new": true,
-      "posted": "2026-11-06",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Electrical Engineering Intern",
-      "url": "https://moog.wd5.myworkdayjobs.com/moog_external_career_site/job/Torrance-CA/Intern--Electrical-Engineering_R-26-19824",
-      "zone": "region"
     },
     {
       "also_remote": false,
@@ -1138,7 +1374,7 @@
       "company": "Peraton",
       "id": "e02b0a85-0fde-4075-baba-1e4e48f6f949",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-11-05",
       "security": false,
       "sponsorship": "Other",
@@ -1192,7 +1428,7 @@
       "company": "CareSource",
       "id": "16b5b145-fefc-4085-997b-de2f26e8d5f2",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-05",
       "security": false,
       "sponsorship": "Other",
@@ -1341,6 +1577,24 @@
     },
     {
       "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Molina Healthcare",
+      "id": "18803ec8-f589-4545-bb91-2d5378346d55",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-30",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Customer Experience & Analytics Intern - Undergraduate",
+      "url": "https://hckd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2040169",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "Product",
       "city": "Remote (US)",
       "company": "Teamworks",
@@ -1389,6 +1643,22 @@
       ],
       "title": "Electrical Engineer Intern",
       "url": "https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-CA-EL-SEGUNDO-E01--2000-E-El-Segundo-Blvd--BLDG-E01/Electrical-Engineering-Intern--Summer-2027-_01883292",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "San Diego",
+      "company": "ASML",
+      "id": "3338e211-5030-4319-9e46-aba103ce8cbd",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-10-28",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Data Engineer Co-op Intern",
+      "url": "https://asml.wd3.myworkdayjobs.com/asmlext1/job/San-Diego-CA-USA/Internship-Co-Op--Data-Engineer_J-00355626",
       "zone": "region"
     },
     {
@@ -3153,6 +3423,24 @@
     {
       "also_remote": false,
       "category": "Hardware",
+      "city": "Redondo Beach",
+      "company": "Impulse Space",
+      "id": "704919c0-90ff-43e4-8f99-9b3c97e85cb0",
+      "miles": 65,
+      "new": false,
+      "posted": "2026-09-10",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "RF Test Engineer Intern - Summer 2027",
+      "url": "https://impulsespace.pinpointhq.com/en/postings/2b03cd5d-4a58-48a0-81f4-ea8c8c7bcd2a?ats=pinpointhq",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
       "city": "Carlsbad",
       "company": "L3Harris Technologies",
       "id": "afb3e427-b699-426c-8f7e-dcad458a9c1b",
@@ -3744,6 +4032,24 @@
       "title": "AI Research Intern - Foundation Models",
       "url": "https://jobs.ashbyhq.com/graymatter-robotics/dea0f08d-ebf5-4e55-b9cb-e6302014f429/application?embed=true",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Ancestry",
+      "id": "ee03f6e5-4ee4-4045-9664-e38ffc7617bd",
+      "miles": null,
+      "new": false,
+      "posted": "2026-08-26",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Fall 2026"
+      ],
+      "title": "Software Engineer Co-op - Observability",
+      "url": "https://ancestry.wd501.myworkdayjobs.com/Careers/job/Remote/Software-Engineer---Observability--Co-op_R003434",
+      "zone": "remote"
     },
     {
       "also_remote": false,
