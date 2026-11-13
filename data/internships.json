@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T17:48:30Z",
+  "generated_at": "2026-11-13T23:38:07Z",
   "items": [
     {
       "also_remote": false,
@@ -733,6 +733,42 @@
     },
     {
       "also_remote": false,
+      "category": "Hardware",
+      "city": "San Diego",
+      "company": "Renesas Electronics",
+      "id": "4a878341-b59a-4f01-ae88-94e135bfd7af",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-13",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Power Management Integrated Circuit Analog Intern",
+      "url": "https://jobs.smartrecruiters.com/RenesasElectronics/744000161574999",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Amgen",
+      "id": "964f0600-3b5a-41d8-a620-3e3b83c7eba2",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-13",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "AI-Enabled Knowledge Graphs for Patient Journey Analytics Intern",
+      "url": "https://amgen.wd1.myworkdayjobs.com/careers/job/United-States---Remote/Grad-Intern---Knowledge-Graph-Applications--Summer-2027-_R-260625",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "Torrance",
       "company": "Vital Lyfe",
@@ -981,24 +1017,6 @@
       ],
       "title": "Summer Internship Program – Provider Analytics AI Intern",
       "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program----Provider-Analytics-AI-Intern_R14481",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "CareSource",
-      "id": "591ce27b-c9c3-4753-9411-c8c9b6186cf7",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-12",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program---Software-Engineer_R14136",
       "zone": "remote"
     },
     {
@@ -1387,30 +1405,12 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "San Diego",
-      "company": "Shield AI",
-      "id": "65e41535-86d1-4d10-9d27-bac6fad3e8d9",
-      "miles": 102,
-      "new": true,
-      "posted": "2026-11-05",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Co-op Intern",
-      "url": "https://jobs.lever.co/shieldai/db8fc063-8856-4404-991c-f287712de949/apply",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Ballotpedia",
       "id": "dd16f64f-a794-4611-9dcc-8913da108e5e",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-05",
       "security": false,
       "sponsorship": "Other",
@@ -1689,6 +1689,24 @@
       "terms": [],
       "title": "Photonic Integrated Circuit Engineer Intern",
       "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Photonic-Integrated-Circuits-Engineer_R016928",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "San Diego",
+      "company": "Shield AI",
+      "id": "2507d753-2e29-4433-be1b-355a19295f16",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-10-26",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://jobs.ashbyhq.com/f7d8749a-72d6-407c-bf98-292ea630c73a/db04c516-d21a-449c-8bfd-1cf830eafb5a/application?embed=true",
       "zone": "region"
     },
     {
@@ -3452,24 +3470,6 @@
       "terms": [],
       "title": "Integration/Test Engineer Intern",
       "url": "https://jobs.l3harris.com/job/Carlsbad-IntegrationTest-Engineering-Intern-CA-92009/1428455100/?ats=successfactors",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "San Diego",
-      "company": "Shield AI",
-      "id": "b7311fa1-4180-4d5a-8ce3-29a7c2703ea1",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-09-10",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://jobs.lever.co/shieldai/8c850c75-081d-4d09-bebf-096379a93010/apply",
       "zone": "region"
     },
     {
