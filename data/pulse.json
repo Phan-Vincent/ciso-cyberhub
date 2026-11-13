@@ -186,12 +186,12 @@
     {
       "cves_7d": 4890,
       "date": "2026-11-13",
-      "hn_llm": 32,
+      "hn_llm": 33,
       "hn_month": "November 2026",
-      "hn_security": 41,
-      "hn_total": 354,
+      "hn_security": 42,
+      "hn_total": 357,
       "kev_30d": 38
     }
   ],
-  "updated": "2026-11-13T09:36:37Z"
+  "updated": "2026-11-13T17:48:12Z"
 }
