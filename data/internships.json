@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T09:53:53Z",
+  "generated_at": "2026-11-12T18:22:22Z",
   "items": [
     {
       "also_remote": false,
@@ -17,6 +17,22 @@
       ],
       "title": "IT Data Analyst Intern",
       "url": "https://danaher.wd1.myworkdayjobs.com/DanaherJobs/job/Brea-California-United-States/IT-Data-Analyst-Intern_R1316675",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Orange",
+      "company": "Orange County Transportation Authority",
+      "id": "386eea05-38ba-4027-a00c-db6142e6b382",
+      "miles": 41,
+      "new": false,
+      "posted": "2026-11-03",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Bus Operations & Scheduling Intern",
+      "url": "https://wd1.myworkdaysite.com/recruiting/octa/OCTA_Careers/job/Orange-CA/Intern--Bus-Operations---Scheduling_JR309-1",
       "zone": "near"
     },
     {
@@ -1001,22 +1017,6 @@
       "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
-      "company": "Zoetis Services",
-      "id": "0eace308-9ccb-4920-a1f1-ac2de6804966",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-09",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "AI Capabilities Intern - AI Architecture, Enablement & Tools",
-      "url": "https://zoetis.wd5.myworkdayjobs.com/zoetis/job/US-Remote/AI-CAPABILITIES-INTERN---AI-ARCHITECTURE--ENABLEMENT---TOOLS_JR00022016",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
       "company": "Tonic",
       "id": "2f889d44-57d3-4ede-906e-ecf56eef67eb",
       "miles": null,
@@ -1323,22 +1323,6 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Cincinnati Children’s Hospital and Medical Center",
-      "id": "fc3fa536-4c6e-430d-ae11-d6231289e10a",
-      "miles": null,
-      "new": false,
-      "posted": "2026-11-02",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Software Engineering Developer Intern",
-      "url": "https://cincinnatichildrens.wd5.myworkdayjobs.com/careersatcincinnatichildrens/job/Remote/Student-II---Software-Engineering-Developer--B-_JR226743",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Torrance",
       "company": "Divergent Technologies",
@@ -1369,24 +1353,6 @@
       "terms": [],
       "title": "Product Management MBA Intern",
       "url": "https://jobs.ashbyhq.com/teamworks/13cc2066-5dfe-45ec-8064-3d7a20d9fc06/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Molina Healthcare",
-      "id": "b0d0060c-2d0c-4a83-874e-ea2eb2436956",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-30",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Electronic Data Interchange Intern",
-      "url": "https://hckd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2040156",
       "zone": "remote"
     },
     {
@@ -1557,24 +1523,6 @@
       ],
       "title": "Product Management Intern - End User Experience",
       "url": "https://jobs.ashbyhq.com/1password/bef2e88e-9590-467d-8ba6-821b30529003/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Product",
-      "city": "Remote (US)",
-      "company": "DIRECTV",
-      "id": "9643ee32-58ca-42a8-bc62-290781c58aae",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-23",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2026"
-      ],
-      "title": "Customer Operations Product Management Intern",
-      "url": "https://directv.wd1.myworkdayjobs.com/careers/job/El-Segundo-CA/Customer-Operations-Product-Management--MBA-Opportunity-_R260333",
       "zone": "remote"
     },
     {
