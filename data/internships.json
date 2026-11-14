@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T09:01:53Z",
+  "generated_at": "2026-11-14T16:38:06Z",
   "items": [
     {
       "also_remote": false,
@@ -445,6 +445,60 @@
       ],
       "title": "Analog Design Intern",
       "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers/job/Santa-Clara-CA/PhD-Intern---Analog--Mixed-Signal---Circuit-Design_2604142",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Chino",
+      "company": "Edison International",
+      "id": "23a5a6a6-47fc-41cf-8936-946b702be2cd",
+      "miles": 24,
+      "new": false,
+      "posted": "2026-09-01",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software/Data Engineering Intern",
+      "url": "https://apply.edisoncareers.com/job/Chino-2027-Summer-Internship-SoftwareData-Engineering-(Chino)-CA-91710/1424663800/?ats=successfactors",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Pomona",
+      "company": "Edison International",
+      "id": "7a58365b-0d72-4b0c-8094-fa29ec18b560",
+      "miles": 26,
+      "new": false,
+      "posted": "2026-09-01",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Data Analytics Intern - Data Science - Applied Math",
+      "url": "https://apply.edisoncareers.com/job/Rosemead-2027-Summer-Internship-Data-AnalyticsScienceApplied-Math-(PomonaRosemead)-CA-91770/1425207700/?ats=successfactors",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Pomona",
+      "company": "Edison International",
+      "id": "cf498cbc-375c-45ec-8f68-334ce9a2d7d0",
+      "miles": 26,
+      "new": false,
+      "posted": "2026-09-01",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Data Analytics Intern - Data Science/Applied Math",
+      "url": "https://apply.edisoncareers.com/job/Rosemead-2027-Summer-Internship-Data-AnalyticsScienceApplied-Math-(PomonaRosemead)-1-CA-91770/1425208900/?ats=successfactors",
       "zone": "near"
     },
     {
@@ -1575,22 +1629,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "San Diego",
-      "company": "ASML",
-      "id": "3338e211-5030-4319-9e46-aba103ce8cbd",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-10-28",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Data Engineer Co-op Intern",
-      "url": "https://asml.wd3.myworkdayjobs.com/asmlext1/job/San-Diego-CA-USA/Internship-Co-Op--Data-Engineer_J-00355626",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
       "company": "Subtotal",
@@ -2131,6 +2169,24 @@
       "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
+      "company": "CenturyLink",
+      "id": "f51bdd40-5f4d-429e-a22b-1e826726e2ad",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-16",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Data Internship - Analytics & Decision Science",
+      "url": "https://internaljobs.centurylink.com/job/Remote-Data,-Analytics-&-Decision-Science-Summer-2027-Internship-Pathway/1440961600/?ats=successfactors",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
       "company": "Scale AI",
       "id": "41101dfb-9fa5-4eac-b1cf-f6c93e3c3f48",
       "miles": null,
@@ -2141,6 +2197,42 @@
       "terms": [],
       "title": "Safety Research Scholar Intern",
       "url": "https://job-boards.greenhouse.io/scaleai/jobs/4744402005",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Product",
+      "city": "Remote (US)",
+      "company": "CenturyLink",
+      "id": "95fb9f92-a2f7-41a5-b347-ae9291d375fc",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-16",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "AI Product & Business Innovation Intern",
+      "url": "https://internaljobs.centurylink.com/job/Remote-AI-Product-&-Business-Innovation-Summer-2027-Internship-Pathway/1440948000/?ats=successfactors",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "CenturyLink",
+      "id": "2e87beaa-56db-45b5-b8c7-ff1ad1780322",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-16",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "AI & Automation Builders Internship",
+      "url": "https://internaljobs.centurylink.com/job/Remote-AI-&-Automation-Builders-Summer-2027-Internship-Pathway/1440953200/?ats=successfactors",
       "zone": "remote"
     },
     {
@@ -3292,6 +3384,58 @@
       ],
       "title": "Flight Software Engineer Intern - Summer 2027",
       "url": "https://impulsespace.pinpointhq.com/en/postings/d4fdab1d-254b-44a4-96bf-875ebd5b8cd7?ats=pinpointhq",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Carlsbad",
+      "company": "L3Harris Technologies",
+      "id": "afb3e427-b699-426c-8f7e-dcad458a9c1b",
+      "miles": 71,
+      "new": false,
+      "posted": "2026-09-10",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Winter 2026"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://jobs.l3harris.com/job/Carlsbad-Software-Engineering-Intern-CA-92009/1428454700/?ats=successfactors",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Carlsbad",
+      "company": "L3Harris Technologies",
+      "id": "16a885a6-ea5c-44dc-9604-b7f421749616",
+      "miles": 71,
+      "new": false,
+      "posted": "2026-09-10",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Integration/Test Engineer Intern",
+      "url": "https://jobs.l3harris.com/job/Carlsbad-IntegrationTest-Engineering-Intern-CA-92009/1428455100/?ats=successfactors",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "San Diego",
+      "company": "L3Harris Technologies",
+      "id": "bd0197ea-ca8d-4e77-beba-34e6e94538f1",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-09-10",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Winter 2026"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://jobs.l3harris.com/job/San-Diego-Software-Engineering-Intern-CA-92123/1428452400/?ats=successfactors",
       "zone": "region"
     },
     {
