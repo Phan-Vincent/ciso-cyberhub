@@ -1,162 +1,162 @@
 {
-  "generated_at": "2026-11-13T23:38:17Z",
+  "generated_at": "2026-11-14T09:02:01Z",
   "models": [
     {
       "created": "2026-11-06",
       "downloads": 5545,
       "id": "NousResearch/Arete-27B",
-      "likes": 543,
+      "likes": 578,
       "org": "NousResearch",
       "task": "text-generation",
-      "trending": 453,
+      "trending": 415,
       "url": "https://huggingface.co/NousResearch/Arete-27B"
     },
     {
       "created": "2026-11-02",
       "downloads": 40953,
       "id": "moonshotai/Kimi-K3.1-Pro",
-      "likes": 2027,
+      "likes": 2056,
       "org": "moonshotai",
       "task": "image-text-to-text",
-      "trending": 333,
+      "trending": 339,
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
     },
     {
       "created": "2026-11-07",
       "downloads": 4332,
       "id": "tencent/Qwen3.8-27B-DSpine-b16",
-      "likes": 237,
+      "likes": 262,
       "org": "tencent",
       "task": "text-generation",
-      "trending": 203,
+      "trending": 228,
       "url": "https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16"
-    },
-    {
-      "created": "2026-11-02",
-      "downloads": 18066,
-      "id": "Scantist/GLM-5.3-SLIM-GGUF",
-      "likes": 1370,
-      "org": "Scantist",
-      "task": "text-generation",
-      "trending": 167,
-      "url": "https://huggingface.co/Scantist/GLM-5.3-SLIM-GGUF"
     },
     {
       "created": "2026-10-17",
       "downloads": 398161,
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "likes": 5638,
+      "likes": 5677,
       "org": "deepseek-ai",
       "task": "image-text-to-text",
-      "trending": 167,
+      "trending": 198,
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
-    },
-    {
-      "created": "2026-10-23",
-      "downloads": 96615,
-      "id": "LiquidAI/LFM3-1.7B",
-      "likes": 1747,
-      "org": "LiquidAI",
-      "task": "text-generation",
-      "trending": 163,
-      "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
-    },
-    {
-      "created": "2026-11-04",
-      "downloads": 971,
-      "id": "meituan-longcat/LongCat-2.5",
-      "likes": 224,
-      "org": "meituan-longcat",
-      "task": "image-text-to-text",
-      "trending": 159,
-      "url": "https://huggingface.co/meituan-longcat/LongCat-2.5"
-    },
-    {
-      "created": "2026-10-14",
-      "downloads": 52262,
-      "id": "webAI-Official/TwIL-8B",
-      "likes": 368,
-      "org": "webAI-Official",
-      "task": "text-generation",
-      "trending": 146,
-      "url": "https://huggingface.co/webAI-Official/TwIL-8B"
     },
     {
       "created": "2026-11-11",
       "downloads": 14134,
       "id": "Edge0/Edge0-145B-NVFP4",
-      "likes": 171,
+      "likes": 222,
       "org": "Edge0",
       "task": "text-generation",
-      "trending": 146,
+      "trending": 195,
       "url": "https://huggingface.co/Edge0/Edge0-145B-NVFP4"
+    },
+    {
+      "created": "2026-11-04",
+      "downloads": 971,
+      "id": "meituan-longcat/LongCat-2.5",
+      "likes": 257,
+      "org": "meituan-longcat",
+      "task": "image-text-to-text",
+      "trending": 192,
+      "url": "https://huggingface.co/meituan-longcat/LongCat-2.5"
+    },
+    {
+      "created": "2026-10-23",
+      "downloads": 96615,
+      "id": "LiquidAI/LFM3-1.7B",
+      "likes": 1781,
+      "org": "LiquidAI",
+      "task": "text-generation",
+      "trending": 188,
+      "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
+    },
+    {
+      "created": "2026-11-02",
+      "downloads": 18066,
+      "id": "Scantist/GLM-5.3-SLIM-GGUF",
+      "likes": 1410,
+      "org": "Scantist",
+      "task": "text-generation",
+      "trending": 186,
+      "url": "https://huggingface.co/Scantist/GLM-5.3-SLIM-GGUF"
     },
     {
       "created": "2026-09-23",
       "downloads": 3711,
       "id": "taobao-mnn/MNN-Pocket-0.3B",
-      "likes": 239,
+      "likes": 277,
       "org": "taobao-mnn",
       "task": "text-generation",
-      "trending": 139,
+      "trending": 172,
       "url": "https://huggingface.co/taobao-mnn/MNN-Pocket-0.3B"
+    },
+    {
+      "created": "2026-10-14",
+      "downloads": 52262,
+      "id": "webAI-Official/TwIL-8B",
+      "likes": 399,
+      "org": "webAI-Official",
+      "task": "text-generation",
+      "trending": 159,
+      "url": "https://huggingface.co/webAI-Official/TwIL-8B"
     }
   ],
   "repos": [
     {
       "created": "2026-09-30",
       "description": "Point Claude at any game. Skills, tools and the fal MCP that let Claude Code mod almost any PC game you own: recon, reverse engineering, fal-generated art/3D/audio, in-game testing",
-      "gain": 2,
+      "gain": 7,
       "language": "Python",
       "license": "MIT",
       "name": "rehan-remade/universal-modder",
-      "stars": 9667,
+      "stars": 9674,
       "url": "https://github.com/rehan-remade/universal-modder"
     },
     {
       "created": "2026-10-03",
       "description": "Eleven free Claude skills that clone any app: reverse-engineer it, rebuild it, test it for bugs, then fix what its users hate. Free, MIT.",
-      "gain": 36,
+      "gain": 37,
       "language": "Python",
       "license": "MIT",
       "name": "Jakeschincariol/replica-skill",
-      "stars": 9245,
+      "stars": 9282,
       "url": "https://github.com/Jakeschincariol/replica-skill"
     },
     {
       "created": "2026-10-29",
       "description": "Reverse-engineer any video, shot by shot: filmed, AI-generated or coded, and how to remake it. Breakdowns in the open VIDEO.md format. 逆向一切视频，逐个镜头看是拍的、AI 生成的还是代码做的，再告诉你怎么复刻；拆解结果按 V",
-      "gain": 89,
+      "gain": 191,
       "language": "Python",
       "license": "Apache-2.0",
       "name": "JuneYaooo/rea-video",
-      "stars": 7974,
+      "stars": 8165,
       "url": "https://github.com/JuneYaooo/rea-video"
     },
     {
       "created": "2026-10-25",
       "description": "🛡️ BLA (bla-agents / Blind LLM Agents) — Open-source Blue Defense MCP server & CLI protecting JS/TS, Electron ASAR, WASM, Python, Native Binaries, SQLite, GGUF/Safetensors & Androi",
-      "gain": 19,
+      "gain": 45,
       "language": "TypeScript",
       "license": "MIT",
       "name": "qybaihe/bla",
-      "stars": 5560,
+      "stars": 5605,
       "url": "https://github.com/qybaihe/bla"
     },
     {
       "created": "2026-10-09",
       "description": "Rated, auto-refreshed list of decompiled, recompiled & reverse-engineered games: decomps, static recomps, source ports, engine remakes, browser ports.",
-      "gain": 5,
+      "gain": 8,
       "language": "Python",
       "license": "CC0-1.0",
       "name": "SubmitGame/awesome-decomp-games",
-      "stars": 3052,
+      "stars": 3060,
       "url": "https://github.com/SubmitGame/awesome-decomp-games"
     },
     {
       "created": "2026-08-22",
       "description": "x64dbg-MCP Server is a native MCP (Model Context Protocol) plugin for x64dbg that exposes the debugger's full functionality over HTTP. Connect any MCP-compatible AI assistant and c",
-      "gain": 1,
+      "gain": 0,
       "language": "Zig",
       "license": "MIT",
       "name": "duty1g/x64dbg-mcp-server",
@@ -166,41 +166,41 @@
     {
       "created": "2026-10-16",
       "description": "Curated tools, case studies and papers for reverse engineering websites, games, apps, binaries, firmware and protocols. Source-reviewed, English and Chinese.",
-      "gain": 13,
+      "gain": 42,
       "language": "Python",
       "license": "MIT",
       "name": "reacher-z/Awesome-REA",
-      "stars": 2736,
+      "stars": 2778,
       "url": "https://github.com/reacher-z/Awesome-REA"
     },
     {
       "created": "2026-10-09",
       "description": "Curated reverse-engineering tools and learning resources for binaries, apps, firmware, formats, and protocols.",
-      "gain": 3,
+      "gain": 6,
       "language": "Python",
       "license": "CC0-1.0",
       "name": "morluto/awesome-reverse-engineering",
-      "stars": 2106,
+      "stars": 2112,
       "url": "https://github.com/morluto/awesome-reverse-engineering"
     },
     {
       "created": "2026-10-30",
       "description": "The first fruit of the Nüwa tree — an autonomous AI pentest legion (634-team champion, 8h unattended, 1B tokens beat 4.5B). Not just a tool: evolvable by design. Grow your own frui",
-      "gain": 4,
+      "gain": 30,
       "language": "Python",
       "license": "MIT",
       "name": "N1nEmAn/sapper-v2",
-      "stars": 2045,
+      "stars": 2075,
       "url": "https://github.com/N1nEmAn/sapper-v2"
     },
     {
       "created": "2026-10-14",
       "description": "基于 REA 深度拆解并高保真还原 Claude 官方桌面端 UI。还原 30 个独立 React 组件与 8 项硬核交互物理算法，附带 3000+ 行逆向分析手册。",
-      "gain": 0,
+      "gain": 3,
       "language": "TypeScript",
       "license": "MIT",
       "name": "Caho1/open-claude-ui",
-      "stars": 1753,
+      "stars": 1756,
       "url": "https://github.com/Caho1/open-claude-ui"
     }
   ],
@@ -210,11 +210,11 @@
   },
   "spotlight": [
     {
-      "forks": 112287,
+      "forks": 112431,
       "language": "TypeScript",
       "license": "MIT",
       "name": "morluto/rea",
-      "stars": 457589,
+      "stars": 458368,
       "stars_note": "",
       "url": "https://github.com/morluto/rea",
       "why": "Viral this month: an MCP server that gives AI coding agents 170+ reverse-engineering tools for binaries, Electron apps, websites and Android APKs."
