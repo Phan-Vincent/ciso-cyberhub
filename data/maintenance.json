@@ -28,7 +28,7 @@
     "requested_at": "2026-11-01T14:33:21Z",
     "status": "pending-human-verification"
   },
-  "link_offset": 80,
+  "link_offset": 100,
   "links": {
     "https://github.com/CISOfy/lynis": {
       "checked_at": "2026-10-24T10:14:30Z",
@@ -367,6 +367,106 @@
     },
     "https://github.com/prowler-cloud/prowler#readme": {
       "checked_at": "2026-11-02T16:29:53Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/radareorg/radare2": {
+      "checked_at": "2026-11-09T16:48:02Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/radareorg/radare2#readme": {
+      "checked_at": "2026-11-09T16:48:02Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/rizinorg/cutter": {
+      "checked_at": "2026-11-09T16:48:03Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/rizinorg/cutter#readme": {
+      "checked_at": "2026-11-09T16:48:04Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/semgrep/semgrep": {
+      "checked_at": "2026-11-09T16:48:04Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/semgrep/semgrep#readme": {
+      "checked_at": "2026-11-09T16:48:05Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/sleuthkit/autopsy": {
+      "checked_at": "2026-11-09T16:48:05Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/sleuthkit/autopsy#readme": {
+      "checked_at": "2026-11-09T16:48:06Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/sleuthkit/sleuthkit": {
+      "checked_at": "2026-11-09T16:48:07Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/sleuthkit/sleuthkit#readme": {
+      "checked_at": "2026-11-09T16:48:07Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/snort3/snort3": {
+      "checked_at": "2026-11-09T16:48:08Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/snort3/snort3#readme": {
+      "checked_at": "2026-11-09T16:48:08Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/trufflesecurity/trufflehog": {
+      "checked_at": "2026-11-09T16:48:09Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/trufflesecurity/trufflehog#readme": {
+      "checked_at": "2026-11-09T16:48:10Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/volatilityfoundation/volatility3": {
+      "checked_at": "2026-11-09T16:48:10Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/volatilityfoundation/volatility3#readme": {
+      "checked_at": "2026-11-09T16:48:11Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/wazuh/wazuh": {
+      "checked_at": "2026-11-09T16:48:12Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/wazuh/wazuh#readme": {
+      "checked_at": "2026-11-09T16:48:12Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/wireshark/wireshark": {
+      "checked_at": "2026-11-09T16:48:13Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/wireshark/wireshark#readme": {
+      "checked_at": "2026-11-09T16:48:13Z",
       "error": null,
       "status": "reachable"
     }
