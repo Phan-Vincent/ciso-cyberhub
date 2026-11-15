@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T22:30:01Z",
+  "generated_at": "2026-11-15T09:31:41Z",
   "items": [
     {
       "also_remote": false,
@@ -35,6 +35,24 @@
       ],
       "title": "Global Technology Summer Associate Intern",
       "url": "https://capgroup.wd1.myworkdayjobs.com/en-US/capitalgroupcareers/job/Irvine/CAMPUS-Global-Technology-Summer-Associate--2027-_JR7798",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Irvine",
+      "company": "Blizzard Entertainment",
+      "id": "a66d16d8-304f-49d6-ae57-3f9db2d9042c",
+      "miles": 45,
+      "new": true,
+      "posted": "2026-11-13",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Animation & Cinematic Tools Engineering Intern - Animation & Cinematic Tools Engineering",
+      "url": "https://xboxgaming.wd1.myworkdayjobs.com/Blizzard_External_Careers/job/Irvine---Blizzard---Blizzard-Way/Blizzard-2027-Summer-Internships---Animation---Cinematic-Tools-Engineering_R028350",
       "zone": "near"
     },
     {
@@ -2610,6 +2628,24 @@
       "terms": [],
       "title": "Research Intern - Efficient Deep Learning",
       "url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Research-Intern--Efficient-Deep-Learning---2027_JR2025478",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Oregon State University",
+      "id": "7cb846f0-4e40-4dae-a481-dbc9848337d9",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Fall 2026"
+      ],
+      "title": "Student Developer Intern - CASS Software Development Group",
+      "url": "https://oregonstate.wd501.myworkdayjobs.com/OSU_Careers_Site/job/Corvallis-Main-Campus/Student-Developer---CASS-Software-Development-Group_JR0001296",
       "zone": "remote"
     },
     {
