@@ -1151,15 +1151,90 @@
       "retrieved_at": "2026-11-09T16:47:45Z",
       "source": "https://api.github.com/search/repositories",
       "status": "pending-review"
-    }
-  ],
-  "errors": [
+    },
     {
-      "error": "Redirect requires source configuration review",
-      "id": "chainsaw"
+      "last_verified": null,
+      "name": "Zikmadol/trapline-ioc",
+      "repository": "https://github.com/Zikmadol/trapline-ioc",
+      "retrieved_at": "2026-11-16T16:20:04Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "robertdebock/ansible-role-cve_2024_3094",
+      "repository": "https://github.com/robertdebock/ansible-role-cve_2024_3094",
+      "retrieved_at": "2026-11-16T16:20:04Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "Infisical/infisical",
+      "repository": "https://github.com/Infisical/infisical",
+      "retrieved_at": "2026-11-16T16:20:04Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "YeXuanHs/SukeHappy",
+      "repository": "https://github.com/YeXuanHs/SukeHappy",
+      "retrieved_at": "2026-11-16T16:20:04Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "droczy/markdown-editor",
+      "repository": "https://github.com/droczy/markdown-editor",
+      "retrieved_at": "2026-11-16T16:20:04Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "choo737/gcp-foundation",
+      "repository": "https://github.com/choo737/gcp-foundation",
+      "retrieved_at": "2026-11-16T16:20:04Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "OpenVibers/OpenVibe.Connect",
+      "repository": "https://github.com/OpenVibers/OpenVibe.Connect",
+      "retrieved_at": "2026-11-16T16:20:04Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "rohitanakiya/Vibe-Killer",
+      "repository": "https://github.com/rohitanakiya/Vibe-Killer",
+      "retrieved_at": "2026-11-16T16:20:04Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "nickcrepeau/AutoIPBan",
+      "repository": "https://github.com/nickcrepeau/AutoIPBan",
+      "retrieved_at": "2026-11-16T16:20:04Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
+    },
+    {
+      "last_verified": null,
+      "name": "ubyte-source/go-authware",
+      "repository": "https://github.com/ubyte-source/go-authware",
+      "retrieved_at": "2026-11-16T16:20:04Z",
+      "source": "https://api.github.com/search/repositories",
+      "status": "pending-review"
     }
   ],
-  "last_attempt": "2026-11-09T16:47:45Z",
+  "errors": [],
+  "last_attempt": "2026-11-16T16:20:04Z",
   "updates": [
     {
       "changes": {
@@ -1256,15 +1331,15 @@
         "archived": false,
         "license_signal": "MIT",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-26T08:19:33Z",
-        "release": "v1.8.1",
+        "pushed_at": "2026-11-16T16:19:16Z",
+        "release": "v1.8.2",
         "renamed": false,
         "repository": "https://github.com/crowdsecurity/crowdsec",
-        "stars_signal": 15319
+        "stars_signal": 15648
       },
       "id": "crowdsec",
       "last_verified": null,
-      "retrieved_at": "2026-10-26T13:28:38Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/crowdsecurity/crowdsec",
       "status": "pending-review"
@@ -1346,15 +1421,15 @@
         "archived": false,
         "license_signal": "Apache-2.0",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-26T09:09:58Z",
+        "pushed_at": "2026-11-10T11:31:34Z",
         "release": "Ghidra_12.2_build",
         "renamed": false,
         "repository": "https://github.com/NationalSecurityAgency/ghidra",
-        "stars_signal": 94512
+        "stars_signal": 100295
       },
       "id": "ghidra",
       "last_verified": null,
-      "retrieved_at": "2026-10-26T13:28:38Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/NationalSecurityAgency/ghidra",
       "status": "pending-review"
@@ -1368,11 +1443,11 @@
         "release": "v8.30.1",
         "renamed": false,
         "repository": "https://github.com/gitleaks/gitleaks",
-        "stars_signal": 30597
+        "stars_signal": 31089
       },
       "id": "gitleaks",
       "last_verified": null,
-      "retrieved_at": "2026-11-02T16:29:30Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/gitleaks/gitleaks",
       "status": "pending-review"
@@ -1382,15 +1457,15 @@
         "archived": false,
         "license_signal": "Apache-2.0",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-30T21:03:51Z",
-        "release": "v0.121.0",
+        "pushed_at": "2026-11-14T10:50:37Z",
+        "release": "v0.121.3",
         "renamed": false,
         "repository": "https://github.com/anchore/grype",
-        "stars_signal": 13163
+        "stars_signal": 13269
       },
       "id": "grype",
       "last_verified": null,
-      "retrieved_at": "2026-11-02T16:29:30Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/anchore/grype",
       "status": "pending-review"
@@ -1418,15 +1493,15 @@
         "archived": false,
         "license_signal": "MIT",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-26T12:58:09Z",
-        "release": "0.3.285",
+        "pushed_at": "2026-11-16T16:14:01Z",
+        "release": "0.3.290",
         "renamed": false,
         "repository": "https://github.com/UKGovernmentBEIS/inspect_ai",
-        "stars_signal": 3096
+        "stars_signal": 3265
       },
       "id": "inspect-ai",
       "last_verified": null,
-      "retrieved_at": "2026-10-26T13:28:38Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/UKGovernmentBEIS/inspect_ai",
       "status": "pending-review"
@@ -1476,11 +1551,11 @@
         "release": "3.1.7",
         "renamed": false,
         "repository": "https://github.com/CISOfy/lynis",
-        "stars_signal": 16611
+        "stars_signal": 16697
       },
       "id": "lynis",
       "last_verified": null,
-      "retrieved_at": "2026-11-02T16:29:30Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/CISOfy/lynis",
       "status": "pending-review"
@@ -1526,15 +1601,15 @@
         "archived": false,
         "license_signal": "NOASSERTION",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-24T15:00:05Z",
+        "pushed_at": "2026-11-12T03:00:05Z",
         "release": null,
         "renamed": false,
         "repository": "https://github.com/nmap/nmap",
-        "stars_signal": 13875
+        "stars_signal": 14004
       },
       "id": "nmap",
       "last_verified": null,
-      "retrieved_at": "2026-10-26T13:28:38Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/nmap/nmap",
       "status": "pending-review"
@@ -1634,15 +1709,15 @@
         "archived": false,
         "license_signal": "NOASSERTION",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-31T06:05:06Z",
-        "release": "5.24.0",
+        "pushed_at": "2026-11-12T21:17:43Z",
+        "release": "5.24.1",
         "renamed": false,
         "repository": "https://github.com/osquery/osquery",
-        "stars_signal": 23713
+        "stars_signal": 23773
       },
       "id": "osquery",
       "last_verified": null,
-      "retrieved_at": "2026-11-02T16:29:30Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/osquery/osquery",
       "status": "pending-review"
@@ -1670,15 +1745,15 @@
         "archived": false,
         "license_signal": "NOASSERTION",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-24T11:29:17Z",
-        "release": "v6.5",
+        "pushed_at": "2026-11-15T15:38:18Z",
+        "release": "v6.6",
         "renamed": false,
         "repository": "https://github.com/pi-hole/pi-hole",
-        "stars_signal": 61473
+        "stars_signal": 62058
       },
       "id": "pi-hole",
       "last_verified": null,
-      "retrieved_at": "2026-10-26T13:28:38Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/pi-hole/pi-hole",
       "status": "pending-review"
@@ -1728,11 +1803,11 @@
         "release": null,
         "renamed": false,
         "repository": "https://github.com/Azure/PyRIT",
-        "stars_signal": 121
+        "stars_signal": 127
       },
       "id": "pyrit",
       "last_verified": null,
-      "retrieved_at": "2026-10-26T13:28:38Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/Azure/PyRIT",
       "status": "pending-review"
@@ -1796,15 +1871,15 @@
         "archived": false,
         "license_signal": "NOASSERTION",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-11-02T11:04:41Z",
+        "pushed_at": "2026-11-15T01:38:10Z",
         "release": "r2026-07-01",
         "renamed": false,
         "repository": "https://github.com/SigmaHQ/sigma",
-        "stars_signal": 11391
+        "stars_signal": 11516
       },
       "id": "sigma",
       "last_verified": null,
-      "retrieved_at": "2026-11-02T16:29:30Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/SigmaHQ/sigma",
       "status": "pending-review"
@@ -1850,15 +1925,15 @@
         "archived": false,
         "license_signal": "GPL-2.0",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-26T09:44:51Z",
-        "release": "suricata-8.0.7",
+        "pushed_at": "2026-11-15T18:42:15Z",
+        "release": "suricata-8.0.8",
         "renamed": false,
         "repository": "https://github.com/OISF/suricata",
-        "stars_signal": 6778
+        "stars_signal": 6898
       },
       "id": "suricata",
       "last_verified": null,
-      "retrieved_at": "2026-10-26T13:28:38Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/OISF/suricata",
       "status": "pending-review"
@@ -1868,15 +1943,15 @@
         "archived": false,
         "license_signal": "Apache-2.0",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-11-02T14:59:07Z",
-        "release": "v1.55.0",
+        "pushed_at": "2026-11-16T15:24:40Z",
+        "release": "v1.57.1",
         "renamed": false,
         "repository": "https://github.com/anchore/syft",
-        "stars_signal": 9816
+        "stars_signal": 9903
       },
       "id": "syft",
       "last_verified": null,
-      "retrieved_at": "2026-11-02T16:29:30Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/anchore/syft",
       "status": "pending-review"
@@ -1922,15 +1997,15 @@
         "archived": false,
         "license_signal": "Apache-2.0",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-11-02T08:37:30Z",
-        "release": "v0.76.1",
+        "pushed_at": "2026-11-16T13:10:48Z",
+        "release": "v0.76.2",
         "renamed": false,
         "repository": "https://github.com/aquasecurity/trivy",
-        "stars_signal": 38914
+        "stars_signal": 39408
       },
       "id": "trivy",
       "last_verified": null,
-      "retrieved_at": "2026-11-02T16:29:30Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/aquasecurity/trivy",
       "status": "pending-review"
@@ -1980,11 +2055,11 @@
         "release": "v2.28.2",
         "renamed": false,
         "repository": "https://github.com/volatilityfoundation/volatility3",
-        "stars_signal": 4536
+        "stars_signal": 4604
       },
       "id": "volatility-3",
       "last_verified": null,
-      "retrieved_at": "2026-10-26T13:28:38Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/volatilityfoundation/volatility3",
       "status": "pending-review"
@@ -1994,15 +2069,15 @@
         "archived": false,
         "license_signal": "NOASSERTION",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-26T13:28:11Z",
-        "release": "v4.14.9",
+        "pushed_at": "2026-11-16T16:16:19Z",
+        "release": "v4.14.10",
         "renamed": false,
         "repository": "https://github.com/wazuh/wazuh",
-        "stars_signal": 17431
+        "stars_signal": 17770
       },
       "id": "wazuh",
       "last_verified": null,
-      "retrieved_at": "2026-10-26T13:28:38Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/wazuh/wazuh",
       "status": "pending-review"
@@ -2012,15 +2087,15 @@
         "archived": false,
         "license_signal": "GPL-2.0",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-26T13:11:29Z",
+        "pushed_at": "2026-11-16T16:04:56Z",
         "release": null,
         "renamed": false,
         "repository": "https://github.com/wireshark/wireshark",
-        "stars_signal": 10090
+        "stars_signal": 10230
       },
       "id": "wireshark",
       "last_verified": null,
-      "retrieved_at": "2026-10-26T13:28:38Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/wireshark/wireshark",
       "status": "pending-review"
@@ -2030,15 +2105,15 @@
         "archived": false,
         "license_signal": "BSD-3-Clause",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-21T07:47:36Z",
-        "release": "v4.5.8",
+        "pushed_at": "2026-10-27T11:53:52Z",
+        "release": "v4.6.0",
         "renamed": false,
         "repository": "https://github.com/VirusTotal/yara",
-        "stars_signal": 9971
+        "stars_signal": 10043
       },
       "id": "yara",
       "last_verified": null,
-      "retrieved_at": "2026-10-26T13:28:38Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/VirusTotal/yara",
       "status": "pending-review"
@@ -2048,15 +2123,15 @@
         "archived": false,
         "license_signal": "Apache-2.0",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-11-02T16:13:53Z",
+        "pushed_at": "2026-11-13T17:26:17Z",
         "release": "v2.17.0",
         "renamed": false,
         "repository": "https://github.com/zaproxy/zaproxy",
-        "stars_signal": 16096
+        "stars_signal": 16208
       },
       "id": "zap",
       "last_verified": null,
-      "retrieved_at": "2026-11-02T16:29:30Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/zaproxy/zaproxy",
       "status": "pending-review"
@@ -2066,15 +2141,15 @@
         "archived": false,
         "license_signal": "NOASSERTION",
         "maintenance_signal": "activity-observed",
-        "pushed_at": "2026-10-26T10:18:16Z",
-        "release": "v9.0.0",
+        "pushed_at": "2026-11-16T16:05:48Z",
+        "release": "v9.0.1",
         "renamed": false,
         "repository": "https://github.com/zeek/zeek",
-        "stars_signal": 8135
+        "stars_signal": 8247
       },
       "id": "zeek",
       "last_verified": null,
-      "retrieved_at": "2026-10-26T13:28:38Z",
+      "retrieved_at": "2026-11-16T16:20:04Z",
       "review_notes": "API license detection and activity are signals, not a license audit or security endorsement.",
       "source": "https://api.github.com/repos/zeek/zeek",
       "status": "pending-review"
