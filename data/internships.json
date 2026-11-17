@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T20:32:33Z",
+  "generated_at": "2026-11-17T10:48:00Z",
   "items": [
     {
       "also_remote": false,
@@ -627,24 +627,6 @@
     },
     {
       "also_remote": false,
-      "category": "Hardware",
-      "city": "Irvine",
-      "company": "Motorola",
-      "id": "e1457499-6257-4e3b-9b1d-2a8dfac950fe",
-      "miles": 45,
-      "new": false,
-      "posted": "2026-07-04",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Fall 2026"
-      ],
-      "title": "Embedded Software Intern",
-      "url": "https://motorolasolutions.wd5.myworkdayjobs.com/Careers/job/Irvine-CA/Intern---Embedded-Software--System--and-Test-Engineer---2026_R62372",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
       "category": "Software Engineering",
       "city": "Irvine",
       "company": "Rivian and Volkswagen Group Technologies",
@@ -747,6 +729,77 @@
       ],
       "title": "Software Engineering Intern - Software Tools and Assurance",
       "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Software-Tools-and-Assurance-Engineering-Grad-Intern_R016753",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "The Opus Group",
+      "id": "d174fe5d-9211-4aa0-9ec6-572bc4d1baa5",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-17",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Winter 2027",
+        "Spring 2027"
+      ],
+      "title": "Interactive Resident",
+      "url": "https://jobs.jobvite.com/theopusgroup/job/oPMUAfwP?nl=1&nl=1&fr=false",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Product",
+      "city": "Remote (US)",
+      "company": "Research Innovations",
+      "id": "e36780ca-625f-4558-8501-fa2649791b6c",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-17",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Department of War SkillBridge Operations SME Intern",
+      "url": "https://jobs.lever.co/researchinnovations.com/eeada042-c446-4723-81f4-b1607443fb4e/apply",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Redondo Beach",
+      "company": "Impulse Space",
+      "id": "bb9f74a2-6ded-4e81-a5a6-0be1192f3e17",
+      "miles": 65,
+      "new": true,
+      "posted": "2026-11-16",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Digital Design Engineering Intern - FPGA/ASIC",
+      "url": "https://impulsespace.pinpointhq.com/en/postings/829256fd-cd06-4f0d-91c9-8bb59eaf6772?ats=pinpointhq",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Product",
+      "city": "San Diego",
+      "company": "ServiceNow",
+      "id": "abe940a9-ab2d-4ad8-a09c-c78904056271",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-16",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Inbound Product Manager Intern",
+      "url": "https://jobs.smartrecruiters.com/ServiceNow/744000161885234",
       "zone": "region"
     },
     {
@@ -1262,7 +1315,7 @@
       "company": "ASML",
       "id": "fad75819-fb09-45d1-8d92-13b71a137ef9",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-11-09",
       "security": false,
       "sponsorship": "Other",
@@ -1278,31 +1331,13 @@
       "company": "Tonic",
       "id": "2f889d44-57d3-4ede-906e-ecf56eef67eb",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-09",
       "security": false,
       "sponsorship": "Other",
       "terms": [],
       "title": "Forward Deployed Engineer Co-op - Data De-Identification",
       "url": "https://jobs.ashbyhq.com/tonicai/e632d472-fbd2-475a-9878-536c0eacb5e9/application?embed=true",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Fortrea",
-      "id": "de7fe0e3-6022-4f95-a291-1b8cc48f3f10",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-09",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "AIML Rapid Development Studio Intern",
-      "url": "https://fortrea.wd1.myworkdayjobs.com/Fortrea/job/Durham/AIML-Rapid-Development-Studio-Internship_266655",
       "zone": "remote"
     },
     {
@@ -2290,6 +2325,24 @@
     },
     {
       "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Santa Monica",
+      "company": "NRDC",
+      "id": "02761b1d-a3e4-4f1a-8525-655a388c9c8c",
+      "miles": 68,
+      "new": false,
+      "posted": "2026-10-13",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Community Science Partnerships Intern",
+      "url": "https://careers-nrdc.icims.com/jobs/6067/job?mobile=true&needsRedirect=false",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "San Diego",
       "company": "ServiceNow",
@@ -2457,24 +2510,6 @@
       "title": "AI Engineer Intern",
       "url": "https://axos.wd5.myworkdayjobs.com/Axos/job/HQ---San-Diego-CA/AI-Engineer-Intern_JR5658",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Cadence Solutions",
-      "id": "9c73b8be-e8be-4a91-9db0-df9eb032917a",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-06",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://job-boards.greenhouse.io/solutions/jobs/4711210006",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -3753,24 +3788,6 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "San Diego",
-      "company": "Booz Allen",
-      "id": "097e5358-9e45-41e0-86bc-5289976e1828",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-09-01",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Systems Engineer Intern - Summer Games",
-      "url": "https://bah.wd1.myworkdayjobs.com/bah_jobs/job/San-Diego-CA/University---2027-Summer-Games-Systems-Engineer-Intern---El-Segundo--CA_R0248366",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Pluralis Research",
@@ -3803,6 +3820,24 @@
       ],
       "title": "Supply Chain Data & Analytics Intern",
       "url": "https://jobs.ashbyhq.com/NorthwoodSpace/69f99cd7-3ce7-413a-8cfe-29b7ccbc1490/application?embed=true",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Torrance",
+      "company": "Northwood Space",
+      "id": "ecdb732a-4566-44b5-bb1e-360045df13d9",
+      "miles": 63,
+      "new": false,
+      "posted": "2026-08-29",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Electrical Engineer Intern - Summer Internship",
+      "url": "https://jobs.ashbyhq.com/NorthwoodSpace/1bc230b1-5ad2-44b8-ad61-e80a730e5026/application?embed=true",
       "zone": "region"
     },
     {
