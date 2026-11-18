@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T10:14:52Z",
+  "generated_at": "2026-11-18T18:53:46Z",
   "items": [
     {
       "also_remote": false,
@@ -908,6 +908,24 @@
       ],
       "title": "Software Engineer Intern",
       "url": "https://jobs.ashbyhq.com/vital-lyfe/5b5e7e6d-d59e-410b-9a7f-619717c3c942/application?embed=true",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "El Segundo",
+      "company": "The Aerospace Corporation",
+      "id": "2c35406a-a454-4de2-a3de-763af7d27d5d",
+      "miles": 65,
+      "new": true,
+      "posted": "2026-11-12",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Lidar Undergraduate Intern",
+      "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Lidar-Undergraduate-Intern_R017200",
       "zone": "region"
     },
     {
@@ -1836,24 +1854,6 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Zillow",
-      "id": "6244dbb0-e314-486b-b2c6-143c829bd211",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Development Engineer Intern",
-      "url": "https://zillow.wd5.myworkdayjobs.com/en-US/Zillow_Group_External/job/Seattle-WA-2nd-Ave/Software-Development-Engineer---Intern_P751630",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Product",
       "city": "Remote (US)",
       "company": "OneEthos",
@@ -2184,6 +2184,22 @@
       "title": "Software Engineering Intern",
       "url": "https://job-boards.greenhouse.io/wikimedia/jobs/8268853",
       "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Aliso Viejo",
+      "company": "Indie",
+      "id": "e925d6fc-4054-4d56-bd4b-a35f60724d50",
+      "miles": 48,
+      "new": false,
+      "posted": "2026-10-14",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Design Verification Engineer Intern",
+      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265698007",
+      "zone": "region"
     },
     {
       "also_remote": false,
@@ -4205,24 +4221,6 @@
       ],
       "title": "Software Engineering Internship/Co-Op",
       "url": "https://ats.rippling.com/omnis-corporation/jobs/e389ff2d-5be5-4571-8cc1-f361a139b753",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software Engineering",
-      "city": "Carlsbad",
-      "company": "CalAmp",
-      "id": "1554a295-c149-425e-addc-4d97676807a8",
-      "miles": 71,
-      "new": false,
-      "posted": "2026-03-23",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2026"
-      ],
-      "title": "ntern, Engineer Software",
-      "url": "https://careers-calamp.icims.com/jobs/4326/intern%2c-engineer-software---carlsbad%2c-ca-%28summer-2026%29/job",
       "zone": "region"
     }
   ],
