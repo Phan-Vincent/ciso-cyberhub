@@ -1,24 +1,6 @@
 {
-  "generated_at": "2026-11-18T00:59:33Z",
+  "generated_at": "2026-11-18T10:14:52Z",
   "items": [
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Brea",
-      "company": "Danaher",
-      "id": "7a1c6145-534b-4180-a87b-447e2edd9c8f",
-      "miles": 38,
-      "new": false,
-      "posted": "2026-09-22",
-      "security": true,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2026"
-      ],
-      "title": "IT Data Analyst Intern",
-      "url": "https://danaher.wd1.myworkdayjobs.com/DanaherJobs/job/Brea-California-United-States/IT-Data-Analyst-Intern_R1316675",
-      "zone": "near"
-    },
     {
       "also_remote": false,
       "category": "AI/ML/Data",
@@ -1258,24 +1240,6 @@
       "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
-      "company": "Airbnb",
-      "id": "f176d1e9-17ce-4475-93c3-e20392a140d5",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-11",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Advanced Analytics Intern",
-      "url": "https://careers.airbnb.com/positions/8380007?gh_jid=8380007",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
       "company": "Riot Games",
       "id": "7e6b380e-ef69-43cd-a4de-89c7773ae701",
       "miles": null,
@@ -1441,22 +1405,6 @@
       "title": "GIS Analyst Intern",
       "url": "https://apply.workable.com/ballotpedia/j/4AF879CDEA/apply",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "San Diego",
-      "company": "ASML",
-      "id": "b90babbc-5fa6-4414-b46f-911f2e400a97",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-11-04",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Machine Learning and Image-Based Metrics for EUV System Setup Intern",
-      "url": "https://asml.wd3.myworkdayjobs.com/asmlext1/job/San-Diego-CA-USA/Internship----Machine-Learning-and-image-based-EUV-system-setup_J-00356567",
-      "zone": "region"
     },
     {
       "also_remote": false,
