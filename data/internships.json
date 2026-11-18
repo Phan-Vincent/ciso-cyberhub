@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T10:48:00Z",
+  "generated_at": "2026-11-18T00:59:33Z",
   "items": [
     {
       "also_remote": false,
@@ -17,6 +17,24 @@
       ],
       "title": "IT Data Analyst Intern",
       "url": "https://danaher.wd1.myworkdayjobs.com/DanaherJobs/job/Brea-California-United-States/IT-Data-Analyst-Intern_R1316675",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Santa Ana",
+      "company": "Anduril",
+      "id": "00b1c762-9ca4-4c23-afff-d070ee8279e6",
+      "miles": 43,
+      "new": true,
+      "posted": "2026-11-17",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Machine Learning Engineer Intern",
+      "url": "https://boards.greenhouse.io/andurilindustries/jobs/5274037007",
       "zone": "near"
     },
     {
@@ -684,6 +702,24 @@
       "category": "Software",
       "city": "San Diego",
       "company": "Constellation Energy",
+      "id": "11f69ae2-522e-4819-8898-d55df90e6226",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-17",
+      "security": true,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "IT Software Developer Intern",
+      "url": "https://jobs.constellationenergy.com/jobs/143150?icims=1&lang=en-us",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "San Diego",
+      "company": "Constellation Energy",
       "id": "8d5a68f3-3c90-4a0f-9579-ef3d5483e360",
       "miles": 102,
       "new": false,
@@ -1054,42 +1090,6 @@
       "terms": [],
       "title": "AI Engineering Intern",
       "url": "https://apply.workable.com/bask-health-1/j/F0E122E877/apply",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "CareSource",
-      "id": "858c0ee0-0430-4380-bd5f-089a625da132",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-12",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Summer Internship Program – Provider Analytics AI Intern",
-      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program----Provider-Analytics-AI-Intern_R14481",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "CareSource",
-      "id": "70dcf5c5-f95e-4cbf-aecb-0f50a5e9302a",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-12",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Clinical Operations Business Analyst Intern",
-      "url": "https://caresource.wd1.myworkdayjobs.com/caresource/job/Remote/XMLNAME-2027-Summer-Internship-Program---Clinical-Operations-Business-Analyst_R14353",
       "zone": "remote"
     },
     {
@@ -2240,54 +2240,6 @@
     {
       "also_remote": false,
       "category": "Hardware",
-      "city": "Aliso Viejo",
-      "company": "Indie",
-      "id": "e925d6fc-4054-4d56-bd4b-a35f60724d50",
-      "miles": 48,
-      "new": false,
-      "posted": "2026-10-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Design Verification Engineer Intern",
-      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265698007",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Aliso Viejo",
-      "company": "Indie",
-      "id": "2081c3f3-7a52-4da7-a160-43d0509b4835",
-      "miles": 48,
-      "new": false,
-      "posted": "2026-10-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Wireless Charging Engineer Intern",
-      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265700007",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Aliso Viejo",
-      "company": "Indie",
-      "id": "07aad510-60aa-4f59-a810-1efbb9d74d6f",
-      "miles": 48,
-      "new": false,
-      "posted": "2026-10-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Applications Software Developer Intern",
-      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265696007",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
       "city": "Costa Mesa",
       "company": "Anduril",
       "id": "7bb707f9-e94b-4f2d-8921-ee6d523213bc",
@@ -2441,22 +2393,6 @@
       ],
       "title": "Autonomy & Robotics Engineer Intern",
       "url": "https://avav.wd1.myworkdayjobs.com/en-US/avav/job/Simi-Valley-CA/Summer-2027-Autonomy---Robotics-Engineering-Intern_8556",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "El Segundo",
-      "company": "The Aerospace Corporation",
-      "id": "fc1da624-e620-4f0f-89d1-f78464457a9d",
-      "miles": 65,
-      "new": false,
-      "posted": "2026-10-07",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Radiation Effects Undergraduate Intern",
-      "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Radiation-Effects-Undergraduate-Intern_R016791",
       "zone": "region"
     },
     {
@@ -3229,42 +3165,6 @@
     },
     {
       "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Elire",
-      "id": "575cff72-551d-4520-b574-ee32f9252195",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-15",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "AI Software Developer Intern - Multiple Teams",
-      "url": "https://jobs.jobvite.com/elire/job/oM5LAfwW?nl=1&nl=1&fr=false",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Elire",
-      "id": "cb134c63-620d-4f0e-966c-ae3c7a03d34b",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-15",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "AI Data Science Consulting Intern - Knowledge Graphs & Enterprise Data",
-      "url": "https://jobs.jobvite.com/elire/job/oppLAfwT?nl=1&nl=1&fr=false",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Product",
       "city": "San Diego",
       "company": "Intuit",
@@ -3806,24 +3706,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Torrance",
-      "company": "Northwood Space",
-      "id": "f6b7f447-ad5a-434e-bf7f-b120f36843eb",
-      "miles": 63,
-      "new": false,
-      "posted": "2026-08-29",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Supply Chain Data & Analytics Intern",
-      "url": "https://jobs.ashbyhq.com/NorthwoodSpace/69f99cd7-3ce7-413a-8cfe-29b7ccbc1490/application?embed=true",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "Hardware",
       "city": "Torrance",
       "company": "Northwood Space",
@@ -3856,24 +3738,6 @@
       ],
       "title": "Software Engineer Intern - Full Stack",
       "url": "https://jobs.intuit.com/job/mountain-view/summer-2027-software-engineering-intern-full-stack/27595/99856180864",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "El Segundo",
-      "company": "Booz Allen",
-      "id": "84aad02e-2ac4-4eaf-89fd-3674ae05f75e",
-      "miles": 65,
-      "new": false,
-      "posted": "2026-08-27",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Developer Intern - Summer Games",
-      "url": "https://bah.wd1.myworkdayjobs.com/bah_jobs/job/El-Segundo-CA/University---2027-Summer-Games-Software-Developer-Intern---El-Segundo--CA_R0248046",
       "zone": "region"
     },
     {
