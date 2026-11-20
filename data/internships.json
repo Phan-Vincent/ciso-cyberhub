@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T10:25:42Z",
+  "generated_at": "2026-11-20T00:40:21Z",
   "items": [
     {
       "also_remote": false,
@@ -539,6 +539,24 @@
     },
     {
       "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Fullerton",
+      "company": "Edison International",
+      "id": "77203ce5-b7d4-43d5-a610-f97e1ddee542",
+      "miles": 41,
+      "new": false,
+      "posted": "2026-09-01",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Intern - Multiple Teams",
+      "url": "https://apply.edisoncareers.com/job/Westminster-2027-Summer-Internship-Data-AnalyticsScienceApplied-Math-Santa-AnaWestminsterIrvineFullerton-CA-92683-5240/1425178600/?ats=successfactors",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "Irvine",
       "company": "Google",
@@ -953,7 +971,7 @@
       "company": "Vital Lyfe",
       "id": "f856d645-fee3-4ce9-a3ca-7610daf558ca",
       "miles": 63,
-      "new": true,
+      "new": false,
       "posted": "2026-11-12",
       "security": false,
       "sponsorship": "Other",
@@ -971,7 +989,7 @@
       "company": "The Aerospace Corporation",
       "id": "2c35406a-a454-4de2-a3de-763af7d27d5d",
       "miles": 65,
-      "new": true,
+      "new": false,
       "posted": "2026-11-12",
       "security": false,
       "sponsorship": "Other",
@@ -1055,7 +1073,7 @@
       "company": "National Laboratory of the Rockies",
       "id": "1930aa1f-6b82-411d-88d7-1c42cdfa1597",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-12",
       "security": false,
       "sponsorship": "Other",
@@ -1071,7 +1089,7 @@
       "company": "Intermountain Healthcare",
       "id": "3ce645b0-f6de-4226-a5b3-65a6d95354ae",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-12",
       "security": false,
       "sponsorship": "Other",
@@ -1087,7 +1105,7 @@
       "company": "Intermountain Healthcare",
       "id": "eb961a40-c8ad-450e-9ef6-4a0b05ba5920",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-12",
       "security": false,
       "sponsorship": "Other",
@@ -1103,7 +1121,7 @@
       "company": "Environmental Defense Fund",
       "id": "4b853c05-5bdf-470c-a923-8b825bb0ac8a",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-12",
       "security": false,
       "sponsorship": "Other",
@@ -1153,7 +1171,7 @@
       "company": "White Cap Supply Holdings",
       "id": "5c0936f7-a4e5-4593-886e-818b6de0d5a4",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-12",
       "security": false,
       "sponsorship": "Other",
@@ -1267,7 +1285,7 @@
       "company": "Bask Health",
       "id": "9582c4ee-4d88-47d4-8b67-db20474e723a",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-11",
       "security": false,
       "sponsorship": "Other",
@@ -1283,7 +1301,7 @@
       "company": "Bask Health",
       "id": "a108ad1b-5f10-4f6c-ae91-95ca1c4d865e",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-11",
       "security": false,
       "sponsorship": "Other",
@@ -1299,7 +1317,7 @@
       "company": "Bask Health",
       "id": "60be7de4-e01f-4279-9e3b-cbba3d97c638",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-11",
       "security": false,
       "sponsorship": "Other",
@@ -1315,7 +1333,7 @@
       "company": "Riot Games",
       "id": "7e6b380e-ef69-43cd-a4de-89c7773ae701",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-11",
       "security": false,
       "sponsorship": "Other",
@@ -1464,24 +1482,6 @@
       "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
-      "company": "Ballotpedia",
-      "id": "dd16f64f-a794-4611-9dcc-8913da108e5e",
-      "miles": null,
-      "new": false,
-      "posted": "2026-11-05",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Spring 2027"
-      ],
-      "title": "GIS Analyst Intern",
-      "url": "https://apply.workable.com/ballotpedia/j/4AF879CDEA/apply",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
       "company": "Amgen",
       "id": "5f438b5b-8f19-4780-b104-36fd3633f9e1",
       "miles": null,
@@ -1600,24 +1600,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Molina Healthcare",
-      "id": "18803ec8-f589-4545-bb91-2d5378346d55",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-30",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Customer Experience & Analytics Intern - Undergraduate",
-      "url": "https://hckd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2040169",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
       "category": "Product",
       "city": "Remote (US)",
       "company": "Teamworks",
@@ -1733,6 +1715,24 @@
       "title": "Software Engineer Intern",
       "url": "https://jobs.ashbyhq.com/f7d8749a-72d6-407c-bf98-292ea630c73a/db04c516-d21a-449c-8bfd-1cf830eafb5a/application?embed=true",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Crystal Dynamics",
+      "id": "ae65cb8b-ec6b-48b7-a221-afec9b7f068d",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-26",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Spring 2027"
+      ],
+      "title": "Game Design Intern",
+      "url": "https://job-boards.greenhouse.io/crystaldynamics/jobs/4747682005",
+      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -2242,38 +2242,6 @@
     {
       "also_remote": false,
       "category": "Hardware",
-      "city": "Aliso Viejo",
-      "company": "Indie",
-      "id": "e925d6fc-4054-4d56-bd4b-a35f60724d50",
-      "miles": 48,
-      "new": false,
-      "posted": "2026-10-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Design Verification Engineer Intern",
-      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265698007",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Aliso Viejo",
-      "company": "Indie",
-      "id": "2081c3f3-7a52-4da7-a160-43d0509b4835",
-      "miles": 48,
-      "new": false,
-      "posted": "2026-10-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Wireless Charging Engineer Intern",
-      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265700007",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
       "city": "Costa Mesa",
       "company": "Anduril",
       "id": "7bb707f9-e94b-4f2d-8921-ee6d523213bc",
@@ -2307,24 +2275,6 @@
       ],
       "title": "Hardware Development Engineer Intern",
       "url": "https://amazon.jobs/en/jobs/10578090/hardware-development-engineer-intern-summer-2027",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Santa Monica",
-      "company": "NRDC",
-      "id": "02761b1d-a3e4-4f1a-8525-655a388c9c8c",
-      "miles": 68,
-      "new": false,
-      "posted": "2026-10-13",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Community Science Partnerships Intern",
-      "url": "https://careers-nrdc.icims.com/jobs/6067/job?mobile=true&needsRedirect=false",
       "zone": "region"
     },
     {
@@ -3072,24 +3022,6 @@
       "title": "Hardware Engineer Intern",
       "url": "https://danaher.wd1.myworkdayjobs.com/DanaherJobs/job/Vista-California-United-States/Hardware-Engineering-Intern_R1315720",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "NVIDIA",
-      "id": "55a28a09-e8b9-4af7-bec5-c02f4642f6f2",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-17",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "PhD Research Intern - Generalist Embodied Agents Research",
-      "url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/PhD-Research-Intern--Generalist-Embodied-Agents-Research---2027_JR2025103",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -4080,24 +4012,6 @@
       "title": "Agentic AI Engineer Co-op",
       "url": "https://campbellsoup.wd5.myworkdayjobs.com/externalcareers_globalsite/job/USA---Remote/Agentic-AI-Engineer-Co-Op_Req-66015",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Santa Monica",
-      "company": "Oracle",
-      "id": "df021870-bc1b-408c-ac28-255a67469798",
-      "miles": 68,
-      "new": false,
-      "posted": "2026-05-21",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Fall 2026"
-      ],
-      "title": "Data Strategy Intern",
-      "url": "https://eeho.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_45001/job/334396",
-      "zone": "region"
     },
     {
       "also_remote": false,
