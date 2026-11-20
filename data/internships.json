@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T00:40:21Z",
+  "generated_at": "2026-11-20T10:05:46Z",
   "items": [
     {
       "also_remote": false,
@@ -1023,7 +1023,7 @@
       "company": "Bask Health",
       "id": "ef469032-ac28-42a0-b8a3-09bac01d9a2b",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-12",
       "security": false,
       "sponsorship": "Other",
@@ -1039,7 +1039,7 @@
       "company": "Bask Health",
       "id": "6b8e3394-dd09-4734-be54-025c5d544c77",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-12",
       "security": false,
       "sponsorship": "Other",
@@ -1613,24 +1613,6 @@
       "title": "Product Management MBA Intern",
       "url": "https://jobs.ashbyhq.com/teamworks/13cc2066-5dfe-45ec-8064-3d7a20d9fc06/application?embed=true",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Carson",
-      "company": "GrayMatter Robotics",
-      "id": "901b53ec-fba2-40bc-89d6-a7200607ee62",
-      "miles": 60,
-      "new": false,
-      "posted": "2026-10-28",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Fall 2026"
-      ],
-      "title": "Robotics Engineering Intern: Systems & Applications",
-      "url": "https://jobs.ashbyhq.com/graymatter-robotics/1cdbf03d-438b-46f8-808e-76fb6cfd4320/application?embed=true",
-      "zone": "region"
     },
     {
       "also_remote": false,
