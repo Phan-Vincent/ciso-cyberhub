@@ -1,6 +1,24 @@
 {
-  "generated_at": "2026-11-18T18:53:46Z",
+  "generated_at": "2026-11-19T10:25:42Z",
   "items": [
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Irvine",
+      "company": "Western Digital",
+      "id": "0590c67b-538d-436a-97a1-2344effdb7cb",
+      "miles": 45,
+      "new": true,
+      "posted": "2026-11-18",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Spring 2027"
+      ],
+      "title": "Software Engineering Intern",
+      "url": "https://jobs.smartrecruiters.com/WesternDigital/744000162353069",
+      "zone": "near"
+    },
     {
       "also_remote": false,
       "category": "AI/ML/Data",
@@ -752,6 +770,42 @@
     {
       "also_remote": false,
       "category": "Software",
+      "city": "Costa Mesa",
+      "company": "Anduril",
+      "id": "3966d53c-f47c-411d-add7-e02180c0f986",
+      "miles": 51,
+      "new": true,
+      "posted": "2026-11-18",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Business Systems Engineer Intern",
+      "url": "https://boards.greenhouse.io/andurilindustries/jobs/5300647007",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Quant",
+      "city": "Remote (US)",
+      "company": "Andersen",
+      "id": "3906231f-bb20-46ba-a4a3-97ca6a257e2e",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-18",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "PhD Summer Intern",
+      "url": "https://careers.andersen.com/jobs/8348?icims=1&lang=en-us",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
       "city": "Remote (US)",
       "company": "The Opus Group",
       "id": "d174fe5d-9211-4aa0-9ec6-572bc4d1baa5",
@@ -1115,7 +1169,7 @@
       "company": "Bask Health",
       "id": "9d5b1383-ff73-4c8f-b6f4-0197c46a6c9f",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-11",
       "security": false,
       "sponsorship": "Other",
@@ -1131,7 +1185,7 @@
       "company": "Bask Health",
       "id": "40151081-f06e-4823-8d53-15be2481f657",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-11",
       "security": false,
       "sponsorship": "Other",
@@ -1147,7 +1201,7 @@
       "company": "Bask Health",
       "id": "21435415-ed4c-40c2-9b2f-16516ed2a96b",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-11",
       "security": false,
       "sponsorship": "Other",
@@ -1163,7 +1217,7 @@
       "company": "Bask Health",
       "id": "f3a25bd1-c74d-4b78-9c39-1b62e82ce6d1",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-11",
       "security": false,
       "sponsorship": "Other",
@@ -1179,7 +1233,7 @@
       "company": "Bask Health",
       "id": "c1b5b8bc-5c6a-4f51-b2ed-4274bda5ec69",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-11",
       "security": false,
       "sponsorship": "Other",
@@ -1195,7 +1249,7 @@
       "company": "Riot Games",
       "id": "6c623df8-7d81-4f90-be6f-b3fdde876280",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-11",
       "security": false,
       "sponsorship": "Other",
@@ -1279,7 +1333,7 @@
       "company": "DwyerOmega",
       "id": "c14846a9-b307-4b18-9d34-4bd6cf414db6",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-10",
       "security": false,
       "sponsorship": "Other",
@@ -2204,6 +2258,22 @@
     {
       "also_remote": false,
       "category": "Hardware",
+      "city": "Aliso Viejo",
+      "company": "Indie",
+      "id": "2081c3f3-7a52-4da7-a160-43d0509b4835",
+      "miles": 48,
+      "new": false,
+      "posted": "2026-10-14",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Wireless Charging Engineer Intern",
+      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265700007",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
       "city": "Costa Mesa",
       "company": "Anduril",
       "id": "7bb707f9-e94b-4f2d-8921-ee6d523213bc",
@@ -2410,22 +2480,6 @@
       "title": "AI Engineer Intern",
       "url": "https://axos.wd5.myworkdayjobs.com/Axos/job/HQ---San-Diego-CA/AI-Engineer-Intern_JR5658",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Leidos",
-      "id": "bf3a1bd0-0f1c-4719-af15-7f67b32b2590",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-06",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Business Systems AI Intern",
-      "url": "https://leidos.wd5.myworkdayjobs.com/External/job/6314-RemoteTeleworker-US/Business-Systems-AI-Intern_R-00193327",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -3039,24 +3093,6 @@
     },
     {
       "also_remote": false,
-      "category": "Hardware",
-      "city": "Torrance",
-      "company": "Antares Nuclear",
-      "id": "9d3deed3-7476-4d1b-ac11-2072ffe638ff",
-      "miles": 63,
-      "new": false,
-      "posted": "2026-09-16",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://jobs.ashbyhq.com/Antares/419ef2df-f0aa-4b68-994a-077e08a959e3/application?embed=true",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Ancestry",
@@ -3107,24 +3143,6 @@
       ],
       "title": "Flight Software Engineer Intern",
       "url": "https://boards.greenhouse.io/andurilindustries/jobs/5239083007",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "San Diego",
-      "company": "Analog Devices",
-      "id": "62ae2c19-fa99-4894-b992-57deaf9c599e",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-09-15",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2026"
-      ],
-      "title": "Design Evaluation Engineer Intern",
-      "url": "https://analogdevices.wd1.myworkdayjobs.com/External/job/US-MA-Wilmington/Design-Evaluation-Engineer-Intern_R266128",
       "zone": "region"
     },
     {
@@ -3667,24 +3685,6 @@
       "title": "Research Scientist Intern",
       "url": "https://jobs.ashbyhq.com/pluralis-research/c8f78978-a693-4863-bcc0-66af5c3fd0be/application?embed=true",
       "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Torrance",
-      "company": "Northwood Space",
-      "id": "ecdb732a-4566-44b5-bb1e-360045df13d9",
-      "miles": 63,
-      "new": false,
-      "posted": "2026-08-29",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Electrical Engineer Intern - Summer Internship",
-      "url": "https://jobs.ashbyhq.com/NorthwoodSpace/1bc230b1-5ad2-44b8-ad61-e80a730e5026/application?embed=true",
-      "zone": "region"
     },
     {
       "also_remote": false,
