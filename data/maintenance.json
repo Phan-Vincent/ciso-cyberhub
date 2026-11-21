@@ -28,45 +28,85 @@
     "requested_at": "2026-11-01T14:33:21Z",
     "status": "pending-human-verification"
   },
-  "link_offset": 80,
+  "link_offset": 16,
   "links": {
+    "https://github.com/Azure/PyRIT": {
+      "checked_at": "2026-11-16T16:20:21Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/Azure/PyRIT#readme": {
+      "checked_at": "2026-11-16T16:20:22Z",
+      "error": null,
+      "status": "reachable"
+    },
     "https://github.com/CISOfy/lynis": {
-      "checked_at": "2026-10-24T10:14:30Z",
+      "checked_at": "2026-11-16T16:20:23Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/CISOfy/lynis#readme": {
-      "checked_at": "2026-10-24T10:14:30Z",
+      "checked_at": "2026-11-16T16:20:23Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/Cisco-Talos/clamav": {
+      "checked_at": "2026-11-16T16:20:24Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/Cisco-Talos/clamav#readme": {
+      "checked_at": "2026-11-16T16:20:24Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/MISP/MISP": {
+      "checked_at": "2026-11-16T16:20:25Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/MISP/MISP#readme": {
+      "checked_at": "2026-11-16T16:20:25Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/NVIDIA/garak": {
+      "checked_at": "2026-11-16T16:20:26Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/NVIDIA/garak#readme": {
+      "checked_at": "2026-11-16T16:20:26Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/NationalSecurityAgency/ghidra": {
-      "checked_at": "2026-10-24T10:14:31Z",
+      "checked_at": "2026-11-16T16:20:26Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/NationalSecurityAgency/ghidra#readme": {
-      "checked_at": "2026-10-24T10:14:31Z",
+      "checked_at": "2026-11-16T16:20:27Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/OISF/suricata": {
-      "checked_at": "2026-10-24T10:14:31Z",
+      "checked_at": "2026-11-16T16:20:27Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/OISF/suricata#readme": {
-      "checked_at": "2026-10-24T10:14:31Z",
+      "checked_at": "2026-11-16T16:20:28Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/OWASP/Nettacker": {
-      "checked_at": "2026-10-24T10:14:32Z",
+      "checked_at": "2026-11-16T16:20:28Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/OWASP/Nettacker#readme": {
-      "checked_at": "2026-10-24T10:14:32Z",
+      "checked_at": "2026-11-16T16:20:28Z",
       "error": null,
       "status": "reachable"
     },
@@ -367,6 +407,126 @@
     },
     "https://github.com/prowler-cloud/prowler#readme": {
       "checked_at": "2026-11-02T16:29:53Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/radareorg/radare2": {
+      "checked_at": "2026-11-09T16:48:02Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/radareorg/radare2#readme": {
+      "checked_at": "2026-11-09T16:48:02Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/rizinorg/cutter": {
+      "checked_at": "2026-11-09T16:48:03Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/rizinorg/cutter#readme": {
+      "checked_at": "2026-11-09T16:48:04Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/semgrep/semgrep": {
+      "checked_at": "2026-11-09T16:48:04Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/semgrep/semgrep#readme": {
+      "checked_at": "2026-11-09T16:48:05Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/sleuthkit/autopsy": {
+      "checked_at": "2026-11-09T16:48:05Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/sleuthkit/autopsy#readme": {
+      "checked_at": "2026-11-09T16:48:06Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/sleuthkit/sleuthkit": {
+      "checked_at": "2026-11-09T16:48:07Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/sleuthkit/sleuthkit#readme": {
+      "checked_at": "2026-11-09T16:48:07Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/snort3/snort3": {
+      "checked_at": "2026-11-09T16:48:08Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/snort3/snort3#readme": {
+      "checked_at": "2026-11-09T16:48:08Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/trufflesecurity/trufflehog": {
+      "checked_at": "2026-11-09T16:48:09Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/trufflesecurity/trufflehog#readme": {
+      "checked_at": "2026-11-09T16:48:10Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/volatilityfoundation/volatility3": {
+      "checked_at": "2026-11-09T16:48:10Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/volatilityfoundation/volatility3#readme": {
+      "checked_at": "2026-11-09T16:48:11Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/wazuh/wazuh": {
+      "checked_at": "2026-11-09T16:48:12Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/wazuh/wazuh#readme": {
+      "checked_at": "2026-11-09T16:48:12Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/wireshark/wireshark": {
+      "checked_at": "2026-11-09T16:48:13Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/wireshark/wireshark#readme": {
+      "checked_at": "2026-11-09T16:48:13Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/zaproxy/zaproxy": {
+      "checked_at": "2026-11-16T16:20:19Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/zaproxy/zaproxy#readme": {
+      "checked_at": "2026-11-16T16:20:19Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/zeek/zeek": {
+      "checked_at": "2026-11-16T16:20:20Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/zeek/zeek#readme": {
+      "checked_at": "2026-11-16T16:20:20Z",
       "error": null,
       "status": "reachable"
     }
