@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T17:36:47Z",
+  "generated_at": "2026-11-21T23:23:18Z",
   "items": [
     {
       "also_remote": false,
@@ -1039,7 +1039,7 @@
       "company": "Renesas Electronics",
       "id": "4a878341-b59a-4f01-ae88-94e135bfd7af",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-11-13",
       "security": false,
       "sponsorship": "Other",
@@ -1057,7 +1057,7 @@
       "company": "ServiceNow",
       "id": "eb2140d4-c14b-41d4-b79a-7ead14815c8f",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-11-13",
       "security": false,
       "sponsorship": "Other",
@@ -1075,7 +1075,7 @@
       "company": "ServiceNow",
       "id": "576b979b-5662-44cb-a8ba-a25adc3fbdf1",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-11-13",
       "security": false,
       "sponsorship": "Other",
