@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T10:05:46Z",
+  "generated_at": "2026-11-20T18:38:28Z",
   "items": [
     {
       "also_remote": false,
@@ -557,6 +557,24 @@
     },
     {
       "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Fullerton",
+      "company": "Edison International",
+      "id": "eac0d398-9f96-4736-880f-8b8bd6a17886",
+      "miles": 41,
+      "new": false,
+      "posted": "2026-09-01",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Summer Internship - Data Analytics/Science/Applied Math",
+      "url": "https://apply.edisoncareers.com/job/Westminster-2027-Summer-Internship-Data-AnalyticsScienceApplied-Math-Santa-AnaWestminsterIrvineFullerton-CA-92683-5240/1425175800/?ats=successfactors",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "Irvine",
       "company": "Google",
@@ -784,6 +802,22 @@
       "title": "Software Engineering Intern - Software Tools and Assurance",
       "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Software-Tools-and-Assurance-Engineering-Grad-Intern_R016753",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Wurl",
+      "id": "51721c6e-7373-4e16-8508-6d390c350eb6",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-20",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Data Engineer Intern",
+      "url": "https://job-boards.greenhouse.io/wurljobs/jobs/4731130006",
+      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -1055,7 +1089,7 @@
       "company": "StackAV",
       "id": "b93c8f86-a564-4e72-9fa9-39d5a5329901",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-12",
       "security": false,
       "sponsorship": "Other",
@@ -1080,38 +1114,6 @@
       "terms": [],
       "title": "Year-Round Graduate Internship - AI/Machine Learning Time Series Modeling",
       "url": "https://nrel.wd5.myworkdayjobs.com/NLR/job/Remote-Site/Year-Round-Graduate-Internship---AI-Machine-Learning-Time-Series-Modeling_R14589",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Intermountain Healthcare",
-      "id": "3ce645b0-f6de-4226-a5b3-65a6d95354ae",
-      "miles": null,
-      "new": false,
-      "posted": "2026-11-12",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Machine Learning Operations Intern",
-      "url": "https://imh.wd108.myworkdayjobs.com/IntermountainCareers/job/Key-Bank-Tower/Machine-Learning-Operations--MLOps--Intern_R188318",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "Intermountain Healthcare",
-      "id": "eb961a40-c8ad-450e-9ef6-4a0b05ba5920",
-      "miles": null,
-      "new": false,
-      "posted": "2026-11-12",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "AI/ML Engineer Intern",
-      "url": "https://imh.wd108.myworkdayjobs.com/IntermountainCareers/job/Key-Bank-Tower/AI-ML-Engineer-Intern_R188835",
       "zone": "remote"
     },
     {
