@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T23:23:18Z",
+  "generated_at": "2026-11-22T09:50:46Z",
   "items": [
     {
       "also_remote": false,
@@ -71,24 +71,6 @@
       ],
       "title": "Data Platform Engineering Intern - Data Platform Engineering",
       "url": "https://xboxgaming.wd1.myworkdayjobs.com/Blizzard_External_Careers/job/Irvine---Blizzard---Blizzard-Way/Blizzard-2027-Summer-Internships---Data-Platform-Engineering_R028358",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Irvine",
-      "company": "Capital Group",
-      "id": "2090dcc2-c489-4ec4-bd16-8b1af5aa79f2",
-      "miles": 45,
-      "new": false,
-      "posted": "2026-11-13",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Global Technology Summer Associate Intern",
-      "url": "https://capgroup.wd1.myworkdayjobs.com/en-US/capitalgroupcareers/job/Irvine/CAMPUS-Global-Technology-Summer-Associate--2027-_JR7798",
       "zone": "near"
     },
     {
@@ -819,6 +801,60 @@
       ],
       "title": "Software Engineering Intern - Software Tools and Assurance",
       "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Software-Tools-and-Assurance-Engineering-Grad-Intern_R016753",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Torrance",
+      "company": "Neros Technologies",
+      "id": "c2b3d6cb-a6e8-4677-b5cb-24255710302d",
+      "miles": 63,
+      "new": true,
+      "posted": "2026-11-22",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Firmware/Embedded Software Engineer Intern",
+      "url": "https://job-boards.greenhouse.io/nerostechnologies/jobs/5278981007",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Torrance",
+      "company": "Neros Technologies",
+      "id": "cc0456f2-4b03-4d99-8bb3-90e5b9259771",
+      "miles": 63,
+      "new": true,
+      "posted": "2026-11-21",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Autonomy Intern",
+      "url": "https://job-boards.greenhouse.io/nerostechnologies/jobs/5273167007",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Torrance",
+      "company": "Neros Technologies",
+      "id": "9602bf3d-66e6-4284-abbb-5a93b37a12d1",
+      "miles": 63,
+      "new": true,
+      "posted": "2026-11-21",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Electrical Engineer Intern",
+      "url": "https://job-boards.greenhouse.io/nerostechnologies/jobs/5273149007",
       "zone": "region"
     },
     {
