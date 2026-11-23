@@ -28,7 +28,7 @@
     "requested_at": "2026-11-01T14:33:21Z",
     "status": "pending-human-verification"
   },
-  "link_offset": 16,
+  "link_offset": 36,
   "links": {
     "https://github.com/Azure/PyRIT": {
       "checked_at": "2026-11-16T16:20:21Z",
@@ -110,83 +110,103 @@
       "error": null,
       "status": "reachable"
     },
+    "https://github.com/OpenCTI-Platform/opencti": {
+      "checked_at": "2026-11-23T18:41:25Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/OpenCTI-Platform/opencti#readme": {
+      "checked_at": "2026-11-23T18:41:25Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/Security-Onion-Solutions/securityonion": {
+      "checked_at": "2026-11-23T18:41:26Z",
+      "error": null,
+      "status": "reachable"
+    },
+    "https://github.com/Security-Onion-Solutions/securityonion#readme": {
+      "checked_at": "2026-11-23T18:41:26Z",
+      "error": null,
+      "status": "reachable"
+    },
     "https://github.com/SigmaHQ/sigma": {
-      "checked_at": "2026-10-25T20:55:00Z",
+      "checked_at": "2026-11-23T18:41:27Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/SigmaHQ/sigma#readme": {
-      "checked_at": "2026-10-25T20:55:00Z",
+      "checked_at": "2026-11-23T18:41:27Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/UKGovernmentBEIS/inspect_ai": {
-      "checked_at": "2026-10-25T20:55:00Z",
+      "checked_at": "2026-11-23T18:41:27Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/UKGovernmentBEIS/inspect_ai#readme": {
-      "checked_at": "2026-10-25T20:55:00Z",
+      "checked_at": "2026-11-23T18:41:27Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/Velocidex/velociraptor": {
-      "checked_at": "2026-10-25T20:55:00Z",
+      "checked_at": "2026-11-23T18:41:28Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/Velocidex/velociraptor#readme": {
-      "checked_at": "2026-10-25T20:55:00Z",
+      "checked_at": "2026-11-23T18:41:28Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/VirusTotal/yara": {
-      "checked_at": "2026-10-25T20:55:01Z",
+      "checked_at": "2026-11-23T18:41:29Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/VirusTotal/yara#readme": {
-      "checked_at": "2026-10-25T20:55:01Z",
+      "checked_at": "2026-11-23T18:41:29Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/WithSecureLabs/chainsaw": {
-      "checked_at": "2026-10-25T20:55:01Z",
+      "checked_at": "2026-11-23T18:41:29Z",
       "error": "Redirect requires source configuration review",
       "status": "needs-review"
     },
     "https://github.com/WithSecureLabs/chainsaw#readme": {
-      "checked_at": "2026-10-25T20:55:01Z",
+      "checked_at": "2026-11-23T18:41:29Z",
       "error": "Redirect requires source configuration review",
       "status": "needs-review"
     },
     "https://github.com/Yamato-Security/hayabusa": {
-      "checked_at": "2026-10-25T20:55:01Z",
+      "checked_at": "2026-11-23T18:41:30Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/Yamato-Security/hayabusa#readme": {
-      "checked_at": "2026-10-25T20:55:01Z",
+      "checked_at": "2026-11-23T18:41:30Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/anchore/grype": {
-      "checked_at": "2026-10-25T20:55:02Z",
+      "checked_at": "2026-11-23T18:41:30Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/anchore/grype#readme": {
-      "checked_at": "2026-10-25T20:55:02Z",
+      "checked_at": "2026-11-23T18:41:30Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/anchore/syft": {
-      "checked_at": "2026-10-25T20:55:02Z",
+      "checked_at": "2026-11-23T18:41:31Z",
       "error": null,
       "status": "reachable"
     },
     "https://github.com/anchore/syft#readme": {
-      "checked_at": "2026-10-25T20:55:02Z",
+      "checked_at": "2026-11-23T18:41:31Z",
       "error": null,
       "status": "reachable"
     },
