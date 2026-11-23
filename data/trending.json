@@ -1,132 +1,132 @@
 {
-  "generated_at": "2026-11-22T17:51:57Z",
+  "generated_at": "2026-11-22T23:39:07Z",
   "models": [
-    {
-      "created": "2026-11-17",
-      "downloads": 23543,
-      "id": "thinkingmachines/Inkling-2-Mini",
-      "likes": 4511,
-      "org": "thinkingmachines",
-      "task": "image-text-to-text",
-      "trending": 857,
-      "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini"
-    },
     {
       "created": "2026-11-17",
       "downloads": 6617,
       "id": "tencent/Hy4-flash",
-      "likes": 595,
+      "likes": 620,
       "org": "tencent",
       "task": "image-text-to-text",
-      "trending": 416,
+      "trending": 423,
       "url": "https://huggingface.co/tencent/Hy4-flash"
     },
     {
       "created": "2026-11-17",
       "downloads": 1863,
       "id": "sensenova/SenseNova-Loop-9B",
-      "likes": 481,
+      "likes": 533,
       "org": "sensenova",
       "task": "image-text-to-text",
-      "trending": 191,
+      "trending": 194,
       "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B"
     },
     {
       "created": "2026-10-13",
       "downloads": 3317,
       "id": "maxwell-model/Maxwell-V1-Flash",
-      "likes": 343,
+      "likes": 359,
       "org": "maxwell-model",
       "task": "text-generation",
       "trending": 115,
       "url": "https://huggingface.co/maxwell-model/Maxwell-V1-Flash"
     },
     {
-      "created": "2026-10-05",
-      "downloads": 203420,
-      "id": "nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
-      "likes": 710,
-      "org": "nvidia",
-      "task": "text-generation",
-      "trending": 86,
-      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB"
-    },
-    {
       "created": "2026-10-17",
       "downloads": 515306,
       "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "likes": 5843,
+      "likes": 5866,
       "org": "deepseek-ai",
       "task": "image-text-to-text",
-      "trending": 85,
+      "trending": 86,
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+    },
+    {
+      "created": "2026-10-05",
+      "downloads": 203420,
+      "id": "nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
+      "likes": 727,
+      "org": "nvidia",
+      "task": "text-generation",
+      "trending": 80,
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB"
     },
     {
       "created": "2024-04-17",
       "downloads": 428267,
       "id": "meta-llama/Meta-Llama-3-8B-Instruct",
-      "likes": 6511,
+      "likes": 6551,
       "org": "meta-llama",
       "task": "text-generation",
-      "trending": 53,
+      "trending": 55,
       "url": "https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct"
-    },
-    {
-      "created": "2026-11-18",
-      "downloads": 3836,
-      "id": "microsoft/Aion-1.0-Instruct-2.3B",
-      "likes": 231,
-      "org": "microsoft",
-      "task": "text-generation",
-      "trending": 51,
-      "url": "https://huggingface.co/microsoft/Aion-1.0-Instruct-2.3B"
     },
     {
       "created": "2026-11-02",
       "downloads": 70495,
       "id": "moonshotai/Kimi-K3.1-Pro",
-      "likes": 2399,
+      "likes": 2424,
       "org": "moonshotai",
       "task": "image-text-to-text",
       "trending": 51,
       "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
     },
     {
+      "created": "2026-11-18",
+      "downloads": 3836,
+      "id": "microsoft/Aion-1.0-Instruct-2.3B",
+      "likes": 263,
+      "org": "microsoft",
+      "task": "text-generation",
+      "trending": 51,
+      "url": "https://huggingface.co/microsoft/Aion-1.0-Instruct-2.3B"
+    },
+    {
       "created": "2026-10-30",
       "downloads": 62806,
       "id": "OVHaiLLM/Olala-v1.0-mini-7A1B",
-      "likes": 247,
+      "likes": 277,
       "org": "OVHaiLLM",
       "task": "text-generation",
-      "trending": 50,
+      "trending": 51,
       "url": "https://huggingface.co/OVHaiLLM/Olala-v1.0-mini-7A1B"
+    },
+    {
+      "created": "2026-11-18",
+      "downloads": 80865,
+      "id": "sensenova/SenseNova-Loop-9B-GGUF",
+      "likes": 195,
+      "org": "sensenova",
+      "task": "image-text-to-text",
+      "trending": 42,
+      "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B-GGUF"
     }
   ],
   "repos": [
     {
       "created": "2026-10-29",
       "description": "Reverse-engineer any video, shot by shot: filmed, AI-generated or coded, and how to remake it. Breakdowns in the open VIDEO.md format. 逆向一切视频，逐个镜头看是拍的、AI 生成的还是代码做的，再告诉你怎么复刻；拆解结果按 V",
-      "gain": 148,
+      "gain": 102,
       "language": "Python",
       "license": "Apache-2.0",
       "name": "JuneYaooo/rea-video",
-      "stars": 12128,
+      "stars": 12230,
       "url": "https://github.com/JuneYaooo/rea-video"
     },
     {
       "created": "2026-10-03",
       "description": "Eleven free Claude skills that clone any app: reverse-engineer it, rebuild it, test it for bugs, then fix what its users hate. Free, MIT.",
-      "gain": 35,
+      "gain": 19,
       "language": "Python",
       "license": "MIT",
       "name": "Jakeschincariol/replica-skill",
-      "stars": 10317,
+      "stars": 10336,
       "url": "https://github.com/Jakeschincariol/replica-skill"
     },
     {
       "created": "2026-09-30",
       "description": "Point Claude at any game. Skills, tools and the fal MCP that let Claude Code mod almost any PC game you own: recon, reverse engineering, fal-generated art/3D/audio, in-game testing",
-      "gain": 2,
+      "gain": 0,
       "language": "Python",
       "license": "MIT",
       "name": "rehan-remade/universal-modder",
@@ -136,21 +136,21 @@
     {
       "created": "2026-10-25",
       "description": "🛡️ BLA (bla-agents / Blind LLM Agents) — Open-source Blue Defense MCP server & CLI protecting JS/TS, Electron ASAR, WASM, Python, Native Binaries, SQLite, GGUF/Safetensors & Androi",
-      "gain": 17,
+      "gain": 13,
       "language": "TypeScript",
       "license": "MIT",
       "name": "qybaihe/bla",
-      "stars": 6413,
+      "stars": 6426,
       "url": "https://github.com/qybaihe/bla"
     },
     {
       "created": "2026-10-16",
       "description": "Curated tools, case studies and papers for reverse engineering websites, games, apps, binaries, firmware and protocols. Source-reviewed, English and Chinese.",
-      "gain": 31,
+      "gain": 11,
       "language": "Python",
       "license": "MIT",
       "name": "reacher-z/Awesome-REA",
-      "stars": 3351,
+      "stars": 3362,
       "url": "https://github.com/reacher-z/Awesome-REA"
     },
     {
@@ -160,47 +160,47 @@
       "language": "Python",
       "license": "CC0-1.0",
       "name": "SubmitGame/awesome-decomp-games",
-      "stars": 3172,
+      "stars": 3175,
       "url": "https://github.com/SubmitGame/awesome-decomp-games"
     },
     {
       "created": "2026-08-22",
       "description": "x64dbg-MCP Server is a native MCP (Model Context Protocol) plugin for x64dbg that exposes the debugger's full functionality over HTTP. Connect any MCP-compatible AI assistant and c",
-      "gain": 3,
+      "gain": -1,
       "language": "Zig",
       "license": "MIT",
       "name": "duty1g/x64dbg-mcp-server",
-      "stars": 2858,
+      "stars": 2857,
       "url": "https://github.com/duty1g/x64dbg-mcp-server"
-    },
-    {
-      "created": "2026-10-30",
-      "description": "The first fruit of the Nüwa tree — an autonomous AI pentest legion (634-team champion, 8h unattended, 1B tokens beat 4.5B). Not just a tool: evolvable by design. Grow your own frui",
-      "gain": 8,
-      "language": "Python",
-      "license": "MIT",
-      "name": "N1nEmAn/sapper-v2",
-      "stars": 2551,
-      "url": "https://github.com/N1nEmAn/sapper-v2"
     },
     {
       "created": "2026-10-10",
       "description": "Learn cloud security by building it! An open-source homelab teaching Zero Trust, DevSecOps, IaC, and cloud architecture from the ground up.",
-      "gain": 295,
+      "gain": 309,
       "language": "Python",
       "license": "Apache-2.0",
       "name": "ChiefGyk3D/Clouds-Against-Humanity",
-      "stars": 2436,
+      "stars": 2745,
       "url": "https://github.com/ChiefGyk3D/Clouds-Against-Humanity"
+    },
+    {
+      "created": "2026-10-30",
+      "description": "The first fruit of the Nüwa tree — an autonomous AI pentest legion (634-team champion, 8h unattended, 1B tokens beat 4.5B). Not just a tool: evolvable by design. Grow your own frui",
+      "gain": 2,
+      "language": "Python",
+      "license": "MIT",
+      "name": "N1nEmAn/sapper-v2",
+      "stars": 2553,
+      "url": "https://github.com/N1nEmAn/sapper-v2"
     },
     {
       "created": "2026-10-09",
       "description": "Curated reverse-engineering tools and learning resources for binaries, apps, firmware, formats, and protocols.",
-      "gain": 8,
+      "gain": 5,
       "language": "Python",
       "license": "CC0-1.0",
       "name": "morluto/awesome-reverse-engineering",
-      "stars": 2281,
+      "stars": 2286,
       "url": "https://github.com/morluto/awesome-reverse-engineering"
     }
   ],
@@ -210,11 +210,11 @@
   },
   "spotlight": [
     {
-      "forks": 115548,
+      "forks": 115590,
       "language": "TypeScript",
       "license": "MIT",
       "name": "morluto/rea",
-      "stars": 473809,
+      "stars": 474049,
       "stars_note": "",
       "url": "https://github.com/morluto/rea",
       "why": "Viral this month: an MCP server that gives AI coding agents 170+ reverse-engineering tools for binaries, Electron apps, websites and Android APKs."
