@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T18:41:02Z",
+  "generated_at": "2026-11-24T03:59:00Z",
   "items": [
     {
       "also_remote": false,
@@ -44,7 +44,7 @@
       "company": "Blizzard Entertainment",
       "id": "e58882c1-2408-45c6-b2e5-ba345dc013e3",
       "miles": 45,
-      "new": true,
+      "new": false,
       "posted": "2026-11-16",
       "security": false,
       "sponsorship": "Other",
@@ -62,7 +62,7 @@
       "company": "Blizzard Entertainment",
       "id": "436c4c36-f3de-487a-83b6-492a4266d8ff",
       "miles": 45,
-      "new": true,
+      "new": false,
       "posted": "2026-11-16",
       "security": false,
       "sponsorship": "Other",
@@ -805,6 +805,24 @@
     },
     {
       "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Carson",
+      "company": "GrayMatter Robotics",
+      "id": "542449da-e7d7-4289-a17e-c344f121c66a",
+      "miles": 60,
+      "new": true,
+      "posted": "2026-11-23",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Winter 2027"
+      ],
+      "title": "Robotics Engineering Intern: Systems & Applications",
+      "url": "https://jobs.ashbyhq.com/graymatter-robotics/347cbb66-c542-4c41-bdfc-3f9fa242b20b/application?embed=true",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "Product",
       "city": "El Segundo",
       "company": "First Resonance",
@@ -838,6 +856,94 @@
       "title": "Data Scientist Intern - Water",
       "url": "https://hdhl.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1009005",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "San Diego",
+      "company": "Seasats",
+      "id": "3c53fcff-20c6-413f-a5dc-2c5080cdf728",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-23",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Winter 2027"
+      ],
+      "title": "Electronics Engineering Intern",
+      "url": "https://seasats.breezy.hr/p/58eb0549bc6d/apply",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Lifeway",
+      "id": "b5da85e0-f6ac-4b3c-965a-7f736c578129",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-23",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Summer Internship - Business Intelligence",
+      "url": "https://hq-lifeway.icims.com/jobs/27218/job?mobile=true&needsRedirect=false",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Lifeway",
+      "id": "f4ef9827-4f9e-4b9b-8359-e2c86ae192c9",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-23",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern - Full Stack - Back-End",
+      "url": "https://hq-lifeway.icims.com/jobs/27217/job?mobile=true&needsRedirect=false",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Lifeway",
+      "id": "371f3fc2-df75-4478-a3c1-902ce972609f",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-23",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Front-End Engineer Intern",
+      "url": "https://hq-lifeway.icims.com/jobs/27216/job?mobile=true&needsRedirect=false",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Blueprint AI (Mental Health)",
+      "id": "5e5339f2-ae06-4a87-8ccb-aaeb76d60882",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-23",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Product Engineering Intern",
+      "url": "https://apply.workable.com/blueprint-health/j/6C902886A5/apply",
+      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -1050,22 +1156,6 @@
       ],
       "title": "Interactive Resident",
       "url": "https://jobs.jobvite.com/theopusgroup/job/oPMUAfwP?nl=1&nl=1&fr=false",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "Product",
-      "city": "Remote (US)",
-      "company": "Research Innovations",
-      "id": "e36780ca-625f-4558-8501-fa2649791b6c",
-      "miles": null,
-      "new": true,
-      "posted": "2026-11-17",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Department of War SkillBridge Operations SME Intern",
-      "url": "https://jobs.lever.co/researchinnovations.com/eeada042-c446-4723-81f4-b1607443fb4e/apply",
       "zone": "remote"
     },
     {
@@ -1527,6 +1617,24 @@
     {
       "also_remote": false,
       "category": "Software",
+      "city": "San Diego",
+      "company": "Shield AI",
+      "id": "ffd39d30-42ea-42da-af1b-347fc146a71a",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-11-10",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://jobs.ashbyhq.com/shield/db04c516-d21a-449c-8bfd-1cf830eafb5a/application?embed=true",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
       "city": "Remote (US)",
       "company": "DwyerOmega",
       "id": "c14846a9-b307-4b18-9d34-4bd6cf414db6",
@@ -1780,42 +1888,6 @@
     },
     {
       "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Carson",
-      "company": "GrayMatter Robotics",
-      "id": "901b53ec-fba2-40bc-89d6-a7200607ee62",
-      "miles": 60,
-      "new": false,
-      "posted": "2026-10-28",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Fall 2026"
-      ],
-      "title": "Robotics Engineering Intern: Systems & Applications",
-      "url": "https://jobs.ashbyhq.com/graymatter-robotics/1cdbf03d-438b-46f8-808e-76fb6cfd4320/application?embed=true",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "El Segundo",
-      "company": "RTX",
-      "id": "3f3c57d3-3d85-4024-9f7f-43350270aabf",
-      "miles": 65,
-      "new": false,
-      "posted": "2026-10-28",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Electrical Engineer Intern",
-      "url": "https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-CA-EL-SEGUNDO-E01--2000-E-El-Segundo-Blvd--BLDG-E01/Electrical-Engineering-Intern--Summer-2027-_01883292",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
       "category": "Software",
       "city": "Remote (US)",
       "company": "Subtotal",
@@ -1860,24 +1932,6 @@
       "terms": [],
       "title": "Photonic Integrated Circuit Engineer Intern",
       "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Photonic-Integrated-Circuits-Engineer_R016928",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "San Diego",
-      "company": "Shield AI",
-      "id": "2507d753-2e29-4433-be1b-355a19295f16",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-10-26",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern",
-      "url": "https://jobs.ashbyhq.com/f7d8749a-72d6-407c-bf98-292ea630c73a/db04c516-d21a-449c-8bfd-1cf830eafb5a/application?embed=true",
       "zone": "region"
     },
     {
@@ -3171,24 +3225,6 @@
       "title": "AI Scientist Intern",
       "url": "https://jobs.intuit.com/job/mountain-view/summer-2027-ai-science-intern/27595/100620927536",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "CACI",
-      "id": "e772b664-062b-4315-9007-69460c23019c",
-      "miles": null,
-      "new": false,
-      "posted": "2026-09-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Software Engineer Intern - Summer 2027",
-      "url": "https://caci.wd1.myworkdayjobs.com/external/job/437-DENVER-CO/Cleared-Software-Engineer-Intern---Summer-2027_331999",
-      "zone": "remote"
     },
     {
       "also_remote": false,
