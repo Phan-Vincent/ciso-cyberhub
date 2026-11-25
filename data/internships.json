@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T03:59:00Z",
+  "generated_at": "2026-11-24T20:41:20Z",
   "items": [
     {
       "also_remote": false,
@@ -339,6 +339,24 @@
     },
     {
       "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Redlands",
+      "company": "Esri",
+      "id": "5207bd70-eb5d-4242-aba6-0714d0d37365",
+      "miles": 12,
+      "new": false,
+      "posted": "2026-09-22",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Enterprise Business Intelligence Intern",
+      "url": "https://job-boards.greenhouse.io/studentprogram/jobs/5246028007",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
       "category": "Hardware",
       "city": "Irvine",
       "company": "Marvell",
@@ -571,6 +589,42 @@
       ],
       "title": "Summer Internship - Data Analytics/Science/Applied Math",
       "url": "https://apply.edisoncareers.com/job/Westminster-2027-Summer-Internship-Data-AnalyticsScienceApplied-Math-Santa-AnaWestminsterIrvineFullerton-CA-92683-5240/1425175800/?ats=successfactors",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Redlands",
+      "company": "Esri",
+      "id": "c6fcfa7b-64c5-438b-b327-e3f5af651cac",
+      "miles": 12,
+      "new": false,
+      "posted": "2026-08-25",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "GIS Engineer Intern",
+      "url": "https://job-boards.greenhouse.io/studentprogram/jobs/5217904007",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Redlands",
+      "company": "Esri",
+      "id": "3d67817e-0fda-4e2d-a390-58eb5f728d03",
+      "miles": 12,
+      "new": false,
+      "posted": "2026-08-25",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Development Engineer Intern",
+      "url": "https://job-boards.greenhouse.io/studentprogram/jobs/5217883007",
       "zone": "near"
     },
     {
@@ -1019,6 +1073,22 @@
     },
     {
       "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Pasadena",
+      "company": "NASA Jet Propulsion Laboratory",
+      "id": "0abf44bd-1664-4576-8f15-2e958d00b1a6",
+      "miles": 47,
+      "new": true,
+      "posted": "2026-11-20",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Business Administration Intern",
+      "url": "https://citjpl.wd5.myworkdayjobs.com/Jobs/job/JPL-Campus/Business-Administration-Academic-Part-time-Intern_R6311",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "Torrance",
       "company": "EP Wealth Advisors",
@@ -1165,7 +1235,7 @@
       "company": "Impulse Space",
       "id": "bb9f74a2-6ded-4e81-a5a6-0be1192f3e17",
       "miles": 65,
-      "new": true,
+      "new": false,
       "posted": "2026-11-16",
       "security": false,
       "sponsorship": "Other",
@@ -1183,7 +1253,7 @@
       "company": "ServiceNow",
       "id": "abe940a9-ab2d-4ad8-a09c-c78904056271",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-11-16",
       "security": false,
       "sponsorship": "Other",
@@ -1192,24 +1262,6 @@
       ],
       "title": "Inbound Product Manager Intern",
       "url": "https://jobs.smartrecruiters.com/ServiceNow/744000161885234",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "San Diego",
-      "company": "Renesas Electronics",
-      "id": "4a878341-b59a-4f01-ae88-94e135bfd7af",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-11-13",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Power Management Integrated Circuit Analog Intern",
-      "url": "https://jobs.smartrecruiters.com/RenesasElectronics/744000161574999",
       "zone": "region"
     },
     {
@@ -1366,22 +1418,6 @@
       ],
       "title": "Research Intern - Autonomy",
       "url": "https://job-boards.greenhouse.io/stackav/jobs/5287594007",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "National Laboratory of the Rockies",
-      "id": "1930aa1f-6b82-411d-88d7-1c42cdfa1597",
-      "miles": null,
-      "new": false,
-      "posted": "2026-11-12",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Year-Round Graduate Internship - AI/Machine Learning Time Series Modeling",
-      "url": "https://nrel.wd5.myworkdayjobs.com/NLR/job/Remote-Site/Year-Round-Graduate-Internship---AI-Machine-Learning-Time-Series-Modeling_R14589",
       "zone": "remote"
     },
     {
@@ -1715,22 +1751,6 @@
       "title": "Agentic AI PhD Intern - Modeling Agent",
       "url": "https://jobs.keysight.com/jobs/54739?icims=1&lang=en-us",
       "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Remote (US)",
-      "company": "Leidos",
-      "id": "77c8e346-3780-4747-992a-a0692af4336d",
-      "miles": null,
-      "new": false,
-      "posted": "2026-11-06",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "AI/Automation Development Intern - Assessment & Authorization",
-      "url": "https://leidos.wd5.myworkdayjobs.com/External/job/6314-RemoteTeleworker-US/AI-Automation-Development-Intern---Assessment---Authorization_R-00195319",
-      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -2462,6 +2482,42 @@
     },
     {
       "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Energy Solutions",
+      "id": "aac9fffd-b652-4588-b9d2-d5e8c7c2c4c3",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-09",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Clean Transportation Intern",
+      "url": "https://job-boards.greenhouse.io/energysolutionsinternships/jobs/5229251007",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "Energy Solutions",
+      "id": "d727438a-4b85-414c-ac96-678d4eddeb40",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-09",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Solar Intern",
+      "url": "https://job-boards.greenhouse.io/energysolutionsinternships/jobs/5229243007",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "Escondido",
       "company": "Badger Meter",
@@ -2508,22 +2564,6 @@
       ],
       "title": "Autonomy & Robotics Engineer Intern",
       "url": "https://avav.wd1.myworkdayjobs.com/en-US/avav/job/Simi-Valley-CA/Summer-2027-Autonomy---Robotics-Engineering-Intern_8556",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "El Segundo",
-      "company": "The Aerospace Corporation",
-      "id": "594991dc-434c-49b1-9e3d-2d3121ca735a",
-      "miles": 65,
-      "new": false,
-      "posted": "2026-10-07",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Radiation Effects Graduate Intern",
-      "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Radiation-Effects-Graduate-Intern_R016793",
       "zone": "region"
     },
     {
@@ -3242,24 +3282,6 @@
       ],
       "title": "Electrical Engineer Intern",
       "url": "https://jobs.ashbyhq.com/Antares/3061297c-a666-47be-a58a-b62881bf183d/application?embed=true",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Redondo Beach",
-      "company": "Impulse Space",
-      "id": "1e876ae2-39bb-4074-b163-dcb7368e9df3",
-      "miles": 65,
-      "new": false,
-      "posted": "2026-09-10",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2027"
-      ],
-      "title": "Flight Software Engineer Intern - Summer 2027",
-      "url": "https://impulsespace.pinpointhq.com/en/postings/d4fdab1d-254b-44a4-96bf-875ebd5b8cd7?ats=pinpointhq",
       "zone": "region"
     },
     {
