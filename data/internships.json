@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T20:41:20Z",
+  "generated_at": "2026-11-25T11:23:41Z",
   "items": [
     {
       "also_remote": false,
@@ -319,22 +319,6 @@
       ],
       "title": "Data Analytics / AI Intern - Summer 2027",
       "url": "https://careersenus-itt-inc.icims.com/jobs/17657/job?mobile=true&needsRedirect=false",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Irvine",
-      "company": "Field AI",
-      "id": "fd62318c-78e9-47ad-a66a-f7a1501c5a7f",
-      "miles": 45,
-      "new": false,
-      "posted": "2026-09-24",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Simulation – Sim to Real Intern",
-      "url": "https://jobs.lever.co/field-ai/cce71d31-40a0-407f-b3b9-a586976b89b8/apply",
       "zone": "near"
     },
     {
@@ -859,6 +843,22 @@
     },
     {
       "also_remote": false,
+      "category": "Product",
+      "city": "Huntington Beach",
+      "company": "Nikkiso",
+      "id": "98973a92-e48a-42ff-8713-8b8f55bb30b6",
+      "miles": 53,
+      "new": true,
+      "posted": "2026-11-25",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Product Management Intern",
+      "url": "https://careers-nikkiso.icims.com/jobs/4528/job?mobile=true&needsRedirect=false",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Carson",
       "company": "GrayMatter Robotics",
@@ -1216,7 +1216,7 @@
       "company": "The Opus Group",
       "id": "d174fe5d-9211-4aa0-9ec6-572bc4d1baa5",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-17",
       "security": false,
       "sponsorship": "Other",
@@ -1970,22 +1970,6 @@
       ],
       "title": "Game Design Intern",
       "url": "https://job-boards.greenhouse.io/crystaldynamics/jobs/4747682005",
-      "zone": "remote"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Remote (US)",
-      "company": "ConnectPrep",
-      "id": "8ea7dfa9-2c59-482d-9584-d63a1fd13505",
-      "miles": null,
-      "new": false,
-      "posted": "2026-10-25",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Data Analyst Intern",
-      "url": "https://apply.workable.com/connectprep/j/1AF4F8C65F/apply",
       "zone": "remote"
     },
     {
