@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T11:23:41Z",
+  "generated_at": "2026-11-26T01:47:55Z",
   "items": [
     {
       "also_remote": false,
@@ -26,7 +26,7 @@
       "company": "Anduril",
       "id": "00b1c762-9ca4-4c23-afff-d070ee8279e6",
       "miles": 43,
-      "new": true,
+      "new": false,
       "posted": "2026-11-17",
       "security": false,
       "sponsorship": "Other",
@@ -228,24 +228,6 @@
       ],
       "title": "Software Engineer Intern",
       "url": "https://careers.garmin.com/jobs/20129?icims=1",
-      "zone": "near"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "Santa Ana",
-      "company": "Anduril",
-      "id": "dafc249b-2c6d-433d-9420-560205cd6a93",
-      "miles": 43,
-      "new": false,
-      "posted": "2026-10-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2027"
-      ],
-      "title": "Research Engineer Co-op",
-      "url": "https://boards.greenhouse.io/andurilindustries/jobs/5265127007",
       "zone": "near"
     },
     {
@@ -778,7 +760,7 @@
       "company": "Constellation Energy",
       "id": "11f69ae2-522e-4819-8898-d55df90e6226",
       "miles": 102,
-      "new": true,
+      "new": false,
       "posted": "2026-11-17",
       "security": true,
       "sponsorship": "Other",
@@ -856,6 +838,22 @@
       "title": "Product Management Intern",
       "url": "https://careers-nikkiso.icims.com/jobs/4528/job?mobile=true&needsRedirect=false",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Product",
+      "city": "Remote (US)",
+      "company": "Ancestry",
+      "id": "07bdacbd-90cf-4a2b-bb86-9af0d54b3143",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-25",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Product Manager Co-op - DNA to Family History - Bridges",
+      "url": "https://ancestry.wd501.myworkdayjobs.com/Careers/job/Remote/Product-Manager-Co-op---DNA-to-Family-History--Bridges-_R003505",
+      "zone": "remote"
     },
     {
       "also_remote": false,
@@ -2854,24 +2852,6 @@
       ],
       "title": "Electrical Engineering Internship - Summer 2027",
       "url": "https://job-boards.greenhouse.io/amca/jobs/4396690009",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "AI/ML/Data",
-      "city": "Calabasas",
-      "company": "Keysight Technologies",
-      "id": "f4ec9754-f694-4e49-89d1-e4e407d7d2ff",
-      "miles": 77,
-      "new": false,
-      "posted": "2026-09-29",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Winter 2026"
-      ],
-      "title": "EDA AI/ML Software Intern",
-      "url": "https://jobs.keysight.com/jobs/54582?icims=1",
       "zone": "region"
     },
     {
