@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T10:58:16Z",
+  "generated_at": "2026-11-27T01:46:45Z",
   "items": [
     {
       "also_remote": false,
@@ -26,7 +26,7 @@
       "company": "Western Digital",
       "id": "0590c67b-538d-436a-97a1-2344effdb7cb",
       "miles": 45,
-      "new": true,
+      "new": false,
       "posted": "2026-11-18",
       "security": false,
       "sponsorship": "Other",
@@ -1232,7 +1232,7 @@
       "company": "Anduril",
       "id": "3966d53c-f47c-411d-add7-e02180c0f986",
       "miles": 51,
-      "new": true,
+      "new": false,
       "posted": "2026-11-18",
       "security": false,
       "sponsorship": "Other",
@@ -1250,7 +1250,7 @@
       "company": "Andersen",
       "id": "3906231f-bb20-46ba-a4a3-97ca6a257e2e",
       "miles": null,
-      "new": true,
+      "new": false,
       "posted": "2026-11-18",
       "security": false,
       "sponsorship": "Other",
@@ -2424,22 +2424,6 @@
       "terms": [],
       "title": "Research Engineer Intern - Video and Edge - Multimedia Lab",
       "url": "https://lifeattiktok.com/search/7696664743112788277",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
-      "city": "Aliso Viejo",
-      "company": "Indie",
-      "id": "07aad510-60aa-4f59-a810-1efbb9d74d6f",
-      "miles": 48,
-      "new": false,
-      "posted": "2026-10-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Applications Software Developer Intern",
-      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265696007",
       "zone": "region"
     },
     {
