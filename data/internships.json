@@ -1,6 +1,24 @@
 {
-  "generated_at": "2026-11-26T01:47:55Z",
+  "generated_at": "2026-11-26T10:58:16Z",
   "items": [
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Irvine",
+      "company": "Blizzard Entertainment",
+      "id": "18fb7fb1-2e9a-4339-bab0-009982dfb6c8",
+      "miles": 45,
+      "new": true,
+      "posted": "2026-11-24",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Tech Art Intern",
+      "url": "https://xboxgaming.wd1.myworkdayjobs.com/Blizzard_External_Careers/job/Irvine---Blizzard---Blizzard-Way/Blizzard-2027-Summer-Internships---Tech-Art_R028383",
+      "zone": "near"
+    },
     {
       "also_remote": false,
       "category": "Hardware",
@@ -853,6 +871,42 @@
       "terms": [],
       "title": "Product Manager Co-op - DNA to Family History - Bridges",
       "url": "https://ancestry.wd501.myworkdayjobs.com/Careers/job/Remote/Product-Manager-Co-op---DNA-to-Family-History--Bridges-_R003505",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "OpenSesame",
+      "id": "c4e37c25-c2af-42ad-a27a-13daa426ddf8",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-25",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://boards.greenhouse.io/opensesame/jobs/8418272",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Product",
+      "city": "Remote (US)",
+      "company": "OpenSesame",
+      "id": "04493088-dacd-4059-920a-cf86ac5d3a7e",
+      "miles": null,
+      "new": true,
+      "posted": "2026-11-25",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Product Intern",
+      "url": "https://boards.greenhouse.io/opensesame/jobs/8418204",
       "zone": "remote"
     },
     {
@@ -2370,6 +2424,22 @@
       "terms": [],
       "title": "Research Engineer Intern - Video and Edge - Multimedia Lab",
       "url": "https://lifeattiktok.com/search/7696664743112788277",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Aliso Viejo",
+      "company": "Indie",
+      "id": "07aad510-60aa-4f59-a810-1efbb9d74d6f",
+      "miles": 48,
+      "new": false,
+      "posted": "2026-10-14",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Applications Software Developer Intern",
+      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265696007",
       "zone": "region"
     },
     {
