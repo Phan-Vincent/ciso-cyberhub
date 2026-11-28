@@ -1,6 +1,42 @@
 {
-  "generated_at": "2026-11-28T01:29:02Z",
+  "generated_at": "2026-11-28T10:32:07Z",
   "items": [
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Irvine",
+      "company": "Revelyst",
+      "id": "3e9b2a81-413f-4cc9-b90a-d168defc1a39",
+      "miles": 45,
+      "new": false,
+      "posted": "2026-11-18",
+      "security": true,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "IT AI Process Innovation Intern - Business Intelligence",
+      "url": "https://revelyst.wd1.myworkdayjobs.com/EXTERNAL_REVELYST/job/Irvine-CA/IT--Business-Intelligence--AI-Process-Innovation-Intern_R0013666",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Brea",
+      "company": "Danaher",
+      "id": "7a1c6145-534b-4180-a87b-447e2edd9c8f",
+      "miles": 38,
+      "new": false,
+      "posted": "2026-09-22",
+      "security": true,
+      "sponsorship": "Other",
+      "terms": [
+        "Winter 2026"
+      ],
+      "title": "IT Data Analyst Intern",
+      "url": "https://danaher.wd1.myworkdayjobs.com/DanaherJobs/job/Brea-California-United-States/IT-Data-Analyst-Intern_R1316675",
+      "zone": "near"
+    },
     {
       "also_remote": false,
       "category": "Software",
@@ -17,6 +53,22 @@
       ],
       "title": "Tech Art Intern",
       "url": "https://xboxgaming.wd1.myworkdayjobs.com/Blizzard_External_Careers/job/Irvine---Blizzard---Blizzard-Way/Blizzard-2027-Summer-Internships---Tech-Art_R028383",
+      "zone": "near"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Irvine",
+      "company": "Marvell",
+      "id": "d2e00c17-9fa3-4e78-a384-aa59475552c8",
+      "miles": 45,
+      "new": true,
+      "posted": "2026-11-23",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "AMS CAD Engineer Intern",
+      "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers/job/Irvine-CA/AMS-CAD-Engineer-Intern_2604571",
       "zone": "near"
     },
     {
@@ -774,6 +826,22 @@
     {
       "also_remote": false,
       "category": "Software",
+      "city": "El Segundo",
+      "company": "The Aerospace Corporation",
+      "id": "b4d1cbd8-4fb0-4c50-83ea-3456ca90ba58",
+      "miles": 65,
+      "new": false,
+      "posted": "2026-11-18",
+      "security": true,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Software Tools and Assurance Intern",
+      "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Software-Tools-and-Assurance-Grad-Intern_R017260",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
       "city": "San Diego",
       "company": "Constellation Energy",
       "id": "11f69ae2-522e-4819-8898-d55df90e6226",
@@ -859,6 +927,40 @@
     },
     {
       "also_remote": false,
+      "category": "Hardware",
+      "city": "San Diego",
+      "company": "ASML",
+      "id": "61a833ef-9a17-4cdc-acc3-7731695da381",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-25",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Timing and Energy Software Intern",
+      "url": "https://asml.wd3.myworkdayjobs.com/asmlext1/job/San-Diego-CA-USA/Internship-Timing-and-Energy-Software_J-00358478",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "San Diego",
+      "company": "ASML",
+      "id": "ea7f53b9-c895-4eaa-ad75-6af0fe802535",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-25",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2026"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://asml.wd3.myworkdayjobs.com/asmlext1/job/San-Diego-CA-USA/Internship---Software-Engineer_J-00357859",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "Product",
       "city": "Remote (US)",
       "company": "Ancestry",
@@ -908,6 +1010,24 @@
       "title": "Product Intern",
       "url": "https://boards.greenhouse.io/opensesame/jobs/8418204",
       "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "El Segundo",
+      "company": "RTX",
+      "id": "9836ddb1-23e2-48e9-a1d2-508f9e46ab0f",
+      "miles": 65,
+      "new": true,
+      "posted": "2026-11-24",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "FPGA Electrical Engineer Intern - Summer 2027",
+      "url": "https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-CA-EL-SEGUNDO-E01--2000-E-El-Segundo-Blvd--BLDG-E01/FPGA-Electrical-Engineer-Intern--Summer-2027-_01890532",
+      "zone": "region"
     },
     {
       "also_remote": false,
@@ -979,6 +1099,38 @@
       ],
       "title": "Electronics Engineering Intern",
       "url": "https://seasats.breezy.hr/p/58eb0549bc6d/apply",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "San Diego",
+      "company": "ASML",
+      "id": "4f0a732c-bdd5-450f-85fd-cf6472a424f1",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-23",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Data & AI Intern - Controls",
+      "url": "https://asml.wd3.myworkdayjobs.com/asmlext1/job/San-Diego-CA-USA/Internship-Data---AI--Controls_J-00357861",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Software",
+      "city": "San Diego",
+      "company": "ASML",
+      "id": "dde67f43-110e-4993-9e36-82631550eed4",
+      "miles": 102,
+      "new": true,
+      "posted": "2026-11-23",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "AI Engineer Co-op Intern",
+      "url": "https://asml.wd3.myworkdayjobs.com/asmlext1/job/San-Diego-CA-USA/Internship-Co-Op--AI-Engineer_J-00358475",
       "zone": "region"
     },
     {
@@ -1177,6 +1329,56 @@
     },
     {
       "also_remote": false,
+      "category": "Software",
+      "city": "El Segundo",
+      "company": "The Aerospace Corporation",
+      "id": "6a09d1f5-a983-4dd7-8ce6-f9d07492dd77",
+      "miles": 65,
+      "new": false,
+      "posted": "2026-11-20",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Software Systems Engineer and Acquisition Intern",
+      "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Software-Systems-Engineer-and-Acquisition-Grad-Intern_R017175",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "El Segundo",
+      "company": "The Aerospace Corporation",
+      "id": "0f7722a0-3929-40ca-971d-682b38935a87",
+      "miles": 65,
+      "new": false,
+      "posted": "2026-11-20",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Electronic Components Lab Intern",
+      "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Electronic-Components-Grad-Intern_R017284",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "San Diego",
+      "company": "Philips",
+      "id": "d70972b0-ea56-4fb6-a644-d96a9ed13666",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-11-20",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Electrical Engineer Intern",
+      "url": "https://philips.wd3.myworkdayjobs.com/jobs-and-careers/job/San-Diego-California-United-States/Intern---Electrical-Engineer---San-Diego--CA---Summer-2027_594811",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "Remote (US)",
       "company": "Wurl",
@@ -1245,6 +1447,22 @@
     },
     {
       "also_remote": false,
+      "category": "Hardware",
+      "city": "El Segundo",
+      "company": "The Aerospace Corporation",
+      "id": "872eb2cd-1e55-4afa-9d34-f8fd5fc23a44",
+      "miles": 65,
+      "new": false,
+      "posted": "2026-11-19",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Electrical Characterization Graduate Intern",
+      "url": "https://aero.wd5.myworkdayjobs.com/external/job/El-Segundo-CA/XMLNAME-2027-Electrical-Characterization-Graduate-Intern_R017278",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "Software",
       "city": "Costa Mesa",
       "company": "Anduril",
@@ -1278,6 +1496,24 @@
       "title": "PhD Summer Intern",
       "url": "https://careers.andersen.com/jobs/8348?icims=1&lang=en-us",
       "zone": "remote"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "San Diego",
+      "company": "ASML",
+      "id": "762e8fa0-1e10-49c5-8d3a-661cbc0f94e4",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-11-17",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Optical Engineering Intern - Non Product Metrology",
+      "url": "https://asml.wd3.myworkdayjobs.com/asmlext1/job/San-Diego-CA-USA/Internship---Optical-Engineering--Non-Product-Metrology_J-00355369",
+      "zone": "region"
     },
     {
       "also_remote": false,
@@ -1332,6 +1568,24 @@
       ],
       "title": "Inbound Product Manager Intern",
       "url": "https://jobs.smartrecruiters.com/ServiceNow/744000161885234",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "El Segundo",
+      "company": "RTX",
+      "id": "9cc37727-8cef-4132-94fe-609013856905",
+      "miles": 65,
+      "new": false,
+      "posted": "2026-11-15",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Engineer Intern",
+      "url": "https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/US-CA-EL-SEGUNDO-E04--2006-E-El-Segundo-Blvd--BLDG-E04/XMLNAME-2027-Summer-Intern---Software-Engineering---Onsite_01885225",
       "zone": "region"
     },
     {
@@ -2238,6 +2492,24 @@
     },
     {
       "also_remote": false,
+      "category": "Software",
+      "city": "Remote (US)",
+      "company": "Zillow",
+      "id": "6244dbb0-e314-486b-b2c6-143c829bd211",
+      "miles": null,
+      "new": false,
+      "posted": "2026-10-21",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Software Development Engineer Intern",
+      "url": "https://zillow.wd5.myworkdayjobs.com/en-US/Zillow_Group_External/job/Seattle-WA-2nd-Ave/Software-Development-Engineer---Intern_P751630",
+      "zone": "remote"
+    },
+    {
+      "also_remote": false,
       "category": "Product",
       "city": "Remote (US)",
       "company": "OneEthos",
@@ -2501,22 +2773,6 @@
     {
       "also_remote": false,
       "category": "Hardware",
-      "city": "Aliso Viejo",
-      "company": "Indie",
-      "id": "e925d6fc-4054-4d56-bd4b-a35f60724d50",
-      "miles": 48,
-      "new": false,
-      "posted": "2026-10-14",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [],
-      "title": "Design Verification Engineer Intern",
-      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265698007",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Hardware",
       "city": "Costa Mesa",
       "company": "Anduril",
       "id": "7bb707f9-e94b-4f2d-8921-ee6d523213bc",
@@ -2695,6 +2951,24 @@
       "category": "AI/ML/Data",
       "city": "San Diego",
       "company": "Axos Bank",
+      "id": "488ec965-4c26-435b-8fb0-f5d676d7cab0",
+      "miles": 102,
+      "new": false,
+      "posted": "2026-10-08",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2026"
+      ],
+      "title": "Automation Analyst Intern",
+      "url": "https://axos.wd5.myworkdayjobs.com/Axos/job/HQ---San-Diego-CA/Automation-Analyst-Intern_JR5660",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "San Diego",
+      "company": "Axos Bank",
       "id": "a1902097-6f8c-4bf1-8924-0b50d519c98e",
       "miles": 102,
       "new": false,
@@ -2724,6 +2998,24 @@
       ],
       "title": "AI Engineer Intern",
       "url": "https://axos.wd5.myworkdayjobs.com/Axos/job/HQ---San-Diego-CA/AI-Engineer-Intern_JR5658",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Torrance",
+      "company": "Moog",
+      "id": "2aca0513-4399-42cb-9896-91871273e679",
+      "miles": 63,
+      "new": false,
+      "posted": "2026-10-06",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Electrical Engineer Intern",
+      "url": "https://moog.wd5.myworkdayjobs.com/moog_external_career_site/job/Torrance-CA/Intern--Electrical-Engineering_R-26-19827",
       "zone": "region"
     },
     {
@@ -4270,24 +4562,6 @@
       ],
       "title": "Software Engineering Intern",
       "url": "https://jobs.lever.co/make-rain/b45f954e-19df-45b1-8748-c8ae442a2e8b",
-      "zone": "region"
-    },
-    {
-      "also_remote": false,
-      "category": "Software",
-      "city": "San Diego",
-      "company": "Axos Bank",
-      "id": "f4bde942-8a53-4997-8a6e-3c3ad226eb46",
-      "miles": 102,
-      "new": false,
-      "posted": "2026-04-16",
-      "security": false,
-      "sponsorship": "Other",
-      "terms": [
-        "Summer 2026"
-      ],
-      "title": "Automation Analyst Intern",
-      "url": "https://axos.wd5.myworkdayjobs.com/Axos/job/HQ---San-Diego-CA/Automation-Analyst-Intern_JR4507",
       "zone": "region"
     },
     {
