@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T10:56:19Z",
+  "generated_at": "2026-11-28T01:29:02Z",
   "items": [
     {
       "also_remote": false,
@@ -1130,13 +1130,31 @@
       "company": "NASA Jet Propulsion Laboratory",
       "id": "0abf44bd-1664-4576-8f15-2e958d00b1a6",
       "miles": 47,
-      "new": true,
+      "new": false,
       "posted": "2026-11-20",
       "security": false,
       "sponsorship": "Other",
       "terms": [],
       "title": "Business Administration Intern",
       "url": "https://citjpl.wd5.myworkdayjobs.com/Jobs/job/JPL-Campus/Business-Administration-Academic-Part-time-Intern_R6311",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Product",
+      "city": "Huntington Beach",
+      "company": "TravisMathew",
+      "id": "c9b83bec-92da-48c2-9bc7-3f9565a83da5",
+      "miles": 53,
+      "new": false,
+      "posted": "2026-11-20",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Product Development Intern",
+      "url": "https://tcbrands.wd1.myworkdayjobs.com/TravisMathew-Careers/job/TM---HQ---Huntington-Beach/Summer-2027-Internship---Product-Development_JR2023-16922",
       "zone": "region"
     },
     {
@@ -1806,6 +1824,60 @@
     },
     {
       "also_remote": false,
+      "category": "Software",
+      "city": "El Segundo",
+      "company": "Trinzic",
+      "id": "cc3eb44f-cec2-458d-ba80-caed446ec1ac",
+      "miles": 65,
+      "new": false,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Defense & Intel Software Engineer Intern",
+      "url": "https://trinzic.wd115.myworkdayjobs.com/Trinzic_Careers/job/Chantilly-Virginia/Defense---Intel--D-I----Software-Engineering-Internship_R3001235",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "El Segundo",
+      "company": "Trinzic",
+      "id": "6b0a90b1-57a3-4c6a-b21d-2ee3bd40fcf1",
+      "miles": 65,
+      "new": false,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Defense & Intel Electrical Engineer Intern - Defense & Intel",
+      "url": "https://trinzic.wd115.myworkdayjobs.com/Trinzic_Careers/job/Chantilly-Virginia/Defense---Intel--D-I----Electrical-or-Computer-Engineering-Internship_R3001233",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "El Segundo",
+      "company": "Trinzic",
+      "id": "7941d394-3940-47ba-87f3-7c472aecb76f",
+      "miles": 65,
+      "new": false,
+      "posted": "2026-11-05",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "Defense & Intel Computer Science Intern",
+      "url": "https://trinzic.wd115.myworkdayjobs.com/Trinzic_Careers/job/Chantilly-Virginia/Defense---Intel--D-I----Computer-Science-Internship_R3001231-1",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
       "category": "AI/ML/Data",
       "city": "San Diego",
       "company": "Peraton",
@@ -2424,6 +2496,22 @@
       "terms": [],
       "title": "Research Engineer Intern - Video and Edge - Multimedia Lab",
       "url": "https://lifeattiktok.com/search/7696664743112788277",
+      "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "Hardware",
+      "city": "Aliso Viejo",
+      "company": "Indie",
+      "id": "e925d6fc-4054-4d56-bd4b-a35f60724d50",
+      "miles": 48,
+      "new": false,
+      "posted": "2026-10-14",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [],
+      "title": "Design Verification Engineer Intern",
+      "url": "https://www.indie.inc/careers/internships/current-openings/?gh_jid=5265698007",
       "zone": "region"
     },
     {
@@ -3193,6 +3281,24 @@
       "title": "Hardware Engineer Intern",
       "url": "https://danaher.wd1.myworkdayjobs.com/DanaherJobs/job/Vista-California-United-States/Hardware-Engineering-Intern_R1315720",
       "zone": "region"
+    },
+    {
+      "also_remote": false,
+      "category": "AI/ML/Data",
+      "city": "Remote (US)",
+      "company": "NVIDIA",
+      "id": "55a28a09-e8b9-4af7-bec5-c02f4642f6f2",
+      "miles": null,
+      "new": false,
+      "posted": "2026-09-17",
+      "security": false,
+      "sponsorship": "Other",
+      "terms": [
+        "Summer 2027"
+      ],
+      "title": "PhD Research Intern - Generalist Embodied Agents Research",
+      "url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/PhD-Research-Intern--Generalist-Embodied-Agents-Research---2027_JR2025103",
+      "zone": "remote"
     },
     {
       "also_remote": false,
